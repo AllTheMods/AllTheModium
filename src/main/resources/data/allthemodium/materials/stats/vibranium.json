@@ -1,0 +1,21 @@
+{
+  "materialId": "allthemodium:vibranium",
+  "stats": [
+    {
+      "id": "tconstruct:head",
+      "durability": 7500,
+      "miningSpeed": 28.5,
+      "harvestLevel": 6,
+      "attack": 48.6
+    },
+    {
+      "id": "tconstruct:handle",
+      "modifier": 1.6,
+      "durability": 400
+    },
+    {
+      "id": "tconstruct:extra",
+      "durability": 2050
+    }
+  ]
+}

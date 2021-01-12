@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:crystallizing",
+  "chemicalType": "slurry",
+  "input": {
+    "amount": 200,
+    "slurry": "allthemodium:clean_vibranium"
+  },
+  "output": {
+    "item": "allthemodium:vibranium_crystal"
+  }
+}

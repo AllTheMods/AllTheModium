@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    "X#",
+    " #"
+  ],
+  "key": {
+    "X": {
+      "item": "allthemodium:unobtainium_vibranium_alloy_ingot"
+    },
+    "#": {
+      "item": "allthemodium:allthemodium_ingot"
+    }
+  },
+  "result": {
+    "item": "allthemodium:alloy_axe"
+  }
+}

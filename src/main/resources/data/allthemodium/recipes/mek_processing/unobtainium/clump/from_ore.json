@@ -1,0 +1,16 @@
+{
+  "type": "mekanism:purifying",
+  "itemInput": {
+    "ingredient": {
+      "tag": "forge:ores/unobtainium"
+    }
+  },
+  "gasInput": {
+    "amount": 1,
+    "gas": "mekanism:oxygen"
+  },
+  "output": {
+    "item": "allthemodium:unobtainium_clump",
+    "count": 3
+  }
+}

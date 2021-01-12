@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:dusts/allthemodium",
+    "#forge:dusts/vibranium",
+    "#forge:dusts/unobtainium",
+    "#forge:dusts/unobtainium_allthemodium_alloy",
+    "#forge:dusts/vibranium_allthemodium_alloy",
+    "#forge:dusts/unobtainium_vibranium_alloy"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "allthemodium:unobtainium_dust"
+  },
+  "result": "allthemodium:unobtainium_ingot",
+  "experience": 3.0,
+  "cookingtime": 200
+}

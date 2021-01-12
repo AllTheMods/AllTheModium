@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "tag": "forge:ingots/allthemodium"
+  },
+  "addition": {
+    "tag": "forge:ingots/unobtainium"
+  },
+  "result": {
+    "item": "allthemodium:unobtainium_allthemodium_alloy_ingot"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "textures": {
+  	"all": "allthemodium:block/allthemodium_shulker",
+    "particle": "allthemodium:block/allthemodium_shulker"
+  }
+}

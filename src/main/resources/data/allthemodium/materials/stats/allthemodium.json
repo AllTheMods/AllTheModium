@@ -1,0 +1,21 @@
+{
+  "materialId": "allthemodium:allthemodium",
+  "stats": [
+    {
+      "id": "tconstruct:head",
+      "durability": 5500,
+      "miningSpeed": 18.5,
+      "harvestLevel": 5,
+      "attack": 18.6
+    },
+    {
+      "id": "tconstruct:handle",
+      "modifier": 1.4,
+      "durability": 200
+    },
+    {
+      "id": "tconstruct:extra",
+      "durability": 1450
+    }
+  ]
+}

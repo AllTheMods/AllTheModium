@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "result": "allthemodium:allthemodium_ingot",
+  "ingredient": {
+    "tag": "forge:dusts/allthemodium"
+  },
+  "cookingtime": 100,
+  "experience": 0.3
+}

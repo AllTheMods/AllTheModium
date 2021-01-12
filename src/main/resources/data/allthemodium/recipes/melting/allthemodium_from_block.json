@@ -1,0 +1,17 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "tag": "forge:storage_blocks/allthemodium"
+  },
+  "result": {
+    "fluid": "allthemodium:molten_allthemodium",
+    "amount": 1296
+  },
+  "temperature": 1000,
+  "conditions": [
+      {
+          "type": "forge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

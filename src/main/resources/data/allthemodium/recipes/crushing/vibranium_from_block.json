@@ -1,0 +1,24 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/vibranium"
+    }
+  ],
+  "results": [
+    {
+      "item": "allthemodium:vibranium_ingot",
+      "count": 9
+    }
+  ],
+  "processingTime": 800,
+  "conditions": [
+    {
+      "value": {
+        "tag": "forge:storage_blocks/vibranium",
+        "type": "forge:tag_empty"
+      },
+      "type": "forge:not"
+    }
+  ]
+}

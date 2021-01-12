@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smithing",
+  "base": {
+    "tag": "forge:ingots/vibranium"
+  },
+  "addition": {
+    "tag": "forge:ingots/allthemodium"
+  },
+  "result": {
+    "item": "allthemodium:vibranium_allthemodium_alloy_ingot"
+  }
+}

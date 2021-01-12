@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X X",
+    "X X"
+  ],
+  "key": {
+    "X": {
+      "item": "allthemodium:allthemodium_ingot"
+    }
+  },
+  "result": {
+    "item": "allthemodium:allthemodium_boots"
+  }
+}

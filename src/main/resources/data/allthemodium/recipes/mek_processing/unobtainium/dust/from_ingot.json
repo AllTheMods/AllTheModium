@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:crushing",
+  "input": {
+    "ingredient": {
+      "tag": "forge:ingots/unobtainium"
+    }
+  },
+  "output": {
+    "item": "allthemodium:unobtainium_dust"
+  }
+}

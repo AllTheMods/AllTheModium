@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "allthemodium_ingot",
+  "ingredients": [
+    {
+      "item": "allthemodium:allthemodium_block"
+    }
+  ],
+  "result": {
+    "item": "allthemodium:allthemodium_ingot",
+    "count": 9
+  }
+}

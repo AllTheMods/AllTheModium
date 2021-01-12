@@ -1,0 +1,20 @@
+
+{
+  "display": {
+    "title": {"text":"Piglin Homeworld","obfuscated":false},
+    "description": "Travel to The Other, Epic Danger lies ahead",
+    "icon": {
+      "item": "alltheores:other_diamond_ore"
+    },
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+  },
+  "criteria": {
+    "the_other": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "from": "minecraft:the_nether",
+        "to": "allthemodium:the_other"
+      }
+    }
+  }
+}

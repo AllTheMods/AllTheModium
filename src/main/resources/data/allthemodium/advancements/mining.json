@@ -1,0 +1,19 @@
+{
+  "display": {
+    "title": {"text":"Diggy Diggy Hole!! Mining Dimension!","obfuscated":false},
+    "description": "Where else could this teleport pad take me?",
+    "icon": {
+      "item": "allthemodium:teleport_pad"
+    },
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+  },
+  "criteria": {
+    "mining": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "from": "minecraft:overworld",
+        "to": "allthemodium:mining"
+      }
+    }
+  }
+}

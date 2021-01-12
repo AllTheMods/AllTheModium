@@ -1,0 +1,21 @@
+{
+  "materialId": "allthemodium:unobtainium",
+  "stats": [
+    {
+      "id": "tconstruct:head",
+      "durability": 9500,
+      "miningSpeed": 48.5,
+      "harvestLevel": 7,
+      "attack": 28.2
+    },
+    {
+      "id": "tconstruct:handle",
+      "modifier": 1.4,
+      "durability": 700
+    },
+    {
+      "id": "tconstruct:extra",
+      "durability": 2450
+    }
+  ]
+}

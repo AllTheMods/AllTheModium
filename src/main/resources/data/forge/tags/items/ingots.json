@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:ingots/allthemodium",
+    "#forge:ingots/vibranium",
+    "#forge:ingots/unobtainium",
+    "#forge:ingots/vibranium_allthemodium_alloy",
+    "#forge:ingots/unobtainium_allthemodium_alloy",
+    "#forge:ingots/unobtainium_vibranium_alloy"
+  ]
+}

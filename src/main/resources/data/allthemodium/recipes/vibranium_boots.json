@@ -1,0 +1,19 @@
+{
+  "type": "allthemodium:atmshaped_crafting",
+  "pattern": [
+    "XYX",
+    "X X"
+  ],
+  "key": {
+    "X": {
+      "item": "allthemodium:vibranium_ingot"
+    },
+    "Y": {
+      "item": "allthemodium:allthemodium_boots"
+    }
+    
+  },
+  "result": {
+    "item": "allthemodium:vibranium_boots"
+  }
+}

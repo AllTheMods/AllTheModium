@@ -1,0 +1,15 @@
+{
+  "program": "envirotech:resource",
+  "item": {"raw:item": "allthemodium:allthemodium_ore", "count":1, "selector": "all"},
+  "config": [
+    {
+      "dimensions": ["allthemodium:mining"],
+      "weight": 11
+    },
+    {
+      "dimensions": ["allthemodium:mining"],
+      "focus": "envirotech:obsidian",
+      "weight": 440
+    }
+  ]
+}

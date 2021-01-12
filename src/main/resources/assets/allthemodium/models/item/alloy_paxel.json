@@ -1,0 +1,26 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "allthemodium:item/alloy_paxel"
+	},
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [-39, -84, 0],
+			"translation": [0, 6.25, 1.75]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [-39, 84, 0],
+			"translation": [0, 6.25, 1.75]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, -180, 0]
+		},
+		"ground": {
+			"translation": [0, 4.5, 0]
+		},
+		"gui": {
+			"translation": [0, 0.25, 0]
+		}
+	}
+}

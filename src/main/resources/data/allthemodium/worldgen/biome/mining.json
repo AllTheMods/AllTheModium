@@ -1,0 +1,66 @@
+{
+	"scale": 0.3,
+	"effects": {
+		"mood_sound": {
+			"sound": "minecraft:ambient.cave",
+			"tick_delay": 6000,
+			"block_search_extent": 8,
+			"offset": 2.0
+		},
+		"sky_color": 7254527,
+		"foliage_color": 10387789,
+		"grass_color": 9470285,
+		"fog_color": 12638463,
+		"water_color": 4159204,
+		"water_fog_color": 329011
+	},
+	"surface_builder": "allthemodium:mining",
+	"carvers": {
+	},
+	"features": [
+		[
+			"allthemodium:ore_atmium",
+			"minecraft:ore_diamond",
+			"minecraft:ore_coal",
+			"minecraft:ore_gold",
+			"minecraft:ore_redstone",
+			"minecraft:ore_emerald",
+			"minecraft:ore_iron",
+			"minecraft:ore_lapis",
+			"alltheores:ore_aluminum",
+			"alltheores:ore_copper",
+			"alltheores:ore_lead",
+			"alltheores:ore_nickel",
+			"alltheores:ore_osmium",
+			"alltheores:ore_platinum",
+			"alltheores:ore_silver",
+			"alltheores:ore_tin",
+			"alltheores:ore_uranium",
+			"alltheores:ore_zinc"
+		]
+	],
+	"starts": [
+	],
+	"spawners": {
+		"monster": [
+		],
+		"creature": [
+		],
+		"ambient": [
+		],
+		"water_creature": [
+		],
+		"water_ambient": [
+		],
+		"misc": [
+		]
+	},
+	"spawn_costs": {
+	},
+	"player_spawn_friendly": true,
+	"precipitation": "none",
+	"temperature": 2.0,
+	"downfall": 0.0,
+	"category": "desert",
+	"depth": 0.45
+}

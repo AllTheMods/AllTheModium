@@ -1,0 +1,20 @@
+{
+  "display": {
+    "title": {"text":"Cry Me a river!","obfuscated":false},
+    "description": "Fill a bucket with Soul Lava",
+    "icon": {
+      "item": "allthemodium:molten_bluelava_bucket"
+    },
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+  },
+     "criteria": {
+      "soullava": {
+        "trigger": "minecraft:filled_bucket",
+        "conditions": {
+          "item": {
+            "item": "allthemodium:molten_bluelava_bucket"
+          }
+        }
+      }
+    }
+  }
