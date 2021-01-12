@@ -12,14 +12,5 @@
      
     }
   ],
-  "processingTime": 800,
-  "conditions": [
-    {
-      "value": {
-        "tag": "forge:storage_blocks/allthemodium",
-        "type": "forge:tag_empty"
-      },
-      "type": "forge:not"
-    }
-  ]
+  "processingTime": 800
 }
