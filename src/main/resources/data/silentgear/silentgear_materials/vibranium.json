@@ -15,7 +15,7 @@
   "stats": {
     "main": {
       "durability": 7500.0,
-      "armor_durability": 92.0,
+      "armor_durability": 1000.0,
       "enchantability": 105.0,
       "harvest_level": 6.0,
       "harvest_speed": 28.0,
@@ -23,7 +23,7 @@
       "magic_damage": 47.0,
       "attack_speed": 48.2,
       "armor": 62.0,
-      "armor_toughness": 92.0,
+      "armor_toughness": 1000.0,
       "magic_armor": 88.0,
       "ranged_damage": 0.0,
       "ranged_speed": 1.3,
