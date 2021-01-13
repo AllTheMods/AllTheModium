@@ -1,4 +1,5 @@
 {
+  "parent": "allthemodium:root",
   "display": {
     "title": {
       "text": "Shove It",

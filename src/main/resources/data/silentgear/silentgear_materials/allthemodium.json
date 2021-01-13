@@ -13,31 +13,18 @@
     "translate": "material.silentgear.allthemodium"
   },
   "stats": {
-    "coating": {
-      "durability": [
-        {
-          "mul2": 2.3
-        },
-        {
-          "add": 20.0
-        }
-      ]
-    },
-    "knockback_resistance": {
-      "add": 20.0
-    },
     "main": {
       "durability": 5500.0,
-      "armor_durability": 500.0,
-      "enchantability": 185.0,
+      "armor_durability": 72.0,
+      "enchantability": 85.0,
       "harvest_level": 5.0,
       "harvest_speed": 18.0,
       "melee_damage": 62.0,
       "magic_damage": 6.0,
       "attack_speed": 18.2,
-      "armor": 500.0,
+      "armor": 42.0,
       "armor_toughness": 42.0,
-      "magic_armor": 200.0,
+      "magic_armor": 18.0,
       "ranged_damage": 0.0,
       "ranged_speed": 0.3,
       "rarity": 90.0,

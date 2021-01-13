@@ -13,31 +13,18 @@
     "translate": "material.silentgear.unobtainium"
   },
   "stats": {
-    "coating": {
-      "durability": [
-        {
-          "mul2": 8.6
-        },
-        {
-          "add": 80.0
-        }
-      ]
-    },
-    "knockback_resistance": {
-      "add": 80.0
-    },
     "main": {
       "durability": 9500.0,
-      "armor_durability": 2000.0,
-      "enchantability": 285.0,
+      "armor_durability": 122.0,
+      "enchantability": 175.0,
       "harvest_level": 7.0,
       "harvest_speed": 48.0,
       "melee_damage": 95.0,
       "magic_damage": 7.0,
       "attack_speed": 28.2,
-      "armor": 2000.0,
-      "armor_toughness": 82.0,
-      "magic_armor": 800.0,
+      "armor": 62.0,
+      "armor_toughness": 122.0,
+      "magic_armor": 118.0,
       "ranged_damage": 0.0,
       "ranged_speed": 1.3,
       "rarity": 99.0,

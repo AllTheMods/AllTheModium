@@ -1,4 +1,5 @@
 {
+  "parent": "allthemodium:root",
   "display": {
     "title": {"text":"But it's a game mechanic!","obfuscated":false},
     "description": "Brew an Allthemodium Sight Potion",

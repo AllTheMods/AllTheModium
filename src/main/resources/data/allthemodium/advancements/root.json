@@ -1,0 +1,22 @@
+{
+  "display": {
+    "icon": {
+      "item": "allthemodium:alloy_blade"
+    },
+    "frame": "task",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false,
+    "background": "minecraft:textures/block/stone.png"
+  },
+  "criteria": {
+    "allthemodium_present": {
+      "trigger": "minecraft:tick"
+    }
+  },
+  "requirements": [
+    [
+      "allthemodium_present"
+    ]
+  ]
+}

@@ -52,13 +52,7 @@ public class Allthemodium_Ore extends Block {
 	private double distanceTo(BlockPos block,BlockPos player) {
 		return Math.sqrt(Math.pow(block.getX() - player.getX(), 2) + Math.pow(block.getY() - player.getY(), 2) + Math.pow(block.getZ() - player.getZ(), 2));
 	}
-	@Deprecated
-	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-		List<ItemStack> list = new ArrayList<ItemStack>();
-		list.add(new ItemStack(ModItems.ALLTHEMODIUM_ORE));
-		return list;
-	}
+
 	@Override
 	public PushReaction getPushReaction(BlockState state) {
 

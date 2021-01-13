@@ -25,13 +25,7 @@ public class Vibranium_Ore extends OreBlock {
 	public Vibranium_Ore() {//func_235861_h_ = setRequiresTool
 		super(Properties.create(Material.ROCK).sound(SoundType.STONE).setRequiresTool().hardnessAndResistance(29.0f));
 	}
-	@Deprecated
-	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-		List<ItemStack> list = new ArrayList<ItemStack>();
-		list.add(new ItemStack(ModItems.VIBRANIUM_ORE));
-		return list;
-	}
+
 	@Override
 	public boolean canHarvestBlock(BlockState state, IBlockReader world, BlockPos pos, PlayerEntity player) {
 		if((player instanceof FakePlayer) && (state.getBlock() == ModBlocks.VIBRANIUM_ORE)) { return false; }

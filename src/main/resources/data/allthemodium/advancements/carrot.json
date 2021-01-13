@@ -1,4 +1,5 @@
 {
+  "parent": "allthemodium:root",
   "display": {
     "title": {"text":"CRUNCH,CRUNCH","obfuscated":false},
     "description": "Eat an Allthemodium Carrot",

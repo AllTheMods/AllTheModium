@@ -1,4 +1,5 @@
 {
+  "parent": "allthemodium:root",
   "display": {
     "title": {"text":"Diggy Diggy Hole!! Mining Dimension!","obfuscated":false},
     "description": "Where else could this teleport pad take me?",

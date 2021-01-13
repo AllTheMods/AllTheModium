@@ -1,4 +1,5 @@
 {
+  "parent": "allthemodium:root",
   "display": {
     "title": {"text":"Cry Me a river!","obfuscated":false},
     "description": "Fill a bucket with Soul Lava",
