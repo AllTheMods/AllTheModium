@@ -7,6 +7,7 @@ import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.init.ModBlocks;
 import com.thevortex.allthemodium.init.ModItems;
 
+import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -71,6 +72,15 @@ public class TeleportPad extends Block {
 			worldIn.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY() + 1, pos.getZ(), 0, 1, 0);
 		}
 		return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+	}
+
+	@Override
+	public boolean canHarvestBlock(BlockState state, IBlockReader world, BlockPos pos, PlayerEntity player) {
+		if(player.getEntityWorld().dimension.getLocation().getNamespace().contains(Reference.MOD_ID)) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 
 	public void transferPlayer(ServerPlayerEntity player, BlockPos pos) {

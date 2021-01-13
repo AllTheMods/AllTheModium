@@ -6,7 +6,7 @@
       "entries": [
       {
           "type": "minecraft:item",
-          "weight": 3,
+          "weight": 1,
           "functions": [
             {
               "function": "minecraft:enchant_randomly",
@@ -56,6 +56,17 @@
         },
         {
           "type": "minecraft:item",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{Potion:\"potionsmaster:allthemodium_sight\"}"
+            }
+          ],
+          "name": "minecraft:potion"
+        },
+        {
+          "type": "minecraft:item",
           "weight": 10,
           "functions": [
             {
@@ -72,8 +83,8 @@
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 8.0,
-                "max": 16.0,
+                "min": 1.0,
+                "max": 2.0,
                 "type": "minecraft:uniform"
               }
             }
@@ -82,13 +93,13 @@
         },
         {
           "type": "minecraft:item",
-          "weight": 10,
+          "weight": 5,
           "functions": [
             {
               "function": "minecraft:set_count",
               "count": {
-                "min": 4.0,
-                "max": 12.0,
+                "min": 1.0,
+                "max": 2.0,
                 "type": "minecraft:uniform"
               }
             }
