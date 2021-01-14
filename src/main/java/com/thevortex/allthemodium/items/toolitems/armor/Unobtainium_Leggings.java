@@ -15,6 +15,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.IArmorMaterial;
@@ -47,21 +48,12 @@ public class Unobtainium_Leggings extends ArmorItem {
 		tooltip.add(this.getTooltip("wither.proof").mergeStyle(TextFormatting.DARK_PURPLE));
 		tooltip.add(this.getTooltip("magic.resistance").mergeStyle(TextFormatting.LIGHT_PURPLE));
 		tooltip.add(this.getTooltip("steady.legs").mergeStyle(TextFormatting.LIGHT_PURPLE));
+		tooltip.add(this.getTooltip("steady.guts").mergeStyle(TextFormatting.LIGHT_PURPLE));
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
 	protected TextComponent getTooltip(String key){
 		return new TranslationTextComponent(key);
 	}
 
-    @Override
-    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-    	if(stack.getItem() == ModItems.UNOBTAINIUM_LEGGINGS) {
-    		Collection<EffectInstance> potions = player.getActivePotionEffects();
-    		for(EffectInstance effectInstance : potions) {
-    			if(effectInstance.getPotion() == Effects.LEVITATION)
-					player.removePotionEffect(Effects.LEVITATION);
-	    	}
-    	}
-    	super.onArmorTick(stack, world, player);
-    }
+
 }

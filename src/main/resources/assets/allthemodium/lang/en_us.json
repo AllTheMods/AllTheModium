@@ -1,5 +1,6 @@
 {
   "itemGroup.allthemodium": "AllTheModium",
+  "allthemodium.description": "AllTheModium Nugget! The first step!(of many!)",
   "piglin.friend": "Piglins become neutral",
   "quick.snack": "Fast to eat",
   "low.cal": "Can always eat",
@@ -10,6 +11,7 @@
   "magic.resistance": "Magic Resistance",
   "breath.proof": "No Damage From Breath Weapons",
   "steady.legs": "Protection against Shulker Levitation Attacks",
+  "steady.guts": "Immune to Nausea",
   "light.step": "No Fall Damage",
   "hard.head": "No crash damage while flying with an Elytra",
   "aqua.lungs": "Water Breathing",

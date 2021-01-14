@@ -68,13 +68,19 @@ public class ArmorEvents {
 			if((armor.getItem() == ModItems.VIBRANIUM_LEGGINGS) || (armor.getItem() == ModItems.UNOBTAINIUM_LEGGINGS)) {
 				if(event.getSource() == DamageSource.WITHER) {
 						event.getEntityLiving().removePotionEffect(Effects.WITHER);
+
 						event.setCanceled(true);
 				}
 				if(event.getSource() == DamageSource.MAGIC) {
 					event.setCanceled(true);
 				}
 				if(!event.isCanceled()) {
+					event.getEntityLiving().removePotionEffect(Effects.NAUSEA);
+
 					event.setAmount(event.getAmount() - (event.getAmount()/4));
+				}
+				if(!event.isCanceled() && armor.getItem() == ModItems.UNOBTAINIUM_LEGGINGS) {
+					event.getEntityLiving().removePotionEffect(Effects.LEVITATION);
 				}
 			}
 

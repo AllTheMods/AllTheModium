@@ -1,13 +1,17 @@
 {
   "display": {
     "icon": {
-      "item": "allthemodium:alloy_blade"
+      "item": "allthemodium:allthemodium_ore"
     },
-    "frame": "task",
+    "title": {
+      "translate": "itemGroup.allthemodium"
+    },
+    "description": {
+      "translate": "allthemodium.description"
+    },
+    "background": "minecraft:textures/block/stone.png",
     "show_toast": false,
-    "announce_to_chat": true,
-    "hidden": false,
-    "background": "minecraft:textures/block/stone.png"
+    "announce_to_chat": true
   },
   "criteria": {
      "requirement": {
