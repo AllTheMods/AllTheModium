@@ -3,6 +3,7 @@ package com.thevortex.allthemodium.items.toolitems.tools;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Sets;
 import com.thevortex.allthemodium.material.ItemTier;
+import net.minecraft.advancements.criterion.EnchantmentPredicate;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -124,6 +125,9 @@ public class Allthemodium_Paxel extends ToolItem {
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
         return true;
     }
+
+    @Override
+    public boolean isBookEnchantable(ItemStack stack, ItemStack book) { return true; }
 
     @Override
     public boolean isShield(ItemStack stack, LivingEntity entity) {

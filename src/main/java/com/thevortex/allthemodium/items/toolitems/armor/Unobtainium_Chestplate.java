@@ -34,7 +34,7 @@ public class Unobtainium_Chestplate extends ArmorItem {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
-        tooltip.add(this.getTooltip("breath.proof").mergeStyle(TextFormatting.GOLD));
+        //tooltip.add(this.getTooltip("breath.proof").mergeStyle(TextFormatting.GOLD));
         tooltip.add(this.getTooltip("piglin.friend").mergeStyle(TextFormatting.GOLD));
         tooltip.add(this.getTooltip("fire.proof").mergeStyle(TextFormatting.RED));
 
@@ -42,5 +42,13 @@ public class Unobtainium_Chestplate extends ArmorItem {
     }
     protected TextComponent getTooltip(String key){
         return new TranslationTextComponent(key);
+    }
+
+    @Override
+    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+        if((stack.getItem() == ModItems.UNOBTAINIUM_CHESTPLATE) && (!world.isRemote)) {
+
+        }
+        super.onArmorTick(stack, world, player);
     }
 }

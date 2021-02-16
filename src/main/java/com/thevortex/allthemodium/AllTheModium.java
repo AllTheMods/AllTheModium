@@ -2,6 +2,7 @@ package com.thevortex.allthemodium;
 
 import com.thevortex.allthemodium.init.ModEntity;
 import com.thevortex.allthemodium.init.ModSlurries;
+import com.thevortex.allthetweaks.config.Configuration;
 import mekanism.api.chemical.slurry.Slurry;
 import net.minecraft.block.Block;
 import net.minecraft.fluid.Fluid;
@@ -20,6 +21,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
@@ -40,6 +42,7 @@ import com.thevortex.allthemodium.crafting.ATMCraftingSetup;
 import com.thevortex.allthemodium.events.ArmorEvents;
 import com.thevortex.allthemodium.events.BlockBreak;
 import com.thevortex.allthemodium.fluids.FluidList;
+import org.lwjgl.openal.AL;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("allthemodium")
@@ -55,7 +58,7 @@ public class AllTheModium
 	public static final RegistryKey<World> THE_OTHER = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, new ResourceLocation(Reference.MOD_ID,"the_other"));
 	public static final RegistryKey<World> THE_BEYOND = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, new ResourceLocation(Reference.MOD_ID,"the_beyond"));
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
-	
+	public static Boolean ALLOW_TELEPORT_MINING = false;
 	public static final ItemGroup GROUP = new ItemGroup(MOD_ID) {
 		public ItemStack createIcon() {
 			return new ItemStack(ModBlocks.ALLTHEMODIUMBLOCK);
@@ -84,13 +87,8 @@ public class AllTheModium
    public static void commonSetupEvent(FMLCommonSetupEvent event) {
 	   Worldgen.addFeatures();
    }
-    @SubscribeEvent
-    public static void loadCompleteEvent(FMLLoadCompleteEvent event) {
-    	
-    }
-    @SubscribeEvent
-    public void onServerStarting(FMLServerStartingEvent event) {
-    }
+
+
 
 	@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = MOD_ID)
 	public static class RegistryEvents {
@@ -116,4 +114,5 @@ public class AllTheModium
 		public static void onSlurryRegistry(final RegistryEvent.Register<Slurry> event) {	if(ModList.get().isLoaded("mekanism")) { ModSlurries.init(event);	} }
 
 	}
+
 }

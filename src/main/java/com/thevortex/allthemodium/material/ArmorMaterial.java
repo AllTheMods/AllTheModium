@@ -13,13 +13,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import com.thevortex.allthemodium.init.ModItems;
 
 public enum ArmorMaterial implements IArmorMaterial {
-	   ALLTHEMODIUM("allthemodium", 500, new int[]{100, 100, 200, 100}, 185, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 42.0F, () -> {
+	   ALLTHEMODIUM("allthemodium", 500, new int[]{100, 100, 200, 100}, 185, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 125.0F, () -> {
 		      return Ingredient.fromItems(ModItems.ALLTHEMODIUM_INGOT);
 		   }),
-	   VIBRANIUM("vibranium", 1000, new int[]{150, 300, 400, 150}, 235, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 62.0F, () -> {
+	   VIBRANIUM("vibranium", 1000, new int[]{150, 300, 400, 150}, 235, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 250.0F, () -> {
 	      return Ingredient.fromItems(ModItems.VIBRANIUM_INGOT);
 	   }),
-	   UNOBTAINIUM("unobtainium",2000, new int[]{400, 600, 600, 400}, 285, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 82.0F, () -> {
+	   UNOBTAINIUM("unobtainium",2000, new int[]{400, 600, 600, 400}, 285, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 500.0F, () -> {
 	      return Ingredient.fromItems(ModItems.UNOBTAINIUM_INGOT);
 	   });
     

@@ -2,7 +2,7 @@
   "type": "mekanism:enriching",
   "input": {
     "ingredient": {
-      "tag": "mekanism:dirty_dusts/unobtainium"
+      "item": "allthemodium:dirty_unobtainium_dust"
     }
   },
   "output": {

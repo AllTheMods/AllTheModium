@@ -46,4 +46,15 @@ public class Unobtainium_Helmet extends ArmorItem {
     protected TextComponent getTooltip(String key){
         return new TranslationTextComponent(key);
     }
+    @Override
+    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+        if((stack.getItem() == ModItems.UNOBTAINIUM_HELMET) && (!world.isRemote)) {
+
+            if(player.isInWater() && player.isSwimming()){
+
+                player.setAir(300);
+            }
+        }
+        super.onArmorTick(stack, world, player);
+    }
 }

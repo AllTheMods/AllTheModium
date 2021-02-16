@@ -57,3 +57,9 @@ Allthemodium!
         versionRange="[10.0,]"
         ordering="NONE"
         side="BOTH"
+[[dependencies.allthemodium]]
+        modId="iceandfire"
+        mandatory=false
+        versionRange="[2.1,]"
+        ordering="AFTER"
+        side="BOTH"

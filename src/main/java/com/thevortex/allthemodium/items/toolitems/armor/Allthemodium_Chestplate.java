@@ -25,6 +25,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
@@ -53,4 +54,6 @@ public class Allthemodium_Chestplate extends ArmorItem {
     protected TextComponent getTooltip(String key){
         return new TranslationTextComponent(key);
     }
+
+
 }

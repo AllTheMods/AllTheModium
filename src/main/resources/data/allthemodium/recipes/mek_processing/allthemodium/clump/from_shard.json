@@ -2,7 +2,7 @@
   "type": "mekanism:purifying",
   "itemInput": {
     "ingredient": {
-      "tag": "mekanism:shards/allthemodium"
+      "item": "allthemodium:allthemodium_shard"
     }
   },
   "gasInput": {

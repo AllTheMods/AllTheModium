@@ -2,7 +2,7 @@
   "type": "mekanism:purifying",
   "itemInput": {
     "ingredient": {
-      "tag": "mekanism:shards/vibranium"
+      "item": "allthemodium:vibranium_shard"
     }
   },
   "gasInput": {

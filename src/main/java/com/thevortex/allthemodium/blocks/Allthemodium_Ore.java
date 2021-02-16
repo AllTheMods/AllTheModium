@@ -46,7 +46,7 @@ public class Allthemodium_Ore extends Block {
 	public boolean canHarvestBlock(BlockState state, IBlockReader world, BlockPos pos, PlayerEntity player) {
 		if((player instanceof FakePlayer) && (state.getBlock() == ModBlocks.ALLTHEMODIUMORE)) { return false; }
 
-	return (distanceTo(pos,player.getPosition()) < 16.0F);
+	return super.canHarvestBlock(state,world,pos,player) && (distanceTo(pos,player.getPosition()) < 16.0F);
 	}
 
 	private double distanceTo(BlockPos block,BlockPos player) {

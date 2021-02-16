@@ -1,6 +1,7 @@
 package com.thevortex.allthemodium.items.toolitems.armor;
 
 import java.util.Collection;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.UUID;
 
@@ -55,5 +56,24 @@ public class Unobtainium_Leggings extends ArmorItem {
 		return new TranslationTextComponent(key);
 	}
 
+    @Override
+    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+    	if((stack.getItem() == ModItems.UNOBTAINIUM_LEGGINGS) && (!world.isRemote)) {
 
+    		Collection<EffectInstance> potions = player.getActivePotionEffects();
+			try {
+    		for(EffectInstance effectInstance : potions) {
+    			if(effectInstance.getPotion() == Effects.LEVITATION)
+					player.removePotionEffect(Effects.LEVITATION);
+				if(effectInstance.getPotion() == Effects.NAUSEA)
+					player.removePotionEffect(Effects.NAUSEA);
+	    	}
+			} catch(ConcurrentModificationException exception) {
+
+			}finally {
+				super.onArmorTick(stack, world, player);
+			}
+    	}
+    	super.onArmorTick(stack, world, player);
+    }
 }

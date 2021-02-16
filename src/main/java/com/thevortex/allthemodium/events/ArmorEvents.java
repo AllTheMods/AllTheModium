@@ -44,71 +44,72 @@ public class ArmorEvents {
 
 	@SubscribeEvent
 	public static void onEntityHurt(LivingHurtEvent event) {
-		
-		Iterable<ItemStack> armorlist = event.getEntityLiving().getArmorInventoryList();
-		Iterator<ItemStack> iterator = armorlist.iterator();
-		while(iterator.hasNext()) {
-			ItemStack armor = iterator.next();
-			if((armor.getItem() == ModItems.ALLTHEMODIUM_CHESTPLATE) || (armor.getItem() == ModItems.VIBRANIUM_CHESTPLATE) || (armor.getItem() == ModItems.UNOBTAINIUM_CHESTPLATE)) {
-				if((event.getSource() == DamageSource.DRAGON_BREATH) && (armor.getItem() == ModItems.UNOBTAINIUM_CHESTPLATE)){
-					event.setCanceled(true);
+		if (!event.getEntityLiving().getEntityWorld().isRemote) {
+			Iterable<ItemStack> armorlist = event.getEntityLiving().getArmorInventoryList();
+			Iterator<ItemStack> iterator = armorlist.iterator();
+			while (iterator.hasNext()) {
+				ItemStack armor = iterator.next();
+				if ((armor.getItem() == ModItems.ALLTHEMODIUM_CHESTPLATE) || (armor.getItem() == ModItems.VIBRANIUM_CHESTPLATE) || (armor.getItem() == ModItems.UNOBTAINIUM_CHESTPLATE)) {
+					if ((event.getSource() == DamageSource.DRAGON_BREATH) && (armor.getItem() == ModItems.UNOBTAINIUM_CHESTPLATE)) {
+						if(!event.isCancelable()) { event.setAmount(0.0F); }
+						event.setCanceled(true);
+
+					}
+
+					if ((event.getSource() == DamageSource.HOT_FLOOR) || (event.getSource() == DamageSource.IN_FIRE) || (event.getSource() == DamageSource.LAVA) || (event.getSource() == DamageSource.ON_FIRE)) {
+						event.getEntityLiving().extinguish();
+						event.setCanceled(true);
+
+					}
+					if (!event.isCanceled()) {
+						event.setAmount(event.getAmount() - (event.getAmount() / 4));
+					}
 
 				}
-
-				if ((event.getSource() == DamageSource.HOT_FLOOR) || (event.getSource() == DamageSource.IN_FIRE) || (event.getSource() == DamageSource.LAVA) || (event.getSource() == DamageSource.ON_FIRE)) {
-					event.getEntityLiving().extinguish();
-					event.setCanceled(true);
-
-				}
-				if(!event.isCanceled()) {
-					event.setAmount(event.getAmount() - (event.getAmount()/4));
-				}
-
-			}
-			if((armor.getItem() == ModItems.VIBRANIUM_LEGGINGS) || (armor.getItem() == ModItems.UNOBTAINIUM_LEGGINGS)) {
-				if(event.getSource() == DamageSource.WITHER) {
+				if ((armor.getItem() == ModItems.VIBRANIUM_LEGGINGS) || (armor.getItem() == ModItems.UNOBTAINIUM_LEGGINGS)) {
+					if (event.getSource() == DamageSource.WITHER) {
 						event.getEntityLiving().removePotionEffect(Effects.WITHER);
 
 						event.setCanceled(true);
-				}
-				if(event.getSource() == DamageSource.MAGIC) {
-					event.setCanceled(true);
-				}
-				if(!event.isCanceled()) {
-					event.getEntityLiving().removePotionEffect(Effects.NAUSEA);
+					}
+					if (!event.isCanceled() && armor.getItem() == ModItems.UNOBTAINIUM_LEGGINGS) {
+						event.getEntityLiving().removePotionEffect(Effects.LEVITATION);
+					}
+					if (event.getSource() == DamageSource.MAGIC) {
+						event.setCanceled(true);
+					}
+					if (!event.isCanceled()) {
+						event.setAmount(event.getAmount() - (event.getAmount() / 4));
+					}
 
-					event.setAmount(event.getAmount() - (event.getAmount()/4));
 				}
-				if(!event.isCanceled() && armor.getItem() == ModItems.UNOBTAINIUM_LEGGINGS) {
-					event.getEntityLiving().removePotionEffect(Effects.LEVITATION);
+
+				if ((armor.getItem() == ModItems.ALLTHEMODIUM_HELMET) || (armor.getItem() == ModItems.VIBRANIUM_HELMET) || (armor.getItem() == ModItems.UNOBTAINIUM_HELMET)) {
+					if (event.getSource() == DamageSource.FLY_INTO_WALL) {
+						event.setCanceled(true);
+
+					}
+
+					if (event.getSource() == DamageSource.DROWN) {
+						event.getEntityLiving().setAir(event.getEntityLiving().getMaxAir());
+
+						event.setCanceled(true);
+					}
+					if (!event.isCanceled()) {
+						event.setAmount(event.getAmount() - (event.getAmount() / 4));
+					}
+
 				}
+				if ((armor.getItem() == ModItems.ALLTHEMODIUM_BOOTS) || (armor.getItem() == ModItems.VIBRANIUM_BOOTS) || (armor.getItem() == ModItems.UNOBTAINIUM_BOOTS)) {
+					if (!event.isCanceled()) {
+						event.setAmount(event.getAmount() - (event.getAmount() / 4));
+					}
+
+				}
+
 			}
 
-			if((armor.getItem() == ModItems.ALLTHEMODIUM_HELMET) || (armor.getItem() == ModItems.VIBRANIUM_HELMET) || (armor.getItem() == ModItems.UNOBTAINIUM_HELMET)) {
-				if(event.getSource() == DamageSource.FLY_INTO_WALL) {
-					event.setCanceled(true);
-
-				}
-
-				if(event.getSource() == DamageSource.DROWN) {
-					event.getEntityLiving().setAir(event.getEntityLiving().getMaxAir());
-
-					event.setCanceled(true);
-				}
-				if(!event.isCanceled()) {
-					event.setAmount(event.getAmount() - (event.getAmount()/4));
-				}
-			
-			}
-			if((armor.getItem() == ModItems.ALLTHEMODIUM_BOOTS) || (armor.getItem() == ModItems.VIBRANIUM_BOOTS) || (armor.getItem() == ModItems.UNOBTAINIUM_BOOTS)) {
-				if(!event.isCanceled()) {
-					event.setAmount(event.getAmount() - (event.getAmount()/4));
-				}
-
-			}
-			
 		}
-	
 	}
 	@SubscribeEvent
 	public static void onEntityCollide(ProjectileImpactEvent event) {

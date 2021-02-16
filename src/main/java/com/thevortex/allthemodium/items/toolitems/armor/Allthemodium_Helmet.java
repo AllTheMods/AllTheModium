@@ -21,6 +21,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import java.util.Collection;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 
 public class Allthemodium_Helmet extends ArmorItem {
@@ -47,5 +49,16 @@ public class Allthemodium_Helmet extends ArmorItem {
     }
     protected TextComponent getTooltip(String key){
         return new TranslationTextComponent(key);
+    }
+    @Override
+    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+        if((stack.getItem() == ModItems.ALLTHEMODIUM_HELMET) && (!world.isRemote)) {
+
+            if(player.isInWater() && player.isSwimming()){
+
+                player.setAir(300);
+            }
+        }
+        super.onArmorTick(stack, world, player);
     }
 }

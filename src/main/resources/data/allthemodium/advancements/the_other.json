@@ -4,7 +4,7 @@
     "title": {"text":"Piglin Homeworld","obfuscated":false},
     "description": "Travel to The Other, Epic Danger lies ahead",
     "icon": {
-      "item": "allthemodiun:teleport_pad"
+      "item": "allthemodium:teleport_pad"
     },
     "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
   },

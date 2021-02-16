@@ -29,7 +29,7 @@ public class Unobtainium_Ore extends OreBlock {
 	@Override
 	public boolean canHarvestBlock(BlockState state, IBlockReader world, BlockPos pos, PlayerEntity player) {
 		if((player instanceof FakePlayer) && (state.getBlock() == ModBlocks.UNOBTAINIUM_ORE)) { return false; }
-		return (distanceTo(pos,player.getPosition()) < 16.0F);
+		return super.canHarvestBlock(state,world,pos,player) && (distanceTo(pos,player.getPosition()) < 16.0F);
 	}
 
 	private double distanceTo(BlockPos block,BlockPos player) {

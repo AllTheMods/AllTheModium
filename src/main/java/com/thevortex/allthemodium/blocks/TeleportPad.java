@@ -8,6 +8,7 @@ import com.thevortex.allthemodium.init.ModBlocks;
 import com.thevortex.allthemodium.init.ModItems;
 
 import com.thevortex.allthemodium.reference.Reference;
+import com.thevortex.allthetweaks.config.Configuration;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -31,6 +32,7 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.fml.ModList;
 
 public class TeleportPad extends Block {
 	protected static final VoxelShape TELEPORTPAD_AABB = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D);
@@ -47,7 +49,7 @@ public class TeleportPad extends Block {
 
 	@Override
 	public PushReaction getPushReaction(BlockState state) {
-		return PushReaction.DESTROY;
+		return PushReaction.BLOCK;
 	}
 
 	@Override
@@ -84,6 +86,10 @@ public class TeleportPad extends Block {
 	}
 
 	public void transferPlayer(ServerPlayerEntity player, BlockPos pos) {
+		int config = 0;
+		if(ModList.get().isLoaded("allthetweaks")) {
+			config = Configuration.COMMON.mainmode.get();
+		}
 		if (player.world.getDimensionKey().equals(AllTheModium.Mining)) {
 			ServerWorld targetWorld = player.server.getWorld(AllTheModium.OverWorld);
 			int y = 256;
@@ -109,7 +115,7 @@ public class TeleportPad extends Block {
 
 				if ((targetWorld.getBlockState(pos).hasTileEntity() == false)
 						&& (targetWorld.getBlockState(pos).canEntityDestroy(targetWorld, pos, player))) {
-					targetWorld.setBlockState(pos, ModBlocks.TELEPORT_PAD.getDefaultState());
+					//targetWorld.setBlockState(pos, ModBlocks.TELEPORT_PAD.getDefaultState());
 				}
 
 				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
@@ -162,7 +168,8 @@ public class TeleportPad extends Block {
 						player.rotationPitch);
 				player.connection.sendPacket(new SPlaySoundEventPacket(1032, BlockPos.ZERO, 0, false));
 			}
-		} else if (player.world.getDimensionKey().equals(AllTheModium.OverWorld)) {
+		} else if (player.world.getDimensionKey().equals(AllTheModium.OverWorld) && (config != 2)) {
+			AllTheModium.LOGGER.debug(AllTheModium.ALLOW_TELEPORT_MINING);
 			ServerWorld targetWorld = player.server.getWorld(AllTheModium.Mining);
 			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), 75, Math.round(pos.getZ()));
 			if (targetWorld.getBlockState(targetPos).hasTileEntity() == false) {

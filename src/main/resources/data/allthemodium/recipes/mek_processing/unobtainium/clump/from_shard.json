@@ -2,7 +2,7 @@
   "type": "mekanism:purifying",
   "itemInput": {
     "ingredient": {
-      "tag": "mekanism:shards/unobtainium"
+      "item": "allthemodium:unobtainium_shard"
     }
   },
   "gasInput": {

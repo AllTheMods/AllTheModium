@@ -2,7 +2,7 @@
   "type": "mekanism:injecting",
   "itemInput": {
     "ingredient": {
-      "tag": "mekanism:crystals/vibranium"
+      "item": "allthemodium:vibranium_crystal"
     }
   },
   "gasInput": {
