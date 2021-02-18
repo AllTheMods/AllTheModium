@@ -1,0 +1,13 @@
+{
+    "name": "Allthemodium Ore",
+    "icon": "allthemodium:allthemodium_ore",
+    "category": "allthemodium:ore",
+    "sortnum": "1",
+    "pages": [{
+        "type": "spotlight",
+        "item": "allthemodium:allthemodium_ore",
+        "title": "Allthemodium Ore",
+        "link_recipe": false,
+        "text": "Allthemodium ore can be found in a few areas.It can spawn in ocean biomes, around Y 5-45. as well in the mining dimension"
+    }]
+}
