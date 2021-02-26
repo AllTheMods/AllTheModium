@@ -65,18 +65,34 @@ public class FluidList {
 			"block/fluid/atm_molten_still");
 	public static final ResourceLocation ATM_MOLTEN_FLOW = new ResourceLocation(Reference.MOD_ID,
 			"block/fluid/atm_molten_flow");
+
+	public static final ResourceLocation ATM_VAPOR_STILL = new ResourceLocation(Reference.MOD_ID,
+			"blocks/fluids/molten_metal");
+	public static final ResourceLocation ATM_VAPOR_FLOW = new ResourceLocation(Reference.MOD_ID,
+			"blocks/fluids/molten_metal_flow");
+
+
 	public static final ResourceLocation ATM_SHULKER = new ResourceLocation("minecraft", "block/shulker_box");
 
 	public static final ResourceLocation UNOBTAINIUM_MOLTEN_STILL = new ResourceLocation(Reference.MOD_ID,
 			"block/fluid/unobtainium_molten_still");
 	public static final ResourceLocation UNOBTAINIUM_MOLTEN_FLOW = new ResourceLocation(Reference.MOD_ID,
 			"block/fluid/unobtainium_molten_flow");
+
+	public static final ResourceLocation UNOBTAINIUM_VAPOR_STILL = new ResourceLocation(Reference.MOD_ID,
+			"blocks/fluids/molten_metal");
+	public static final ResourceLocation UNOBTAINIUM_VAPOR_FLOW = new ResourceLocation(Reference.MOD_ID,
+			"blocks/fluids/molten_metal_flow");
 	public static final ResourceLocation UNOB_SHULKER = new ResourceLocation("minecraft", "block/shulker_box");
 
 	public static final ResourceLocation VIBRANIUM_MOLTEN_STILL = new ResourceLocation(Reference.MOD_ID,
 			"block/fluid/vibranium_molten_still");
 	public static final ResourceLocation VIBRANIUM_MOLTEN_FLOW = new ResourceLocation(Reference.MOD_ID,
 			"block/fluid/vibranium_molten_flow");
+	public static final ResourceLocation VIBRANIUM_VAPOR_STILL = new ResourceLocation(Reference.MOD_ID,
+			"blocks/fluids/molten_metal");
+	public static final ResourceLocation VIBRANIUM_VAPOR_FLOW = new ResourceLocation(Reference.MOD_ID,
+			"blocks/fluids/molten_metal_flow");
 	public static final ResourceLocation VIB_SHULKER = new ResourceLocation("minecraft", "block/shulker_box");
 
 
@@ -86,13 +102,27 @@ public class FluidList {
 	public static final RegistryObject<Flowing> flowing_moltenAllthemodium = FLUIDS
 			.register("flowing_molten_allthemodium", () -> new ForgeFlowingFluid.Flowing(makeATMProperties()));
 
+	public static final RegistryObject<Source> vaporAllthemodium = FLUIDS.register("vapor_allthemodium",
+			() -> new ForgeFlowingFluid.Source(makeATMGasProperties()));
+
+	public static final RegistryObject<Flowing> flowing_vaporAllthemodium = FLUIDS
+			.register("flowing_vapor_allthemodium", () -> new ForgeFlowingFluid.Flowing(makeATMGasProperties()));
+
 	public static final RegistryObject<FlowingFluidBlock> molten_allthemodium_block = BLOCKS
 			.register("molten_allthemodium_block", () -> new FlowingFluidBlock(moltenAllthemodium,
 					Block.Properties.create(Material.LAVA).setLightLevel((state) -> {
 						return 12;
 					}).hardnessAndResistance(100.0F).noDrops()));
+	public static final RegistryObject<FlowingFluidBlock> vapor_allthemodium_block = BLOCKS
+			.register("vapor_allthemodium_block", () -> new FlowingFluidBlock(vaporAllthemodium,
+					Block.Properties.create(Material.LAVA).setLightLevel((state) -> {
+						return 12;
+					}).hardnessAndResistance(100.0F).noDrops()));
 	public static final RegistryObject<Item> moltenAllthemodium_bucket = ITEMS.register("molten_allthemodium_bucket",
 			() -> new BucketItem(moltenAllthemodium,
+					new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ModItems.group)));
+	public static final RegistryObject<Item> vaporAllthemodium_bucket = ITEMS.register("vapor_allthemodium_bucket",
+			() -> new BucketItem(vaporAllthemodium,
 					new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ModItems.group)));
 
 	public static final RegistryObject<Source> moltenVibranium = FLUIDS.register("molten_vibranium",
@@ -100,12 +130,25 @@ public class FluidList {
 	public static final RegistryObject<Flowing> flowing_moltenVibranium = FLUIDS.register("flowing_molten_vibranium",
 			() -> new ForgeFlowingFluid.Flowing(makeVibProperties()));
 
+	public static final RegistryObject<Source> vaporVibranium = FLUIDS.register("vapor_vibranium",
+			() -> new ForgeFlowingFluid.Source(makeVibGasProperties()));
+	public static final RegistryObject<Flowing> flowing_vaporVibranium = FLUIDS.register("flowing_vapor_vibranium",
+			() -> new ForgeFlowingFluid.Flowing(makeVibGasProperties()));
+
 	public static final RegistryObject<FlowingFluidBlock> molten_vibranium_block = BLOCKS
 			.register("molten_vibranium_block", () -> new FlowingFluidBlock(moltenVibranium,
 					Block.Properties.create(Material.LAVA).setLightLevel((state) -> {
 						return 10;
 					}).hardnessAndResistance(100.0F).noDrops()));
+	public static final RegistryObject<FlowingFluidBlock> vapor_vibranium_block = BLOCKS
+			.register("vapor_vibranium_block", () -> new FlowingFluidBlock(moltenVibranium,
+					Block.Properties.create(Material.LAVA).setLightLevel((state) -> {
+						return 10;
+					}).hardnessAndResistance(100.0F).noDrops()));
 	public static final RegistryObject<Item> moltenVibranium_bucket = ITEMS.register("molten_vibranium_bucket",
+			() -> new BucketItem(moltenVibranium,
+					new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ModItems.group)));
+	public static final RegistryObject<Item> vaporVibranium_bucket = ITEMS.register("vapor_vibranium_bucket",
 			() -> new BucketItem(moltenVibranium,
 					new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ModItems.group)));
 
@@ -113,13 +156,26 @@ public class FluidList {
 			() -> new ForgeFlowingFluid.Source(makeUnobProperties()));
 	public static final RegistryObject<Flowing> flowing_moltenUnobtainium = FLUIDS
 			.register("flowing_molten_unobtainium", () -> new ForgeFlowingFluid.Flowing(makeUnobProperties()));
+	public static final RegistryObject<Source> vaporUnobtainium = FLUIDS.register("vapor_unobtainium",
+			() -> new ForgeFlowingFluid.Source(makeUnobGasProperties()));
+	public static final RegistryObject<Flowing> flowing_vaporUnobtainium = FLUIDS
+			.register("flowing_vapor_unobtainium", () -> new ForgeFlowingFluid.Flowing(makeUnobGasProperties()));
+
 	public static final RegistryObject<FlowingFluidBlock> molten_unobtainium_block = BLOCKS
 			.register("molten_unobtainium_block", () -> new FlowingFluidBlock(moltenUnobtainium,
 					Block.Properties.create(Material.LAVA).setLightLevel((state) -> {
 						return 6;
 					}).hardnessAndResistance(100.0F).noDrops()));
+	public static final RegistryObject<FlowingFluidBlock> vapor_unobtainium_block = BLOCKS
+			.register("vapor_unobtainium_block", () -> new FlowingFluidBlock(moltenUnobtainium,
+					Block.Properties.create(Material.LAVA).setLightLevel((state) -> {
+						return 6;
+					}).hardnessAndResistance(100.0F).noDrops()));
 	public static final RegistryObject<Item> moltenUnobtainium_bucket = ITEMS.register("molten_unobtainium_bucket",
 			() -> new BucketItem(moltenUnobtainium,
+					new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ModItems.group)));
+	public static final RegistryObject<Item> vaporUnobtainium_bucket = ITEMS.register("vapor_unobtainium_bucket",
+			() -> new BucketItem(vaporUnobtainium,
 					new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ModItems.group)));
 
 	public static final RegistryObject<Source> blueLava = FLUIDS.register("molten_bluelava",
@@ -141,19 +197,34 @@ public class FluidList {
 				FluidAttributes.builder(ATM_MOLTEN_STILL, ATM_MOLTEN_FLOW).overlay(ATM_MOLTEN_STILL).color(0xFFFFEF0E))
 						.bucket(moltenAllthemodium_bucket).block(molten_allthemodium_block);
 	}
-
+	private static ForgeFlowingFluid.Properties makeATMGasProperties() {
+		return new ForgeFlowingFluid.Properties(vaporAllthemodium, flowing_vaporAllthemodium,
+				FluidAttributes.builder(ATM_VAPOR_STILL, ATM_VAPOR_FLOW).gaseous().overlay(ATM_MOLTEN_STILL).color(0xFFFFEF0E))
+				.bucket(vaporAllthemodium_bucket).block(vapor_allthemodium_block);
+	}
 	private static ForgeFlowingFluid.Properties makeVibProperties() {
 		return new ForgeFlowingFluid.Properties(moltenVibranium, flowing_moltenVibranium,
 				FluidAttributes.builder(VIBRANIUM_MOLTEN_STILL, VIBRANIUM_MOLTEN_FLOW).overlay(VIBRANIUM_MOLTEN_STILL)
 						.color(0xFF26DE88)).bucket(moltenVibranium_bucket).block(molten_vibranium_block);
 
 	}
+	private static ForgeFlowingFluid.Properties makeVibGasProperties() {
+		return new ForgeFlowingFluid.Properties(vaporVibranium, flowing_vaporVibranium,
+				FluidAttributes.builder(VIBRANIUM_VAPOR_STILL, VIBRANIUM_VAPOR_FLOW).gaseous().overlay(VIBRANIUM_MOLTEN_STILL)
+						.color(0xFF26DE88)).bucket(vaporVibranium_bucket).block(vapor_vibranium_block);
 
+	}
 	private static ForgeFlowingFluid.Properties makeUnobProperties() {
 		return new ForgeFlowingFluid.Properties(moltenUnobtainium, flowing_moltenUnobtainium,
 				FluidAttributes.builder(UNOBTAINIUM_MOLTEN_STILL, UNOBTAINIUM_MOLTEN_FLOW)
 						.overlay(UNOBTAINIUM_MOLTEN_STILL).color(0xFFD152E3)).bucket(moltenUnobtainium_bucket)
 								.block(molten_unobtainium_block);
+	}
+	private static ForgeFlowingFluid.Properties makeUnobGasProperties() {
+		return new ForgeFlowingFluid.Properties(vaporUnobtainium, flowing_vaporUnobtainium,
+				FluidAttributes.builder(UNOBTAINIUM_VAPOR_STILL, UNOBTAINIUM_VAPOR_FLOW).gaseous()
+						.overlay(UNOBTAINIUM_MOLTEN_STILL).color(0xFFD152E3)).bucket(vaporUnobtainium_bucket)
+				.block(vapor_unobtainium_block);
 	}
 
 	private static ForgeFlowingFluid.Properties makeBlueLavaProperties() {

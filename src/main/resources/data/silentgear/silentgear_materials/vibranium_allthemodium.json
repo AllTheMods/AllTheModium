@@ -1,56 +1,57 @@
 {
   "availability": {
-    "tier": 5,
+    "tier": 7,
     "visible": true,
     "gear_blacklist": []
   },
   "crafting_items": {
     "main": {
-      "tag": "forge:ingots/allthemodium"
+      "tag": "forge:ingots/vibranium_allthemodium_alloy"
     }
   },
   "name": {
-    "translate": "material.silentgear.allthemodium"
+    "translate": "material.silentgear.vibranium_allthemodium"
   },
   "stats": {
     "main": {
-      "durability": 5500.0,
-      "armor_durability": 500.0,
-      "enchantability": 85.0,
-      "harvest_level": 5.0,
-      "harvest_speed": 18.0,
-      "melee_damage": 62.0,
-      "attack_speed": 18.2,
-      "armor": 500.0,
-      "armor/helmet": 100.0,
-      "armor/chestplate": 100.0,
-      "armor/leggings": 200.0,
-      "armor/boots": 100.0,
-      "armor_toughness": 500.0,
-      "magic_armor": 200.0,
+      "durability": 9500.0,
+      "armor_durability": 2000.0,
+      "enchantability": 250.0,
+      "harvest_level": 7.0,
+      "harvest_speed": 48.0,
+      "melee_damage": 250.0,
+      "attack_speed": 28.2,
+      "reach_distance": 5,
+      "armor": 3000.0,           
+      "armor/helmet": 500.0,
+      "armor/chestplate": 1000.0,
+      "armor/leggings": 1000.0,
+      "armor/boots": 500.0,
+      "armor_toughness": 3000.0,
+      "magic_armor": 1000.0,
       "ranged_damage": 0.0,
-      "ranged_speed": 0.3,
-      "rarity": 90.0,
+      "ranged_speed": 1.3,
+      "rarity": 99.0,
       "silentgems:chargeability": 1.2
     },
     "rod": {
       "durability": {
-        "mul2": 0.5
+        "mul2": 2.5
       },
       "enchantability": {
-        "add": 3.0
+        "add": 23.0
       },
-      "rarity": 70.0
+      "rarity": 99.0
     },
     "tip": {
       "durability": {
         "add": 16.0
       },
       "armor_durability": {
-        "add": 10.0
+        "add": 1.0
       },
       "harvest_level": {
-        "max": 5.0
+        "max": 7.0
       },
       "harvest_speed": {
         "add": 6.0
@@ -59,10 +60,10 @@
         "add": 2.0
       },
       "ranged_speed": {
-        "add": 0.2
+        "add": 0.7
       },
       "rarity": {
-        "add": 30.0
+        "add": 60.0
       }
     }
   },
@@ -70,17 +71,21 @@
     "main": [
       {
         "name": "silentgear:malleable",
-        "level": 4
+        "level": 7
       },
        {
         "name": "silentgear:crushing",
-        "level": 4
+        "level": 7
+      },    
+      {
+        "name": "silentgear:indestructible",
+        "level": 1
       }
-      ],
+    ],
     "rod": [
       {
         "name": "silentgear:hard",
-        "level": 5,
+        "level": 7,
         "conditions": [
           {
             "type": "silentgear:material_ratio",
@@ -92,11 +97,11 @@
     "tip": [
       {
         "name": "silentgear:malleable",
-        "level": 4
+        "level": 7
       },
       {
-        "name": "silentgear:soft",
-        "level": 3
+        "name": "silentgear:hard",
+        "level": 7
       }
     ]
   }

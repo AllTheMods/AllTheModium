@@ -42,8 +42,8 @@ public class ATMConfiguredFeature {
 	public static ConfiguredFeature<?, ?> ORE_VIBRANIUM = newConfiguredFeature("ore_vibranium",
 			Feature.ORE
 					.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.BASE_STONE_NETHER,
-							ModBlocks.VIBRANIUM_ORE.getDefaultState(), 2))
-					.withPlacement(Placement.DEPTH_AVERAGE.configure(new DepthAverageConfig(110, 8))).square().func_242731_b(1));
+							ModBlocks.VIBRANIUM_ORE.getDefaultState(), 3))
+					.withPlacement(Placement.DEPTH_AVERAGE.configure(new DepthAverageConfig(110, 3))).func_242731_b(2));
 
 	public static ConfiguredFeature<?, ?> ORE_OTHER_VIBRANIUM = newConfiguredFeature("ore_other_vibranium",
 			Feature.ORE

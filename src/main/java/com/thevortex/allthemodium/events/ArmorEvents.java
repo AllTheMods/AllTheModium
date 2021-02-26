@@ -18,9 +18,7 @@ import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.client.event.sound.SoundEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
-import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
-import net.minecraftforge.event.entity.living.LivingFallEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -42,8 +40,9 @@ public class ArmorEvents {
 	}
 
 
+
 	@SubscribeEvent
-	public static void onEntityHurt(LivingHurtEvent event) {
+	public static void onEntityHurt(LivingAttackEvent event) {
 		if (!event.getEntityLiving().getEntityWorld().isRemote) {
 			Iterable<ItemStack> armorlist = event.getEntityLiving().getArmorInventoryList();
 			Iterator<ItemStack> iterator = armorlist.iterator();
@@ -51,25 +50,16 @@ public class ArmorEvents {
 				ItemStack armor = iterator.next();
 				if ((armor.getItem() == ModItems.ALLTHEMODIUM_CHESTPLATE) || (armor.getItem() == ModItems.VIBRANIUM_CHESTPLATE) || (armor.getItem() == ModItems.UNOBTAINIUM_CHESTPLATE)) {
 					if ((event.getSource() == DamageSource.DRAGON_BREATH) && (armor.getItem() == ModItems.UNOBTAINIUM_CHESTPLATE)) {
-						if(!event.isCancelable()) { event.setAmount(0.0F); }
 						event.setCanceled(true);
-
 					}
-
 					if ((event.getSource() == DamageSource.HOT_FLOOR) || (event.getSource() == DamageSource.IN_FIRE) || (event.getSource() == DamageSource.LAVA) || (event.getSource() == DamageSource.ON_FIRE)) {
 						event.getEntityLiving().extinguish();
 						event.setCanceled(true);
-
 					}
-					if (!event.isCanceled()) {
-						event.setAmount(event.getAmount() - (event.getAmount() / 4));
-					}
-
 				}
 				if ((armor.getItem() == ModItems.VIBRANIUM_LEGGINGS) || (armor.getItem() == ModItems.UNOBTAINIUM_LEGGINGS)) {
 					if (event.getSource() == DamageSource.WITHER) {
 						event.getEntityLiving().removePotionEffect(Effects.WITHER);
-
 						event.setCanceled(true);
 					}
 					if (!event.isCanceled() && armor.getItem() == ModItems.UNOBTAINIUM_LEGGINGS) {
@@ -78,35 +68,17 @@ public class ArmorEvents {
 					if (event.getSource() == DamageSource.MAGIC) {
 						event.setCanceled(true);
 					}
-					if (!event.isCanceled()) {
-						event.setAmount(event.getAmount() - (event.getAmount() / 4));
-					}
-
 				}
 
 				if ((armor.getItem() == ModItems.ALLTHEMODIUM_HELMET) || (armor.getItem() == ModItems.VIBRANIUM_HELMET) || (armor.getItem() == ModItems.UNOBTAINIUM_HELMET)) {
 					if (event.getSource() == DamageSource.FLY_INTO_WALL) {
 						event.setCanceled(true);
-
 					}
-
 					if (event.getSource() == DamageSource.DROWN) {
 						event.getEntityLiving().setAir(event.getEntityLiving().getMaxAir());
-
 						event.setCanceled(true);
 					}
-					if (!event.isCanceled()) {
-						event.setAmount(event.getAmount() - (event.getAmount() / 4));
-					}
-
 				}
-				if ((armor.getItem() == ModItems.ALLTHEMODIUM_BOOTS) || (armor.getItem() == ModItems.VIBRANIUM_BOOTS) || (armor.getItem() == ModItems.UNOBTAINIUM_BOOTS)) {
-					if (!event.isCanceled()) {
-						event.setAmount(event.getAmount() - (event.getAmount() / 4));
-					}
-
-				}
-
 			}
 
 		}

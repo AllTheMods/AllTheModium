@@ -1,7 +1,6 @@
 package com.thevortex.allthemodium;
 
-import com.thevortex.allthemodium.init.ModEntity;
-import com.thevortex.allthemodium.init.ModSlurries;
+import com.thevortex.allthemodium.init.*;
 import com.thevortex.allthetweaks.config.Configuration;
 import mekanism.api.chemical.slurry.Slurry;
 import net.minecraft.block.Block;
@@ -27,9 +26,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-import com.thevortex.allthemodium.init.ModBlocks;
 //import com.thevortex.allthemodium.init.ModFluids;
-import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.worldgen.Worldgen;
 
@@ -76,6 +73,7 @@ public class AllTheModium
 		if(ModList.get().isLoaded("mekanism")) {
 			modEventBus.register(MekRegistry.class);
 		}
+
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(BlockBreak.class);
@@ -103,6 +101,9 @@ public class AllTheModium
 		public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
 
 			ModItems.init(event);
+			if(ModList.get().isLoaded("iceandfire")) {
+				IAFForgeRecipes.init();
+			}
 		}
 		@SubscribeEvent
 		public static void onTERegistry(final RegistryEvent.Register<TileEntityType<?>> event) {

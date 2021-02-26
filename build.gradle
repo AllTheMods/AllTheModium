@@ -101,7 +101,8 @@ dependencies {
     // compile "some.group:artifact:version"
 	implementation fg.deobf("curse.maven:${mekanism}")
     compile fg.deobf("curse.maven:${tweaks}")
-    //compile fg.deobf("curse.maven:${citadel}")
+    compile fg.deobf("curse.maven:${citadel}")
+    compile fg.deobf("curse.maven:${iceandfire}")
     // Real examples
     // compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
     // compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env

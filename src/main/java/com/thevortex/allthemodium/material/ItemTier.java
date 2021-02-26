@@ -17,7 +17,7 @@ public enum ItemTier implements IItemTier {
     UNOBTAINIUM(7, 9500, 24.0F, 40.0F, 285, () -> {
 	      return Ingredient.fromItems(ModItems.UNOBTAINIUM_INGOT);
 	   }),
-    UNOBTAINIUMALLOY(8, 17000, 44.0F, 65.0F, 515, () -> {
+    UNOBTAINIUMALLOY(8, 17000, 44.0F, 1500.0F, 515, () -> {
 	      return Ingredient.fromItems(ModItems.UNOBTAINIUM_VIBRANIUM_ALLOY);
 	   });
    private final int harvestLevel;
