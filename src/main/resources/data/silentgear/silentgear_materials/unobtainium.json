@@ -72,9 +72,69 @@
         "name": "silentgear:malleable",
         "level": 7
       },
-       {
+      {
         "name": "silentgear:crushing",
         "level": 7
+      },
+      {
+        "name": "silentgear:advanced_aquatic",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "silentgear:gear_type",
+            "gear_type": "helmet"
+          }
+        ]
+      },
+      {
+        "name": "silentgear:brilliant",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "silentgear:gear_type",
+            "gear_type": "armor"
+          }
+        ]
+      },
+      {
+        "name": "silentgear:advanced_flame_ward",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "silentgear:gear_type",
+            "gear_type": "chestplate"
+          }
+        ]
+      },
+      {
+        "name": "silentgear:cure_wither",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "silentgear:gear_type",
+            "gear_type": "leggings"
+          }
+        ]
+      },
+      {
+        "name": "silentgear:cure_nausea",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "silentgear:gear_type",
+            "gear_type": "leggings"
+          }
+        ]
+      },
+      {
+        "name": "silentgear:cure_levitation",
+        "level": 1,
+        "conditions": [
+          {
+            "type": "silentgear:gear_type",
+            "gear_type": "leggings"
+          }
+        ]
       }
     ],
     "rod": [
