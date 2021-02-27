@@ -6,6 +6,10 @@ bin
 .classpath
 .project
 
+# visualstudio
+/.vs/ProjectSettings.json
+/.vs/slnx.sqlite
+
 # idea
 out
 *.ipr
