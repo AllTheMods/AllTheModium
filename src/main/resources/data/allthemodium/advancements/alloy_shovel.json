@@ -1,28 +1,22 @@
 {
   "parent": "allthemodium:root",
   "display": {
-    "title": {
-      "text": "Shove It",
-      "obfuscated": false
-    },
+    "title": {"text":"Shove It!","obfuscated":false},
     "description": "Craft an Allthemodium Alloy Shovel",
-    "announce_to_chat": true,
     "icon": {
       "item": "allthemodium:alloy_shovel"
     },
-    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png",
-    "criteria": {
-      "alloyshovel": {
-        "requirement": {
-          "trigger": "minecraft:inventory_changed",
-          "conditions": {
-            "items": [
-              {
-                "item": "allthemodium:alloy_shovel"
-              }
-            ]
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "allthemodium:alloy_shovel"
           }
-        }
+        ]
       }
     }
   }

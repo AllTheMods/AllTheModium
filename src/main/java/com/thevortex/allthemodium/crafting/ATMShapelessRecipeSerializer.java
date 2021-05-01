@@ -12,14 +12,14 @@ public class ATMShapelessRecipeSerializer extends ForgeRegistryEntry<IRecipeSeri
 		implements IRecipeSerializer<ATMShapelessRecipe> {
 
 	@Override
-	public ATMShapelessRecipe read(ResourceLocation recipeId, JsonObject json) {
-		return new ATMShapelessRecipe(IRecipeSerializer.CRAFTING_SHAPELESS.read(recipeId, json));
+	public ATMShapelessRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
+		return new ATMShapelessRecipe(IRecipeSerializer.SHAPELESS_RECIPE.fromJson(recipeId, json));
 	}
 
 	@Override
-	public ATMShapelessRecipe read(ResourceLocation recipeId, PacketBuffer buffer) {
+	public ATMShapelessRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 		try {
-			return new ATMShapelessRecipe(IRecipeSerializer.CRAFTING_SHAPELESS.read(recipeId, buffer));
+			return new ATMShapelessRecipe(IRecipeSerializer.SHAPELESS_RECIPE.fromNetwork(recipeId, buffer));
 		} catch (Exception e) {
 			throw e;
 		}
@@ -28,15 +28,15 @@ public class ATMShapelessRecipeSerializer extends ForgeRegistryEntry<IRecipeSeri
 	private void write(PacketBuffer buffer,ShapelessRecipe recipe) {
 		
 			try {
-				IRecipeSerializer.CRAFTING_SHAPELESS.write(buffer, recipe);
+				IRecipeSerializer.SHAPELESS_RECIPE.toNetwork(buffer, recipe);
 			} catch (Exception e) {
 				throw e;
 			}
 		}
 
 	@Override
-	public void write(PacketBuffer buffer, ATMShapelessRecipe recipe) {
-		ShapelessRecipe recip = new ShapelessRecipe(recipe.getId(),recipe.getGroup(),recipe.getRecipeOutput(),recipe.getIngredients());
+	public void toNetwork(PacketBuffer buffer, ATMShapelessRecipe recipe) {
+		ShapelessRecipe recip = new ShapelessRecipe(recipe.getId(),recipe.getGroup(),recipe.getResultItem(),recipe.getIngredients());
 		write(buffer,recip);
 		
 	}

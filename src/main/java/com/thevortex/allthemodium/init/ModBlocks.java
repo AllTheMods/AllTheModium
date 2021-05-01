@@ -45,7 +45,7 @@ public class ModBlocks {
 		VIBRANIUM_ORE = new Vibranium_Ore().setRegistryName(location("vibranium_ore"));
 		UNOBTAINIUM_ORE = new Unobtainium_Ore().setRegistryName(location("unobtainium_ore"));
 
-		TELEPORT_PAD = new TeleportPad(Block.Properties.create(Material.IRON).harvestTool(ToolType.PICKAXE).harvestLevel(1).variableOpacity().hardnessAndResistance(20.0F)).setRegistryName(location("teleport_pad"));
+		TELEPORT_PAD = new TeleportPad(Block.Properties.of(Material.METAL).harvestTool(ToolType.PICKAXE).harvestLevel(1).noOcclusion().strength(20.0F)).setRegistryName(location("teleport_pad"));
 		
 		event.getRegistry().register(ModBlocks.ALLTHEMODIUMBLOCK);
 		event.getRegistry().register(ModBlocks.VIBRANIUMBLOCK);

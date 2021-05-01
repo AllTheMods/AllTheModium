@@ -23,77 +23,9 @@
     ]
   },
   "features": [
-    [],
-    [
-      "minecraft:lake_lava"
-    ],
-    [],
-    [
-      "minecraft:monster_room",
-      "minecraft:mineshaft_mesa",
-      "minecraft:bastion_remnant",
-      "minecraft:fortress"
-    ],
-    [
-      "iceandfire:mausoleum",
-      "minecraft:ruined_portal_mountain"
-    ],
-    [],
-    [
-      "minecraft:ore_dirt",
-      "allthemodium:ore_other_vibranium",
-      "alltheores:ore_other_diamond",
-      "alltheores:ore_other_coal",
-      "alltheores:ore_other_iron",
-      "alltheores:ore_other_lapis",
-      "alltheores:ore_other_redstone",
-      "alltheores:ore_other_aluminum",
-      "alltheores:ore_other_copper",
-      "alltheores:ore_other_lead",
-      "alltheores:ore_other_nickel",
-      "alltheores:ore_other_osmium",
-      "alltheores:ore_other_platinum",
-      "alltheores:ore_other_silver",
-      "alltheores:ore_other_tin",
-      "alltheores:ore_other_uranium",
-      "alltheores:ore_other_zinc"
-
-    ],
-    [
-      "minecraft:spring_open",
-      "minecraft:patch_fire",
-      "minecraft:patch_soul_fire",
-      "minecraft:glowstone_extra",
-      "minecraft:glowstone",
-      "minecraft:ore_blackstone",
-      "minecraft:ore_gold_nether",
-      "minecraft:ore_quartz_nether",
-      "minecraft:ore_debris_large",
-      "minecraft:ore_debris_small",
-      "minecraft:disk_sand",
-      "minecraft:disk_clay",
-      "minecraft:disk_gravel"
-    ],
-    [
-
-      "allthemodium:soul_lava_spring",
-      "minecraft:warped_fungi",
-      "minecraft:warped_forest_vegetation",
-      "minecraft:patch_dead_bush_badlands",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
-      "minecraft:patch_cactus_decorated",
-      "minecraft:spring_lava"
-    ],
-    [
-    ]
-  ],
+     ],
   "starts": [
-    "minecraft:mineshaft_mesa",
-    "minecraft:bastion_remnant",
-    "minecraft:fortress",
-    "minecraft:ruined_portal_mountain"
-  ],
+     ],
   "spawners": {
     "monster": [
       {
@@ -163,21 +95,10 @@
         "maxCount": 1
       }
     ],
-    "creature": [      {
-      "type": "iceandfire:cockatrice",
-      "weight": 10,
-      "minCount": 1,
-      "maxCount": 1
-    }
+    "creature": [
     ],
     "ambient": [
-      {
-        "type": "minecraft:bat",
-        "weight": 10,
-        "minCount": 8,
-        "maxCount": 8
-      }
-    ],
+          ],
     "water_creature": [],
     "water_ambient": [],
     "misc": []

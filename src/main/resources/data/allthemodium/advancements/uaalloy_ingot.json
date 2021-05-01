@@ -1,0 +1,23 @@
+{
+  "parent": "allthemodium:root",
+  "display": {
+    "title": {"text":"Shocking Metallurgy","obfuscated":false},
+    "description": "Forge an Unobtainium-Allthemodium Alloy Ingot",
+    "icon": {
+      "item": "allthemodium:unobtainium_allthemodium_alloy_ingot"
+    },
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "allthemodium:unobtainium_allthemodium_alloy_ingot"
+          }
+        ]
+      }
+    }
+  }
+}

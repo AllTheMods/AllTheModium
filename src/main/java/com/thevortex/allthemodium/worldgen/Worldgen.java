@@ -23,12 +23,12 @@ public class Worldgen {
 	public static void addFeatures() {
 
 		for (Biome biome : ForgeRegistries.BIOMES) {
-			if ((biome.getCategory() == Biome.Category.OCEAN) && (biome.getCategory() != Biome.Category.NONE)
+			if ((biome.getBiomeCategory() == Biome.Category.OCEAN) && (biome.getBiomeCategory() != Biome.Category.NONE)
 					&& !(biome == null)) {
 				addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES,
 						ATMConfiguredFeature.ORE_ALLTHEMODIUM);
 			}
-			if ((biome.getCategory() == Biome.Category.NETHER) && (biome.getCategory() != Biome.Category.NONE)
+			if ((biome.getBiomeCategory() == Biome.Category.NETHER) && (biome.getBiomeCategory() != Biome.Category.NONE)
 					&& !(biome == null)) {
 				if(biome.getRegistryName().getPath().equals("crimson_forest")) { //Crimson Forest
 				addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES,
@@ -41,7 +41,7 @@ public class Worldgen {
 				addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES,
 						ATMConfiguredFeature.SOUL_LAVA_SPRING);
 			}
-			if ((biome.getCategory() == Biome.Category.THEEND) && (biome.getCategory() != Biome.Category.NONE)
+			if ((biome.getBiomeCategory() == Biome.Category.THEEND) && (biome.getBiomeCategory() != Biome.Category.NONE)
 					&& !(biome == null)) {
 				if (biome.getRegistryName().getPath().equals("end_highlands")) {
 					addFeatureToBiome(biome, GenerationStage.Decoration.UNDERGROUND_ORES,

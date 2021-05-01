@@ -36,8 +36,8 @@ public class Allthemodium_Ore extends Block {
 	   public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
 
 	public Allthemodium_Ore() {	//func_235861_h_ = setRequiresTool
-	super (Properties.create(Material.IRON).setRequiresTool().sound(SoundType.STONE).hardnessAndResistance(19.0f));
-    this.setDefaultState(this.getDefaultState().with(LIT, Boolean.valueOf(true)));
+	super (Properties.of(Material.METAL).requiresCorrectToolForDrops().sound(SoundType.STONE).strength(19.0f));
+    this.registerDefaultState(this.defaultBlockState().setValue(LIT, Boolean.valueOf(true)));
 
 	}
 
@@ -46,7 +46,7 @@ public class Allthemodium_Ore extends Block {
 	public boolean canHarvestBlock(BlockState state, IBlockReader world, BlockPos pos, PlayerEntity player) {
 		if((player instanceof FakePlayer) && (state.getBlock() == ModBlocks.ALLTHEMODIUMORE)) { return false; }
 
-	return super.canHarvestBlock(state,world,pos,player) && (distanceTo(pos,player.getPosition()) < 16.0F);
+	return super.canHarvestBlock(state,world,pos,player) && (distanceTo(pos,player.blockPosition()) < 16.0F);
 	}
 
 	private double distanceTo(BlockPos block,BlockPos player) {
@@ -54,7 +54,7 @@ public class Allthemodium_Ore extends Block {
 	}
 
 	@Override
-	public PushReaction getPushReaction(BlockState state) {
+	public PushReaction getPistonPushReaction(BlockState state) {
 
 		return PushReaction.BLOCK;
 	}
@@ -70,45 +70,45 @@ public class Allthemodium_Ore extends Block {
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
+	public void stepOn(World worldIn, BlockPos pos, Entity entityIn) {
 	      activate(worldIn.getBlockState(pos), worldIn, pos);
-	      super.onEntityWalk(worldIn, pos, entityIn);
+	      super.stepOn(worldIn, pos, entityIn);
 	   }
 
    @OnlyIn(Dist.CLIENT)	
    private static void activate(BlockState p_196500_0_, World p_196500_1_, BlockPos p_196500_2_) {
       spawnParticles(p_196500_1_, p_196500_2_);
-      if (!p_196500_0_.get(LIT)) {
-         p_196500_1_.setBlockState(p_196500_2_, p_196500_0_.with(LIT, Boolean.valueOf(true)), 3);
+      if (!p_196500_0_.getValue(LIT)) {
+         p_196500_1_.setBlock(p_196500_2_, p_196500_0_.setValue(LIT, Boolean.valueOf(true)), 3);
       }
 
    }
    @OnlyIn(Dist.CLIENT)
    @Override
    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-      if (stateIn.get(LIT)) {
+      if (stateIn.getValue(LIT)) {
          spawnParticles(worldIn, pos);
       }
 
    }
    @OnlyIn(Dist.CLIENT)
    private static void spawnParticles(World p_180691_0_, BlockPos worldIn) {
-	      Random random = p_180691_0_.rand;
+	      Random random = p_180691_0_.random;
 
 	      for(Direction direction : Direction.values()) {
-	         BlockPos blockpos = worldIn.offset(direction);
-	         if (!p_180691_0_.getBlockState(blockpos).isOpaqueCube(p_180691_0_, blockpos)) {
+	         BlockPos blockpos = worldIn.offset(direction.getNormal());
+	         if (!p_180691_0_.getBlockState(blockpos).isSolidRender(p_180691_0_, blockpos)) {
 	            Direction.Axis direction$axis = direction.getAxis();
-	            double d1 = direction$axis == Direction.Axis.X ? 0.5D + 0.5625D * (double)direction.getXOffset() : (double)random.nextFloat();
-	            double d2 = direction$axis == Direction.Axis.Y ? 0.5D + 0.5625D * (double)direction.getYOffset() : (double)random.nextFloat();
-	            double d3 = direction$axis == Direction.Axis.Z ? 0.5D + 0.5625D * (double)direction.getZOffset() : (double)random.nextFloat();
+	            double d1 = direction$axis == Direction.Axis.X ? 0.5D + 0.5625D * (double)direction.getStepX() : (double)random.nextFloat();
+	            double d2 = direction$axis == Direction.Axis.Y ? 0.5D + 0.5625D * (double)direction.getStepY() : (double)random.nextFloat();
+	            double d3 = direction$axis == Direction.Axis.Z ? 0.5D + 0.5625D * (double)direction.getStepZ() : (double)random.nextFloat();
 	            p_180691_0_.addParticle(new RedstoneParticleData(AllthemodiumParticleData.ParticleDUST.getRed(),AllthemodiumParticleData.ParticleDUST.getGreen(),AllthemodiumParticleData.ParticleDUST.getBlue(),AllthemodiumParticleData.ParticleDUST.getAlpha()), (double)worldIn.getX() + d1, (double)worldIn.getY() + d2, (double)worldIn.getZ() + d3, 0.0D, 0.0D, 0.0D);
 	         }
 	      }
 
 	   }
 
-	   protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+	   protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
 	      builder.add(LIT);
 	   }
 

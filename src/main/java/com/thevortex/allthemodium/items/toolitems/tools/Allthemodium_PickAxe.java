@@ -18,7 +18,7 @@ import net.minecraft.item.ToolItem;
 import net.minecraft.util.ActionResultType;
 
 public class Allthemodium_PickAxe extends PickaxeItem {
-	 protected final float efficiency = ItemTier.UNOBTAINIUMALLOY.getEfficiency();
+	 protected final float efficiency = ItemTier.UNOBTAINIUMALLOY.getSpeed();
 	   
 	public Allthemodium_PickAxe(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
 		super(tier, attackDamageIn, attackSpeedIn, builder);

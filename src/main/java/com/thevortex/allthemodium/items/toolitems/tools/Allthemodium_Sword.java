@@ -25,7 +25,7 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 
 public class Allthemodium_Sword extends SwordItem {
-	 protected final float efficiency = ItemTier.UNOBTAINIUMALLOY.getEfficiency();
+	 protected final float efficiency = ItemTier.UNOBTAINIUMALLOY.getSpeed();
 	   
 	public Allthemodium_Sword(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
 		super(tier, attackDamageIn, attackSpeedIn, builder);

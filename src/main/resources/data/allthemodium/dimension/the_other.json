@@ -2,7 +2,7 @@
 	"type": "allthemodium:the_other",
 	"generator": {
 		"type": "minecraft:noise",
-		"seed": -202042024736569,
+		"seed": 0,
 		"biome_source": {
 			"humidity_noise": {
 				"firstOctave": -7,

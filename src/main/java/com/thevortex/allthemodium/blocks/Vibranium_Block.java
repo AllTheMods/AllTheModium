@@ -18,7 +18,7 @@ import net.minecraft.world.IWorldReader;
 public class Vibranium_Block extends Block {
 
 	public Vibranium_Block() {	
-	super(Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(7.0f));
+	super(Properties.of(Material.METAL).sound(SoundType.STONE).strength(7.0f));
 	}
 
 @Deprecated

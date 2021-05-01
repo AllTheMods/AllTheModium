@@ -21,89 +21,10 @@
     ]
   },
   "features": [
-    [],
-    [
-      "minecraft:lake_lava"
-    ],
-    [],
-    [
 
-      "minecraft:monster_room"
-    ],
-    [
-
-      "iceandfire:hydra_cave",
-      "iceandfire:hydra_cave",
-      "minecraft:village"
-
-    ],
-    [],
-    [
-
-
-      "minecraft:ore_dirt",
-      "allthemodium:ore_other_vibranium",
-      "alltheores:ore_other_diamond",
-      "alltheores:ore_other_coal",
-      "alltheores:ore_other_iron",
-      "alltheores:ore_other_lapis",
-      "alltheores:ore_other_redstone",
-      "alltheores:ore_other_aluminum",
-      "alltheores:ore_other_copper",
-      "alltheores:ore_other_lead",
-      "alltheores:ore_other_nickel",
-      "alltheores:ore_other_osmium",
-      "alltheores:ore_other_platinum",
-      "alltheores:ore_other_silver",
-      "alltheores:ore_other_tin",
-      "alltheores:ore_other_uranium",
-      "alltheores:ore_other_zinc"
-
-    ],
-    [
-      "minecraft:glowstone_extra",
-      "minecraft:glowstone",
-      "minecraft:ore_blackstone",
-      "minecraft:ore_gold_nether",
-      "minecraft:ore_quartz_nether",
-      "minecraft:ore_debris_large",
-      "minecraft:ore_debris_small",
-      "minecraft:disk_sand",
-      "minecraft:disk_clay",
-      "minecraft:disk_gravel",
-      "minecraft:ore_infested"
-    ],
-    [
-      "minecraft:patch_fire",
-      "minecraft:patch_soul_fire",
-      "iceandfire:frost_lily",
-      "allthemodium:soul_lava_spring",
-      "minecraft:trees_giant",
-      "byg:nightshade_tree1",
-      "byg:nightshade_tree2",
-      "byg:nightshade_tree3",
-      "byg:nightshade_tree4",
-      "minecraft:spring_lava",
-      "minecraft:warped_fungi",
-      "minecraft:warped_forest_vegetation",
-      "minecraft:nether_sprouts",
-      "minecraft:twisting_vines"
-    ],
-    [
-
-    ]
   ],
   "starts": [
-    [
 
-      "minecraft:fortress",
-      "minecraft:village",
-      "minecraft:bastion_remnant",
-      "minecraft:ruined_portal_nether",
-      "minecraft:stronghold",
-      "minecraft:ruined_portal"
-
-    ]
   ],
   "spawners": {
     "monster": [
@@ -177,12 +98,6 @@
         "maxCount": 2
       },
       {
-        "type": "iceandfire:cockatrice",
-        "weight": 10,
-        "minCount": 1,
-        "maxCount": 1
-      },
-      {
         "type": "minecraft:pig",
         "weight": 10,
         "minCount": 2,
@@ -208,12 +123,7 @@
       }
     ],
     "ambient": [
-      {
-        "type": "minecraft:bat",
-        "weight": 10,
-        "minCount": 8,
-        "maxCount": 10
-      }
+      
     ],
     "water_creature": [],
     "water_ambient": [],

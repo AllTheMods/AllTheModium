@@ -21,80 +21,9 @@
     ]
   },
   "features": [
-    [],
-    [
-      "minecraft:lake_lava"
-    ],
-    [],
-    [
-      "iceandfire:lightning_dragon_cave",
-      "minecraft:fossil",
-      "minecraft:monster_room"
-    ],
-    [
-      "minecraft:desert_well"
-    ],
-    [],
-    [
 
-
-      "minecraft:ore_dirt",
-      "allthemodium:ore_other_vibranium",
-      "alltheores:ore_other_diamond",
-      "alltheores:ore_other_coal",
-      "alltheores:ore_other_iron",
-      "alltheores:ore_other_lapis",
-      "alltheores:ore_other_redstone",
-      "alltheores:ore_other_aluminum",
-      "alltheores:ore_other_copper",
-      "alltheores:ore_other_lead",
-      "alltheores:ore_other_nickel",
-      "alltheores:ore_other_osmium",
-      "alltheores:ore_other_platinum",
-      "alltheores:ore_other_silver",
-      "alltheores:ore_other_tin",
-      "alltheores:ore_other_uranium",
-      "alltheores:ore_other_zinc"
-
-
-    ],
-    [
-      "minecraft:glowstone_extra",
-      "minecraft:glowstone",
-      "minecraft:ore_blackstone",
-      "minecraft:ore_gold_nether",
-      "minecraft:ore_quartz_nether",
-      "minecraft:ore_debris_large",
-      "minecraft:ore_debris_small",
-      "minecraft:disk_sand",
-      "minecraft:disk_clay",
-      "minecraft:disk_gravel"
-
-    ],
-    [
-      "byg:warped_cacti",
-      "minecraft:spring_open",
-      "minecraft:patch_fire",
-      "minecraft:patch_soul_fire",
-      "minecraft:patch_dead_bush_2",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
-      "minecraft:patch_sugar_cane_desert",
-      "minecraft:patch_cactus_desert",
-      "minecraft:spring_water",
-      "minecraft:spring_lava"
-    ],
-    [
-    ]
   ],
   "starts": [
-
-    "minecraft:village_desert",
-    "minecraft:pillager_outpost",
-    "minecraft:desert_pyramid",
-    "minecraft:mineshaft",
-    "minecraft:fortress",
-    "minecraft:ruined_portal_desert"
   ],
   "spawners": {
     "monster": [
@@ -172,12 +101,7 @@
       }
     ],
     "creature": [
-      {
-        "type": "iceandfire:cockatrice",
-        "weight": 10,
-        "minCount": 1,
-        "maxCount": 1
-      },
+
       {
         "type": "minecraft:rabbit",
         "weight": 4,
@@ -186,12 +110,7 @@
       }
     ],
     "ambient": [
-      {
-        "type": "minecraft:bat",
-        "weight": 10,
-        "minCount": 8,
-        "maxCount": 8
-      }
+      
     ],
     "water_creature": [],
     "water_ambient": [],

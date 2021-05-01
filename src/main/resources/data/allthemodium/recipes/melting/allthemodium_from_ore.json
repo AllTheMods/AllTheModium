@@ -1,5 +1,5 @@
 {
-  "type": "tconstruct:melting",
+  "type": "tconstruct:ore_melting",
   "ingredient": {
     "tag": "forge:ores/allthemodium"
   },
@@ -7,7 +7,8 @@
     "fluid": "allthemodium:molten_allthemodium",
     "amount": 144
   },
-  "temperature": 1000,
+  "temperature": 1250,
+  "time": 175,
   "conditions": [
       {
           "type": "forge:mod_loaded",

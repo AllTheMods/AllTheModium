@@ -31,7 +31,7 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
 
 public class Allthemodium_Shovel extends ShovelItem {
-	 protected final float efficiency = ItemTier.UNOBTAINIUMALLOY.getEfficiency();
+	 protected final float efficiency = ItemTier.UNOBTAINIUMALLOY.getSpeed();
 	   
 	public Allthemodium_Shovel(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
 		super(tier, attackDamageIn, attackSpeedIn, builder);

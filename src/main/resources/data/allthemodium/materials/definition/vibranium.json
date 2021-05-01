@@ -1,6 +1,20 @@
+
 {
   "craftable": false,
+  "tier": 5,
+  "sortOrder": 2,
   "fluid": "allthemodium:molten_vibranium",
-  "textColor": "ff26de88",
-  "temperature": 2000
+  "fluidPerUnit": 144,
+  "textColor": "#26de88",
+  "temperature": 2000,
+  "traits": [
+    {
+      "name": "tconstruct:maintained",
+      "level": 3
+    },
+    {
+      "name": "tconstruct:lacerating",
+      "level": 3
+    }
+  ]
 }

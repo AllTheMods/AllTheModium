@@ -1,5 +1,5 @@
 {
-  "type": "tconstruct:melting",
+  "type": "tconstruct:ore_melting",
   "ingredient": {
     "tag": "forge:ores/unobtainium"
   },
@@ -8,6 +8,7 @@
     "amount": 144
   },
   "temperature": 4000,
+  "time": 325,
   "conditions": [
       {
           "type": "forge:mod_loaded",

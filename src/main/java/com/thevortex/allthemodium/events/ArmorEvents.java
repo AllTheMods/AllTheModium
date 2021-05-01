@@ -30,7 +30,7 @@ public class ArmorEvents {
 
 	@SubscribeEvent
 	public static void onPlayerFall(LivingFallEvent event) {
-		Iterable<ItemStack> armorlist = event.getEntityLiving().getArmorInventoryList();
+		Iterable<ItemStack> armorlist = event.getEntityLiving().getArmorSlots();
 		Iterator<ItemStack> iterator = armorlist.iterator();
 		while(iterator.hasNext()) {
 			ItemStack armor = iterator.next();
@@ -43,8 +43,8 @@ public class ArmorEvents {
 
 	@SubscribeEvent
 	public static void onEntityHurt(LivingAttackEvent event) {
-		if (!event.getEntityLiving().getEntityWorld().isRemote) {
-			Iterable<ItemStack> armorlist = event.getEntityLiving().getArmorInventoryList();
+		if (!event.getEntityLiving().getCommandSenderWorld().isClientSide) {
+			Iterable<ItemStack> armorlist = event.getEntityLiving().getArmorSlots();
 			Iterator<ItemStack> iterator = armorlist.iterator();
 			while (iterator.hasNext()) {
 				ItemStack armor = iterator.next();
@@ -53,17 +53,17 @@ public class ArmorEvents {
 						event.setCanceled(true);
 					}
 					if ((event.getSource() == DamageSource.HOT_FLOOR) || (event.getSource() == DamageSource.IN_FIRE) || (event.getSource() == DamageSource.LAVA) || (event.getSource() == DamageSource.ON_FIRE)) {
-						event.getEntityLiving().extinguish();
+						event.getEntityLiving().clearFire();
 						event.setCanceled(true);
 					}
 				}
 				if ((armor.getItem() == ModItems.VIBRANIUM_LEGGINGS) || (armor.getItem() == ModItems.UNOBTAINIUM_LEGGINGS)) {
 					if (event.getSource() == DamageSource.WITHER) {
-						event.getEntityLiving().removePotionEffect(Effects.WITHER);
+						event.getEntityLiving().removeEffect(Effects.WITHER);
 						event.setCanceled(true);
 					}
 					if (!event.isCanceled() && armor.getItem() == ModItems.UNOBTAINIUM_LEGGINGS) {
-						event.getEntityLiving().removePotionEffect(Effects.LEVITATION);
+						event.getEntityLiving().removeEffect(Effects.LEVITATION);
 					}
 					if (event.getSource() == DamageSource.MAGIC) {
 						event.setCanceled(true);
@@ -75,7 +75,7 @@ public class ArmorEvents {
 						event.setCanceled(true);
 					}
 					if (event.getSource() == DamageSource.DROWN) {
-						event.getEntityLiving().setAir(event.getEntityLiving().getMaxAir());
+						event.getEntityLiving().setAirSupply(event.getEntityLiving().getMaxAirSupply());
 						event.setCanceled(true);
 					}
 				}

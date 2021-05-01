@@ -8,6 +8,7 @@
     "amount": 144
   },
   "temperature": 1000,
+  "time": 100,
   "conditions": [
       {
           "type": "forge:mod_loaded",

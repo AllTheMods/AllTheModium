@@ -11,23 +11,23 @@ public class ATMRecipeSerializer extends ForgeRegistryEntry<IRecipeSerializer<?>
 		implements IRecipeSerializer<ATMShapedRecipe> {
 
 	@Override
-	public ATMShapedRecipe read(ResourceLocation recipeId, JsonObject json) {
-		return new ATMShapedRecipe(IRecipeSerializer.CRAFTING_SHAPED.read(recipeId, json));
+	public ATMShapedRecipe fromJson(ResourceLocation recipeId, JsonObject json) {
+		return new ATMShapedRecipe(IRecipeSerializer.SHAPED_RECIPE.fromJson(recipeId, json));
 	}
 
 	@Override
-	public ATMShapedRecipe read(ResourceLocation recipeId, PacketBuffer buffer) {
+	public ATMShapedRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
 		try {
-			return new ATMShapedRecipe(IRecipeSerializer.CRAFTING_SHAPED.read(recipeId, buffer));
+			return new ATMShapedRecipe(IRecipeSerializer.SHAPED_RECIPE.fromNetwork(recipeId, buffer));
 		} catch (Exception e) {
 			throw e;
 		}
 	}
 
 	@Override
-	public void write(PacketBuffer buffer, ATMShapedRecipe recipe) {
+	public void toNetwork(PacketBuffer buffer, ATMShapedRecipe recipe) {
 		try {
-			IRecipeSerializer.CRAFTING_SHAPED.write(buffer, recipe.getInternal());
+			IRecipeSerializer.SHAPED_RECIPE.toNetwork(buffer, recipe.getInternal());
 		} catch (Exception e) {
 			throw e;
 		}

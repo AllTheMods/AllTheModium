@@ -18,26 +18,7 @@
 	"carvers": {
 	},
 	"features": [
-		[
-			"allthemodium:ore_atmium",
-			"minecraft:ore_diamond",
-			"minecraft:ore_coal",
-			"minecraft:ore_gold",
-			"minecraft:ore_redstone",
-			"minecraft:ore_emerald",
-			"minecraft:ore_iron",
-			"minecraft:ore_lapis",
-			"alltheores:ore_aluminum",
-			"alltheores:ore_copper",
-			"alltheores:ore_lead",
-			"alltheores:ore_nickel",
-			"alltheores:ore_osmium",
-			"alltheores:ore_platinum",
-			"alltheores:ore_silver",
-			"alltheores:ore_tin",
-			"alltheores:ore_uranium",
-			"alltheores:ore_zinc"
-		]
+
 	],
 	"starts": [
 	],

@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "name": "tconstruct:liquid_soul",
+      "amount": 432
+    },
+    {
+      "name": "tconstruct:molten_blaze",
+      "amount": 432
+    }
+  ],
+  "result": {
+    "fluid": "allthemodium:molten_bluelava",
+    "amount": 576
+  },
+  "temperature": 1250
+}

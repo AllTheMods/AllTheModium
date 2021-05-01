@@ -47,21 +47,21 @@ public class 	ATMShapelessRecipe implements IATMShapelessRecipe {
 		// Note: We do not override the matches method if it matches ignoring NBT,
 		// to ensure that we return the proper value for if there is a match that gives
 		// a proper output
-		return recipe.matches(inv, world) && !getCraftingResult(inv).isEmpty();
+		return recipe.matches(inv, world) && !assemble(inv).isEmpty();
 	}
 
 	@Override
-	public ItemStack getCraftingResult(CraftingInventory inv) {
-		if (getRecipeOutput().isEmpty()) {
+	public ItemStack assemble(CraftingInventory inv) {
+		if (getResultItem().isEmpty()) {
 			return ItemStack.EMPTY;
 		}
-		ItemStack toReturn = getRecipeOutput().copy();
+		ItemStack toReturn = getResultItem().copy();
 
 		Map<Enchantment,Integer> enchant = new HashMap<>();
 
-		for (int i = 0; i < inv.getSizeInventory(); i++) {
-			ItemStack stack = inv.getStackInSlot(i);
-			if (!stack.isEmpty() && (!stack.getEnchantmentTagList().isEmpty())) {
+		for (int i = 0; i < inv.getContainerSize(); i++) {
+			ItemStack stack = inv.getItem(i);
+			if (!stack.isEmpty() && (!stack.getEnchantmentTags().isEmpty())) {
 				Map<Enchantment,Integer> temp = EnchantmentHelper.getEnchantments(stack);
 				for(Enchantment e : temp.keySet()) {
 					if(enchant.containsKey(e) && (enchant.get(e) == temp.get(e))) {	enchant.put(e, temp.get(e) + 1); }
@@ -79,10 +79,7 @@ public class 	ATMShapelessRecipe implements IATMShapelessRecipe {
 	}
 
 	@Override
-	public ItemStack getIcon() {
-		// TODO Auto-generated method stub
-		return recipe.getIcon();
-	}
+	public ItemStack getToastSymbol() {	return recipe.getToastSymbol();	}
 
 	@Override
 	public NonNullList<Ingredient> getIngredients() {
@@ -90,19 +87,17 @@ public class 	ATMShapelessRecipe implements IATMShapelessRecipe {
 	}
 
 	@Override
-	public boolean canFit(int width, int height) {
-		return recipe.canFit(width, height);
+	public boolean canCraftInDimensions(int width, int height) {
+		return recipe.canCraftInDimensions(width, height);
 	}
 
 	@Override
-	public ItemStack getRecipeOutput() {
-		// TODO Auto-generated method stub
-		return recipe.getRecipeOutput();
+	public ItemStack getResultItem() {
+		return recipe.getResultItem();
 	}
 
 	@Override
 	public ResourceLocation getId() {
-		// TODO Auto-generated method stub
 		return recipe.getId();
 	}
 

@@ -48,16 +48,16 @@ public class AllTheModium
 {
    
 	public static final RegistryKey<World> OverWorld = World.OVERWORLD;
-	public static final RegistryKey<World> Nether = World.THE_NETHER;
-	public static final RegistryKey<World> The_End = World.THE_END;
+	public static final RegistryKey<World> Nether = World.NETHER;
+	public static final RegistryKey<World> The_End = World.END;
 
-	public static final RegistryKey<World> Mining = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, new ResourceLocation(MOD_ID,"mining"));
-	public static final RegistryKey<World> THE_OTHER = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, new ResourceLocation(Reference.MOD_ID,"the_other"));
-	public static final RegistryKey<World> THE_BEYOND = RegistryKey.getOrCreateKey(Registry.WORLD_KEY, new ResourceLocation(Reference.MOD_ID,"the_beyond"));
+	public static final RegistryKey<World> Mining = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(MOD_ID,"mining"));
+	public static final RegistryKey<World> THE_OTHER = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"the_other"));
+	//public static final RegistryKey<World> THE_BEYOND = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"the_beyond"));
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 	public static Boolean ALLOW_TELEPORT_MINING = false;
 	public static final ItemGroup GROUP = new ItemGroup(MOD_ID) {
-		public ItemStack createIcon() {
+		public ItemStack makeIcon() {
 			return new ItemStack(ModBlocks.ALLTHEMODIUMBLOCK);
 		}
 	};
@@ -83,7 +83,7 @@ public class AllTheModium
 
    @SubscribeEvent
    public static void commonSetupEvent(FMLCommonSetupEvent event) {
-	   Worldgen.addFeatures();
+	   //Worldgen.addFeatures();
    }
 
 

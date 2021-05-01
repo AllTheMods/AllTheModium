@@ -13,14 +13,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import com.thevortex.allthemodium.init.ModItems;
 
 public enum ArmorMaterial implements IArmorMaterial {
-	   ALLTHEMODIUM("allthemodium", 500, new int[]{100, 100, 200, 100}, 185, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 125.0F, () -> {
-		      return Ingredient.fromItems(ModItems.ALLTHEMODIUM_INGOT);
+	   ALLTHEMODIUM("allthemodium", 500, new int[]{100, 100, 200, 100}, 185, SoundEvents.ARMOR_EQUIP_CHAIN, 125.0F, () -> {
+		      return Ingredient.of(ModItems.ALLTHEMODIUM_INGOT);
 		   }),
-	   VIBRANIUM("vibranium", 1000, new int[]{150, 300, 400, 150}, 235, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 250.0F, () -> {
-	      return Ingredient.fromItems(ModItems.VIBRANIUM_INGOT);
+	   VIBRANIUM("vibranium", 1000, new int[]{150, 300, 400, 150}, 235, SoundEvents.ARMOR_EQUIP_CHAIN, 250.0F, () -> {
+	      return Ingredient.of(ModItems.VIBRANIUM_INGOT);
 	   }),
-	   UNOBTAINIUM("unobtainium",2000, new int[]{400, 600, 600, 400}, 285, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 500.0F, () -> {
-	      return Ingredient.fromItems(ModItems.UNOBTAINIUM_INGOT);
+	   UNOBTAINIUM("unobtainium",2000, new int[]{400, 600, 600, 400}, 285, SoundEvents.ARMOR_EQUIP_CHAIN, 500.0F, () -> {
+	      return Ingredient.of(ModItems.UNOBTAINIUM_INGOT);
 	   });
     
 
@@ -35,7 +35,7 @@ public enum ArmorMaterial implements IArmorMaterial {
    private final float knockback;
    private final LazyValue<Ingredient> repairMaterial;
 
-   private ArmorMaterial(String nameIn, int maxDamageFactorIn, int[] damageReductionAmountsIn, int enchantabilityIn, SoundEvent equipSoundIn, float p_i48533_8_, Supplier<Ingredient> repairMaterialSupplier) {
+   ArmorMaterial(String nameIn, int maxDamageFactorIn, int[] damageReductionAmountsIn, int enchantabilityIn, SoundEvent equipSoundIn, float p_i48533_8_, Supplier<Ingredient> repairMaterialSupplier) {
       this.name = nameIn;
       this.maxDamageFactor = maxDamageFactorIn;
       this.damageReductionAmountArray = damageReductionAmountsIn;
@@ -43,42 +43,33 @@ public enum ArmorMaterial implements IArmorMaterial {
       this.soundEvent = equipSoundIn;
       this.toughness = p_i48533_8_;
       this.repairMaterial = new LazyValue<>(repairMaterialSupplier);
-      this.knockback = this.toughness;
+      this.knockback = this.toughness/100;
    }
-
-   public int getDurability(EquipmentSlotType slotIn) {
-      return MAX_DAMAGE_ARRAY[slotIn.getIndex()] * this.maxDamageFactor;
-   }
-
-   public int getDamageReductionAmount(EquipmentSlotType slotIn) {
-      return this.damageReductionAmountArray[slotIn.getIndex()];
-   }
-
-   public int getEnchantability() {
+   @Override
+   public int getDurabilityForSlot(EquipmentSlotType slotIn) { return MAX_DAMAGE_ARRAY[slotIn.getIndex()] * this.maxDamageFactor; }
+   @Override
+   public int getDefenseForSlot(EquipmentSlotType slotIn) { return this.damageReductionAmountArray[slotIn.getIndex()];  }
+   @Override
+   public int getEnchantmentValue() {
       return this.enchantability;
    }
-
-   public SoundEvent getSoundEvent() {
+   @Override
+   public SoundEvent getEquipSound() {
       return this.soundEvent;
    }
-
-   public Ingredient getRepairMaterial() {
-      return this.repairMaterial.getValue();
+   @Override
+   public Ingredient getRepairIngredient() {
+      return this.repairMaterial.get();
    }
-
    @OnlyIn(Dist.CLIENT)
    public String getName() {
       return this.name;
    }
-
+   @Override
    public float getToughness() {
       return this.toughness;
    }
-
-@Override
-public float getKnockbackResistance() {
-	// TODO Auto-generated method stub
-	return this.knockback;
-}
+   @Override
+   public float getKnockbackResistance() { return this.knockback;   }
 
 }

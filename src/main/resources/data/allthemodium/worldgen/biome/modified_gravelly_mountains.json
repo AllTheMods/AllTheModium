@@ -21,77 +21,10 @@
     ]
   },
   "features": [
-    [],
-    [
-      "minecraft:lake_lava"
-    ],
-    [],
-    [
 
-      "iceandfire:ice_dragon_cave",
-      "minecraft:monster_room"
-    ],
-    [
-
-      "iceandfire:ice_dragon_roost",
-      "iceandfire:cyclops_cave"
-    ],
-    [],
-    [
-      "allthemodium:ore_other_vibranium",
-      "alltheores:ore_other_diamond",
-      "alltheores:ore_other_coal",
-      "alltheores:ore_other_iron",
-      "alltheores:ore_other_lapis",
-      "alltheores:ore_other_redstone",
-      "alltheores:ore_other_aluminum",
-      "alltheores:ore_other_copper",
-      "alltheores:ore_other_lead",
-      "alltheores:ore_other_nickel",
-      "alltheores:ore_other_osmium",
-      "alltheores:ore_other_platinum",
-      "alltheores:ore_other_silver",
-      "alltheores:ore_other_tin",
-      "alltheores:ore_other_uranium",
-      "alltheores:ore_other_zinc"
-    ],
-    [
-      "minecraft:glowstone_extra",
-      "minecraft:glowstone",
-      "minecraft:ore_blackstone",
-      "minecraft:ore_gold_nether",
-      "minecraft:ore_quartz_nether",
-      "minecraft:ore_debris_large",
-      "minecraft:ore_debris_small",
-      "minecraft:disk_sand",
-      "minecraft:disk_clay",
-      "minecraft:disk_gravel",
-      "minecraft:ore_infested"
-    ],
-    [
-      "allthemodium:soul_lava_spring",
-      "minecraft:spring_open",
-      "minecraft:patch_fire",
-      "minecraft:patch_soul_fire",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
-      "minecraft:spring_lava"
-    ],
-    [
-    ]
   ],
   "starts": [
-    [
 
-      "minecraft:fortress",
-      "minecraft:village",
-      "minecraft:bastion_remnant",
-      "minecraft:ruined_portal_nether",
-      "minecraft:mineshaft_mesa",
-      "minecraft:stronghold",
-      "minecraft:ruined_portal"
-
-    ]
   ],
   "spawners": {
     "monster": [
@@ -201,12 +134,7 @@
       }
     ],
     "ambient": [
-      {
-        "type": "minecraft:bat",
-        "weight": 10,
-        "minCount": 8,
-        "maxCount": 8
-      }
+     
     ],
     "water_creature": [],
     "water_ambient": [],

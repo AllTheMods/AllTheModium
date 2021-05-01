@@ -37,80 +37,9 @@
   },
   "features": [
 
-      [],
-      ["minecraft:lake_lava"],
-      [],
-      [
-        "iceandfire:lightning_dragon_cave"
-      ],
-      [
-        "iceandfire:lightning_dragon_roost",
-        "iceandfire:mausoleum",
-        "iceandfire:spawn_dragon_skeleton_f_misc"
-      ],
-      [],
-      [
-      "allthemodium:ore_other_vibranium",
-      "alltheores:ore_other_diamond",
-      "alltheores:ore_other_coal",
-      "alltheores:ore_other_iron",
-      "alltheores:ore_other_lapis",
-      "alltheores:ore_other_redstone",
-      "alltheores:ore_other_aluminum",
-      "alltheores:ore_other_copper",
-      "alltheores:ore_other_lead",
-      "alltheores:ore_other_nickel",
-      "alltheores:ore_other_osmium",
-      "alltheores:ore_other_platinum",
-      "alltheores:ore_other_silver",
-      "alltheores:ore_other_tin",
-      "alltheores:ore_other_uranium",
-      "alltheores:ore_other_zinc",
-      "minecraft:ore_blackstone",
-      "minecraft:ore_gold_nether",
-      "minecraft:ore_quartz_nether",
-      "minecraft:ore_debris_large",
-      "minecraft:ore_debris_small",
-      "minecraft:disk_sand",
-      "minecraft:disk_clay",
-      "minecraft:disk_gravel",
-      "minecraft:basalt_pillar",
-      "minecraft:spring_open",
-      "minecraft:glowstone_extra",
-      "minecraft:glowstone",
-      "minecraft:ore_gold_nether",
-      "minecraft:ore_quartz_nether",
-      "minecraft:ore_debris_large",
-      "minecraft:ore_debris_small"
-      ],
-      [
-      "byg:soul_shroom_tree1",
-      "byg:soul_shroom_tree2",
-      "byg:soul_shroom_tree3",
-      "minecraft:patch_crimson_roots",
-      "minecraft:patch_fire",
-      "minecraft:patch_soul_fire",
-      "minecraft:ore_magma",
-      "minecraft:spring_closed",
-
-      "allthemodium:soul_lava_spring",
-      "minecraft:spring_lava"
-      ],
-      []
-
   ],
   "starts": [
-    [
 
-      "minecraft:fortress",
-      "minecraft:village",
-      "minecraft:bastion_remnant",
-      "minecraft:ruined_portal_nether",
-      "minecraft:mineshaft_mesa",
-      "minecraft:stronghold",
-      "minecraft:ruined_portal"
-
-    ]
   ],
   "spawners": {
     "monster": [
@@ -146,12 +75,7 @@
       }
     ],
     "creature": [
-      {
-        "type": "iceandfire:cockatrice",
-        "weight": 10,
-        "minCount": 1,
-        "maxCount": 1
-      },
+
       {
         "type": "iceandfire:ghost",
         "weight": 240,
@@ -165,22 +89,6 @@
     "misc": []
   },
   "spawn_costs": {
-    "minecraft:skeleton": {
-      "energy_budget": 0.15,
-      "charge": 0.7
-    },
-    "minecraft:ghast": {
-      "energy_budget": 0.15,
-      "charge": 0.7
-    },
-    "minecraft:enderman": {
-      "energy_budget": 0.15,
-      "charge": 0.7
-    },
-    "minecraft:strider": {
-      "energy_budget": 0.15,
-      "charge": 0.7
-    }
   },
   "player_spawn_friendly": false,
   "precipitation": "none",

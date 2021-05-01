@@ -23,13 +23,13 @@ import net.minecraftforge.common.util.FakePlayer;
 public class Unobtainium_Ore extends OreBlock {
 
 	public Unobtainium_Ore() {//func_235861_h_ = setRequiresTool
-		super(Properties.create(Material.ROCK).sound(SoundType.STONE).setRequiresTool().hardnessAndResistance(59.0f));
+		super(Properties.of(Material.STONE).sound(SoundType.STONE).requiresCorrectToolForDrops().strength(59.0f));
 	}
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, IBlockReader world, BlockPos pos, PlayerEntity player) {
 		if((player instanceof FakePlayer) && (state.getBlock() == ModBlocks.UNOBTAINIUM_ORE)) { return false; }
-		return super.canHarvestBlock(state,world,pos,player) && (distanceTo(pos,player.getPosition()) < 16.0F);
+		return super.canHarvestBlock(state,world,pos,player) && (distanceTo(pos,player.blockPosition()) < 16.0F);
 	}
 
 	private double distanceTo(BlockPos block,BlockPos player) {
@@ -40,7 +40,7 @@ public class Unobtainium_Ore extends OreBlock {
 		return 6;
 	}
 	@Override
-	public PushReaction getPushReaction(BlockState state) {
+	public PushReaction getPistonPushReaction(BlockState state) {
 
 		return PushReaction.BLOCK;
 	}

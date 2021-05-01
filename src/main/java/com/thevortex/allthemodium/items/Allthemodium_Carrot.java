@@ -26,23 +26,23 @@ public class Allthemodium_Carrot extends Item {
 		
 	}
 	@Override
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, LivingEntity entityLiving) {
+	public ItemStack finishUsingItem(ItemStack stack, World worldIn, LivingEntity entityLiving) {
 	
 		if((entityLiving instanceof PlayerEntity) && (stack.getItem() == ModItems.ALLTHEMODIUM_CARROT)) {
 			PlayerEntity player = (PlayerEntity)entityLiving;
-			player.addPotionEffect(new EffectInstance(Effects.REGENERATION,600,4,false,false));
-			player.addPotionEffect(new EffectInstance(Effects.ABSORPTION,600,4,false,false));
+			player.addEffect(new EffectInstance(Effects.REGENERATION,600,4,false,false));
+			player.addEffect(new EffectInstance(Effects.ABSORPTION,600,4,false,false));
 		}
-	return super.onItemUseFinish(stack, worldIn, entityLiving);
+	return super.finishUsingItem(stack, worldIn, entityLiving);
 	}
 	@OnlyIn(Dist.CLIENT)
 	@Override
-	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
-		tooltip.add(this.getTooltip("quick.snack").mergeStyle(TextFormatting.GOLD));
-		tooltip.add(this.getTooltip("low.cal").mergeStyle(TextFormatting.GOLD));
-		tooltip.add(this.getTooltip("steel.skin").mergeStyle(TextFormatting.DARK_RED));
-		tooltip.add(this.getTooltip("troll.blood").mergeStyle(TextFormatting.DARK_RED));
-		super.addInformation(stack, worldIn, tooltip, flagIn);
+	public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
+		tooltip.add(this.getTooltip("quick.snack").withStyle(TextFormatting.GOLD));
+		tooltip.add(this.getTooltip("low.cal").withStyle(TextFormatting.GOLD));
+		tooltip.add(this.getTooltip("steel.skin").withStyle(TextFormatting.DARK_RED));
+		tooltip.add(this.getTooltip("troll.blood").withStyle(TextFormatting.DARK_RED));
+		super.appendHoverText(stack, worldIn, tooltip, flagIn);
 	}
 	protected TextComponent getTooltip(String key){
 		return new TranslationTextComponent(key);

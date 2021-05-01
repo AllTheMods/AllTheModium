@@ -9,16 +9,16 @@ import com.thevortex.allthemodium.init.ModItems;
 
 public enum ItemTier implements IItemTier {
 	ALLTHEMODIUM(5, 5500, 12.0F, 30.0F, 185, () -> {
-	      return Ingredient.fromItems(ModItems.ALLTHEMODIUM_INGOT);
+	      return Ingredient.of(ModItems.ALLTHEMODIUM_INGOT);
 	   }),
     VIBRANIUM(6, 7500, 18.0F, 35.0F, 235, () -> {
-	      return Ingredient.fromItems(ModItems.VIBRANIUM_INGOT);
+	      return Ingredient.of(ModItems.VIBRANIUM_INGOT);
 	   }),
     UNOBTAINIUM(7, 9500, 24.0F, 40.0F, 285, () -> {
-	      return Ingredient.fromItems(ModItems.UNOBTAINIUM_INGOT);
+	      return Ingredient.of(ModItems.UNOBTAINIUM_INGOT);
 	   }),
     UNOBTAINIUMALLOY(8, 17000, 44.0F, 1500.0F, 515, () -> {
-	      return Ingredient.fromItems(ModItems.UNOBTAINIUM_VIBRANIUM_ALLOY);
+	      return Ingredient.of(ModItems.UNOBTAINIUM_VIBRANIUM_ALLOY);
 	   });
    private final int harvestLevel;
    private final int maxUses;
@@ -27,7 +27,7 @@ public enum ItemTier implements IItemTier {
    private final int enchantability;
    private final LazyValue<Ingredient> repairMaterial;
 
-   private ItemTier(int harvestLevelIn, int maxUsesIn, float efficiencyIn, float attackDamageIn, int enchantabilityIn, Supplier<Ingredient> repairMaterialIn) {
+   ItemTier(int harvestLevelIn, int maxUsesIn, float efficiencyIn, float attackDamageIn, int enchantabilityIn, Supplier<Ingredient> repairMaterialIn) {
       this.harvestLevel = harvestLevelIn;
       this.maxUses = maxUsesIn;
       this.efficiency = efficiencyIn;
@@ -35,28 +35,24 @@ public enum ItemTier implements IItemTier {
       this.enchantability = enchantabilityIn;
       this.repairMaterial = new LazyValue<>(repairMaterialIn);
    }
-
-   public int getMaxUses() {
+    @Override
+    public int getUses() {
       return this.maxUses;
    }
-
-   public float getEfficiency() {
-      return this.efficiency;
-   }
-
-   public float getAttackDamage() {
+    @Override
+    public float getSpeed() { return this.efficiency; }
+    @Override
+    public float getAttackDamageBonus() {
       return this.attackDamage;
    }
-
-   public int getHarvestLevel() {
+    @Override
+    public int getLevel() {
       return this.harvestLevel;
    }
-
-   public int getEnchantability() {
-      return this.enchantability;
-   }
-
-   public Ingredient getRepairMaterial() {
-      return this.repairMaterial.getValue();
+    @Override
+    public int getEnchantmentValue() { return this.enchantability; }
+    @Override
+    public Ingredient getRepairIngredient() {
+      return this.repairMaterial.get();
    }
 }

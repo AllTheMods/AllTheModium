@@ -21,6 +21,7 @@ import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.particles.RedstoneParticleData;
 import net.minecraft.server.MinecraftServer;
@@ -57,7 +58,7 @@ public class FluidBlock extends FlowingFluidBlock {
 	}
 
 	@Override
-	public boolean ticksRandomly(BlockState state) {
+	public boolean isRandomlyTicking(BlockState state) {
 		return true;
 	}
 
@@ -67,20 +68,22 @@ public class FluidBlock extends FlowingFluidBlock {
 	}
 
 	@Override
+	public boolean removedByPlayer(BlockState state, World world, BlockPos pos, PlayerEntity player, boolean willHarvest, FluidState fluid) {
+		return false;
+	}
+
+	@Override
 	public boolean isFireSource(BlockState state, IWorldReader world, BlockPos pos, Direction side) {
 		return true;
 	}
 
+
 	@Override
-	public boolean isReplaceable(BlockState p_225541_1_, Fluid p_225541_2_) {
+	public boolean canEntityDestroy(BlockState state, IBlockReader world, BlockPos pos, Entity entity) {
 		return false;
 	}
 
-	@Override
-	public boolean isReplaceable(BlockState state, BlockItemUseContext useContext) {
 
-		return false;
-	}
 
 	@Override
 	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
@@ -91,47 +94,56 @@ public class FluidBlock extends FlowingFluidBlock {
 		}
 
 	}
+	@Override
+	public boolean canBeReplaced(BlockState p_225541_1_, Fluid p_225541_2_) {
+		return false;
+	}
 
+	@Override
+	public boolean canBeReplaced(BlockState state, BlockItemUseContext useContext) {
+
+		return false;
+	}
 	public void randomTick(World p_207186_1_, BlockPos pos, FluidState state, Random random) {
-		if (p_207186_1_.getGameRules().getBoolean(GameRules.DO_FIRE_TICK)) {
+		if (p_207186_1_.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)) {
 			int i = random.nextInt(10);
 			if (i > 0) {
 				BlockPos blockpos = pos;
 
 				for (int j = 0; j < i; ++j) {
-					blockpos = blockpos.add(random.nextInt(10) - 1, 1, random.nextInt(10) - 1);
-					if (!p_207186_1_.isBlockPresent(blockpos)) {
+					blockpos = blockpos.offset(random.nextInt(10) - 1, 1, random.nextInt(10) - 1);
+					if (!p_207186_1_.isEmptyBlock(blockpos)) {
 						return;
 					}
 
 					BlockState blockstate = p_207186_1_.getBlockState(blockpos);
-					BlockState FIRE = SoulFireBlock.shouldLightSoulFire(blockstate.getBlock())
-							? Blocks.SOUL_FIRE.getDefaultState()
-							: ((FireBlock) Blocks.FIRE).getDefaultState();
+					BlockState FIRE = SoulFireBlock.canSurviveOnBlock(blockstate.getBlock())
+							? Blocks.SOUL_FIRE.defaultBlockState()
+							: ((FireBlock) Blocks.FIRE).defaultBlockState();
 					if (blockstate.isAir()) {
 						if (this.isSurroundingBlockFlammable(p_207186_1_, blockpos)) {
-							p_207186_1_.setBlockState(blockpos, ForgeEventFactory
+							p_207186_1_.setBlockAndUpdate(blockpos, ForgeEventFactory
 									.fireFluidPlaceBlockEvent(p_207186_1_, blockpos, pos, FIRE));
 							return;
 						}
-					} else if (blockstate.getMaterial().blocksMovement()) {
+					} else if (blockstate.getMaterial().blocksMotion()) {
 						return;
 					}
 				}
 			} else {
 				for (int k = 0; k < 10; ++k) {
-					BlockPos blockpos1 = pos.add(random.nextInt(10) - 1, 0, random.nextInt(10) - 1);
-					BlockState FIRE = SoulFireBlock.shouldLightSoulFire(p_207186_1_.getBlockState(blockpos1).getBlock())
-							? Blocks.SOUL_FIRE.getDefaultState()
-							: ((FireBlock) Blocks.FIRE).getDefaultState();
+					BlockPos blockpos1 = pos.offset(random.nextInt(10) - 1, 0, random.nextInt(10) - 1);
+					BlockState FIRE = SoulFireBlock.canSurviveOnBlock(p_207186_1_.getBlockState(blockpos1).getBlock())
+							? Blocks.SOUL_FIRE.defaultBlockState()
+							: ((FireBlock) Blocks.FIRE).defaultBlockState();
 
-					if (!p_207186_1_.isBlockPresent(blockpos1)) {
+					if (!p_207186_1_.isEmptyBlock(blockpos1)) {
 						return;
 					}
 
-					if (p_207186_1_.isAirBlock(blockpos1.up()) && this.getCanBlockBurn(p_207186_1_, blockpos1)) {
-						p_207186_1_.setBlockState(blockpos1.up(), ForgeEventFactory
-								.fireFluidPlaceBlockEvent(p_207186_1_, blockpos1.up(), pos, FIRE));
+					if (p_207186_1_.isEmptyBlock(blockpos1.above()) && this.getCanBlockBurn(p_207186_1_, blockpos1)) {
+						p_207186_1_.setBlockAndUpdate(blockpos1.above(), ForgeEventFactory
+								.fireFluidPlaceBlockEvent(p_207186_1_, blockpos1.above(), pos, FIRE));
 					}
 				}
 			}
@@ -144,8 +156,7 @@ public class FluidBlock extends FlowingFluidBlock {
 	}
 
 	private boolean getCanBlockBurn(IWorldReader worldIn, BlockPos pos) {
-		return pos.getY() >= 0 && pos.getY() < 256 && !worldIn.isBlockLoaded(pos) ? false
-				: worldIn.getBlockState(pos).getMaterial().isFlammable();
+		return (pos.getY() < 0 || pos.getY() >= 256 || worldIn.isWaterAt(pos)) && worldIn.getBlockState(pos).getMaterial().isFlammable();
 	}
 
 	@Override
@@ -161,32 +172,32 @@ public class FluidBlock extends FlowingFluidBlock {
 	private boolean reactWithNeighbors(World worldIn, BlockPos pos, BlockState state) {
 		for (Direction direction : Direction.values()) {
 			if (direction != Direction.DOWN) {
-				BlockPos blockpos = pos.offset(direction);
-				if (worldIn.getFluidState(blockpos).isTagged(FluidTags.WATER)) {
+				BlockPos blockpos = pos.offset(direction.getNormal());
+				if (worldIn.getFluidState(blockpos).is(FluidTags.WATER)) {
 					Block block = worldIn.getFluidState(blockpos).isSource() ? Blocks.CRYING_OBSIDIAN
 							: Blocks.OBSIDIAN;
-					worldIn.setBlockState(blockpos, net.minecraftforge.event.ForgeEventFactory
-							.fireFluidPlaceBlockEvent(worldIn, blockpos, blockpos, block.getDefaultState()));
+					worldIn.setBlockAndUpdate(blockpos, net.minecraftforge.event.ForgeEventFactory
+							.fireFluidPlaceBlockEvent(worldIn, blockpos, blockpos, block.defaultBlockState()));
 
 					return false;
 				}
-				if (worldIn.getFluidState(blockpos).isTagged(FluidTags.LAVA)) {
+				if (worldIn.getFluidState(blockpos).is(FluidTags.LAVA)) {
 					Block block = worldIn.getFluidState(blockpos).isSource() ? Blocks.BLACKSTONE
 							: Blocks.NETHERRACK;
-					worldIn.setBlockState(blockpos, net.minecraftforge.event.ForgeEventFactory
-							.fireFluidPlaceBlockEvent(worldIn, blockpos, blockpos, block.getDefaultState()));
+					worldIn.setBlockAndUpdate(blockpos, net.minecraftforge.event.ForgeEventFactory
+							.fireFluidPlaceBlockEvent(worldIn, blockpos, blockpos, block.defaultBlockState()));
 
 					return false;
 				}
 
 			}
 			if (direction == Direction.DOWN) {
-				BlockPos blockpos = pos.offset(direction);
-				if (worldIn.getFluidState(blockpos).isTagged(FluidTags.LAVA)) {
+				BlockPos blockpos = pos.offset(direction.getNormal());
+				if (worldIn.getFluidState(blockpos).is(FluidTags.LAVA)) {
 					Block block = worldIn.getFluidState(blockpos).isSource() ? Blocks.BLACKSTONE
 							: Blocks.NETHERRACK;
-					worldIn.setBlockState(blockpos, net.minecraftforge.event.ForgeEventFactory
-							.fireFluidPlaceBlockEvent(worldIn, blockpos, blockpos, block.getDefaultState()));
+					worldIn.setBlockAndUpdate(blockpos, net.minecraftforge.event.ForgeEventFactory
+							.fireFluidPlaceBlockEvent(worldIn, blockpos, blockpos, block.defaultBlockState()));
 
 					return false;
 				}
@@ -197,10 +208,10 @@ public class FluidBlock extends FlowingFluidBlock {
 	}
 
 	@Override
-	public void onBlockAdded(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
+	public void onPlace(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
 		if (this.reactWithNeighbors(worldIn, pos, state)) {
-			worldIn.getPendingFluidTicks().scheduleTick(pos, state.getFluidState().getFluid(),
-					this.getFluid().getTickRate(worldIn));
+			worldIn.getLiquidTicks().scheduleTick(pos, state.getFluidState().getType(),
+					this.getFluid().getTickDelay(worldIn));
 			spawnParticles(worldIn, pos);
 		}
 
@@ -216,9 +227,9 @@ public class FluidBlock extends FlowingFluidBlock {
 
 	private static void spawnParticles(World p_180691_0_, BlockPos worldIn) {
 		double d0 = 0.5625D;
-		Random random = p_180691_0_.rand;
-		if ((!p_180691_0_.getBlockState(worldIn).isOpaqueCube(p_180691_0_, worldIn))
-				&& (p_180691_0_.getBlockState(worldIn).getFluidState().isSource() == true)) {
+		Random random = p_180691_0_.random;
+		if ((!p_180691_0_.getBlockState(worldIn).isSolidRender(p_180691_0_, worldIn))
+				&& (p_180691_0_.getBlockState(worldIn).getFluidState().isSource())) {
 			p_180691_0_.addParticle(ParticleTypes.SOUL_FIRE_FLAME, (double) worldIn.getX() + 0.5D,
 					(double) worldIn.getY() + 0.5D, (double) worldIn.getZ() + 0.5D,
 					(double) (random.nextFloat() / 2.0F), 5.0E-5D, (double) (random.nextFloat() / 2.0F));
@@ -232,21 +243,17 @@ public class FluidBlock extends FlowingFluidBlock {
 		return 1000;
 	}
 
-	@Override
-	public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-		
-		entityIn.attackEntityFrom(DamageSource.LAVA, 6.0F);
-	}
+
  
 	 public void transferPlayer(ServerPlayerEntity player, BlockPos pos) {
-		   if(player.world.getWorldInfo().equals(AllTheModium.Mining)) {
-			   ServerWorld targetWorld = player.server.getWorld(AllTheModium.OverWorld);
-			   Teleporter teleporter = targetWorld.getDefaultTeleporter();
+		   if(player.level.dimension.equals(AllTheModium.Mining)) {
+			   ServerWorld targetWorld = player.server.getLevel(AllTheModium.OverWorld);
+			   Teleporter teleporter = targetWorld.getPortalForcer();
 			   player.changeDimension(targetWorld, teleporter);
 
 		   } else {
-			   ServerWorld targetWorld = player.server.getWorld(AllTheModium.Mining);
-			   Teleporter teleporter = targetWorld.getDefaultTeleporter();
+			   ServerWorld targetWorld = player.server.getLevel(AllTheModium.Mining);
+			   Teleporter teleporter = targetWorld.getPortalForcer();
 			   player.changeDimension(targetWorld, teleporter);
 		   }
 	   }

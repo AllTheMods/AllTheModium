@@ -4,18 +4,20 @@
     {
       "id": "tconstruct:head",
       "durability": 5500,
-      "miningSpeed": 18.5,
+      "miningSpeed": 18.0,
       "harvestLevel": 5,
-      "attack": 18.6
+      "attack": 62.0
     },
     {
       "id": "tconstruct:handle",
-      "modifier": 1.4,
-      "durability": 200
+      "durability": 1.5,
+      "miningSpeed": 18.0,
+      "attackSpeed": 18.0,
+      "attackDamage": 1.2
     },
     {
       "id": "tconstruct:extra",
-      "durability": 1450
+      "durability": 1000
     }
   ]
 }

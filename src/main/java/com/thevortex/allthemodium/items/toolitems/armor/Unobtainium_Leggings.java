@@ -44,13 +44,13 @@ public class Unobtainium_Leggings extends ArmorItem {
     }
 	@OnlyIn(Dist.CLIENT)
 	@Override
-	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
-		tooltip.add(this.getTooltip("piglin.friend").mergeStyle(TextFormatting.GOLD));
-		tooltip.add(this.getTooltip("wither.proof").mergeStyle(TextFormatting.DARK_PURPLE));
-		tooltip.add(this.getTooltip("magic.resistance").mergeStyle(TextFormatting.LIGHT_PURPLE));
-		tooltip.add(this.getTooltip("steady.legs").mergeStyle(TextFormatting.LIGHT_PURPLE));
-		tooltip.add(this.getTooltip("steady.guts").mergeStyle(TextFormatting.LIGHT_PURPLE));
-		super.addInformation(stack, worldIn, tooltip, flagIn);
+	public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
+		tooltip.add(this.getTooltip("piglin.friend").withStyle(TextFormatting.GOLD));
+		tooltip.add(this.getTooltip("wither.proof").withStyle(TextFormatting.DARK_PURPLE));
+		tooltip.add(this.getTooltip("magic.resistance").withStyle(TextFormatting.LIGHT_PURPLE));
+		tooltip.add(this.getTooltip("steady.legs").withStyle(TextFormatting.LIGHT_PURPLE));
+		tooltip.add(this.getTooltip("steady.guts").withStyle(TextFormatting.LIGHT_PURPLE));
+		super.appendHoverText(stack, worldIn, tooltip, flagIn);
 	}
 	protected TextComponent getTooltip(String key){
 		return new TranslationTextComponent(key);
@@ -58,15 +58,15 @@ public class Unobtainium_Leggings extends ArmorItem {
 
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-    	if((stack.getItem() == ModItems.UNOBTAINIUM_LEGGINGS) && (!world.isRemote)) {
+    	if((stack.getItem() == ModItems.UNOBTAINIUM_LEGGINGS) && (!world.isClientSide)) {
 
-    		Collection<EffectInstance> potions = player.getActivePotionEffects();
+    		Collection<EffectInstance> potions = player.getActiveEffects();
 			try {
     		for(EffectInstance effectInstance : potions) {
-    			if(effectInstance.getPotion() == Effects.LEVITATION)
-					player.removePotionEffect(Effects.LEVITATION);
-				if(effectInstance.getPotion() == Effects.NAUSEA)
-					player.removePotionEffect(Effects.NAUSEA);
+    			if(effectInstance.getEffect() == Effects.LEVITATION)
+					player.removeEffect(Effects.LEVITATION);
+				if(effectInstance.getEffect() == Effects.CONFUSION)
+					player.removeEffect(Effects.CONFUSION);
 	    	}
 			} catch(ConcurrentModificationException exception) {
 

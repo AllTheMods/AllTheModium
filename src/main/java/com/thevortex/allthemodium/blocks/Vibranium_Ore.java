@@ -23,20 +23,20 @@ import net.minecraftforge.common.util.FakePlayer;
 public class Vibranium_Ore extends OreBlock {
 
 	public Vibranium_Ore() {//func_235861_h_ = setRequiresTool
-		super(Properties.create(Material.ROCK).sound(SoundType.STONE).setRequiresTool().hardnessAndResistance(29.0f));
+		super(Properties.of(Material.STONE).sound(SoundType.STONE).requiresCorrectToolForDrops().strength(29.0f));
 	}
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, IBlockReader world, BlockPos pos, PlayerEntity player) {
 		if((player instanceof FakePlayer) && (state.getBlock() == ModBlocks.VIBRANIUM_ORE)) { return false; }
-		return super.canHarvestBlock(state,world,pos,player) && (distanceTo(pos,player.getPosition()) < 16.0F);
+		return super.canHarvestBlock(state,world,pos,player) && (distanceTo(pos,player.blockPosition()) < 16.0F);
 	}
 
 	private double distanceTo(BlockPos block,BlockPos player) {
 		return Math.sqrt(Math.pow(block.getX() - player.getX(), 2) + Math.pow(block.getY() - player.getY(), 2) + Math.pow(block.getZ() - player.getZ(), 2));
 	}
 	@Override
-	public PushReaction getPushReaction(BlockState state) {
+	public PushReaction getPistonPushReaction(BlockState state) {
 
 		return PushReaction.BLOCK;
 	}

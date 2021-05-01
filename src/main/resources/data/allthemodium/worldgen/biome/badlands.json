@@ -23,86 +23,10 @@
     ]
   },
   "features": [
-    [],
-    [
-      "minecraft:lake_lava"
-    ],
-    [],
-    [
-      "minecraft:monster_room",
-      "minecraft:fortress",
-      "minecraft:bastion_remnant",
-      "minecraft:mineshaft_mesa"
-    ],
-    [
-      "minecraft:ruined_portal_nether",
-      "minecraft:village"
-    ],
-    [],
-    [
 
-      "minecraft:ore_dirt",
-      "minecraft:ore_gravel",
-      "allthemodium:ore_other_vibranium",
-      "alltheores:ore_other_diamond",
-      "alltheores:ore_other_coal",
-      "alltheores:ore_other_iron",
-      "alltheores:ore_other_lapis",
-      "alltheores:ore_other_redstone",
-      "alltheores:ore_other_aluminum",
-      "alltheores:ore_other_copper",
-      "alltheores:ore_other_lead",
-      "alltheores:ore_other_nickel",
-      "alltheores:ore_other_osmium",
-      "alltheores:ore_other_platinum",
-      "alltheores:ore_other_silver",
-      "alltheores:ore_other_tin",
-      "alltheores:ore_other_uranium",
-      "alltheores:ore_other_zinc",
-      "minecraft:glowstone_extra",
-      "minecraft:glowstone",
-      "minecraft:ore_blackstone",
-      "minecraft:ore_gold_nether",
-      "minecraft:ore_quartz_nether",
-      "minecraft:ore_debris_large",
-      "minecraft:ore_debris_small"
-
-    ],
-    [
-      "minecraft:disk_sand",
-      "minecraft:disk_clay",
-      "minecraft:disk_gravel"
-    ],
-    [
-      "minecraft:dark_oak",
-      "minecraft:spring_open",
-      "minecraft:patch_fire",
-      "minecraft:patch_soul_fire",
-      "iceandfire:lightning_lily",
-      "allthemodium:soul_lava_spring",
-      "minecraft:patch_grass_badlands",
-      "minecraft:patch_dead_bush_badlands",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
-      "minecraft:patch_cactus_decorated",
-      "minecraft:spring_lava"
-    ],
-    [
-
-    ]
   ],
   "starts": [
-    [
 
-        "minecraft:fortress",
-        "minecraft:village",
-        "minecraft:bastion_remnant",
-        "minecraft:ruined_portal_nether",
-        "minecraft:mineshaft_mesa",
-        "minecraft:stronghold",
-        "minecraft:ruined_portal"
-
-    ]
   ],
 
   "spawners": {
@@ -176,12 +100,7 @@
     ],
     "creature": [],
     "ambient": [
-      {
-        "type": "minecraft:bat",
-        "weight": 10,
-        "minCount": 8,
-        "maxCount": 8
-      }
+      
     ],
     "water_creature": [],
     "water_ambient": [],

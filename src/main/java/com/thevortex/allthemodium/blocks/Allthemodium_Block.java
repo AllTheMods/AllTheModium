@@ -17,7 +17,7 @@ import net.minecraft.world.IWorldReader;
 public class Allthemodium_Block extends Block {
 
 	public Allthemodium_Block() {	
-	super(Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(7.0f));
+	super(Properties.of(Material.METAL).sound(SoundType.STONE).strength(7.0f));
 	}
 
 @Deprecated

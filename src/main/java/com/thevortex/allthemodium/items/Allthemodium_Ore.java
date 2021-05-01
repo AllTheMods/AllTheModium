@@ -23,9 +23,9 @@ public class Allthemodium_Ore extends BlockItem {
 	}
 	@OnlyIn(Dist.CLIENT)
 	@Override
-	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
-		tooltip.add(this.getTooltip("allthemodium.loc").mergeStyle(TextFormatting.GOLD));
-		super.addInformation(stack, worldIn, tooltip, flagIn);
+	public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
+		tooltip.add(this.getTooltip("allthemodium.loc").withStyle(TextFormatting.GOLD));
+		super.appendHoverText(stack, worldIn, tooltip, flagIn);
 	}
 	protected TextComponent getTooltip(String key){
 		return new TranslationTextComponent(key);

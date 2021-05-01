@@ -7,7 +7,8 @@
     "fluid": "allthemodium:molten_allthemodium",
     "amount": 16
   },
-  "temperature": 1000,
+  "temperature": 1250,
+  "time": 25,
   "conditions": [
       {
           "type": "forge:mod_loaded",

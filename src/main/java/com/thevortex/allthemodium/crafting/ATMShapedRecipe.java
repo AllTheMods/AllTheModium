@@ -53,20 +53,20 @@ public class ATMShapedRecipe implements IATMShapedRecipe {
 		// Note: We do not override the matches method if it matches ignoring NBT,
 		// to ensure that we return the proper value for if there is a match that gives
 		// a proper output
-		return internal.matches(inv, world) && !getCraftingResult(inv).isEmpty();
+		return internal.matches(inv, world) && !assemble(inv).isEmpty();
 	}
 
 	@Override
-	public ItemStack getCraftingResult(CraftingInventory inv) {
-		if (getRecipeOutput().isEmpty()) {
+	public ItemStack assemble(CraftingInventory inv) {
+		if (getResultItem().isEmpty()) {
 			return ItemStack.EMPTY;
 		}
-		ItemStack toReturn = getRecipeOutput().copy();
+		ItemStack toReturn = getResultItem().copy();
 		Map<Enchantment,Integer> enchant = new HashMap<>();
 
-		for (int i = 0; i < inv.getSizeInventory(); i++) {
-			ItemStack stack = inv.getStackInSlot(i);
-			if (!stack.isEmpty() && (!stack.getEnchantmentTagList().isEmpty())) {
+		for (int i = 0; i < inv.getContainerSize(); i++) {
+			ItemStack stack = inv.getItem(i);
+			if (!stack.isEmpty() && (!stack.getEnchantmentTags().isEmpty())) {
 					Map<Enchantment,Integer> temp = EnchantmentHelper.getEnchantments(stack);
 					for(Enchantment e : temp.keySet()) {
 						if(enchant.containsKey(e) && (enchant.get(e) == temp.get(e))) {	enchant.put(e, temp.get(e) + 1); }
@@ -81,13 +81,13 @@ public class ATMShapedRecipe implements IATMShapedRecipe {
 	}
 
 	@Override
-	public boolean canFit(int width, int height) {
-		return internal.canFit(width, height);
+	public boolean canCraftInDimensions(int width, int height) {
+		return internal.canCraftInDimensions(width, height);
 	}
 
 	@Override
-	public ItemStack getRecipeOutput() {
-		return internal.getRecipeOutput();
+	public ItemStack getResultItem() {
+		return internal.getResultItem();
 	}
 
 	@Override
@@ -101,8 +101,8 @@ public class ATMShapedRecipe implements IATMShapedRecipe {
 	}
 
 	@Override
-	public boolean isDynamic() {
-		return internal.isDynamic();
+	public boolean isSpecial() {
+		return internal.isSpecial();
 	}
 
 	@Override
@@ -111,8 +111,8 @@ public class ATMShapedRecipe implements IATMShapedRecipe {
 	}
 
 	@Override
-	public ItemStack getIcon() {
-		return internal.getIcon();
+	public ItemStack getToastSymbol() {
+		return internal.getToastSymbol();
 	}
 
 	@Override

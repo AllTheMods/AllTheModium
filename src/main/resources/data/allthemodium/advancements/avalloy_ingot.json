@@ -1,0 +1,23 @@
+{
+  "parent": "allthemodium:root",
+  "display": {
+    "title": {"text":"Forged in Dragon Fire!","obfuscated":false},
+    "description": "Forge a Vibranium-Allthemodium Alloy Ingot",
+    "icon": {
+      "item": "allthemodium:vibranium_allthemodium_alloy_ingot"
+    },
+    "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "allthemodium:vibranium_allthemodium_alloy_ingot"
+          }
+        ]
+      }
+    }
+  }
+}

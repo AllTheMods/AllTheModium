@@ -21,73 +21,10 @@
     ]
   },
   "features": [
-    [],
-    [
-      "minecraft:lake_lava"
-    ],
-    [],
-    [
-      "iceandfire:ice_dragon_cave",
-      "minecraft:mineshaft",
-      "minecraft:monster_room"
-    ],
-    [
-      "iceandfire:hydra_cave",
-      "iceandfire:ice_dragon_roost",
-      "minecraft:ruined_portal_mountain"
-    ],
-    [],
-    [
-      "allthemodium:ore_other_vibranium",
-      "alltheores:ore_other_diamond",
-      "alltheores:ore_other_coal",
-      "alltheores:ore_other_iron",
-      "alltheores:ore_other_lapis",
-      "alltheores:ore_other_redstone",
-      "alltheores:ore_other_aluminum",
-      "alltheores:ore_other_copper",
-      "alltheores:ore_other_lead",
-      "alltheores:ore_other_nickel",
-      "alltheores:ore_other_osmium",
-      "alltheores:ore_other_platinum",
-      "alltheores:ore_other_silver",
-      "alltheores:ore_other_tin",
-      "alltheores:ore_other_uranium",
-      "alltheores:ore_other_zinc"
-    ],
-    [
-      "minecraft:ore_infested",
-      "minecraft:glowstone_extra",
-      "minecraft:glowstone",
-      "minecraft:ore_blackstone",
-      "minecraft:ore_gold_nether",
-      "minecraft:ore_quartz_nether",
-      "minecraft:ore_debris_large",
-      "minecraft:ore_debris_small",
-      "minecraft:disk_sand",
-      "minecraft:disk_clay",
-      "minecraft:disk_gravel",
-      "minecraft:ore_dirt"
-    ],
-    [
-      "allthemodium:soul_lava_spring",
-      "minecraft:spring_lava"
-    ],
-    [
-    ]
+
   ],
   "starts": [
-    [
 
-      "minecraft:fortress",
-      "minecraft:village",
-      "minecraft:bastion_remnant",
-      "minecraft:ruined_portal_nether",
-      "minecraft:mineshaft",
-      "minecraft:stronghold",
-      "minecraft:ruined_portal_mountain"
-
-    ]
   ],
   "spawners": {
     "monster": [
@@ -132,12 +69,6 @@
         "weight": 100,
         "minCount": 4,
         "maxCount": 4
-      },
-      {
-        "type": "iceandfire:ice_dragon",
-        "weight": 1,
-        "minCount": 1,
-        "maxCount": 1
       },
       {
         "type": "minecraft:slime",
@@ -197,12 +128,7 @@
       }
     ],
     "ambient": [
-      {
-        "type": "minecraft:bat",
-        "weight": 10,
-        "minCount": 8,
-        "maxCount": 8
-      }
+     
     ],
     "water_creature": [],
     "water_ambient": [],

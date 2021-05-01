@@ -37,22 +37,22 @@ public class Unobtainium_Helmet extends ArmorItem {
     }
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
-        tooltip.add(this.getTooltip("piglin.friend").mergeStyle(TextFormatting.GOLD));
-        tooltip.add(this.getTooltip("hard.head").mergeStyle(TextFormatting.YELLOW));
-        tooltip.add(this.getTooltip("aqua.lungs").mergeStyle(TextFormatting.DARK_AQUA));
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
+        tooltip.add(this.getTooltip("piglin.friend").withStyle(TextFormatting.GOLD));
+        tooltip.add(this.getTooltip("hard.head").withStyle(TextFormatting.YELLOW));
+        tooltip.add(this.getTooltip("aqua.lungs").withStyle(TextFormatting.DARK_AQUA));
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
     protected TextComponent getTooltip(String key){
         return new TranslationTextComponent(key);
     }
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-        if((stack.getItem() == ModItems.UNOBTAINIUM_HELMET) && (!world.isRemote)) {
+        if((stack.getItem() == ModItems.UNOBTAINIUM_HELMET) && (!world.isClientSide)) {
 
             if(player.isInWater() && player.isSwimming()){
 
-                player.setAir(300);
+                player.setAirSupply(300);
             }
         }
         super.onArmorTick(stack, world, player);

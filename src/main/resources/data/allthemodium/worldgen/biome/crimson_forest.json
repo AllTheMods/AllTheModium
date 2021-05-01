@@ -36,75 +36,9 @@
     ]
   },
   "features": [
-    [],
-    [],
-    [],
-    [
-      "iceandfire:fire_dragon_cave"
-    ],
-    [
-      "iceandfire:hydra_cave"
-    ],
-    [],
-    ["allthemodium:ore_other_vibranium",
-     "alltheores:ore_other_diamond",
-    "alltheores:ore_other_coal",
-    "alltheores:ore_other_iron",
-    "alltheores:ore_other_lapis",
-    "alltheores:ore_other_redstone",
-    "alltheores:ore_other_aluminum",
-      "alltheores:ore_other_copper",
-      "alltheores:ore_other_lead",
-      "alltheores:ore_other_nickel",
-      "alltheores:ore_other_osmium",
-      "alltheores:ore_other_platinum",
-      "alltheores:ore_other_silver",
-      "alltheores:ore_other_tin",
-      "alltheores:ore_other_uranium",
-      "alltheores:ore_other_zinc"
-      ],
-      [
-
-        "minecraft:glowstone_extra",
-        "minecraft:glowstone",
-      "minecraft:ore_blackstone",
-      "minecraft:ore_gold_nether",
-      "minecraft:ore_quartz_nether",
-      "minecraft:ore_debris_small"
-      ],
-    [
-      "minecraft:spring_open",
-      "minecraft:patch_fire",
-      "minecraft:patch_soul_fire",
-      "byg:nether_bristle",
-      "byg:tall_crimson_roots",
-      "byg:crimson_berry_bush",
-      "byg:sythian_fungus",
-      "byg:sythian_sprout",
-      "byg:sythian_root",
-      "byg:soul_shroom",
-      "byg:death_cap",
-      "byg:sythian_stalk",
-      "iceandfire:fire_lily",
-      "minecraft:spring_lava",
-      "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal",
-      "minecraft:weeping_vines",
-      "minecraft:crimson_fungi",
-      "minecraft:crimson_forest_vegetation"
-    ],
-    [
-
-    ]
 
   ],
-  "starts": [
-
-    "minecraft:ruined_portal_nether",
-    "minecraft:fortress",
-    "minecraft:village",
-    "minecraft:bastion_remnant"
-	
+  "starts": [	
   ],
   "spawners": {
     "monster": [

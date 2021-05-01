@@ -1,6 +1,19 @@
 {
   "craftable": false,
+  "tier": 5,
+  "sortOrder": 2,
   "fluid": "allthemodium:molten_allthemodium",
-  "textColor": "ffffef0e",
-  "temperature": 1000
+  "fluidPerUnit": 144,
+  "textColor": "#ffef0e",
+  "temperature": 1500,
+  "traits": [
+    {
+      "name": "tconstruct:heavy",
+      "level": 5
+    },
+    {
+      "name": "tconstruct:momentum",
+      "level": 3
+    }
+  ]
 }

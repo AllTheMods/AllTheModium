@@ -1,5 +1,6 @@
 package com.thevortex.allthemodium.blocks;
 
+import com.thevortex.allthemodium.fluids.FluidList;
 import com.thevortex.allthemodium.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -14,14 +15,14 @@ import java.util.List;
 public class VAAlloy_Block extends Block {
 
 	public VAAlloy_Block() {
-	super(Properties.create(Material.ROCK).sound(SoundType.STONE).hardnessAndResistance(7.0f));
+	super(Properties.of(Material.STONE).sound(SoundType.STONE).strength(7.0f));
 	}
 
 @Deprecated
 @Override
 public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
 	List<ItemStack> list = new ArrayList<ItemStack>();
-	list.add(new ItemStack(ModItems.UNOBTAINIUM_BLOCK));
+	list.add(new ItemStack(FluidList.VA_ALLOY_ITEM.get()));
 	return list;
 }
 

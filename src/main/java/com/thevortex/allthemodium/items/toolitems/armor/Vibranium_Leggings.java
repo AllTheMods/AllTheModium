@@ -44,12 +44,12 @@ public class Vibranium_Leggings extends ArmorItem {
     }
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
-        tooltip.add(this.getTooltip("piglin.friend").mergeStyle(TextFormatting.GOLD));
-        tooltip.add(this.getTooltip("wither.proof").mergeStyle(TextFormatting.DARK_GREEN));
-        tooltip.add(this.getTooltip("magic.resistance").mergeStyle(TextFormatting.GREEN));
-        tooltip.add(this.getTooltip("steady.guts").mergeStyle(TextFormatting.GREEN));
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
+        tooltip.add(this.getTooltip("piglin.friend").withStyle(TextFormatting.GOLD));
+        tooltip.add(this.getTooltip("wither.proof").withStyle(TextFormatting.DARK_GREEN));
+        tooltip.add(this.getTooltip("magic.resistance").withStyle(TextFormatting.GREEN));
+        tooltip.add(this.getTooltip("steady.guts").withStyle(TextFormatting.GREEN));
+        super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
     protected TextComponent getTooltip(String key){
         return new TranslationTextComponent(key);
@@ -57,12 +57,12 @@ public class Vibranium_Leggings extends ArmorItem {
 
     @Override
     public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
-	    if((stack.getItem() == ModItems.VIBRANIUM_LEGGINGS) && (!world.isRemote)) {
-            Collection<EffectInstance> potions = player.getActivePotionEffects();
+	    if((stack.getItem() == ModItems.VIBRANIUM_LEGGINGS) && (!world.isClientSide)) {
+            Collection<EffectInstance> potions = player.getActiveEffects();
             try {
                 for (EffectInstance effectInstance : potions) {
-                    if (effectInstance.getPotion() == Effects.NAUSEA)
-                        player.removePotionEffect(Effects.NAUSEA);
+                    if (effectInstance.getEffect() == Effects.CONFUSION)
+                        player.removeEffect(Effects.CONFUSION);
                 }
             } catch(ConcurrentModificationException exception) {
 
