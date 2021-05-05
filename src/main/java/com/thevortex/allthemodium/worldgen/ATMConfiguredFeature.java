@@ -64,7 +64,12 @@ public class ATMConfiguredFeature {
 							ImmutableSet.of(Blocks.SOUL_SAND, Blocks.NETHERRACK)))
 					.decorated(Placement.LAVA_LAKE.configured(new ChanceConfig(100))).squared()
 					.range(20));
-
+	public static ConfiguredFeature<?, ?> OTHER_SOUL_LAVA_SPRING = newConfiguredFeature("soul_lava_spring",
+			Feature.SPRING
+					.configured(new LiquidsConfig(FluidList.blueLava.get().defaultFluidState(), false, 5, 0,
+							ImmutableSet.of(Blocks.SOUL_SAND, Blocks.NETHERRACK,Blocks.BASALT)))
+					.decorated(Placement.DEPTH_AVERAGE.configured(new DepthAverageConfig(50, 30))).squared()
+					.range(20));
 
 
 

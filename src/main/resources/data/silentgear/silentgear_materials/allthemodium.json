@@ -2,6 +2,9 @@
   "availability": {
     "tier": 5,
     "visible": true,
+    "categories": [
+      "metal"
+    ],
     "gear_blacklist": []
   },
   "crafting_items": {
