@@ -1,0 +1,24 @@
+
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:nuggets/unobtainium"
+
+    },
+    {
+      "tag": "forge:nuggets/unobtainium"
+
+    }
+  ],
+  "result": {
+    "item": "iceandfire:unobtainium_pile",
+    "count": 1
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "iceandfire"
+    }
+  ]
+}

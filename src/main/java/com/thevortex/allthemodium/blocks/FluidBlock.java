@@ -7,6 +7,7 @@ import java.util.UUID;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import com.thevortex.allthemodium.particledata.AllthemodiumParticleData;
 import net.minecraft.block.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandSource;
@@ -220,22 +221,30 @@ public class FluidBlock extends FlowingFluidBlock {
 	@OnlyIn(Dist.CLIENT)
 	@Override
 	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-
-		spawnParticles(worldIn, pos);
+		if(stateIn.is(FluidList.molten_BlueLava_block.get())) {
+			//spawnParticles(worldIn, pos);
+		}
 		super.animateTick(stateIn, worldIn, pos, rand);
 	}
 
-	private static void spawnParticles(World p_180691_0_, BlockPos worldIn) {
+	private static void spawnParticles(World world, BlockPos worldIn) {
 		double d0 = 0.5625D;
-		Random random = p_180691_0_.random;
-		if ((!p_180691_0_.getBlockState(worldIn).isSolidRender(p_180691_0_, worldIn))
-				&& (p_180691_0_.getBlockState(worldIn).getFluidState().isSource())) {
-			p_180691_0_.addParticle(ParticleTypes.SOUL_FIRE_FLAME, (double) worldIn.getX() + 0.5D,
-					(double) worldIn.getY() + 0.5D, (double) worldIn.getZ() + 0.5D,
-					(double) (random.nextFloat() / 2.0F), 5.0E-5D, (double) (random.nextFloat() / 2.0F));
-
+		Random random = world.random;
+		if(world.getFluidState(worldIn).getFluidState().isSource()) {
+			for (Direction direction : Direction.values()) {
+				BlockPos blockpos = worldIn.offset(direction.getNormal());
+				if (!world.getBlockState(blockpos).isSolidRender(world, blockpos)) {
+					Direction.Axis direction$axis = direction.getAxis();
+					double d1 = direction$axis == Direction.Axis.X ? 0.5D + 0.5625D * (double) direction.getStepX() : (double) random.nextFloat();
+					double d2 = direction$axis == Direction.Axis.Y ? 0.5D + 0.5625D * (double) direction.getStepY() : (double) random.nextFloat();
+					double d3 = direction$axis == Direction.Axis.Z ? 0.5D + 0.5625D * (double) direction.getStepZ() : (double) random.nextFloat();
+					world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, (double) worldIn.getX() + d1, (double) worldIn.getY() + d2, (double) worldIn.getZ() + d3, random.nextFloat(), random.nextFloat(), random.nextFloat());
+					world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, (double) worldIn.getX() + d1, (double) worldIn.getY() + d2, (double) worldIn.getZ() + d3, random.nextFloat(), -random.nextFloat(), -random.nextFloat());
+					world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, (double) worldIn.getX() + d1, (double) worldIn.getY() + d2, (double) worldIn.getZ() + d3, -random.nextFloat(), random.nextFloat(), -random.nextFloat());
+					world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, (double) worldIn.getX() + d1, (double) worldIn.getY() + d2, (double) worldIn.getZ() + d3, -random.nextFloat(), -random.nextFloat(), random.nextFloat());
+				}
+			}
 		}
-
 	}
 
 	@Override

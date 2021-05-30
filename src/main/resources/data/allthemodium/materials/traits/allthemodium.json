@@ -1,0 +1,12 @@
+{
+  "default": [
+    {
+      "name": "tconstruct:heavy",
+      "level": 5
+    },
+    {
+      "name": "tconstruct:momentum",
+      "level": 3
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 package com.thevortex.allthemodium.init;
 
+import com.github.alexthe666.iceandfire.block.BlockGoldPile;
 import com.thevortex.allthemodium.blocks.Allthemodium_Block;
 import com.thevortex.allthemodium.blocks.Allthemodium_Ore;
 import com.thevortex.allthemodium.blocks.TeleportPad;
@@ -14,6 +15,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ObjectHolder;
 
 public class ModBlocks {
@@ -31,11 +33,15 @@ public class ModBlocks {
 	public static Block UNOBTAINIUMBLOCK;
 	@ObjectHolder("allthemodium:teleport_pad")
 	public static Block TELEPORT_PAD;
+
+
+
 	public ModBlocks() {
 		
 	}
 
 	public static void init(Register<Block> event) {
+
 		ALLTHEMODIUMBLOCK = new Allthemodium_Block().setRegistryName(location("allthemodium_block"));
 		VIBRANIUMBLOCK = new Vibranium_Block().setRegistryName(location("vibranium_block"));
 		UNOBTAINIUMBLOCK = new Unobtainium_Block().setRegistryName(location("unobtainium_block"));

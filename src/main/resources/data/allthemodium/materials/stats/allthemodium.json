@@ -1,23 +1,19 @@
 {
-  "materialId": "allthemodium:allthemodium",
-  "stats": [
-    {
-      "id": "tconstruct:head",
-      "durability": 5500,
-      "miningSpeed": 18.0,
-      "harvestLevel": 5,
-      "attack": 62.0
-    },
-    {
-      "id": "tconstruct:handle",
-      "durability": 1.5,
-      "miningSpeed": 18.0,
-      "attackSpeed": 18.0,
-      "attackDamage": 1.2
-    },
-    {
-      "id": "tconstruct:extra",
-      "durability": 1000
+  "stats":  {
+      "tconstruct:head": {
+        "durability": 5500,
+        "miningSpeed": 18.0,
+        "harvestLevel": 5,
+        "attack": 62.0
+      },
+      "tconstruct:handle": {
+        "durability": 1.5,
+        "miningSpeed": 18.0,
+        "attackSpeed": 18.0,
+        "attackDamage": 1.2
+      },
+      "tconstruct:extra": {
+        "durability": 1000
+      }
     }
-  ]
 }

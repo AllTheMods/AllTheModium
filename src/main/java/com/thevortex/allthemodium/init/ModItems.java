@@ -20,6 +20,7 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent.Register;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ObjectHolder;
 
 public class ModItems {
@@ -236,7 +237,6 @@ public class ModItems {
 		event.getRegistry().register(ModItems.VIBRANIUM_ALLTHEMODIUM_ALLOY);
 
 		event.getRegistry().register(ModItems.TELEPORT_PAD);
-
 
 		//event.getRegistry().register(ModItems.UNOBTAINIUM_BATTERY);
 	}

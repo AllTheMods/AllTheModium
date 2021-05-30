@@ -1,0 +1,12 @@
+{
+  "default": [
+    {
+      "name": "tconstruct:lightweight",
+      "level": 5
+    },
+    {
+      "name": "tconstruct:insatiable",
+      "level": 3
+    }
+  ]
+}

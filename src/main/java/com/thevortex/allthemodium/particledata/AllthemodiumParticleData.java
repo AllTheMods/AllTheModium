@@ -48,6 +48,7 @@ public class AllthemodiumParticleData implements IParticleData {
 		      this.green = green;
 		      this.blue = blue;
 		      this.alpha = MathHelper.clamp(alpha, 0.01F, 2.0F);
+
 		   }
 
 		   @Override

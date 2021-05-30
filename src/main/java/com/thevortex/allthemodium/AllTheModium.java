@@ -65,12 +65,13 @@ public class AllTheModium
     public AllTheModium() {
         // Register the setup method for modloading
     	IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-    
+
     	FluidList.FLUIDS.register(modEventBus);
        	FluidList.BLOCKS.register(modEventBus);
     	FluidList.ITEMS.register(modEventBus);
     	ATMCraftingSetup.REGISTRY.register(modEventBus);
-		if(ModList.get().isLoaded("mekanism")) {
+
+    	if(ModList.get().isLoaded("mekanism")) {
 			modEventBus.register(MekRegistry.class);
 		}
 
@@ -93,7 +94,11 @@ public class AllTheModium
 
 		@SubscribeEvent
 		public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
+
 			ModBlocks.init(event);
+			if(ModList.get().isLoaded("iceandfire")) {
+				GoldPiles.init(event);
+			}
 		}
 
 
@@ -103,6 +108,7 @@ public class AllTheModium
 			ModItems.init(event);
 			if(ModList.get().isLoaded("iceandfire")) {
 				IAFForgeRecipes.init();
+				IAFForgeRecipes.regIaFItems(event);
 			}
 		}
 		@SubscribeEvent

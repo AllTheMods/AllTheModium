@@ -6,15 +6,5 @@
   "fluid": "allthemodium:molten_vibranium",
   "fluidPerUnit": 144,
   "textColor": "#26de88",
-  "temperature": 2000,
-  "traits": [
-    {
-      "name": "tconstruct:maintained",
-      "level": 3
-    },
-    {
-      "name": "tconstruct:lacerating",
-      "level": 3
-    }
-  ]
+  "temperature": 2000
 }

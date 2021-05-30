@@ -5,15 +5,5 @@
   "fluid": "allthemodium:molten_unobtainium",
   "fluidPerUnit": 144,
   "textColor": "#d152e3",
-  "temperature": 4000,
-  "traits": [
-    {
-      "name": "tconstruct:lightweight",
-      "level": 5
-    },
-    {
-      "name": "tconstruct:insatiable",
-      "level": 3
-    }
-  ]
+  "temperature": 4000
 }

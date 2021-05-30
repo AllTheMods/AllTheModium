@@ -1,0 +1,12 @@
+{
+  "default": [
+    {
+      "name": "tconstruct:maintained",
+      "level": 3
+    },
+    {
+      "name": "tconstruct:lacerating",
+      "level": 3
+    }
+  ]
+}

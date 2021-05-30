@@ -65,9 +65,6 @@ public class ArmorEvents {
 					if (!event.isCanceled() && armor.getItem() == ModItems.UNOBTAINIUM_LEGGINGS) {
 						event.getEntityLiving().removeEffect(Effects.LEVITATION);
 					}
-					if (event.getSource() == DamageSource.MAGIC) {
-						event.setCanceled(true);
-					}
 				}
 
 				if ((armor.getItem() == ModItems.ALLTHEMODIUM_HELMET) || (armor.getItem() == ModItems.VIBRANIUM_HELMET) || (armor.getItem() == ModItems.UNOBTAINIUM_HELMET)) {

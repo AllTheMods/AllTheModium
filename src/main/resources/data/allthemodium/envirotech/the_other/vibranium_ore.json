@@ -1,14 +1,16 @@
 {
-  "program": "envirotech:resource",
+  "program": ["envirotech:ore", "envirotech:metallic_ore"],
   "item": {"raw:item": "allthemodium:vibranium_ore", "count":1, "selector": "all"},
   "config": [
     {
+      "tiers": [8],
       "dimensions": ["allthemodium:the_other"],
       "weight": 22
     },
     {
+      "tiers": [8],
       "dimensions": ["allthemodium:the_other"],
-      "focus": "envirotech:obsidian",
+      "focus": "envirotech:green",
       "weight": 220
     }
   ]

@@ -39,23 +39,23 @@ public class EventWorldgen {
         }
         // twilight forest.
         if(mod.equals("twilightforest") && biome.contains("final_plateau") && ModList.get().isLoaded("iceandfire")) {
-            event.getSpawns().getSpawner(EntityClassification.CREATURE).add(new MobSpawnInfo.Spawners(IafEntityRegistry.HIPPOGRYPH, 150, 1, 1));
+            event.getSpawns().getSpawner(EntityClassification.CREATURE).add(new MobSpawnInfo.Spawners(IafEntityRegistry.HIPPOGRYPH, 10, 1, 1));
         }
         if(mod.equals("twilightforest") && biome.contains("stream") && ModList.get().isLoaded("iceandfire")) {
-            event.getSpawns().getSpawner(EntityClassification.CREATURE).add(new MobSpawnInfo.Spawners(IafEntityRegistry.HIPPOCAMPUS,150,1,1));
+            event.getSpawns().getSpawner(EntityClassification.CREATURE).add(new MobSpawnInfo.Spawners(IafEntityRegistry.HIPPOCAMPUS,15,1,1));
         }
         if(mod.equals("twilightforest") && biome.contains("enchanted_forest")&& ModList.get().isLoaded("iceandfire")) {
             event.getGeneration().getFeatures(GenerationStage.Decoration.SURFACE_STRUCTURES).add(() -> IafWorldRegistry.PIXIE_VILLAGE_CF);
         }
-        if(mod.equals("ratlantis") && biome.contains("ratlantis_biome") && ModList.get().isLoaded("iceandfire")) {
+        if(mod.equals("rats") && biome.contains("ratlantis_biome") && ModList.get().isLoaded("iceandfire")) {
             event.getGeneration().getFeatures(GenerationStage.Decoration.SURFACE_STRUCTURES).add(() -> IafWorldRegistry.SIREN_ISLAND_CF);
-            event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.SIREN,150,1,1));
-            event.getSpawns().getSpawner(EntityClassification.CREATURE).add(new MobSpawnInfo.Spawners(IafEntityRegistry.SEA_SERPENT,45,1,1));
+            event.getSpawns().getSpawner(EntityClassification.WATER_CREATURE).add(new MobSpawnInfo.Spawners(IafEntityRegistry.SIREN,1,1,1));
+            event.getSpawns().getSpawner(EntityClassification.WATER_CREATURE).add(new MobSpawnInfo.Spawners(IafEntityRegistry.SEA_SERPENT,4,1,1));
         }
         if(mod.equals("twilightforest") && biome.contains("lake") && ModList.get().isLoaded("iceandfire")) {
-            event.getSpawns().getSpawner(EntityClassification.CREATURE).add(new MobSpawnInfo.Spawners(IafEntityRegistry.HIPPOCAMPUS,150,1,1));
-            event.getSpawns().getSpawner(EntityClassification.CREATURE).add(new MobSpawnInfo.Spawners(IafEntityRegistry.SEA_SERPENT,45,1,1));
-
+            event.getSpawns().getSpawner(EntityClassification.WATER_CREATURE).add(new MobSpawnInfo.Spawners(IafEntityRegistry.HIPPOCAMPUS,15,1,1));
+            event.getSpawns().getSpawner(EntityClassification.WATER_CREATURE).add(new MobSpawnInfo.Spawners(IafEntityRegistry.SEA_SERPENT,4,1,1));
+            event.getSpawns().getSpawner(EntityClassification.WATER_CREATURE).add(new MobSpawnInfo.Spawners(IafEntityRegistry.SIREN,1,1,1));
         }
         if((event.getCategory() == Biome.Category.NETHER) && (mod.equals(Reference.MOD_ID))) {
             //Allthemodium(Vibranium/Soul Lava)
@@ -132,6 +132,7 @@ public class EventWorldgen {
                 }
                 if(ModList.get().isLoaded("iceandfire")) {
 
+                    event.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> IafWorldRegistry.FIRE_LILY_CF);
                 }
             }
             if(biome.equals("basalt_deltas")) {
@@ -168,6 +169,7 @@ public class EventWorldgen {
                 if(ModList.get().isLoaded("iceandfire")) {
                     event.getGeneration().getFeatures(GenerationStage.Decoration.SURFACE_STRUCTURES).add(() -> IafWorldRegistry.LIGHTNING_DRAGON_ROOST_CF);
                     event.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_STRUCTURES).add(() -> IafWorldRegistry.LIGHTNING_DRAGON_CAVE_CF);
+                    event.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> IafWorldRegistry.LIGHTNING_LILY_CF);
                     }
             }
             if(biome.contains("edge")){
@@ -175,7 +177,7 @@ public class EventWorldgen {
                 event.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> Features.TREES_MOUNTAIN_EDGE);
                 if(ModList.get().isLoaded("iceandfire")) {
 
-                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.HYDRA, 100, 1, 1));
+                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.HYDRA, 8, 1, 1));
                     event.getGeneration().getFeatures(GenerationStage.Decoration.SURFACE_STRUCTURES).add(() -> IafWorldRegistry.HYDRA_CAVE_CF);
 
                 }
@@ -188,20 +190,21 @@ public class EventWorldgen {
 
                 }
                 if(ModList.get().isLoaded("iceandfire")) {
-                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.DREAD_BEAST,15,1,1));
-                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.DREAD_LICH,25,1,1));
-                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.DREAD_KNIGHT,35,1,1));
-                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.DREAD_THRALL,45,1,1));
-                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.DREAD_HORSE,35,1,1));
-                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.DREAD_GHOUL,55,1,1));
-                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.DREAD_SCUTTLER,15,1,1));
+                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.DREAD_BEAST,1,1,1));
+                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.DREAD_LICH,2,1,1));
+                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.DREAD_KNIGHT,3,1,1));
+                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.DREAD_THRALL,4,1,1));
+                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.DREAD_HORSE,3,1,1));
+                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.DREAD_GHOUL,5,1,1));
+                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.DREAD_SCUTTLER,1,1,1));
                 }
             }
             if(biome.equals("mountains")){
                 if(ModList.get().isLoaded("iceandfire")) {
-                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.TROLL, 150, 1, 4));
+                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.TROLL, 5, 1, 4));
                     event.getGeneration().getFeatures(GenerationStage.Decoration.SURFACE_STRUCTURES).add(() -> IafWorldRegistry.ICE_DRAGON_ROOST_CF);
                     event.getGeneration().getFeatures(GenerationStage.Decoration.UNDERGROUND_STRUCTURES).add(() -> IafWorldRegistry.ICE_DRAGON_CAVE_CF);
+                    event.getGeneration().getFeatures(GenerationStage.Decoration.VEGETAL_DECORATION).add(() -> IafWorldRegistry.FROST_LILY_CF);
                 }
             }
             if(biome.equals("warped_forest")) {
@@ -219,7 +222,7 @@ public class EventWorldgen {
                 }
                 if(ModList.get().isLoaded("iceandfire")) {
                     event.getGeneration().addStructureStart(IafWorldRegistry.GORGON_TEMPLE_CF);
-                    event.getSpawns().getSpawner(EntityClassification.CREATURE).add(new MobSpawnInfo.Spawners(IafEntityRegistry.AMPHITHERE,150,1,2));
+                    event.getSpawns().getSpawner(EntityClassification.CREATURE).add(new MobSpawnInfo.Spawners(IafEntityRegistry.AMPHITHERE,10,1,2));
 
 
                 }
@@ -234,8 +237,8 @@ public class EventWorldgen {
                 }
                 if(ModList.get().isLoaded("iceandfire")) {
                     event.getGeneration().addStructureStart(IafWorldRegistry.GRAVEYARD_CF);
-                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.GHOST,45,1,1));
-                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.GHOST_SWORD,25,1,1));
+                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.GHOST,1,1,1));
+                    event.getSpawns().getSpawner(EntityClassification.MONSTER).add(new MobSpawnInfo.Spawners(IafEntityRegistry.GHOST_SWORD,1,1,1));
 
                 }
             }

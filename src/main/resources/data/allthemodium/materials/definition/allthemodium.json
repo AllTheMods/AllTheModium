@@ -5,15 +5,5 @@
   "fluid": "allthemodium:molten_allthemodium",
   "fluidPerUnit": 144,
   "textColor": "#ffef0e",
-  "temperature": 1500,
-  "traits": [
-    {
-      "name": "tconstruct:heavy",
-      "level": 5
-    },
-    {
-      "name": "tconstruct:momentum",
-      "level": 3
-    }
-  ]
+  "temperature": 1500
 }
