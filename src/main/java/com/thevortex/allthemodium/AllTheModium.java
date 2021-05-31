@@ -57,7 +57,6 @@ public class AllTheModium
         // Register the setup method for modloading
     	IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-    	ModEntityTypes.ENTITIES.register(modEventBus);
     	FluidList.FLUIDS.register(modEventBus);
        	FluidList.BLOCKS.register(modEventBus);
     	FluidList.ITEMS.register(modEventBus);
@@ -105,6 +104,7 @@ public class AllTheModium
 			if(ModList.get().isLoaded("iceandfire")) {
 				IAFForgeRecipes.init();
 				IAFForgeRecipes.regIaFItems(event);
+				ModEntityTypes.ENTITIES.register(modEventBus);
 			}
 		}
 	}
