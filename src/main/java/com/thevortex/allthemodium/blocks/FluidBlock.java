@@ -1,55 +1,30 @@
 package com.thevortex.allthemodium.blocks;
 
-import java.util.Iterator;
-import java.util.List;
 import java.util.Random;
-import java.util.UUID;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 import com.thevortex.allthemodium.particledata.AllthemodiumParticleData;
 import net.minecraft.block.*;
-import net.minecraft.client.Minecraft;
-import net.minecraft.command.CommandSource;
-import net.minecraft.command.arguments.DimensionArgument;
-import net.minecraft.command.impl.TeleportCommand;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
-import net.minecraft.particles.RedstoneParticleData;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.management.PlayerList;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.Direction;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.*;
-import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.util.ITeleporter;
 
 import net.minecraftforge.event.ForgeEventFactory;
-import org.antlr.v4.runtime.misc.NotNull;
 
-import com.mojang.brigadier.context.CommandContext;
 import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.fluids.FluidList;
-import com.thevortex.allthemodium.init.ModItems;
-
-import javax.annotation.Nullable;
 
 public class FluidBlock extends FlowingFluidBlock {
 	public int tickcount = 0;

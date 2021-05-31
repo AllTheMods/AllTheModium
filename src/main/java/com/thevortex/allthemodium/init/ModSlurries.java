@@ -4,17 +4,12 @@ import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.reference.Reference;
 import mekanism.api.chemical.slurry.Slurry;
 import mekanism.api.chemical.slurry.SlurryBuilder;
-import mekanism.api.datagen.recipe.builder.FluidSlurryToSlurryRecipeBuilder;
-import mekanism.common.registration.impl.SlurryRegistryObject;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.registries.ForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
 public class ModSlurries {
-
 
     public static final Slurry ATM_Dirty = new Slurry(SlurryBuilder.builder(new ResourceLocation("minecraft","block/water_still")).ore(new ResourceLocation("forge","ores/allthemodium")).color(0xFFFFEF0E)).getChemical().setRegistryName(new ResourceLocation(Reference.MOD_ID,"dirty_allthemodium"));
     public static final Slurry VIB_Dirty = new Slurry(SlurryBuilder.builder(new ResourceLocation("minecraft","block/water_still")).ore(new ResourceLocation("forge","ores/vibranium")).color(0xFF26DE88)).getChemical().setRegistryName(new ResourceLocation(Reference.MOD_ID,"dirty_vibranium"));

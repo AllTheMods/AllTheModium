@@ -20,12 +20,10 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent.Register;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ObjectHolder;
 
 public class ModItems {
 
-	   
 	@ObjectHolder("allthemodium:allthemodium_apple")
 	public static Item ALLTHEMODIUM_APPLE;
 	@ObjectHolder("allthemodium:allthemodium_carrot")
@@ -66,11 +64,6 @@ public class ModItems {
 	@ObjectHolder("allthemodium:allthemodium_boots")
 	public static ArmorItem ALLTHEMODIUM_BOOTS;
 	
-	
-	
-
-	
-	
 	@ObjectHolder("allthemodium:vibranium_helmet")
 	public static ArmorItem VIBRANIUM_HELMET;
 	@ObjectHolder("allthemodium:vibranium_chestplate")
@@ -79,7 +72,6 @@ public class ModItems {
 	public static ArmorItem VIBRANIUM_LEGGINGS;
 	@ObjectHolder("allthemodium:vibranium_boots")
 	public static ArmorItem VIBRANIUM_BOOTS;
-	
 	
 	@ObjectHolder("allthemodium:unobtainium_helmet")
 	public static ArmorItem UNOBTAINIUM_HELMET;
@@ -128,8 +120,6 @@ public class ModItems {
 	public static ItemGroup group = AllTheModium.GROUP;
 	public static void init(Register<Item> event) {
 
-		
-		
 		ALLTHEMODIUM_APPLE = new Allthemodium_Apple(new Item.Properties().tab(group).fireResistant().food(ModFoods.ALLTHEMODIUM_APPLE)).setRegistryName(location("allthemodium_apple"));
 		ALLTHEMODIUM_CARROT = new Allthemodium_Carrot(new Item.Properties().tab(group).fireResistant().food(ModFoods.ALLTHEMODIUM_CARROT)).setRegistryName(location("allthemodium_carrot"));
 		ALLTHEMODIUM_DUST = new Allthemodium_Dust(new Item.Properties().tab(group).fireResistant()).setRegistryName(location("allthemodium_dust"));

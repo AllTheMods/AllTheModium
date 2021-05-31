@@ -1,33 +1,22 @@
 package com.thevortex.allthemodium.worldgen;
 
-import java.util.Set;
-
 import com.google.common.collect.ImmutableSet;
-import com.thevortex.allthemodium.blocks.Allthemodium_Ore;
 import com.thevortex.allthemodium.fluids.FluidList;
 import com.thevortex.allthemodium.init.ModBlocks;
 import com.thevortex.allthemodium.reference.Reference;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.Features;
-import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.LiquidsConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.template.BlockMatchRuleTest;
 import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.DepthAverageConfig;
-import net.minecraft.world.gen.placement.DepthAveragePlacement;
 import net.minecraft.world.gen.placement.Placement;
-import net.minecraft.world.gen.placement.TopSolidRangeConfig;
 
 public class ATMConfiguredFeature {
 

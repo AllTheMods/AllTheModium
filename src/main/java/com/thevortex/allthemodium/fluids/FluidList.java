@@ -6,9 +6,13 @@ import com.thevortex.allthemodium.blocks.UAAlloy_Block;
 import com.thevortex.allthemodium.blocks.UVAlloy_Block;
 import com.thevortex.allthemodium.blocks.VAAlloy_Block;
 import com.thevortex.allthemodium.init.ModItems;
-import com.thevortex.allthemodium.items.*;
+import com.thevortex.allthemodium.items.SoulBucket;
 import com.thevortex.allthemodium.reference.Reference;
 
+import net.allthemods.alltheores.meka.Clump;
+import net.allthemods.alltheores.meka.Crystal;
+import net.allthemods.alltheores.meka.DirtyDust;
+import net.allthemods.alltheores.meka.Shard;
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.fluid.Fluid;

@@ -1,7 +1,6 @@
 package com.thevortex.allthemodium.blocks;
 
 import com.thevortex.allthemodium.fluids.FluidList;
-import com.thevortex.allthemodium.init.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;

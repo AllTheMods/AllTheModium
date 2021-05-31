@@ -1,6 +1,5 @@
 package com.thevortex.allthemodium.init;
 
-import com.github.alexthe666.iceandfire.block.BlockGoldPile;
 import com.thevortex.allthemodium.blocks.Allthemodium_Block;
 import com.thevortex.allthemodium.blocks.Allthemodium_Ore;
 import com.thevortex.allthemodium.blocks.TeleportPad;
@@ -15,7 +14,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent.Register;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ObjectHolder;
 
 public class ModBlocks {

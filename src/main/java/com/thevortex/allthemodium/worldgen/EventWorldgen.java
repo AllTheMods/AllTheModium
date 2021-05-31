@@ -1,12 +1,9 @@
 package com.thevortex.allthemodium.worldgen;
 
-import com.github.alexthe666.iceandfire.IafConfig;
 import com.github.alexthe666.iceandfire.entity.IafEntityRegistry;
 import com.github.alexthe666.iceandfire.world.IafWorldRegistry;
 import com.thevortex.allthemodium.reference.Reference;
 import corgiaoc.byg.core.world.BYGConfiguredFeatures;
-import corgiaoc.byg.core.world.BYGFeatures;
-import net.allthemods.alltheores.AllTheOres;
 import net.allthemods.alltheores.worldgen.ATOConfiguredFeature;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.world.biome.Biome;
@@ -14,14 +11,11 @@ import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.Features;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
-import net.minecraft.world.gen.feature.RuinedPortalFeature;
-import net.minecraft.world.gen.feature.StructureFeature;
 import net.minecraft.world.gen.feature.structure.*;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
-import org.lwjgl.system.CallbackI;
 
 import java.util.Objects;
 

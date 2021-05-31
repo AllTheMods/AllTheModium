@@ -7,13 +7,10 @@ import com.thevortex.allthemodium.init.ModItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.IBeaconBeamColorProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootContext;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorldReader;
 
 public class Vibranium_Block extends Block {
 

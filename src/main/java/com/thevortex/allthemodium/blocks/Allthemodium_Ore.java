@@ -1,12 +1,8 @@
 package com.thevortex.allthemodium.blocks;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.init.ModBlocks;
-import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.particledata.AllthemodiumParticleData;
 
 import net.minecraft.block.Block;
@@ -17,7 +13,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.particles.RedstoneParticleData;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
@@ -25,8 +20,6 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraft.loot.LootContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;

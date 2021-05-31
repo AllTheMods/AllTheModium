@@ -3,20 +3,12 @@ package com.thevortex.allthemodium.items.toolitems.armor;
 import java.util.Collection;
 import java.util.ConcurrentModificationException;
 import java.util.List;
-import java.util.UUID;
 
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
 import com.thevortex.allthemodium.init.ModItems;
-import com.google.common.collect.ImmutableMultimap.Builder;
 
-import net.minecraft.block.DispenserBlock;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.Attribute;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.IArmorMaterial;
