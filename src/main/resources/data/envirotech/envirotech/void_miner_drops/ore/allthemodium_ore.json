@@ -1,5 +1,5 @@
 {
-  "program": ["envirotech:ore", "envirotech:metallic_ore"],
+  "programs": ["envirotech:ore", "envirotech:metallic_ore"],
   "item": {"raw:item": "allthemodium:allthemodium_ore", "count":1, "selector": "all"},
   "config": [
     {
