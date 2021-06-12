@@ -31,7 +31,7 @@ public class IAFForgeRecipes {
 
     public static void init() {
 
-
+/*
 
         IafRecipeRegistry.FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(ModItems.VIBRANIUM_INGOT), new ItemStack(ModItems.ALLTHEMODIUM_INGOT), new ItemStack(ModItems.VIBRANIUM_ALLTHEMODIUM_ALLOY)));
         IafRecipeRegistry.FIRE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(ModItems.VIBRANIUM_DUST), new ItemStack(ModItems.ALLTHEMODIUM_DUST), new ItemStack(ModItems.VIBRANIUM_ALLTHEMODIUM_ALLOY)));
@@ -44,6 +44,7 @@ public class IAFForgeRecipes {
         IafRecipeRegistry.ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(ModItems.VIBRANIUM_INGOT), new ItemStack(ModItems.UNOBTAINIUM_INGOT), new ItemStack(ModItems.UNOBTAINIUM_VIBRANIUM_ALLOY)));
         IafRecipeRegistry.ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(ModItems.VIBRANIUM_DUST), new ItemStack(ModItems.UNOBTAINIUM_DUST), new ItemStack(ModItems.UNOBTAINIUM_VIBRANIUM_ALLOY)));
         IafRecipeRegistry.ICE_FORGE_RECIPES.add(new DragonForgeRecipe(new ItemStack(ModItems.VIBRANIUM_BLOCK), new ItemStack(ModItems.UNOBTAINIUM_BLOCK), new ItemStack(FluidList.UV_ALLOY_ITEM.get())));
+  */
     }
     public static void regIaFItems(RegistryEvent.Register<Item> event){
 

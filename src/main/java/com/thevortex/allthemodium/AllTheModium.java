@@ -107,8 +107,8 @@ public class AllTheModium
 
 			ModItems.init(event);
 			if(ModList.get().isLoaded("iceandfire")) {
-				IAFForgeRecipes.init();
-				IAFForgeRecipes.regIaFItems(event);
+				//IAFForgeRecipes.init();
+				IAFForgeRecipes.regIaFItems(event); //for gold piles items
 			}
 		}
 		@SubscribeEvent

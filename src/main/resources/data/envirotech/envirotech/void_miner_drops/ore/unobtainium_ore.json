@@ -5,13 +5,13 @@
     {
       "tiers": [8],
       "dimensions": ["minecraft:the_end"],
-      "weight": 5000
+      "weight": 11
     },
     {
       "tiers": [8],
       "dimensions": ["minecraft:the_end"],
       "focus": "envirotech:purple",
-      "weight": 10000
+      "weight": 110
     }
   ]
 }

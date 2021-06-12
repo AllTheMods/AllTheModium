@@ -1,0 +1,12 @@
+{
+  "dragon_type": "lightning",
+  "input_left": {
+    "tag": "forge:storage_blocks/unobtainium"
+  },
+  "input_right": {
+    "tag": "forge:storage_blocks/allthemodium"
+  },
+  "result": {
+    "item": "allthemodium:unobtainium_allthemodium_alloy_block"
+  }
+}
