@@ -1,0 +1,27 @@
+{
+   "key": "allthemodium",
+   "category": "metal",
+   "primary": "100",
+   "secondary": "50",
+   "tertiary": "50",
+   "durability": "5000",
+   "integrityCost": "1",
+   "integrityGain": "8",
+   "magicCapacity": "250",
+   "toolLevel": "5",
+   "toolEfficiency": "13",
+   "tints": {
+	"glyph":"FFEF0E",
+	"texture":"FFEF0E"
+   },
+   "textures": [
+	"shiny",
+	"metal"
+   ],
+   "material": {
+ 	"item":"allthemodium:allthemodium_ingot"
+   },
+   "requiredTools":{
+	"hammer":4
+   }
+}
