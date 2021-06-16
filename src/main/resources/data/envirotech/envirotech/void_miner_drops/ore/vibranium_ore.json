@@ -4,12 +4,12 @@
   "config": [
     {
       "tiers": [8],
-      "dimensions": ["allthemodium:the_other"],
+      "dimensions": ["minecraft:the_end"],
       "weight": 22
     },
     {
       "tiers": [8],
-      "dimensions": ["allthemodium:the_other"],
+      "dimensions": ["minecraft:the_end"],
       "focus": "envirotech:green",
       "weight": 220
     }
