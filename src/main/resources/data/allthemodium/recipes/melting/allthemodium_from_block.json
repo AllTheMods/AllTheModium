@@ -7,7 +7,7 @@
     "fluid": "allthemodium:molten_allthemodium",
     "amount": 1296
   },
-  "temperature": 1000,
+  "temperature": 1250,
   "time": 200,
   "conditions": [
       {

@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "tag": "allthemodium:molten_vibranium",
+    "amount": 144
+  },
+  "temperature": 2500,
+  "output": "allthemodium:vibranium"
+}

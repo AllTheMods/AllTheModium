@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "tag": "allthemodium:molten_unobtainium",
+    "amount": 144
+  },
+  "temperature": 4000,
+  "output": "allthemodium:unobtainium"
+}

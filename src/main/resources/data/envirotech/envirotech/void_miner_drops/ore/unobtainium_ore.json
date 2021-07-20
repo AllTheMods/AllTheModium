@@ -3,8 +3,9 @@
   "item": {"raw:item": "allthemodium:unobtainium_ore", "count":1, "selector": "all"},
   "config": [
     {
-      "tiers": [8],
+      "tiers": [5,6,7],
       "dimensions": ["minecraft:the_end"],
+      "focus": "envirotech:purple",
       "weight": 11
     },
     {
