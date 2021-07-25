@@ -8,31 +8,23 @@ import com.thevortex.allthemodium.init.ModBlocks;
 import com.thevortex.allthemodium.init.ModItems;
 
 import com.thevortex.allthemodium.reference.Reference;
-import com.thevortex.allthetweaks.config.Configuration;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.material.PushReaction;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.loot.LootContext.Builder;
-import net.minecraft.network.play.server.SPlaySoundEventPacket;
-import net.minecraft.particles.ParticleType;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.fml.ModList;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class TeleportPad extends Block {
 	protected static final VoxelShape TELEPORTPAD_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D);
@@ -43,7 +35,7 @@ public class TeleportPad extends Block {
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
 		return TELEPORTPAD_AABB;
 	}
 
@@ -52,46 +44,41 @@ public class TeleportPad extends Block {
 		return PushReaction.BLOCK;
 	}
 
-	@Override
-	public boolean hasTileEntity(BlockState state) {
-
-		return false;
-	}
 
 	@Override
-	public VoxelShape getCollisionShape(BlockState state, IBlockReader worldIn, BlockPos pos,
-			ISelectionContext context) {
+	public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos,
+			CollisionContext context) {
 
 		return TELEPORTPAD_AABB;
 	}
 
 	@Override
-	public ActionResultType use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
-			Hand handIn, BlockRayTraceResult hit) {
-		if ((player instanceof ServerPlayerEntity) && (player.isCrouching() == true)) {
+	public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player,
+								 InteractionHand handIn, BlockHitResult hit) {
+		if ((player instanceof ServerPlayer) && (player.isCrouching() == true)) {
 
-			transferPlayer((ServerPlayerEntity) player, pos);
+			transferPlayer((ServerPlayer) player, pos);
 			worldIn.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY() + 1, pos.getZ(), 0, 1, 0);
 		}
 		return super.use(state, worldIn, pos, player, handIn, hit);
 	}
 
 	@Override
-	public boolean canHarvestBlock(BlockState state, IBlockReader world, BlockPos pos, PlayerEntity player) {
-		if(player.level.dimension.getRegistryName().getNamespace().contains(Reference.MOD_ID)) {
+	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
+		if(player.level.dimension().getRegistryName().getNamespace().contains(Reference.MOD_ID)) {
 			return false;
 		} else {
 			return true;
 		}
 	}
 
-	public void transferPlayer(ServerPlayerEntity player, BlockPos pos) {
+	public void transferPlayer(ServerPlayer player, BlockPos pos) {
 		int config = 0;
-		if(ModList.get().isLoaded("allthetweaks")) {
+		/*if(ModList.get().isLoaded("allthetweaks")) {
 			config = Configuration.COMMON.mainmode.get();
-		}
-		if (player.level.dimension.equals(AllTheModium.Mining)) {
-			ServerWorld targetWorld = player.server.getLevel(AllTheModium.OverWorld);
+		}*/
+		if (player.level.dimension().equals(AllTheModium.Mining)) {
+			ServerLevel targetWorld = player.server.getLevel(AllTheModium.OverWorld);
 			int y = 256;
 			boolean located = false;
 			while (y >= 1) {
@@ -109,11 +96,11 @@ public class TeleportPad extends Block {
 				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
 				player.teleportTo(targetWorld, pos.getX() + 0.5D, y + 0.25D, pos.getZ() + 0.5D, player.rotA,
 						player.yya);
-				player.connection.send(new SPlaySoundEventPacket(1032, BlockPos.ZERO, 0, false));
+
 				return;
 			} else {
 
-				if ((!targetWorld.getBlockState(pos).hasTileEntity())
+				if ((!targetWorld.getBlockState(pos).hasBlockEntity())
 						&& (targetWorld.getBlockState(pos).canEntityDestroy(targetWorld, pos, player))) {
 					//targetWorld.setBlockState(pos, ModBlocks.TELEPORT_PAD.getDefaultState());
 				}
@@ -121,22 +108,21 @@ public class TeleportPad extends Block {
 				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
 				player.teleportTo(targetWorld, pos.getX() + 0.5D, pos.getY() + 0.25D, pos.getZ() + 0.5D, player.rotA,
 						player.yya);
-				player.connection.send(new SPlaySoundEventPacket(1032, BlockPos.ZERO, 0, false));
 			}
 
-		} else if (player.level.dimension.equals(AllTheModium.Nether)) {
-			ServerWorld targetWorld = player.server.getLevel(AllTheModium.THE_OTHER);
+		} else if (player.level.dimension().equals(AllTheModium.Nether)) {
+			ServerLevel targetWorld = player.server.getLevel(AllTheModium.THE_OTHER);
 			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), 75, Math.round(pos.getZ()));
-			if (!targetWorld.getBlockState(targetPos).hasTileEntity()) {
+			if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {
 
 				targetWorld.setBlockAndUpdate(targetPos, ModBlocks.TELEPORT_PAD.defaultBlockState());
 				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
 				player.teleportTo(targetWorld, targetPos.getX() + 0.5D, targetPos.getY() + 0.25D, targetPos.getZ() + 0.5D, 0, 0);
-				player.connection.send(new SPlaySoundEventPacket(1032, BlockPos.ZERO, 0, false));
+
 
 			}
-		} else if (player.level.dimension.equals(AllTheModium.THE_OTHER)) {
-			ServerWorld targetWorld = player.server.getLevel(AllTheModium.Nether);
+		} else if (player.level.dimension().equals(AllTheModium.THE_OTHER)) {
+			ServerLevel targetWorld = player.server.getLevel(AllTheModium.Nether);
 			int y = 128;
 			boolean located = false;
 			while (y >= 1) {
@@ -154,11 +140,11 @@ public class TeleportPad extends Block {
 				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
 				player.teleportTo(targetWorld, pos.getX() + 0.5D, y + 0.25D, pos.getZ() + 0.5D, player.rotA,
 						player.yya);
-				player.connection.send(new SPlaySoundEventPacket(1032, BlockPos.ZERO, 0, false));
+
 				return;
 			} else {
 				BlockPos newpos = new BlockPos(pos.getX(), 90 , pos.getZ());
-				if ((!targetWorld.getBlockState(newpos).hasTileEntity())
+				if ((!targetWorld.getBlockState(newpos).hasBlockEntity())
 						&& (targetWorld.getBlockState(newpos).canEntityDestroy(targetWorld, newpos, player))) {
 					targetWorld.setBlockAndUpdate(newpos, ModBlocks.TELEPORT_PAD.defaultBlockState());
 				}
@@ -166,16 +152,16 @@ public class TeleportPad extends Block {
 				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, newpos.getX(), newpos.getY(), newpos.getZ(), 0, 1, 0);
 				player.teleportTo(targetWorld, newpos.getX() + 0.5D, newpos.getY() + 0.25D, newpos.getZ() + 0.5D, player.rotA,
 						player.yya);
-				player.connection.send(new SPlaySoundEventPacket(1032, BlockPos.ZERO, 0, false));
+
 			}
-		} else if (player.level.dimension.equals(AllTheModium.OverWorld) && (config != 2)) {
-			ServerWorld targetWorld = player.server.getLevel(AllTheModium.Mining);
+		} else if (player.level.dimension().equals(AllTheModium.OverWorld) && (config != 2)) {
+			ServerLevel targetWorld = player.server.getLevel(AllTheModium.Mining);
 			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), 75, Math.round(pos.getZ()));
-			if (!targetWorld.getBlockState(targetPos).hasTileEntity()) {
+			if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {
 				targetWorld.setBlockAndUpdate(targetPos, ModBlocks.TELEPORT_PAD.defaultBlockState());
 				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
 				player.teleportTo(targetWorld, targetPos.getX() + 0.5D, targetPos.getY() + 0.25D, targetPos.getZ() + 0.5D, 0, 0);
-				player.connection.send(new SPlaySoundEventPacket(1032, BlockPos.ZERO, 0, false));
+
 			}
 		} /*else if (player.world.getDimensionKey().equals(AllTheModium.The_End)) {
 			ServerWorld targetWorld = player.server.getWorld(AllTheModium.THE_BEYOND);
@@ -213,7 +199,7 @@ public class TeleportPad extends Block {
 	}
 
 	@Override
-	public List<ItemStack> getDrops(BlockState state, Builder builder) {
+	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
 		List<ItemStack> list = new ArrayList<ItemStack>();
 		list.add(new ItemStack(ModItems.TELEPORT_PAD));
 		return list;

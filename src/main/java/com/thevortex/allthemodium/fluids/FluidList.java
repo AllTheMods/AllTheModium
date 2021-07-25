@@ -8,21 +8,23 @@ import com.thevortex.allthemodium.blocks.VAAlloy_Block;
 import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.items.*;
 import com.thevortex.allthemodium.reference.Reference;
-
-import net.minecraft.block.*;
-import net.minecraft.block.material.Material;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.BucketItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.Items;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fluids.ForgeFlowingFluid.Flowing;
 import net.minecraftforge.fluids.ForgeFlowingFluid.Source;
-import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -33,8 +35,8 @@ public class FluidList {
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MOD_ID);
 	public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS,
 			Reference.MOD_ID);
-	public static final DeferredRegister<TileEntityType<?>> ENTITY = DeferredRegister
-			.create(ForgeRegistries.TILE_ENTITIES, Reference.MOD_ID);
+	public static final DeferredRegister<BlockEntityType<?>> ENTITY = DeferredRegister
+			.create(ForgeRegistries.BLOCK_ENTITIES, Reference.MOD_ID);
 
 
 	public static final ResourceLocation SOUL_LAVA_STILL = new ResourceLocation(Reference.MOD_ID,
@@ -89,13 +91,13 @@ public class FluidList {
 	public static final RegistryObject<Flowing> flowing_vaporAllthemodium = FLUIDS
 			.register("flowing_vapor_allthemodium", () -> new ForgeFlowingFluid.Flowing(makeATMGasProperties()));
 
-	public static final RegistryObject<FlowingFluidBlock> molten_allthemodium_block = BLOCKS
-			.register("molten_allthemodium_block", () -> new FlowingFluidBlock(moltenAllthemodium,
+	public static final RegistryObject<LiquidBlock> molten_allthemodium_block = BLOCKS
+			.register("molten_allthemodium_block", () -> new LiquidBlock(moltenAllthemodium,
 					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
 						return 12;
 					}).strength(100.0F).noDrops()));
-	public static final RegistryObject<FlowingFluidBlock> vapor_allthemodium_block = BLOCKS
-			.register("vapor_allthemodium_block", () -> new FlowingFluidBlock(vaporAllthemodium,
+	public static final RegistryObject<LiquidBlock> vapor_allthemodium_block = BLOCKS
+			.register("vapor_allthemodium_block", () -> new LiquidBlock(vaporAllthemodium,
 					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
 						return 12;
 					}).strength(100.0F).noDrops()));
@@ -116,13 +118,13 @@ public class FluidList {
 	public static final RegistryObject<Flowing> flowing_vaporVibranium = FLUIDS.register("flowing_vapor_vibranium",
 			() -> new ForgeFlowingFluid.Flowing(makeVibGasProperties()));
 
-	public static final RegistryObject<FlowingFluidBlock> molten_vibranium_block = BLOCKS
-			.register("molten_vibranium_block", () -> new FlowingFluidBlock(moltenVibranium,
+	public static final RegistryObject<LiquidBlock> molten_vibranium_block = BLOCKS
+			.register("molten_vibranium_block", () -> new LiquidBlock(moltenVibranium,
 					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
 						return 10;
 					}).strength(100.0F).noDrops()));
-	public static final RegistryObject<FlowingFluidBlock> vapor_vibranium_block = BLOCKS
-			.register("vapor_vibranium_block", () -> new FlowingFluidBlock(moltenVibranium,
+	public static final RegistryObject<LiquidBlock> vapor_vibranium_block = BLOCKS
+			.register("vapor_vibranium_block", () -> new LiquidBlock(moltenVibranium,
 					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
 						return 10;
 					}).strength(100.0F).noDrops()));
@@ -142,13 +144,13 @@ public class FluidList {
 	public static final RegistryObject<Flowing> flowing_vaporUnobtainium = FLUIDS
 			.register("flowing_vapor_unobtainium", () -> new ForgeFlowingFluid.Flowing(makeUnobGasProperties()));
 
-	public static final RegistryObject<FlowingFluidBlock> molten_unobtainium_block = BLOCKS
-			.register("molten_unobtainium_block", () -> new FlowingFluidBlock(moltenUnobtainium,
+	public static final RegistryObject<LiquidBlock> molten_unobtainium_block = BLOCKS
+			.register("molten_unobtainium_block", () -> new LiquidBlock(moltenUnobtainium,
 					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
 						return 6;
 					}).strength(100.0F).noDrops()));
-	public static final RegistryObject<FlowingFluidBlock> vapor_unobtainium_block = BLOCKS
-			.register("vapor_unobtainium_block", () -> new FlowingFluidBlock(moltenUnobtainium,
+	public static final RegistryObject<LiquidBlock> vapor_unobtainium_block = BLOCKS
+			.register("vapor_unobtainium_block", () -> new LiquidBlock(moltenUnobtainium,
 					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
 						return 6;
 					}).strength(100.0F).noDrops()));
@@ -164,7 +166,7 @@ public class FluidList {
 	public static final RegistryObject<Flowing> flowing_blueLava = FLUIDS.register("flowing_molten_bluelava",
 			() -> new ForgeFlowingFluid.Flowing(makeBlueLavaProperties()));
 
-	public static final RegistryObject<FlowingFluidBlock> molten_BlueLava_block = BLOCKS
+	public static final RegistryObject<LiquidBlock> molten_BlueLava_block = BLOCKS
 			.register("molten_bluelava_block", () -> new FluidBlock(blueLava,
 					Block.Properties.of(Material.LAVA).randomTicks().lightLevel((state) -> {
 						return 15;
@@ -215,9 +217,9 @@ public class FluidList {
 								.block(molten_BlueLava_block);
 	}
 
-	public static final RegistryObject<Block> ANCIENT_STONE = BLOCKS.register("ancient_stone", () -> new Block(AbstractBlock.Properties.of(Material.STONE).sound(SoundType.STONE).strength(1.5f)));
-	public static final RegistryObject<Block> ANCIENT_DIRT = BLOCKS.register("ancient_dirt", () -> new Block(AbstractBlock.Properties.of(Material.DIRT).sound(SoundType.GRASS).strength(0.6f)));
-	public static final RegistryObject<Block> ANCIENT_GRASS = BLOCKS.register("ancient_grass", () -> new Block(AbstractBlock.Properties.of(Material.DIRT).sound(SoundType.WET_GRASS).strength(0.6f)));
+	public static final RegistryObject<Block> ANCIENT_STONE = BLOCKS.register("ancient_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(1.5f)));
+	public static final RegistryObject<Block> ANCIENT_DIRT = BLOCKS.register("ancient_dirt", () -> new Block(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.GRASS).strength(0.6f)));
+	public static final RegistryObject<Block> ANCIENT_GRASS = BLOCKS.register("ancient_grass", () -> new Block(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.WET_GRASS).strength(0.6f)));
 
 	public static final RegistryObject<Item> ANCIENT_STONE_ITEM = ITEMS.register("ancient_stone", () -> new BlockItem(ANCIENT_STONE.get(), new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> ANCIENT_DIRT_ITEM = ITEMS.register("ancient_dirt", () -> new BlockItem(ANCIENT_DIRT.get(), new Item.Properties().tab(AllTheModium.GROUP)));

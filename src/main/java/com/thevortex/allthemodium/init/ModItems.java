@@ -4,21 +4,13 @@ import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.items.*;
 import com.thevortex.allthemodium.items.toolitems.armor.*;
 import com.thevortex.allthemodium.items.toolitems.tools.*;
-import com.thevortex.allthemodium.material.ArmorMaterial;
+import com.thevortex.allthemodium.material.AArmorMaterial;
 import com.thevortex.allthemodium.material.ItemTier;
 import com.thevortex.allthemodium.reference.Reference;
 
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.item.ShovelItem;
-import net.minecraft.item.SwordItem;
-import net.minecraft.item.ToolItem;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.*;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ObjectHolder;
@@ -45,11 +37,12 @@ public class ModItems {
 	public static Item ALLTHEMODIUM_ORE;
 	@ObjectHolder("allthemodium:allthemodium_nugget")
 	public static Item ALLTHEMODIUM_NUGGET;
-
+	/*
 	@ObjectHolder("allthemodium:alloy_paxel")
-	public static ToolItem ALLTHEMODIUM_PAXEL;
+	public static PickaxeItem ALLTHEMODIUM_PAXEL;
+	*/
 	@ObjectHolder("allthemodium:alloy_pick")
-	public static ToolItem ALLTHEMODIUM_PICKAXE;
+	public static PickaxeItem ALLTHEMODIUM_PICKAXE;
 	@ObjectHolder("allthemodium:alloy_axe")
 	public static AxeItem ALLTHEMODIUM_AXE;
 	@ObjectHolder("allthemodium:alloy_sword")
@@ -125,7 +118,7 @@ public class ModItems {
 	@ObjectHolder("allthemodium:teleport_pad")
 	public static Item TELEPORT_PAD;
 	
-	public static ItemGroup group = AllTheModium.GROUP;
+	public static CreativeModeTab group = AllTheModium.GROUP;
 	public static void init(Register<Item> event) {
 
 		
@@ -148,26 +141,26 @@ public class ModItems {
 		UNOBTAINIUM_VIBRANIUM_ALLOY = new Alloy_Ingot(new Item.Properties().tab(group).fireResistant()).setRegistryName(location("unobtainium_vibranium_alloy_ingot"));
 		VIBRANIUM_ALLTHEMODIUM_ALLOY = new Alloy_Ingot(new Item.Properties().tab(group).fireResistant()).setRegistryName(location("vibranium_allthemodium_alloy_ingot"));
 		
-		ALLTHEMODIUM_BOOTS = (ArmorItem) new Allthemodium_Boots(ArmorMaterial.ALLTHEMODIUM, EquipmentSlotType.FEET, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("allthemodium_boots"));
-		ALLTHEMODIUM_LEGGINGS = (ArmorItem) new Allthemodium_Leggings(ArmorMaterial.ALLTHEMODIUM, EquipmentSlotType.LEGS, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("allthemodium_leggings"));
-		ALLTHEMODIUM_CHESTPLATE = (ArmorItem) new Allthemodium_Chestplate(ArmorMaterial.ALLTHEMODIUM, EquipmentSlotType.CHEST, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("allthemodium_chestplate"));
-		ALLTHEMODIUM_HELMET = (ArmorItem) new Allthemodium_Helmet(ArmorMaterial.ALLTHEMODIUM, EquipmentSlotType.HEAD, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("allthemodium_helmet"));
+		ALLTHEMODIUM_BOOTS = (ArmorItem) new Allthemodium_Boots(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.FEET, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("allthemodium_boots"));
+		ALLTHEMODIUM_LEGGINGS = (ArmorItem) new Allthemodium_Leggings(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.LEGS, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("allthemodium_leggings"));
+		ALLTHEMODIUM_CHESTPLATE = (ArmorItem) new Allthemodium_Chestplate(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.CHEST, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("allthemodium_chestplate"));
+		ALLTHEMODIUM_HELMET = (ArmorItem) new Allthemodium_Helmet(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.HEAD, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("allthemodium_helmet"));
 		
-		VIBRANIUM_BOOTS = (ArmorItem) new Vibranium_Boots(ArmorMaterial.VIBRANIUM, EquipmentSlotType.FEET, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("vibranium_boots"));
-		VIBRANIUM_LEGGINGS = (ArmorItem) new Vibranium_Leggings(ArmorMaterial.VIBRANIUM, EquipmentSlotType.LEGS, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("vibranium_leggings"));
-		VIBRANIUM_CHESTPLATE = (ArmorItem) new Vibranium_Chestplate(ArmorMaterial.VIBRANIUM, EquipmentSlotType.CHEST, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("vibranium_chestplate"));
-		VIBRANIUM_HELMET = (ArmorItem) new Vibranium_Helmet(ArmorMaterial.VIBRANIUM, EquipmentSlotType.HEAD, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("vibranium_helmet"));
+		VIBRANIUM_BOOTS = (ArmorItem) new Vibranium_Boots(AArmorMaterial.VIBRANIUM, EquipmentSlot.FEET, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("vibranium_boots"));
+		VIBRANIUM_LEGGINGS = (ArmorItem) new Vibranium_Leggings(AArmorMaterial.VIBRANIUM, EquipmentSlot.LEGS, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("vibranium_leggings"));
+		VIBRANIUM_CHESTPLATE = (ArmorItem) new Vibranium_Chestplate(AArmorMaterial.VIBRANIUM, EquipmentSlot.CHEST, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("vibranium_chestplate"));
+		VIBRANIUM_HELMET = (ArmorItem) new Vibranium_Helmet(AArmorMaterial.VIBRANIUM, EquipmentSlot.HEAD, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("vibranium_helmet"));
 		
-		UNOBTAINIUM_BOOTS = (ArmorItem) new Unobtainium_Boots(ArmorMaterial.UNOBTAINIUM, EquipmentSlotType.FEET, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("unobtainium_boots"));
-		UNOBTAINIUM_LEGGINGS = (ArmorItem) new Unobtainium_Leggings(ArmorMaterial.UNOBTAINIUM, EquipmentSlotType.LEGS, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("unobtainium_leggings"));
-		UNOBTAINIUM_CHESTPLATE = (ArmorItem) new Unobtainium_Chestplate(ArmorMaterial.UNOBTAINIUM, EquipmentSlotType.CHEST, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("unobtainium_chestplate"));
-		UNOBTAINIUM_HELMET = (ArmorItem) new Unobtainium_Helmet(ArmorMaterial.UNOBTAINIUM, EquipmentSlotType.HEAD, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("unobtainium_helmet"));
+		UNOBTAINIUM_BOOTS = (ArmorItem) new Unobtainium_Boots(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.FEET, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("unobtainium_boots"));
+		UNOBTAINIUM_LEGGINGS = (ArmorItem) new Unobtainium_Leggings(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.LEGS, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("unobtainium_leggings"));
+		UNOBTAINIUM_CHESTPLATE = (ArmorItem) new Unobtainium_Chestplate(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.CHEST, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("unobtainium_chestplate"));
+		UNOBTAINIUM_HELMET = (ArmorItem) new Unobtainium_Helmet(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.HEAD, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("unobtainium_helmet"));
 
 		ALLTHEMODIUM_PICKAXE = (PickaxeItem) new Allthemodium_PickAxe(ItemTier.UNOBTAINIUMALLOY, 3, 2.8F, new PickaxeItem.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("alloy_pick"));
 		ALLTHEMODIUM_AXE = (AxeItem) new Allthemodium_Axe(ItemTier.UNOBTAINIUMALLOY, 5, 7.8F, new AxeItem.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("alloy_axe"));
 		ALLTHEMODIUM_SWORD = (SwordItem) new Allthemodium_Sword(ItemTier.UNOBTAINIUMALLOY, 10, 10.8F, new SwordItem.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("alloy_sword"));
 		ALLTHEMODIUM_SHOVEL = (ShovelItem) new Allthemodium_Shovel(ItemTier.UNOBTAINIUMALLOY, 0, 4.8F, new ShovelItem.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("alloy_shovel"));
-		ALLTHEMODIUM_PAXEL = (ToolItem) new Allthemodium_Paxel(25,18.6F,ItemTier.UNOBTAINIUMALLOY, Allthemodium_Paxel.EFFECTIVE_ON_BLOCKS ,new ToolItem.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("alloy_paxel"));
+		//ALLTHEMODIUM_PAXEL = (DiggerItem) new Allthemodium_Paxel(25,18.6F,ItemTier.UNOBTAINIUMALLOY, Allthemodium_Paxel.EFFECTIVE_ON_BLOCKS ,new DiggerItem.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("alloy_paxel"));
 
 		VIBRANIUM_ORE = new Vibranium_Ore(new Item.Properties().tab(group).fireResistant()).setRegistryName(location("vibranium_ore"));
 		VIBRANIUM_INGOT = new Vibranium_Ingot(new Item.Properties().tab(group).fireResistant()).setRegistryName(location("vibranium_ingot"));
@@ -201,7 +194,7 @@ public class ModItems {
 		event.getRegistry().register(ModItems.ALLTHEMODIUM_AXE);
 		event.getRegistry().register(ModItems.ALLTHEMODIUM_SWORD);
 		event.getRegistry().register(ModItems.ALLTHEMODIUM_SHOVEL);
-		event.getRegistry().register(ModItems.ALLTHEMODIUM_PAXEL);
+		//event.getRegistry().register(ModItems.ALLTHEMODIUM_PAXEL);
 		
 		event.getRegistry().register(ModItems.UNOBTAINIUM_ORE);		
 		event.getRegistry().register(ModItems.UNOBTAINIUM_BLOCK);

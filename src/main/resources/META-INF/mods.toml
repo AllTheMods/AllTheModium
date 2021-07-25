@@ -6,7 +6,7 @@
 # The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
 modLoader="javafml" #mandatory
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion="[33,)" 
+loaderVersion="[37,)"
 license="All rights reserved"
 # A URL to refer people to when problems occur with this mod
 #issueTrackerURL="http://my.issue.tracker/" #optional
@@ -48,7 +48,7 @@ Allthemodium!
 [[dependencies.allthemodium]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.2,]"
+    versionRange="[1.17.1,]"
     ordering="NONE"
     side="BOTH"
 [[dependencies.allthemodium]]

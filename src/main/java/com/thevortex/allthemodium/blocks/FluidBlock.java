@@ -7,36 +7,24 @@ import java.util.UUID;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import com.thevortex.allthemodium.particledata.AllthemodiumParticleData;
-import net.minecraft.block.*;
-import net.minecraft.client.Minecraft;
-import net.minecraft.command.CommandSource;
-import net.minecraft.command.arguments.DimensionArgument;
-import net.minecraft.command.impl.TeleportCommand;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.fluid.FlowingFluid;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.particles.RedstoneParticleData;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.management.PlayerList;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Direction;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.*;
-import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.ITeleporter;
@@ -51,7 +39,7 @@ import com.thevortex.allthemodium.init.ModItems;
 
 import javax.annotation.Nullable;
 
-public class FluidBlock extends FlowingFluidBlock {
+public class FluidBlock extends LiquidBlock {
 	public int tickcount = 0;
 
 	public FluidBlock(Supplier<? extends FlowingFluid> supplier, Properties p_i48368_1_) {
@@ -64,33 +52,33 @@ public class FluidBlock extends FlowingFluidBlock {
 	}
 
 	@Override
-	public boolean isBurning(BlockState state, IBlockReader world, BlockPos pos) {
+	public boolean isBurning(BlockState state, BlockGetter world, BlockPos pos) {
 		return true;
 	}
 
 	@Override
-	public boolean removedByPlayer(BlockState state, World world, BlockPos pos, PlayerEntity player, boolean willHarvest, FluidState fluid) {
+	public boolean removedByPlayer(BlockState state, Level world, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
 		return false;
 	}
 
 	@Override
-	public boolean isFireSource(BlockState state, IWorldReader world, BlockPos pos, Direction side) {
+	public boolean isFireSource(BlockState state, LevelReader world, BlockPos pos, Direction side) {
 		return true;
 	}
 
 
 	@Override
-	public boolean canEntityDestroy(BlockState state, IBlockReader world, BlockPos pos, Entity entity) {
+	public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity entity) {
 		return false;
 	}
 
 
 
 	@Override
-	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
+	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
 		this.tickcount = this.tickcount + 1;
 		if (tickcount == 20) {
-			this.randomTick(state, worldIn, pos, rand);
+			this.randomTick(worldIn,pos, state.getFluidState(), rand);
 			this.tickcount = 0;
 		}
 
@@ -101,11 +89,11 @@ public class FluidBlock extends FlowingFluidBlock {
 	}
 
 	@Override
-	public boolean canBeReplaced(BlockState state, BlockItemUseContext useContext) {
+	public boolean canBeReplaced(BlockState state, BlockPlaceContext context) {
 
 		return false;
 	}
-	public void randomTick(World p_207186_1_, BlockPos pos, FluidState state, Random random) {
+	public void randomTick(Level p_207186_1_, BlockPos pos, FluidState state, Random random) {
 		if (p_207186_1_.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)) {
 			int i = random.nextInt(10);
 			if (i > 0) {
@@ -118,7 +106,7 @@ public class FluidBlock extends FlowingFluidBlock {
 					}
 
 					BlockState blockstate = p_207186_1_.getBlockState(blockpos);
-					BlockState FIRE = SoulFireBlock.canSurviveOnBlock(blockstate.getBlock())
+					BlockState FIRE = SoulFireBlock.canSurviveOnBlock(blockstate)
 							? Blocks.SOUL_FIRE.defaultBlockState()
 							: ((FireBlock) Blocks.FIRE).defaultBlockState();
 					if (blockstate.isAir()) {
@@ -134,7 +122,7 @@ public class FluidBlock extends FlowingFluidBlock {
 			} else {
 				for (int k = 0; k < 10; ++k) {
 					BlockPos blockpos1 = pos.offset(random.nextInt(10) - 1, 0, random.nextInt(10) - 1);
-					BlockState FIRE = SoulFireBlock.canSurviveOnBlock(p_207186_1_.getBlockState(blockpos1).getBlock())
+					BlockState FIRE = SoulFireBlock.canSurviveOnBlock(p_207186_1_.getBlockState(blockpos1))
 							? Blocks.SOUL_FIRE.defaultBlockState()
 							: ((FireBlock) Blocks.FIRE).defaultBlockState();
 
@@ -152,25 +140,17 @@ public class FluidBlock extends FlowingFluidBlock {
 		}
 	}
 
-	private boolean isSurroundingBlockFlammable(IWorldReader worldIn, BlockPos pos) {
+	private boolean isSurroundingBlockFlammable(LevelReader worldIn, BlockPos pos) {
 		return true;
 	}
 
-	private boolean getCanBlockBurn(IWorldReader worldIn, BlockPos pos) {
+	private boolean getCanBlockBurn(Level worldIn, BlockPos pos) {
 		return (pos.getY() < 0 || pos.getY() >= 256 || worldIn.isWaterAt(pos)) && worldIn.getBlockState(pos).getMaterial().isFlammable();
 	}
 
-	@Override
-	public void neighborChanged(BlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos,
-			boolean isMoving) {
-		Random rand = new Random();
-		this.randomTick(worldIn, pos, state.getFluidState(), rand);
-		if (this.reactWithNeighbors(worldIn, pos, state)) {
-			super.neighborChanged(state, worldIn, pos, blockIn, fromPos, isMoving);
-		}
-	}
 
-	private boolean reactWithNeighbors(World worldIn, BlockPos pos, BlockState state) {
+
+	private boolean reactWithNeighbors(Level worldIn, BlockPos pos, BlockState state) {
 		for (Direction direction : Direction.values()) {
 			if (direction != Direction.DOWN) {
 				BlockPos blockpos = pos.offset(direction.getNormal());
@@ -209,7 +189,7 @@ public class FluidBlock extends FlowingFluidBlock {
 	}
 
 	@Override
-	public void onPlace(BlockState state, World worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
+	public void onPlace(BlockState state, Level worldIn, BlockPos pos, BlockState oldState, boolean isMoving) {
 		if (this.reactWithNeighbors(worldIn, pos, state)) {
 			worldIn.getLiquidTicks().scheduleTick(pos, state.getFluidState().getType(),
 					this.getFluid().getTickDelay(worldIn));
@@ -220,17 +200,17 @@ public class FluidBlock extends FlowingFluidBlock {
 
 	@OnlyIn(Dist.CLIENT)
 	@Override
-	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+	public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
 		if(stateIn.is(FluidList.molten_BlueLava_block.get())) {
 			//spawnParticles(worldIn, pos);
 		}
 		super.animateTick(stateIn, worldIn, pos, rand);
 	}
 
-	private static void spawnParticles(World world, BlockPos worldIn) {
+	private static void spawnParticles(Level world, BlockPos worldIn) {
 		double d0 = 0.5625D;
 		Random random = world.random;
-		if(world.getFluidState(worldIn).getFluidState().isSource()) {
+		if(world.getFluidState(worldIn).isSource()) {
 			for (Direction direction : Direction.values()) {
 				BlockPos blockpos = worldIn.offset(direction.getNormal());
 				if (!world.getBlockState(blockpos).isSolidRender(world, blockpos)) {
@@ -248,29 +228,18 @@ public class FluidBlock extends FlowingFluidBlock {
 	}
 
 	@Override
-	public int getFireSpreadSpeed(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
+	public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
 		return 1000;
 	}
 
 
  
-	 public void transferPlayer(ServerPlayerEntity player, BlockPos pos) {
-		   if(player.level.dimension.equals(AllTheModium.Mining)) {
-			   ServerWorld targetWorld = player.server.getLevel(AllTheModium.OverWorld);
-			   Teleporter teleporter = targetWorld.getPortalForcer();
-			   player.changeDimension(targetWorld, teleporter);
 
-		   } else {
-			   ServerWorld targetWorld = player.server.getLevel(AllTheModium.Mining);
-			   Teleporter teleporter = targetWorld.getPortalForcer();
-			   player.changeDimension(targetWorld, teleporter);
-		   }
-	   }
 	@Override
-	public void observedNeighborChange(BlockState observerState, World world, BlockPos observerPos, Block changedBlock,
-			BlockPos changedBlockPos) {
+	public void neighborChanged(BlockState observerState, Level world, BlockPos observerPos, Block changedBlock,
+			BlockPos changedBlockPos, boolean someflag) {
 		if (this.reactWithNeighbors(world, observerPos, observerState)) {
-			super.observedNeighborChange(observerState, world, observerPos, changedBlock, changedBlockPos);
+			super.neighborChanged(observerState, world, observerPos, changedBlock, changedBlockPos,someflag);
 		}
 	}
 }

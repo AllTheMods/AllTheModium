@@ -2,22 +2,17 @@ package com.thevortex.allthemodium.items.toolitems.armor;
 
 import com.thevortex.allthemodium.init.ModItems;
 
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.monster.EndermanEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -25,7 +20,7 @@ import java.util.List;
 
 public class Vibranium_Helmet extends ArmorItem {
 
-	public Vibranium_Helmet(IArmorMaterial materialIn, EquipmentSlotType slot, Properties builder) {
+	public Vibranium_Helmet(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
 		super(materialIn, slot, builder);
 		
 	}
@@ -39,17 +34,17 @@ public class Vibranium_Helmet extends ArmorItem {
     }
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
-        tooltip.add(this.getTooltip("piglin.friend").withStyle(TextFormatting.GOLD));
-        tooltip.add(this.getTooltip("hard.head").withStyle(TextFormatting.YELLOW));
-        tooltip.add(this.getTooltip("aqua.lungs").withStyle(TextFormatting.DARK_AQUA));
+    public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+        tooltip.add(this.getTooltip("piglin.friend").withStyle(ChatFormatting.GOLD));
+        tooltip.add(this.getTooltip("hard.head").withStyle(ChatFormatting.YELLOW));
+        tooltip.add(this.getTooltip("aqua.lungs").withStyle(ChatFormatting.DARK_AQUA));
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
     protected TextComponent getTooltip(String key){
-        return new TranslationTextComponent(key);
+        return new TextComponent(key);
     }
     @Override
-    public void onArmorTick(ItemStack stack, World world, PlayerEntity player) {
+    public void onArmorTick(ItemStack stack, Level world, Player player) {
         if((stack.getItem() == ModItems.VIBRANIUM_HELMET) && (!world.isClientSide)) {
 
             if(player.isInWater() && player.isSwimming()){

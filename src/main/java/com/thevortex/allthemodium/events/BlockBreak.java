@@ -4,9 +4,7 @@ import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.reference.Reference;
 
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
+
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;

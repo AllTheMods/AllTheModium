@@ -18,6 +18,10 @@
 					"block": "minecraft:bedrock"
 				},
 				{
+					"height": 63,
+					"block": "minecraft:deepslate"
+				},
+				{
 					"height": 70,
 					"block": "minecraft:stone"
 				},

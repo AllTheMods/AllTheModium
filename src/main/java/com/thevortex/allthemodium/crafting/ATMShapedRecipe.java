@@ -11,26 +11,19 @@ import java.util.concurrent.atomic.AtomicReference;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import com.thevortex.allthemodium.AllTheModium;
-import mcp.MethodsReturnNonnullByDefault;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.inventory.CraftingInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.crafting.ShapedRecipe;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.INBT;
-import net.minecraft.nbt.INBTType;
-import net.minecraft.nbt.ListNBT;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.World;
+import net.minecraft.core.NonNullList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.inventory.CraftingContainer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.ShapedRecipe;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.Level;
 import org.codehaus.plexus.util.CachedMap;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
 public class ATMShapedRecipe implements IATMShapedRecipe {
 
 	private final ShapedRecipe internal;
@@ -44,12 +37,12 @@ public class ATMShapedRecipe implements IATMShapedRecipe {
 	}
 
 	@Override
-	public IRecipeSerializer<?> getSerializer() {
+	public RecipeSerializer<?> getSerializer() {
 		return ATMCraftingSetup.ATM_DATA.get();
 	}
 
 	@Override
-	public boolean matches(CraftingInventory inv, World world) {
+	public boolean matches(CraftingContainer inv, Level world) {
 		// Note: We do not override the matches method if it matches ignoring NBT,
 		// to ensure that we return the proper value for if there is a match that gives
 		// a proper output
@@ -57,7 +50,7 @@ public class ATMShapedRecipe implements IATMShapedRecipe {
 	}
 
 	@Override
-	public ItemStack assemble(CraftingInventory inv) {
+	public ItemStack assemble(CraftingContainer inv) {
 		if (getResultItem().isEmpty()) {
 			return ItemStack.EMPTY;
 		}
@@ -91,7 +84,7 @@ public class ATMShapedRecipe implements IATMShapedRecipe {
 	}
 
 	@Override
-	public NonNullList<ItemStack> getRemainingItems(CraftingInventory inv) {
+	public NonNullList<ItemStack> getRemainingItems(CraftingContainer inv) {
 		return internal.getRemainingItems(inv);
 	}
 

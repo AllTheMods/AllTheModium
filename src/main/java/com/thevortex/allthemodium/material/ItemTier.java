@@ -2,12 +2,14 @@ package com.thevortex.allthemodium.material;
 
 import java.util.function.Supplier;
 
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.util.LazyValue;
-import com.thevortex.allthemodium.init.ModItems;
 
-public enum ItemTier implements IItemTier {
+import com.thevortex.allthemodium.init.ModItems;
+import net.minecraft.util.LazyLoadedValue;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.crafting.Ingredient;
+
+
+public enum ItemTier implements Tier {
 	ALLTHEMODIUM(5, 5500, 12.0F, 30.0F, 185, () -> {
 	      return Ingredient.of(ModItems.ALLTHEMODIUM_INGOT);
 	   }),
@@ -25,7 +27,7 @@ public enum ItemTier implements IItemTier {
    private final float efficiency;
    private final float attackDamage;
    private final int enchantability;
-   private final LazyValue<Ingredient> repairMaterial;
+   private final LazyLoadedValue<Ingredient> repairMaterial;
 
    ItemTier(int harvestLevelIn, int maxUsesIn, float efficiencyIn, float attackDamageIn, int enchantabilityIn, Supplier<Ingredient> repairMaterialIn) {
       this.harvestLevel = harvestLevelIn;
@@ -33,7 +35,7 @@ public enum ItemTier implements IItemTier {
       this.efficiency = efficiencyIn;
       this.attackDamage = attackDamageIn;
       this.enchantability = enchantabilityIn;
-      this.repairMaterial = new LazyValue<>(repairMaterialIn);
+      this.repairMaterial = new LazyLoadedValue<>(repairMaterialIn);
    }
     @Override
     public int getUses() {

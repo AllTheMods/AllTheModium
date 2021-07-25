@@ -1,7 +1,6 @@
 package com.thevortex.allthemodium.items;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.Item.Properties;
+import net.minecraft.world.item.Item;
 
 public class Alloy_Dust extends Item {
 

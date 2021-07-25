@@ -1,6 +1,7 @@
 package com.thevortex.allthemodium.reference;
 
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+
 
 public class Reference {
 

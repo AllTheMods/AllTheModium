@@ -1,6 +1,5 @@
 package com.thevortex.allthemodium.init;
 
-import com.github.alexthe666.iceandfire.block.BlockGoldPile;
 import com.thevortex.allthemodium.blocks.Allthemodium_Block;
 import com.thevortex.allthemodium.blocks.Allthemodium_Ore;
 import com.thevortex.allthemodium.blocks.TeleportPad;
@@ -10,9 +9,9 @@ import com.thevortex.allthemodium.blocks.Vibranium_Block;
 import com.thevortex.allthemodium.blocks.Vibranium_Ore;
 import com.thevortex.allthemodium.reference.Reference;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.ModList;

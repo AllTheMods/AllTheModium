@@ -1,39 +1,25 @@
 package com.thevortex.allthemodium.items.toolitems.armor;
 
-import com.google.common.collect.ImmutableMultimap;
-import com.thevortex.allthemodium.init.ModItems;
-
-import net.minecraft.block.DispenserBlock;
-import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.attributes.Attribute;
-import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponent;
-import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.UUID;
 
 public class Allthemodium_Chestplate extends ArmorItem {
 
 
 
-    public Allthemodium_Chestplate(IArmorMaterial materialIn, EquipmentSlotType slot, Properties builder) {
+    public Allthemodium_Chestplate(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
 		super(materialIn, slot, builder);
 
 	}
@@ -45,14 +31,14 @@ public class Allthemodium_Chestplate extends ArmorItem {
 
     @OnlyIn(Dist.CLIENT)
     @Override
-    public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
-        tooltip.add(this.getTooltip("piglin.friend").withStyle(TextFormatting.GOLD));
-        tooltip.add(this.getTooltip("fire.proof").withStyle(TextFormatting.RED));
+    public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+        tooltip.add(this.getTooltip("piglin.friend").withStyle(ChatFormatting.GOLD));
+        tooltip.add(this.getTooltip("fire.proof").withStyle(ChatFormatting.RED));
 
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
     protected TextComponent getTooltip(String key){
-        return new TranslationTextComponent(key);
+        return new TextComponent(key);
     }
 
 

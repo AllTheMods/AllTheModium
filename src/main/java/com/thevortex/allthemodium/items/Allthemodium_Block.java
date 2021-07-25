@@ -1,16 +1,10 @@
-/**
- * 
- */
 package com.thevortex.allthemodium.items;
 
 import com.thevortex.allthemodium.init.ModBlocks;
 
-import net.minecraft.item.BlockItem;
+import net.minecraft.world.item.BlockItem;
 
-/**
- * @author thevortex
- *
- */
+
 public class Allthemodium_Block extends BlockItem {
 
 	public Allthemodium_Block(Properties properties) {

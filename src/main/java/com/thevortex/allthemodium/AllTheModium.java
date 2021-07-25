@@ -1,34 +1,29 @@
 package com.thevortex.allthemodium;
 
 import com.thevortex.allthemodium.init.*;
-import com.thevortex.allthetweaks.config.Configuration;
-import mekanism.api.chemical.slurry.Slurry;
-import net.minecraft.block.Block;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.RegistryKey;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.world.World;
-import net.minecraft.world.gen.DimensionSettings;
+import net.minecraft.core.MappedRegistry;
+import net.minecraft.core.Registry;
+import net.minecraft.data.BuiltinRegistries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-//import com.thevortex.allthemodium.init.ModFluids;
 import com.thevortex.allthemodium.reference.Reference;
-import com.thevortex.allthemodium.worldgen.Worldgen;
 
 import static com.thevortex.allthemodium.reference.Reference.MOD_ID;
 
@@ -47,19 +42,17 @@ import org.lwjgl.openal.AL;
 public class AllTheModium
 {
    
-	public static final RegistryKey<World> OverWorld = World.OVERWORLD;
-	public static final RegistryKey<World> Nether = World.NETHER;
-	public static final RegistryKey<World> The_End = World.END;
+	public static final ResourceKey<Level> OverWorld = Level.OVERWORLD;
+	public static final ResourceKey<Level> Nether = Level.NETHER;
+	public static final ResourceKey<Level> The_End = Level.END;
 
-	public static final RegistryKey<World> Mining = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(MOD_ID,"mining"));
-	public static final RegistryKey<World> THE_OTHER = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"the_other"));
+	public static final ResourceKey<Level> Mining = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(MOD_ID,"mining"));
+	public static final ResourceKey<Level> THE_OTHER = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"the_other"));
 	//public static final RegistryKey<World> THE_BEYOND = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"the_beyond"));
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 	public static Boolean ALLOW_TELEPORT_MINING = false;
-	public static final ItemGroup GROUP = new ItemGroup(MOD_ID) {
-		public ItemStack makeIcon() {
-			return new ItemStack(ModBlocks.ALLTHEMODIUMBLOCK);
-		}
+	public static final CreativeModeTab GROUP = new CreativeModeTab(MOD_ID) {
+		public ItemStack makeIcon() { return new ItemStack(new BlockItem(ModBlocks.ALLTHEMODIUMORE,new Item.Properties())); }
 	};
 	
     public AllTheModium() {
@@ -72,7 +65,7 @@ public class AllTheModium
     	ATMCraftingSetup.REGISTRY.register(modEventBus);
 
     	if(ModList.get().isLoaded("mekanism")) {
-			modEventBus.register(MekRegistry.class);
+			//modEventBus.register(MekRegistry.class);
 		}
 
         // Register ourselves for server and other game events we are interested in
@@ -97,7 +90,7 @@ public class AllTheModium
 
 			ModBlocks.init(event);
 			if(ModList.get().isLoaded("iceandfire")) {
-				GoldPiles.init(event);
+				//GoldPiles.init(event);
 			}
 		}
 
@@ -108,17 +101,9 @@ public class AllTheModium
 			ModItems.init(event);
 			if(ModList.get().isLoaded("iceandfire")) {
 				//IAFForgeRecipes.init();
-				IAFForgeRecipes.regIaFItems(event); //for gold piles items
+				//IAFForgeRecipes.regIaFItems(event); //for gold piles items
 			}
 		}
-		@SubscribeEvent
-		public static void onTERegistry(final RegistryEvent.Register<TileEntityType<?>> event) {
-			ModEntity.init(event);
-		}
-	}
-	public static class MekRegistry {
-		@SubscribeEvent
-		public static void onSlurryRegistry(final RegistryEvent.Register<Slurry> event) {	if(ModList.get().isLoaded("mekanism")) { ModSlurries.init(event);	} }
 
 	}
 

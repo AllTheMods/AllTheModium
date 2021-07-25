@@ -6,16 +6,10 @@ import java.util.Iterator;
 import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.init.ModItems;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.entity.projectile.AbstractArrowEntity;
-import net.minecraft.entity.projectile.ArrowEntity;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.EffectInstance;
-import net.minecraft.potion.Effects;
-import net.minecraft.util.DamageSource;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraftforge.client.event.sound.SoundEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.*;
@@ -59,11 +53,11 @@ public class ArmorEvents {
 				}
 				if ((armor.getItem() == ModItems.VIBRANIUM_LEGGINGS) || (armor.getItem() == ModItems.UNOBTAINIUM_LEGGINGS)) {
 					if (event.getSource() == DamageSource.WITHER) {
-						event.getEntityLiving().removeEffect(Effects.WITHER);
+						event.getEntityLiving().removeEffect(MobEffects.WITHER);
 						event.setCanceled(true);
 					}
 					if (!event.isCanceled() && armor.getItem() == ModItems.UNOBTAINIUM_LEGGINGS) {
-						event.getEntityLiving().removeEffect(Effects.LEVITATION);
+						event.getEntityLiving().removeEffect(MobEffects.LEVITATION);
 					}
 				}
 

@@ -5,7 +5,7 @@ package com.thevortex.allthemodium.items;
 
 import com.thevortex.allthemodium.init.ModBlocks;
 
-import net.minecraft.item.BlockItem;
+import net.minecraft.world.item.BlockItem;
 
 /**
  * @author thevortex
