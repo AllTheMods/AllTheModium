@@ -1,0 +1,42 @@
+{
+  "litherite": {
+    "min_duration": 900,
+    "max_duration": 1000,
+    "tick_energy": 18000
+  },
+  "erodium":{
+    "min_duration": 675,
+    "max_duration": 900,
+    "tick_energy": 20000
+  },
+  "kyronite": {
+    "min_duration": 600,
+    "max_duration": 800,
+    "tick_energy": 20000
+  },
+  "pladium": {
+    "min_duration": 525,
+    "max_duration": 700,
+    "tick_energy": 20000
+  },
+  "ionite": {
+    "min_duration": 450,
+    "max_duration": 600,
+    "tick_energy": 20000
+  },
+  "aethium": {
+    "min_duration": 375,
+    "max_duration": 500,
+    "tick_energy": 20000
+  },
+  "nanorite": {
+    "min_duration": 300,
+    "max_duration": 400,
+    "tick_energy": 20000
+  },
+  "xerothium": {
+    "min_duration": 25,
+    "max_duration": 300,
+    "tick_energy": 20000
+  }
+}
