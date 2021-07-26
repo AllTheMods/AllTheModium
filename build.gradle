@@ -17,6 +17,7 @@ apply plugin: 'maven-publish'
 version = "${versionn}-${forge}"
 group = 'com.thevortex.allthemodium' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'allthemodium'
+sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 // Mojang ships Java 16 to end users in 1.17+ instead of Java 8 in 1.16 or lower, so your mod should target Java 16.
 java.toolchain.languageVersion = JavaLanguageVersion.of(16)
@@ -77,7 +78,7 @@ minecraft {
             // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
-            args '--mod', 'allthemodium', '--all', '--output', file('src/generated/resources/')
+            args '--mod', 'allthemodium','--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
                 allthemodium {
