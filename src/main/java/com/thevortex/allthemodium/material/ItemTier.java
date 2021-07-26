@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 
 import com.thevortex.allthemodium.init.ModItems;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -11,13 +12,13 @@ import net.minecraft.world.item.crafting.Ingredient;
 
 public enum ItemTier implements Tier {
 	ALLTHEMODIUM(5, 5500, 12.0F, 30.0F, 185, () -> {
-	      return Ingredient.of(ModItems.ALLTHEMODIUM_INGOT);
+	      return Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get());
 	   }),
     VIBRANIUM(6, 7500, 18.0F, 35.0F, 235, () -> {
-	      return Ingredient.of(ModItems.VIBRANIUM_INGOT);
+	      return Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get());
 	   }),
     UNOBTAINIUM(7, 9500, 24.0F, 40.0F, 285, () -> {
-	      return Ingredient.of(ModItems.UNOBTAINIUM_INGOT);
+	      return Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get());
 	   }),
     UNOBTAINIUMALLOY(8, 17000, 44.0F, 1500.0F, 515, () -> {
 	      return Ingredient.of(ModItems.UNOBTAINIUM_VIBRANIUM_ALLOY);

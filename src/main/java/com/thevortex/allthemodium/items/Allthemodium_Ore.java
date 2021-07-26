@@ -1,7 +1,5 @@
 package com.thevortex.allthemodium.items;
 
-import com.thevortex.allthemodium.init.ModBlocks;
-
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.item.BlockItem;

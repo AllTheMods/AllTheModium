@@ -1,9 +1,6 @@
 package com.thevortex.allthemodium.blocks;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.thevortex.allthemodium.init.ModBlocks;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
@@ -23,7 +20,7 @@ public class Vibranium_Ore extends OreBlock {
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		if((player instanceof FakePlayer) && (state.getBlock() == ModBlocks.VIBRANIUM_ORE)) { return false; }
+		if((player instanceof FakePlayer) && (state.getBlock() == ModRegistry.VIBRANIUM_ORE.get())) { return false; }
 		return super.canHarvestBlock(state,world,pos,player) && (distanceTo(pos,player.blockPosition()) < 16.0F);
 	}
 

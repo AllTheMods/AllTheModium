@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.thevortex.allthemodium.AllTheModium;
-import com.thevortex.allthemodium.init.ModBlocks;
 import com.thevortex.allthemodium.init.ModItems;
 
 import com.thevortex.allthemodium.reference.Reference;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -110,12 +110,12 @@ public class TeleportPad extends Block {
 						player.yya);
 			}
 
-		} else if (player.level.dimension().equals(AllTheModium.Nether)) {
+		}/* else if (player.level.dimension().equals(AllTheModium.Nether)) {
 			ServerLevel targetWorld = player.server.getLevel(AllTheModium.THE_OTHER);
 			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), 75, Math.round(pos.getZ()));
 			if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {
 
-				targetWorld.setBlockAndUpdate(targetPos, ModBlocks.TELEPORT_PAD.defaultBlockState());
+				targetWorld.setBlockAndUpdate(targetPos, ModRegistry.TELEPORT_PAD.get().defaultBlockState());
 				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
 				player.teleportTo(targetWorld, targetPos.getX() + 0.5D, targetPos.getY() + 0.25D, targetPos.getZ() + 0.5D, 0, 0);
 
@@ -154,11 +154,13 @@ public class TeleportPad extends Block {
 						player.yya);
 
 			}
-		} else if (player.level.dimension().equals(AllTheModium.OverWorld) && (config != 2)) {
+		} */
+
+		else if (player.level.dimension().equals(AllTheModium.OverWorld) && (config != 2)) {
 			ServerLevel targetWorld = player.server.getLevel(AllTheModium.Mining);
 			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), 75, Math.round(pos.getZ()));
 			if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {
-				targetWorld.setBlockAndUpdate(targetPos, ModBlocks.TELEPORT_PAD.defaultBlockState());
+				targetWorld.setBlockAndUpdate(targetPos, ModRegistry.TELEPORT_PAD.get().defaultBlockState());
 				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
 				player.teleportTo(targetWorld, targetPos.getX() + 0.5D, targetPos.getY() + 0.25D, targetPos.getZ() + 0.5D, 0, 0);
 
@@ -201,7 +203,6 @@ public class TeleportPad extends Block {
 	@Override
 	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
 		List<ItemStack> list = new ArrayList<ItemStack>();
-		list.add(new ItemStack(ModItems.TELEPORT_PAD));
 		return list;
 	}
 }

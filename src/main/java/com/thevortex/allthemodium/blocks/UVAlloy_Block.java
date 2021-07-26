@@ -1,6 +1,6 @@
 package com.thevortex.allthemodium.blocks;
 
-import com.thevortex.allthemodium.fluids.FluidList;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -21,7 +21,7 @@ public class UVAlloy_Block extends Block {
 @Override
 public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
 	List<ItemStack> list = new ArrayList<ItemStack>();
-	list.add(new ItemStack(FluidList.UV_ALLOY_ITEM.get()));
+	list.add(new ItemStack(ModRegistry.UV_ALLOY_ITEM.get()));
 	return list;
 }
 

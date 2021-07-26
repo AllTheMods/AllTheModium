@@ -2,6 +2,7 @@ package com.thevortex.allthemodium.material;
 
 import java.util.function.Supplier;
 
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.LazyLoadedValue;
@@ -16,13 +17,13 @@ import javax.swing.*;
 
 public enum AArmorMaterial implements ArmorMaterial {
 	   ALLTHEMODIUM("allthemodium", 500, new int[]{100, 100, 200, 100}, 185, SoundEvents.ARMOR_EQUIP_CHAIN, 125.0F, () -> {
-		      return Ingredient.of(ModItems.ALLTHEMODIUM_INGOT);
+		      return Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get());
 		   }),
 	   VIBRANIUM("vibranium", 1000, new int[]{150, 300, 400, 150}, 235, SoundEvents.ARMOR_EQUIP_CHAIN, 250.0F, () -> {
-	      return Ingredient.of(ModItems.VIBRANIUM_INGOT);
+	      return Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get());
 	   }),
 	   UNOBTAINIUM("unobtainium",2000, new int[]{400, 600, 600, 400}, 285, SoundEvents.ARMOR_EQUIP_CHAIN, 500.0F, () -> {
-	      return Ingredient.of(ModItems.UNOBTAINIUM_INGOT);
+	      return Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get());
 	   });
     
 

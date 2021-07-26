@@ -57,6 +57,10 @@ public class EventWorldgen {
         if((biome.equals("crimson_forest")) || (biome.equals("warped_forest"))){
                 event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATMConfiguredFeature.ORE_VIBRANIUM);
         }
+        if(event.getName().getPath().equals("end_highlands")) {
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATMConfiguredFeature.ORE_UNOBTAINIUM);
+        }
+
     }
 
 }

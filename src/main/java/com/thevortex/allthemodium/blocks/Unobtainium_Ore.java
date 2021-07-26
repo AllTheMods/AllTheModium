@@ -1,6 +1,6 @@
 package com.thevortex.allthemodium.blocks;
 
-import com.thevortex.allthemodium.init.ModBlocks;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
@@ -20,7 +20,7 @@ public class Unobtainium_Ore extends OreBlock {
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		if((player instanceof FakePlayer) && (state.getBlock() == ModBlocks.UNOBTAINIUM_ORE)) { return false; }
+		if((player instanceof FakePlayer) && (state.getBlock() == ModRegistry.UNOBTAINIUM_ORE.get())) { return false; }
 		return super.canHarvestBlock(state,world,pos,player) && (distanceTo(pos,player.blockPosition()) < 16.0F);
 	}
 

@@ -1,8 +1,7 @@
 package com.thevortex.allthemodium.items;
 
-import com.thevortex.allthemodium.init.ModBlocks;
 
-
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -18,7 +17,7 @@ import java.util.List;
 public class Unobtainium_Ore extends BlockItem {
 
 	public Unobtainium_Ore(Properties properties) {
-		super(ModBlocks.UNOBTAINIUM_ORE, properties);
+		super(ModRegistry.UNOBTAINIUM_ORE.get(), properties);
 		
 	}
 	@OnlyIn(Dist.CLIENT)

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.thevortex.allthemodium.init.ModItems;
 
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -22,7 +23,7 @@ public class Vibranium_Block extends Block {
 @Override
 public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
 	List<ItemStack> list = new ArrayList<ItemStack>();
-	list.add(new ItemStack(ModItems.VIBRANIUM_BLOCK));
+	list.add(new ItemStack(ModRegistry.VIBRANIUM_BLOCK.get()));
 	return list;
 }
 

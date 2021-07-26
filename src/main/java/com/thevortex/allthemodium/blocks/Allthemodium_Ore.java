@@ -1,23 +1,16 @@
 package com.thevortex.allthemodium.blocks;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-import com.thevortex.allthemodium.AllTheModium;
-import com.thevortex.allthemodium.init.ModBlocks;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RedstoneTorchBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.levelgen.feature.configurations.BlockStateConfiguration;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.api.distmarker.Dist;
@@ -36,7 +29,7 @@ public class Allthemodium_Ore extends Block {
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		if((player instanceof FakePlayer) && (state.getBlock() == ModBlocks.ALLTHEMODIUMORE)) { return false; }
+		if((player instanceof FakePlayer) && (state.getBlock() == ModRegistry.ALLTHEMODIUM_ORE.get())) { return false; }
 
 	return super.canHarvestBlock(state,world,pos,player) && (distanceTo(pos,player.blockPosition()) < 16.0F);
 	}

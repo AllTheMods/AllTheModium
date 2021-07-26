@@ -1,10 +1,6 @@
 package com.thevortex.allthemodium.blocks;
 
-import java.util.Iterator;
-import java.util.List;
 import java.util.Random;
-import java.util.UUID;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 import net.minecraft.core.BlockPos;
@@ -14,7 +10,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.GameRules;
@@ -27,17 +22,10 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.util.ITeleporter;
 
 import net.minecraftforge.event.ForgeEventFactory;
-import org.antlr.v4.runtime.misc.NotNull;
 
-import com.mojang.brigadier.context.CommandContext;
-import com.thevortex.allthemodium.AllTheModium;
-import com.thevortex.allthemodium.fluids.FluidList;
-import com.thevortex.allthemodium.init.ModItems;
-
-import javax.annotation.Nullable;
+import com.thevortex.allthemodium.registry.ModRegistry;
 
 public class FluidBlock extends LiquidBlock {
 	public int tickcount = 0;
@@ -201,7 +189,7 @@ public class FluidBlock extends LiquidBlock {
 	@OnlyIn(Dist.CLIENT)
 	@Override
 	public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
-		if(stateIn.is(FluidList.molten_BlueLava_block.get())) {
+		if(stateIn.is(ModRegistry.molten_BlueLava_block.get())) {
 			//spawnParticles(worldIn, pos);
 		}
 		super.animateTick(stateIn, worldIn, pos, rand);

@@ -1,6 +1,9 @@
 package com.thevortex.allthemodium.reference;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.Tag;
+import net.minecraft.world.level.block.Block;
 
 
 public class Reference {
@@ -12,6 +15,24 @@ public class Reference {
 	
 	public static ResourceLocation location(String pathIn) {
 		return new ResourceLocation(pathIn);
+	}
+	public static ResourceLocation forge(String path) {
+		return new ResourceLocation("forge", path);
+	}
+	public static ResourceLocation ingot(String path) {
+		return forge("ingots/" + path);
+	}
+	public static ResourceLocation dust(String path) {
+		return forge("dusts/" + path);
+	}
+	public static ResourceLocation nugget(String path) {
+		return forge("nuggets/" + path);
+	}
+	public static ResourceLocation ore(String path) {
+		return forge("ores/" + path);
+	}
+	public static ResourceLocation block(String path) {
+		return forge("storage_blocks/" + path);
 	}
 
 }

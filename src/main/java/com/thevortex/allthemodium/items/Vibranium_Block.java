@@ -3,8 +3,6 @@
  */
 package com.thevortex.allthemodium.items;
 
-import com.thevortex.allthemodium.init.ModBlocks;
-
 import net.minecraft.world.item.BlockItem;
 
 /**

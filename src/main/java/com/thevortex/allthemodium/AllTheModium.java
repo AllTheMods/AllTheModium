@@ -1,19 +1,15 @@
 package com.thevortex.allthemodium;
 
 import com.thevortex.allthemodium.init.*;
-import net.minecraft.core.MappedRegistry;
 import net.minecraft.core.Registry;
-import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -33,8 +29,7 @@ import org.apache.logging.log4j.Logger;
 import com.thevortex.allthemodium.crafting.ATMCraftingSetup;
 import com.thevortex.allthemodium.events.ArmorEvents;
 import com.thevortex.allthemodium.events.BlockBreak;
-import com.thevortex.allthemodium.fluids.FluidList;
-import org.lwjgl.openal.AL;
+import com.thevortex.allthemodium.registry.ModRegistry;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("allthemodium")
@@ -47,21 +42,21 @@ public class AllTheModium
 	public static final ResourceKey<Level> The_End = Level.END;
 
 	public static final ResourceKey<Level> Mining = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(MOD_ID,"mining"));
-	public static final ResourceKey<Level> THE_OTHER = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"the_other"));
+	//public static final ResourceKey<Level> THE_OTHER = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"the_other"));
 	//public static final RegistryKey<World> THE_BEYOND = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"the_beyond"));
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 	public static Boolean ALLOW_TELEPORT_MINING = false;
 	public static final CreativeModeTab GROUP = new CreativeModeTab(MOD_ID) {
-		public ItemStack makeIcon() { return new ItemStack(new BlockItem(ModBlocks.ALLTHEMODIUMORE,new Item.Properties())); }
+		public ItemStack makeIcon() { return new ItemStack(new BlockItem(ModRegistry.ALLTHEMODIUM_ORE.get(),new Item.Properties())); }
 	};
 	
     public AllTheModium() {
         // Register the setup method for modloading
     	IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-    	FluidList.FLUIDS.register(modEventBus);
-       	FluidList.BLOCKS.register(modEventBus);
-    	FluidList.ITEMS.register(modEventBus);
+    	ModRegistry.FLUIDS.register(modEventBus);
+       	ModRegistry.BLOCKS.register(modEventBus);
+    	ModRegistry.ITEMS.register(modEventBus);
     	ATMCraftingSetup.REGISTRY.register(modEventBus);
 
     	if(ModList.get().isLoaded("mekanism")) {
@@ -85,14 +80,7 @@ public class AllTheModium
 	@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = MOD_ID)
 	public static class RegistryEvents {
 
-		@SubscribeEvent
-		public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
 
-			ModBlocks.init(event);
-			if(ModList.get().isLoaded("iceandfire")) {
-				//GoldPiles.init(event);
-			}
-		}
 
 
 		@SubscribeEvent
