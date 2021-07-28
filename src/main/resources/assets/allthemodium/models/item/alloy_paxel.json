@@ -1,6 +1,0 @@
-{
-    "parent": "item/handheld",
-    "textures": {
-        "layer0": "allthemodium:item/alloy_paxel"
-    }
-}

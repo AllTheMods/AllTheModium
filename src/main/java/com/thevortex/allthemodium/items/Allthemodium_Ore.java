@@ -1,5 +1,6 @@
 package com.thevortex.allthemodium.items;
 
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.item.BlockItem;
@@ -14,7 +15,7 @@ import java.util.List;
 public class Allthemodium_Ore extends BlockItem {
 
 	public Allthemodium_Ore(Properties properties) {
-		super(ModBlocks.ALLTHEMODIUMORE, properties);
+		super(ModRegistry.ALLTHEMODIUM_ORE.get(), properties);
 		
 	}
 	@OnlyIn(Dist.CLIENT)

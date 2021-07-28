@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "#forge:ores/allthemodium",
-    "#forge:ores/vibranium",
-    "#forge:ores/unobtainium"
-  ]
-}

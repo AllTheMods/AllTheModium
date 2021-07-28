@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/vibranium"
+    }
+  ],
+  "result": {
+    "item": "allthemodium:vibranium_ingot",
+    "count": 9
+  }
+}

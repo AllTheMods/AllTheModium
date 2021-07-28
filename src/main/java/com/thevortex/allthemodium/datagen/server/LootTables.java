@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.OreBlock;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraftforge.fmllegacy.RegistryObject;
 
@@ -30,7 +31,9 @@ public class LootTables extends LootTableProvider {
 
     @Override
     protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
-        return ImmutableList.of(Pair.of(BlockLoots::new, LootContextParams.BLOCK_STATE));
+        return ImmutableList.of(
+                Pair.of(BlockLoots::new, LootContextParamSets.BLOCK)
+        );
     }
 
     public static class BlockLoots extends BlockLoot {
@@ -41,7 +44,7 @@ public class LootTables extends LootTableProvider {
         }
 
         private void dropRaw(Block block) {
-            if(block instanceof OreBlock) {
+            if (block instanceof OreBlock) {
                 String oretype = block.getRegistryName().getPath().toString();
                 if (oretype.contains("allthemodium")) {
                     this.add(block, (block1) -> {
@@ -71,11 +74,12 @@ public class LootTables extends LootTableProvider {
                     .collect(Collectors.toList());
 
         }
-
+    }
         @Override
-        protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationtracker) {
+        protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationtracker)
+        {
             map.forEach((name, table) -> net.minecraft.world.level.storage.loot.LootTables.validate(validationtracker, name, table));
         }
 
-    }
+
 }

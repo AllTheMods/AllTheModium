@@ -4,6 +4,7 @@ import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -22,6 +23,7 @@ public class BlockStates extends BlockStateProvider {
     protected void registerStatesAndModels() {
         List<Block> entries = ModRegistry.BLOCKS.getEntries()
             .stream().map(RegistryObject::get)
+            .filter(block -> !(block instanceof LiquidBlock))
             .collect(Collectors.toList());
 
         entries.forEach(this::simpleBlockAndItem);
