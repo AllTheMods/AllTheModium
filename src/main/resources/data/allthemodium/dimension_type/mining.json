@@ -1,5 +1,4 @@
 {
-
   "name": "allthemodium:mining",
   "type": "allthemodium:mining",
   "ultrawarm": false,
@@ -13,7 +12,7 @@
   "has_ceiling": false,
   "ambient_light": 0.75,
   "logical_height": 384,
-  "min_y": -64,
+  "min_y": 0,
   "height": 384,
   "infiniburn": "minecraft:infiniburn_overworld",
   "coordinate_scale": 1

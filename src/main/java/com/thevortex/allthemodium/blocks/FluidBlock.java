@@ -28,12 +28,13 @@ import net.minecraftforge.event.ForgeEventFactory;
 import com.thevortex.allthemodium.registry.ModRegistry;
 
 public class FluidBlock extends LiquidBlock {
+
 	public int tickcount = 0;
 
 	public FluidBlock(Supplier<? extends FlowingFluid> supplier, Properties p_i48368_1_) {
 		super(supplier, p_i48368_1_);
 	}
-
+/*
 	@Override
 	public boolean isRandomlyTicking(BlockState state) {
 		return true;
@@ -230,4 +231,6 @@ public class FluidBlock extends LiquidBlock {
 			super.neighborChanged(observerState, world, observerPos, changedBlock, changedBlockPos,someflag);
 		}
 	}
+
+ */
 }

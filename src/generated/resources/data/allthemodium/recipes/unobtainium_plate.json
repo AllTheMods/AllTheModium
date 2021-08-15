@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "alltheores",
+  "pattern": [
+    "aa ",
+    "aa ",
+    "   "
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:ingots/unobtainium"
+    }
+  },
+  "result": {
+    "item": "allthemodium:unobtainium_plate"
+  }
+}

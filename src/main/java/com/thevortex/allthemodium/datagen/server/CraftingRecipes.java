@@ -1,6 +1,9 @@
 package com.thevortex.allthemodium.datagen.server;
 
 import com.thevortex.allthemodium.reference.Reference;
+import com.thevortex.allthemodium.reference.TagRegistry;
+import com.thevortex.allthemodium.registry.ModRegistry;
+import net.allthemods.alltheores.datagen.builder.ShapedBlockBuilder;
 import net.minecraft.data.*;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -23,26 +26,57 @@ public class CraftingRecipes extends RecipeProvider {
 
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
-/*
-        shaped(TheGuide.TIER_1_CORE.get())
-            .pattern("g g")
-            .pattern("ppp")
-            .pattern("g g")
-            .define('g', Tags.Items.INGOTS_GOLD)
-            .define('p', ItemTagRegistry.PLATINUM_INGOT)
-            .unlockedBy("has_platinum_ingot", has(ItemTagRegistry.PLATINUM_INGOT))
+
+        shaped(ModRegistry.ALLTHEMODIUM_PICKAXE.get())
+            .pattern("ara")
+            .pattern(" r ")
+            .pattern(" r ")
+            .define('r', TagRegistry.ALLTHEMODIUM_ROD)
+            .define('a', TagRegistry.ALLTHEMODIUM_PLATE)
+            .unlockedBy("has_allthemodium_rod", has(TagRegistry.ALLTHEMODIUM_ROD))
             .save(consumer);
-*/
+
+        shaped(ModRegistry.VIBRANIUM_PICKAXE.get())
+                .pattern("ara")
+                .pattern(" r ")
+                .pattern(" r ")
+                .define('r', TagRegistry.VIBRANIUM_ROD)
+                .define('a', TagRegistry.VIBRANIUM_PLATE)
+                .unlockedBy("has_vibranium_rod", has(TagRegistry.VIBRANIUM_ROD))
+                .save(consumer);
+
+        shaped(ModRegistry.UNOBTAINIUM_PICKAXE.get())
+                .pattern("ara")
+                .pattern(" r ")
+                .pattern(" r ")
+                .define('r', TagRegistry.UNOBTAINIUM_ROD)
+                .define('a', TagRegistry.UNOBTAINIUM_PLATE)
+                .unlockedBy("has_unobtainium_rod", has(TagRegistry.UNOBTAINIUM_ROD))
+                .save(consumer);
+
         final String hasCondition = "has_item";
-/*
-        ShapedBlockBuilder.builder(ItemTagRegistry.ALUMINUM_INGOT)
-                .setBlock(BlockList.ALUMINUM_BLOCK_ITEM)
-                .setGear(BlockList.ALUMINUM_GEAR)
-                .setPlate(BlockList.ALUMINUM_PLATE)
-                .setRod(BlockList.ALUMINUM_ROD)
+
+        ShapedBlockBuilder.builder(TagRegistry.ALLTHEMODIUM_INGOT)
+                .setBlock(ModRegistry.ALLTHEMODIUM_BLOCK_ITEM)
+                .setGear(ModRegistry.ATM_GEAR)
+                .setPlate(ModRegistry.ATM_PLATE)
+                .setRod(ModRegistry.ATM_ROD)
                 .build(consumer);
 
- */
+        ShapedBlockBuilder.builder(TagRegistry.VIBRANIUM_INGOT)
+                .setBlock(ModRegistry.VIBRANIUM_BLOCK_ITEM)
+                .setGear(ModRegistry.VIB_GEAR)
+                .setPlate(ModRegistry.VIB_PLATE)
+                .setRod(ModRegistry.VIB_ROD)
+                .build(consumer);
+
+        ShapedBlockBuilder.builder(TagRegistry.UNOBTAINIUM_INGOT)
+                .setBlock(ModRegistry.UNOBTAINIUM_BLOCK_ITEM)
+                .setGear(ModRegistry.ONOB_GEAR)
+                .setPlate(ModRegistry.ONOB_PLATE)
+                .setRod(ModRegistry.ONOB_ROD)
+                .build(consumer);
+
      /*
         ShapedIngotBuilder.builder(ItemTagRegistry.ALUMINUM_NUGGET)
                 .setIngot(BlockList.ALUMINUM_INGOT)

@@ -19,6 +19,7 @@ group = 'com.thevortex.allthemodium' // http://maven.apache.org/guides/mini/guid
 archivesBaseName = 'allthemodium'
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
+
 // Mojang ships Java 16 to end users in 1.17+ instead of Java 8 in 1.16 or lower, so your mod should target Java 16.
 java.toolchain.languageVersion = JavaLanguageVersion.of(16)
 
@@ -88,7 +89,14 @@ minecraft {
         }
     }
 }
-
+repositories {
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
+}
 
 dependencies {
     // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
@@ -104,7 +112,10 @@ dependencies {
     //compile fg.deobf("curse.maven:${tweaks}")
     //compile fg.deobf("curse.maven:${citadel}")
     //compile fg.deobf("curse.maven:${iceandfire}")
-    //compile fg.deobf("curse.maven:${ato}")
+   // compileOnly fg.deobf("curse.maven:${ato}")
+   // runtimeOnly fg.deobf("curse.maven:${ato}")
+    implementation fg.deobf("curse.maven:${ato}")
+    //implementation fg.deobf("curse.maven:${corail}")
     //compile fg.deobf("curse.maven:${byg}")
     //compile fg.deobf("curse.maven:${byg}")
     //compile fg.deobf("curse.maven:${tconstruct}")

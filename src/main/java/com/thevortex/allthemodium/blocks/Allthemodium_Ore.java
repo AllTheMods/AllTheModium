@@ -5,33 +5,34 @@ import java.util.Random;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.OreBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.ToolType;
 import net.minecraftforge.common.util.FakePlayer;
 
-public class Allthemodium_Ore extends Block {
+public class Allthemodium_Ore extends OreBlock {
 	  // public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
 	public Allthemodium_Ore() {	//func_235861_h_ = setRequiresTool
-	super (Properties.of(Material.METAL).requiresCorrectToolForDrops().sound(SoundType.STONE).strength(19.0f));
-    this.registerDefaultState(this.defaultBlockState());
-
+		super(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.STONE).strength(9.0f));
 	}
 
 
+
 	@Override
-	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
+	public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity player) {
 		if((player instanceof FakePlayer) && (state.getBlock() == ModRegistry.ALLTHEMODIUM_ORE.get())) { return false; }
 
-	return super.canHarvestBlock(state,world,pos,player) && (distanceTo(pos,player.blockPosition()) < 16.0F);
+	return super.canEntityDestroy(state,world,pos,player) && (distanceTo(pos,player.blockPosition()) < 16.0F);
 	}
 
 	private double distanceTo(BlockPos block,BlockPos player) {
@@ -43,15 +44,8 @@ public class Allthemodium_Ore extends Block {
 
 		return PushReaction.BLOCK;
 	}
-	@Override
-	public int getHarvestLevel(BlockState state) {
-		return 4;
-	}
-	@Override
-	public ToolType getHarvestTool(BlockState state) {
-		
-		return ToolType.PICKAXE;
-	}
+
+
 
 
 

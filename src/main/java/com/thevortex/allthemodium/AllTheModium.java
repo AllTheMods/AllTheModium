@@ -1,5 +1,6 @@
 package com.thevortex.allthemodium;
 
+import com.thevortex.allthemodium.events.PlayerHarvest;
 import com.thevortex.allthemodium.init.*;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
@@ -47,7 +48,7 @@ public class AllTheModium
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 	public static Boolean ALLOW_TELEPORT_MINING = false;
 	public static final CreativeModeTab GROUP = new CreativeModeTab(MOD_ID) {
-		public ItemStack makeIcon() { return new ItemStack(new BlockItem(ModRegistry.ALLTHEMODIUM_ORE.get(),new Item.Properties())); }
+		public ItemStack makeIcon() { return new ItemStack(ModRegistry.ALLTHEMODIUM_ORE_ITEM.get()); }
 	};
 	
     public AllTheModium() {
@@ -56,6 +57,7 @@ public class AllTheModium
 
     	ModRegistry.FLUIDS.register(modEventBus);
        	ModRegistry.BLOCKS.register(modEventBus);
+		ModRegistry.SHAPED_BLOCKS.register(modEventBus);
     	ModRegistry.ITEMS.register(modEventBus);
     	ATMCraftingSetup.REGISTRY.register(modEventBus);
 
@@ -67,7 +69,7 @@ public class AllTheModium
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(BlockBreak.class);
         MinecraftForge.EVENT_BUS.register(ArmorEvents.class);
-
+		MinecraftForge.EVENT_BUS.register(PlayerHarvest.class);
     }
 
    @SubscribeEvent

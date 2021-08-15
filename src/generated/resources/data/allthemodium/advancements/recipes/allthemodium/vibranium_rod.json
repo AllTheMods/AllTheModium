@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "allthemodium:vibranium_rod"
+    ]
+  },
+  "criteria": {
+    "has_ingots/vibranium_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/vibranium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "allthemodium:vibranium_rod"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingots/vibranium_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

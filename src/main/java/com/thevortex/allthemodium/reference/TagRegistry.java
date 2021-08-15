@@ -35,6 +35,18 @@ public class TagRegistry {
     public static final Tag.Named<Item> VIBRANIUM_INGOT = ItemTags.createOptional(Reference.ingot("vibranium"));
     public static final Tag.Named<Item> UNOBTAINIUM_INGOT = ItemTags.createOptional(Reference.ingot("unobtainium"));
 
+    public static final Tag.Named<Item> ALLTHEMODIUM_PLATE = ItemTags.createOptional(Reference.plate("allthemodium"));
+    public static final Tag.Named<Item> VIBRANIUM_PLATE = ItemTags.createOptional(Reference.plate("vibranium"));
+    public static final Tag.Named<Item> UNOBTAINIUM_PLATE = ItemTags.createOptional(Reference.plate("unobtainium"));
+
+    public static final Tag.Named<Item> ALLTHEMODIUM_GEAR = ItemTags.createOptional(Reference.gear("allthemodium"));
+    public static final Tag.Named<Item> VIBRANIUM_GEAR = ItemTags.createOptional(Reference.gear("vibranium"));
+    public static final Tag.Named<Item> UNOBTAINIUM_GEAR = ItemTags.createOptional(Reference.gear("unobtainium"));
+
+    public static final Tag.Named<Item> ALLTHEMODIUM_ROD = ItemTags.createOptional(Reference.rod("allthemodium"));
+    public static final Tag.Named<Item> VIBRANIUM_ROD = ItemTags.createOptional(Reference.rod("vibranium"));
+    public static final Tag.Named<Item> UNOBTAINIUM_ROD = ItemTags.createOptional(Reference.rod("unobtainium"));
+
     public static final Tag.Named<Item> ALLTHEMODIUM_DUST = ItemTags.createOptional(Reference.dust("allthemodium"));
     public static final Tag.Named<Item> VIBRANIUM_DUST = ItemTags.createOptional(Reference.dust("vibranium"));
     public static final Tag.Named<Item> UNOBTAINIUM_DUST = ItemTags.createOptional(Reference.dust("unobtainium"));

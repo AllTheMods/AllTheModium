@@ -34,10 +34,12 @@ public class BlockStates extends BlockStateProvider {
      * @param block the block
      */
     private void simpleBlockAndItem(Block block) {
-        simpleBlock(block);
 
-        String blockName = Objects.requireNonNull(block.getRegistryName()).toString();
-        BlockModelBuilder builder = models().getBuilder(blockName);
-        simpleBlockItem(block, builder);
+            simpleBlock(block);
+
+            String blockName = Objects.requireNonNull(block.getRegistryName()).toString();
+            BlockModelBuilder builder = models().getBuilder(blockName);
+            simpleBlockItem(block, builder);
+
     }
 }

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "allthemodium:allthemodium_ore",
+    "allthemodium:vibranium_ore",
+    "allthemodium:unobtainium_ore"
+  ]
+}

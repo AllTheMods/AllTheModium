@@ -7,6 +7,7 @@ import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
 
 

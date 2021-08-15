@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "allthemodium:block/raw_vibranium_block"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "allthemodium:allthemodium_block"
+    ]
+  },
+  "criteria": {
+    "has_ingots/allthemodium_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/allthemodium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "allthemodium:allthemodium_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ingots/allthemodium_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

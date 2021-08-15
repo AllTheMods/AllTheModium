@@ -8,6 +8,7 @@ import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.OreBlock;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
@@ -44,25 +45,25 @@ public class LootTables extends LootTableProvider {
         }
 
         private void dropRaw(Block block) {
+            if(block instanceof LiquidBlock) {
+                return;
+            }
             if (block instanceof OreBlock) {
-                String oretype = block.getRegistryName().getPath().toString();
-                if (oretype.contains("allthemodium")) {
-                    this.add(block, (block1) -> {
-                        return createOreDrop(block1, ModRegistry.RAW_ALLTHEMODIUM.get());
-                    });
+                String oretype = block.getRegistryName().getPath();
+                if (oretype.contains("allthemodium_ore")) {
+                    this.add(block, (block1) -> createOreDrop(block1, ModRegistry.RAW_ALLTHEMODIUM.get()));
                 }
-                if (oretype.contains("vibranium")) {
-                    this.add(block, (block1) -> {
-                        return createOreDrop(block1, ModRegistry.RAW_VIBRANIUM.get());
-                    });
+                if (oretype.contains("vibranium_ore")) {
+                    this.add(block, (block1) -> createOreDrop(block1, ModRegistry.RAW_VIBRANIUM.get()));
                 }
-                if (oretype.contains("unobtainium")) {
-                    this.add(block, (block1) -> {
-                        return createOreDrop(block1, ModRegistry.RAW_UNOBTAINIUM.get());
-                    });
-                } else {
+                if (oretype.contains("unobtainium_ore")) {
+                    this.add(block, (block1) -> createOreDrop(block1, ModRegistry.RAW_UNOBTAINIUM.get()));
+                }
+                if (oretype.contains("raw_")) {
                     this.dropSelf(block);
                 }
+            } else {
+                this.dropSelf(block);
             }
         }
 

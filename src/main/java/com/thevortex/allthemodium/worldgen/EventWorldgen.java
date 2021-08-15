@@ -2,6 +2,7 @@ package com.thevortex.allthemodium.worldgen;
 
 
 import com.thevortex.allthemodium.reference.Reference;
+import net.allthemods.alltheores.worldgen.ATOConfiguredFeature;
 import net.minecraft.data.worldgen.Features;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
@@ -22,7 +23,7 @@ public class EventWorldgen {
     public static void biomeModification(final BiomeLoadingEvent event) {
         String mod = Objects.requireNonNull(event.getName()).getNamespace();
         String biome = event.getName().getPath();
-        if(event.getCategory() == Biome.BiomeCategory.OCEAN) {
+        if(event.getCategory() == Biome.BiomeCategory.DESERT) {
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATMConfiguredFeature.ORE_ALLTHEMODIUM);
         }
         if((mod.equals(Reference.MOD_ID)) && (biome.equals("mining"))) {
@@ -30,9 +31,8 @@ public class EventWorldgen {
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATMConfiguredFeature.ORE_ATM_MINING);
             if(ModList.get().isLoaded("alltheores")) {
                 //Alltheores
-                /*
+
                 event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATOConfiguredFeature.ORE_ALUMINUM);
-                event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATOConfiguredFeature.ORE_COPPER);
                 event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATOConfiguredFeature.ORE_LEAD);
                 event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATOConfiguredFeature.ORE_NICKEL);
                 event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATOConfiguredFeature.ORE_OSMIUM);
@@ -41,7 +41,7 @@ public class EventWorldgen {
                 event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATOConfiguredFeature.ORE_TIN);
                 event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATOConfiguredFeature.ORE_URANIUM);
                 event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATOConfiguredFeature.ORE_ZINC);
-                */
+
 
             }
             //Vanilla Ores
@@ -52,6 +52,18 @@ public class EventWorldgen {
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.ORE_LAPIS);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.ORE_EMERALD);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.ORE_REDSTONE);
+
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.PROTOTYPE_ORE_COAL_LOWER);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.PROTOTYPE_ORE_COAL_UPPER);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.PROTOTYPE_ORE_DIAMOND);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.PROTOTYPE_ORE_GOLD);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.PROTOTYPE_ORE_IRON_MIDDLE);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.PROTOTYPE_ORE_IRON_UPPER);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.PROTOTYPE_ORE_LAPIS_BURIED);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.PROTOTYPE_ORE_EMERALD);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.PROTOTYPE_ORE_REDSTONE_LOWER);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.PROTOTYPE_ORE_REDSTONE);
+
 
         }
         if((biome.equals("crimson_forest")) || (biome.equals("warped_forest"))){
