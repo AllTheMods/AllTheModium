@@ -50,7 +50,7 @@ public class LootTables extends LootTableProvider {
             }
             if (block instanceof OreBlock) {
                 String oretype = block.getRegistryName().getPath();
-                if (oretype.contains("allthemodium_ore")) {
+                if (oretype.contains("allthemodium_ore") || oretype.contains("allthemodium_slate_ore")) {
                     this.add(block, (block1) -> createOreDrop(block1, ModRegistry.RAW_ALLTHEMODIUM.get()));
                 }
                 if (oretype.contains("vibranium_ore")) {

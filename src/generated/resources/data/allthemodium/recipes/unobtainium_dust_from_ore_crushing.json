@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "allthemodium:raw_unobtainium"
+    },
+    {
+      "tag": "alltheores:ore_hammers"
+    }
+  ],
+  "result": {
+    "item": "allthemodium:unobtainium_dust",
+    "count": 2
+  }
+}

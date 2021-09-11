@@ -16,13 +16,16 @@ import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
 
+import net.minecraftforge.common.world.StructureSpawnManager;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fluids.ForgeFlowingFluid.Flowing;
@@ -227,6 +230,8 @@ public class ModRegistry {
 	}
 */
 	public static final RegistryObject<Block> ALLTHEMODIUM_ORE = BLOCKS.register("allthemodium_ore", Allthemodium_Ore::new);
+	public static final RegistryObject<Block> ALLTHEMODIUM_SLATE_ORE = BLOCKS.register("allthemodium_slate_ore", Allthemodium_Ore::new);
+
 	public static final RegistryObject<Block> VIBRANIUM_ORE = BLOCKS.register("vibranium_ore", Vibranium_Ore::new);
 	public static final RegistryObject<Block> UNOBTAINIUM_ORE = BLOCKS.register("unobtainium_ore", Unobtainium_Ore::new);
 
@@ -257,7 +262,6 @@ public class ModRegistry {
 	public static final RegistryObject<Item> ALLTHEMODIUM_INGOT = ITEMS.register("allthemodium_ingot", () -> new Ingot(new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> VIBRANIUM_INGOT = ITEMS.register("vibranium_ingot", () -> new Ingot(new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> UNOBTAINIUM_INGOT = ITEMS.register("unobtainium_ingot", () -> new Ingot(new Item.Properties().tab(AllTheModium.GROUP)));
-
 	public static final RegistryObject<Item> ATM_PLATE = ITEMS.register("allthemodium_plate", () -> new Plate(new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> VIB_PLATE = ITEMS.register("vibranium_plate", () -> new Plate(new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> ONOB_PLATE = ITEMS.register("unobtainium_plate", () -> new Plate(new Item.Properties().tab(AllTheModium.GROUP)));

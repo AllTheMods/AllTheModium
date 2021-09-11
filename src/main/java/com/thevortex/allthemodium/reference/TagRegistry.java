@@ -34,6 +34,9 @@ public class TagRegistry {
     public static final Tag.Named<Item> ALLTHEMODIUM_INGOT = ItemTags.createOptional(Reference.ingot("allthemodium"));
     public static final Tag.Named<Item> VIBRANIUM_INGOT = ItemTags.createOptional(Reference.ingot("vibranium"));
     public static final Tag.Named<Item> UNOBTAINIUM_INGOT = ItemTags.createOptional(Reference.ingot("unobtainium"));
+    public static final Tag.Named<Item> VIBRANIUM_ALLTHEMODIUM_INGOT = ItemTags.createOptional(Reference.ingot("vibranium_allthemodium_alloy"));
+    public static final Tag.Named<Item> UNOBTAINIUM_VIBRANIUM_INGOT = ItemTags.createOptional(Reference.ingot("unobtainium_vibranium_alloy"));
+    public static final Tag.Named<Item> UNOBTAINIUM_ALLTHEMODIUM_INGOT = ItemTags.createOptional(Reference.ingot("unobtainium_allthemodium_alloy"));
 
     public static final Tag.Named<Item> ALLTHEMODIUM_PLATE = ItemTags.createOptional(Reference.plate("allthemodium"));
     public static final Tag.Named<Item> VIBRANIUM_PLATE = ItemTags.createOptional(Reference.plate("vibranium"));

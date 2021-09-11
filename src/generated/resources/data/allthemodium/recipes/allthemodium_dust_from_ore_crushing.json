@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "allthemodium:raw_allthemodium"
+    },
+    {
+      "tag": "alltheores:ore_hammers"
+    }
+  ],
+  "result": {
+    "item": "allthemodium:allthemodium_dust",
+    "count": 2
+  }
+}

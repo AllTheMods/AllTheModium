@@ -12,7 +12,7 @@
   "has_ceiling": false,
   "ambient_light": 0.75,
   "logical_height": 384,
-  "min_y": 0,
+  "min_y": -64,
   "height": 384,
   "infiniburn": "minecraft:infiniburn_overworld",
   "coordinate_scale": 1

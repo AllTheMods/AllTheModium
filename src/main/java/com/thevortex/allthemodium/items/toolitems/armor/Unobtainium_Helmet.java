@@ -2,7 +2,12 @@ package com.thevortex.allthemodium.items.toolitems.armor;
 
 import com.thevortex.allthemodium.init.ModItems;
 
+import com.thevortex.allthemodium.items.toolitems.armor.models.allthemodium_helmet;
+import com.thevortex.allthemodium.items.toolitems.armor.models.unobtainium_helmet;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -25,6 +30,9 @@ public class Unobtainium_Helmet extends ArmorItem {
 		
 	}
 
+    public static <A extends HumanoidModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot slot, A _default){
+        return (A) new unobtainium_helmet(_default.head);
+    }
     @Override
     public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer)
     {

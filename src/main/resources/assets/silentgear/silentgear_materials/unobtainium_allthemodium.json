@@ -8,13 +8,10 @@
       "texture": "silentgear:_highlight"
     }
   ],
-  "main/armor": [
+  "main/fragment": [
     {
-      "texture": "silentgear:main_generic_hc",
+      "texture": "silentgear:metal",
       "color": "#b3587e"
-    },
-    {
-      "texture": "silentgear:_highlight"
     }
   ],
   "rod/all": [

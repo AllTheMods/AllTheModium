@@ -1,6 +1,7 @@
 package com.thevortex.allthemodium.datagen.server;
 
 
+import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.reference.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
@@ -18,6 +19,21 @@ public class ItemTags extends ItemTagsProvider {
 
     @Override
     protected void addTags() {
+        tag(TagRegistry.ALLTHEMODIUM_INGOT).add(ModRegistry.ALLTHEMODIUM_INGOT.get());
+        tag(TagRegistry.VIBRANIUM_INGOT).add(ModRegistry.VIBRANIUM_INGOT.get());
+        tag(TagRegistry.UNOBTAINIUM_INGOT).add(ModRegistry.UNOBTAINIUM_INGOT.get());
+
+        tag(TagRegistry.VIBRANIUM_ALLTHEMODIUM_INGOT).add(ModItems.VIBRANIUM_ALLTHEMODIUM_ALLOY);
+        tag(TagRegistry.UNOBTAINIUM_ALLTHEMODIUM_INGOT).add(ModItems.UNOBTAINIUM_ALLTHEMODIUM_ALLOY);
+        tag(TagRegistry.UNOBTAINIUM_VIBRANIUM_INGOT).add(ModItems.UNOBTAINIUM_VIBRANIUM_ALLOY);
+
+        tag(TagRegistry.ALLTHEMODIUM_DUST).add(ModRegistry.ALLTHEMODIUM_DUST.get());
+        tag(TagRegistry.VIBRANIUM_DUST).add(ModRegistry.VIBRANIUM_DUST.get());
+        tag(TagRegistry.UNOBTAINIUM_DUST).add(ModRegistry.UNOBTAINIUM_DUST.get());
+
+        tag(TagRegistry.ALLTHEMODIUM_NUGGET).add(ModRegistry.ALLTHEMODIUM_NUGGET.get());
+        tag(TagRegistry.VIBRANIUM_NUGGET).add(ModRegistry.VIBRANIUM_NUGGET.get());
+        tag(TagRegistry.UNOBTAINIUM_NUGGET).add(ModRegistry.UNOBTAINIUM_NUGGET.get());
 
         tag(TagRegistry.ALLTHEMODIUM_BLOCK_ITEM).add(ModRegistry.ALLTHEMODIUM_BLOCK_ITEM.get());
         tag(TagRegistry.VIBRANIUM_BLOCK_ITEM).add(ModRegistry.VIBRANIUM_BLOCK_ITEM.get());

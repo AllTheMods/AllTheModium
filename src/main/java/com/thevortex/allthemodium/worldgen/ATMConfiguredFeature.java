@@ -1,8 +1,11 @@
 package com.thevortex.allthemodium.worldgen;
 
 
+import com.google.common.collect.ImmutableList;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.ModRegistry;
+import net.allthemods.alltheores.blocks.BlockList;
+import net.allthemods.alltheores.infos.Configuration;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -21,17 +24,17 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTes
 import java.util.Random;
 
 public class ATMConfiguredFeature {
+	public static final ImmutableList<OreConfiguration.TargetBlockState> ORE_ALLTHEMODIUM_TARGET_LIST = ImmutableList.of(OreConfiguration.target(OreConfiguration.Predicates.STONE_ORE_REPLACEABLES, ModRegistry.ALLTHEMODIUM_ORE.get().defaultBlockState()), OreConfiguration.target(OreConfiguration.Predicates.DEEPSLATE_ORE_REPLACEABLES, ModRegistry.ALLTHEMODIUM_SLATE_ORE.get().defaultBlockState()));
+	public static final OreConfiguration ORE_ALLTHEMODIUM_CONFIG = new OreConfiguration(ORE_ALLTHEMODIUM_TARGET_LIST, 3);
 
 	public static ConfiguredFeature<?, ?> ORE_ALLTHEMODIUM = newConfiguredFeature("ore_allthemodium",
 			Feature.ORE
-					.configured(new OreConfiguration(OreConfiguration.Predicates.NATURAL_STONE,
-							ModRegistry.ALLTHEMODIUM_ORE.get().defaultBlockState(), 3))
+					.configured(ORE_ALLTHEMODIUM_CONFIG)
 					.rarity(100).rangeTriangle(VerticalAnchor.aboveBottom(15), VerticalAnchor.absolute(20)).squared().count(1));
 
 	public static ConfiguredFeature<?, ?> ORE_ATM_MINING = newConfiguredFeature("ore_atm_mining",
 			Feature.ORE
-					.configured(new OreConfiguration(OreConfiguration.Predicates.NATURAL_STONE,
-							ModRegistry.ALLTHEMODIUM_ORE.get().defaultBlockState(), 3))
+					.configured(ORE_ALLTHEMODIUM_CONFIG)
 					.rarity(1).rangeTriangle(VerticalAnchor.aboveBottom(5), VerticalAnchor.absolute(10)).squared().count(1));
 
 	public static ConfiguredFeature<?, ?> ORE_VIBRANIUM = newConfiguredFeature("ore_vibranium",
