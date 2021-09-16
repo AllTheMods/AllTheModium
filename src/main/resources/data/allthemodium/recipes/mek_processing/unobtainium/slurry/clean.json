@@ -11,5 +11,11 @@
   "output": {
     "slurry": "allthemodium:clean_unobtainium",
     "amount": 1
-  }
+  },
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "mekanism"
+    }
+]
 }

@@ -5,5 +5,11 @@
     "amount": 144
   },
   "temperature": 4000,
-  "output": "allthemodium:unobtainium"
+  "output": "allthemodium:unobtainium",
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "tconstruct"
+    }
+]
 }

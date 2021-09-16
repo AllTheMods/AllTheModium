@@ -5,5 +5,11 @@
     "amount": 144
   },
   "temperature": 2500,
-  "output": "allthemodium:vibranium"
+  "output": "allthemodium:vibranium",
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "tconstruct"
+    }
+]
 }

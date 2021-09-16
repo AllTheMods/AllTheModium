@@ -5,5 +5,11 @@
     "tag": "forge:dusts/vibranium"
   },
   "cookingtime": 100,
-  "experience": 0.3
+  "experience": 0.3,
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "mekanism"
+    }
+]
 }

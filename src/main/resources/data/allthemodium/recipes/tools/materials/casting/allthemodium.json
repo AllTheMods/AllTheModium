@@ -5,5 +5,11 @@
     "amount": 144
   },
   "temperature": 1250,
-  "output": "allthemodium:allthemodium"
+  "output": "allthemodium:allthemodium",
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "tconstruct"
+    }
+]
 }

@@ -11,5 +11,11 @@
   },
   "output": {
     "item": "allthemodium:allthemodium_clump"
-  }
+  },
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "mekanism"
+    }
+]
 }

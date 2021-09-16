@@ -14,5 +14,11 @@
     "fluid": "allthemodium:molten_bluelava",
     "amount": 576
   },
-  "temperature": 1250
+  "temperature": 1250,
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "tconstruct"
+    }
+]
 }

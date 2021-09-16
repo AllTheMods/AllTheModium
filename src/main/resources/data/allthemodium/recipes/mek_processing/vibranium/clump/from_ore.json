@@ -12,5 +12,11 @@
   "output": {
     "item": "allthemodium:vibranium_clump",
     "count": 3
-  }
+  },
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "mekanism"
+    }
+]
 }
