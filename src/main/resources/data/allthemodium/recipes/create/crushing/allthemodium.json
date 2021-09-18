@@ -1,0 +1,29 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "tag": "forge:ores/allthemodium"
+    }
+  ],
+  "results": [
+    {
+      "item": "allthemodium:crushed_allthemodium_ore"
+    },
+    {
+      "item": "allthemodium:crushed_allthemodium_ore",
+      "count": 2,
+      "chance": 0.3
+    },
+    {
+      "item": "minecraft:cobblestone",
+      "chance": 0.125
+    }
+  ],
+  "processingTime": 300,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ]
+}

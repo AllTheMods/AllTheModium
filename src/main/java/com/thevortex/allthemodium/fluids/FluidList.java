@@ -247,6 +247,10 @@ public class FluidList {
 	public static final RegistryObject<Item> VIB_CRYSTAL = ITEMS.register("vibranium_crystal", () -> new Crystal(new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> ONOB_CRYSTAL = ITEMS.register("unobtainium_crystal", () -> new Crystal(new Item.Properties().tab(AllTheModium.GROUP)));
 
+	public static final RegistryObject<Item> CRUSHED_ATM = ITEMS.register("crushed_allthemodium_ore", () -> new Crushed(new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> CRUSHED_VIB = ITEMS.register("crushed_vibranium_ore", () -> new Crushed(new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> CRUSHED_ONOB = ITEMS.register("crushed_unobtainium_ore", () -> new Crushed(new Item.Properties().tab(AllTheModium.GROUP)));
+
 	public static void init(){
 
 	}

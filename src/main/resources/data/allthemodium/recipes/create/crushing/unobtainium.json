@@ -1,0 +1,29 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "tag": "forge:ores/unobtainium"
+    }
+  ],
+  "results": [
+    {
+      "item": "allthemodium:crushed_unobtainium_ore"
+    },
+    {
+      "item": "allthemodium:crushed_unobtainium_ore",
+      "count": 2,
+      "chance": 0.3
+    },
+    {
+      "item": "minecraft:end_stone",
+      "chance": 0.125
+    }
+  ],
+  "processingTime": 300,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ]
+}

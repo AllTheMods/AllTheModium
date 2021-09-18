@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "result": "allthemodium:unobtainium_ingot",
+  "ingredient": {
+    "item": "allthemodium:crushed_unobtainium_ore"
+  },
+  "cookingtime": 100,
+  "experience": 0.1
+}
