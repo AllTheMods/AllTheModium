@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "allthemodium:unobtainium_axe"
+    ]
+  },
+  "criteria": {
+    "has_unobtainium_rod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rods/unobtainium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "allthemodium:unobtainium_axe"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_unobtainium_rod",
+      "has_the_recipe"
+    ]
+  ]
+}

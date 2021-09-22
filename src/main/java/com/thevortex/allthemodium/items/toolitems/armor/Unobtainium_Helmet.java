@@ -5,11 +5,13 @@ import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.items.toolitems.armor.models.allthemodium_helmet;
 import com.thevortex.allthemodium.items.toolitems.armor.models.unobtainium_helmet;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -20,8 +22,10 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.IItemRenderProperties;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class Unobtainium_Helmet extends ArmorItem {
 
@@ -30,8 +34,14 @@ public class Unobtainium_Helmet extends ArmorItem {
 		
 	}
 
-    public static <A extends HumanoidModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot slot, A _default){
-        return (A) new unobtainium_helmet(_default.head);
+    @Override
+    public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+        consumer.accept(new IItemRenderProperties() {
+            @Override
+            public <A extends HumanoidModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot armorSlot, A _default) {
+                return (A) new unobtainium_helmet<Player>(Minecraft.getInstance().getEntityModels().bakeLayer(unobtainium_helmet.LAYER_LOCATION), armorSlot);
+            }
+        });
     }
     @Override
     public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer)
@@ -46,8 +56,8 @@ public class Unobtainium_Helmet extends ArmorItem {
         tooltip.add(this.getTooltip("aqua.lungs").withStyle(ChatFormatting.DARK_AQUA));
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
-    protected TextComponent getTooltip(String key){
-        return new TextComponent(key);
+    protected TranslatableComponent getTooltip(String key){
+        return new TranslatableComponent(key);
     }
     @Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {

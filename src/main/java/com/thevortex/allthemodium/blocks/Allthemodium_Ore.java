@@ -58,9 +58,9 @@ public class Allthemodium_Ore extends OreBlock {
    @OnlyIn(Dist.CLIENT)
    @Override
    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
-     /* if (stateIn.getValue(LIT)) {
+
          spawnParticles(worldIn, pos);
-      }*/
+
 
    }
    @OnlyIn(Dist.CLIENT)

@@ -54,6 +54,118 @@ public class CraftingRecipes extends RecipeProvider {
                 .unlockedBy("has_unobtainium_rod", has(TagRegistry.UNOBTAINIUM_ROD))
                 .save(consumer);
 
+
+        shaped(ModRegistry.ALLTHEMODIUM_AXE.get())
+                .pattern("aa ")
+                .pattern("ar ")
+                .pattern(" r ")
+                .define('r', TagRegistry.ALLTHEMODIUM_ROD)
+                .define('a', TagRegistry.ALLTHEMODIUM_PLATE)
+                .unlockedBy("has_allthemodium_rod", has(TagRegistry.ALLTHEMODIUM_ROD))
+                .save(consumer);
+
+        shaped(ModRegistry.VIBRANIUM_AXE.get())
+                .pattern("aa ")
+                .pattern("ar ")
+                .pattern(" r ")
+                .define('r', TagRegistry.VIBRANIUM_ROD)
+                .define('a', TagRegistry.VIBRANIUM_PLATE)
+                .unlockedBy("has_vibranium_rod", has(TagRegistry.VIBRANIUM_ROD))
+                .save(consumer);
+
+        shaped(ModRegistry.UNOBTAINIUM_AXE.get())
+                .pattern("aa ")
+                .pattern("ar ")
+                .pattern(" r ")
+                .define('r', TagRegistry.UNOBTAINIUM_ROD)
+                .define('a', TagRegistry.UNOBTAINIUM_PLATE)
+                .unlockedBy("has_unobtainium_rod", has(TagRegistry.UNOBTAINIUM_ROD))
+                .save(consumer);
+
+
+        shaped(ModRegistry.ALLTHEMODIUM_SHOVEL.get())
+                .pattern(" a ")
+                .pattern(" r ")
+                .pattern(" r ")
+                .define('r', TagRegistry.ALLTHEMODIUM_ROD)
+                .define('a', TagRegistry.ALLTHEMODIUM_PLATE)
+                .unlockedBy("has_allthemodium_rod", has(TagRegistry.ALLTHEMODIUM_ROD))
+                .save(consumer);
+
+        shaped(ModRegistry.VIBRANIUM_SHOVEL.get())
+                .pattern(" a ")
+                .pattern(" r ")
+                .pattern(" r ")
+                .define('r', TagRegistry.VIBRANIUM_ROD)
+                .define('a', TagRegistry.VIBRANIUM_PLATE)
+                .unlockedBy("has_vibranium_rod", has(TagRegistry.VIBRANIUM_ROD))
+                .save(consumer);
+
+        shaped(ModRegistry.UNOBTAINIUM_SHOVEL.get())
+                .pattern(" a ")
+                .pattern(" r ")
+                .pattern(" r ")
+                .define('r', TagRegistry.UNOBTAINIUM_ROD)
+                .define('a', TagRegistry.UNOBTAINIUM_PLATE)
+                .unlockedBy("has_unobtainium_rod", has(TagRegistry.UNOBTAINIUM_ROD))
+                .save(consumer);
+
+
+        shaped(ModRegistry.ALLTHEMODIUM_HOE.get())
+                .pattern("aa ")
+                .pattern(" r ")
+                .pattern(" r ")
+                .define('r', TagRegistry.ALLTHEMODIUM_ROD)
+                .define('a', TagRegistry.ALLTHEMODIUM_PLATE)
+                .unlockedBy("has_allthemodium_rod", has(TagRegistry.ALLTHEMODIUM_ROD))
+                .save(consumer);
+
+        shaped(ModRegistry.VIBRANIUM_HOE.get())
+                .pattern("aa ")
+                .pattern(" r ")
+                .pattern(" r ")
+                .define('r', TagRegistry.VIBRANIUM_ROD)
+                .define('a', TagRegistry.VIBRANIUM_PLATE)
+                .unlockedBy("has_vibranium_rod", has(TagRegistry.VIBRANIUM_ROD))
+                .save(consumer);
+
+        shaped(ModRegistry.UNOBTAINIUM_HOE.get())
+                .pattern("aa ")
+                .pattern(" r ")
+                .pattern(" r ")
+                .define('r', TagRegistry.UNOBTAINIUM_ROD)
+                .define('a', TagRegistry.UNOBTAINIUM_PLATE)
+                .unlockedBy("has_unobtainium_rod", has(TagRegistry.UNOBTAINIUM_ROD))
+                .save(consumer);
+
+
+        shaped(ModRegistry.ALLTHEMODIUM_SWORD.get())
+                .pattern(" a ")
+                .pattern(" a ")
+                .pattern(" r ")
+                .define('r', TagRegistry.ALLTHEMODIUM_ROD)
+                .define('a', TagRegistry.ALLTHEMODIUM_PLATE)
+                .unlockedBy("has_allthemodium_rod", has(TagRegistry.ALLTHEMODIUM_ROD))
+                .save(consumer);
+
+        shaped(ModRegistry.VIBRANIUM_SWORD.get())
+                .pattern(" a ")
+                .pattern(" a ")
+                .pattern(" r ")
+                .define('r', TagRegistry.VIBRANIUM_ROD)
+                .define('a', TagRegistry.VIBRANIUM_PLATE)
+                .unlockedBy("has_vibranium_rod", has(TagRegistry.VIBRANIUM_ROD))
+                .save(consumer);
+
+        shaped(ModRegistry.UNOBTAINIUM_SWORD.get())
+                .pattern(" a ")
+                .pattern(" a ")
+                .pattern(" r ")
+                .define('r', TagRegistry.UNOBTAINIUM_ROD)
+                .define('a', TagRegistry.UNOBTAINIUM_PLATE)
+                .unlockedBy("has_unobtainium_rod", has(TagRegistry.UNOBTAINIUM_ROD))
+                .save(consumer);
+
         final String hasCondition = "has_item";
 
         ShapedBlockBuilder.builder(TagRegistry.ALLTHEMODIUM_INGOT)

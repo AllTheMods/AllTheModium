@@ -11,9 +11,10 @@ import com.thevortex.allthemodium.blocks.Vibranium_Block;
 import com.thevortex.allthemodium.blocks.Vibranium_Ore;
 import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.items.*;
-import com.thevortex.allthemodium.material.ItemTier;
+import com.thevortex.allthemodium.material.ToolTiers;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -21,10 +22,12 @@ import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
 
+import net.minecraftforge.common.TierSortingRegistry;
 import net.minecraftforge.common.world.StructureSpawnManager;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
@@ -301,13 +304,240 @@ public class ModRegistry {
 	public static final RegistryObject<Block> TELEPORT_PAD = SHAPED_BLOCKS.register("teleport_pad", () -> new TeleportPad(Block.Properties.of(Material.METAL).noDrops().noOcclusion().strength(20.0F)));
 	public static final RegistryObject<Item> TELEPORT_PAD_ITEM = ITEMS.register("teleport_pad", () -> new BlockItem(TELEPORT_PAD.get(), new Item.Properties().tab(AllTheModium.GROUP)));
 
-	public static final RegistryObject<Item> ALLTHEMODIUM_PICKAXE = ITEMS.register("allthemodium_pickaxe",() -> new PickaxeItem(ItemTier.ALLTHEMODIUM,8,1.5f, new Item.Properties().tab(AllTheModium.GROUP)));
-	public static final RegistryObject<Item> VIBRANIUM_PICKAXE = ITEMS.register("vibranium_pickaxe",() -> new PickaxeItem(ItemTier.VIBRANIUM,16,3.0f, new Item.Properties().tab(AllTheModium.GROUP)));
-	public static final RegistryObject<Item> UNOBTAINIUM_PICKAXE = ITEMS.register("unobtainium_pickaxe",() -> new PickaxeItem(ItemTier.UNOBTAINIUM,32,5.0f, new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ALLTHEMODIUM_SWORD = ITEMS.register("allthemodium_sword",() -> new SwordItem(ToolTiers.ALLTHEMODIUM_TIER,8,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)));
 
-	public static final RegistryObject<Block> UA_ALLOY = SHAPED_BLOCKS.register("unobtainium_allthemodium_alloy_block", UAAlloy_Block::new);
-	public static final RegistryObject<Block> UV_ALLOY = SHAPED_BLOCKS.register("unobtainium_vibranium_alloy_block", UVAlloy_Block::new);
-	public static final RegistryObject<Block> VA_ALLOY = SHAPED_BLOCKS.register("vibranium_allthemodium_alloy_block", VAAlloy_Block::new);
+	public static final RegistryObject<Item> ALLTHEMODIUM_PICKAXE = ITEMS.register("allthemodium_pickaxe",() -> new PickaxeItem(ToolTiers.ALLTHEMODIUM_TIER,6,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.ALLTHEMODIUM_TIER, state);
+			if (state.is(ToolTiers.ALLTHEMODIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.ALLTHEMODIUM_TIER, state);
+			return false;
+		}
+	});
+
+	public static final RegistryObject<Item> ALLTHEMODIUM_AXE = ITEMS.register("allthemodium_axe",() -> new AxeItem(ToolTiers.ALLTHEMODIUM_TIER,6,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_AXE)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_AXE))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.ALLTHEMODIUM_TIER, state);
+			if (state.is(ToolTiers.ALLTHEMODIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.ALLTHEMODIUM_TIER, state);
+			return false;
+		}
+	});
+
+	public static final RegistryObject<Item> ALLTHEMODIUM_SHOVEL = ITEMS.register("allthemodium_shovel",() -> new ShovelItem(ToolTiers.ALLTHEMODIUM_TIER,4,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.ALLTHEMODIUM_TIER, state);
+			if (state.is(ToolTiers.ALLTHEMODIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.ALLTHEMODIUM_TIER, state);
+			return false;
+		}
+	});
+
+	public static final RegistryObject<Item> ALLTHEMODIUM_HOE = ITEMS.register("allthemodium_hoe",() -> new HoeItem(ToolTiers.ALLTHEMODIUM_TIER,4,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_HOE)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_HOE))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.ALLTHEMODIUM_TIER, state);
+			if (state.is(ToolTiers.ALLTHEMODIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.ALLTHEMODIUM_TIER, state);
+			return false;
+		}
+	});
+	public static final RegistryObject<Item> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword",() -> new SwordItem(ToolTiers.VIBRANIUM_TIER,16,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)));
+
+	public static final RegistryObject<Item> VIBRANIUM_PICKAXE = ITEMS.register("vibranium_pickaxe",() -> new PickaxeItem(ToolTiers.VIBRANIUM_TIER,12,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			if (state.is(ToolTiers.VIBRANIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			return false;
+		}
+	});
+
+	public static final RegistryObject<Item> VIBRANIUM_AXE = ITEMS.register("vibranium_axe",() -> new AxeItem(ToolTiers.VIBRANIUM_TIER,12,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_AXE)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_AXE))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			if (state.is(ToolTiers.VIBRANIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			return false;
+		}
+	});
+
+	public static final RegistryObject<Item> VIBRANIUM_SHOVEL = ITEMS.register("vibranium_shovel",() -> new ShovelItem(ToolTiers.VIBRANIUM_TIER,8,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			if (state.is(ToolTiers.VIBRANIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			return false;
+		}
+	});
+
+	public static final RegistryObject<Item> VIBRANIUM_HOE = ITEMS.register("vibranium_hoe",() -> new HoeItem(ToolTiers.VIBRANIUM_TIER,8,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_HOE)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_HOE))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			if (state.is(ToolTiers.VIBRANIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			return false;
+		}
+	});
+		public static final RegistryObject<Item> UNOBTAINIUM_SWORD = ITEMS.register("unobtainium_sword",() -> new SwordItem(ToolTiers.UNOBTAINIUM_TIER,32,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)));
+
+		public static final RegistryObject<Item> UNOBTAINIUM_PICKAXE = ITEMS.register("unobtainium_pickaxe",() -> new PickaxeItem(ToolTiers.UNOBTAINIUM_TIER,24,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			if (state.is(ToolTiers.UNOBTAINIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			return false;
+		}
+	});
+
+	public static final RegistryObject<Item> UNOBTAINIUM_AXE = ITEMS.register("unobtainium_axe",() -> new AxeItem(ToolTiers.UNOBTAINIUM_TIER,24,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_AXE)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_AXE))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			if (state.is(ToolTiers.UNOBTAINIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			return false;
+		}
+	});
+
+	public static final RegistryObject<Item> UNOBTAINIUM_SHOVEL = ITEMS.register("unobtainium_shovel",() -> new ShovelItem(ToolTiers.UNOBTAINIUM_TIER,16,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			if (state.is(ToolTiers.UNOBTAINIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			return false;
+		}
+	});
+
+	public static final RegistryObject<Item> UNOBTAINIUM_HOE = ITEMS.register("unobtainium_hoe",() -> new HoeItem(ToolTiers.UNOBTAINIUM_TIER,16,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_HOE)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_HOE))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			if (state.is(ToolTiers.UNOBTAINIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			return false;
+		}
+	});
+	public static final RegistryObject<Block> UA_ALLOY = BLOCKS.register("unobtainium_allthemodium_alloy_block", UAAlloy_Block::new);
+	public static final RegistryObject<Block> UV_ALLOY = BLOCKS.register("unobtainium_vibranium_alloy_block", UVAlloy_Block::new);
+	public static final RegistryObject<Block> VA_ALLOY = BLOCKS.register("vibranium_allthemodium_alloy_block", VAAlloy_Block::new);
 
 	public static final RegistryObject<Item> UA_ALLOY_ITEM = ITEMS.register("unobtainium_allthemodium_alloy_block", () -> new BlockItem(UA_ALLOY.get(),new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> UV_ALLOY_ITEM = ITEMS.register("unobtainium_vibranium_alloy_block", () -> new BlockItem(UV_ALLOY.get(),new Item.Properties().tab(AllTheModium.GROUP)));

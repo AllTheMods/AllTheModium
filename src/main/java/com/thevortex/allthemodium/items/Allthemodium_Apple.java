@@ -5,6 +5,7 @@ import com.thevortex.allthemodium.init.ModItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -41,8 +42,8 @@ public class Allthemodium_Apple extends Item {
 		//tooltip.add(this.getTooltip("troll.blood").withStyle(ChatFormatting.DARK_RED));
 		super.appendHoverText(stack, worldIn, tooltip, flagIn);
 	}
-	protected TextComponent getTooltip(String key){
-		return new TextComponent(key);
+	protected TranslatableComponent getTooltip(String key){
+		return new TranslatableComponent(key);
 	}
 
 }

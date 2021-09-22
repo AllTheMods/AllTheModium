@@ -5,6 +5,7 @@ import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -26,7 +27,7 @@ public class Unobtainium_Ore extends BlockItem {
 		tooltip.add(this.getTooltip("unobtainium.loc").withStyle(ChatFormatting.DARK_PURPLE));
 		super.appendHoverText(stack, worldIn, tooltip, flagIn);
 	}
-	protected TextComponent getTooltip(String key){
-		return new TextComponent(key);
+	protected TranslatableComponent getTooltip(String key){
+		return new TranslatableComponent(key);
 	}
 }

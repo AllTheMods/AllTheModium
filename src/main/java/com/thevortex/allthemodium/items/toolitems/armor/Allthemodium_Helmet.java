@@ -1,17 +1,15 @@
 package com.thevortex.allthemodium.items.toolitems.armor;
 
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.thevortex.allthemodium.init.ModItems;
 
 import com.thevortex.allthemodium.items.toolitems.armor.models.allthemodium_helmet;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
-import net.minecraft.client.model.geom.ModelPart;
+import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.ItemSteerable;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
@@ -21,9 +19,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.client.IItemRenderProperties;
-import net.minecraftforge.client.RenderProperties;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -37,14 +33,10 @@ public class Allthemodium_Helmet extends ArmorItem {
 
     @Override
     public void initializeClient(Consumer<IItemRenderProperties> consumer) {
-        super.initializeClient(consumer);
         consumer.accept(new IItemRenderProperties() {
             @Override
             public <A extends HumanoidModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot armorSlot, A _default) {
-               if(armorSlot == EquipmentSlot.HEAD) {
-                   return (A) new allthemodium_helmet(RenderProperties.get(ModItems.ALLTHEMODIUM_HELMET).getArmorModel(entityLiving, itemStack, armorSlot, _default).getHead());
-               }
-               return _default;
+                return (A) new allthemodium_helmet<Player>(Minecraft.getInstance().getEntityModels().bakeLayer(allthemodium_helmet.LAYER_LOCATION), armorSlot);
             }
         });
     }

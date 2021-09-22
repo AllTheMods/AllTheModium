@@ -9,6 +9,7 @@ import com.thevortex.allthemodium.init.ModItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -43,11 +44,11 @@ public class Unobtainium_Leggings extends ArmorItem {
 		tooltip.add(this.getTooltip("steady.guts").withStyle(ChatFormatting.LIGHT_PURPLE));
 		super.appendHoverText(stack, worldIn, tooltip, flagIn);
 	}
-	protected TextComponent getTooltip(String key){
-		return new TextComponent(key);
+	protected TranslatableComponent getTooltip(String key){
+		return new TranslatableComponent(key);
 	}
 
-    @Override
+	@Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {
     	if((stack.getItem() == ModItems.UNOBTAINIUM_LEGGINGS) && (!world.isClientSide)) {
 

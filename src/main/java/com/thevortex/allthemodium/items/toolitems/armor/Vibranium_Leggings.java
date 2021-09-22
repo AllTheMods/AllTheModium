@@ -8,6 +8,7 @@ import com.thevortex.allthemodium.init.ModItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -42,8 +43,8 @@ public class Vibranium_Leggings extends ArmorItem {
         tooltip.add(this.getTooltip("steady.guts").withStyle(ChatFormatting.GREEN));
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
-    protected TextComponent getTooltip(String key){
-        return new TextComponent(key);
+    protected TranslatableComponent getTooltip(String key){
+        return new TranslatableComponent(key);
     }
 
     @Override

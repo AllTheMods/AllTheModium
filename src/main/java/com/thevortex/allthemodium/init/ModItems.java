@@ -6,7 +6,6 @@ import com.thevortex.allthemodium.items.*;
 import com.thevortex.allthemodium.items.toolitems.armor.*;
 import com.thevortex.allthemodium.items.toolitems.tools.*;
 import com.thevortex.allthemodium.material.AArmorMaterial;
-import com.thevortex.allthemodium.material.ItemTier;
 import com.thevortex.allthemodium.reference.Reference;
 
 import net.minecraft.data.tags.TagsProvider;
@@ -27,7 +26,7 @@ public class ModItems {
 	/*
 	@ObjectHolder("allthemodium:alloy_paxel")
 	public static DiggerItem ALLTHEMODIUM_PAXEL;
-	*/
+
 	@ObjectHolder("allthemodium:alloy_pick")
 	public static PickaxeItem ALLTHEMODIUM_PICKAXE;
 	@ObjectHolder("allthemodium:alloy_axe")
@@ -36,7 +35,7 @@ public class ModItems {
 	public static SwordItem ALLTHEMODIUM_SWORD;
 	@ObjectHolder("allthemodium:alloy_shovel")
 	public static ShovelItem ALLTHEMODIUM_SHOVEL;
-	
+	*/
 	@ObjectHolder("allthemodium:allthemodium_helmet")
 	public static ArmorItem ALLTHEMODIUM_HELMET;
 	@ObjectHolder("allthemodium:allthemodium_chestplate")
@@ -109,10 +108,10 @@ public class ModItems {
 		UNOBTAINIUM_CHESTPLATE = (ArmorItem) new Unobtainium_Chestplate(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.CHEST, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("unobtainium_chestplate"));
 		UNOBTAINIUM_HELMET = (ArmorItem) new Unobtainium_Helmet(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.HEAD, new Item.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("unobtainium_helmet"));
 
-		ALLTHEMODIUM_PICKAXE = (PickaxeItem) new Allthemodium_PickAxe(ItemTier.UNOBTAINIUMALLOY, 3, 2.8F, new PickaxeItem.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("alloy_pick"));
-		ALLTHEMODIUM_AXE = (AxeItem) new Allthemodium_Axe(ItemTier.UNOBTAINIUMALLOY, 5, 7.8F, new AxeItem.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("alloy_axe"));
-		ALLTHEMODIUM_SWORD = (SwordItem) new Allthemodium_Sword(ItemTier.UNOBTAINIUMALLOY, 10, 10.8F, new SwordItem.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("alloy_sword"));
-		ALLTHEMODIUM_SHOVEL = (ShovelItem) new Allthemodium_Shovel(ItemTier.UNOBTAINIUMALLOY, 0, 4.8F, new ShovelItem.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("alloy_shovel"));
+		//ALLTHEMODIUM_PICKAXE = (PickaxeItem) new Allthemodium_PickAxe(ItemTier.UNOBTAINIUMALLOY, 3, 2.8F, new PickaxeItem.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("alloy_pick"));
+		//ALLTHEMODIUM_AXE = (AxeItem) new Allthemodium_Axe(ItemTier.UNOBTAINIUMALLOY, 5, 7.8F, new AxeItem.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("alloy_axe"));
+		//ALLTHEMODIUM_SWORD = (SwordItem) new Allthemodium_Sword(ItemTier.UNOBTAINIUMALLOY, 10, 10.8F, new SwordItem.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("alloy_sword"));
+		//ALLTHEMODIUM_SHOVEL = (ShovelItem) new Allthemodium_Shovel(ItemTier.UNOBTAINIUMALLOY, 0, 4.8F, new ShovelItem.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("alloy_shovel"));
 		//ALLTHEMODIUM_PAXEL = (DiggerItem) new Allthemodium_Paxel(25,18.6F,ItemTier.UNOBTAINIUMALLOY,  ,new DiggerItem.Properties().tab(group).stacksTo(1).fireResistant()).setRegistryName(location("alloy_paxel"));
 
 		event.getRegistry().register(ModItems.ALLTHEMODIUM_APPLE);
@@ -123,10 +122,10 @@ public class ModItems {
 		event.getRegistry().register(ModItems.ALLTHEMODIUM_CHESTPLATE);
 		event.getRegistry().register(ModItems.ALLTHEMODIUM_HELMET);
 		
-		event.getRegistry().register(ModItems.ALLTHEMODIUM_PICKAXE);
-		event.getRegistry().register(ModItems.ALLTHEMODIUM_AXE);
-		event.getRegistry().register(ModItems.ALLTHEMODIUM_SWORD);
-		event.getRegistry().register(ModItems.ALLTHEMODIUM_SHOVEL);
+		//event.getRegistry().register(ModItems.ALLTHEMODIUM_PICKAXE);
+		//event.getRegistry().register(ModItems.ALLTHEMODIUM_AXE);
+		//event.getRegistry().register(ModItems.ALLTHEMODIUM_SWORD);
+		//event.getRegistry().register(ModItems.ALLTHEMODIUM_SHOVEL);
 		//event.getRegistry().register(ModItems.ALLTHEMODIUM_PAXEL);
 
 		event.getRegistry().register(ModItems.UNOBTAINIUM_BOOTS);

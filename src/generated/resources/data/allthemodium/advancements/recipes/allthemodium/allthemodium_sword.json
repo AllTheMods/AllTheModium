@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "allthemodium:allthemodium_sword"
+    ]
+  },
+  "criteria": {
+    "has_allthemodium_rod": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:rods/allthemodium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "allthemodium:allthemodium_sword"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_allthemodium_rod",
+      "has_the_recipe"
+    ]
+  ]
+}

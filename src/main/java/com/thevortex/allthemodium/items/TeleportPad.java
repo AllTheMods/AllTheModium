@@ -4,6 +4,7 @@ package com.thevortex.allthemodium.items;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -27,7 +28,7 @@ public class TeleportPad extends BlockItem {
 
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
-    protected TextComponent getTooltip(String key){
-        return new TextComponent(key);
+    protected TranslatableComponent getTooltip(String key){
+        return new TranslatableComponent(key);
     }
 }

@@ -16,18 +16,18 @@ import com.thevortex.allthemodium.init.ModItems;
 import javax.swing.*;
 
 public enum AArmorMaterial implements ArmorMaterial {
-	   ALLTHEMODIUM("allthemodium", 500, new int[]{100, 100, 200, 100}, 185, SoundEvents.ARMOR_EQUIP_CHAIN, 125.0F, () -> {
+	   ALLTHEMODIUM("allthemodium", 45, new int[]{10, 15, 15, 10}, 185, SoundEvents.ARMOR_EQUIP_CHAIN, 125.0F, () -> {
 		      return Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get());
 		   }),
-	   VIBRANIUM("vibranium", 1000, new int[]{150, 300, 400, 150}, 235, SoundEvents.ARMOR_EQUIP_CHAIN, 250.0F, () -> {
+	   VIBRANIUM("vibranium", 75, new int[]{15, 30, 30, 15}, 235, SoundEvents.ARMOR_EQUIP_CHAIN, 250.0F, () -> {
 	      return Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get());
 	   }),
-	   UNOBTAINIUM("unobtainium",2000, new int[]{400, 600, 600, 400}, 285, SoundEvents.ARMOR_EQUIP_CHAIN, 500.0F, () -> {
+	   UNOBTAINIUM("unobtainium",100, new int[]{25, 45, 45, 25}, 485, SoundEvents.ARMOR_EQUIP_CHAIN, 500.0F, () -> {
 	      return Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get());
 	   });
     
 
-   private static final int[] MAX_DAMAGE_ARRAY = new int[]{400, 600, 600, 400};
+   private static final int[] MAX_DAMAGE_ARRAY = new int[]{25, 45, 45, 25};
    private final String name;
    
    private final int maxDamageFactor;
@@ -46,7 +46,7 @@ public enum AArmorMaterial implements ArmorMaterial {
       this.soundEvent = equipSoundIn;
       this.toughness = p_i48533_8_;
       this.repairMaterial = new LazyLoadedValue(repairMaterialSupplier);
-      this.knockback = this.toughness/100;
+      this.knockback = this.toughness/100.0F;
    }
    @Override
    public int getDurabilityForSlot(EquipmentSlot slotIn) { return MAX_DAMAGE_ARRAY[slotIn.getIndex()] * this.maxDamageFactor; }
