@@ -8,5 +8,11 @@
   },
   "result": {
     "item": "allthemodium:unobtainium_allthemodium_alloy_block"
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "iceandfire"
+    }
+  ]
 }

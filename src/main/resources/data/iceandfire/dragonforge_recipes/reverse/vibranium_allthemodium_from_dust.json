@@ -1,0 +1,18 @@
+{
+  "dragon_type": "fire",
+  "input_left": {
+    "tag": "forge:dusts/allthemodium"
+  },
+  "input_right": {
+    "tag": "forge:dusts/vibranium"
+  },
+  "result": {
+    "item": "allthemodium:vibranium_allthemodium_alloy_ingot"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "iceandfire"
+    }
+  ]
+}
