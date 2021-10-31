@@ -115,6 +115,7 @@ dependencies {
    // compileOnly fg.deobf("curse.maven:${ato}")
    // runtimeOnly fg.deobf("curse.maven:${ato}")
     implementation fg.deobf("curse.maven:${ato}")
+    implementation fg.deobf("curse.maven:${potions}")
     //implementation fg.deobf("curse.maven:${corail}")
     //compile fg.deobf("curse.maven:${byg}")
     //compile fg.deobf("curse.maven:${byg}")

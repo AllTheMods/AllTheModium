@@ -46,6 +46,7 @@ public class EventWorldgen {
             }
             //Vanilla Ores
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.ORE_COAL);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.ORE_COPPER);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.ORE_DIAMOND);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.ORE_GOLD);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.ORE_IRON);
@@ -54,6 +55,7 @@ public class EventWorldgen {
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.ORE_REDSTONE);
 
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.PROTOTYPE_ORE_COAL_LOWER);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.PROTOTYPE_ORE_COPPER);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.PROTOTYPE_ORE_COAL_UPPER);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.PROTOTYPE_ORE_DIAMOND);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> Features.PROTOTYPE_ORE_GOLD);

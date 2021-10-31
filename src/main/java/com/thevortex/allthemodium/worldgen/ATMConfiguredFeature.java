@@ -48,7 +48,7 @@ public class ATMConfiguredFeature {
 			Feature.ORE
 					.configured(new OreConfiguration(new BlockMatchTest(Blocks.END_STONE),
 							ModRegistry.UNOBTAINIUM_ORE.get().defaultBlockState(), 3))
-					.rarity(1).squared().count(1));
+					.rarity(1).rangeTriangle(VerticalAnchor.aboveBottom(15), VerticalAnchor.absolute(78)).squared().count(1));
 
 
 		public static ConfiguredFeature<?, ?> newConfiguredFeature(String registryName,
