@@ -9,6 +9,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.OreBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -48,8 +49,7 @@ public class Allthemodium_Ore extends OreBlock {
 
 
 
-
-   @OnlyIn(Dist.CLIENT)	
+	@OnlyIn(Dist.CLIENT)
    private static void activate(BlockState p_196500_0_, Level worldIn, BlockPos p_196500_2_) {
       spawnParticles(worldIn, p_196500_2_);
 

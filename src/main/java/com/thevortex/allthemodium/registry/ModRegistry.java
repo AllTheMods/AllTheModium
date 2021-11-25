@@ -1,5 +1,7 @@
 package com.thevortex.allthemodium.registry;
 
+import com.google.common.base.Preconditions;
+import com.google.common.collect.Lists;
 import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.blocks.*;
 import com.thevortex.allthemodium.blocks.Allthemodium_Block;
@@ -9,12 +11,18 @@ import com.thevortex.allthemodium.blocks.Unobtainium_Block;
 import com.thevortex.allthemodium.blocks.Unobtainium_Ore;
 import com.thevortex.allthemodium.blocks.Vibranium_Block;
 import com.thevortex.allthemodium.blocks.Vibranium_Ore;
+import com.thevortex.allthemodium.entity.PiglichEntity;
 import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.items.*;
 import com.thevortex.allthemodium.material.ToolTiers;
 import com.thevortex.allthemodium.reference.Reference;
+import com.thevortex.allthemodium.worldgen.Volcano;
+import com.thevortex.allthemodium.worldgen.VolcanoConfig;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -23,22 +31,30 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
 
 import net.minecraftforge.common.TierSortingRegistry;
 import net.minecraftforge.common.world.StructureSpawnManager;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fluids.ForgeFlowingFluid.Flowing;
 import net.minecraftforge.fluids.ForgeFlowingFluid.Source;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.awt.*;
+import java.util.ArrayList;
 
+@Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModRegistry {
 
 
@@ -52,6 +68,13 @@ public class ModRegistry {
 	public static final DeferredRegister<BlockEntityType<?>> ENTITY = DeferredRegister
 			.create(ForgeRegistries.BLOCK_ENTITIES, Reference.MOD_ID);
 
+	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister
+			.create(ForgeRegistries.ENTITIES, Reference.MOD_ID);
+
+	public static final DeferredRegister<Feature<?>> FEATURES =
+			DeferredRegister.create(ForgeRegistries.FEATURES, Reference.MOD_ID);
+
+	private static ArrayList<Item> SPAWN_EGGS = new ArrayList<Item>();
 
 	public static final ResourceLocation SOUL_LAVA_STILL = new ResourceLocation(Reference.MOD_ID,
 			"block/fluid/soul_lava_still");
@@ -92,7 +115,8 @@ public class ModRegistry {
 			"block/fluid/molten_metal_flow");
 	public static final ResourceLocation VIB_SHULKER = new ResourceLocation("minecraft", "block/shulker_box");
 
-
+	public static Feature<VolcanoConfig> VOLCANO_F = new Volcano(VolcanoConfig.CODEC);
+	public static RegistryObject<Feature<VolcanoConfig>> VOLCANO = FEATURES.register("volcano", () -> VOLCANO_F);
 
 	/* public static final RegistryObject<Source> moltenAllthemodium = FLUIDS.register("molten_allthemodium",
 			() -> new ForgeFlowingFluid.Source(makeATMProperties()));
@@ -175,17 +199,18 @@ public class ModRegistry {
 			() -> new BucketItem(vaporUnobtainium,
 					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ModItems.group)));
 
-	public static final RegistryObject<Source> blueLava = FLUIDS.register("molten_bluelava",
+*//*
+	public static final RegistryObject<Source> blueLava = FLUIDS.register("soul_lava",
 			() -> new ForgeFlowingFluid.Source(makeBlueLavaProperties()));
-	public static final RegistryObject<Flowing> flowing_blueLava = FLUIDS.register("flowing_molten_bluelava",
+	public static final RegistryObject<Flowing> flowing_blueLava = FLUIDS.register("flowing_soul_lava",
 			() -> new ForgeFlowingFluid.Flowing(makeBlueLavaProperties()));
 
 	public static final RegistryObject<LiquidBlock> molten_BlueLava_block = BLOCKS
-			.register("molten_bluelava_block", () -> new FluidBlock(blueLava,
+			.register("soul_lava_block", () -> new FluidBlock(blueLava,
 					Block.Properties.of(Material.LAVA).randomTicks().lightLevel((state) -> {
 						return 15;
 					}).noOcclusion().strength(100.0F).jumpFactor(0.1F).speedFactor(0.01F).noDrops()));
-	public static final RegistryObject<Item> moltenBluelava_bucket = ITEMS.register("molten_bluelava_bucket",
+	public static final RegistryObject<Item> moltenBluelava_bucket = ITEMS.register("soul_lava_bucket",
 			() -> new SoulBucket(blueLava,
 					new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ModItems.group)));
 
@@ -225,6 +250,7 @@ public class ModRegistry {
 				.block(vapor_unobtainium_block);
 	}
 
+
 	private static ForgeFlowingFluid.Properties makeBlueLavaProperties() {
 		return new ForgeFlowingFluid.Properties(blueLava, flowing_blueLava,
 				FluidAttributes.builder(SOUL_LAVA_STILL, SOUL_LAVA_FLOW).overlay(SOUL_LAVA_STILL).color(0xFF8AFBFF)
@@ -232,6 +258,26 @@ public class ModRegistry {
 								.block(molten_BlueLava_block);
 	}
 */
+	public static final RegistryObject<Block> ANCIENT_SMOOTH_STONE = BLOCKS.register("ancient_smooth_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(1.5f)));
+	public static final RegistryObject<Block> ANCIENT_STONE = BLOCKS.register("ancient_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(1.5f)));
+	public static final RegistryObject<Block> ANCIENT_DIRT = BLOCKS.register("ancient_dirt", () -> new Block(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.WET_GRASS).strength(0.6f)));
+	public static final RegistryObject<Block> ANCIENT_GRASS = BLOCKS.register("ancient_grass", () -> new Ancient_Grass(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.MOSS).strength(0.6f)));
+	public static final RegistryObject<Block> ANCIENT_MOSSY_STONE = BLOCKS.register("ancient_mossy_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.MOSS_CARPET).strength(1.5f)));
+	public static final RegistryObject<Block> ANCIENT_STONE_BRICKS = BLOCKS.register("ancient_stone_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHER_BRICKS).strength(1.5f)));
+	public static final RegistryObject<Block> ANCIENT_CHISELED_STONE_BRICKS = BLOCKS.register("ancient_chiseled_stone_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHER_BRICKS).strength(1.5f)));
+	public static final RegistryObject<Block> ANCIENT_CRACKED_STONE_BRICKS = BLOCKS.register("ancient_cracked_stone_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHER_BRICKS).strength(1.5f)));
+	public static final RegistryObject<Block> ANCIENT_POLISHED_STONE = BLOCKS.register("ancient_polished_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.METAL).strength(1.5f)));
+
+	public static final RegistryObject<Item> ANCIENT_SMOOTH_STONE_ITEM = ITEMS.register("ancient_smooth_stone", () -> new BlockItem(ANCIENT_SMOOTH_STONE.get(), new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_STONE_ITEM = ITEMS.register("ancient_stone", () -> new BlockItem(ANCIENT_STONE.get(), new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_DIRT_ITEM = ITEMS.register("ancient_dirt", () -> new BlockItem(ANCIENT_DIRT.get(), new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_GRASS_ITEM = ITEMS.register("ancient_grass", () -> new BlockItem(ANCIENT_GRASS.get(), new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_MOSSY_STONE_ITEM = ITEMS.register("ancient_mossy_stone", () -> new BlockItem(ANCIENT_MOSSY_STONE.get(), new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_STONE_BRICKS_ITEM = ITEMS.register("ancient_stone_bricks", () -> new BlockItem(ANCIENT_STONE_BRICKS.get(), new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_CHISELED_STONE_BRICKS_ITEM = ITEMS.register("ancient_chiseled_stone_bricks", () -> new BlockItem(ANCIENT_CHISELED_STONE_BRICKS.get(), new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_CRACKED_STONE_BRICKS_ITEM = ITEMS.register("ancient_cracked_stone_bricks", () -> new BlockItem(ANCIENT_CRACKED_STONE_BRICKS.get(), new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_POLISHED_STONE_ITEM = ITEMS.register("ancient_polished_stone", () -> new BlockItem(ANCIENT_POLISHED_STONE.get(), new Item.Properties().tab(AllTheModium.GROUP)));
+
 	public static final RegistryObject<Block> ALLTHEMODIUM_ORE = BLOCKS.register("allthemodium_ore", Allthemodium_Ore::new);
 	public static final RegistryObject<Block> ALLTHEMODIUM_SLATE_ORE = BLOCKS.register("allthemodium_slate_ore", Allthemodium_Ore::new);
 
@@ -543,8 +589,28 @@ public class ModRegistry {
 	public static final RegistryObject<Item> UV_ALLOY_ITEM = ITEMS.register("unobtainium_vibranium_alloy_block", () -> new BlockItem(UV_ALLOY.get(),new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> VA_ALLOY_ITEM = ITEMS.register("vibranium_allthemodium_alloy_block", () -> new BlockItem(VA_ALLOY.get(),new Item.Properties().tab(AllTheModium.GROUP)));
 
-	public static void init(){
+	public static final RegistryObject<EntityType<PiglichEntity>> PIGLICH = createMonsterEntity("piglich",PiglichEntity::new,0.6F,2.1F,0x000000,0xebe834);
 
+	private static <T extends Monster> RegistryObject<EntityType<T>> createMonsterEntity(String name, EntityType.EntityFactory<T> factory, float width, float height, int eggPrimary, int eggSecondary) {
+		ResourceLocation location = new ResourceLocation(Reference.MOD_ID, name);
+		EntityType<T> entity = EntityType.Builder.of(factory, MobCategory.MONSTER).sized(width, height).setTrackingRange(64).setUpdateInterval(1).build(location.toString());
+		Item spawnEgg = new SpawnEggItem(entity, eggPrimary, eggSecondary, (new Item.Properties()).tab(AllTheModium.GROUP));
+		spawnEgg.setRegistryName(new ResourceLocation(Reference.MOD_ID, name + "_spawn_egg"));
+		SPAWN_EGGS.add(spawnEgg);
+
+		return ENTITIES.register(name, () -> entity);
 	}
 
+	@SubscribeEvent
+	public static void addEntityAttributes(EntityAttributeCreationEvent event) {
+		event.put(PIGLICH.get(), PiglichEntity.createAttributes().build());
+	}
+
+	@SubscribeEvent
+	public static void registerSpawnEggs(RegistryEvent.Register<Item> event) {
+		for (Item spawnEgg : SPAWN_EGGS) {
+			Preconditions.checkNotNull(spawnEgg.getRegistryName(), "registryName");
+			event.getRegistry().register(spawnEgg);
+		}
+	}
 }

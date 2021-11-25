@@ -30,9 +30,10 @@ import com.thevortex.allthemodium.registry.ModRegistry;
 public class FluidBlock extends LiquidBlock {
 
 	public int tickcount = 0;
-
+	//protected Fluid fluid;
 	public FluidBlock(Supplier<? extends FlowingFluid> supplier, Properties p_i48368_1_) {
 		super(supplier, p_i48368_1_);
+		//this.fluid = ModRegistry.blueLava.get();
 	}
 /*
 	@Override
@@ -232,5 +233,5 @@ public class FluidBlock extends LiquidBlock {
 		}
 	}
 
- */
+*/
 }

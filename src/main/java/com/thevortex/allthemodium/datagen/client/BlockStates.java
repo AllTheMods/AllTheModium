@@ -1,12 +1,16 @@
 package com.thevortex.allthemodium.datagen.client;
 
+import com.thevortex.allthemodium.blocks.Ancient_Grass;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.GrassBlock;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fmllegacy.RegistryObject;
 
@@ -23,6 +27,7 @@ public class BlockStates extends BlockStateProvider {
     protected void registerStatesAndModels() {
         List<Block> entries = ModRegistry.BLOCKS.getEntries()
             .stream().map(RegistryObject::get)
+            .filter(block -> !(block instanceof GrassBlock))
             .filter(block -> !(block instanceof LiquidBlock))
             .collect(Collectors.toList());
 
@@ -34,12 +39,10 @@ public class BlockStates extends BlockStateProvider {
      * @param block the block
      */
     private void simpleBlockAndItem(Block block) {
-
-            simpleBlock(block);
-
-            String blockName = Objects.requireNonNull(block.getRegistryName()).toString();
-            BlockModelBuilder builder = models().getBuilder(blockName);
-            simpleBlockItem(block, builder);
-
+        String blockName = Objects.requireNonNull(block.getRegistryName()).toString();
+        simpleBlock(block);
+        BlockModelBuilder builder = models().getBuilder(blockName);
+        simpleBlockItem(block, builder);
     }
+
 }

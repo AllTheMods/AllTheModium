@@ -110,9 +110,10 @@ public class TeleportPad extends Block {
 						player.yya);
 			}
 
-		}/* else if (player.level.dimension().equals(AllTheModium.Nether)) {
+		} else if (player.level.dimension().equals(AllTheModium.Nether)) {
 			ServerLevel targetWorld = player.server.getLevel(AllTheModium.THE_OTHER);
-			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), 75, Math.round(pos.getZ()));
+			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), 115, Math.round(pos.getZ()));
+
 			if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {
 
 				targetWorld.setBlockAndUpdate(targetPos, ModRegistry.TELEPORT_PAD.get().defaultBlockState());
@@ -146,7 +147,7 @@ public class TeleportPad extends Block {
 				BlockPos newpos = new BlockPos(pos.getX(), 90 , pos.getZ());
 				if ((!targetWorld.getBlockState(newpos).hasBlockEntity())
 						&& (targetWorld.getBlockState(newpos).canEntityDestroy(targetWorld, newpos, player))) {
-					targetWorld.setBlockAndUpdate(newpos, ModBlocks.TELEPORT_PAD.defaultBlockState());
+					targetWorld.setBlockAndUpdate(newpos, ModRegistry.TELEPORT_PAD.get().defaultBlockState());
 				}
 
 				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, newpos.getX(), newpos.getY(), newpos.getZ(), 0, 1, 0);
@@ -154,7 +155,7 @@ public class TeleportPad extends Block {
 						player.yya);
 
 			}
-		} */
+		}
 
 		else if (player.level.dimension().equals(AllTheModium.OverWorld) && (config != 2)) {
 			ServerLevel targetWorld = player.server.getLevel(AllTheModium.Mining);

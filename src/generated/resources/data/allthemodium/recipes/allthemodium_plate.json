@@ -4,11 +4,14 @@
   "pattern": [
     "aa ",
     "aa ",
-    "   "
+    "h  "
   ],
   "key": {
     "a": {
       "tag": "forge:ingots/allthemodium"
+    },
+    "h": {
+      "tag": "alltheores:ore_hammers"
     }
   },
   "result": {

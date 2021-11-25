@@ -1,12 +1,10 @@
 package com.thevortex.allthemodium.reference;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
-import net.minecraft.tags.TagManager;
+import net.minecraft.tags.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.Tags;
 
 import java.util.Collection;
@@ -58,7 +56,7 @@ public class TagRegistry {
     public static final Tag.Named<Item> VIBRANIUM_NUGGET = ItemTags.createOptional(Reference.nugget("vibranium"));
     public static final Tag.Named<Item> UNOBTAINIUM_NUGGET = ItemTags.createOptional(Reference.nugget("unobtainium"));
 
-
+    public static final Tag.Named<Fluid> SOUL_LAVA = FluidTags.createOptional(Reference.forge("soul_lava"));
 
     private static Tags.IOptionalNamedTag<Item> forge(String name)
     {

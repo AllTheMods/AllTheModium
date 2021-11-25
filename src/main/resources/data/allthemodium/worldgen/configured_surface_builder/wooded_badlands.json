@@ -1,0 +1,14 @@
+{
+  "config": {
+    "top_material": {
+      "Name": "allthemodium:ancient_mossy_stone"
+    },
+    "under_material": {
+      "Name": "allthemodium:ancient_smooth_stone"
+    },
+    "underwater_material": {
+      "Name": "minecraft:gravel"
+    }
+  },
+  "type": "minecraft:wooded_badlands"
+}

@@ -3,6 +3,7 @@ package com.thevortex.allthemodium.datagen;
 import com.thevortex.allthemodium.datagen.client.BlockStates;
 import com.thevortex.allthemodium.datagen.client.ItemModels;
 import com.thevortex.allthemodium.datagen.server.*;
+import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -25,6 +26,7 @@ public final class DataGenerators {
             BlockTagsProvider blockTagsProvider = new BlockTags(generator, fileHelper);
             generator.addProvider(new ItemTags(generator, blockTagsProvider, fileHelper));
             generator.addProvider(blockTagsProvider);
+            //generator.addProvider(new FluidTags(generator, Reference.MOD_ID,fileHelper));
             generator.addProvider(new CraftingRecipes(generator));
             generator.addProvider(new ShapelessCrafting(generator));
             generator.addProvider(new BlastingRecipes(generator));
