@@ -3,10 +3,10 @@ package com.thevortex.allthemodium.events;
 import com.thevortex.allthemodium.entity.PiglichEntity;
 import com.thevortex.allthemodium.entity.PiglichModel;
 import com.thevortex.allthemodium.entity.PiglichRenderer;
-import com.thevortex.allthemodium.entity.PiglichType;
 import com.thevortex.allthemodium.items.toolitems.armor.models.allthemodium_helmet;
 import com.thevortex.allthemodium.items.toolitems.armor.models.unobtainium_helmet;
 import com.thevortex.allthemodium.reference.Reference;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.Mod;
 public class ClientEvents {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-                event.registerEntityRenderer(PiglichType.PIGLICH, p_174010_ -> PiglichRenderer.RENDERER);
+                event.registerEntityRenderer(ModRegistry.PIGLICH.get(), PiglichRenderer::new);
 
     }
 

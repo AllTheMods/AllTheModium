@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicReference;
-
-import javax.annotation.ParametersAreNonnullByDefault;
 
 import com.thevortex.allthemodium.AllTheModium;
 import net.minecraft.core.NonNullList;
@@ -23,7 +20,6 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import org.codehaus.plexus.util.CachedMap;
 
-@ParametersAreNonnullByDefault
 public class ATMShapedRecipe implements IATMShapedRecipe {
 
 	private final ShapedRecipe internal;

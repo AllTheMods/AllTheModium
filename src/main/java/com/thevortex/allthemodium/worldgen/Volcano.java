@@ -36,14 +36,14 @@ public class Volcano extends Feature<VolcanoConfig> {
 
         setSeed(world.getSeed());
 
-        if (rand.nextFloat() < 0.01F) {
-            pos = world.getHeightmapPos(Heightmap.Types.WORLD_SURFACE, pos);
+        if (rand.nextFloat() < 0.005F) {
+            pos = world.getHeightmapPos(Heightmap.Types.OCEAN_FLOOR_WG, pos);
             pos = new BlockPos(pos.getX(), pos.getY() - 10, pos.getZ());
             BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
 
-            double baseRadius = 15;
+            double baseRadius = 16;
             double lavaLeakage = 0.7;
-            int volcanoConeSize = 75;
+            int volcanoConeSize = 95;
             int volcanoStartHeight = volcanoConeSize - 5;
             double threshold = 0.5;
 

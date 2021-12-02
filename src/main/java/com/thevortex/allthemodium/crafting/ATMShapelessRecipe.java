@@ -3,7 +3,6 @@ package com.thevortex.allthemodium.crafting;
 import java.util.*;
 import java.util.Map.Entry;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
@@ -17,7 +16,6 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.crafting.IShapedRecipe;
 
-@ParametersAreNonnullByDefault
 public class 	ATMShapelessRecipe implements IATMShapelessRecipe {
 
 	private final ShapelessRecipe recipe;

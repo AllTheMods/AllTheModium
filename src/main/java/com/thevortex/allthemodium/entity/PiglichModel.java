@@ -18,12 +18,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
-import net.minecraft.world.entity.monster.piglin.Piglin;
-import net.minecraft.world.entity.monster.piglin.PiglinArmPose;
-import net.minecraft.world.level.newbiome.layer.Layer;
-import net.royawesome.jlibnoise.module.modifier.Abs;
 
 import java.util.Random;
 
@@ -66,8 +60,8 @@ public class PiglichModel<T extends Mob> extends PlayerModel<T> {
     }
 
     @Override
-    public void renderEars(PoseStack p_103402_, VertexConsumer p_103403_, int p_103404_, int p_103405_) {
-        super.renderEars(p_103402_, p_103403_, p_103404_, p_103405_);
+    public void renderEars(PoseStack stack, VertexConsumer consumer, int p_103404_, int p_103405_) {
+        super.renderEars(stack, consumer, p_103404_, p_103405_);
     }
 
     @Override

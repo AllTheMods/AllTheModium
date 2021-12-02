@@ -6,11 +6,12 @@ import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.world.level.levelgen.StructureSettings;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.StructureFeatureConfiguration;
-import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,9 +20,9 @@ public class ATMStructures {
 
     public static final DeferredRegister<StructureFeature<?>> STRUCTURES = DeferredRegister.create(ForgeRegistries.STRUCTURE_FEATURES, Reference.MOD_ID);
 
-    public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> DUNGEON = STRUCTURES.register("dungeon", () -> (new DungeonStructure(NoneFeatureConfiguration.CODEC)));
-    public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> PYRAMID = STRUCTURES.register("ancient_pyramid", () -> (new APStructure(NoneFeatureConfiguration.CODEC)));
-    public static final RegistryObject<StructureFeature<NoneFeatureConfiguration>> VILLAGE = STRUCTURES.register("piglin_village", () -> (new PVStructure(NoneFeatureConfiguration.CODEC)));
+    public static final RegistryObject<StructureFeature<JigsawConfiguration>> DUNGEON = STRUCTURES.register("dungeon", () -> (new DungeonStructure(JigsawConfiguration.CODEC)));
+    public static final RegistryObject<StructureFeature<JigsawConfiguration>> PYRAMID = STRUCTURES.register("ancient_pyramid", () -> (new APStructure(JigsawConfiguration.CODEC)));
+    public static final RegistryObject<StructureFeature<JigsawConfiguration>> VILLAGE = STRUCTURES.register("piglin_village", () -> (new PVStructure(JigsawConfiguration.CODEC)));
 
     public static void setupStructures() {
         setupMapSpacingAndLand(

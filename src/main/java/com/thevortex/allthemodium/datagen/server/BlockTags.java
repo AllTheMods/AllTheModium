@@ -7,8 +7,8 @@ import com.thevortex.allthemodium.reference.TagRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 
 public class BlockTags extends BlockTagsProvider {
 

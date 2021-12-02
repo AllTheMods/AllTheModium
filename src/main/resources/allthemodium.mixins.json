@@ -1,0 +1,17 @@
+{
+  "required": false,
+  "package": "com.thevortex.allthemodium.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "allthemodium.refmap.json",
+  "mixins": [
+
+
+  ],
+  "client": [
+
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8.5"
+}
