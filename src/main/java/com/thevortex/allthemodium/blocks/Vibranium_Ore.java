@@ -16,7 +16,7 @@ import net.minecraftforge.common.util.FakePlayer;
 public class Vibranium_Ore extends OreBlock {
 
 	public Vibranium_Ore() {//func_235861_h_ = setRequiresTool
-		super(Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.STONE).strength(15.0f));
+		super(Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.STONE).strength(9.0f));
 	}
 
 	@Override

@@ -6,6 +6,9 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -28,7 +31,8 @@ public class Allthemodium_Apple extends Item {
 	
 		if((entityLiving instanceof Player) && (stack.getItem() == ModItems.ALLTHEMODIUM_APPLE)) {
 			Player player = (Player)entityLiving;
-			//player.addEffect(new Potion(Potions.REGENERATION,600,9,false,false));
+			player.addEffect(new MobEffectInstance(MobEffects.REGENERATION,600,1,false,false));
+			player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION,600,1,false,false));
 
 		}
 	return super.finishUsingItem(stack, worldIn, entityLiving);
@@ -38,8 +42,8 @@ public class Allthemodium_Apple extends Item {
 	public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
 		tooltip.add(this.getTooltip("quick.snack").withStyle(ChatFormatting.GOLD));
 		tooltip.add(this.getTooltip("low.cal").withStyle(ChatFormatting.GOLD));
-		//tooltip.add(this.getTooltip("steel.skin").withStyle(ChatFormatting.DARK_RED));
-		//tooltip.add(this.getTooltip("troll.blood").withStyle(ChatFormatting.DARK_RED));
+		tooltip.add(this.getTooltip("steel.skin").withStyle(ChatFormatting.DARK_RED));
+		tooltip.add(this.getTooltip("troll.blood").withStyle(ChatFormatting.DARK_RED));
 		super.appendHoverText(stack, worldIn, tooltip, flagIn);
 	}
 	protected TranslatableComponent getTooltip(String key){

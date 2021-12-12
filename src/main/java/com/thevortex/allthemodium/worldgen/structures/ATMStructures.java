@@ -27,15 +27,15 @@ public class ATMStructures {
     public static void setupStructures() {
         setupMapSpacingAndLand(
                 DUNGEON.get(), /* The instance of the structure */
-                new StructureFeatureConfiguration(50 /* average distance apart in chunks between spawn attempts */,
-                        40 /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/,
+                new StructureFeatureConfiguration(130 /* average distance apart in chunks between spawn attempts */,
+                        100 /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/,
                         902961297 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
                 true);
 
         setupMapSpacingAndLand(
                 PYRAMID.get(), /* The instance of the structure */
-                new StructureFeatureConfiguration(40 /* average distance apart in chunks between spawn attempts */,
-                        35 /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/,
+                new StructureFeatureConfiguration(80 /* average distance apart in chunks between spawn attempts */,
+                        70 /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/,
                         867530999 /* this modifies the seed of the structure so no two structures always spawn over each-other. Make this large and unique. */),
                 true);
 

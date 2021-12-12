@@ -32,7 +32,7 @@ minecraft {
     // stable_#            Stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'official', version: '1.18'
+    mappings channel: 'official', version: '1.18.1'
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     
      accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -115,6 +115,7 @@ dependencies {
    // runtimeOnly fg.deobf("curse.maven:${ato}")
     implementation fg.deobf("curse.maven:${ato}")
     implementation fg.deobf("curse.maven:${potions}")
+    //implementation fileTree(dir: 'libs', include: '*.jar')
     //implementation fg.deobf("curse.maven:${worldedit}")
     //implementation fg.deobf("curse.maven:${cyclic}")
     //compile fg.deobf("curse.maven:${byg}")
@@ -135,6 +136,9 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
+    implementation('cpw.mods:securejarhandler') { version { strictly '0.9.45' } }
+    //implementation fg.deobf("curse.maven:${mekanism}")
+    //implementation fg.deobf("curse.maven:${jei}")
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

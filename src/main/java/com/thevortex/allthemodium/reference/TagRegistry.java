@@ -17,6 +17,8 @@ public class TagRegistry {
     public static final Tag.Named<Block> VIBRANIUM_ORE = BlockTags.createOptional(Reference.ore("vibranium"));
     public static final Tag.Named<Block> UNOBTAINIUM_ORE = BlockTags.createOptional(Reference.ore("unobtainium"));
 
+    public static final Tag.Named<Block> ANCIENT_STONE = BlockTags.createOptional(Reference.location("allthemodium:ancient_stone"));
+
     public static final Tag.Named<Item> ALLTHEMODIUM_ORE_ITEM = ItemTags.createOptional(Reference.ore("allthemodium"));
     public static final Tag.Named<Item> VIBRANIUM_ORE_ITEM = ItemTags.createOptional(Reference.ore("vibranium"));
     public static final Tag.Named<Item> UNOBTAINIUM_ORE_ITEM = ItemTags.createOptional(Reference.ore("unobtainium"));

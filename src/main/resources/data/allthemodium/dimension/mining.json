@@ -1,0 +1,36 @@
+{
+  "type": "allthemodium:mining",
+  "generator": {
+    "type": "allthemodium:mining",
+    "settings": {
+      "biome": "allthemodium:mining",
+      "lakes": false,
+      "features": true,
+      "layers": [
+        {
+          "block": "minecraft:bedrock",
+          "height": 1
+        },
+        {
+          "block": "minecraft:deepslate",
+          "height": 64
+        },
+        {
+          "block": "minecraft:stone",
+          "height": 69
+        },
+        {
+          "block": "minecraft:dirt",
+          "height": 4
+        },
+        {
+          "block": "minecraft:grass_block",
+          "height": 1
+        }
+      ],
+      "structures": {
+        "structures": {}
+      }
+    }
+  }
+}

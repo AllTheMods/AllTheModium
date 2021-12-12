@@ -16,7 +16,7 @@ import net.minecraftforge.common.util.FakePlayer;
 public class Unobtainium_Ore extends OreBlock {
 
 	public Unobtainium_Ore() {//func_235861_h_ = setRequiresTool
-		super(Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.STONE).strength(20.0f));
+		super(Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.STONE).strength(12.0f));
 	}
 
 	@Override

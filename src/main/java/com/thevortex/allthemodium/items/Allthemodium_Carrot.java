@@ -5,6 +5,8 @@ import com.thevortex.allthemodium.init.ModItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -27,7 +29,8 @@ public class Allthemodium_Carrot extends Item {
 	
 		if((entityLiving instanceof Player) && (stack.getItem() == ModItems.ALLTHEMODIUM_CARROT)) {
 			Player player = (Player)entityLiving;
-
+			player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION,600,2,false,false));
+			player.addEffect(new MobEffectInstance(MobEffects.REGENERATION,600,2,false,false));
 		}
 	return super.finishUsingItem(stack, worldIn, entityLiving);
 	}

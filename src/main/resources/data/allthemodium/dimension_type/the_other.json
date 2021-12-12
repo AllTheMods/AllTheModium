@@ -1,0 +1,19 @@
+{
+
+  "name": "allthemodium:the_other",
+  "ultrawarm": true,
+  "natural": true,
+  "shrunk": true,
+  "piglin_safe": true,
+  "height": 384,
+  "respawn_anchor_works": false,
+  "bed_works": false,
+  "has_raids": false,
+  "has_skylight": true,
+  "has_ceiling": false,
+  "min_y": -64,
+  "ambient_light": 0.05,
+  "logical_height": 384,
+  "infiniburn": "minecraft:infiniburn_nether",
+  "coordinate_scale": 8
+}
