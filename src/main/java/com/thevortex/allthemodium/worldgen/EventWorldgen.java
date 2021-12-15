@@ -289,6 +289,9 @@ public class EventWorldgen {
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.OTHER_CANYON_CWC);
 
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> NetherPlacements.WEEPING_VINES);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.ANCIENT_TREE_GIANT);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.ANCIENT_TREE_MEDIUM);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.ANCIENT_TREE);
 
 
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATMPlacedFeature.ORE_ALLTHEMODIUM_MOUNTAIN);
@@ -340,7 +343,7 @@ public class EventWorldgen {
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> CavePlacements.DRIPSTONE_CLUSTER);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> CavePlacements.POINTED_DRIPSTONE);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> CavePlacements.CAVE_VINES);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.TOP_LAYER_MODIFICATION).add(() -> CavePlacements.LUSH_CAVES_VEGETATION);
+            //event.getGeneration().getFeatures(GenerationStep.Decoration.TOP_LAYER_MODIFICATION).add(() -> CavePlacements.LUSH_CAVES_VEGETATION);
             event.getGeneration().getFeatures(GenerationStep.Decoration.TOP_LAYER_MODIFICATION).add(() -> CavePlacements.GLOW_LICHEN);
             event.getGeneration().getFeatures(GenerationStep.Decoration.TOP_LAYER_MODIFICATION).add(() -> CavePlacements.LUSH_CAVES_CEILING_VEGETATION);
 

@@ -17,11 +17,14 @@ import net.minecraft.data.worldgen.StructureFeatures;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.FlatLevelSource;
 import net.minecraft.world.level.levelgen.StructureSettings;
@@ -92,6 +95,8 @@ public class AllTheModium
     	ModRegistry.FLUIDS.register(modEventBus);
        	ModRegistry.BLOCKS.register(modEventBus);
 		ModRegistry.SHAPED_BLOCKS.register(modEventBus);
+		ModRegistry.PILLARBLOCKS.register(modEventBus);
+
     	ModRegistry.ITEMS.register(modEventBus);
     	ModRegistry.ENTITIES.register(modEventBus);
     	ModRegistry.FEATURES.register(modEventBus);
@@ -146,9 +151,9 @@ public class AllTheModium
 			HashMap<StructureFeature<?>, HashMultimap<ConfiguredStructureFeature<?, ?>, ResourceKey<Biome>>> STStructureToMultiMap = new HashMap<>();
 
 			// Add the resourcekey of all biomes that this Configured Structure can spawn in.
-					associateBiomeToConfiguredStructure(STStructureToMultiMap, ATMConfiguredStructures.CONFIGURED_PYRAMID, ATMBiomes.THE_OTHER);
+					associateBiomeToConfiguredStructure(STStructureToMultiMap, ATMConfiguredStructures.CONFIGURED_PYRAMID, ATMBiomes.WARPED_FOREST);
 					associateBiomeToConfiguredStructure(STStructureToMultiMap, ATMConfiguredStructures.CONFIGURED_DUNGEON, ATMBiomes.THE_OTHER);
-					associateBiomeToConfiguredStructure(STStructureToMultiMap, ATMConfiguredStructures.CONFIGURED_VILLAGE, ATMBiomes.THE_OTHER);
+					associateBiomeToConfiguredStructure(STStructureToMultiMap, ATMConfiguredStructures.CONFIGURED_VILLAGE, ATMBiomes.CRIMSON_FOREST);
 					associateBiomeToConfiguredStructure(STStructureToMultiMap, StructureFeature.NETHER_BRIDGE.configured(FeatureConfiguration.NONE), ATMBiomes.THE_OTHER);
 					associateBiomeToConfiguredStructure(STStructureToMultiMap, StructureFeature.SWAMP_HUT.configured(FeatureConfiguration.NONE), ATMBiomes.THE_OTHER);
 
@@ -249,7 +254,7 @@ public class AllTheModium
 	public static class RegistryEvents {
 		@SubscribeEvent
 		public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
-
+			AxeItem.STRIPPABLES = (new ImmutableMap.Builder<Block, Block>()).put(ModRegistry.ANCIENT_LOG_0.get(),ModRegistry.ANCIENT_LOG_STRIPPED.get()).put(ModRegistry.ANCIENT_LOG_1.get(),ModRegistry.ANCIENT_LOG_STRIPPED.get()).put(ModRegistry.ANCIENT_LOG_2.get(),ModRegistry.ANCIENT_LOG_STRIPPED.get()).put(Blocks.OAK_WOOD, Blocks.STRIPPED_OAK_WOOD).put(Blocks.OAK_LOG, Blocks.STRIPPED_OAK_LOG).put(Blocks.DARK_OAK_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD).put(Blocks.DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG).put(Blocks.ACACIA_WOOD, Blocks.STRIPPED_ACACIA_WOOD).put(Blocks.ACACIA_LOG, Blocks.STRIPPED_ACACIA_LOG).put(Blocks.BIRCH_WOOD, Blocks.STRIPPED_BIRCH_WOOD).put(Blocks.BIRCH_LOG, Blocks.STRIPPED_BIRCH_LOG).put(Blocks.JUNGLE_WOOD, Blocks.STRIPPED_JUNGLE_WOOD).put(Blocks.JUNGLE_LOG, Blocks.STRIPPED_JUNGLE_LOG).put(Blocks.SPRUCE_WOOD, Blocks.STRIPPED_SPRUCE_WOOD).put(Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG).put(Blocks.WARPED_STEM, Blocks.STRIPPED_WARPED_STEM).put(Blocks.WARPED_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE).put(Blocks.CRIMSON_STEM, Blocks.STRIPPED_CRIMSON_STEM).put(Blocks.CRIMSON_HYPHAE, Blocks.STRIPPED_CRIMSON_HYPHAE).build();
 			ModItems.init(event);
 			if(ModList.get().isLoaded("iceandfire")) {
 				//IAFForgeRecipes.init();

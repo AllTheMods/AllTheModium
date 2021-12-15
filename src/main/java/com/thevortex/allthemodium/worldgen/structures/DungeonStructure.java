@@ -97,7 +97,7 @@ public class DungeonStructure extends StructureFeature<JigsawConfiguration> {
                 // However, I recommend you keep this a decent value like 7 so people can use datapacks to add additional pieces to your structure easily.
                 // But don't make it too large for recursive structures like villages or you'll crash server due to hundreds of pieces attempting to generate!
                 // Requires AccessTransformer  (see resources/META-INF/accesstransformer.cfg)
-                10
+                8
         );
 
         // Create a new context with the new config that has our json pool. We will pass this into JigsawPlacement.addPieces

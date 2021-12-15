@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "allthemodium:ancient_grass",
     "allthemodium:ancient_dirt"
   ]
 }
