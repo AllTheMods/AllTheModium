@@ -1,5 +1,7 @@
 package com.thevortex.allthemodium.blocks;
 
+import com.thevortex.allthemodium.datagen.server.BlockTags;
+import com.thevortex.allthemodium.reference.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -40,7 +42,7 @@ public class AncientSaplingBlock extends BushBlock implements BonemealableBlock 
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
-        return ((state.is(ModRegistry.ANCIENT_DIRT.get())) || (state.is(ModRegistry.ANCIENT_GRASS.get())));
+        return true;
     }
 
     public void randomTick(BlockState p_56003_, ServerLevel p_56004_, BlockPos p_56005_, Random p_56006_) {

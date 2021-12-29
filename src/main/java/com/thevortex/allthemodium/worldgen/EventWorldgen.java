@@ -48,6 +48,7 @@ public class EventWorldgen {
         }
         if ((mod.equals(Reference.MOD_ID)) && (biome.equals("mining"))) {
             //clear out the trash
+
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).clear();
             event.getGeneration().getFeatures(GenerationStep.Decoration.SURFACE_STRUCTURES).clear();
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_STRUCTURES).clear();
@@ -134,6 +135,7 @@ public class EventWorldgen {
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> OrePlacements.ORE_REDSTONE);
         }
         if ((mod.equals(Reference.MOD_ID)) && (biome.equals("soul_sand_valley"))) {
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> NetherPlacements.WEEPING_VINES);
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.NETHER_CAVE_CWC);
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.OTHER_CAVE_CWC);
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.OTHER_CANYON_CWC);
@@ -175,6 +177,7 @@ public class EventWorldgen {
 
         }
         if ((mod.equals(Reference.MOD_ID)) && (biome.equals("desert_hills"))) {
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> NetherPlacements.WEEPING_VINES);
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.NETHER_CAVE_CWC);
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.OTHER_CAVE_CWC);
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.OTHER_CANYON_CWC);
@@ -210,10 +213,13 @@ public class EventWorldgen {
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> OrePlacements.ORE_REDSTONE);
         }
         if ((mod.equals(Reference.MOD_ID)) && (biome.equals("warped_forest"))) {
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> NetherPlacements.WEEPING_VINES);
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.NETHER_CAVE_CWC);
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.OTHER_CAVE_CWC);
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.OTHER_CANYON_CWC);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> NetherPlacements.WARPED_FOREST_VEGETATION);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.ANCIENT_TREE_MEDIUM);
+
             if (ModList.get().isLoaded("alltheores")) {
                 //Alltheores
 
@@ -246,11 +252,14 @@ public class EventWorldgen {
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> OrePlacements.ORE_REDSTONE);
         }
         if ((mod.equals(Reference.MOD_ID)) && (biome.equals("crimson_forest"))) {
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> NetherPlacements.WEEPING_VINES);
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.NETHER_CAVE_CWC);
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.OTHER_CAVE_CWC);
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.OTHER_CANYON_CWC);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> NetherPlacements.CRIMSON_FOREST_VEGETATION);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> NetherPlacements.PATCH_CRIMSON_ROOTS);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.ANCIENT_TREE);
+
             if (ModList.get().isLoaded("alltheores")) {
                 //Alltheores
 
@@ -290,9 +299,7 @@ public class EventWorldgen {
 
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> NetherPlacements.WEEPING_VINES);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.ANCIENT_TREE_GIANT);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.ANCIENT_TREE_MEDIUM);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.ANCIENT_TREE);
-
+           //event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.ANCIENT_HERB_PATCH);
 
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATMPlacedFeature.ORE_ALLTHEMODIUM_MOUNTAIN);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATMPlacedFeature.ORE_ALLTHEMODIUM);

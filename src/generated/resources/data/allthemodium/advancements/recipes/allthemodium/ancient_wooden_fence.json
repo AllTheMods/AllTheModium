@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "allthemodium:ancient_wooden_fence"
+    ]
+  },
+  "criteria": {
+    "has_OptionalNamedTag[allthemodium:ancient_stone]_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "allthemodium:ancient_planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "allthemodium:ancient_wooden_fence"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_OptionalNamedTag[allthemodium:ancient_stone]_block",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -4,9 +4,7 @@
     "seed": 0,
     "biome_source": {
       "type": "minecraft:multi_noise",
-      "seed": 0,
       "biomes": [
-
         {
           "parameters": {
             "depth": 0.1,
@@ -21,7 +19,7 @@
         },
         {
           "parameters": {
-            "depth": 0.5,
+            "depth": -0.1,
             "continentalness": 0.9,
             "weirdness": 0.2,
             "offset": 0.0,
@@ -33,7 +31,7 @@
         },
         {
           "parameters": {
-            "depth": -0.3,
+            "depth": 0.3,
             "continentalness": -0.3,
             "weirdness": 0.0,
             "offset": 0.0,
@@ -45,7 +43,7 @@
         },
         {
           "parameters": {
-            "depth": -0.1,
+            "depth": 0.1,
             "continentalness": 0.0,
             "weirdness": 0.0,
             "offset": 0.0,
@@ -69,13 +67,13 @@
         },
         {
           "parameters": {
-            "depth": 0.0,
-            "continentalness": -0.5,
+            "depth": 0.2,
+            "continentalness": -0.2,
             "weirdness": 0.0,
             "erosion": -0.2,
             "offset": 0.0,
             "temperature": 0.8,
-            "humidity": -0.6
+            "humidity": 0.0
           },
           "biome": "allthemodium:desert_hills"
         },
@@ -97,7 +95,7 @@
     },
     "settings": {
       "noodle_caves_enabled": true,
-      "legacy_random_source": true,
+      "legacy_random_source": false,
       "ore_veins_enabled": true,
       "deepslate_enabled": true,
       "noise_caves_enabled": true,
@@ -659,20 +657,20 @@
           "xz_scale": 1,
           "y_scale":  2,
           "xz_factor": 250,
-          "y_factor": 180
+          "y_factor": 220
         },
         "bottom_slide": {
-          "target": 5,
+          "target": 4,
           "size": 20,
           "offset": 5
         },
         "top_slide": {
-          "target": -8,
+          "target": -4,
           "size": 25,
-          "offset": 8
+          "offset": 6
         },
         "terrain_shaper": {
-          "offset": -0.5675,
+          "offset": -0.7675,
           "factor": 2,
           "jaggedness": 1
         }

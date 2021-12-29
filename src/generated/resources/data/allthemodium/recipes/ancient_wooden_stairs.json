@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "allthemodium",
+  "pattern": [
+    "a  ",
+    "aa ",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "tag": "allthemodium:ancient_planks"
+    }
+  },
+  "result": {
+    "item": "allthemodium:ancient_wooden_stairs"
+  }
+}

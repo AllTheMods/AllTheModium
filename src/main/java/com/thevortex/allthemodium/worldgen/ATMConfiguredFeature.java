@@ -9,6 +9,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.OreFeatures;
+import net.minecraft.data.worldgen.placement.TreePlacements;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ClampedNormalFloat;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -17,6 +18,7 @@ import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
@@ -25,6 +27,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 
+import java.util.List;
 import java.util.OptionalInt;
 
 public class ATMConfiguredFeature {
@@ -59,14 +62,18 @@ public class ATMConfiguredFeature {
 	public static final ConfiguredFeature<TreeConfiguration, ?> ANCIENT_TREE_GIANT = FeatureUtils.register("ancient_tree_giant", Feature.TREE.configured(createAncientGiantTree().build()));
 	public static final ConfiguredFeature<TreeConfiguration, ?> ANCIENT_TREE_MEDIUM = FeatureUtils.register("ancient_tree_medium", Feature.TREE.configured(createAncientMediumTree().build()));
 	public static final ConfiguredFeature<TreeConfiguration, ?> ANCIENT_TREE = FeatureUtils.register("ancient_tree", Feature.TREE.configured(createAncientTree().build()));
+
+	public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_ANCIENT_HERB = FeatureUtils.register("patch_ancient_herb", Feature.RANDOM_PATCH.configured(FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(ModRegistry.ANCIENT_HERB.get()))))));
+
+
 	private static TreeConfiguration.TreeConfigurationBuilder createAncientGiantTree() {
 		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.ANCIENT_LOG_0.get()), new FancyTrunkPlacer(26, 7, 7), BlockStateProvider.simple(ModRegistry.ANCIENT_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))));
 	}
 	private static TreeConfiguration.TreeConfigurationBuilder createAncientMediumTree() {
-		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.ANCIENT_LOG_1.get()), new FancyTrunkPlacer(17, 7, 5), BlockStateProvider.simple(ModRegistry.ANCIENT_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))));
+		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.ANCIENT_LOG_1.get()), new FancyTrunkPlacer(17, 5, 5), BlockStateProvider.simple(ModRegistry.ANCIENT_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))));
 	}
 	private static TreeConfiguration.TreeConfigurationBuilder createAncientTree() {
-		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.ANCIENT_LOG_2.get()), new FancyTrunkPlacer(8, 7, 3), BlockStateProvider.simple(ModRegistry.ANCIENT_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))));
+		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.ANCIENT_LOG_2.get()), new FancyTrunkPlacer(8, 3, 3), BlockStateProvider.simple(ModRegistry.ANCIENT_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))));
 	}
 	public static ConfiguredFeature<?, ?> newVolcanoFeature(String registryName,
 															   Feature<VolcanoConfig> volcanoFeature) {

@@ -2,6 +2,7 @@ package com.thevortex.allthemodium.worldgen.features;
 
 import com.mojang.serialization.Codec;
 import com.thevortex.allthemodium.registry.ModRegistry;
+import com.thevortex.allthemodium.worldgen.biomes.ATMBiomes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
@@ -33,9 +34,10 @@ public class Volcano extends Feature<VolcanoConfig> {
 
         setSeed(world.getSeed());
 
-        if (rand.nextFloat() < 0.00005F) {
+        if (rand.nextFloat() < 0.0005F) {
             pos = world.getHeightmapPos(Heightmap.Types.OCEAN_FLOOR_WG, pos);
             pos = new BlockPos(pos.getX(), pos.getY() - 10, pos.getZ());
+
             BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
 
             double baseRadius = 16;
@@ -62,7 +64,8 @@ public class Volcano extends Feature<VolcanoConfig> {
                     }
                 }
             }
-        }
+         }
+
         return true;
     }
 

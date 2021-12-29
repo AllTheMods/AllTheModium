@@ -7,14 +7,14 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.LiquidBlock;
-import net.minecraft.world.level.block.OreBlock;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
@@ -41,12 +41,32 @@ public class LootTables extends LootTableProvider {
 
         @Override
         public void addTables() {
+
             getKnownBlocks().forEach(this::dropRaw);
+           getKnownStairs().forEach(this::dropSelf);
+           getKnownSlabs().forEach(this::dropSelf);
+           getKnownWalls().forEach(this::dropSelf);
+
+
         }
 
+        private static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
         private void dropRaw(Block block) {
             if(block instanceof LiquidBlock) {
                 return;
+            }
+
+            if(block instanceof LeavesBlock) {
+                String leavestype = block.getRegistryName().getPath();
+                if(leavestype.contains("ancient_leaves")) {
+
+                    this.add(block,(block1 -> createShearsOnlyDrop(block1)));
+                }
+            }
+            if(block.getRegistryName().getPath().contains("ancient_bookshelf")) {
+                this.add(ModRegistry.ANCIENT_BOOKSHELF.get(), (p_124241_) -> {
+                    return createSingleItemTableWithSilkTouch(p_124241_, Items.BOOK, ConstantValue.exactly(3.0F));
+                });
             }
             if (block instanceof OreBlock) {
                 String oretype = block.getRegistryName().getPath();
@@ -71,6 +91,31 @@ public class LootTables extends LootTableProvider {
         @Override
         protected Iterable<Block> getKnownBlocks() {
             return ModRegistry.BLOCKS.getEntries()
+                    .stream().map(RegistryObject::get)
+                    .collect(Collectors.toList());
+
+        }
+        protected Iterable<Block> getKnownStairs() {
+            return ModRegistry.STAIRBLOCKS.getEntries()
+                    .stream().map(RegistryObject::get)
+                    .collect(Collectors.toList());
+
+        }
+        protected Iterable<Block> getKnownSlabs() {
+            return ModRegistry.SLABBLOCKS.getEntries()
+                    .stream().map(RegistryObject::get)
+                    .collect(Collectors.toList());
+
+        }
+
+        protected Iterable<Block> getKnownWalls() {
+            return ModRegistry.WALLBLOCKS.getEntries()
+                    .stream().map(RegistryObject::get)
+                    .collect(Collectors.toList());
+
+        }
+        protected Iterable<Block> getunKnownBlocks() {
+            return ModRegistry.PILLARBLOCKS.getEntries()
                     .stream().map(RegistryObject::get)
                     .collect(Collectors.toList());
 

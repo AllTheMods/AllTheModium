@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "allthemodium:ancient_wooden_stairs",
+    "allthemodium:ancient_stone_stairs",
+    "allthemodium:ancient_polished_stone_stairs",
+    "allthemodium:ancient_mossy_stone_stairs",
+    "allthemodium:ancient_cracked_stone_brick_stairs",
+    "allthemodium:ancient_chiseled_stone_brick_stairs",
+    "allthemodium:ancient_stone_brick_stairs"
+  ]
+}

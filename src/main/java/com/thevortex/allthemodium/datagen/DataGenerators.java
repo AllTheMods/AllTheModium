@@ -26,7 +26,7 @@ public final class DataGenerators {
             BlockTagsProvider blockTagsProvider = new BlockTags(generator, fileHelper);
             generator.addProvider(new ItemTags(generator, blockTagsProvider, fileHelper));
             generator.addProvider(blockTagsProvider);
-            //generator.addProvider(new FluidTags(generator, Reference.MOD_ID,fileHelper));
+            generator.addProvider(new FluidTags(generator, Reference.MOD_ID,fileHelper));
             generator.addProvider(new CraftingRecipes(generator));
             generator.addProvider(new ShapelessCrafting(generator));
             generator.addProvider(new BlastingRecipes(generator));

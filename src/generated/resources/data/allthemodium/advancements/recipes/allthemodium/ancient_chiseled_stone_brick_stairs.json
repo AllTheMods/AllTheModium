@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "allthemodium:ancient_chiseled_stone_brick_stairs"
+    ]
+  },
+  "criteria": {
+    "has_OptionalNamedTag[allthemodium:ancient_stone]_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "allthemodium:ancient_chiseled_stone_bricks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "allthemodium:ancient_chiseled_stone_brick_stairs"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_OptionalNamedTag[allthemodium:ancient_stone]_block",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "allthemodium",
+  "pattern": [
+    "   ",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "tag": "allthemodium:ancient_chiseled_stone_bricks"
+    }
+  },
+  "result": {
+    "item": "allthemodium:ancient_chiseled_stone_brick_wall"
+  }
+}

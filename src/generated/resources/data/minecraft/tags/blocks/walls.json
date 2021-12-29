@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "allthemodium:ancient_wooden_fence",
+    "allthemodium:ancient_stone_wall",
+    "allthemodium:ancient_polished_stone_wall",
+    "allthemodium:ancient_mossy_stone_wall",
+    "allthemodium:ancient_cracked_stone_brick_wall",
+    "allthemodium:ancient_chiseled_stone_brick_wall",
+    "allthemodium:ancient_stone_brick_wall",
+    "allthemodium:ancient_wooden_fence"
+  ]
+}

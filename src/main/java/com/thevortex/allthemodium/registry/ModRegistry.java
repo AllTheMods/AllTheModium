@@ -21,6 +21,8 @@ import com.thevortex.allthemodium.worldgen.carvers.OtherCanyonCarver;
 import com.thevortex.allthemodium.worldgen.carvers.OtherCarver;
 import com.thevortex.allthemodium.worldgen.carvers.OtherCaveCarver;
 import net.minecraft.core.Direction;
+import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.network.protocol.game.ClientboundMoveEntityPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EntityType;
@@ -34,8 +36,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.carver.CanyonCarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
 
@@ -43,6 +49,8 @@ import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.TierSortingRegistry;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fluids.FluidAttributes;
+import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -57,6 +65,12 @@ public class ModRegistry {
 	public static final DeferredRegister<Block> SHAPED_BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
 			Reference.MOD_ID);
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
+			Reference.MOD_ID);
+	public static final DeferredRegister<Block> STAIRBLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
+			Reference.MOD_ID);
+	public static final DeferredRegister<Block> WALLBLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
+			Reference.MOD_ID);
+	public static final DeferredRegister<Block> SLABBLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
 			Reference.MOD_ID);
 	public static final DeferredRegister<Block> PILLARBLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
 			Reference.MOD_ID);
@@ -118,6 +132,7 @@ public class ModRegistry {
 	public static RegistryObject<Feature<VolcanoConfig>> VOLCANO = FEATURES.register("volcano", () -> VOLCANO_F);
 	public static Feature<DripstoneClusterConfiguration> DRIPSTONE_F = new OtherDripstoneCluster(DripstoneClusterConfiguration.CODEC);
 	public static RegistryObject<Feature<DripstoneClusterConfiguration>> DRIPSTONE_CLUSTER = FEATURES.register("dripstone_cluster", () -> DRIPSTONE_F);
+
 
 
 	/* public static final RegistryObject<Source> moltenAllthemodium = FLUIDS.register("molten_allthemodium",
@@ -201,22 +216,28 @@ public class ModRegistry {
 			() -> new BucketItem(vaporUnobtainium,
 					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ModItems.group)));
 
-*//*
-	public static final RegistryObject<Source> blueLava = FLUIDS.register("soul_lava",
+*/
+	public static final RegistryObject<ForgeFlowingFluid.Source> blueLava = FLUIDS.register("soul_lava",
 			() -> new ForgeFlowingFluid.Source(makeBlueLavaProperties()));
-	public static final RegistryObject<Flowing> flowing_blueLava = FLUIDS.register("flowing_soul_lava",
+	public static final RegistryObject<ForgeFlowingFluid.Flowing> flowing_blueLava = FLUIDS.register("flowing_soul_lava",
 			() -> new ForgeFlowingFluid.Flowing(makeBlueLavaProperties()));
 
 	public static final RegistryObject<LiquidBlock> molten_BlueLava_block = BLOCKS
-			.register("soul_lava_block", () -> new FluidBlock(blueLava,
+			.register("soul_lava_block", () -> new SoulLava(blueLava,
 					Block.Properties.of(Material.LAVA).randomTicks().lightLevel((state) -> {
 						return 15;
 					}).noOcclusion().strength(100.0F).jumpFactor(0.1F).speedFactor(0.01F).noDrops()));
 	public static final RegistryObject<Item> moltenBluelava_bucket = ITEMS.register("soul_lava_bucket",
 			() -> new SoulBucket(blueLava,
-					new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(ModItems.group)));
+					new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(AllTheModium.GROUP)));
+	private static ForgeFlowingFluid.Properties makeBlueLavaProperties() {
+		return new ForgeFlowingFluid.Properties(blueLava, flowing_blueLava,
+				FluidAttributes.builder(SOUL_LAVA_STILL, SOUL_LAVA_FLOW).overlay(SOUL_LAVA_STILL).color(0xFF8AFBFF)
+						.luminosity(15).density(3000).viscosity(3000).temperature(5000)).bucket(moltenBluelava_bucket)
+				.block(molten_BlueLava_block);
+	}
 
-
+/*
 	private static ForgeFlowingFluid.Properties makeATMProperties() {
 		return new ForgeFlowingFluid.Properties(moltenAllthemodium, flowing_moltenAllthemodium,
 				FluidAttributes.builder(ATM_MOLTEN_STILL, ATM_MOLTEN_FLOW).overlay(ATM_MOLTEN_STILL).color(0xFFFFEF0E))
@@ -253,32 +274,101 @@ public class ModRegistry {
 	}
 
 
-	private static ForgeFlowingFluid.Properties makeBlueLavaProperties() {
-		return new ForgeFlowingFluid.Properties(blueLava, flowing_blueLava,
-				FluidAttributes.builder(SOUL_LAVA_STILL, SOUL_LAVA_FLOW).overlay(SOUL_LAVA_STILL).color(0xFF8AFBFF)
-						.luminosity(15).density(3000).viscosity(3000).temperature(5000)).bucket(moltenBluelava_bucket)
-								.block(molten_BlueLava_block);
-	}
 */
 	public static final Block ANCIENT_STONE_WORLDGEN = new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(1.5f));
-	public static final RegistryObject<Block> ANCIENT_SMOOTH_STONE = BLOCKS.register("ancient_smooth_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(1.5f)));
+	public static final Block ANCIENT_SMOOTH_STONE_ = new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(2.25f));
+	public static final Block ANCIENT_MOSSY_STONE_ = new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(1.5f));
+	public static final Block ANCIENT_STONE_BRICKS_ = new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(3.5f));
+	public static final Block ANCIENT_CHISELED_STONE_BRICKS_ = new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(3.0f));
+	public static final Block ANCIENT_CRACKED_STONE_BRICKS_ = new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(3.25f));
+	public static final Block ANCIENT_POLISHED_STONE_ = new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(2.5f));
+	public static final Block ANCIENT_WOOD_PLANKS_ = new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(1.5f));
+	public static final RotatedPillarBlock ANCIENT_LOG_0_ = log(MaterialColor.WOOD, MaterialColor.WOOD);
+	public static final RotatedPillarBlock ANCIENT_LOG_1_ = log(MaterialColor.WOOD, MaterialColor.WOOD);
+	public static final RotatedPillarBlock ANCIENT_LOG_2_ = log(MaterialColor.WOOD, MaterialColor.WOOD);
+	public static final RotatedPillarBlock ANCIENT_LOG_STRIPPED_ = log(MaterialColor.WOOD, MaterialColor.WOOD);
+
+	public static final RegistryObject<Block> ANCIENT_HERB = PILLARBLOCKS.register("ancient_herb",() -> new AncientHerb(BlockBehaviour.Properties.of(Material.GRASS).sound(SoundType.WET_GRASS).instabreak().noCollission()));
+
+	public static final RegistryObject<Block> ANCIENT_SMOOTH_STONE = BLOCKS.register("ancient_smooth_stone", () -> ANCIENT_SMOOTH_STONE_);
 	public static final RegistryObject<Block> ANCIENT_STONE = BLOCKS.register("ancient_stone", () -> ANCIENT_STONE_WORLDGEN);
 	public static final RegistryObject<Block> ANCIENT_DIRT = BLOCKS.register("ancient_dirt", () -> new AncientDirt(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.WET_GRASS).strength(0.6f)));
 	public static final RegistryObject<Block> ANCIENT_GRASS = BLOCKS.register("ancient_grass", () -> new Ancient_Grass(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.MOSS).strength(0.6f)));
 	public static final RegistryObject<Block> ANCIENT_MOSSY_STONE = BLOCKS.register("ancient_mossy_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.MOSS_CARPET).strength(1.5f)));
-	public static final RegistryObject<Block> ANCIENT_STONE_BRICKS = BLOCKS.register("ancient_stone_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHER_BRICKS).strength(1.5f)));
-	public static final RegistryObject<Block> ANCIENT_CHISELED_STONE_BRICKS = BLOCKS.register("ancient_chiseled_stone_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHER_BRICKS).strength(1.5f)));
-	public static final RegistryObject<Block> ANCIENT_CRACKED_STONE_BRICKS = BLOCKS.register("ancient_cracked_stone_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHER_BRICKS).strength(1.5f)));
-	public static final RegistryObject<Block> ANCIENT_POLISHED_STONE = BLOCKS.register("ancient_polished_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.METAL).strength(1.5f)));
-	public static final RegistryObject<Block> ANCIENT_LOG_0 = PILLARBLOCKS.register("ancient_log_0",() -> log(MaterialColor.WOOD, MaterialColor.WOOD));
-	public static final RegistryObject<Block> ANCIENT_LOG_1 = PILLARBLOCKS.register("ancient_log_1",() -> log(MaterialColor.WOOD, MaterialColor.WOOD));
-	public static final RegistryObject<Block> ANCIENT_LOG_2 = PILLARBLOCKS.register("ancient_log_2",() -> log(MaterialColor.WOOD, MaterialColor.WOOD));
-	public static final RegistryObject<Block> ANCIENT_LOG_STRIPPED = PILLARBLOCKS.register("stripped_ancient_log",() -> log(MaterialColor.WOOD, MaterialColor.WOOD));
-	public static final RegistryObject<Block> ANCIENT_LEAVES = BLOCKS.register("ancient_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion().color(MaterialColor.COLOR_PURPLE)));
+	public static final RegistryObject<Block> ANCIENT_STONE_BRICKS = BLOCKS.register("ancient_stone_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHER_BRICKS).strength(3.5f)));
+	public static final RegistryObject<Block> ANCIENT_CHISELED_STONE_BRICKS = BLOCKS.register("ancient_chiseled_stone_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHER_BRICKS).strength(3.0f)));
+	public static final RegistryObject<Block> ANCIENT_CRACKED_STONE_BRICKS = BLOCKS.register("ancient_cracked_stone_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHER_BRICKS).strength(3.25f)));
+	public static final RegistryObject<Block> ANCIENT_POLISHED_STONE = BLOCKS.register("ancient_polished_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.METAL).strength(2.5f)));
+	public static final RegistryObject<Block> ANCIENT_LOG_0 = PILLARBLOCKS.register("ancient_log_0",() -> ANCIENT_LOG_0_);
+	public static final RegistryObject<Block> ANCIENT_LOG_1 = PILLARBLOCKS.register("ancient_log_1",() -> ANCIENT_LOG_1_);
+	public static final RegistryObject<Block> ANCIENT_LOG_2 = PILLARBLOCKS.register("ancient_log_2",() -> ANCIENT_LOG_2_);
+	public static final RegistryObject<Block> ANCIENT_LOG_STRIPPED = PILLARBLOCKS.register("stripped_ancient_log",() -> ANCIENT_LOG_STRIPPED_);
+	public static final RegistryObject<Block> ANCIENT_LEAVES = BLOCKS.register("ancient_leaves", () -> new AncientLeaves(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion().color(MaterialColor.COLOR_PURPLE)));
+	public static final RegistryObject<Block> ANCIENT_LEAVES_BOTTOM = PILLARBLOCKS.register("ancient_leaves_bottom", () -> new AncientLeavesBottom(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noCollission().noOcclusion().color(MaterialColor.COLOR_PURPLE)));
 	public static final RegistryObject<Block> ANCIENT_PLANKS = BLOCKS.register("ancient_planks", () -> new Block(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).randomTicks().sound(SoundType.WOOD)));
-	//public static final RegistryObject<Block> ANCIENT_TRAPDOOR = PILLARBLOCKS.register("ancient_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.2F).randomTicks().sound(SoundType.WOOD)));
+	public static final RegistryObject<TrapDoorBlock> ANCIENT_TRAPDOOR = PILLARBLOCKS.register("ancient_trap_door", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.2F).randomTicks().sound(SoundType.WOOD).noOcclusion()));
+	public static final FenceBlock ANCIENT_WOOD_FENCE_ = new FenceBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).dynamicShape().sound(SoundType.WOOD));
+	public static final FenceGateBlock ANCIENT_WOOD_FENCE_GATE_ = new FenceGateBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).dynamicShape().sound(SoundType.WOOD));
+	public static final RegistryObject<FenceBlock> ANCIENT_WOOD_FENCE = PILLARBLOCKS.register("ancient_wooden_fence", () -> ANCIENT_WOOD_FENCE_);
+	public static final RegistryObject<FenceGateBlock> ANCIENT_WOOD_FENCE_GATE = PILLARBLOCKS.register("ancient_wooden_fence_gate", () -> ANCIENT_WOOD_FENCE_GATE_);
+
+	public static final WallBlock ANCIENT_STONE_WALL_ = new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE_WORLDGEN));
+	public static final WallBlock ANCIENT_SMOOTH_STONE_WALL_ = new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_SMOOTH_STONE_));
+	public static final WallBlock ANCIENT_POLISHED_STONE_WALL_ = new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_POLISHED_STONE_));
+	public static final WallBlock ANCIENT_STONE_BRICK_WALL_ = new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE_BRICKS_));
+	public static final WallBlock ANCIENT_CHISELED_STONE_BRICK_WALL_ = new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_CHISELED_STONE_BRICKS_));
+	public static final WallBlock ANCIENT_CRACKED_STONE_BRICK_WALL_ = new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_CRACKED_STONE_BRICKS_));
+	public static final WallBlock ANCIENT_MOSSY_STONE_WALL_ = new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_));
+
+	public static final RegistryObject<WallBlock> ANCIENT_STONE_WALL = WALLBLOCKS.register("ancient_stone_wall", () -> ANCIENT_STONE_WALL_);
+	public static final RegistryObject<WallBlock> ANCIENT_SMOOTH_STONE_WALL = WALLBLOCKS.register("ancient_smooth_stone_wall", () -> ANCIENT_SMOOTH_STONE_WALL_);
+	public static final RegistryObject<WallBlock> ANCIENT_POLISHED_STONE_WALL = WALLBLOCKS.register("ancient_polished_stone_wall", () -> ANCIENT_POLISHED_STONE_WALL_);
+	public static final RegistryObject<WallBlock> ANCIENT_STONE_BRICK_WALL = WALLBLOCKS.register("ancient_stone_brick_wall", () -> ANCIENT_STONE_BRICK_WALL_);
+	public static final RegistryObject<WallBlock> ANCIENT_CHISELED_STONE_BRICK_WALL = WALLBLOCKS.register("ancient_chiseled_stone_brick_wall", () -> ANCIENT_CHISELED_STONE_BRICK_WALL_);
+	public static final RegistryObject<WallBlock> ANCIENT_CRACKED_STONE_BRICK_WALL = WALLBLOCKS.register("ancient_cracked_stone_brick_wall", () -> ANCIENT_CRACKED_STONE_BRICK_WALL_);
+	public static final RegistryObject<WallBlock> ANCIENT_MOSSY_STONE_WALL = WALLBLOCKS.register("ancient_mossy_stone_wall", () -> ANCIENT_MOSSY_STONE_WALL_);
+
+	public static final RegistryObject<Item> ANCIENT_TRAP_DOOR_ITEM = ITEMS.register("ancient_trap_door", () -> new BlockItem(ANCIENT_TRAPDOOR.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+
+	public static final RegistryObject<Item> ANCIENT_STONE_WALL_ITEM = ITEMS.register("ancient_stone_wall", () -> new BlockItem(ANCIENT_STONE_WALL.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_SMOOTH_STONE_WALL_ITEM = ITEMS.register("ancient_smooth_stone_wall", () -> new BlockItem(ANCIENT_SMOOTH_STONE_WALL.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_POLISHED_STONE_WALL_ITEM = ITEMS.register("ancient_polished_stone_wall", () -> new BlockItem(ANCIENT_POLISHED_STONE_WALL.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_STONE_BRICK_WALL_ITEM = ITEMS.register("ancient_stone_brick_wall", () ->  new BlockItem(ANCIENT_STONE_BRICK_WALL.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_CHISELED_STONE_BRICK_WALL_ITEM = ITEMS.register("ancient_chiseled_stone_brick_wall", () -> new BlockItem(ANCIENT_CHISELED_STONE_BRICK_WALL.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_CRACKED_STONE_BRICK_WALL_ITEM = ITEMS.register("ancient_cracked_stone_brick_wall", () -> new BlockItem(ANCIENT_CRACKED_STONE_BRICK_WALL.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_MOSSY_STONE_WALL_ITEM = ITEMS.register("ancient_mossy_stone_wall", () -> new BlockItem(ANCIENT_MOSSY_STONE_WALL.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+
 	public static final RegistryObject<Block> ANCIENT_BOOKSHELF = PILLARBLOCKS.register("ancient_bookshelf", () -> log(MaterialColor.WOOD, MaterialColor.WOOD));
 	public static final RegistryObject<Block> ANCIENT_SAPLING = PILLARBLOCKS.register("ancient_sapling",() -> new AncientSaplingBlock(new AncientTreeGrower(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().dynamicShape().sound(SoundType.GRASS)));
+	public static final RegistryObject<StairBlock> ANCIENT_WOODEN_STAIRS = STAIRBLOCKS.register("ancient_wooden_stairs", () -> new StairBlock(() -> ANCIENT_WOOD_PLANKS_.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_WOOD_PLANKS_)));
+	public static final RegistryObject<StairBlock> ANCIENT_STONE_STAIRS = STAIRBLOCKS.register("ancient_stone_stairs", () -> new StairBlock(() -> ANCIENT_STONE_WORLDGEN.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_STONE_WORLDGEN)));
+	public static final RegistryObject<StairBlock> ANCIENT_SMOOTH_STONE_STAIRS = STAIRBLOCKS.register("ancient_smooth_stone_stairs", () -> new StairBlock(() -> ANCIENT_SMOOTH_STONE_.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_SMOOTH_STONE_)));
+	public static final RegistryObject<StairBlock> ANCIENT_STONE_BRICK_STAIRS = STAIRBLOCKS.register("ancient_stone_brick_stairs", () -> new StairBlock(() -> ANCIENT_STONE_BRICKS_.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_STONE_WORLDGEN)));
+	public static final RegistryObject<StairBlock> ANCIENT_MOSSY_STONE_STAIRS = STAIRBLOCKS.register("ancient_mossy_stone_stairs", () -> new StairBlock(() -> ANCIENT_MOSSY_STONE_.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
+	public static final RegistryObject<StairBlock> ANCIENT_CHISELED_STONE_STAIRS = STAIRBLOCKS.register("ancient_chiseled_stone_brick_stairs", () -> new StairBlock(() -> ANCIENT_CHISELED_STONE_BRICKS_.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
+	public static final RegistryObject<StairBlock> ANCIENT_CRACKED_STONE_STAIRS = STAIRBLOCKS.register("ancient_cracked_stone_brick_stairs", () -> new StairBlock(() -> ANCIENT_CRACKED_STONE_BRICKS_.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
+	public static final RegistryObject<StairBlock> ANCIENT_POLISHED_STONE_STAIRS = STAIRBLOCKS.register("ancient_polished_stone_stairs", () -> new StairBlock(() -> ANCIENT_POLISHED_STONE_.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
+
+	public static final RegistryObject<SlabBlock> ANCIENT_WOODEN_SLABS = SLABBLOCKS.register("ancient_wooden_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_WOOD_PLANKS_)));
+	public static final RegistryObject<SlabBlock> ANCIENT_STONE_SLABS = SLABBLOCKS.register("ancient_stone_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE_WORLDGEN)));
+	public static final RegistryObject<SlabBlock> ANCIENT_SMOOTH_STONE_SLABS = SLABBLOCKS.register("ancient_smooth_stone_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_SMOOTH_STONE_)));
+	public static final RegistryObject<SlabBlock> ANCIENT_STONE_BRICK_SLABS = SLABBLOCKS.register("ancient_stone_brick_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE_WORLDGEN)));
+	public static final RegistryObject<SlabBlock> ANCIENT_MOSSY_STONE_SLABS = SLABBLOCKS.register("ancient_mossy_stone_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
+	public static final RegistryObject<SlabBlock> ANCIENT_CHISELED_STONE_SLABS = SLABBLOCKS.register("ancient_chiseled_stone_brick_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
+	public static final RegistryObject<SlabBlock> ANCIENT_CRACKED_STONE_SLABS = SLABBLOCKS.register("ancient_cracked_stone_brick_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
+	public static final RegistryObject<SlabBlock> ANCIENT_POLISHED_STONE_SLABS = SLABBLOCKS.register("ancient_polished_stone_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
+
+	public static final RegistryObject<Item> ANCIENT_WOODEN_SLABS_ITEM = ITEMS.register("ancient_wooden_slabs", () -> new BlockItem(ANCIENT_WOODEN_SLABS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_STONE_SLABS_ITEM = ITEMS.register("ancient_stone_slabs", () -> new BlockItem(ANCIENT_STONE_SLABS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_SMOOTH_STONE_SLABS_ITEM = ITEMS.register("ancient_smooth_stone_slabs", () -> new BlockItem(ANCIENT_SMOOTH_STONE_SLABS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_STONE_BRICK_SLABS_ITEM = ITEMS.register("ancient_stone_brick_slabs", () -> new BlockItem(ANCIENT_STONE_BRICK_SLABS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_MOSSY_STONE_SLABS_ITEM = ITEMS.register("ancient_mossy_stone_slabs", () -> new BlockItem(ANCIENT_MOSSY_STONE_SLABS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_CHISELED_STONE_SLABS_ITEM = ITEMS.register("ancient_chiseled_stone_brick_slabs", () -> new BlockItem(ANCIENT_CHISELED_STONE_SLABS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_CRACKED_STONE_SLABS_ITEM = ITEMS.register("ancient_cracked_stone_brick_slabs", () -> new BlockItem(ANCIENT_CRACKED_STONE_SLABS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_POLISHED_STONE_SLABS_ITEM = ITEMS.register("ancient_polished_stone_slabs", () -> new BlockItem(ANCIENT_POLISHED_STONE_SLABS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+
+	public static final RegistryObject<Item> ANCIENT_HERB_ITEM = ITEMS.register("ancient_herb",() -> new BlockItem(ANCIENT_HERB.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+
 
 	public static final RegistryObject<Item> ANCIENT_LOG_0_ITEM = ITEMS.register("ancient_log_0",() -> new BlockItem(ANCIENT_LOG_0.get(),new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> ANCIENT_LOG_1_ITEM = ITEMS.register("ancient_log_1",() -> new BlockItem(ANCIENT_LOG_1.get(),new Item.Properties().tab(AllTheModium.GROUP)));
@@ -288,6 +378,20 @@ public class ModRegistry {
 	public static final RegistryObject<Item> ANCIENT_PLANKS_ITEM = ITEMS.register("ancient_planks", () -> new BlockItem(ANCIENT_PLANKS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> ANCIENT_BOOKSHELF_ITEM = ITEMS.register("ancient_bookshelf", () -> new BlockItem(ANCIENT_BOOKSHELF.get(),new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> ANCIENT_SAPLING_ITEM = ITEMS.register("ancient_sapling", () -> new BlockItem(ANCIENT_SAPLING.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+
+	public static final RegistryObject<Item> ANCIENT_WOODEN_STAIRS_ITEM = ITEMS.register("ancient_wooden_stairs", () -> new BlockItem(ANCIENT_WOODEN_STAIRS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_STONE_STAIRS_ITEM = ITEMS.register("ancient_stone_stairs", () -> new BlockItem(ANCIENT_STONE_STAIRS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_SMOOTH_STONE_STAIRS_ITEM = ITEMS.register("ancient_smooth_stone_stairs", () -> new BlockItem(ANCIENT_SMOOTH_STONE_STAIRS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_STONE_BRICK_STAIRS_ITEM = ITEMS.register("ancient_stone_brick_stairs", () -> new BlockItem(ANCIENT_STONE_BRICK_STAIRS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_MOSSY_STONE_STAIRS_ITEM = ITEMS.register("ancient_mossy_stone_stairs", () -> new BlockItem(ANCIENT_MOSSY_STONE_STAIRS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_CHISELED_STONE_STAIRS_ITEM = ITEMS.register("ancient_chiseled_stone_brick_stairs", () -> new BlockItem(ANCIENT_CHISELED_STONE_STAIRS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_CRACKED_STONE_STAIRS_ITEM = ITEMS.register("ancient_cracked_stone_brick_stairs", () -> new BlockItem(ANCIENT_CRACKED_STONE_STAIRS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_POLISHED_STONE_STAIRS_ITEM = ITEMS.register("ancient_polished_stone_stairs", () -> new BlockItem(ANCIENT_POLISHED_STONE_STAIRS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+
+
+	public static final RegistryObject<Item> ANCIENT_WOOD_FENCE_ITEM = ITEMS.register("ancient_wooden_fence", () -> new BlockItem(ANCIENT_WOOD_FENCE.get(),new Item.Properties().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_WOOD_FENCE_GATE_ITEM = ITEMS.register("ancient_wooden_fence_gate", () -> new BlockItem(ANCIENT_WOOD_FENCE_GATE.get(),new Item.Properties().tab(AllTheModium.GROUP)));;
+
 
 	public static final RegistryObject<Item> ANCIENT_SMOOTH_STONE_ITEM = ITEMS.register("ancient_smooth_stone", () -> new BlockItem(ANCIENT_SMOOTH_STONE.get(), new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> ANCIENT_STONE_ITEM = ITEMS.register("ancient_stone", () -> new BlockItem(ANCIENT_STONE.get(), new Item.Properties().tab(AllTheModium.GROUP)));
@@ -373,9 +477,9 @@ public class ModRegistry {
 	public static final RegistryObject<Block> TELEPORT_PAD = SHAPED_BLOCKS.register("teleport_pad", () -> new TeleportPad(Block.Properties.of(Material.METAL).noDrops().noOcclusion().strength(20.0F)));
 	public static final RegistryObject<Item> TELEPORT_PAD_ITEM = ITEMS.register("teleport_pad", () -> new BlockItem(TELEPORT_PAD.get(), new Item.Properties().tab(AllTheModium.GROUP)));
 
-	public static final RegistryObject<Item> ALLTHEMODIUM_SWORD = ITEMS.register("allthemodium_sword",() -> new SwordItem(ToolTiers.ALLTHEMODIUM_TIER,8,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<SwordItem> ALLTHEMODIUM_SWORD = ITEMS.register("allthemodium_sword",() -> new SwordItem(ToolTiers.ALLTHEMODIUM_TIER,8,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)));
 
-	public static final RegistryObject<Item> ALLTHEMODIUM_PICKAXE = ITEMS.register("allthemodium_pickaxe",() -> new PickaxeItem(ToolTiers.ALLTHEMODIUM_TIER,6,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<PickaxeItem> ALLTHEMODIUM_PICKAXE = ITEMS.register("allthemodium_pickaxe",() -> new PickaxeItem(ToolTiers.ALLTHEMODIUM_TIER,6,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -394,7 +498,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<Item> ALLTHEMODIUM_AXE = ITEMS.register("allthemodium_axe",() -> new AxeItem(ToolTiers.ALLTHEMODIUM_TIER,6,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<AxeItem> ALLTHEMODIUM_AXE = ITEMS.register("allthemodium_axe",() -> new AxeItem(ToolTiers.ALLTHEMODIUM_TIER,6,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -413,7 +517,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<Item> ALLTHEMODIUM_SHOVEL = ITEMS.register("allthemodium_shovel",() -> new ShovelItem(ToolTiers.ALLTHEMODIUM_TIER,4,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<ShovelItem> ALLTHEMODIUM_SHOVEL = ITEMS.register("allthemodium_shovel",() -> new ShovelItem(ToolTiers.ALLTHEMODIUM_TIER,4,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -432,7 +536,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<Item> ALLTHEMODIUM_HOE = ITEMS.register("allthemodium_hoe",() -> new HoeItem(ToolTiers.ALLTHEMODIUM_TIER,4,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<HoeItem> ALLTHEMODIUM_HOE = ITEMS.register("allthemodium_hoe",() -> new HoeItem(ToolTiers.ALLTHEMODIUM_TIER,4,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -450,9 +554,9 @@ public class ModRegistry {
 			return false;
 		}
 	});
-	public static final RegistryObject<Item> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword",() -> new SwordItem(ToolTiers.VIBRANIUM_TIER,16,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<SwordItem> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword",() -> new SwordItem(ToolTiers.VIBRANIUM_TIER,16,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)));
 
-	public static final RegistryObject<Item> VIBRANIUM_PICKAXE = ITEMS.register("vibranium_pickaxe",() -> new PickaxeItem(ToolTiers.VIBRANIUM_TIER,12,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<PickaxeItem> VIBRANIUM_PICKAXE = ITEMS.register("vibranium_pickaxe",() -> new PickaxeItem(ToolTiers.VIBRANIUM_TIER,12,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -471,7 +575,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<Item> VIBRANIUM_AXE = ITEMS.register("vibranium_axe",() -> new AxeItem(ToolTiers.VIBRANIUM_TIER,12,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<AxeItem> VIBRANIUM_AXE = ITEMS.register("vibranium_axe",() -> new AxeItem(ToolTiers.VIBRANIUM_TIER,12,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -490,7 +594,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<Item> VIBRANIUM_SHOVEL = ITEMS.register("vibranium_shovel",() -> new ShovelItem(ToolTiers.VIBRANIUM_TIER,8,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<ShovelItem> VIBRANIUM_SHOVEL = ITEMS.register("vibranium_shovel",() -> new ShovelItem(ToolTiers.VIBRANIUM_TIER,8,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -509,7 +613,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<Item> VIBRANIUM_HOE = ITEMS.register("vibranium_hoe",() -> new HoeItem(ToolTiers.VIBRANIUM_TIER,8,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<HoeItem> VIBRANIUM_HOE = ITEMS.register("vibranium_hoe",() -> new HoeItem(ToolTiers.VIBRANIUM_TIER,8,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -527,9 +631,9 @@ public class ModRegistry {
 			return false;
 		}
 	});
-		public static final RegistryObject<Item> UNOBTAINIUM_SWORD = ITEMS.register("unobtainium_sword",() -> new SwordItem(ToolTiers.UNOBTAINIUM_TIER,32,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)));
+		public static final RegistryObject<SwordItem> UNOBTAINIUM_SWORD = ITEMS.register("unobtainium_sword",() -> new SwordItem(ToolTiers.UNOBTAINIUM_TIER,32,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)));
 
-		public static final RegistryObject<Item> UNOBTAINIUM_PICKAXE = ITEMS.register("unobtainium_pickaxe",() -> new PickaxeItem(ToolTiers.UNOBTAINIUM_TIER,24,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+		public static final RegistryObject<PickaxeItem> UNOBTAINIUM_PICKAXE = ITEMS.register("unobtainium_pickaxe",() -> new PickaxeItem(ToolTiers.UNOBTAINIUM_TIER,24,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -548,7 +652,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<Item> UNOBTAINIUM_AXE = ITEMS.register("unobtainium_axe",() -> new AxeItem(ToolTiers.UNOBTAINIUM_TIER,24,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<AxeItem> UNOBTAINIUM_AXE = ITEMS.register("unobtainium_axe",() -> new AxeItem(ToolTiers.UNOBTAINIUM_TIER,24,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -567,7 +671,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<Item> UNOBTAINIUM_SHOVEL = ITEMS.register("unobtainium_shovel",() -> new ShovelItem(ToolTiers.UNOBTAINIUM_TIER,16,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<ShovelItem> UNOBTAINIUM_SHOVEL = ITEMS.register("unobtainium_shovel",() -> new ShovelItem(ToolTiers.UNOBTAINIUM_TIER,16,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -586,7 +690,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<Item> UNOBTAINIUM_HOE = ITEMS.register("unobtainium_hoe",() -> new HoeItem(ToolTiers.UNOBTAINIUM_TIER,16,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<HoeItem> UNOBTAINIUM_HOE = ITEMS.register("unobtainium_hoe",() -> new HoeItem(ToolTiers.UNOBTAINIUM_TIER,16,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{

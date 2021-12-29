@@ -17,7 +17,24 @@ public class TagRegistry {
     public static final Tag.Named<Block> VIBRANIUM_ORE = BlockTags.createOptional(Reference.ore("vibranium"));
     public static final Tag.Named<Block> UNOBTAINIUM_ORE = BlockTags.createOptional(Reference.ore("unobtainium"));
 
+    public static final Tag.Named<Block> ANCIENT_DIRT = BlockTags.createOptional(Reference.location("allthemodium:ancient_dirt"));
     public static final Tag.Named<Block> ANCIENT_STONE = BlockTags.createOptional(Reference.location("allthemodium:ancient_stone"));
+    public static final Tag.Named<Item> ANCIENT_STONE_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_stone"));
+    public static final Tag.Named<Block> ANCIENT_WOODEN_PLANKS = BlockTags.createOptional(Reference.location("allthemodium:ancient_planks"));
+    public static final Tag.Named<Item> ANCIENT_WOODEN_PLANKS_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_planks"));
+    public static final Tag.Named<Block> ANCIENT_MOSSY_STONE = BlockTags.createOptional(Reference.location("allthemodium:ancient_mossy_stone"));
+    public static final Tag.Named<Item> ANCIENT_MOSSY_STONE_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_mossy_stone"));
+    public static final Tag.Named<Block> ANCIENT_SMOOTH_STONE = BlockTags.createOptional(Reference.location("allthemodium:ancient_smooth_stone"));
+    public static final Tag.Named<Item> ANCIENT_SMOOTH_STONE_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_smooth_stone"));
+    public static final Tag.Named<Block> ANCIENT_POLISHED_STONE = BlockTags.createOptional(Reference.location("allthemodium:ancient_polished_stone"));
+    public static final Tag.Named<Item> ANCIENT_POLISHED_STONE_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_polished_stone"));
+    public static final Tag.Named<Block> ANCIENT_STONE_BRICKS = BlockTags.createOptional(Reference.location("allthemodium:ancient_stone_bricks"));
+    public static final Tag.Named<Item> ANCIENT_STONE_BRICKS_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_stone_bricks"));
+    public static final Tag.Named<Block> ANCIENT_CRACKED_STONE_BRICKS = BlockTags.createOptional(Reference.location("allthemodium:ancient_cracked_stone_bricks"));
+    public static final Tag.Named<Item> ANCIENT_CRACKED_STONE_BRICKS_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_cracked_stone_bricks"));
+    public static final Tag.Named<Block> ANCIENT_CHISELED_STONE_BRICKS = BlockTags.createOptional(Reference.location("allthemodium:ancient_chiseled_stone_bricks"));
+    public static final Tag.Named<Item> ANCIENT_CHISELED_STONE_BRICKS_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_chiseled_stone_bricks"));
+
 
     public static final Tag.Named<Item> ALLTHEMODIUM_ORE_ITEM = ItemTags.createOptional(Reference.ore("allthemodium"));
     public static final Tag.Named<Item> VIBRANIUM_ORE_ITEM = ItemTags.createOptional(Reference.ore("vibranium"));

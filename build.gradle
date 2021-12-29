@@ -116,7 +116,7 @@ dependencies {
     implementation fg.deobf("curse.maven:${ato}")
     implementation fg.deobf("curse.maven:${potions}")
     //implementation fileTree(dir: 'libs', include: '*.jar')
-    //implementation fg.deobf("curse.maven:${worldedit}")
+    implementation fg.deobf("curse.maven:${worldedit}")
     //implementation fg.deobf("curse.maven:${cyclic}")
     //compile fg.deobf("curse.maven:${byg}")
     //compile fg.deobf("curse.maven:${byg}")

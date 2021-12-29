@@ -2,7 +2,9 @@ package com.thevortex.allthemodium.worldgen;
 
 import com.google.common.collect.ImmutableList;
 import com.thevortex.allthemodium.registry.ModRegistry;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
+import net.minecraft.data.worldgen.features.NetherFeatures;
 import net.minecraft.data.worldgen.placement.OrePlacements;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.TreePlacements;
@@ -26,11 +28,15 @@ public class ATMPlacedFeature {
     public static final PlacedFeature VOLCANO_CF = PlacementUtils.register("volcano", ATMConfiguredFeature.VOLCANO_CF.placed());
     public static final PlacedFeature MOD_DELTAS = PlacementUtils.register("other_deltas", ATMConfiguredFeature.MOD_DELTAS.placed());
     public static final PlacedFeature MOD_DRIPSTONE = PlacementUtils.register("other_dripstone", ATMConfiguredFeature.MOD_DRIPSTONE.placed());
-    public static final PlacedFeature ANCIENT_TREE = PlacementUtils.register("ancient_tree", ATMConfiguredFeature.ANCIENT_TREE.placed(treePlacement(PlacementUtils.countExtra(10, 0.1F, 1))));
-    public static final PlacedFeature ANCIENT_TREE_MEDIUM = PlacementUtils.register("ancient_tree_medium", ATMConfiguredFeature.ANCIENT_TREE_MEDIUM.placed(treePlacement(PlacementUtils.countExtra(10, 0.1F, 1))));
-    public static final PlacedFeature ANCIENT_TREE_GIANT = PlacementUtils.register("ancient_tree_giant", ATMConfiguredFeature.ANCIENT_TREE_GIANT.placed(treePlacement(PlacementUtils.countExtra(10, 0.1F, 1))));
+    public static final PlacedFeature ANCIENT_TREE = PlacementUtils.register("ancient_tree", ATMConfiguredFeature.ANCIENT_TREE.placed(treePlacement(PlacementUtils.countExtra(2, 0.1F, 1))));
+    public static final PlacedFeature ANCIENT_TREE_MEDIUM = PlacementUtils.register("ancient_tree_medium", ATMConfiguredFeature.ANCIENT_TREE_MEDIUM.placed(treePlacement(PlacementUtils.countExtra(2, 0.1F, 1))));
+    public static final PlacedFeature ANCIENT_TREE_GIANT = PlacementUtils.register("ancient_tree_giant", ATMConfiguredFeature.ANCIENT_TREE_GIANT.placed(treePlacement(PlacementUtils.countExtra(2, 0.1F, 1))));
+
+    public static final PlacedFeature ANCIENT_HERB_PATCH= PlacementUtils.register("ancient_herb_patch", ATMConfiguredFeature.PATCH_ANCIENT_HERB.placed(CountOnEveryLayerPlacement.of(6), BiomeFilter.biome()));
+
     private static List<PlacementModifier> orePlacement(PlacementModifier placement, PlacementModifier placement2) {
         return List.of(placement, InSquarePlacement.spread(), placement2, BiomeFilter.biome());
+
     }
 
     private static List<PlacementModifier> commonOrePlacement(int count, PlacementModifier pm) {

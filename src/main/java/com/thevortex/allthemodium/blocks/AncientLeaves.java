@@ -1,5 +1,6 @@
 package com.thevortex.allthemodium.blocks;
 
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -10,6 +11,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,40 +28,54 @@ public class AncientLeaves extends LeavesBlock {
     public static final int DECAY_DISTANCE = 7;
     public static final IntegerProperty DISTANCE = BlockStateProperties.DISTANCE;
     public static final BooleanProperty PERSISTENT = BlockStateProperties.PERSISTENT;
-    private static final int TICK_DELAY = 1;
+    private static final int TICK_DELAY = 80;
+    private static int TICK_COUNT;
 
     public AncientLeaves(Properties p_54422_) {
-        super(p_54422_);
+        super(p_54422_.randomTicks());
         this.registerDefaultState(this.stateDefinition.any().setValue(DISTANCE, Integer.valueOf(7)).setValue(PERSISTENT, Boolean.valueOf(false)));
 
     }
 
 
-
+    @Override
     public VoxelShape getBlockSupportShape(BlockState p_54456_, BlockGetter p_54457_, BlockPos p_54458_) {
         return Shapes.empty();
     }
 
+    @Override
     public boolean isRandomlyTicking(BlockState p_54449_) {
         return p_54449_.getValue(DISTANCE) == 7 && !p_54449_.getValue(PERSISTENT);
     }
-
-    public void randomTick(BlockState p_54451_, ServerLevel p_54452_, BlockPos p_54453_, Random p_54454_) {
-        if (!p_54451_.getValue(PERSISTENT) && p_54451_.getValue(DISTANCE) == 7) {
-            dropResources(p_54451_, p_54452_, p_54453_);
-            p_54452_.removeBlock(p_54453_, false);
+    @Override
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random rand) {
+        if (!state.getValue(PERSISTENT) && state.getValue(DISTANCE) == 7) {
+            dropResources(state, level, pos);
+            level.removeBlock(pos, false);
+        }
+        if(level.getBlockState(pos.below()).isAir()) {
+            level.setBlock(pos.below(), ModRegistry.ANCIENT_LEAVES_BOTTOM.get().defaultBlockState(), 3);
         }
 
+
     }
 
-    public void tick(BlockState p_54426_, ServerLevel p_54427_, BlockPos p_54428_, Random p_54429_) {
-        p_54427_.setBlock(p_54428_, updateDistance(p_54426_, p_54427_, p_54428_), 3);
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random p_54429_) {
+        this.TICK_COUNT++;
+        if(this.TICK_COUNT>=this.TICK_DELAY) {
+            level.setBlock(pos, updateDistance(state, level, pos), 3);
+            if (level.getBlockState(pos.below()).isAir()) {
+                level.setBlock(pos.below(), ModRegistry.ANCIENT_LEAVES_BOTTOM.get().defaultBlockState(), 3);
+            }
+            this.TICK_COUNT=0;
+        }
     }
 
+    @Override
     public int getLightBlock(BlockState p_54460_, BlockGetter p_54461_, BlockPos p_54462_) {
         return 1;
     }
-
+    @Override
     public BlockState updateShape(BlockState p_54440_, Direction p_54441_, BlockState p_54442_, LevelAccessor p_54443_, BlockPos p_54444_, BlockPos p_54445_) {
         int i = getDistanceAt(p_54442_) + 1;
         if (i != 1 || p_54440_.getValue(DISTANCE) != i) {
@@ -91,7 +107,7 @@ public class AncientLeaves extends LeavesBlock {
             return p_54464_.getBlock() instanceof LeavesBlock ? p_54464_.getValue(DISTANCE) : 7;
         }
     }
-
+    @Override
     public void animateTick(BlockState p_54431_, Level p_54432_, BlockPos p_54433_, Random p_54434_) {
         if (p_54432_.isRainingAt(p_54433_.above())) {
             if (p_54434_.nextInt(15) == 1) {
@@ -110,7 +126,7 @@ public class AncientLeaves extends LeavesBlock {
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_54447_) {
         p_54447_.add(DISTANCE, PERSISTENT);
     }
-
+    @Override
     public BlockState getStateForPlacement(BlockPlaceContext p_54424_) {
         return updateDistance(this.defaultBlockState().setValue(PERSISTENT, Boolean.valueOf(true)), p_54424_.getLevel(), p_54424_.getClickedPos());
     }

@@ -3,6 +3,7 @@ package com.thevortex.allthemodium;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.serialization.Codec;
 import com.thevortex.allthemodium.events.PlayerHarvest;
 import com.thevortex.allthemodium.init.*;
@@ -10,6 +11,8 @@ import com.thevortex.allthemodium.worldgen.MiningDimSource;
 import com.thevortex.allthemodium.worldgen.TheOtherDimSource;
 import com.thevortex.allthemodium.worldgen.biomes.ATMBiomes;
 import com.thevortex.allthemodium.worldgen.structures.*;
+import net.minecraft.client.renderer.RenderStateShard;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.BastionPieces;
@@ -37,6 +40,8 @@ import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfigura
 import net.minecraft.world.level.levelgen.feature.configurations.RuinedPortalConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.StructureFeatureConfiguration;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings;
+import net.minecraftforge.client.ForgeRenderTypes;
+import net.minecraftforge.client.RenderProperties;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.world.WorldEvent;
@@ -45,6 +50,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -76,8 +82,8 @@ public class AllTheModium
 	public static final ResourceKey<Level> The_End = Level.END;
 	public static final ResourceLocation MINING_DIM_ID = new ResourceLocation(MOD_ID,"mining");
 	public static final ResourceLocation THE_OTHER_DIM_ID = new ResourceLocation(MOD_ID,"the_other");
-	public static final ResourceKey<Level> Mining = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(MOD_ID,"mining"));
-	public static final ResourceKey<Level> THE_OTHER = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"the_other"));
+	public static final ResourceKey<Level> Mining = ResourceKey.create(Registry.DIMENSION_REGISTRY, MINING_DIM_ID);
+	public static final ResourceKey<Level> THE_OTHER = ResourceKey.create(Registry.DIMENSION_REGISTRY, THE_OTHER_DIM_ID);
 	//public static final RegistryKey<World> THE_BEYOND = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"the_beyond"));
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 	public static boolean ALLOW_TELEPORT_MINING = false;
@@ -95,6 +101,9 @@ public class AllTheModium
     	ModRegistry.FLUIDS.register(modEventBus);
        	ModRegistry.BLOCKS.register(modEventBus);
 		ModRegistry.SHAPED_BLOCKS.register(modEventBus);
+		ModRegistry.STAIRBLOCKS.register(modEventBus);
+		ModRegistry.SLABBLOCKS.register(modEventBus);
+		ModRegistry.WALLBLOCKS.register(modEventBus);
 		ModRegistry.PILLARBLOCKS.register(modEventBus);
 
     	ModRegistry.ITEMS.register(modEventBus);
@@ -128,7 +137,13 @@ public class AllTheModium
 
 		});
 	}
+	public void setupClient(final FMLClientSetupEvent event)
+	{
+		event.enqueueWork(() -> {
 
+
+		});
+	}
 	private static Method GETCODEC_METHOD;
 	public void addDimensionalSpacing(final WorldEvent.Load event) {
 		if(event.getWorld() instanceof ServerLevel serverLevel){
@@ -151,11 +166,12 @@ public class AllTheModium
 			HashMap<StructureFeature<?>, HashMultimap<ConfiguredStructureFeature<?, ?>, ResourceKey<Biome>>> STStructureToMultiMap = new HashMap<>();
 
 			// Add the resourcekey of all biomes that this Configured Structure can spawn in.
-					associateBiomeToConfiguredStructure(STStructureToMultiMap, ATMConfiguredStructures.CONFIGURED_PYRAMID, ATMBiomes.WARPED_FOREST);
+					associateBiomeToConfiguredStructure(STStructureToMultiMap, ATMConfiguredStructures.CONFIGURED_VILLAGE, ATMBiomes.WARPED_FOREST);
 					associateBiomeToConfiguredStructure(STStructureToMultiMap, ATMConfiguredStructures.CONFIGURED_DUNGEON, ATMBiomes.THE_OTHER);
 					associateBiomeToConfiguredStructure(STStructureToMultiMap, ATMConfiguredStructures.CONFIGURED_VILLAGE, ATMBiomes.CRIMSON_FOREST);
-					associateBiomeToConfiguredStructure(STStructureToMultiMap, StructureFeature.NETHER_BRIDGE.configured(FeatureConfiguration.NONE), ATMBiomes.THE_OTHER);
-					associateBiomeToConfiguredStructure(STStructureToMultiMap, StructureFeature.SWAMP_HUT.configured(FeatureConfiguration.NONE), ATMBiomes.THE_OTHER);
+					associateBiomeToConfiguredStructure(STStructureToMultiMap, ATMConfiguredStructures.CONFIGURED_PYRAMID, ATMBiomes.DESERT);
+					associateBiomeToConfiguredStructure(STStructureToMultiMap, ATMConfiguredStructures.CONFIGURED_PYRAMID, ATMBiomes.DESERT_HILLS);
+
 
 
 			// Alternative way to add our structures to a fixed set of biomes by creating a set of biome resource keys.

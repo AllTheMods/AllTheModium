@@ -11,6 +11,8 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -25,6 +27,58 @@ private ResourceLocation recipeDir(String typeIn, String typeOut) {
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
 
         final String hasCondition = "has_item";
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.ANCIENT_PLANKS.get(),4)
+                .requires(ModRegistry.ANCIENT_LOG_0_ITEM.get())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_LOG_0_ITEM.get()))
+                .save(consumer,recipeDir("ancient_planks","shapelesscrafting"));
+
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.ANCIENT_PLANKS.get(),4)
+                .requires(ModRegistry.ANCIENT_LOG_1_ITEM.get())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_LOG_1_ITEM.get()))
+                .save(consumer,recipeDir("ancient_planks_1","shapelesscrafting"));
+
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.ANCIENT_PLANKS.get(),4)
+                .requires(ModRegistry.ANCIENT_LOG_2_ITEM.get())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_LOG_2_ITEM.get()))
+                .save(consumer,recipeDir("ancient_planks_2","shapelesscrafting"));
+
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.ANCIENT_PLANKS.get(),4)
+                .requires(ModRegistry.ANCIENT_LOG_STRIPPED_ITEM.get())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_LOG_STRIPPED_ITEM.get()))
+                .save(consumer,recipeDir("ancient_planks_3","shapelesscrafting"));
+
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.ANCIENT_MOSSY_STONE_ITEM.get(),1)
+                .requires(ModRegistry.ANCIENT_STONE_ITEM.get())
+                .requires(Items.VINE)
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_STONE_ITEM.get()))
+                .save(consumer,recipeDir("ancient_mossy_stone","vinecrafting"));
+
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.ANCIENT_POLISHED_STONE_ITEM.get(),1)
+                .requires(ModRegistry.ANCIENT_SMOOTH_STONE_ITEM.get())
+                .requires(Items.HONEYCOMB)
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_SMOOTH_STONE_ITEM.get()))
+                .save(consumer,recipeDir("ancient_polished_stone","waxing"));
+
+
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM.get(),1)
+                .requires(TagRegistry.ANCIENT_STONE_BRICKS_ITEM)
+                .requires(ItemTagRegistry.ORE_HAMMERS)
+                .unlockedBy(hasCondition,RecipeProvider.has(TagRegistry.ANCIENT_STONE_BRICKS_ITEM))
+                .save(consumer,recipeDir("ancient_cracked_stone_bricks","crushing"));
+
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS_ITEM.get(),1)
+                .requires(TagRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM)
+                .requires(ItemTagRegistry.ORE_HAMMERS)
+                .unlockedBy(hasCondition,RecipeProvider.has(TagRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM))
+                .save(consumer,recipeDir("ancient_chiseled_stone_bricks","crushing"));
 
         ShapelessRecipeBuilder
                 .shapeless(ModRegistry.ALLTHEMODIUM_DUST.get(),2)

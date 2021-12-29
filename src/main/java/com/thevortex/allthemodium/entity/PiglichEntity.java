@@ -4,6 +4,7 @@ import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.*;
@@ -37,8 +38,12 @@ public class PiglichEntity extends Piglin {
             this.registerGoals();
         }
 
+    @Override
+    public boolean canAttack(LivingEntity entity) {
+        return true;
+    }
 
-        protected void populateDefaultEquipementSlots(DifficultyInstance diff) {
+    protected void populateDefaultEquipementSlots(DifficultyInstance diff) {
             if (this.isAdult()) {
                 this.maybeWearArmor(EquipmentSlot.HEAD, new ItemStack(ModItems.ALLTHEMODIUM_HELMET));
                 this.maybeWearArmor(EquipmentSlot.CHEST, new ItemStack(ModItems.ALLTHEMODIUM_CHESTPLATE));
@@ -48,7 +53,7 @@ public class PiglichEntity extends Piglin {
 
         }
     private void maybeWearArmor(EquipmentSlot slot, ItemStack stack) {
-        if (this.level.random.nextFloat() < 0.1F) {
+        if (this.level.random.nextFloat() < 0.5F) {
             this.setItemSlot(slot, stack);
         }
 
@@ -73,13 +78,14 @@ public class PiglichEntity extends Piglin {
         protected void registerGoals() {
             this.goalSelector.addGoal(1, new MeleeAttackGoal(this,3.0D,true));
             this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this,0.9D,32.0F));
-            this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Piglin.class, false));
-            this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, PiglinBrute.class, false));
             this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Player.class, true));
             this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Skeleton.class, true));
+            this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, WitherSkeleton.class, true));
             this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Zombie.class, true));
             this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Spider.class, true));
             this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Creeper.class, true));
+            this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Evoker.class, true));
+            this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Illusioner.class, true));
             this.targetSelector.addGoal(4, new HurtByTargetGoal(this));
             this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 8.0F));
             this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
@@ -90,10 +96,11 @@ public class PiglichEntity extends Piglin {
 
         @Override
         public MobType getMobType() {
-            return MobType.UNDEAD;
+            return MobType.UNDEFINED;
         }
+
     private ItemStack createSpawnWeapon() {
-        return (double)this.random.nextFloat() < 0.2D ? new ItemStack(ModRegistry.ALLTHEMODIUM_SWORD.get()) : new ItemStack(Items.NETHERITE_SWORD);
+        return (double)this.random.nextFloat() < 0.4D ? new ItemStack(ModRegistry.ALLTHEMODIUM_SWORD.get()) : new ItemStack(Items.NETHERITE_SWORD);
     }
 
     @Override
@@ -116,7 +123,7 @@ public class PiglichEntity extends Piglin {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-            return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED,0.4F).add(Attributes.ATTACK_DAMAGE,4).add(Attributes.ARMOR,18).add(Attributes.ARMOR_TOUGHNESS,12).add(Attributes.MAX_HEALTH,99);
+            return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED,0.21F).add(Attributes.ATTACK_DAMAGE,4).add(Attributes.ARMOR,18).add(Attributes.ARMOR_TOUGHNESS,12).add(Attributes.MAX_HEALTH,99);
     }
 
 

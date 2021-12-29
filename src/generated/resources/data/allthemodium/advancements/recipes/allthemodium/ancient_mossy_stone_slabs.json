@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "allthemodium:ancient_mossy_stone_slabs"
+    ]
+  },
+  "criteria": {
+    "has_OptionalNamedTag[allthemodium:ancient_stone]_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "allthemodium:ancient_mossy_stone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "allthemodium:ancient_mossy_stone_slabs"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_OptionalNamedTag[allthemodium:ancient_stone]_block",
+      "has_the_recipe"
+    ]
+  ]
+}

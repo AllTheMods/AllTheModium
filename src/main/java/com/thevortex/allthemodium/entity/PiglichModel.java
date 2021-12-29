@@ -28,7 +28,7 @@ public class PiglichModel<T extends Mob> extends PlayerModel<T> {
     private final PartPose headDefault = this.head.storePose();
     private final PartPose leftArmDefault = this.leftArm.storePose();
     private final PartPose rightArmDefault = this.rightArm.storePose();
-    public static ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Reference.MOD_ID, "piglich"),"main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Reference.MOD_ID, "piglich"),"main");
 
     public PiglichModel(ModelPart p_170821_, boolean p_170822_) {
         super(p_170821_, p_170822_);

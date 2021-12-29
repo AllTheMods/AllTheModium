@@ -13,13 +13,12 @@ public class FluidTags extends FluidTagsProvider {
     }
     @Override
     protected void addTags() {
-        /*
+
     tag(TagRegistry.SOUL_LAVA).add(ModRegistry.blueLava.get());
     tag(TagRegistry.SOUL_LAVA).add(ModRegistry.flowing_blueLava.get());
     tag(net.minecraft.tags.FluidTags.LAVA).add(ModRegistry.blueLava.get());
     tag(net.minecraft.tags.FluidTags.LAVA).add(ModRegistry.flowing_blueLava.get());
 
-         */
     }
 
 }

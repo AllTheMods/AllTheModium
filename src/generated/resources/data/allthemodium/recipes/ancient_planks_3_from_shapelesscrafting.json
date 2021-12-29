@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "allthemodium:stripped_ancient_log"
+    }
+  ],
+  "result": {
+    "item": "allthemodium:ancient_planks",
+    "count": 4
+  }
+}

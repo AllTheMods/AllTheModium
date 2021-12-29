@@ -45,10 +45,41 @@ public class BlockStates extends BlockStateProvider {
         simpleBlockItem(ModRegistry.ANCIENT_LOG_1.get(),models().getBuilder("ancient_log_1"));
         simpleBlockItem(ModRegistry.ANCIENT_LOG_2.get(),models().getBuilder("ancient_log_2"));
         simpleBlockItem(ModRegistry.ANCIENT_LOG_STRIPPED.get(),models().getBuilder("stripped_ancient_log"));
-        //trapdoorBlock((TrapDoorBlock) ModRegistry.ANCIENT_TRAPDOOR.get(),new ResourceLocation(Reference.MOD_ID,"ancient_trapdoor"),true);
+        //trapdoorBlock(ModRegistry.ANCIENT_TRAPDOOR.get(),new ResourceLocation(Reference.MOD_ID,"block/ancient_trap_door"),true);
         simpleBlockItem(ModRegistry.ANCIENT_BOOKSHELF.get(),models().getBuilder("ancient_bookshelf"));
+        //
+        stairsBlock(ModRegistry.ANCIENT_WOODEN_STAIRS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"));
+        stairsBlock(ModRegistry.ANCIENT_STONE_STAIRS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_stone"));
+        stairsBlock(ModRegistry.ANCIENT_SMOOTH_STONE_STAIRS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_smooth_stone"));
+        stairsBlock(ModRegistry.ANCIENT_STONE_BRICK_STAIRS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_stone_bricks"));
+        stairsBlock(ModRegistry.ANCIENT_MOSSY_STONE_STAIRS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_mossy_stone"));
+        stairsBlock(ModRegistry.ANCIENT_CHISELED_STONE_STAIRS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_chiseled_stone_bricks"));
+        stairsBlock(ModRegistry.ANCIENT_CRACKED_STONE_STAIRS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_cracked_stone_bricks"));
+        stairsBlock(ModRegistry.ANCIENT_POLISHED_STONE_STAIRS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_polished_stone"));
+
+        fenceBlock(ModRegistry.ANCIENT_WOOD_FENCE_,"ancient_wooden_fence",new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"));
+        fenceGateBlock(ModRegistry.ANCIENT_WOOD_FENCE_GATE_,"ancient_wooden_fence_gate",new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"));
+
+        wallBlock(ModRegistry.ANCIENT_STONE_WALL_,"ancient_stone_wall",new ResourceLocation(Reference.MOD_ID,"block/ancient_stone"));
+        wallBlock(ModRegistry.ANCIENT_SMOOTH_STONE_WALL_,"ancient_smooth_stone_wall",new ResourceLocation(Reference.MOD_ID,"block/ancient_smooth_stone"));
+        wallBlock(ModRegistry.ANCIENT_POLISHED_STONE_WALL_,"ancient_polished_stone_wall",new ResourceLocation(Reference.MOD_ID,"block/ancient_polished_stone"));
+        wallBlock(ModRegistry.ANCIENT_MOSSY_STONE_WALL_,"ancient_mossy_stone_wall",new ResourceLocation(Reference.MOD_ID,"block/ancient_mossy_stone"));
+        wallBlock(ModRegistry.ANCIENT_STONE_BRICK_WALL_,"ancient_stone_brick_wall",new ResourceLocation(Reference.MOD_ID,"block/ancient_stone_bricks"));
+        wallBlock(ModRegistry.ANCIENT_CHISELED_STONE_BRICK_WALL_,"ancient_chiseled_stone_brick_wall",new ResourceLocation(Reference.MOD_ID,"block/ancient_chiseled_stone_bricks"));
+        wallBlock(ModRegistry.ANCIENT_CRACKED_STONE_BRICK_WALL_,"ancient_cracked_stone_brick_wall",new ResourceLocation(Reference.MOD_ID,"block/ancient_cracked_stone_bricks"));
+
+        slabBlock(ModRegistry.ANCIENT_WOODEN_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"), new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"));
+        slabBlock(ModRegistry.ANCIENT_STONE_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_stone"), new ResourceLocation(Reference.MOD_ID,"block/ancient_stone"));
+        slabBlock(ModRegistry.ANCIENT_SMOOTH_STONE_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_smooth_stone"), new ResourceLocation(Reference.MOD_ID,"block/ancient_smooth_stone"));
+        slabBlock(ModRegistry.ANCIENT_STONE_BRICK_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_stone_bricks"), new ResourceLocation(Reference.MOD_ID,"block/ancient_stone_bricks"));
+        slabBlock(ModRegistry.ANCIENT_MOSSY_STONE_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_mossy_stone"), new ResourceLocation(Reference.MOD_ID,"block/ancient_mossy_stone"));
+        slabBlock(ModRegistry.ANCIENT_CHISELED_STONE_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_chiseled_stone_bricks"), new ResourceLocation(Reference.MOD_ID,"block/ancient_chiseled_stone_bricks"));
+        slabBlock(ModRegistry.ANCIENT_CRACKED_STONE_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_cracked_stone_bricks"), new ResourceLocation(Reference.MOD_ID,"block/ancient_cracked_stone_bricks"));
+        slabBlock(ModRegistry.ANCIENT_POLISHED_STONE_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_polished_stone"), new ResourceLocation(Reference.MOD_ID,"block/ancient_polished_stone"));
 
     }
+
+
 
 
     /**
