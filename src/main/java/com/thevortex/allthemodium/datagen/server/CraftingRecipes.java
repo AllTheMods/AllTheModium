@@ -20,6 +20,10 @@ public class CraftingRecipes extends RecipeProvider {
         super(generatorIn);
     }
 
+    private ShapedRecipeBuilder shaped(ItemLike provider, int integer) {
+        return ShapedRecipeBuilder.shaped(provider,integer)
+                .group(Reference.MOD_ID);
+    }
     private ShapedRecipeBuilder shaped(ItemLike provider) {
         return ShapedRecipeBuilder.shaped(provider)
             .group(Reference.MOD_ID);

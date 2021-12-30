@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "allthemodium:ancient_leaves"
+          "name": "allthemodium:ancient_herb"
         }
       ],
       "conditions": [

@@ -17,12 +17,14 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class LootTables extends LootTableProvider {
 
@@ -43,9 +45,7 @@ public class LootTables extends LootTableProvider {
         public void addTables() {
 
             getKnownBlocks().forEach(this::dropRaw);
-           getKnownStairs().forEach(this::dropSelf);
-           getKnownSlabs().forEach(this::dropSelf);
-           getKnownWalls().forEach(this::dropSelf);
+
 
 
         }
@@ -56,13 +56,6 @@ public class LootTables extends LootTableProvider {
                 return;
             }
 
-            if(block instanceof LeavesBlock) {
-                String leavestype = block.getRegistryName().getPath();
-                if(leavestype.contains("ancient_leaves")) {
-
-                    this.add(block,(block1 -> createShearsOnlyDrop(block1)));
-                }
-            }
             if(block.getRegistryName().getPath().contains("ancient_bookshelf")) {
                 this.add(ModRegistry.ANCIENT_BOOKSHELF.get(), (p_124241_) -> {
                     return createSingleItemTableWithSilkTouch(p_124241_, Items.BOOK, ConstantValue.exactly(3.0F));
@@ -90,8 +83,14 @@ public class LootTables extends LootTableProvider {
 
         @Override
         protected Iterable<Block> getKnownBlocks() {
-            return ModRegistry.BLOCKS.getEntries()
-                    .stream().map(RegistryObject::get)
+            return Stream.of(ModRegistry.BLOCKS.getEntries(),
+                    ModRegistry.STAIRBLOCKS.getEntries(),
+                    ModRegistry.SLABBLOCKS.getEntries(),
+                    ModRegistry.WALLBLOCKS.getEntries(),
+                    ModRegistry.PILLARBLOCKS.getEntries())
+                    .filter(block -> !(block instanceof LeavesBlock))
+                    .flatMap(Collection::stream)
+                    .map(RegistryObject::get)
                     .collect(Collectors.toList());
 
         }

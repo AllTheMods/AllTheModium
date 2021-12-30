@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableList;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.worldgen.features.VolcanoConfig;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.features.FeatureUtils;
@@ -16,6 +17,7 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformFloat;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
@@ -23,12 +25,15 @@ import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
+import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 
 import java.util.List;
 import java.util.OptionalInt;
+import java.util.Random;
 
 public class ATMConfiguredFeature {
 	public static final ImmutableList<OreConfiguration.TargetBlockState> ORE_ALLTHEMODIUM_TARGET_LIST = ImmutableList.of(OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModRegistry.ALLTHEMODIUM_ORE.get().defaultBlockState()), OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModRegistry.ALLTHEMODIUM_SLATE_ORE.get().defaultBlockState()));
@@ -67,14 +72,15 @@ public class ATMConfiguredFeature {
 
 
 	private static TreeConfiguration.TreeConfigurationBuilder createAncientGiantTree() {
-		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.ANCIENT_LOG_0.get()), new FancyTrunkPlacer(26, 7, 7), BlockStateProvider.simple(ModRegistry.ANCIENT_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))));
+		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.ANCIENT_LOG_0.get()), new FancyTrunkPlacer(26, 7, 7), BlockStateProvider.simple(ModRegistry.ANCIENT_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).dirt(new SimpleStateProvider(ModRegistry.ANCIENT_DIRT.get().defaultBlockState())));
 	}
 	private static TreeConfiguration.TreeConfigurationBuilder createAncientMediumTree() {
-		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.ANCIENT_LOG_1.get()), new FancyTrunkPlacer(17, 5, 5), BlockStateProvider.simple(ModRegistry.ANCIENT_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))));
+		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.ANCIENT_LOG_1.get()), new FancyTrunkPlacer(17, 5, 5), BlockStateProvider.simple(ModRegistry.ANCIENT_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).dirt(new SimpleStateProvider(ModRegistry.ANCIENT_DIRT.get().defaultBlockState())));
 	}
 	private static TreeConfiguration.TreeConfigurationBuilder createAncientTree() {
-		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.ANCIENT_LOG_2.get()), new FancyTrunkPlacer(8, 3, 3), BlockStateProvider.simple(ModRegistry.ANCIENT_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))));
+		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.ANCIENT_LOG_2.get()), new FancyTrunkPlacer(8, 3, 3), BlockStateProvider.simple(ModRegistry.ANCIENT_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).dirt(new SimpleStateProvider(ModRegistry.ANCIENT_DIRT.get().defaultBlockState())));
 	}
+
 	public static ConfiguredFeature<?, ?> newVolcanoFeature(String registryName,
 															   Feature<VolcanoConfig> volcanoFeature) {
 		ConfiguredFeature<VolcanoConfig, ?> configuredVolcanoFeature = volcanoFeature.configured(VolcanoConfig.INSTANCE);

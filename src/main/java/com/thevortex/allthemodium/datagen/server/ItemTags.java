@@ -8,6 +8,7 @@ import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.BlockTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ItemTags extends ItemTagsProvider {
@@ -19,6 +20,15 @@ public class ItemTags extends ItemTagsProvider {
 
     @Override
     protected void addTags() {
+
+        tag(net.minecraft.tags.ItemTags.PLANKS).add(ModRegistry.ANCIENT_PLANKS_ITEM.get());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_0_ITEM.get());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_1_ITEM.get());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_2_ITEM.get());
+
+        tag(net.minecraft.tags.ItemTags.STONE_CRAFTING_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
+        tag(net.minecraft.tags.ItemTags.STONE_TOOL_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
+
         tag(TagRegistry.ANCIENT_WOODEN_PLANKS_ITEM).add(ModRegistry.ANCIENT_PLANKS_ITEM.get());
         tag(TagRegistry.ANCIENT_STONE_ITEM).add(ModRegistry.ANCIENT_STONE_ITEM.get());
         tag(TagRegistry.ANCIENT_MOSSY_STONE_ITEM).add(ModRegistry.ANCIENT_MOSSY_STONE_ITEM.get());

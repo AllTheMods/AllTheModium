@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "allthemodium:ancient_stone",
+    "allthemodium:ancient_mossy_stone",
+    "allthemodium:ancient_polished_stone",
+    "allthemodium:ancient_smooth_stone",
+    "allthemodium:ancient_stone_bricks",
+    "allthemodium:ancient_cracked_stone_bricks",
+    "allthemodium:ancient_chiseled_stone_bricks",
+    "allthemodium:raw_allthemodium_block",
+    "allthemodium:allthemodium_ore",
+    "allthemodium:allthemodium_slate_ore",
+    "allthemodium:raw_vibranium_block",
+    "allthemodium:vibranium_ore",
+    "allthemodium:raw_unobtainium_block",
+    "allthemodium:unobtainium_ore"
+  ]
+}

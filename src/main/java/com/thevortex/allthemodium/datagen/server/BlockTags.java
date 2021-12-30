@@ -40,6 +40,23 @@ public class BlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.LOGS).add(ModRegistry.ANCIENT_LOG_0.get());
         tag(net.minecraft.tags.BlockTags.LOGS).add(ModRegistry.ANCIENT_LOG_1.get());
         tag(net.minecraft.tags.BlockTags.LOGS).add(ModRegistry.ANCIENT_LOG_2.get());
+        tag(net.minecraft.tags.BlockTags.PLANKS).add(ModRegistry.ANCIENT_PLANKS.get());
+
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_STONE.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_SHOVEL).add(ModRegistry.ANCIENT_DIRT.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_SHOVEL).add(ModRegistry.ANCIENT_GRASS.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_MOSSY_STONE.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_POLISHED_STONE.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_SMOOTH_STONE.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_STONE_BRICKS.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
+
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_PLANKS.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_0.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_1.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_2.get());
+
         tag(net.minecraft.tags.BlockTags.NYLIUM).add(ModRegistry.ANCIENT_STONE.get());
         tag(net.minecraft.tags.BlockTags.BASE_STONE_NETHER).add(ModRegistry.ANCIENT_STONE.get());
         tag(net.minecraft.tags.BlockTags.INFINIBURN_NETHER).add(ModRegistry.ANCIENT_STONE.get());
@@ -93,9 +110,18 @@ public class BlockTags extends BlockTagsProvider {
         tag(TagRegistry.ALLTHEMODIUM_BLOCK).add(ModRegistry.ALLTHEMODIUM_BLOCK.get());
         tag(TagRegistry.ALLTHEMODIUM_ORE).add(ModRegistry.ALLTHEMODIUM_ORE.get());
         tag(TagRegistry.ALLTHEMODIUM_ORE).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.RAW_ALLTHEMODIUM_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ALLTHEMODIUM_ORE.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
         tag(TagRegistry.VIBRANIUM_BLOCK).add(ModRegistry.VIBRANIUM_BLOCK.get());
         tag(TagRegistry.VIBRANIUM_ORE).add(ModRegistry.VIBRANIUM_ORE.get());
+
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.RAW_VIBRANIUM_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.VIBRANIUM_ORE.get());
         tag(TagRegistry.UNOBTAINIUM_BLOCK).add(ModRegistry.UNOBTAINIUM_BLOCK.get());
         tag(TagRegistry.UNOBTAINIUM_ORE).add(ModRegistry.UNOBTAINIUM_ORE.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.RAW_UNOBTAINIUM_BLOCK.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.UNOBTAINIUM_ORE.get());
         }
+
 }
