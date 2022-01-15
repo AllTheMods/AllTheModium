@@ -102,8 +102,11 @@ public class SoulLava extends LiquidBlock {
 	@OnlyIn(Dist.CLIENT)
 	@Override
 	public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
-		if(stateIn.is(ModRegistry.molten_BlueLava_block.get())) {
+		this.tickcount++;
+
+		if(stateIn.is(ModRegistry.molten_BlueLava_block.get()) && this.tickcount >= 40) {
 			spawnParticles(worldIn, pos);
+			this.tickcount = 0;
 		}
 		super.animateTick(stateIn, worldIn, pos, rand);
 	}
@@ -111,7 +114,8 @@ public class SoulLava extends LiquidBlock {
 	private static void spawnParticles(Level world, BlockPos worldIn) {
 		double d0 = 0.5625D;
 		Random random = world.random;
-		if(world.getFluidState(worldIn).isSource()) {
+
+		if(world.getFluidState(worldIn).isSource() && (random.nextBoolean() == true)) {
 			for (Direction direction : Direction.values()) {
 				BlockPos blockpos = worldIn.offset(direction.getNormal());
 				if (!world.getBlockState(blockpos).isSolidRender(world, blockpos)) {

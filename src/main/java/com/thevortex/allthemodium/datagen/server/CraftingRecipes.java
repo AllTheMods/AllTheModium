@@ -174,9 +174,30 @@ public class CraftingRecipes extends RecipeProvider {
 
         final String hasCondition = "has_item";
 
+        ShapedAncientStones.builder(TagRegistry.DEMONIC_WOODEN_PLANKS_ITEM)
+                .setBookShelf(ModRegistry.DEMONIC_BOOKSHELF_ITEM)
+                .setDoor(ModRegistry.DEMONIC_DOOR_ITEM)
+                .setTrapDoor(ModRegistry.DEMONIC_TRAP_DOOR_ITEM)
+                .setStairs(ModRegistry.DEMONIC_WOODEN_STAIRS_ITEM)
+                .setFence(ModRegistry.DEMONIC_WOOD_FENCE_ITEM)
+                .setFenceGate(ModRegistry.DEMONIC_WOOD_FENCE_GATE_ITEM)
+                .setSlab(ModRegistry.DEMONIC_WOODEN_SLABS_ITEM)
+                .build(consumer);
+
+        ShapedAncientStones.builder(TagRegistry.SOUL_WOODEN_PLANKS_ITEM)
+                .setBookShelf(ModRegistry.SOUL_BOOKSHELF_ITEM)
+                .setDoor(ModRegistry.SOUL_DOOR_ITEM)
+                .setTrapDoor(ModRegistry.SOUL_TRAP_DOOR_ITEM)
+                .setStairs(ModRegistry.SOUL_WOODEN_STAIRS_ITEM)
+                .setFence(ModRegistry.SOUL_WOOD_FENCE_ITEM)
+                .setFenceGate(ModRegistry.SOUL_WOOD_FENCE_GATE_ITEM)
+                .setSlab(ModRegistry.SOUL_WOODEN_SLABS_ITEM)
+                .build(consumer);
+
         ShapedAncientStones.builder(TagRegistry.ANCIENT_WOODEN_PLANKS_ITEM)
                 .setBookShelf(ModRegistry.ANCIENT_BOOKSHELF_ITEM)
                 .setTrapDoor(ModRegistry.ANCIENT_TRAP_DOOR_ITEM)
+                .setDoor(ModRegistry.ANCIENT_DOOR_ITEM)
                 .setStairs(ModRegistry.ANCIENT_WOODEN_STAIRS_ITEM)
                 .setFence(ModRegistry.ANCIENT_WOOD_FENCE_ITEM)
                 .setFenceGate(ModRegistry.ANCIENT_WOOD_FENCE_GATE_ITEM)

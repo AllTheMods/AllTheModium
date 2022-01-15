@@ -27,6 +27,37 @@ private ResourceLocation recipeDir(String typeIn, String typeOut) {
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
 
         final String hasCondition = "has_item";
+
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.DEMONIC_PLANKS.get(),4)
+                .requires(ModRegistry.DEMONIC_LOG_ITEM.get())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.DEMONIC_LOG_ITEM.get()))
+                .save(consumer,recipeDir("demonic_planks","shapelesscrafting"));
+
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.SOUL_PLANKS.get(),4)
+                .requires(ModRegistry.SOUL_LOG_ITEM.get())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.SOUL_LOG_ITEM.get()))
+                .save(consumer,recipeDir("soul_planks","shapelesscrafting"));
+
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.SOUL_PLANKS.get(),4)
+                .requires(ModRegistry.SOUL_LOG_0_ITEM.get())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.SOUL_LOG_0_ITEM.get()))
+                .save(consumer,recipeDir("soul_planks_0","shapelesscrafting"));
+
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.SOUL_PLANKS.get(),4)
+                .requires(ModRegistry.SOUL_LOG_1_ITEM.get())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.SOUL_LOG_1_ITEM.get()))
+                .save(consumer,recipeDir("soul_planks_1","shapelesscrafting"));
+
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.SOUL_PLANKS.get(),4)
+                .requires(ModRegistry.SOUL_LOG_2_ITEM.get())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.SOUL_LOG_2_ITEM.get()))
+                .save(consumer,recipeDir("soul_planks_2","shapelesscrafting"));
+
         ShapelessRecipeBuilder
                 .shapeless(ModRegistry.ANCIENT_PLANKS.get(),4)
                 .requires(ModRegistry.ANCIENT_LOG_0_ITEM.get())

@@ -7,6 +7,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.OreBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.PushReaction;
@@ -16,9 +17,18 @@ import net.minecraftforge.common.util.FakePlayer;
 public class Vibranium_Ore extends OreBlock {
 
 	public Vibranium_Ore() {//func_235861_h_ = setRequiresTool
-		super(Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.STONE).strength(9.0f));
+		super(Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.NETHER_ORE).strength(-1.0f,2500.0f));
 	}
-
+	@Override
+	@SuppressWarnings("java:S1874") // deprecated method from super class
+	public float getDestroyProgress(BlockState state, Player player, BlockGetter getter, BlockPos blockPos) {
+		BlockEntity blockEntity = getter.getBlockEntity(blockPos);
+		if (canEntityDestroy(state,getter,blockPos, player)) {
+			int i = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(state, player) ? 500 : 5000;
+			return player.getDigSpeed(state, blockPos) / 2.0F / i;
+		}
+		return 0.0F;
+	}
 	@Override
 	public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity player) {
 		if((player instanceof FakePlayer) && (state.getBlock() == ModRegistry.VIBRANIUM_ORE.get())) { return false; }

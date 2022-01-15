@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "allthemodium:soul_log_1"
+    }
+  ],
+  "result": {
+    "item": "allthemodium:soul_planks",
+    "count": 4
+  }
+}

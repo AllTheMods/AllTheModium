@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "allthemodium:ancient_wooden_stairs"
+    "allthemodium:ancient_wooden_stairs",
+    "allthemodium:demonic_wooden_stairs",
+    "allthemodium:soul_wooden_stairs"
   ]
 }

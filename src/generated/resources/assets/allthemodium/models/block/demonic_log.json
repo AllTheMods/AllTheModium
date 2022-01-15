@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "allthemodium:block/demonic_log",
+    "end": "allthemodium:block/demonic_log_top"
+  }
+}

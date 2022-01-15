@@ -1,6 +1,7 @@
 package com.thevortex.allthemodium.material;
 
 import com.thevortex.allthemodium.reference.Reference;
+import com.thevortex.allthemodium.reference.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -17,13 +18,13 @@ import java.util.List;
 public class ToolTiers {
 
 
-    public static final Tag.Named<Block> ALLTHEMODIUM_TOOL_TAG = BlockTags.createOptional(new ResourceLocation(Reference.MOD_ID,"mineable/allthemodium_pickaxe"));
-    public static final Tag.Named<Block> VIBRANIUM_TOOL_TAG = BlockTags.createOptional(new ResourceLocation(Reference.MOD_ID,"mineable/vibranium_pickaxe"));
-    public static final Tag.Named<Block> UNOBTAINIUM_TOOL_TAG = BlockTags.createOptional(new ResourceLocation(Reference.MOD_ID,"mineable/unobtainium_pickaxe"));
+    public static final Tag.Named<Block> ALLTHEMODIUM_TOOL_TAG = BlockTags.createOptional(new ResourceLocation("mineable/pickaxe"));
+    public static final Tag.Named<Block> VIBRANIUM_TOOL_TAG = BlockTags.createOptional(new ResourceLocation("mineable/pickaxe"));
+    public static final Tag.Named<Block> UNOBTAINIUM_TOOL_TAG = BlockTags.createOptional(new ResourceLocation("mineable/pickaxe"));
 
-    public static final Tag.Named<Block> ALLTHEMODIUM_TIER_TAG = BlockTags.createOptional(new ResourceLocation(Reference.MOD_ID,"needs_allthemodium_tool"));
-    public static final Tag.Named<Block> VIBRANIUM_TIER_TAG = BlockTags.createOptional(new ResourceLocation(Reference.MOD_ID,"needs_vibranium_tool"));
-    public static final Tag.Named<Block> UNOBTAINIUM_TIER_TAG = BlockTags.createOptional(new ResourceLocation(Reference.MOD_ID,"needs_unobtainium_tool"));
+    public static final Tag.Named<Block> ALLTHEMODIUM_TIER_TAG = TagRegistry.NEEDS_ALLTHEMODIUM_TOOL;
+    public static final Tag.Named<Block> VIBRANIUM_TIER_TAG = TagRegistry.NEEDS_VIBRANIUM_TOOL;
+    public static final Tag.Named<Block> UNOBTAINIUM_TIER_TAG = TagRegistry.NEEDS_UNOBTAINIUM_TOOL;
 
     public static final Tier UNOBTAINIUM_TIER = TierSortingRegistry.registerTier(
             new ForgeTier(7, 20000, 30, 200, 500, UNOBTAINIUM_TIER_TAG, () -> Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get())),

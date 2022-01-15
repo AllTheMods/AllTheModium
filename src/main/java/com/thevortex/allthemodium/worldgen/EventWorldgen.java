@@ -218,8 +218,10 @@ public class EventWorldgen {
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.OTHER_CAVE_CWC);
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.OTHER_CANYON_CWC);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> NetherPlacements.WARPED_FOREST_VEGETATION);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.ANCIENT_TREE_MEDIUM);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> CavePlacements.CAVE_VINES);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.CAVE_VINES);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.SOUL_TREE_GIANT);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.SOUL_TREE_MEDIUM);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.SOUL_TREE);
             if (ModList.get().isLoaded("alltheores")) {
                 //Alltheores
 
@@ -250,6 +252,8 @@ public class EventWorldgen {
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> OrePlacements.ORE_LAPIS);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> OrePlacements.ORE_EMERALD);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> OrePlacements.ORE_REDSTONE);
+           // event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATMPlacedFeature.ORE_VIBRANIUM_OTHER);
+
         }
         if ((mod.equals(Reference.MOD_ID)) && (biome.equals("crimson_forest"))) {
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> NetherPlacements.WEEPING_VINES);
@@ -258,8 +262,11 @@ public class EventWorldgen {
             event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(() -> ATMCarvers.OTHER_CANYON_CWC);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> NetherPlacements.CRIMSON_FOREST_VEGETATION);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> NetherPlacements.PATCH_CRIMSON_ROOTS);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.ANCIENT_TREE);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.DEMONIC_TREE_GIANT);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.DEMONIC_TREE_MEDIUM);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.DEMONIC_TREE);
 
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.CAVE_VINES);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> CavePlacements.CAVE_VINES);
             if (ModList.get().isLoaded("alltheores")) {
                 //Alltheores
@@ -291,6 +298,7 @@ public class EventWorldgen {
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> OrePlacements.ORE_LAPIS);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> OrePlacements.ORE_EMERALD);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> OrePlacements.ORE_REDSTONE);
+            //event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATMPlacedFeature.ORE_VIBRANIUM_OTHER);
         }
         if (biome.equals("the_other")) {
             //Allthemodium(Vibranium/Soul Lava)
@@ -300,11 +308,13 @@ public class EventWorldgen {
 
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> NetherPlacements.WEEPING_VINES);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.ANCIENT_TREE_GIANT);
-           //event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.ANCIENT_HERB_PATCH);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.ANCIENT_TREE_MEDIUM);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.ANCIENT_TREE);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.CAVE_VINES);
 
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATMPlacedFeature.ORE_ALLTHEMODIUM_MOUNTAIN);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATMPlacedFeature.ORE_ALLTHEMODIUM);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATMPlacedFeature.ORE_VIBRANIUM);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATMPlacedFeature.ORE_VIBRANIUM_OTHER);
             //event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(() -> ATMPlacedFeature.MOD_DRIPSTONE);
             if (ModList.get().isLoaded("alltheores")) {
                 //Alltheores

@@ -55,7 +55,7 @@ public class Volcano extends Feature<VolcanoConfig> {
                         double scaledNoise = (noise3 / 11) * (-(y * baseRadius) / ((x * x) + (z * z)));
                         if (scaledNoise - lavaLeakage >= threshold) {
                             if (mutable.getY() <= pos.getY() + (volcanoStartHeight - 19)) {
-                                world.setBlock(mutable, Blocks.LAVA.defaultBlockState(), 2);
+                                world.setBlock(mutable, ModRegistry.molten_BlueLava_block.get().defaultBlockState(), 2);
 
                             }
                         } else if (scaledNoise >= threshold) {

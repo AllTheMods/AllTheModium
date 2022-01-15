@@ -2,31 +2,33 @@ package com.thevortex.allthemodium.worldgen;
 
 
 import com.google.common.collect.ImmutableList;
+import com.thevortex.allthemodium.blocks.ACaveVines;
+import com.thevortex.allthemodium.blocks.AncientCaveVines;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.worldgen.features.VolcanoConfig;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.data.worldgen.placement.TreePlacements;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.valueproviders.ClampedNormalFloat;
-import net.minecraft.util.valueproviders.ConstantInt;
-import net.minecraft.util.valueproviders.UniformFloat;
-import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.valueproviders.*;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CaveVines;
+import net.minecraft.world.level.block.CaveVinesBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.WeightedPlacedFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.*;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
-import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.*;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
@@ -68,6 +70,19 @@ public class ATMConfiguredFeature {
 	public static final ConfiguredFeature<TreeConfiguration, ?> ANCIENT_TREE_MEDIUM = FeatureUtils.register("ancient_tree_medium", Feature.TREE.configured(createAncientMediumTree().build()));
 	public static final ConfiguredFeature<TreeConfiguration, ?> ANCIENT_TREE = FeatureUtils.register("ancient_tree", Feature.TREE.configured(createAncientTree().build()));
 
+	public static final ConfiguredFeature<TreeConfiguration, ?> DEMONIC_TREE_GIANT = FeatureUtils.register("demonic_tree_giant", Feature.TREE.configured(createDemonicGiantTree().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> DEMONIC_TREE_MEDIUM = FeatureUtils.register("demonic_tree_medium", Feature.TREE.configured(createDemonicMediumTree().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> DEMONIC_TREE = FeatureUtils.register("demonic_tree", Feature.TREE.configured(createDemonicTree().build()));
+
+	public static final ConfiguredFeature<TreeConfiguration, ?> SOUL_TREE_GIANT = FeatureUtils.register("soul_tree_giant", Feature.TREE.configured(createSoulGiantTree().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> SOUL_TREE_MEDIUM = FeatureUtils.register("soul_tree_medium", Feature.TREE.configured(createSoulMediumTree().build()));
+	public static final ConfiguredFeature<TreeConfiguration, ?> SOUL_TREE = FeatureUtils.register("soul_tree", Feature.TREE.configured(createSoulTree().build()));
+
+
+	private static final WeightedStateProvider CAVE_VINES_BODY_PROVIDER = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(ModRegistry.ANCIENT_CAVEVINES_PLANT.defaultBlockState(), 4).add(ModRegistry.ANCIENT_CAVEVINES_PLANT.defaultBlockState().setValue(ACaveVines.BERRIES, Boolean.valueOf(true)), 1));
+	private static final RandomizedIntStateProvider CAVE_VINES_HEAD_PROVIDER = new RandomizedIntStateProvider(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(ModRegistry.ANCIENT_CAVEVINES.defaultBlockState(), 4).add(ModRegistry.ANCIENT_CAVEVINES.defaultBlockState().setValue(ACaveVines.BERRIES, Boolean.valueOf(true)), 1)), AncientCaveVines.AGE, UniformInt.of(23, 25));
+	public static final ConfiguredFeature<BlockColumnConfiguration, ?> CAVE_VINE = FeatureUtils.register("cave_vine", Feature.BLOCK_COLUMN.configured(new BlockColumnConfiguration(List.of(BlockColumnConfiguration.layer(new WeightedListInt(SimpleWeightedRandomList.<IntProvider>builder().add(UniformInt.of(0, 19), 2).add(UniformInt.of(0, 2), 3).add(UniformInt.of(0, 6), 10).build()), CAVE_VINES_BODY_PROVIDER), BlockColumnConfiguration.layer(ConstantInt.of(1), CAVE_VINES_HEAD_PROVIDER)), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, true)));
+
 	public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_ANCIENT_HERB = FeatureUtils.register("patch_ancient_herb", Feature.RANDOM_PATCH.configured(FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(ModRegistry.ANCIENT_HERB.get()))))));
 
 
@@ -79,6 +94,24 @@ public class ATMConfiguredFeature {
 	}
 	private static TreeConfiguration.TreeConfigurationBuilder createAncientTree() {
 		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.ANCIENT_LOG_2.get()), new FancyTrunkPlacer(8, 3, 3), BlockStateProvider.simple(ModRegistry.ANCIENT_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).dirt(new SimpleStateProvider(ModRegistry.ANCIENT_DIRT.get().defaultBlockState())));
+	}
+	private static TreeConfiguration.TreeConfigurationBuilder createDemonicGiantTree() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.DEMONIC_LOG.get()), new FancyTrunkPlacer(26, 7, 7), BlockStateProvider.simple(ModRegistry.DEMONIC_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).dirt(new SimpleStateProvider(ModRegistry.ANCIENT_DIRT.get().defaultBlockState())));
+	}
+	private static TreeConfiguration.TreeConfigurationBuilder createDemonicMediumTree() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.DEMONIC_LOG.get()), new FancyTrunkPlacer(17, 5, 5), BlockStateProvider.simple(ModRegistry.DEMONIC_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).dirt(new SimpleStateProvider(ModRegistry.ANCIENT_DIRT.get().defaultBlockState())));
+	}
+	private static TreeConfiguration.TreeConfigurationBuilder createDemonicTree() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.DEMONIC_LOG.get()), new FancyTrunkPlacer(8, 3, 3), BlockStateProvider.simple(ModRegistry.DEMONIC_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).dirt(new SimpleStateProvider(ModRegistry.ANCIENT_DIRT.get().defaultBlockState())));
+	}
+	private static TreeConfiguration.TreeConfigurationBuilder createSoulGiantTree() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.SOUL_LOG.get()), new FancyTrunkPlacer(26, 7, 7), BlockStateProvider.simple(ModRegistry.SOUL_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).dirt(new SimpleStateProvider(ModRegistry.SOUL_LOG_1.get().defaultBlockState())));
+	}
+	private static TreeConfiguration.TreeConfigurationBuilder createSoulMediumTree() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.SOUL_LOG.get()), new FancyTrunkPlacer(17, 5, 5), BlockStateProvider.simple(ModRegistry.SOUL_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).dirt(new SimpleStateProvider(ModRegistry.SOUL_LOG_2.get().defaultBlockState())));
+	}
+	private static TreeConfiguration.TreeConfigurationBuilder createSoulTree() {
+		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.SOUL_LOG.get()), new FancyTrunkPlacer(8, 3, 3), BlockStateProvider.simple(ModRegistry.SOUL_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).dirt(new SimpleStateProvider(ModRegistry.SOUL_LOG_0.get().defaultBlockState())));
 	}
 
 	public static ConfiguredFeature<?, ?> newVolcanoFeature(String registryName,

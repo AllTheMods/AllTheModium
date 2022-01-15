@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "allthemodium:block/demonic_leaves_bottom"
+  }
+}

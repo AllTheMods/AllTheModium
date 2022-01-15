@@ -19,7 +19,7 @@
         },
         {
           "parameters": {
-            "depth": -0.1,
+            "depth": 0.5,
             "continentalness": 0.9,
             "weirdness": 0.2,
             "offset": 0.0,
@@ -267,7 +267,7 @@
                     },
                     "then_run": {
                       "result_state": {
-                        "Name": "minecraft:sand"
+                        "Name": "minecraft:sandstone"
                       },
                       "type": "minecraft:block"
                     },
@@ -282,7 +282,7 @@
                     },
                     "then_run": {
                       "result_state": {
-                        "Name": "minecraft:sand"
+                        "Name": "minecraft:sandstone"
                       },
                       "type": "minecraft:block"
                     },
@@ -427,7 +427,7 @@
             "then_run": {
               "if_true": {
                 "anchor": {
-                  "absolute": 65
+                  "absolute": 75
                 },
                 "surface_depth_multiplier": 2,
                 "add_stone_depth": false,
@@ -499,7 +499,7 @@
                       },
                       {
                         "result_state": {
-                          "Name": "minecraft:crimson_nylium"
+                          "Name": "allthemodium:ancient_dirt"
                         },
                         "type": "minecraft:block"
                       }
@@ -657,7 +657,7 @@
           "xz_scale": 1,
           "y_scale":  2,
           "xz_factor": 250,
-          "y_factor": 220
+          "y_factor": 260
         },
         "bottom_slide": {
           "target": 4,

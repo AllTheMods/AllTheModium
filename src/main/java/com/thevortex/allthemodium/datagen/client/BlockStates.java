@@ -49,6 +49,32 @@ public class BlockStates extends BlockStateProvider {
         simpleBlockItem(ModRegistry.ANCIENT_BOOKSHELF.get(),models().getBuilder("ancient_bookshelf"));
         //
         stairsBlock(ModRegistry.ANCIENT_WOODEN_STAIRS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"));
+
+        logBlock((RotatedPillarBlock)ModRegistry.SOUL_LOG.get());
+        logBlock((RotatedPillarBlock)ModRegistry.SOUL_LOG_0.get());
+        logBlock((RotatedPillarBlock)ModRegistry.SOUL_LOG_1.get());
+        logBlock((RotatedPillarBlock)ModRegistry.SOUL_LOG_2.get());
+        logBlock((RotatedPillarBlock)ModRegistry.SOUL_LOG_STRIPPED.get());
+        logBlock((RotatedPillarBlock)ModRegistry.SOUL_BOOKSHELF.get());
+
+        simpleBlockItem(ModRegistry.SOUL_LOG.get(),models().getBuilder("soul_log"));
+        simpleBlockItem(ModRegistry.SOUL_LOG_0.get(),models().getBuilder("soul_log_0"));
+        simpleBlockItem(ModRegistry.SOUL_LOG_1.get(),models().getBuilder("soul_log_1"));
+        simpleBlockItem(ModRegistry.SOUL_LOG_2.get(),models().getBuilder("soul_log_2"));
+        simpleBlockItem(ModRegistry.SOUL_LOG_STRIPPED.get(),models().getBuilder("stripped_soul_log"));
+        simpleBlockItem(ModRegistry.SOUL_BOOKSHELF.get(),models().getBuilder("soul_bookshelf"));
+        stairsBlock(ModRegistry.SOUL_WOODEN_STAIRS.get(), new ResourceLocation(Reference.MOD_ID,"block/soul_planks"));
+
+        logBlock((RotatedPillarBlock)ModRegistry.DEMONIC_LOG.get());
+        logBlock((RotatedPillarBlock)ModRegistry.DEMONIC_LOG_STRIPPED.get());
+        logBlock((RotatedPillarBlock)ModRegistry.DEMONIC_BOOKSHELF.get());
+
+        simpleBlockItem(ModRegistry.DEMONIC_LOG.get(),models().getBuilder("demonic_log"));
+        simpleBlockItem(ModRegistry.DEMONIC_LOG_STRIPPED.get(),models().getBuilder("stripped_demonic_log"));
+        simpleBlockItem(ModRegistry.DEMONIC_BOOKSHELF.get(),models().getBuilder("demonic_bookshelf"));
+        stairsBlock(ModRegistry.DEMONIC_WOODEN_STAIRS.get(), new ResourceLocation(Reference.MOD_ID,"block/demonic_planks"));
+
+
         stairsBlock(ModRegistry.ANCIENT_STONE_STAIRS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_stone"));
         stairsBlock(ModRegistry.ANCIENT_SMOOTH_STONE_STAIRS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_smooth_stone"));
         stairsBlock(ModRegistry.ANCIENT_STONE_BRICK_STAIRS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_stone_bricks"));
@@ -59,6 +85,10 @@ public class BlockStates extends BlockStateProvider {
 
         fenceBlock(ModRegistry.ANCIENT_WOOD_FENCE_,"ancient_wooden_fence",new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"));
         fenceGateBlock(ModRegistry.ANCIENT_WOOD_FENCE_GATE_,"ancient_wooden_fence_gate",new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"));
+        fenceBlock(ModRegistry.DEMONIC_WOOD_FENCE_,"demonic_wooden_fence",new ResourceLocation(Reference.MOD_ID,"block/demonic_planks"));
+        fenceGateBlock(ModRegistry.DEMONIC_WOOD_FENCE_GATE_,"demonic_wooden_fence_gate",new ResourceLocation(Reference.MOD_ID,"block/demonic_planks"));
+        fenceBlock(ModRegistry.SOUL_WOOD_FENCE_,"soul_wooden_fence",new ResourceLocation(Reference.MOD_ID,"block/soul_planks"));
+        fenceGateBlock(ModRegistry.SOUL_WOOD_FENCE_GATE_,"soul_wooden_fence_gate",new ResourceLocation(Reference.MOD_ID,"block/soul_planks"));
 
         wallBlock(ModRegistry.ANCIENT_STONE_WALL_,"ancient_stone_wall",new ResourceLocation(Reference.MOD_ID,"block/ancient_stone"));
         wallBlock(ModRegistry.ANCIENT_SMOOTH_STONE_WALL_,"ancient_smooth_stone_wall",new ResourceLocation(Reference.MOD_ID,"block/ancient_smooth_stone"));
@@ -69,6 +99,8 @@ public class BlockStates extends BlockStateProvider {
         wallBlock(ModRegistry.ANCIENT_CRACKED_STONE_BRICK_WALL_,"ancient_cracked_stone_brick_wall",new ResourceLocation(Reference.MOD_ID,"block/ancient_cracked_stone_bricks"));
 
         slabBlock(ModRegistry.ANCIENT_WOODEN_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"), new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"));
+        slabBlock(ModRegistry.DEMONIC_WOODEN_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/demonic_planks"), new ResourceLocation(Reference.MOD_ID,"block/demonic_planks"));
+        slabBlock(ModRegistry.SOUL_WOODEN_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/soul_planks"), new ResourceLocation(Reference.MOD_ID,"block/soul_planks"));
         slabBlock(ModRegistry.ANCIENT_STONE_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_stone"), new ResourceLocation(Reference.MOD_ID,"block/ancient_stone"));
         slabBlock(ModRegistry.ANCIENT_SMOOTH_STONE_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_smooth_stone"), new ResourceLocation(Reference.MOD_ID,"block/ancient_smooth_stone"));
         slabBlock(ModRegistry.ANCIENT_STONE_BRICK_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_stone_bricks"), new ResourceLocation(Reference.MOD_ID,"block/ancient_stone_bricks"));
@@ -76,6 +108,11 @@ public class BlockStates extends BlockStateProvider {
         slabBlock(ModRegistry.ANCIENT_CHISELED_STONE_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_chiseled_stone_bricks"), new ResourceLocation(Reference.MOD_ID,"block/ancient_chiseled_stone_bricks"));
         slabBlock(ModRegistry.ANCIENT_CRACKED_STONE_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_cracked_stone_bricks"), new ResourceLocation(Reference.MOD_ID,"block/ancient_cracked_stone_bricks"));
         slabBlock(ModRegistry.ANCIENT_POLISHED_STONE_SLABS.get(), new ResourceLocation(Reference.MOD_ID,"block/ancient_polished_stone"), new ResourceLocation(Reference.MOD_ID,"block/ancient_polished_stone"));
+
+        doorBlock(ModRegistry.ANCIENT_DOOR,new ResourceLocation(Reference.MOD_ID,"block/ancient_door_bottom"),new ResourceLocation(Reference.MOD_ID,"block/ancient_door_top"));
+        doorBlock(ModRegistry.DEMONIC_DOOR,new ResourceLocation(Reference.MOD_ID,"block/demonic_door_bottom"),new ResourceLocation(Reference.MOD_ID,"block/demonic_door_top"));
+        doorBlock(ModRegistry.SOUL_DOOR,new ResourceLocation(Reference.MOD_ID,"block/soul_door_bottom"),new ResourceLocation(Reference.MOD_ID,"block/soul_door_top"));
+
 
     }
 

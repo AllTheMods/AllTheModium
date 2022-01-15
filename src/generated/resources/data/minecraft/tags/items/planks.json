@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "allthemodium:ancient_planks"
+    "allthemodium:ancient_planks",
+    "allthemodium:demonic_planks",
+    "allthemodium:soul_planks"
   ]
 }

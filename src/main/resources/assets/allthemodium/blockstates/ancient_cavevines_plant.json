@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "berries=false": {
+      "model": "allthemodium:block/ancient_cavevines_plant"
+    },
+    "berries=true": {
+      "model": "allthemodium:block/ancient_cavevines_plant_lit"
+    }
+  }
+}

@@ -40,10 +40,21 @@ public class ItemModels extends ItemModelProvider {
 
             }});
 
+
         stairs("ancient_wooden_stairs",
                 new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"),
                 new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"),
                 new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"));
+
+        stairs("demonic_wooden_stairs",
+                new ResourceLocation(Reference.MOD_ID,"block/demonic_planks"),
+                new ResourceLocation(Reference.MOD_ID,"block/demonic_planks"),
+                new ResourceLocation(Reference.MOD_ID,"block/demonic_planks"));
+
+        stairs("soul_wooden_stairs",
+                new ResourceLocation(Reference.MOD_ID,"block/soul_planks"),
+                new ResourceLocation(Reference.MOD_ID,"block/soul_planks"),
+                new ResourceLocation(Reference.MOD_ID,"block/soul_planks"));
 
         stairs("ancient_stone_stairs",
                 new ResourceLocation(Reference.MOD_ID,"block/ancient_stone"),
@@ -83,6 +94,13 @@ public class ItemModels extends ItemModelProvider {
         fenceInventory("ancient_wooden_fence",new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"));
         fenceGate("ancient_wooden_fence_gate",new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"));
 
+        fenceInventory("demonic_wooden_fence",new ResourceLocation(Reference.MOD_ID,"block/demonic_planks"));
+        fenceGate("demonic_wooden_fence_gate",new ResourceLocation(Reference.MOD_ID,"block/demonic_planks"));
+
+        fenceInventory("soul_wooden_fence",new ResourceLocation(Reference.MOD_ID,"block/soul_planks"));
+        fenceGate("soul_wooden_fence_gate",new ResourceLocation(Reference.MOD_ID,"block/soul_planks"));
+
+
         wallInventory("ancient_stone_wall",new ResourceLocation(Reference.MOD_ID,"block/ancient_stone"));
         wallInventory("ancient_smooth_stone_wall",new ResourceLocation(Reference.MOD_ID,"block/ancient_smooth_stone"));
         wallInventory("ancient_polished_stone_wall",new ResourceLocation(Reference.MOD_ID,"block/ancient_polished_stone"));
@@ -95,6 +113,16 @@ public class ItemModels extends ItemModelProvider {
                 new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"),
                 new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"),
                 new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"));
+
+        slab("demonic_wooden_slabs",
+                new ResourceLocation(Reference.MOD_ID,"block/demonic_planks"),
+                new ResourceLocation(Reference.MOD_ID,"block/demonic_planks"),
+                new ResourceLocation(Reference.MOD_ID,"block/demonic_planks"));
+
+        slab("soul_wooden_slabs",
+                new ResourceLocation(Reference.MOD_ID,"block/soul_planks"),
+                new ResourceLocation(Reference.MOD_ID,"block/soul_planks"),
+                new ResourceLocation(Reference.MOD_ID,"block/soul_planks"));
 
         slab("ancient_stone_slabs",
                 new ResourceLocation(Reference.MOD_ID,"block/ancient_stone"),

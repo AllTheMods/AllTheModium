@@ -24,7 +24,7 @@ import java.util.function.Consumer;
 
 public class ShapedAncientStones {
     public enum Slot {
-      BOOKSHELF, TRAPDOOR, BRICK, FENCE, FENCEGATE, STAIRS, WALL, SLAB;
+      BOOKSHELF, TRAPDOOR, BRICK, FENCE, FENCEGATE, STAIRS, WALL, SLAB, DOOR;
         public String lower() {
             return toString().toLowerCase(Locale.ROOT);
         }
@@ -51,7 +51,10 @@ public class ShapedAncientStones {
         pieces.put(Slot.BOOKSHELF, object.get());
         return this;
     }
-
+    public ShapedAncientStones setDoor(RegistryObject<Item> object) {
+        pieces.put(Slot.DOOR, object.get());
+        return this;
+    }
     public ShapedAncientStones setTrapDoor(RegistryObject<Item> object) {
         pieces.put(Slot.TRAPDOOR, object.get());
         return this;
@@ -115,6 +118,10 @@ public class ShapedAncientStones {
                 .map(this::slab)
                 .map(this::addCriterion)
                 .ifPresent(register);
+        Optional.ofNullable(pieces.get(Slot.DOOR))
+                .map(this::door)
+                .map(this::addCriterion)
+                .ifPresent(register);
         Optional.ofNullable(pieces.get(Slot.STAIRS))
                 .map(this::stairs)
                 .map(this::addCriterion)
@@ -176,6 +183,13 @@ public class ShapedAncientStones {
                 .pattern("   ")
                 .pattern("aaa")
                 .pattern("aaa");
+
+    }
+    private ShapedRecipeBuilder door(ItemLike provider) {
+        return shaped(provider,3)
+                .pattern("aa ")
+                .pattern("aa ")
+                .pattern("aa ");
 
     }
     private ShapedRecipeBuilder brick(ItemLike provider) {

@@ -17,13 +17,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 
-public class allthemodium_helmet<T extends LivingEntity> extends PlayerModel<T> {
+public class allthemodium_helmet<T extends LivingEntity> extends HumanoidModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Reference.MOD_ID, "allthemodium_armor"), "main");
 	protected final EquipmentSlot slot;
 
 	public allthemodium_helmet(ModelPart root, EquipmentSlot slot) {
-		super(root,true);
+		super(root);
 		this.slot = slot;
 	}
 

@@ -26,10 +26,21 @@ public class ItemTags extends ItemTagsProvider {
         tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_1_ITEM.get());
         tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_2_ITEM.get());
 
+        tag(net.minecraft.tags.ItemTags.PLANKS).add(ModRegistry.DEMONIC_PLANKS_ITEM.get());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.DEMONIC_LOG_ITEM.get());
+
+        tag(net.minecraft.tags.ItemTags.PLANKS).add(ModRegistry.SOUL_PLANKS_ITEM.get());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_ITEM.get());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_0_ITEM.get());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_1_ITEM.get());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_2_ITEM.get());
+
         tag(net.minecraft.tags.ItemTags.STONE_CRAFTING_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
         tag(net.minecraft.tags.ItemTags.STONE_TOOL_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
 
         tag(TagRegistry.ANCIENT_WOODEN_PLANKS_ITEM).add(ModRegistry.ANCIENT_PLANKS_ITEM.get());
+        tag(TagRegistry.DEMONIC_WOODEN_PLANKS_ITEM).add(ModRegistry.DEMONIC_PLANKS_ITEM.get());
+        tag(TagRegistry.SOUL_WOODEN_PLANKS_ITEM).add(ModRegistry.SOUL_PLANKS_ITEM.get());
         tag(TagRegistry.ANCIENT_STONE_ITEM).add(ModRegistry.ANCIENT_STONE_ITEM.get());
         tag(TagRegistry.ANCIENT_MOSSY_STONE_ITEM).add(ModRegistry.ANCIENT_MOSSY_STONE_ITEM.get());
         tag(TagRegistry.ANCIENT_POLISHED_STONE_ITEM).add(ModRegistry.ANCIENT_POLISHED_STONE_ITEM.get());

@@ -13,6 +13,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.OreBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
@@ -24,9 +25,19 @@ import net.minecraftforge.common.util.FakePlayer;
 public class Allthemodium_Ore extends OreBlock {
 	  // public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
 	public Allthemodium_Ore() {	//func_235861_h_ = setRequiresTool
-		super(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.STONE).strength(4.0f));
+		super(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.ANCIENT_DEBRIS).strength(-1.0f,1500.0f));
 	}
 
+	@Override
+	@SuppressWarnings("java:S1874") // deprecated method from super class
+	public float getDestroyProgress(BlockState state, Player player, BlockGetter getter, BlockPos blockPos) {
+		BlockEntity blockEntity = getter.getBlockEntity(blockPos);
+		if (canEntityDestroy(state,getter,blockPos, player)) {
+			int i = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(state, player) ? 500 : 5000;
+			return player.getDigSpeed(state, blockPos) / 2.0F / i;
+		}
+		return 0.0F;
+	}
 
 
 	@Override

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "allthemodium",
+  "pattern": [
+    "   ",
+    "asa",
+    "asa"
+  ],
+  "key": {
+    "a": {
+      "tag": "allthemodium:demonic_planks"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "allthemodium:demonic_wooden_fence",
+    "count": 3
+  }
+}

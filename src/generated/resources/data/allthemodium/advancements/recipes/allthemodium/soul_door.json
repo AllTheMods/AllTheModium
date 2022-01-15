@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "allthemodium:soul_door"
+    ]
+  },
+  "criteria": {
+    "has_OptionalNamedTag[allthemodium:ancient_stone]_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "allthemodium:soul_planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "allthemodium:soul_door"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_OptionalNamedTag[allthemodium:ancient_stone]_block",
+      "has_the_recipe"
+    ]
+  ]
+}

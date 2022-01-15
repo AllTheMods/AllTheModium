@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "allthemodium:demonic_log"
+    }
+  ],
+  "result": {
+    "item": "allthemodium:demonic_planks",
+    "count": 4
+  }
+}
