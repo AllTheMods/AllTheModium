@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "tconstruct:ingot_cast"
+  },
+  "fluid": {
+    "name": "allthemodium:molten_vibranium",
+    "amount": 90
+  },
+  "result": "allthemodium:vibranium_ingot",
+  "cooling_time": 104,
+  "conditions": [
+      {
+          "type": "forge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

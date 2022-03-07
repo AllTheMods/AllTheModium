@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "tconstruct:nugget_cast"
+  },
+  "fluid": {
+    "name": "allthemodium:molten_unobtainium",
+    "amount": 10
+  },
+  "result": "allthemodium:unobtainium_nugget",
+  "cooling_time": 104,
+  "conditions": [
+      {
+          "type": "forge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

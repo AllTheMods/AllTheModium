@@ -24,7 +24,7 @@ public class Vibranium_Ore extends OreBlock {
 	public float getDestroyProgress(BlockState state, Player player, BlockGetter getter, BlockPos blockPos) {
 		BlockEntity blockEntity = getter.getBlockEntity(blockPos);
 		if (canEntityDestroy(state,getter,blockPos, player)) {
-			int i = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(state, player) ? 500 : 5000;
+			int i = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(state, player) ? 500 : 2500;
 			return player.getDigSpeed(state, blockPos) / 2.0F / i;
 		}
 		return 0.0F;

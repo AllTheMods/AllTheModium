@@ -1,0 +1,19 @@
+{
+  "stats": {
+    "tconstruct:head": {
+      "durability": 7500,
+      "miningSpeed": 18.0,
+      "harvestTier": "allthemodium:vibranium",
+      "attack": 42.0
+    },
+    "tconstruct:handle": {
+      "durability": 3.5,
+      "miningSpeed": 15.0,
+      "attackSpeed": 15.0,
+      "attackDamage": 2.5
+    },
+    "tconstruct:extra": {
+      "durability": 2050
+    }
+  }
+}

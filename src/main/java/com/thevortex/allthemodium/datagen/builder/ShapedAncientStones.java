@@ -10,6 +10,7 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -32,9 +33,9 @@ public class ShapedAncientStones {
     private final String criteriaName;
     private final InventoryChangeTrigger.TriggerInstance criterion;
     private final EnumMap<Slot, Item> pieces = new EnumMap<>(Slot.class);
-    private final Tag<Item> ancientstone;
+    private final TagKey<Item> ancientstone;
 
-    public ShapedAncientStones(Tag<Item> ancientstone) {
+    public ShapedAncientStones(TagKey<Item> ancientstone) {
         this.ancientstone = ancientstone;
 
         this.criteriaName = String.format("has_%s_block", TagRegistry.ANCIENT_STONE.toString());
@@ -43,7 +44,7 @@ public class ShapedAncientStones {
         this.criterion = InventoryChangeTrigger.TriggerInstance.hasItems(predicate);
     }
 
-    public static ShapedAncientStones builder(Tag<Item> ancientstone) {
+    public static ShapedAncientStones builder(TagKey<Item> ancientstone) {
         return new ShapedAncientStones(ancientstone);
     }
 

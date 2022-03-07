@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "tag": "forge:ores/vibranium"
+  },
+  "result": {
+    "fluid": "allthemodium:molten_vibranium",
+    "amount": 90
+  },
+  "temperature": 5000,
+  "time": 250,
+  "conditions": [
+      {
+          "type": "forge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

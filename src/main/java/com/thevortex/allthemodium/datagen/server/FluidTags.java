@@ -19,6 +19,9 @@ public class FluidTags extends FluidTagsProvider {
     tag(net.minecraft.tags.FluidTags.LAVA).add(ModRegistry.blueLava.get());
     tag(net.minecraft.tags.FluidTags.LAVA).add(ModRegistry.flowing_blueLava.get());
 
+    tag(TagRegistry.ALLTHEMODIUM).add(ModRegistry.moltenAllthemodium.get());
+    tag(TagRegistry.VIBRANIUM).add(ModRegistry.moltenVibranium.get());
+    tag(TagRegistry.UNOBTAINIUM).add(ModRegistry.moltenUnobtainium.get());
     }
 
 }

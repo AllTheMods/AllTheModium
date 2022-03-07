@@ -7,8 +7,10 @@ import com.thevortex.allthemodium.blocks.AncientCaveVines;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.worldgen.features.VolcanoConfig;
+import net.allthemods.alltheores.infos.ItemTagRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.data.worldgen.features.FeatureUtils;
@@ -32,6 +34,8 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.*;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 import java.util.List;
 import java.util.OptionalInt;
@@ -41,49 +45,51 @@ public class ATMConfiguredFeature {
 	public static final ImmutableList<OreConfiguration.TargetBlockState> ORE_ALLTHEMODIUM_TARGET_LIST = ImmutableList.of(OreConfiguration.target(OreFeatures.STONE_ORE_REPLACEABLES, ModRegistry.ALLTHEMODIUM_ORE.get().defaultBlockState()), OreConfiguration.target(OreFeatures.DEEPSLATE_ORE_REPLACEABLES, ModRegistry.ALLTHEMODIUM_SLATE_ORE.get().defaultBlockState()));
 	public static final OreConfiguration ORE_ALLTHEMODIUM_CONFIG = new OreConfiguration(ORE_ALLTHEMODIUM_TARGET_LIST, 4);
 
-	public static ConfiguredFeature<?, ?> ORE_ALLTHEMODIUM = newConfiguredFeature("ore_allthemodium",
+	public static Holder<ConfiguredFeature<OreConfiguration, ?>> ORE_ALLTHEMODIUM = FeatureUtils.register("ore_allthemodium",
 			Feature.ORE
-					.configured(ORE_ALLTHEMODIUM_CONFIG));
+					,ORE_ALLTHEMODIUM_CONFIG);
 
-	public static ConfiguredFeature<?, ?> ORE_ATM_MINING = newConfiguredFeature("ore_atm_mining",
+	public static Holder<ConfiguredFeature<OreConfiguration, ?>> ORE_ATM_MINING = FeatureUtils.register("ore_atm_mining",
 			Feature.ORE
-					.configured(ORE_ALLTHEMODIUM_CONFIG));
+					,ORE_ALLTHEMODIUM_CONFIG);
 
-	public static ConfiguredFeature<?, ?> ORE_VIBRANIUM = newConfiguredFeature("ore_vibranium",
+	public static Holder<ConfiguredFeature<OreConfiguration, ?>> ORE_VIBRANIUM = FeatureUtils.register("ore_vibranium",
 			Feature.ORE
-					.configured(new OreConfiguration(OreFeatures.NETHER_ORE_REPLACEABLES,
-							ModRegistry.VIBRANIUM_ORE.get().defaultBlockState(), 4)));
+					,new OreConfiguration(OreFeatures.NETHER_ORE_REPLACEABLES,
+							ModRegistry.VIBRANIUM_ORE.get().defaultBlockState(), 4));
 
-
-	public static ConfiguredFeature<?, ?> ORE_UNOBTAINIUM = newConfiguredFeature("ore_unobtainium",
+	public static Holder<ConfiguredFeature<OreConfiguration, ?>> OTHER_ORE_VIBRANIUM = FeatureUtils.register("ore_vibranium",
 			Feature.ORE
-					.configured(new OreConfiguration(new BlockMatchTest(Blocks.END_STONE),
-							ModRegistry.UNOBTAINIUM_ORE.get().defaultBlockState(), 4)));
+					,new OreConfiguration(new TagMatchTest(ItemTagRegistry.ANCIENT_STONE),
+							ModRegistry.OTHER_VIBRANIUM_ORE.get().defaultBlockState(), 3));
 
-	public static ConfiguredFeature<?, ?> VOLCANO_CF = newVolcanoFeature("volcano", ModRegistry.VOLCANO.get());
+	public static Holder<ConfiguredFeature<OreConfiguration, ?>> ORE_UNOBTAINIUM = FeatureUtils.register("ore_unobtainium",
+			Feature.ORE
+					,new OreConfiguration(new BlockMatchTest(Blocks.END_STONE),
+							ModRegistry.UNOBTAINIUM_ORE.get().defaultBlockState(), 4));
 
-	public static ConfiguredFeature<?, ?> MOD_DELTAS = newConfiguredFeature("other_deltas", Feature.DELTA_FEATURE.configured(new DeltaFeatureConfiguration(ModRegistry.ANCIENT_STONE.get().defaultBlockState(), Blocks.MAGMA_BLOCK.defaultBlockState(), UniformInt.of(3, 4), UniformInt.of(0, 2))));
+	public static Holder<ConfiguredFeature<VolcanoConfig, ?>> VOLCANO_CF = FeatureUtils.register("volcano",ModRegistry.VOLCANO.get(),VolcanoConfig.INSTANCE);
 
-	public static ConfiguredFeature<?, ?> MOD_DRIPSTONE = newConfiguredFeature("other_dripstone", ModRegistry.DRIPSTONE_F.configured(new DripstoneClusterConfiguration(52, UniformInt.of(3, 6), UniformInt.of(2, 8), 1, 3, UniformInt.of(2, 4), UniformFloat.of(0.3F, 0.7F), ClampedNormalFloat.of(0.1F, 0.3F, 0.1F, 0.9F), 0.1F, 3, 8)));
+	public static Holder<ConfiguredFeature<DeltaFeatureConfiguration, ?>> MOD_DELTAS = FeatureUtils.register("other_deltas", Feature.DELTA_FEATURE,new DeltaFeatureConfiguration(ModRegistry.ANCIENT_STONE.get().defaultBlockState(), Blocks.MAGMA_BLOCK.defaultBlockState(), UniformInt.of(3, 4), UniformInt.of(0, 2)));
 
-	public static final ConfiguredFeature<TreeConfiguration, ?> ANCIENT_TREE_GIANT = FeatureUtils.register("ancient_tree_giant", Feature.TREE.configured(createAncientGiantTree().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> ANCIENT_TREE_MEDIUM = FeatureUtils.register("ancient_tree_medium", Feature.TREE.configured(createAncientMediumTree().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> ANCIENT_TREE = FeatureUtils.register("ancient_tree", Feature.TREE.configured(createAncientTree().build()));
+	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> ANCIENT_TREE_GIANT = FeatureUtils.register("ancient_tree_giant", Feature.TREE,createAncientGiantTree().build());
+	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> ANCIENT_TREE_MEDIUM = FeatureUtils.register("ancient_tree_medium", Feature.TREE,createAncientMediumTree().build());
+	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> ANCIENT_TREE = FeatureUtils.register("ancient_tree", Feature.TREE,createAncientTree().build());
 
-	public static final ConfiguredFeature<TreeConfiguration, ?> DEMONIC_TREE_GIANT = FeatureUtils.register("demonic_tree_giant", Feature.TREE.configured(createDemonicGiantTree().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> DEMONIC_TREE_MEDIUM = FeatureUtils.register("demonic_tree_medium", Feature.TREE.configured(createDemonicMediumTree().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> DEMONIC_TREE = FeatureUtils.register("demonic_tree", Feature.TREE.configured(createDemonicTree().build()));
+	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> DEMONIC_TREE_GIANT = FeatureUtils.register("demonic_tree_giant", Feature.TREE,createDemonicGiantTree().build());
+	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> DEMONIC_TREE_MEDIUM = FeatureUtils.register("demonic_tree_medium", Feature.TREE,createDemonicMediumTree().build());
+	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> DEMONIC_TREE = FeatureUtils.register("demonic_tree", Feature.TREE,createDemonicTree().build());
 
-	public static final ConfiguredFeature<TreeConfiguration, ?> SOUL_TREE_GIANT = FeatureUtils.register("soul_tree_giant", Feature.TREE.configured(createSoulGiantTree().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> SOUL_TREE_MEDIUM = FeatureUtils.register("soul_tree_medium", Feature.TREE.configured(createSoulMediumTree().build()));
-	public static final ConfiguredFeature<TreeConfiguration, ?> SOUL_TREE = FeatureUtils.register("soul_tree", Feature.TREE.configured(createSoulTree().build()));
+	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> SOUL_TREE_GIANT = FeatureUtils.register("soul_tree_giant", Feature.TREE,createSoulGiantTree().build());
+	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> SOUL_TREE_MEDIUM = FeatureUtils.register("soul_tree_medium", Feature.TREE,createSoulMediumTree().build());
+	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> SOUL_TREE = FeatureUtils.register("soul_tree", Feature.TREE,createSoulTree().build());
 
 
-	private static final WeightedStateProvider CAVE_VINES_BODY_PROVIDER = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(ModRegistry.ANCIENT_CAVEVINES_PLANT.defaultBlockState(), 4).add(ModRegistry.ANCIENT_CAVEVINES_PLANT.defaultBlockState().setValue(ACaveVines.BERRIES, Boolean.valueOf(true)), 1));
-	private static final RandomizedIntStateProvider CAVE_VINES_HEAD_PROVIDER = new RandomizedIntStateProvider(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(ModRegistry.ANCIENT_CAVEVINES.defaultBlockState(), 4).add(ModRegistry.ANCIENT_CAVEVINES.defaultBlockState().setValue(ACaveVines.BERRIES, Boolean.valueOf(true)), 1)), AncientCaveVines.AGE, UniformInt.of(23, 25));
-	public static final ConfiguredFeature<BlockColumnConfiguration, ?> CAVE_VINE = FeatureUtils.register("cave_vine", Feature.BLOCK_COLUMN.configured(new BlockColumnConfiguration(List.of(BlockColumnConfiguration.layer(new WeightedListInt(SimpleWeightedRandomList.<IntProvider>builder().add(UniformInt.of(0, 19), 2).add(UniformInt.of(0, 2), 3).add(UniformInt.of(0, 6), 10).build()), CAVE_VINES_BODY_PROVIDER), BlockColumnConfiguration.layer(ConstantInt.of(1), CAVE_VINES_HEAD_PROVIDER)), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, true)));
+	private static final WeightedStateProvider CAVE_VINES_BODY_PROVIDER = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(ModRegistry.ANCIENT_CAVEVINES_PLANT_.get().defaultBlockState(), 4).add(ModRegistry.ANCIENT_CAVEVINES_PLANT_.get().defaultBlockState().setValue(ACaveVines.BERRIES, Boolean.valueOf(true)), 1));
+	private static final RandomizedIntStateProvider CAVE_VINES_HEAD_PROVIDER = new RandomizedIntStateProvider(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(ModRegistry.ANCIENT_CAVEVINES_.get().defaultBlockState(), 4).add(ModRegistry.ANCIENT_CAVEVINES_.get().defaultBlockState().setValue(ACaveVines.BERRIES, Boolean.valueOf(true)), 1)), AncientCaveVines.AGE, UniformInt.of(23, 25));
+	public static final Holder<ConfiguredFeature<BlockColumnConfiguration, ?>> CAVE_VINE = FeatureUtils.register("cave_vine", Feature.BLOCK_COLUMN,new BlockColumnConfiguration(List.of(BlockColumnConfiguration.layer(new WeightedListInt(SimpleWeightedRandomList.<IntProvider>builder().add(UniformInt.of(0, 19), 2).add(UniformInt.of(0, 2), 3).add(UniformInt.of(0, 6), 10).build()), CAVE_VINES_BODY_PROVIDER), BlockColumnConfiguration.layer(ConstantInt.of(1), CAVE_VINES_HEAD_PROVIDER)), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_PREDICATE, true));
 
-	public static final ConfiguredFeature<RandomPatchConfiguration, ?> PATCH_ANCIENT_HERB = FeatureUtils.register("patch_ancient_herb", Feature.RANDOM_PATCH.configured(FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK.configured(new SimpleBlockConfiguration(BlockStateProvider.simple(ModRegistry.ANCIENT_HERB.get()))))));
+	public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PATCH_ANCIENT_HERB = FeatureUtils.register("patch_ancient_herb", Feature.RANDOM_PATCH,FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK,new SimpleBlockConfiguration(BlockStateProvider.simple(ModRegistry.ANCIENT_HERB.get()))));
 
 
 	private static TreeConfiguration.TreeConfigurationBuilder createAncientGiantTree() {
@@ -114,13 +120,7 @@ public class ATMConfiguredFeature {
 		return (new TreeConfiguration.TreeConfigurationBuilder(BlockStateProvider.simple(ModRegistry.SOUL_LOG.get()), new FancyTrunkPlacer(8, 3, 3), BlockStateProvider.simple(ModRegistry.SOUL_LEAVES.get()), new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4), new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))).dirt(new SimpleStateProvider(ModRegistry.SOUL_LOG_0.get().defaultBlockState())));
 	}
 
-	public static ConfiguredFeature<?, ?> newVolcanoFeature(String registryName,
-															   Feature<VolcanoConfig> volcanoFeature) {
-		ConfiguredFeature<VolcanoConfig, ?> configuredVolcanoFeature = volcanoFeature.configured(VolcanoConfig.INSTANCE);
-		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new ResourceLocation(Reference.MOD_ID, registryName),
-				configuredVolcanoFeature);
-		return configuredVolcanoFeature;
-	}
+
 
 		public static ConfiguredFeature<?, ?> newConfiguredFeature(String registryName,
 			ConfiguredFeature<?, ?> configuredFeature) {

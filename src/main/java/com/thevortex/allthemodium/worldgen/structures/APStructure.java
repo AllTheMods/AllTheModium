@@ -9,6 +9,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.Vec3i;
+import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -27,13 +28,12 @@ import net.minecraft.world.level.levelgen.feature.JigsawFeature;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.structures.JigsawPlacement;
-import net.minecraft.world.level.levelgen.structure.NoiseAffectingStructureFeature;
 import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
 import net.minecraft.world.level.levelgen.structure.PostPlacementProcessor;
 import net.minecraft.world.level.levelgen.structure.StructurePiece;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGenerator;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
+import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureManager;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
@@ -71,6 +71,7 @@ public class APStructure extends StructureFeature<JigsawConfiguration> {
 
         // Now we test to make sure our structure is not spawning on water or other fluids.
         // You can do height check instead too to make it spawn at high elevations.
+
         return topBlock.getFluidState().isEmpty(); //landHeight > 100;
     }
 
@@ -105,8 +106,7 @@ public class APStructure extends StructureFeature<JigsawConfiguration> {
                 // "resources/data/structure_tutorial/worldgen/template_pool/run_down_house/start_pool.json"
                 // This is why your pool files must be in "data/<modid>/worldgen/template_pool/<the path to the pool here>"
                 // because the game automatically will check in worldgen/template_pool for the pools.
-                () -> context.registryAccess().ownedRegistryOrThrow(Registry.TEMPLATE_POOL_REGISTRY)
-                        .get(new ResourceLocation(Reference.MOD_ID, "pyramid/start_pool")),
+                PyramidPieces.START,
 
                 // How many pieces outward from center can a recursive jigsaw structure spawn.
                 // Our structure is only 1 piece outward and isn't recursive so any value of 1 or more doesn't change anything.
@@ -155,12 +155,7 @@ public class APStructure extends StructureFeature<JigsawConfiguration> {
             event.addEntitySpawns(MobCategory.CREATURE, STRUCTURE_CREATURES.get());
         }
     }
-    /*
-        @Override
-        public StructureStartFactory<NoneFeatureConfiguration> getStartFactory() {
-            return APStructure.Start::new;
-        }
-    */
+
     @Override
     public GenerationStep.Decoration step() {
         return GenerationStep.Decoration.SURFACE_STRUCTURES;

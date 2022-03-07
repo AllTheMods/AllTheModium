@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "tag": "forge:storage_blocks/vibranium"
+  },
+  "result": {
+    "fluid": "allthemodium:molten_vibranium",
+    "amount": 810
+  },
+  "temperature": 5000,
+  "time": 300,
+  "conditions": [
+      {
+          "type": "forge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

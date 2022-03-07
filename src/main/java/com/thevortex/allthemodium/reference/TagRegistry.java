@@ -1,11 +1,13 @@
 package com.thevortex.allthemodium.reference;
 
+import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.data.ForgeItemTagsProvider;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -13,81 +15,106 @@ import java.util.Set;
 
 public class TagRegistry {
 
-    public static final Tag.Named<Block> ALLTHEMODIUM_ORE = BlockTags.createOptional(Reference.ore("allthemodium"));
-    public static final Tag.Named<Block> VIBRANIUM_ORE = BlockTags.createOptional(Reference.ore("vibranium"));
-    public static final Tag.Named<Block> UNOBTAINIUM_ORE = BlockTags.createOptional(Reference.ore("unobtainium"));
+    public static final TagKey<Block> ALLTHEMODIUM_ORE = BlockTags.create(Reference.ore("allthemodium"));
+    public static final TagKey<Block> VIBRANIUM_ORE = BlockTags.create(Reference.ore("vibranium"));
+    public static final TagKey<Block> UNOBTAINIUM_ORE = BlockTags.create(Reference.ore("unobtainium"));
 
-    public static final Tag.Named<Block> NEEDS_ALLTHEMODIUM_TOOL = BlockTags.createOptional(Reference.forge("needs_allthemodium_tool"));
-    public static final Tag.Named<Block> NEEDS_VIBRANIUM_TOOL = BlockTags.createOptional(Reference.forge("needs_vibranium_tool"));
-    public static final Tag.Named<Block> NEEDS_UNOBTAINIUM_TOOL = BlockTags.createOptional(Reference.forge("needs_unobtainium_tool"));
+    public static final TagKey<Block> NEEDS_ALLTHEMODIUM_TOOL = BlockTags.create(Reference.forge("needs_allthemodium_tool"));
+    public static final TagKey<Block> NEEDS_VIBRANIUM_TOOL = BlockTags.create(Reference.forge("needs_vibranium_tool"));
+    public static final TagKey<Block> NEEDS_UNOBTAINIUM_TOOL = BlockTags.create(Reference.forge("needs_unobtainium_tool"));
 
-    public static final Tag.Named<Block> ANCIENT_DIRT = BlockTags.createOptional(Reference.location("allthemodium:ancient_dirt"));
-    public static final Tag.Named<Block> ANCIENT_STONE = BlockTags.createOptional(Reference.location("allthemodium:ancient_stone"));
-    public static final Tag.Named<Item> ANCIENT_STONE_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_stone"));
-    public static final Tag.Named<Block> ANCIENT_WOODEN_PLANKS = BlockTags.createOptional(Reference.location("allthemodium:ancient_planks"));
-    public static final Tag.Named<Item> ANCIENT_WOODEN_PLANKS_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_planks"));
-    public static final Tag.Named<Block> DEMONIC_WOODEN_PLANKS = BlockTags.createOptional(Reference.location("allthemodium:demonic_planks"));
-    public static final Tag.Named<Item> DEMONIC_WOODEN_PLANKS_ITEM = ItemTags.createOptional(Reference.location("allthemodium:demonic_planks"));
-    public static final Tag.Named<Block> SOUL_WOODEN_PLANKS = BlockTags.createOptional(Reference.location("allthemodium:soul_planks"));
-    public static final Tag.Named<Item> SOUL_WOODEN_PLANKS_ITEM = ItemTags.createOptional(Reference.location("allthemodium:soul_planks"));
+    public static final TagKey<Item> FORGE_PICKAXES = ItemTags.create(Reference.forge("tools/pickaxes"));
+    public static final TagKey<Item> FORGE_AXES = ItemTags.create(Reference.forge("tools/axes"));
+    public static final TagKey<Item> FORGE_SHOVELS = ItemTags.create(Reference.forge("tools/shovels"));
+    public static final TagKey<Item> FORGE_HOES = ItemTags.create(Reference.forge("tools/hoes"));
 
-    public static final Tag.Named<Block> ANCIENT_MOSSY_STONE = BlockTags.createOptional(Reference.location("allthemodium:ancient_mossy_stone"));
-    public static final Tag.Named<Item> ANCIENT_MOSSY_STONE_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_mossy_stone"));
-    public static final Tag.Named<Block> ANCIENT_SMOOTH_STONE = BlockTags.createOptional(Reference.location("allthemodium:ancient_smooth_stone"));
-    public static final Tag.Named<Item> ANCIENT_SMOOTH_STONE_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_smooth_stone"));
-    public static final Tag.Named<Block> ANCIENT_POLISHED_STONE = BlockTags.createOptional(Reference.location("allthemodium:ancient_polished_stone"));
-    public static final Tag.Named<Item> ANCIENT_POLISHED_STONE_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_polished_stone"));
-    public static final Tag.Named<Block> ANCIENT_STONE_BRICKS = BlockTags.createOptional(Reference.location("allthemodium:ancient_stone_bricks"));
-    public static final Tag.Named<Item> ANCIENT_STONE_BRICKS_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_stone_bricks"));
-    public static final Tag.Named<Block> ANCIENT_CRACKED_STONE_BRICKS = BlockTags.createOptional(Reference.location("allthemodium:ancient_cracked_stone_bricks"));
-    public static final Tag.Named<Item> ANCIENT_CRACKED_STONE_BRICKS_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_cracked_stone_bricks"));
-    public static final Tag.Named<Block> ANCIENT_CHISELED_STONE_BRICKS = BlockTags.createOptional(Reference.location("allthemodium:ancient_chiseled_stone_bricks"));
-    public static final Tag.Named<Item> ANCIENT_CHISELED_STONE_BRICKS_ITEM = ItemTags.createOptional(Reference.location("allthemodium:ancient_chiseled_stone_bricks"));
+    public static final TagKey<Item> PIGLIN_LOVED = ItemTags.create(Reference.location("minecraft:items/piglin_loved"));
 
 
-    public static final Tag.Named<Item> ALLTHEMODIUM_ORE_ITEM = ItemTags.createOptional(Reference.ore("allthemodium"));
-    public static final Tag.Named<Item> VIBRANIUM_ORE_ITEM = ItemTags.createOptional(Reference.ore("vibranium"));
-    public static final Tag.Named<Item> UNOBTAINIUM_ORE_ITEM = ItemTags.createOptional(Reference.ore("unobtainium"));
+    public static final TagKey<Block> ANCIENT_DIRT = BlockTags.create(Reference.location("allthemodium:ancient_dirt"));
+    public static final TagKey<Block> ANCIENT_STONE = BlockTags.create(Reference.location("allthemodium:ancient_stone"));
+    public static final TagKey<Item> ANCIENT_STONE_ITEM = ItemTags.create(Reference.location("allthemodium:ancient_stone"));
+    public static final TagKey<Block> ANCIENT_WOODEN_PLANKS = BlockTags.create(Reference.location("allthemodium:ancient_planks"));
+    public static final TagKey<Item> ANCIENT_WOODEN_PLANKS_ITEM = ItemTags.create(Reference.location("allthemodium:ancient_planks"));
+    public static final TagKey<Block> DEMONIC_WOODEN_PLANKS = BlockTags.create(Reference.location("allthemodium:demonic_planks"));
+    public static final TagKey<Item> DEMONIC_WOODEN_PLANKS_ITEM = ItemTags.create(Reference.location("allthemodium:demonic_planks"));
+    public static final TagKey<Block> SOUL_WOODEN_PLANKS = BlockTags.create(Reference.location("allthemodium:soul_planks"));
+    public static final TagKey<Item> SOUL_WOODEN_PLANKS_ITEM = ItemTags.create(Reference.location("allthemodium:soul_planks"));
 
-    public static final Tag.Named<Block> ALLTHEMODIUM_BLOCK = BlockTags.createOptional(Reference.block("allthemodium"));
-    public static final Tag.Named<Block> VIBRANIUM_BLOCK = BlockTags.createOptional(Reference.block("vibranium"));
-    public static final Tag.Named<Block> UNOBTAINIUM_BLOCK = BlockTags.createOptional(Reference.block("unobtainium"));
+    public static final TagKey<Block> ANCIENT_MOSSY_STONE = BlockTags.create(Reference.location("allthemodium:ancient_mossy_stone"));
+    public static final TagKey<Item> ANCIENT_MOSSY_STONE_ITEM = ItemTags.create(Reference.location("allthemodium:ancient_mossy_stone"));
+    public static final TagKey<Block> ANCIENT_SMOOTH_STONE = BlockTags.create(Reference.location("allthemodium:ancient_smooth_stone"));
+    public static final TagKey<Item> ANCIENT_SMOOTH_STONE_ITEM = ItemTags.create(Reference.location("allthemodium:ancient_smooth_stone"));
+    public static final TagKey<Block> ANCIENT_POLISHED_STONE = BlockTags.create(Reference.location("allthemodium:ancient_polished_stone"));
+    public static final TagKey<Item> ANCIENT_POLISHED_STONE_ITEM = ItemTags.create(Reference.location("allthemodium:ancient_polished_stone"));
+    public static final TagKey<Block> ANCIENT_STONE_BRICKS = BlockTags.create(Reference.location("allthemodium:ancient_stone_bricks"));
+    public static final TagKey<Item> ANCIENT_STONE_BRICKS_ITEM = ItemTags.create(Reference.location("allthemodium:ancient_stone_bricks"));
+    public static final TagKey<Block> ANCIENT_CRACKED_STONE_BRICKS = BlockTags.create(Reference.location("allthemodium:ancient_cracked_stone_bricks"));
+    public static final TagKey<Item> ANCIENT_CRACKED_STONE_BRICKS_ITEM = ItemTags.create(Reference.location("allthemodium:ancient_cracked_stone_bricks"));
+    public static final TagKey<Block> ANCIENT_CHISELED_STONE_BRICKS = BlockTags.create(Reference.location("allthemodium:ancient_chiseled_stone_bricks"));
+    public static final TagKey<Item> ANCIENT_CHISELED_STONE_BRICKS_ITEM = ItemTags.create(Reference.location("allthemodium:ancient_chiseled_stone_bricks"));
 
-    public static final Tag.Named<Item> ALLTHEMODIUM_BLOCK_ITEM = ItemTags.createOptional(Reference.block("allthemodium"));
-    public static final Tag.Named<Item> VIBRANIUM_BLOCK_ITEM = ItemTags.createOptional(Reference.block("vibranium"));
-    public static final Tag.Named<Item> UNOBTAINIUM_BLOCK_ITEM = ItemTags.createOptional(Reference.block("unobtainium"));
 
-    public static final Tag.Named<Item> ALLTHEMODIUM_INGOT = ItemTags.createOptional(Reference.ingot("allthemodium"));
-    public static final Tag.Named<Item> VIBRANIUM_INGOT = ItemTags.createOptional(Reference.ingot("vibranium"));
-    public static final Tag.Named<Item> UNOBTAINIUM_INGOT = ItemTags.createOptional(Reference.ingot("unobtainium"));
-    public static final Tag.Named<Item> VIBRANIUM_ALLTHEMODIUM_INGOT = ItemTags.createOptional(Reference.ingot("vibranium_allthemodium_alloy"));
-    public static final Tag.Named<Item> UNOBTAINIUM_VIBRANIUM_INGOT = ItemTags.createOptional(Reference.ingot("unobtainium_vibranium_alloy"));
-    public static final Tag.Named<Item> UNOBTAINIUM_ALLTHEMODIUM_INGOT = ItemTags.createOptional(Reference.ingot("unobtainium_allthemodium_alloy"));
+    public static final TagKey<Item> ALLTHEMODIUM_ORE_ITEM = ItemTags.create(Reference.ore("allthemodium"));
+    public static final TagKey<Item> VIBRANIUM_ORE_ITEM = ItemTags.create(Reference.ore("vibranium"));
+    public static final TagKey<Item> UNOBTAINIUM_ORE_ITEM = ItemTags.create(Reference.ore("unobtainium"));
 
-    public static final Tag.Named<Item> ALLTHEMODIUM_PLATE = ItemTags.createOptional(Reference.plate("allthemodium"));
-    public static final Tag.Named<Item> VIBRANIUM_PLATE = ItemTags.createOptional(Reference.plate("vibranium"));
-    public static final Tag.Named<Item> UNOBTAINIUM_PLATE = ItemTags.createOptional(Reference.plate("unobtainium"));
+    public static final TagKey<Block> ALLTHEMODIUM_BLOCK = BlockTags.create(Reference.block("allthemodium"));
+    public static final TagKey<Block> VIBRANIUM_BLOCK = BlockTags.create(Reference.block("vibranium"));
+    public static final TagKey<Block> UNOBTAINIUM_BLOCK = BlockTags.create(Reference.block("unobtainium"));
 
-    public static final Tag.Named<Item> ALLTHEMODIUM_GEAR = ItemTags.createOptional(Reference.gear("allthemodium"));
-    public static final Tag.Named<Item> VIBRANIUM_GEAR = ItemTags.createOptional(Reference.gear("vibranium"));
-    public static final Tag.Named<Item> UNOBTAINIUM_GEAR = ItemTags.createOptional(Reference.gear("unobtainium"));
+    public static final TagKey<Item> RAW_ALLTHEMODIUM_BLOCK = ItemTags.create(Reference.raw_block("allthemodium"));
+    public static final TagKey<Item> RAW_VIBRANIUM_BLOCK = ItemTags.create(Reference.raw_block("vibranium"));
+    public static final TagKey<Item> RAW_UNOBTAINIUM_BLOCK = ItemTags.create(Reference.raw_block("unobtainium"));
 
-    public static final Tag.Named<Item> ALLTHEMODIUM_ROD = ItemTags.createOptional(Reference.rod("allthemodium"));
-    public static final Tag.Named<Item> VIBRANIUM_ROD = ItemTags.createOptional(Reference.rod("vibranium"));
-    public static final Tag.Named<Item> UNOBTAINIUM_ROD = ItemTags.createOptional(Reference.rod("unobtainium"));
+    public static final TagKey<Item> ALLTHEMODIUM_BLOCK_ITEM = ItemTags.create(Reference.block("allthemodium"));
+    public static final TagKey<Item> VIBRANIUM_BLOCK_ITEM = ItemTags.create(Reference.block("vibranium"));
+    public static final TagKey<Item> UNOBTAINIUM_BLOCK_ITEM = ItemTags.create(Reference.block("unobtainium"));
 
-    public static final Tag.Named<Item> ALLTHEMODIUM_DUST = ItemTags.createOptional(Reference.dust("allthemodium"));
-    public static final Tag.Named<Item> VIBRANIUM_DUST = ItemTags.createOptional(Reference.dust("vibranium"));
-    public static final Tag.Named<Item> UNOBTAINIUM_DUST = ItemTags.createOptional(Reference.dust("unobtainium"));
+    public static final TagKey<Item> ALLTHEMODIUM_INGOT = ItemTags.create(Reference.ingot("allthemodium"));
+    public static final TagKey<Item> VIBRANIUM_INGOT = ItemTags.create(Reference.ingot("vibranium"));
+    public static final TagKey<Item> UNOBTAINIUM_INGOT = ItemTags.create(Reference.ingot("unobtainium"));
+    public static final TagKey<Item> VIBRANIUM_ALLTHEMODIUM_INGOT = ItemTags.create(Reference.ingot("vibranium_allthemodium_alloy"));
+    public static final TagKey<Item> UNOBTAINIUM_VIBRANIUM_INGOT = ItemTags.create(Reference.ingot("unobtainium_vibranium_alloy"));
+    public static final TagKey<Item> UNOBTAINIUM_ALLTHEMODIUM_INGOT = ItemTags.create(Reference.ingot("unobtainium_allthemodium_alloy"));
 
-    public static final Tag.Named<Item> ALLTHEMODIUM_NUGGET = ItemTags.createOptional(Reference.nugget("allthemodium"));
-    public static final Tag.Named<Item> VIBRANIUM_NUGGET = ItemTags.createOptional(Reference.nugget("vibranium"));
-    public static final Tag.Named<Item> UNOBTAINIUM_NUGGET = ItemTags.createOptional(Reference.nugget("unobtainium"));
+    public static final TagKey<Item> VIBRANIUM_ALLTHEMODIUM_BLOCK = ItemTags.create(Reference.block("vibranium_allthemodium_alloy"));
+    public static final TagKey<Item> UNOBTAINIUM_VIBRANIUM_BLOCK = ItemTags.create(Reference.block("unobtainium_vibranium_alloy"));
+    public static final TagKey<Item> UNOBTAINIUM_ALLTHEMODIUM_BLOCK = ItemTags.create(Reference.block("unobtainium_allthemodium_alloy"));
 
-    public static final Tag.Named<Fluid> SOUL_LAVA = FluidTags.createOptional(Reference.forge("soul_lava"));
 
-    private static Tags.IOptionalNamedTag<Item> forge(String name)
-    {
-        return net.minecraft.tags.ItemTags.createOptional(new ResourceLocation("forge", name));
-    }
+    public static final TagKey<Item> ALLTHEMODIUM_PLATE = ItemTags.create(Reference.plate("allthemodium"));
+    public static final TagKey<Item> VIBRANIUM_PLATE = ItemTags.create(Reference.plate("vibranium"));
+    public static final TagKey<Item> UNOBTAINIUM_PLATE = ItemTags.create(Reference.plate("unobtainium"));
+
+    public static final TagKey<Item> ALLTHEMODIUM_GEAR = ItemTags.create(Reference.gear("allthemodium"));
+    public static final TagKey<Item> VIBRANIUM_GEAR = ItemTags.create(Reference.gear("vibranium"));
+    public static final TagKey<Item> UNOBTAINIUM_GEAR = ItemTags.create(Reference.gear("unobtainium"));
+
+    public static final TagKey<Item> ALLTHEMODIUM_ROD = ItemTags.create(Reference.rod("allthemodium"));
+    public static final TagKey<Item> VIBRANIUM_ROD = ItemTags.create(Reference.rod("vibranium"));
+    public static final TagKey<Item> UNOBTAINIUM_ROD = ItemTags.create(Reference.rod("unobtainium"));
+
+    public static final TagKey<Item> ALLTHEMODIUM_DUST = ItemTags.create(Reference.dust("allthemodium"));
+    public static final TagKey<Item> VIBRANIUM_DUST = ItemTags.create(Reference.dust("vibranium"));
+    public static final TagKey<Item> UNOBTAINIUM_DUST = ItemTags.create(Reference.dust("unobtainium"));
+
+    public static final TagKey<Item> ALLTHEMODIUM_NUGGET = ItemTags.create(Reference.nugget("allthemodium"));
+    public static final TagKey<Item> VIBRANIUM_NUGGET = ItemTags.create(Reference.nugget("vibranium"));
+    public static final TagKey<Item> UNOBTAINIUM_NUGGET = ItemTags.create(Reference.nugget("unobtainium"));
+
+    public static final TagKey<Fluid> SOUL_LAVA = FluidTags.create(Reference.forge("soul_lava"));
+    public static final TagKey<Fluid> ALLTHEMODIUM = FluidTags.create(Reference.forge("molten_allthemodium"));
+    public static final TagKey<Fluid> VIBRANIUM = FluidTags.create(Reference.forge("molten_vibranium"));
+    public static final TagKey<Fluid> UNOBTAINIUM = FluidTags.create(Reference.forge("molten_unobtainium"));
+
+    public static final TagKey<Item> RAW_ALLTHEMODIUM_FORGE = ItemTags.create(Reference.raw_ores("allthemodium"));
+    public static final TagKey<Item> RAW_VIBRANIUM_FORGE = ItemTags.create(Reference.raw_ores("vibranium"));
+    public static final TagKey<Item> RAW_UNOBTAINIUM_FORGE = ItemTags.create(Reference.raw_ores("unobtainium"));
+
+
+    public static final TagKey<Item> RAW_ALLTHEMODIUM = ItemTags.create(Reference.material("allthemodium"));
+    public static final TagKey<Item> RAW_VIBRANIUM = ItemTags.create(Reference.material("vibranium"));
+    public static final TagKey<Item> RAW_UNOBTAINIUM = ItemTags.create(Reference.material("unobtainium"));
+
 }

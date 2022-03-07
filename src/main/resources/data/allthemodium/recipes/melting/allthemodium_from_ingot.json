@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "tag": "forge:ingots/allthemodium"
+  },
+  "result": {
+    "fluid": "allthemodium:molten_allthemodium",
+    "amount": 90
+  },
+  "temperature": 1500,
+  "time": 100,
+  "conditions": [
+      {
+          "type": "forge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

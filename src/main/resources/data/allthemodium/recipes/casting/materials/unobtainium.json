@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "tag": "forge:molten_unobtainium",
+    "amount": 90
+  },
+  "temperature": 1500,
+  "output": "allthemodium:unobtainium"
+}

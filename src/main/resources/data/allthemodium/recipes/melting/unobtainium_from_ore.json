@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "tag": "forge:ores/unobtainium"
+  },
+  "result": {
+    "fluid": "allthemodium:molten_unobtainium",
+    "amount": 90
+  },
+  "temperature": 9000,
+  "time": 325,
+  "conditions": [
+      {
+          "type": "forge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "tconstruct:alloy",
+  "inputs": [
+    {
+      "tag": "forge:molten_vibranium",
+      "amount": 90
+    },
+    {
+      "tag": "forge:molten_unobtainium",
+      "amount": 90
+    }
+  ],
+  "result": {
+    "fluid": "allthemodium:molten_vibunob",
+    "amount": 90
+  },
+  "temperature": 9000,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "tconstruct"
+    }
+  ]
+}

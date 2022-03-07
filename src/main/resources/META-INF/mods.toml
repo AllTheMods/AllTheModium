@@ -39,7 +39,7 @@ Allthemodium!
     # Does this dependency have to exist - if not, ordering below must be specified
     mandatory=true #mandatory
     # The version range of the dependency
-    versionRange="[33,)" #mandatory
+    versionRange="[39,)" #mandatory
     # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
@@ -48,7 +48,7 @@ Allthemodium!
 [[dependencies.allthemodium]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.17.1,]"
+    versionRange="[1.18.1,]"
     ordering="NONE"
     side="BOTH"
 [[dependencies.allthemodium]]
@@ -61,5 +61,11 @@ Allthemodium!
         modId="iceandfire"
         mandatory=false
         versionRange="[2.1,]"
+        ordering="AFTER"
+        side="BOTH"
+[[dependencies.allthemodium]]
+        modId="alltheores"
+        mandatory=false
+        versionRange="[1.0,]"
         ordering="AFTER"
         side="BOTH"

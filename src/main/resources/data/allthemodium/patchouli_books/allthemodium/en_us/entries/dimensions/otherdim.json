@@ -1,10 +1,10 @@
 {
     "name": "The Other",
-    "icon": "alltheores:ore_other_diamond",
+    "icon": "allthemodium:other_vibranium_ore",
     "category": "allthemodium:dimensions",
     "sortnum": "3",
     "pages": [{
         "type": "text",
-        "text": "The Other Dimension is a very hostile dimension. it is where all of the Ice and Fire mobs spawn including buffed dragons.It also has Special ores that will drop extra resources compared to the ores in the Overworld or Mining Dimension.To teleport to the dimension use the $(l:dimensions/teleport_pad)Teleport Pad$(/c) in the Nether."
+        "text": "The Other is a very hostile dimension. To teleport to the dimension use the $(l:dimensions/teleport_pad)Teleport Pad$(/c) in the Nether. Little is known of this place, but it seems to be where Piglins come from, huge underground cities exist in the Ancient Crimson and Ancient Warped Forests, as well as dungeons and ancient pyramids full of monsters and loot"
     }]
 }

@@ -17,34 +17,23 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.FORGE)
 public class PlayerHarvest {
 
+    /*
     @SubscribeEvent
     public static void on(PlayerEvent.HarvestCheck event) {
         Player player = event.getPlayer();
         BlockState blockstate = event.getTargetBlock();
         ItemStack heldItem = player.getMainHandItem();
-        if(blockstate.getBlock() instanceof Allthemodium_Ore) {
-            if(!(heldItem.getItem() instanceof DiggerItem)) { event.setCanHarvest(false); return; }
-            if((((DiggerItem)heldItem.getItem()).getTier() == Tiers.NETHERITE) ||
-                (((DiggerItem)heldItem.getItem()).getTier() == ToolTiers.ALLTHEMODIUM_TIER) ||
-                (((DiggerItem)heldItem.getItem()).getTier() == ToolTiers.VIBRANIUM_TIER) ||
-                (((DiggerItem)heldItem.getItem()).getTier() == ToolTiers.UNOBTAINIUM_TIER)) {
-                event.setCanHarvest(true);
-            } else event.setCanHarvest(false);
+        if (blockstate.getBlock() instanceof Allthemodium_Ore) {
+            boolean b = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(blockstate, player);
+            event.setCanHarvest(b);
         }
         if(blockstate.getBlock() instanceof Vibranium_Ore) {
-            if(!(heldItem.getItem() instanceof DiggerItem)) { event.setCanHarvest(false); return; }
-            if((((DiggerItem)heldItem.getItem()).getTier() == ToolTiers.ALLTHEMODIUM_TIER) ||
-                    (((DiggerItem)heldItem.getItem()).getTier() == ToolTiers.VIBRANIUM_TIER) ||
-                    (((DiggerItem)heldItem.getItem()).getTier() == ToolTiers.UNOBTAINIUM_TIER)) {
-                event.setCanHarvest(true);
-            } else event.setCanHarvest(false);
+            event.setCanHarvest(net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(blockstate, player));
         }
         if(blockstate.getBlock() instanceof Unobtainium_Ore) {
-            if(!(heldItem.getItem() instanceof DiggerItem)) { event.setCanHarvest(false); return; }
-            if((((DiggerItem)heldItem.getItem()).getTier() == ToolTiers.VIBRANIUM_TIER) ||
-                    (((DiggerItem)heldItem.getItem()).getTier() == ToolTiers.UNOBTAINIUM_TIER)) {
-                event.setCanHarvest(true);
-            } else event.setCanHarvest(false);
+            event.setCanHarvest(net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(blockstate, player));
         }
     }
+
+    */
 }

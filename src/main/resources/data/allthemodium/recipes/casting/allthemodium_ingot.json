@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:casting_table",
+  "cast": {
+    "item": "tconstruct:ingot_cast"
+  },
+  "fluid": {
+    "name": "allthemodium:molten_allthemodium",
+    "amount": 90
+  },
+  "result": "allthemodium:allthemodium_ingot",
+  "cooling_time": 74,
+  "conditions": [
+      {
+          "type": "forge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

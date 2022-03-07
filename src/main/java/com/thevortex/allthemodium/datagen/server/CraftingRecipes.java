@@ -5,13 +5,12 @@ import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.reference.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.allthemods.alltheores.datagen.builder.ShapedBlockBuilder;
+import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.*;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.fml.common.Mod;
 
 import java.util.function.Consumer;
 
@@ -39,7 +38,7 @@ public class CraftingRecipes extends RecipeProvider {
             .pattern(" r ")
             .define('r', TagRegistry.ALLTHEMODIUM_ROD)
             .define('a', TagRegistry.ALLTHEMODIUM_PLATE)
-            .unlockedBy("has_allthemodium_rod", has(TagRegistry.ALLTHEMODIUM_ROD))
+            .unlockedBy("has_allthemodium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ALLTHEMODIUM_ROD).build()))
             .save(consumer);
 
         shaped(ModRegistry.VIBRANIUM_PICKAXE.get())
@@ -48,7 +47,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern(" r ")
                 .define('r', TagRegistry.VIBRANIUM_ROD)
                 .define('a', TagRegistry.VIBRANIUM_PLATE)
-                .unlockedBy("has_vibranium_rod", has(TagRegistry.VIBRANIUM_ROD))
+                .unlockedBy("has_vibranium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.VIBRANIUM_ROD).build()))
                 .save(consumer);
 
         shaped(ModRegistry.UNOBTAINIUM_PICKAXE.get())
@@ -57,7 +56,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern(" r ")
                 .define('r', TagRegistry.UNOBTAINIUM_ROD)
                 .define('a', TagRegistry.UNOBTAINIUM_PLATE)
-                .unlockedBy("has_unobtainium_rod", has(TagRegistry.UNOBTAINIUM_ROD))
+                .unlockedBy("has_unobtainium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.UNOBTAINIUM_ROD).build()))
                 .save(consumer);
 
 
@@ -67,7 +66,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern(" r ")
                 .define('r', TagRegistry.ALLTHEMODIUM_ROD)
                 .define('a', TagRegistry.ALLTHEMODIUM_PLATE)
-                .unlockedBy("has_allthemodium_rod", has(TagRegistry.ALLTHEMODIUM_ROD))
+                .unlockedBy("has_allthemodium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ALLTHEMODIUM_ROD).build()))
                 .save(consumer);
 
         shaped(ModRegistry.VIBRANIUM_AXE.get())
@@ -76,7 +75,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern(" r ")
                 .define('r', TagRegistry.VIBRANIUM_ROD)
                 .define('a', TagRegistry.VIBRANIUM_PLATE)
-                .unlockedBy("has_vibranium_rod", has(TagRegistry.VIBRANIUM_ROD))
+                .unlockedBy("has_vibranium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.VIBRANIUM_ROD).build()))
                 .save(consumer);
 
         shaped(ModRegistry.UNOBTAINIUM_AXE.get())
@@ -85,7 +84,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern(" r ")
                 .define('r', TagRegistry.UNOBTAINIUM_ROD)
                 .define('a', TagRegistry.UNOBTAINIUM_PLATE)
-                .unlockedBy("has_unobtainium_rod", has(TagRegistry.UNOBTAINIUM_ROD))
+                .unlockedBy("has_unobtainium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.UNOBTAINIUM_ROD).build()))
                 .save(consumer);
 
 
@@ -95,7 +94,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern(" r ")
                 .define('r', TagRegistry.ALLTHEMODIUM_ROD)
                 .define('a', TagRegistry.ALLTHEMODIUM_PLATE)
-                .unlockedBy("has_allthemodium_rod", has(TagRegistry.ALLTHEMODIUM_ROD))
+                .unlockedBy("has_allthemodium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ALLTHEMODIUM_ROD).build()))
                 .save(consumer);
 
         shaped(ModRegistry.VIBRANIUM_SHOVEL.get())
@@ -104,7 +103,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern(" r ")
                 .define('r', TagRegistry.VIBRANIUM_ROD)
                 .define('a', TagRegistry.VIBRANIUM_PLATE)
-                .unlockedBy("has_vibranium_rod", has(TagRegistry.VIBRANIUM_ROD))
+                .unlockedBy("has_vibranium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.VIBRANIUM_ROD).build()))
                 .save(consumer);
 
         shaped(ModRegistry.UNOBTAINIUM_SHOVEL.get())
@@ -113,7 +112,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern(" r ")
                 .define('r', TagRegistry.UNOBTAINIUM_ROD)
                 .define('a', TagRegistry.UNOBTAINIUM_PLATE)
-                .unlockedBy("has_unobtainium_rod", has(TagRegistry.UNOBTAINIUM_ROD))
+                .unlockedBy("has_unobtainium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.UNOBTAINIUM_ROD).build()))
                 .save(consumer);
 
 
@@ -123,7 +122,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern(" r ")
                 .define('r', TagRegistry.ALLTHEMODIUM_ROD)
                 .define('a', TagRegistry.ALLTHEMODIUM_PLATE)
-                .unlockedBy("has_allthemodium_rod", has(TagRegistry.ALLTHEMODIUM_ROD))
+                .unlockedBy("has_allthemodium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ALLTHEMODIUM_ROD).build()))
                 .save(consumer);
 
         shaped(ModRegistry.VIBRANIUM_HOE.get())
@@ -132,7 +131,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern(" r ")
                 .define('r', TagRegistry.VIBRANIUM_ROD)
                 .define('a', TagRegistry.VIBRANIUM_PLATE)
-                .unlockedBy("has_vibranium_rod", has(TagRegistry.VIBRANIUM_ROD))
+                .unlockedBy("has_vibranium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.VIBRANIUM_ROD).build()))
                 .save(consumer);
 
         shaped(ModRegistry.UNOBTAINIUM_HOE.get())
@@ -141,7 +140,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern(" r ")
                 .define('r', TagRegistry.UNOBTAINIUM_ROD)
                 .define('a', TagRegistry.UNOBTAINIUM_PLATE)
-                .unlockedBy("has_unobtainium_rod", has(TagRegistry.UNOBTAINIUM_ROD))
+                .unlockedBy("has_unobtainium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.UNOBTAINIUM_ROD).build()))
                 .save(consumer);
 
 
@@ -151,7 +150,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern(" r ")
                 .define('r', TagRegistry.ALLTHEMODIUM_ROD)
                 .define('a', TagRegistry.ALLTHEMODIUM_PLATE)
-                .unlockedBy("has_allthemodium_rod", has(TagRegistry.ALLTHEMODIUM_ROD))
+                .unlockedBy("has_allthemodium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ALLTHEMODIUM_ROD).build()))
                 .save(consumer);
 
         shaped(ModRegistry.VIBRANIUM_SWORD.get())
@@ -160,7 +159,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern(" r ")
                 .define('r', TagRegistry.VIBRANIUM_ROD)
                 .define('a', TagRegistry.VIBRANIUM_PLATE)
-                .unlockedBy("has_vibranium_rod", has(TagRegistry.VIBRANIUM_ROD))
+                .unlockedBy("has_vibranium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.VIBRANIUM_ROD).build()))
                 .save(consumer);
 
         shaped(ModRegistry.UNOBTAINIUM_SWORD.get())
@@ -169,7 +168,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .pattern(" r ")
                 .define('r', TagRegistry.UNOBTAINIUM_ROD)
                 .define('a', TagRegistry.UNOBTAINIUM_PLATE)
-                .unlockedBy("has_unobtainium_rod", has(TagRegistry.UNOBTAINIUM_ROD))
+                .unlockedBy("has_unobtainium_rod", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.UNOBTAINIUM_ROD).build()))
                 .save(consumer);
 
         final String hasCondition = "has_item";

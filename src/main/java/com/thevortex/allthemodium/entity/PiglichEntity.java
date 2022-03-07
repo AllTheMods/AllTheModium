@@ -23,11 +23,13 @@ import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.monster.piglin.PiglinBrute;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.LargeFireball;
 import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
@@ -206,10 +208,11 @@ public class PiglichEntity extends Piglin {
                             }
 
                             for(int i = 0; i < 1; ++i) {
-                                SmallFireball smallfireball = new SmallFireball(this.piglich.level, this.piglich, d1 + this.piglich.getRandom().nextGaussian() * d4, d2, d3 + this.piglich.getRandom().nextGaussian() * d4);
-                                smallfireball.setPos(smallfireball.getX(), this.piglich.getY(0.5D) + 0.5D, smallfireball.getZ());
-                                smallfireball.setSecondsOnFire(10);
-                                this.piglich.level.addFreshEntity(smallfireball);
+                                Vec3 vec3 = this.piglich.getViewVector(1.0F);
+
+                                LargeFireball largefireball = new LargeFireball(this.piglich.level, this.piglich, d2, d3, d4, (int)this.piglich.getHealth());
+                                largefireball.setPos(this.piglich.getX() + vec3.x * 4.0D, this.piglich.getY(0.5D) + 0.5D, largefireball.getZ() + vec3.z * 4.0D);
+                                this.piglich.level.addFreshEntity(largefireball);
                             }
                         }
                     }

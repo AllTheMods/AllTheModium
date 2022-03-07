@@ -1,0 +1,10 @@
+
+{
+  "craftable": false,
+  "tier": 6,
+  "sortOrder": 2,
+  "fluid": "allthemodium:molten_vibranium",
+  "fluidPerUnit": 144,
+  "textColor": "#26de88",
+  "temperature": 5000
+}

@@ -68,6 +68,6 @@ public class AncientCaveVines extends GrowingPlantHeadBlock implements Bonemeala
     }
     @Override
     protected GrowingPlantBodyBlock getBodyBlock() {
-        return ModRegistry.ANCIENT_CAVEVINES_PLANT;
+        return ModRegistry.ANCIENT_CAVEVINES_PLANT_.get();
     }
 }

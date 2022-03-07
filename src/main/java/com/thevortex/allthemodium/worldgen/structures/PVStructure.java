@@ -17,11 +17,11 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.JigsawFeature;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
-import net.minecraft.world.level.levelgen.feature.structures.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
 import net.minecraft.world.level.levelgen.structure.PostPlacementProcessor;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGenerator;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
+import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
 
@@ -92,15 +92,14 @@ public class PVStructure extends StructureFeature<JigsawConfiguration> {
                 // "resources/data/structure_tutorial/worldgen/template_pool/run_down_house/start_pool.json"
                 // This is why your pool files must be in "data/<modid>/worldgen/template_pool/<the path to the pool here>"
                 // because the game automatically will check in worldgen/template_pool for the pools.
-                () -> context.registryAccess().ownedRegistryOrThrow(Registry.TEMPLATE_POOL_REGISTRY)
-                        .get(new ResourceLocation(Reference.MOD_ID, "village/start_pool")),
+                VillagePieces.START,
 
                 // How many pieces outward from center can a recursive jigsaw structure spawn.
                 // Our structure is only 1 piece outward and isn't recursive so any value of 1 or more doesn't change anything.
                 // However, I recommend you keep this a decent value like 7 so people can use datapacks to add additional pieces to your structure easily.
                 // But don't make it too large for recursive structures like villages or you'll crash server due to hundreds of pieces attempting to generate!
                 // Requires AccessTransformer  (see resources/META-INF/accesstransformer.cfg)
-                10
+                15
         );
 
         // Create a new context with the new config that has our json pool. We will pass this into JigsawPlacement.addPieces
@@ -155,12 +154,12 @@ public class PVStructure extends StructureFeature<JigsawConfiguration> {
 
     private static final Lazy<List<MobSpawnSettings.SpawnerData>> STRUCTURE_MONSTERS = Lazy.of(() -> ImmutableList.of(
             new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 100, 4, 9),
-            new MobSpawnSettings.SpawnerData(ModRegistry.PIGLICH.get(), 10, 1, 2)
+            new MobSpawnSettings.SpawnerData(EntityType.PIGLIN_BRUTE, 1, 1, 1)
     ));
 
     private static final Lazy<List<MobSpawnSettings.SpawnerData>> STRUCTURE_CREATURES = Lazy.of(() -> ImmutableList.of(
             new MobSpawnSettings.SpawnerData(EntityType.HOGLIN, 30, 10, 15),
-            new MobSpawnSettings.SpawnerData(EntityType.COW, 100, 1, 2)
+            new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_HORSE, 100, 1, 2)
     ));
 
 

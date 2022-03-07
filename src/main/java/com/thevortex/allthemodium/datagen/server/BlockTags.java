@@ -75,6 +75,7 @@ public class BlockTags extends BlockTagsProvider {
         tag(NEEDS_NETHERITE_TOOL).add(ModRegistry.ALLTHEMODIUM_ORE.get());
         tag(NEEDS_NETHERITE_TOOL).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
         tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
         tag(TagRegistry.NEEDS_VIBRANIUM_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
 
 
@@ -88,11 +89,9 @@ public class BlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG_2.get());
 
         tag(net.minecraft.tags.BlockTags.NYLIUM).add(ModRegistry.ANCIENT_STONE.get());
-        tag(net.minecraft.tags.BlockTags.BASE_STONE_NETHER).add(ModRegistry.ANCIENT_STONE.get());
         tag(net.minecraft.tags.BlockTags.INFINIBURN_NETHER).add(ModRegistry.ANCIENT_STONE.get());
         tag(net.minecraft.tags.BlockTags.INFINIBURN_NETHER).add(ModRegistry.ANCIENT_GRASS.get());
         tag(net.minecraft.tags.BlockTags.INFINIBURN_NETHER).add(ModRegistry.ANCIENT_DIRT.get());
-        tag(net.minecraft.tags.BlockTags.STONE_ORE_REPLACEABLES).add(ModRegistry.ANCIENT_STONE.get());
         tag(net.minecraft.tags.BlockTags.BEE_GROWABLES).add(ModRegistry.ANCIENT_SAPLING.get());
         tag(net.minecraft.tags.BlockTags.DIRT).add(ModRegistry.ANCIENT_GRASS.get());
         tag(net.minecraft.tags.BlockTags.DIRT).add(ModRegistry.ANCIENT_DIRT.get());
@@ -121,6 +120,9 @@ public class BlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.ANCIENT_WOODEN_SLABS.get());
         tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.DEMONIC_WOODEN_SLABS.get());
         tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.SOUL_WOODEN_SLABS.get());
+        tag(net.minecraft.tags.BlockTags.WOODEN_SLABS).add(ModRegistry.ANCIENT_WOODEN_SLABS.get());
+        tag(net.minecraft.tags.BlockTags.WOODEN_SLABS).add(ModRegistry.DEMONIC_WOODEN_SLABS.get());
+        tag(net.minecraft.tags.BlockTags.WOODEN_SLABS).add(ModRegistry.SOUL_WOODEN_SLABS.get());
         tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.ANCIENT_STONE_SLABS.get());
         tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.ANCIENT_POLISHED_STONE_SLABS.get());
         tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.ANCIENT_MOSSY_STONE_SLABS.get());
@@ -157,13 +159,17 @@ public class BlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
         tag(TagRegistry.VIBRANIUM_BLOCK).add(ModRegistry.VIBRANIUM_BLOCK.get());
         tag(TagRegistry.VIBRANIUM_ORE).add(ModRegistry.VIBRANIUM_ORE.get());
+        tag(TagRegistry.VIBRANIUM_ORE).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
 
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.RAW_VIBRANIUM_BLOCK.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.VIBRANIUM_ORE.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
         tag(TagRegistry.UNOBTAINIUM_BLOCK).add(ModRegistry.UNOBTAINIUM_BLOCK.get());
         tag(TagRegistry.UNOBTAINIUM_ORE).add(ModRegistry.UNOBTAINIUM_ORE.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.RAW_UNOBTAINIUM_BLOCK.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.UNOBTAINIUM_ORE.get());
+
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.TELEPORT_PAD.get());
         }
 
 }

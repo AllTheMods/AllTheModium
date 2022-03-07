@@ -32,7 +32,7 @@
         {
           "parameters": {
             "depth": 0.3,
-            "continentalness": -0.3,
+            "continentalness": 0.3,
             "weirdness": 0.0,
             "offset": 0.0,
             "erosion": -0.3,
@@ -68,7 +68,7 @@
         {
           "parameters": {
             "depth": 0.2,
-            "continentalness": -0.2,
+            "continentalness": 0.1,
             "weirdness": 0.0,
             "erosion": -0.2,
             "offset": 0.0,
@@ -79,7 +79,7 @@
         },
         {
           "parameters": {
-            "depth": 0.4,
+            "depth": 0.7,
             "erosion": -0.2,
             "continentalness": 0.5,
             "weirdness": 0.0,

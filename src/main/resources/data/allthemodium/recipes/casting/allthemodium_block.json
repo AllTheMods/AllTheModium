@@ -1,0 +1,15 @@
+{
+  "type": "tconstruct:casting_basin",
+  "fluid": {
+    "name": "allthemodium:molten_allthemodium",
+    "amount": 810
+  },
+  "result": "allthemodium:allthemodium_block",
+  "cooling_time": 477,
+  "conditions": [
+      {
+          "type": "forge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

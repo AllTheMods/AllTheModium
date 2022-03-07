@@ -5,6 +5,7 @@ import com.thevortex.allthemodium.reference.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.allthemods.alltheores.blocks.BlockList;
 import net.allthemods.alltheores.infos.ItemTagRegistry;
+import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.*;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
@@ -101,14 +102,14 @@ private ResourceLocation recipeDir(String typeIn, String typeOut) {
                 .shapeless(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM.get(),1)
                 .requires(TagRegistry.ANCIENT_STONE_BRICKS_ITEM)
                 .requires(ItemTagRegistry.ORE_HAMMERS)
-                .unlockedBy(hasCondition,RecipeProvider.has(TagRegistry.ANCIENT_STONE_BRICKS_ITEM))
+                .unlockedBy(hasCondition,RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ANCIENT_STONE_BRICKS_ITEM).build()))
                 .save(consumer,recipeDir("ancient_cracked_stone_bricks","crushing"));
 
         ShapelessRecipeBuilder
                 .shapeless(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS_ITEM.get(),1)
                 .requires(TagRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM)
                 .requires(ItemTagRegistry.ORE_HAMMERS)
-                .unlockedBy(hasCondition,RecipeProvider.has(TagRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM))
+                .unlockedBy(hasCondition,RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM).build()))
                 .save(consumer,recipeDir("ancient_chiseled_stone_bricks","crushing"));
 
         ShapelessRecipeBuilder

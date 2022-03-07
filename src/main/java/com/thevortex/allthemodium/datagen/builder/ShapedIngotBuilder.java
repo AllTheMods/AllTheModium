@@ -8,7 +8,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.RegistryObject;
@@ -31,20 +31,19 @@ public class ShapedIngotBuilder {
     private final String criteriaName;
     private final InventoryChangeTrigger.TriggerInstance criterion;
     private final EnumMap<Slot, Item> pieces = new EnumMap<>(Slot.class);
-    private final Tag<Item> nugget;
+    private final TagKey<Item> nugget;
 
 
-    public ShapedIngotBuilder(Tag<Item> nugget) {
+    public ShapedIngotBuilder(TagKey<Item> nugget) {
         this.nugget = nugget;
 
-        ResourceLocation tagLocation = Objects.requireNonNull(ItemTags.getAllTags().getId(nugget));
-        this.criteriaName = String.format("has_%s_nugget", tagLocation.getPath().replace("nugget/", ""));
+        this.criteriaName = String.format("has_%s_nugget", nugget);
 
         ItemPredicate predicate = ItemPredicate.Builder.item().of(nugget).build();
         this.criterion = InventoryChangeTrigger.TriggerInstance.hasItems(predicate);
     }
 
-    public static ShapedIngotBuilder builder(Tag<Item> nugget) {
+    public static ShapedIngotBuilder builder(TagKey<Item> nugget) {
         return new ShapedIngotBuilder(nugget);
     }
 

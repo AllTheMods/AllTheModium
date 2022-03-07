@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.biome.Biome;
@@ -30,7 +31,7 @@ public class OtherCanyonCarver extends CanyonWorldCarver {
         return random.nextFloat() <= config.probability;
     }
 
-    public boolean carve(CarvingContext context, CanyonCarverConfiguration config, ChunkAccess chunkAccess, Function<BlockPos, Biome> biomeFunction, Random random, Aquifer aquifer, ChunkPos chunkPos, CarvingMask mask) {
+    public boolean carve(CarvingContext context, CanyonCarverConfiguration config, ChunkAccess chunkAccess, Function<BlockPos, Holder<Biome>> biomeFunction, Random random, Aquifer aquifer, ChunkPos chunkPos, CarvingMask mask) {
         int i = (this.getRange() * 2 - 1) * 16;
         double d0 = (double)chunkPos.getBlockX(random.nextInt(16));
         int j = config.y.sample(random, context);
@@ -45,7 +46,7 @@ public class OtherCanyonCarver extends CanyonWorldCarver {
         return true;
     }
 
-    private void doCarve(CarvingContext p_190594_, CanyonCarverConfiguration p_190595_, ChunkAccess p_190596_, Function<BlockPos, Biome> p_190597_, long p_190598_, Aquifer p_190599_, double p_190600_, double p_190601_, double p_190602_, float p_190603_, float p_190604_, float p_190605_, int p_190606_, int p_190607_, double p_190608_, CarvingMask p_190609_) {
+    private void doCarve(CarvingContext p_190594_, CanyonCarverConfiguration p_190595_, ChunkAccess p_190596_, Function<BlockPos, Holder<Biome>> p_190597_, long p_190598_, Aquifer p_190599_, double p_190600_, double p_190601_, double p_190602_, float p_190603_, float p_190604_, float p_190605_, int p_190606_, int p_190607_, double p_190608_, CarvingMask p_190609_) {
         Random random = new Random(p_190598_);
         float[] afloat = this.initWidthFactors(p_190594_, p_190595_, random);
         float f = 0.0F;

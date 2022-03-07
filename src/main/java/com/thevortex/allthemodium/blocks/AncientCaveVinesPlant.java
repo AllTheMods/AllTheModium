@@ -61,6 +61,6 @@ public class AncientCaveVinesPlant extends GrowingPlantBodyBlock implements Bone
     }
     @Override
     protected GrowingPlantHeadBlock getHeadBlock() {
-        return ModRegistry.ANCIENT_CAVEVINES;
+        return ModRegistry.ANCIENT_CAVEVINES_.get();
     }
 }

@@ -17,11 +17,11 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.JigsawFeature;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
-import net.minecraft.world.level.levelgen.feature.structures.JigsawPlacement;
 import net.minecraft.world.level.levelgen.structure.PoolElementStructurePiece;
 import net.minecraft.world.level.levelgen.structure.PostPlacementProcessor;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGenerator;
 import net.minecraft.world.level.levelgen.structure.pieces.PieceGeneratorSupplier;
+import net.minecraft.world.level.levelgen.structure.pools.JigsawPlacement;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.event.world.StructureSpawnListGatherEvent;
 
@@ -89,8 +89,7 @@ public class DungeonStructure extends StructureFeature<JigsawConfiguration> {
                 // "resources/data/structure_tutorial/worldgen/template_pool/run_down_house/start_pool.json"
                 // This is why your pool files must be in "data/<modid>/worldgen/template_pool/<the path to the pool here>"
                 // because the game automatically will check in worldgen/template_pool for the pools.
-                () -> context.registryAccess().ownedRegistryOrThrow(Registry.TEMPLATE_POOL_REGISTRY)
-                        .get(new ResourceLocation(Reference.MOD_ID, "dungeon/start_pool")),
+                DungeonPieces.START,
 
                 // How many pieces outward from center can a recursive jigsaw structure spawn.
                 // Our structure is only 1 piece outward and isn't recursive so any value of 1 or more doesn't change anything.

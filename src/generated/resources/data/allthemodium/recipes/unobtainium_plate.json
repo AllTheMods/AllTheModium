@@ -2,9 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "group": "alltheores",
   "pattern": [
-    "aa ",
-    "aa ",
-    "h  "
+    "ha ",
+    "a  ",
+    "   "
   ],
   "key": {
     "a": {

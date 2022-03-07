@@ -1,0 +1,19 @@
+{
+  "stats": {
+    "tconstruct:head": {
+      "durability": 9500,
+      "miningSpeed": 22.0,
+      "harvestTier": "allthemodium:unobtainium",
+      "attack": 69.0
+    },
+    "tconstruct:handle": {
+      "durability": 4.5,
+      "miningSpeed": 22.0,
+      "attackSpeed": 22.0,
+      "attackDamage": 3.0
+    },
+    "tconstruct:extra": {
+      "durability": 2450
+    }
+  }
+}

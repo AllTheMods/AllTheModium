@@ -1,0 +1,9 @@
+{
+  "type": "tconstruct:material_fluid",
+  "fluid": {
+    "tag": "forge:molten_vibranium",
+    "amount": 90
+  },
+  "temperature": 5000,
+  "output": "allthemodium:vibranium"
+}

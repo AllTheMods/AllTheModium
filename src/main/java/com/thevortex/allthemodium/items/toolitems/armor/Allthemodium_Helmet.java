@@ -35,8 +35,8 @@ public class Allthemodium_Helmet extends ArmorItem {
     public void initializeClient(Consumer<IItemRenderProperties> consumer) {
         consumer.accept(new IItemRenderProperties() {
             @Override
-            public <A extends HumanoidModel<?>> A getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot armorSlot, A _default) {
-                return (A) new allthemodium_helmet<LivingEntity>(Minecraft.getInstance().getEntityModels().bakeLayer(allthemodium_helmet.LAYER_LOCATION), armorSlot);
+            public HumanoidModel<?> getArmorModel(LivingEntity entityLiving, ItemStack itemStack, EquipmentSlot armorSlot, HumanoidModel<?> _default) {
+                return new allthemodium_helmet<LivingEntity>(Minecraft.getInstance().getEntityModels().bakeLayer(allthemodium_helmet.LAYER_LOCATION), armorSlot);
             }
         });
     }
