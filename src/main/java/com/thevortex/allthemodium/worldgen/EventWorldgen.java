@@ -27,6 +27,8 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.Objects;
 
+import static com.thevortex.allthemodium.worldgen.carvers.ATMCarvers.getHolder;
+
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.FORGE)
 public class EventWorldgen {
     @SubscribeEvent
@@ -125,9 +127,9 @@ public class EventWorldgen {
 
 
         if ((mod.equals(Reference.MOD_ID)) && (biome.equals("basalt_deltas"))) {
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.NETHER_CAVE_CWC);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.OTHER_CAVE_CWC);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.OTHER_CANYON_CWC);
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.NETHER_CAVE_CWC));
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.OTHER_CAVE_CWC));
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.OTHER_CANYON_CWC));
             event.getGeneration().getFeatures(GenerationStep.Decoration.SURFACE_STRUCTURES).add(ATMPlacedFeature.VOLCANO_CF);
             event.getGeneration().getFeatures(GenerationStep.Decoration.SURFACE_STRUCTURES).add(ATMPlacedFeature.MOD_DELTAS);
 
@@ -139,31 +141,31 @@ public class EventWorldgen {
         }
         if ((mod.equals(Reference.MOD_ID)) && (biome.equals("soul_sand_valley"))) {
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(NetherPlacements.WEEPING_VINES);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.NETHER_CAVE_CWC);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.OTHER_CAVE_CWC);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.OTHER_CANYON_CWC);
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.NETHER_CAVE_CWC));
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.OTHER_CAVE_CWC));
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.OTHER_CANYON_CWC));
 
 
         }
         if ((mod.equals(Reference.MOD_ID)) && (biome.equals("desert"))) {
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.NETHER_CAVE_CWC);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.OTHER_CAVE_CWC);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.OTHER_CANYON_CWC);
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.NETHER_CAVE_CWC));
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.OTHER_CAVE_CWC));
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.OTHER_CANYON_CWC));
 
         }
         if ((mod.equals(Reference.MOD_ID)) && (biome.equals("desert_hills"))) {
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(NetherPlacements.WEEPING_VINES);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.NETHER_CAVE_CWC);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.OTHER_CAVE_CWC);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.OTHER_CANYON_CWC);
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.NETHER_CAVE_CWC));
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.OTHER_CAVE_CWC));
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.OTHER_CANYON_CWC));
 
 
         }
         if ((mod.equals(Reference.MOD_ID)) && (biome.equals("warped_forest"))) {
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(NetherPlacements.WEEPING_VINES);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.NETHER_CAVE_CWC);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.OTHER_CAVE_CWC);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.OTHER_CANYON_CWC);
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.NETHER_CAVE_CWC));
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.OTHER_CAVE_CWC));
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.OTHER_CANYON_CWC));
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(NetherPlacements.WARPED_FOREST_VEGETATION);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(ATMPlacedFeature.CAVE_VINES);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(ATMPlacedFeature.SOUL_TREE_GIANT);
@@ -177,9 +179,9 @@ public class EventWorldgen {
         }
         if ((mod.equals(Reference.MOD_ID)) && (biome.equals("crimson_forest"))) {
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(NetherPlacements.WEEPING_VINES);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.NETHER_CAVE_CWC);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.OTHER_CAVE_CWC);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.OTHER_CANYON_CWC);
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.NETHER_CAVE_CWC));
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.OTHER_CAVE_CWC));
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.OTHER_CANYON_CWC));
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(NetherPlacements.CRIMSON_FOREST_VEGETATION);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(NetherPlacements.PATCH_CRIMSON_ROOTS);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(ATMPlacedFeature.DEMONIC_TREE_GIANT);
@@ -194,9 +196,9 @@ public class EventWorldgen {
         }
         if (biome.equals("the_other")) {
             //Allthemodium(Vibranium/Soul Lava)
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.NETHER_CAVE_CWC);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.OTHER_CAVE_CWC);
-            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(ATMCarvers.OTHER_CANYON_CWC);
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.NETHER_CAVE_CWC));
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.OTHER_CAVE_CWC));
+            event.getGeneration().getCarvers(GenerationStep.Carving.AIR).add(getHolder(ATMCarvers.OTHER_CANYON_CWC));
 
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(NetherPlacements.WEEPING_VINES);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(ATMPlacedFeature.ANCIENT_TREE_GIANT);

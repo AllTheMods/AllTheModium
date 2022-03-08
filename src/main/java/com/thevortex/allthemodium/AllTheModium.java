@@ -10,6 +10,7 @@ import com.thevortex.allthemodium.init.*;
 import com.thevortex.allthemodium.worldgen.MiningDimSource;
 import com.thevortex.allthemodium.worldgen.TheOtherDimSource;
 import com.thevortex.allthemodium.worldgen.biomes.ATMBiomes;
+import com.thevortex.allthemodium.worldgen.carvers.ATMCarvers;
 import com.thevortex.allthemodium.worldgen.structures.*;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
@@ -105,6 +106,7 @@ public class AllTheModium
     	ATMStructures.STRUCTURES.register(modEventBus);
 		modEventBus.register(ModRegistry.class);
 		modEventBus.addListener(this::setup);
+		modEventBus.addListener(ATMCarvers::register);
 
     	if(ModList.get().isLoaded("mekanism")) {
 			//modEventBus.register(MekRegistry.class);

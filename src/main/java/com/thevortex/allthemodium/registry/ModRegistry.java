@@ -847,11 +847,11 @@ public class ModRegistry {
 
 
 
-	public static final RegistryObject<WorldCarver<?>> OTHER_CANYON_CARVER = CARVERS.register("other_canyons", () -> new OtherCanyonCarver(CanyonCarverConfiguration.CODEC);
+	public static final RegistryObject<WorldCarver<CanyonCarverConfiguration>> OTHER_CANYON_CARVER = CARVERS.register("other_canyons", () -> new OtherCanyonCarver(CanyonCarverConfiguration.CODEC));
 
-	public static final RegistryObject<WorldCarver<?>> OTHER_CARVER = CARVERS.register("other_caves", () -> new OtherCarver(CaveCarverConfiguration.CODEC));
+	public static final RegistryObject<WorldCarver<CaveCarverConfiguration>> OTHER_CARVER = CARVERS.register("other_caves", () -> new OtherCarver(CaveCarverConfiguration.CODEC));
 
-	public static final RegistryObject<WorldCarver<?>> OTHER_CAVE_CARVER = CARVERS.register("other_caves_2", () -> new OtherCaveCarver(CaveCarverConfiguration.CODEC));
+	public static final RegistryObject<WorldCarver<CaveCarverConfiguration>> OTHER_CAVE_CARVER = CARVERS.register("other_caves_2", () -> new OtherCaveCarver(CaveCarverConfiguration.CODEC));
 
 	private static <T extends Monster> RegistryObject<EntityType<T>> createMonsterEntity(String name, EntityType.EntityFactory<T> factory, float width, float height, int eggPrimary, int eggSecondary) {
 		ResourceLocation location = new ResourceLocation(Reference.MOD_ID, name);
