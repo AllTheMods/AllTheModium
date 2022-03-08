@@ -22,7 +22,7 @@ import java.util.function.Function;
 public class OtherCaveCarver extends CaveWorldCarver {
         public OtherCaveCarver(Codec<CaveCarverConfiguration> config) {
             super(config);
-            this.replaceableBlocks = ImmutableSet.of(ModRegistry.ANCIENT_STONE_WORLDGEN,Blocks.DEEPSLATE, Blocks.GRANITE, Blocks.DIORITE, Blocks.ANDESITE, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.PODZOL, Blocks.GRASS_BLOCK, Blocks.NETHERRACK, Blocks.SOUL_SAND, Blocks.SOUL_SOIL, Blocks.CRIMSON_NYLIUM, Blocks.WARPED_NYLIUM, Blocks.NETHER_WART_BLOCK, Blocks.WARPED_WART_BLOCK, Blocks.BASALT, Blocks.BLACKSTONE);
+            this.replaceableBlocks = ImmutableSet.of(ModRegistry.ANCIENT_STONE.get(),Blocks.STONE,Blocks.DEEPSLATE, Blocks.GRANITE, Blocks.DIORITE, Blocks.ANDESITE, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.PODZOL, Blocks.GRASS_BLOCK, Blocks.NETHERRACK, Blocks.SOUL_SAND, Blocks.SOUL_SOIL, Blocks.CRIMSON_NYLIUM, Blocks.WARPED_NYLIUM, Blocks.NETHER_WART_BLOCK, Blocks.WARPED_WART_BLOCK, Blocks.BASALT, Blocks.BLACKSTONE);
             this.liquids = ImmutableSet.of(Fluids.LAVA, Fluids.WATER);
         }
 

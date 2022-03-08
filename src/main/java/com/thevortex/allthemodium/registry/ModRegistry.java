@@ -317,35 +317,8 @@ public class ModRegistry {
 
 
 
-	public static final Block ANCIENT_STONE_WORLDGEN = new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(1.5f));
-	public static final Block ANCIENT_SMOOTH_STONE_ = new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(2.25f));
-	public static final Block ANCIENT_MOSSY_STONE_ = new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(1.5f));
-	public static final Block ANCIENT_STONE_BRICKS_ = new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(3.5f));
-	public static final Block ANCIENT_CHISELED_STONE_BRICKS_ = new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(3.0f));
-	public static final Block ANCIENT_CRACKED_STONE_BRICKS_ = new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(3.25f));
-	public static final Block ANCIENT_POLISHED_STONE_ = new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(2.5f));
-	public static final Block ANCIENT_DIRT_ = new AncientDirt(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.WET_GRASS).strength(0.6f));
-
-	public static final Block ANCIENT_WOOD_PLANKS_ = new Block(BlockBehaviour.Properties.of(Material.NETHER_WOOD).sound(SoundType.WOOD).strength(1.5f));
-	public static final RotatedPillarBlock ANCIENT_LOG_0_ = log(MaterialColor.WOOD, MaterialColor.WOOD);
-	public static final RotatedPillarBlock ANCIENT_LOG_1_ = log(MaterialColor.WOOD, MaterialColor.WOOD);
-	public static final RotatedPillarBlock ANCIENT_LOG_2_ = log(MaterialColor.WOOD, MaterialColor.WOOD);
-	public static final RotatedPillarBlock ANCIENT_LOG_STRIPPED_ = log(MaterialColor.WOOD, MaterialColor.WOOD);
-	public static final DoorBlock ANCIENT_DOOR = new DoorBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(2.0F).sound(SoundType.WOOD));
 
 
-	public static final Block DEMONIC_WOOD_PLANKS_ = new Block(BlockBehaviour.Properties.of(Material.NETHER_WOOD).sound(SoundType.WOOD).strength(1.5f));
-	public static final RotatedPillarBlock DEMONIC_LOG_ = log(MaterialColor.WOOD, MaterialColor.WOOD);
-	public static final RotatedPillarBlock DEMONIC_LOG_STRIPPED_ = log(MaterialColor.WOOD, MaterialColor.WOOD);
-	public static final DoorBlock DEMONIC_DOOR = new DoorBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(2.0F).sound(SoundType.WOOD));
-
-	public static final Block SOUL_WOOD_PLANKS_ = new Block(BlockBehaviour.Properties.of(Material.NETHER_WOOD).sound(SoundType.WOOD).strength(1.5f));
-	public static final RotatedPillarBlock SOUL_LOG_ = log(MaterialColor.WOOD, MaterialColor.WOOD);
-	public static final RotatedPillarBlock SOUL_LOG_0_ = log(MaterialColor.WOOD, MaterialColor.WOOD);
-	public static final RotatedPillarBlock SOUL_LOG_1_ = log(MaterialColor.WOOD, MaterialColor.WOOD);
-	public static final RotatedPillarBlock SOUL_LOG_2_ = log(MaterialColor.WOOD, MaterialColor.WOOD);
-	public static final RotatedPillarBlock SOUL_LOG_STRIPPED_ = log(MaterialColor.WOOD, MaterialColor.WOOD);
-	public static final DoorBlock SOUL_DOOR = new DoorBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(2.0F).sound(SoundType.WOOD));
 
 	public static final RegistryObject<AncientCaveVines> ANCIENT_CAVEVINES_ = PILLARBLOCKS.register("ancient_cavevines", () -> new AncientCaveVines(BlockBehaviour.Properties.of(Material.PLANT)
 			.randomTicks()
@@ -371,9 +344,9 @@ public class ModRegistry {
 
 	public static final RegistryObject<Block> ANCIENT_HERB = PILLARBLOCKS.register("ancient_herb",() -> new AncientHerb(BlockBehaviour.Properties.of(Material.GRASS).sound(SoundType.WET_GRASS).instabreak().noCollission()));
 
-	public static final RegistryObject<Block> ANCIENT_SMOOTH_STONE = BLOCKS.register("ancient_smooth_stone", () -> ANCIENT_SMOOTH_STONE_);
-	public static final RegistryObject<Block> ANCIENT_STONE = BLOCKS.register("ancient_stone", () -> ANCIENT_STONE_WORLDGEN);
-	public static final RegistryObject<Block> ANCIENT_DIRT = BLOCKS.register("ancient_dirt", () -> ANCIENT_DIRT_);
+	public static final RegistryObject<Block> ANCIENT_SMOOTH_STONE = BLOCKS.register("ancient_smooth_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(2.25f)));
+	public static final RegistryObject<Block> ANCIENT_STONE = BLOCKS.register("ancient_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(1.5f)));
+	public static final RegistryObject<Block> ANCIENT_DIRT = BLOCKS.register("ancient_dirt", () -> new AncientDirt(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.WET_GRASS).strength(0.6f)));
 	public static final RegistryObject<Block> ANCIENT_GRASS = BLOCKS.register("ancient_grass", () -> new Ancient_Grass(BlockBehaviour.Properties.of(Material.DIRT).sound(SoundType.MOSS).strength(0.6f)));
 	public static final RegistryObject<Block> ANCIENT_MOSSY_STONE = BLOCKS.register("ancient_mossy_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.MOSS_CARPET).strength(1.5f)));
 	public static final RegistryObject<Block> ANCIENT_STONE_BRICKS = BLOCKS.register("ancient_stone_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHER_BRICKS).strength(3.5f)));
@@ -381,64 +354,51 @@ public class ModRegistry {
 	public static final RegistryObject<Block> ANCIENT_CRACKED_STONE_BRICKS = BLOCKS.register("ancient_cracked_stone_bricks", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.NETHER_BRICKS).strength(3.25f)));
 	public static final RegistryObject<Block> ANCIENT_POLISHED_STONE = BLOCKS.register("ancient_polished_stone", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.METAL).strength(2.5f)));
 
-	public static final RegistryObject<Block> ANCIENT_LOG_0 = PILLARBLOCKS.register("ancient_log_0",() -> ANCIENT_LOG_0_);
-	public static final RegistryObject<Block> ANCIENT_LOG_1 = PILLARBLOCKS.register("ancient_log_1",() -> ANCIENT_LOG_1_);
-	public static final RegistryObject<Block> ANCIENT_LOG_2 = PILLARBLOCKS.register("ancient_log_2",() -> ANCIENT_LOG_2_);
-	public static final RegistryObject<Block> ANCIENT_LOG_STRIPPED = PILLARBLOCKS.register("stripped_ancient_log",() -> ANCIENT_LOG_STRIPPED_);
+	public static final RegistryObject<Block> ANCIENT_LOG_0 = PILLARBLOCKS.register("ancient_log_0",() -> log(MaterialColor.WOOD, MaterialColor.WOOD));
+	public static final RegistryObject<Block> ANCIENT_LOG_1 = PILLARBLOCKS.register("ancient_log_1",() -> log(MaterialColor.WOOD, MaterialColor.WOOD));
+	public static final RegistryObject<Block> ANCIENT_LOG_2 = PILLARBLOCKS.register("ancient_log_2",() -> log(MaterialColor.WOOD, MaterialColor.WOOD));
+	public static final RegistryObject<Block> ANCIENT_LOG_STRIPPED = PILLARBLOCKS.register("stripped_ancient_log",() -> log(MaterialColor.WOOD, MaterialColor.WOOD));
 	public static final RegistryObject<Block> ANCIENT_LEAVES = BLOCKS.register("ancient_leaves", () -> new AncientLeaves(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion().color(MaterialColor.COLOR_PURPLE)));
 	public static final RegistryObject<Block> ANCIENT_LEAVES_BOTTOM = PILLARBLOCKS.register("ancient_leaves_bottom", () -> new AncientLeavesBottom(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noCollission().noOcclusion().color(MaterialColor.COLOR_PURPLE)));
 	public static final RegistryObject<Block> ANCIENT_PLANKS = BLOCKS.register("ancient_planks", () -> new Block(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).randomTicks().sound(SoundType.WOOD)));
 	public static final RegistryObject<TrapDoorBlock> ANCIENT_TRAPDOOR = PILLARBLOCKS.register("ancient_trap_door", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.2F).randomTicks().sound(SoundType.WOOD).noOcclusion()));
-	public static final FenceBlock ANCIENT_WOOD_FENCE_ = new FenceBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).dynamicShape().sound(SoundType.WOOD));
-	public static final FenceGateBlock ANCIENT_WOOD_FENCE_GATE_ = new FenceGateBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).dynamicShape().sound(SoundType.WOOD));
-	public static final RegistryObject<FenceBlock> ANCIENT_WOOD_FENCE = PILLARBLOCKS.register("ancient_wooden_fence", () -> ANCIENT_WOOD_FENCE_);
-	public static final RegistryObject<FenceGateBlock> ANCIENT_WOOD_FENCE_GATE = PILLARBLOCKS.register("ancient_wooden_fence_gate", () -> ANCIENT_WOOD_FENCE_GATE_);
-	public static final RegistryObject<DoorBlock> ANCIENT_DOOR_ = PILLARBLOCKS.register("ancient_door", () -> ANCIENT_DOOR);
+	public static final RegistryObject<FenceBlock> ANCIENT_WOOD_FENCE = PILLARBLOCKS.register("ancient_wooden_fence", () -> new FenceBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
+	public static final RegistryObject<FenceGateBlock> ANCIENT_WOOD_FENCE_GATE = PILLARBLOCKS.register("ancient_wooden_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
+	public static final RegistryObject<DoorBlock> ANCIENT_DOOR_ = PILLARBLOCKS.register("ancient_door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(2.0F).sound(SoundType.WOOD)));
 
 	public static final RegistryObject<Block> DEMONIC_HERB = PILLARBLOCKS.register("demonic_herb",() -> new AncientHerb(BlockBehaviour.Properties.of(Material.GRASS).sound(SoundType.WET_GRASS).instabreak().noCollission()));
-	public static final RegistryObject<Block> DEMONIC_LOG = PILLARBLOCKS.register("demonic_log",() -> DEMONIC_LOG_);
-	public static final RegistryObject<Block> DEMONIC_LOG_STRIPPED = PILLARBLOCKS.register("stripped_demonic_log",() -> DEMONIC_LOG_STRIPPED_);
+	public static final RegistryObject<Block> DEMONIC_LOG = PILLARBLOCKS.register("demonic_log",() -> log(MaterialColor.WOOD, MaterialColor.WOOD));
+	public static final RegistryObject<Block> DEMONIC_LOG_STRIPPED = PILLARBLOCKS.register("stripped_demonic_log",() -> log(MaterialColor.WOOD, MaterialColor.WOOD));
 	public static final RegistryObject<Block> DEMONIC_LEAVES = BLOCKS.register("demonic_leaves", () -> new DemonicLeaves(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion().color(MaterialColor.COLOR_RED)));
 	public static final RegistryObject<Block> DEMONIC_LEAVES_BOTTOM = PILLARBLOCKS.register("demonic_leaves_bottom", () -> new DemonicLeavesBottom(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noCollission().noOcclusion().color(MaterialColor.COLOR_RED)));
 	public static final RegistryObject<Block> DEMONIC_PLANKS = BLOCKS.register("demonic_planks", () -> new Block(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).randomTicks().sound(SoundType.WOOD)));
 	public static final RegistryObject<TrapDoorBlock> DEMONIC_TRAPDOOR = PILLARBLOCKS.register("demonic_trap_door", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.2F).randomTicks().sound(SoundType.WOOD).noOcclusion()));
-	public static final FenceBlock DEMONIC_WOOD_FENCE_ = new FenceBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).dynamicShape().sound(SoundType.WOOD));
-	public static final FenceGateBlock DEMONIC_WOOD_FENCE_GATE_ = new FenceGateBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).dynamicShape().sound(SoundType.WOOD));
-	public static final RegistryObject<FenceBlock> DEMONIC_WOOD_FENCE = PILLARBLOCKS.register("demonic_wooden_fence", () -> DEMONIC_WOOD_FENCE_);
-	public static final RegistryObject<FenceGateBlock> DEMONIC_WOOD_FENCE_GATE = PILLARBLOCKS.register("demonic_wooden_fence_gate", () -> DEMONIC_WOOD_FENCE_GATE_);
-	public static final RegistryObject<DoorBlock> DEMONIC_DOOR_ = PILLARBLOCKS.register("demonic_door", () -> DEMONIC_DOOR);
+	public static final RegistryObject<FenceBlock> DEMONIC_WOOD_FENCE = PILLARBLOCKS.register("demonic_wooden_fence", () -> new FenceBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
+	public static final RegistryObject<FenceGateBlock> DEMONIC_WOOD_FENCE_GATE = PILLARBLOCKS.register("demonic_wooden_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
+	public static final RegistryObject<DoorBlock> DEMONIC_DOOR_ = PILLARBLOCKS.register("demonic_door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(2.0F).sound(SoundType.WOOD)));
 
 	public static final RegistryObject<Block> SOUL_HERB = PILLARBLOCKS.register("soul_herb",() -> new AncientHerb(BlockBehaviour.Properties.of(Material.GRASS).sound(SoundType.WET_GRASS).instabreak().noCollission()));
-	public static final RegistryObject<Block> SOUL_LOG = PILLARBLOCKS.register("soul_log",() -> SOUL_LOG_);
-	public static final RegistryObject<Block> SOUL_LOG_0 = PILLARBLOCKS.register("soul_log_0",() -> SOUL_LOG_0_);
-	public static final RegistryObject<Block> SOUL_LOG_1 = PILLARBLOCKS.register("soul_log_1",() -> SOUL_LOG_1_);
-	public static final RegistryObject<Block> SOUL_LOG_2 = PILLARBLOCKS.register("soul_log_2",() -> SOUL_LOG_2_);
-	public static final RegistryObject<Block> SOUL_LOG_STRIPPED = PILLARBLOCKS.register("stripped_soul_log",() -> SOUL_LOG_STRIPPED_);
+	public static final RegistryObject<Block> SOUL_LOG = PILLARBLOCKS.register("soul_log",() -> log(MaterialColor.WOOD, MaterialColor.WOOD));
+	public static final RegistryObject<Block> SOUL_LOG_0 = PILLARBLOCKS.register("soul_log_0",() -> log(MaterialColor.WOOD, MaterialColor.WOOD));
+	public static final RegistryObject<Block> SOUL_LOG_1 = PILLARBLOCKS.register("soul_log_1",() -> log(MaterialColor.WOOD, MaterialColor.WOOD));
+	public static final RegistryObject<Block> SOUL_LOG_2 = PILLARBLOCKS.register("soul_log_2",() -> log(MaterialColor.WOOD, MaterialColor.WOOD));
+	public static final RegistryObject<Block> SOUL_LOG_STRIPPED = PILLARBLOCKS.register("stripped_soul_log",() -> log(MaterialColor.WOOD, MaterialColor.WOOD));
 	public static final RegistryObject<Block> SOUL_LEAVES = BLOCKS.register("soul_leaves", () -> new SoulLeaves(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion().color(MaterialColor.COLOR_BLUE)));
 	public static final RegistryObject<Block> SOUL_LEAVES_BOTTOM = PILLARBLOCKS.register("soul_leaves_bottom", () -> new SoulLeavesBottom(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noCollission().noOcclusion().color(MaterialColor.COLOR_BLUE)));
 	public static final RegistryObject<Block> SOUL_PLANKS = BLOCKS.register("soul_planks", () -> new Block(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).randomTicks().sound(SoundType.WOOD)));
 	public static final RegistryObject<TrapDoorBlock> SOUL_TRAPDOOR = PILLARBLOCKS.register("soul_trap_door", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.2F).randomTicks().sound(SoundType.WOOD).noOcclusion()));
-	public static final FenceBlock SOUL_WOOD_FENCE_ = new FenceBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).dynamicShape().sound(SoundType.WOOD));
-	public static final FenceGateBlock SOUL_WOOD_FENCE_GATE_ = new FenceGateBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).dynamicShape().sound(SoundType.WOOD));
-	public static final RegistryObject<FenceBlock> SOUL_WOOD_FENCE = PILLARBLOCKS.register("soul_wooden_fence", () -> SOUL_WOOD_FENCE_);
-	public static final RegistryObject<FenceGateBlock> SOUL_WOOD_FENCE_GATE = PILLARBLOCKS.register("soul_wooden_fence_gate", () -> SOUL_WOOD_FENCE_GATE_);
-	public static final RegistryObject<DoorBlock> SOUL_DOOR_ = PILLARBLOCKS.register("soul_door", () -> SOUL_DOOR);
+	public static final RegistryObject<FenceBlock> SOUL_WOOD_FENCE = PILLARBLOCKS.register("soul_wooden_fence", () -> new FenceBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
+	public static final RegistryObject<FenceGateBlock> SOUL_WOOD_FENCE_GATE = PILLARBLOCKS.register("soul_wooden_fence_gate", () -> new FenceGateBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
+	public static final RegistryObject<DoorBlock> SOUL_DOOR_ = PILLARBLOCKS.register("soul_door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD).strength(2.0F).sound(SoundType.WOOD)));
 
-	public static final WallBlock ANCIENT_STONE_WALL_ = new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE_WORLDGEN));
-	public static final WallBlock ANCIENT_SMOOTH_STONE_WALL_ = new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_SMOOTH_STONE_));
-	public static final WallBlock ANCIENT_POLISHED_STONE_WALL_ = new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_POLISHED_STONE_));
-	public static final WallBlock ANCIENT_STONE_BRICK_WALL_ = new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE_BRICKS_));
-	public static final WallBlock ANCIENT_CHISELED_STONE_BRICK_WALL_ = new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_CHISELED_STONE_BRICKS_));
-	public static final WallBlock ANCIENT_CRACKED_STONE_BRICK_WALL_ = new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_CRACKED_STONE_BRICKS_));
-	public static final WallBlock ANCIENT_MOSSY_STONE_WALL_ = new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_));
 
-	public static final RegistryObject<WallBlock> ANCIENT_STONE_WALL = WALLBLOCKS.register("ancient_stone_wall", () -> ANCIENT_STONE_WALL_);
-	public static final RegistryObject<WallBlock> ANCIENT_SMOOTH_STONE_WALL = WALLBLOCKS.register("ancient_smooth_stone_wall", () -> ANCIENT_SMOOTH_STONE_WALL_);
-	public static final RegistryObject<WallBlock> ANCIENT_POLISHED_STONE_WALL = WALLBLOCKS.register("ancient_polished_stone_wall", () -> ANCIENT_POLISHED_STONE_WALL_);
-	public static final RegistryObject<WallBlock> ANCIENT_STONE_BRICK_WALL = WALLBLOCKS.register("ancient_stone_brick_wall", () -> ANCIENT_STONE_BRICK_WALL_);
-	public static final RegistryObject<WallBlock> ANCIENT_CHISELED_STONE_BRICK_WALL = WALLBLOCKS.register("ancient_chiseled_stone_brick_wall", () -> ANCIENT_CHISELED_STONE_BRICK_WALL_);
-	public static final RegistryObject<WallBlock> ANCIENT_CRACKED_STONE_BRICK_WALL = WALLBLOCKS.register("ancient_cracked_stone_brick_wall", () -> ANCIENT_CRACKED_STONE_BRICK_WALL_);
-	public static final RegistryObject<WallBlock> ANCIENT_MOSSY_STONE_WALL = WALLBLOCKS.register("ancient_mossy_stone_wall", () -> ANCIENT_MOSSY_STONE_WALL_);
+	public static final RegistryObject<WallBlock> ANCIENT_STONE_WALL = WALLBLOCKS.register("ancient_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE.get())));
+	public static final RegistryObject<WallBlock> ANCIENT_SMOOTH_STONE_WALL = WALLBLOCKS.register("ancient_smooth_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_SMOOTH_STONE.get())));
+	public static final RegistryObject<WallBlock> ANCIENT_POLISHED_STONE_WALL = WALLBLOCKS.register("ancient_polished_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_POLISHED_STONE.get())));
+	public static final RegistryObject<WallBlock> ANCIENT_STONE_BRICK_WALL = WALLBLOCKS.register("ancient_stone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE_BRICKS.get())));
+	public static final RegistryObject<WallBlock> ANCIENT_CHISELED_STONE_BRICK_WALL = WALLBLOCKS.register("ancient_chiseled_stone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_CHISELED_STONE_BRICKS.get())));
+	public static final RegistryObject<WallBlock> ANCIENT_CRACKED_STONE_BRICK_WALL = WALLBLOCKS.register("ancient_cracked_stone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_CRACKED_STONE_BRICKS.get())));
+	public static final RegistryObject<WallBlock> ANCIENT_MOSSY_STONE_WALL = WALLBLOCKS.register("ancient_mossy_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
 
 
 	public static final RegistryObject<Item> ANCIENT_CAVEVINE_PLANT_ITEM = ITEMS.register("ancient_cavevines_plant", () ->new BlockItem(ANCIENT_CAVEVINES_PLANT_.get(),new Item.Properties().tab(AllTheModium.GROUP)));
@@ -467,27 +427,28 @@ public class ModRegistry {
 	public static final RegistryObject<Block> DEMONIC_SAPLING = PILLARBLOCKS.register("demonic_sapling",() -> new AncientSaplingBlock(new DemonicTreeGrower(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().dynamicShape().sound(SoundType.GRASS)));
 	public static final RegistryObject<Block> SOUL_SAPLING = PILLARBLOCKS.register("soul_sapling",() -> new AncientSaplingBlock(new SoulTreeGrower(), BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().dynamicShape().sound(SoundType.GRASS)));
 
-	public static final RegistryObject<StairBlock> ANCIENT_WOODEN_STAIRS = STAIRBLOCKS.register("ancient_wooden_stairs", () -> new StairBlock(() -> ANCIENT_WOOD_PLANKS_.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_WOOD_PLANKS_)));
-	public static final RegistryObject<StairBlock> DEMONIC_WOODEN_STAIRS = STAIRBLOCKS.register("demonic_wooden_stairs", () -> new StairBlock(() -> DEMONIC_WOOD_PLANKS_.defaultBlockState(), BlockBehaviour.Properties.copy(DEMONIC_WOOD_PLANKS_)));
-	public static final RegistryObject<StairBlock> SOUL_WOODEN_STAIRS = STAIRBLOCKS.register("soul_wooden_stairs", () -> new StairBlock(() -> SOUL_WOOD_PLANKS_.defaultBlockState(), BlockBehaviour.Properties.copy(SOUL_WOOD_PLANKS_)));
-	public static final RegistryObject<StairBlock> ANCIENT_STONE_STAIRS = STAIRBLOCKS.register("ancient_stone_stairs", () -> new StairBlock(() -> ANCIENT_STONE_WORLDGEN.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_STONE_WORLDGEN)));
-	public static final RegistryObject<StairBlock> ANCIENT_SMOOTH_STONE_STAIRS = STAIRBLOCKS.register("ancient_smooth_stone_stairs", () -> new StairBlock(() -> ANCIENT_SMOOTH_STONE_.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_SMOOTH_STONE_)));
-	public static final RegistryObject<StairBlock> ANCIENT_STONE_BRICK_STAIRS = STAIRBLOCKS.register("ancient_stone_brick_stairs", () -> new StairBlock(() -> ANCIENT_STONE_BRICKS_.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_STONE_WORLDGEN)));
-	public static final RegistryObject<StairBlock> ANCIENT_MOSSY_STONE_STAIRS = STAIRBLOCKS.register("ancient_mossy_stone_stairs", () -> new StairBlock(() -> ANCIENT_MOSSY_STONE_.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
-	public static final RegistryObject<StairBlock> ANCIENT_CHISELED_STONE_STAIRS = STAIRBLOCKS.register("ancient_chiseled_stone_brick_stairs", () -> new StairBlock(() -> ANCIENT_CHISELED_STONE_BRICKS_.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
-	public static final RegistryObject<StairBlock> ANCIENT_CRACKED_STONE_STAIRS = STAIRBLOCKS.register("ancient_cracked_stone_brick_stairs", () -> new StairBlock(() -> ANCIENT_CRACKED_STONE_BRICKS_.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
-	public static final RegistryObject<StairBlock> ANCIENT_POLISHED_STONE_STAIRS = STAIRBLOCKS.register("ancient_polished_stone_stairs", () -> new StairBlock(() -> ANCIENT_POLISHED_STONE_.defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
+	public static final RegistryObject<StairBlock> ANCIENT_WOODEN_STAIRS = STAIRBLOCKS.register("ancient_wooden_stairs", () -> new StairBlock(() -> ANCIENT_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_PLANKS.get())));
+	public static final RegistryObject<StairBlock> DEMONIC_WOODEN_STAIRS = STAIRBLOCKS.register("demonic_wooden_stairs", () -> new StairBlock(() -> DEMONIC_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(DEMONIC_PLANKS.get())));
+	public static final RegistryObject<StairBlock> SOUL_WOODEN_STAIRS = STAIRBLOCKS.register("soul_wooden_stairs", () -> new StairBlock(() -> SOUL_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(SOUL_PLANKS.get())));
+	public static final RegistryObject<StairBlock> ANCIENT_STONE_STAIRS = STAIRBLOCKS.register("ancient_stone_stairs", () -> new StairBlock(() -> ANCIENT_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_STONE.get())));
+	public static final RegistryObject<StairBlock> ANCIENT_SMOOTH_STONE_STAIRS = STAIRBLOCKS.register("ancient_smooth_stone_stairs", () -> new StairBlock(() -> ANCIENT_SMOOTH_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_SMOOTH_STONE.get())));
+	public static final RegistryObject<StairBlock> ANCIENT_STONE_BRICK_STAIRS = STAIRBLOCKS.register("ancient_stone_brick_stairs", () -> new StairBlock(() -> ANCIENT_STONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_STONE.get())));
 
-	public static final RegistryObject<SlabBlock> ANCIENT_WOODEN_SLABS = SLABBLOCKS.register("ancient_wooden_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_WOOD_PLANKS_)));
-	public static final RegistryObject<SlabBlock> DEMONIC_WOODEN_SLABS = SLABBLOCKS.register("demonic_wooden_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(DEMONIC_WOOD_PLANKS_)));
-	public static final RegistryObject<SlabBlock> SOUL_WOODEN_SLABS = SLABBLOCKS.register("soul_wooden_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(SOUL_WOOD_PLANKS_)));
-	public static final RegistryObject<SlabBlock> ANCIENT_STONE_SLABS = SLABBLOCKS.register("ancient_stone_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE_WORLDGEN)));
-	public static final RegistryObject<SlabBlock> ANCIENT_SMOOTH_STONE_SLABS = SLABBLOCKS.register("ancient_smooth_stone_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_SMOOTH_STONE_)));
-	public static final RegistryObject<SlabBlock> ANCIENT_STONE_BRICK_SLABS = SLABBLOCKS.register("ancient_stone_brick_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE_WORLDGEN)));
-	public static final RegistryObject<SlabBlock> ANCIENT_MOSSY_STONE_SLABS = SLABBLOCKS.register("ancient_mossy_stone_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
-	public static final RegistryObject<SlabBlock> ANCIENT_CHISELED_STONE_SLABS = SLABBLOCKS.register("ancient_chiseled_stone_brick_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
-	public static final RegistryObject<SlabBlock> ANCIENT_CRACKED_STONE_SLABS = SLABBLOCKS.register("ancient_cracked_stone_brick_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
-	public static final RegistryObject<SlabBlock> ANCIENT_POLISHED_STONE_SLABS = SLABBLOCKS.register("ancient_polished_stone_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE_)));
+	public static final RegistryObject<StairBlock> ANCIENT_MOSSY_STONE_STAIRS = STAIRBLOCKS.register("ancient_mossy_stone_stairs", () -> new StairBlock(() -> ANCIENT_MOSSY_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
+	public static final RegistryObject<StairBlock> ANCIENT_CHISELED_STONE_STAIRS = STAIRBLOCKS.register("ancient_chiseled_stone_brick_stairs", () -> new StairBlock(() -> ANCIENT_CHISELED_STONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
+	public static final RegistryObject<StairBlock> ANCIENT_CRACKED_STONE_STAIRS = STAIRBLOCKS.register("ancient_cracked_stone_brick_stairs", () -> new StairBlock(() -> ANCIENT_CRACKED_STONE_BRICKS.get().defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
+	public static final RegistryObject<StairBlock> ANCIENT_POLISHED_STONE_STAIRS = STAIRBLOCKS.register("ancient_polished_stone_stairs", () -> new StairBlock(() -> ANCIENT_POLISHED_STONE.get().defaultBlockState(), BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
+
+	public static final RegistryObject<SlabBlock> ANCIENT_WOODEN_SLABS = SLABBLOCKS.register("ancient_wooden_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_PLANKS.get())));
+	public static final RegistryObject<SlabBlock> DEMONIC_WOODEN_SLABS = SLABBLOCKS.register("demonic_wooden_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(DEMONIC_PLANKS.get())));
+	public static final RegistryObject<SlabBlock> SOUL_WOODEN_SLABS = SLABBLOCKS.register("soul_wooden_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(SOUL_PLANKS.get())));
+	public static final RegistryObject<SlabBlock> ANCIENT_STONE_SLABS = SLABBLOCKS.register("ancient_stone_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE.get())));
+	public static final RegistryObject<SlabBlock> ANCIENT_SMOOTH_STONE_SLABS = SLABBLOCKS.register("ancient_smooth_stone_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_SMOOTH_STONE.get())));
+	public static final RegistryObject<SlabBlock> ANCIENT_STONE_BRICK_SLABS = SLABBLOCKS.register("ancient_stone_brick_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_STONE.get())));
+	public static final RegistryObject<SlabBlock> ANCIENT_MOSSY_STONE_SLABS = SLABBLOCKS.register("ancient_mossy_stone_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
+	public static final RegistryObject<SlabBlock> ANCIENT_CHISELED_STONE_SLABS = SLABBLOCKS.register("ancient_chiseled_stone_brick_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
+	public static final RegistryObject<SlabBlock> ANCIENT_CRACKED_STONE_SLABS = SLABBLOCKS.register("ancient_cracked_stone_brick_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
+	public static final RegistryObject<SlabBlock> ANCIENT_POLISHED_STONE_SLABS = SLABBLOCKS.register("ancient_polished_stone_slabs", () -> new SlabBlock(BlockBehaviour.Properties.copy(ANCIENT_MOSSY_STONE.get())));
 
 	public static final RegistryObject<Item> ANCIENT_WOODEN_SLABS_ITEM = ITEMS.register("ancient_wooden_slabs", () -> new BlockItem(ANCIENT_WOODEN_SLABS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> DEMONIC_WOODEN_SLABS_ITEM = ITEMS.register("demonic_wooden_slabs", () -> new BlockItem(DEMONIC_WOODEN_SLABS.get(),new Item.Properties().tab(AllTheModium.GROUP)));
@@ -882,24 +843,25 @@ public class ModRegistry {
 	public static final RegistryObject<Item> PIGLICH_HEART = ITEMS.register("piglich_heart", () -> new PiglichHeart(new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<EntityType<PiglichEntity>> PIGLICH = createMonsterEntity("piglich",PiglichEntity::new,0.6F,3.0F,0x000000,0xebe834);
 
-	public static final RegistryObject<EntityType<ATMShulkerEntity>> ATM_SHULKER = createShulkerEntity("allthemodium_shulker", ATMShulkerEntity::new,0.6F,3.0F,0x000000,0xebe834);
+	//public static final RegistryObject<EntityType<ATMShulkerEntity>> ATM_SHULKER = createShulkerEntity("allthemodium_shulker", ATMShulkerEntity::new,0.6F,3.0F,0x000000,0xebe834);
 
 
-	public static final WorldCarver<CanyonCarverConfiguration> OTHER_CANYON_CARVER_C = new OtherCanyonCarver(CanyonCarverConfiguration.CODEC);
-	public static final RegistryObject<WorldCarver<?>> OTHER_CANYON_CARVER = CARVERS.register("other_canyons", () -> OTHER_CANYON_CARVER_C);
-	public static final WorldCarver<CaveCarverConfiguration> OTHER_CARVER_C = new OtherCarver(CaveCarverConfiguration.CODEC);
-	public static final RegistryObject<WorldCarver<?>> OTHER_CARVER = CARVERS.register("other_caves", () -> OTHER_CARVER_C);
-	public static final WorldCarver<CaveCarverConfiguration> OTHER_CAVE_CARVER_C = new OtherCaveCarver(CaveCarverConfiguration.CODEC);
-	public static final RegistryObject<WorldCarver<?>> OTHER_CAVE_CARVER = CARVERS.register("other_caves_2", () -> OTHER_CAVE_CARVER_C);
+
+	public static final RegistryObject<WorldCarver<?>> OTHER_CANYON_CARVER = CARVERS.register("other_canyons", () -> new OtherCanyonCarver(CanyonCarverConfiguration.CODEC);
+
+	public static final RegistryObject<WorldCarver<?>> OTHER_CARVER = CARVERS.register("other_caves", () -> new OtherCarver(CaveCarverConfiguration.CODEC));
+
+	public static final RegistryObject<WorldCarver<?>> OTHER_CAVE_CARVER = CARVERS.register("other_caves_2", () -> new OtherCaveCarver(CaveCarverConfiguration.CODEC));
 
 	private static <T extends Monster> RegistryObject<EntityType<T>> createMonsterEntity(String name, EntityType.EntityFactory<T> factory, float width, float height, int eggPrimary, int eggSecondary) {
 		ResourceLocation location = new ResourceLocation(Reference.MOD_ID, name);
-		EntityType<T> entity = EntityType.Builder.of(factory, MobCategory.MONSTER).sized(width, height).setTrackingRange(64).setUpdateInterval(1).build(location.toString());
-		Item spawnEgg = new SpawnEggItem(entity, eggPrimary, eggSecondary, (new Item.Properties()).tab(AllTheModium.GROUP));
-		spawnEgg.setRegistryName(new ResourceLocation(Reference.MOD_ID, name + "_spawn_egg"));
-		SPAWN_EGGS.add(spawnEgg);
+		return ENTITIES.register(name, () ->EntityType.Builder.of(factory, MobCategory.MONSTER).sized(width, height).setTrackingRange(64).setUpdateInterval(1).build(location.toString()));
+		//EntityType<T> entity = EntityType.Builder.of(factory, MobCategory.MONSTER).sized(width, height).setTrackingRange(64).setUpdateInterval(1).build(location.toString());
+		//Item spawnEgg = new SpawnEggItem(entity, eggPrimary, eggSecondary, (new Item.Properties()).tab(AllTheModium.GROUP));
+		//spawnEgg.setRegistryName(new ResourceLocation(Reference.MOD_ID, name + "_spawn_egg"));
+		//SPAWN_EGGS.add(spawnEgg);
 
-		return ENTITIES.register(name, () -> entity);
+		//return ENTITIES.register(name, () -> entity);
 	}
 
 	private static <T extends AbstractGolem> RegistryObject<EntityType<T>> createShulkerEntity(String name, EntityType.EntityFactory<T> factory, float width, float height, int eggPrimary, int eggSecondary) {
@@ -915,7 +877,7 @@ public class ModRegistry {
 	@SubscribeEvent
 	public static void addEntityAttributes(EntityAttributeCreationEvent event) {
 		event.put(PIGLICH.get(), PiglichEntity.createAttributes().build());
-		event.put(ATM_SHULKER.get(), ATMShulkerEntity.createAttributes().build());
+		//event.put(ATM_SHULKER.get(), ATMShulkerEntity.createAttributes().build());
 	}
 	private static RotatedPillarBlock log(MaterialColor color1, MaterialColor color2) {
 		return new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD, (woodLog) -> {

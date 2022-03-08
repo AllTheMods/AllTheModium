@@ -28,7 +28,7 @@ public class ClientEvents {
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
                 event.registerEntityRenderer(ModRegistry.PIGLICH.get(), PiglichRenderer::new);
 
-               event.registerEntityRenderer(ModRegistry.ATM_SHULKER.get(), ATMShulkerRenderer::new);
+              // event.registerEntityRenderer(ModRegistry.ATM_SHULKER.get(), ATMShulkerRenderer::new);
     }
 
     @SubscribeEvent
