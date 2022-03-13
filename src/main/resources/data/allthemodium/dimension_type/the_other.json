@@ -1,6 +1,4 @@
 {
-
-  "name": "allthemodium:the_other",
   "ultrawarm": true,
   "natural": true,
   "shrunk": true,
@@ -14,6 +12,7 @@
   "min_y": -64,
   "ambient_light": 0.05,
   "logical_height": 384,
-  "infiniburn": "minecraft:infiniburn_nether",
+  "effects": "minecraft:the_nether",
+  "infiniburn": "#minecraft:infiniburn_nether",
   "coordinate_scale": 8
 }

@@ -88,7 +88,7 @@ public class AllTheModium
     public AllTheModium() {
         // Register the setup method for modloading
 
-    	IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
     	ModRegistry.FLUIDS.register(modEventBus);
        	ModRegistry.BLOCKS.register(modEventBus);
@@ -102,11 +102,12 @@ public class AllTheModium
     	ModRegistry.ENTITIES.register(modEventBus);
     	ModRegistry.FEATURES.register(modEventBus);
 		ModRegistry.CARVERS.register(modEventBus);
+
     	ATMCraftingSetup.REGISTRY.register(modEventBus);
     	ATMStructures.STRUCTURES.register(modEventBus);
 		modEventBus.register(ModRegistry.class);
 		modEventBus.addListener(this::setup);
-		modEventBus.addListener(ATMCarvers::register);
+
 
     	if(ModList.get().isLoaded("mekanism")) {
 			//modEventBus.register(MekRegistry.class);
@@ -125,7 +126,11 @@ public class AllTheModium
 	public void setup(final FMLCommonSetupEvent event)
 	{
 		event.enqueueWork(() -> {
+
 			ATMConfiguredStructures.registerConfiguredStructures();
+			Registry.register(Registry.CHUNK_GENERATOR, MINING_DIM_ID, MiningDimSource.CODEC);
+			Registry.register(Registry.CHUNK_GENERATOR, THE_OTHER_DIM_ID, TheOtherDimSource.CODEC);
+
 		});
 	}
 	public void setupClient(final FMLClientSetupEvent event)
@@ -146,6 +151,7 @@ public class AllTheModium
 				//IAFForgeRecipes.regIaFItems(event); //for gold piles items
 			}
 		}
+
 
 	}
 

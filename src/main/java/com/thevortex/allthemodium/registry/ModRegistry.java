@@ -20,6 +20,7 @@ import com.thevortex.allthemodium.worldgen.carvers.OtherCanyonCarver;
 import com.thevortex.allthemodium.worldgen.carvers.OtherCarver;
 import com.thevortex.allthemodium.worldgen.carvers.OtherCaveCarver;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EntityType;
@@ -34,6 +35,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.ChunkGenerator;
+import net.minecraft.world.level.chunk.ChunkSource;
+import net.minecraft.world.level.chunk.ChunkStatus;
 import net.minecraft.world.level.levelgen.carver.CanyonCarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
@@ -83,6 +86,12 @@ public class ModRegistry {
 			.create(ForgeRegistries.WORLD_CARVERS, Reference.MOD_ID);
 	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister
 			.create(ForgeRegistries.ENTITIES, Reference.MOD_ID);
+	//
+	//Registry.register(Registry.CHUNK_GENERATOR, MINING_DIM_ID, MiningDimSource.CODEC);
+	//Registry.register(Registry.CHUNK_GENERATOR, THE_OTHER_DIM_ID, TheOtherDimSource.CODEC);
+	public static final DeferredRegister<ChunkStatus> ChunkGen =
+			DeferredRegister.create(ForgeRegistries.CHUNK_STATUS, Reference.MOD_ID);
+
 
 	public static final DeferredRegister<Feature<?>> FEATURES =
 			DeferredRegister.create(ForgeRegistries.FEATURES, Reference.MOD_ID);
@@ -851,7 +860,7 @@ public class ModRegistry {
 
 	public static final RegistryObject<WorldCarver<CaveCarverConfiguration>> OTHER_CARVER = CARVERS.register("other_caves", () -> new OtherCarver(CaveCarverConfiguration.CODEC));
 
-	public static final RegistryObject<WorldCarver<CaveCarverConfiguration>> OTHER_CAVE_CARVER = CARVERS.register("other_caves_2", () -> new OtherCaveCarver(CaveCarverConfiguration.CODEC));
+	public static final RegistryObject<WorldCarver<CaveCarverConfiguration>> OTHER_CAVE_CARVER = CARVERS.register("other_caverns", () -> new OtherCaveCarver(CaveCarverConfiguration.CODEC));
 
 	private static <T extends Monster> RegistryObject<EntityType<T>> createMonsterEntity(String name, EntityType.EntityFactory<T> factory, float width, float height, int eggPrimary, int eggSecondary) {
 		ResourceLocation location = new ResourceLocation(Reference.MOD_ID, name);

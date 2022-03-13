@@ -1,7 +1,7 @@
 {
   "type": "allthemodium:mining",
   "generator": {
-    "type": "allthemodium:mining",
+    "type": "minecraft:flat",
     "settings": {
       "biome": "allthemodium:mining",
       "lakes": false,
@@ -28,9 +28,7 @@
           "height": 1
         }
       ],
-      "structures": {
-        "structures": {}
-      }
+      "structure_overrides": []
     }
   }
 }

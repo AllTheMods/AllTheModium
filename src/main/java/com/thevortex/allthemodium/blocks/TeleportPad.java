@@ -73,10 +73,8 @@ public class TeleportPad extends Block {
 	}
 
 	public void transferPlayer(ServerPlayer player, BlockPos pos) {
+/*
 		int config = 0;
-		/*if(ModList.get().isLoaded("allthetweaks")) {
-			config = Configuration.COMMON.mainmode.get();
-		}*/
 		if (player.level.dimension().equals(AllTheModium.Mining)) {
 			ServerLevel targetWorld = player.server.getLevel(AllTheModium.OverWorld);
 			int y = 256;
@@ -166,39 +164,8 @@ public class TeleportPad extends Block {
 				player.teleportTo(targetWorld, targetPos.getX() + 0.5D, targetPos.getY() + 0.25D, targetPos.getZ() + 0.5D, 0, 0);
 
 			}
-		} /*else if (player.world.getDimensionKey().equals(AllTheModium.The_End)) {
-			ServerWorld targetWorld = player.server.getWorld(AllTheModium.THE_BEYOND);
-			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), 75, Math.round(pos.getZ()));
-			if (targetWorld.getBlockState(targetPos).hasTileEntity() == false) {
-				targetWorld.setBlockState(targetPos, ModBlocks.TELEPORT_PAD.getDefaultState());
-				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
-				player.teleport(targetWorld, targetPos.getX() + 0.5D, targetPos.getY() + 0.25D, targetPos.getZ() + 0.5D, 0, 0);
-				player.connection.sendPacket(new SPlaySoundEventPacket(1032, BlockPos.ZERO, 0, false));
-			}
-		}else if (player.world.getDimensionKey().equals(AllTheModium.THE_BEYOND)) {
-			ServerWorld targetWorld = player.server.getWorld(AllTheModium.The_End);
-			int y = 256;
-			boolean located = false;
-			while (y >= 1) {
-				BlockPos posa = new BlockPos(Math.round(pos.getX()), y, Math.round(pos.getZ()));
-				Block potential = targetWorld.getBlockState(posa).getBlock();
-				if (potential.getRegistryName().getPath().equals("teleport_pad")) {
-					located = true;
-					break;
-
-				} else {
-					y--;
-				}
-			}
-			if (located) {
-				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
-				player.teleport(targetWorld, pos.getX() + 0.5D, y + 0.25D, pos.getZ() + 0.5D, player.rotationYaw,
-						player.rotationPitch);
-				player.connection.sendPacket(new SPlaySoundEventPacket(1032, BlockPos.ZERO, 0, false));
-				return;
-			}
-		}*/
-
+		}
+*/
 	}
 
 	@Override
