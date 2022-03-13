@@ -78,7 +78,7 @@ public class ATMBiomes {
 
     @SubscribeEvent
     public static void registerBiomes(RegistryEvent.Register<Biome> event) {
-        
+
         if(The_Other == null) {
             BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(3343107).waterColor(3343107).waterFogColor(3343107).skyColor(3343107).foliageColorOverride(1787717).grassColorOverride(1787717).build();
             BiomeGenerationSettings.Builder biomeGenerationSettings = new BiomeGenerationSettings.Builder();

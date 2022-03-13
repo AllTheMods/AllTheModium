@@ -130,7 +130,7 @@ public class AllTheModium
 			ATMConfiguredStructures.registerConfiguredStructures();
 			Registry.register(Registry.CHUNK_GENERATOR, MINING_DIM_ID, MiningDimSource.CODEC);
 			Registry.register(Registry.CHUNK_GENERATOR, THE_OTHER_DIM_ID, TheOtherDimSource.CODEC);
-
+			ATMCarvers.register();
 		});
 	}
 	public void setupClient(final FMLClientSetupEvent event)
