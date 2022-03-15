@@ -73,7 +73,6 @@ public class TeleportPad extends Block {
 	}
 
 	public void transferPlayer(ServerPlayer player, BlockPos pos) {
-/*
 		int config = 0;
 		if (player.level.dimension().equals(AllTheModium.Mining)) {
 			ServerLevel targetWorld = player.server.getLevel(AllTheModium.OverWorld);
@@ -165,7 +164,7 @@ public class TeleportPad extends Block {
 
 			}
 		}
-*/
+
 	}
 
 	@Override
