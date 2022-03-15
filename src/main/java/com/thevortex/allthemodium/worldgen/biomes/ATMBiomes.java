@@ -22,15 +22,8 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+
 public class ATMBiomes {
-    public static final TagKey<Biome> THE_OTHER = register("the_other");
-    public static final TagKey<Biome> BASALT_DELTAS = register("basalt_deltas");
-    public static final TagKey<Biome> CRIMSON_FOREST = register("crimson_forest");
-    public static final TagKey<Biome> DESERT = register("desert");
-    public static final TagKey<Biome> DESERT_HILLS = register("desert_hills");
-    public static final TagKey<Biome> SOUL_SAND_VALLEY = register("soul_sand_valley");
-    public static final TagKey<Biome> WARPED_FOREST = register("warped_forest");
 
     public static Biome The_Other;
     public static Biome Basalt_Deltas;
@@ -40,6 +33,13 @@ public class ATMBiomes {
     public static Biome Soul_Sand_Valley;
     public static Biome Warped_Forest;
 
+    public static final TagKey<Biome> THE_OTHER = register("the_other");
+    public static final TagKey<Biome> BASALT_DELTAS = register("basalt_deltas");
+    public static final TagKey<Biome> CRIMSON_FOREST = register("crimson_forest");
+    public static final TagKey<Biome> DESERT = register("desert");
+    public static final TagKey<Biome> DESERT_HILLS = register("desert_hills");
+    public static final TagKey<Biome> SOUL_SAND_VALLEY = register("soul_sand_valley");
+    public static final TagKey<Biome> WARPED_FOREST = register("warped_forest");
 
 
     private static TagKey<Biome> register(String names) {
@@ -47,9 +47,9 @@ public class ATMBiomes {
     }
 
     public static void addDefaultCarvers(BiomeGenerationSettings.Builder builder) {
-        builder.addCarver(GenerationStep.Carving.AIR , ATMCarvers.getHolder(ATMCarvers.OTHER_CAVE_CWC));
-        builder.addCarver(GenerationStep.Carving.AIR , ATMCarvers.getHolder(ATMCarvers.NETHER_CAVE_CWC));
-        builder.addCarver(GenerationStep.Carving.AIR , ATMCarvers.getHolder(ATMCarvers.OTHER_CANYON_CWC));
+        builder.addCarver(GenerationStep.Carving.AIR , ATMCarvers.NETHER_CAVE_CWC_HOLDER);
+        builder.addCarver(GenerationStep.Carving.AIR , ATMCarvers.OTHER_CAVE_CWC_HOLDER);
+        builder.addCarver(GenerationStep.Carving.AIR , ATMCarvers.OTHER_CANYON_CWC_HOLDER);
     }
 
     public static void addDefaultOres(BiomeGenerationSettings.Builder builder) {
@@ -76,7 +76,7 @@ public class ATMBiomes {
 
 
 
-    @SubscribeEvent
+
     public static void registerBiomes(RegistryEvent.Register<Biome> event) {
 
         if(The_Other == null) {

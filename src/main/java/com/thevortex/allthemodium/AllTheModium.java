@@ -101,7 +101,9 @@ public class AllTheModium
     	ModRegistry.ITEMS.register(modEventBus);
     	ModRegistry.ENTITIES.register(modEventBus);
     	ModRegistry.FEATURES.register(modEventBus);
-		ModRegistry.CARVERS.register(modEventBus);
+
+    	ModRegistry.CARVERS.register(modEventBus);
+		ModRegistry.BIOMES.register(modEventBus);
 
     	ATMCraftingSetup.REGISTRY.register(modEventBus);
     	ATMStructures.STRUCTURES.register(modEventBus);
@@ -126,11 +128,10 @@ public class AllTheModium
 	public void setup(final FMLCommonSetupEvent event)
 	{
 		event.enqueueWork(() -> {
-
+			ATMCarvers.register();
 			ATMConfiguredStructures.registerConfiguredStructures();
 			Registry.register(Registry.CHUNK_GENERATOR, MINING_DIM_ID, MiningDimSource.CODEC);
 			Registry.register(Registry.CHUNK_GENERATOR, THE_OTHER_DIM_ID, TheOtherDimSource.CODEC);
-			ATMCarvers.register();
 		});
 	}
 	public void setupClient(final FMLClientSetupEvent event)
