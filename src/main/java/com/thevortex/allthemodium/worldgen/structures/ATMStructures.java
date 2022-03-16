@@ -1,17 +1,11 @@
 package com.thevortex.allthemodium.worldgen.structures;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import com.thevortex.allthemodium.reference.Reference;
-import net.minecraft.data.BuiltinRegistries;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class ATMStructures {
 

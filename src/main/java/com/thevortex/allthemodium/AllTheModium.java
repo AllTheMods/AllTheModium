@@ -135,10 +135,9 @@ public class AllTheModium
         MinecraftForge.EVENT_BUS.register(BlockBreak.class);
         MinecraftForge.EVENT_BUS.register(ArmorEvents.class);
 		//MinecraftForge.EVENT_BUS.register(PlayerHarvest.class);
-
     }
-	public void setup(final FMLCommonSetupEvent event)
-	{
+
+	public void setup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
 			//ATMConfiguredStructures.registerConfiguredStructures();
 			Registry.register(Registry.CHUNK_GENERATOR, MINING_DIM_ID, MiningDimSource.CODEC);
