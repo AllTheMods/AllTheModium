@@ -151,12 +151,12 @@ public class DungeonStructure extends StructureFeature<JigsawConfiguration> {
 
     private static final Lazy<List<MobSpawnSettings.SpawnerData>> STRUCTURE_MONSTERS = Lazy.of(() -> ImmutableList.of(
             new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 100, 4, 9),
-            new MobSpawnSettings.SpawnerData(ModRegistry.PIGLICH.get(), 10, 1, 2)
+            new MobSpawnSettings.SpawnerData(EntityType.EVOKER, 10, 1, 2)
     ));
 
     private static final Lazy<List<MobSpawnSettings.SpawnerData>> STRUCTURE_CREATURES = Lazy.of(() -> ImmutableList.of(
-            new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 30, 10, 15),
-            new MobSpawnSettings.SpawnerData(EntityType.COW, 100, 1, 2)
+            new MobSpawnSettings.SpawnerData(EntityType.BAT, 30, 10, 15),
+            new MobSpawnSettings.SpawnerData(EntityType.ZOMBIE_HORSE, 100, 1, 2)
     ));
 
 

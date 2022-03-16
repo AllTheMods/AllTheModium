@@ -5,6 +5,6 @@
     "size": 7
   },
   "biomes": "#allthemodium:has_structure/dungeon_biomes",
-  "adapt_noise": true,
+  "adapt_noise": false,
   "spawn_overrides": {}
 }

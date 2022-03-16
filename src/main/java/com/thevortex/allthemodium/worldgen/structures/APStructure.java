@@ -167,8 +167,8 @@ public class APStructure extends StructureFeature<JigsawConfiguration> {
     ));
 
     private static final Lazy<List<MobSpawnSettings.SpawnerData>> STRUCTURE_CREATURES = Lazy.of(() -> ImmutableList.of(
-            new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 30, 10, 15),
-            new MobSpawnSettings.SpawnerData(EntityType.COW, 100, 1, 2)
+            new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 30, 10, 15),
+            new MobSpawnSettings.SpawnerData(EntityType.BAT, 100, 1, 2)
     ));
 
 
