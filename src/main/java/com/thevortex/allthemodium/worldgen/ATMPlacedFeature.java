@@ -22,6 +22,7 @@ import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
+import java.util.Random;
 
 public class ATMPlacedFeature {
 

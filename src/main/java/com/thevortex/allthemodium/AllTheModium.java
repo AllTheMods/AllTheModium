@@ -3,6 +3,7 @@ package com.thevortex.allthemodium;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.serialization.Codec;
 import com.thevortex.allthemodium.events.PlayerHarvest;
@@ -31,6 +32,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.dimension.DimensionType;
+import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
 import net.minecraft.world.level.levelgen.feature.NetherFortressFeature;
 import net.minecraft.world.level.levelgen.feature.StructureFeature;
@@ -62,6 +64,7 @@ import com.thevortex.allthemodium.registry.ModRegistry;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod("allthemodium")
@@ -75,7 +78,17 @@ public class AllTheModium
 	public static final ResourceLocation MINING_DIM_ID = new ResourceLocation(MOD_ID,"mining");
 	public static final ResourceLocation THE_OTHER_DIM_ID = new ResourceLocation(MOD_ID,"the_other");
 	public static final ResourceKey<Level> Mining = ResourceKey.create(Registry.DIMENSION_REGISTRY, MINING_DIM_ID);
+	public static final ResourceKey<Biome> MINING_BIOME = ModRegistry.createBiome("mining",ATMBiomes.mining());
+
 	public static final ResourceKey<Level> THE_OTHER = ResourceKey.create(Registry.DIMENSION_REGISTRY, THE_OTHER_DIM_ID);
+	public static final ResourceKey<Biome> The_Other = ModRegistry.createBiome("the_other", ATMBiomes.the_other());
+	public static final ResourceKey<Biome> Basalt_Deltas = ModRegistry.createBiome("basalt_deltas", ATMBiomes.basalt_deltas());
+ 	public static final ResourceKey<Biome> Crimson_Forest = ModRegistry.createBiome("crimson_forest", ATMBiomes.crimson_forest());
+	public static final ResourceKey<Biome> Desert = ModRegistry.createBiome("desert", ATMBiomes.desert());
+	public static final ResourceKey<Biome> Desert_Hills = ModRegistry.createBiome("desert_hills", ATMBiomes.desert_hills());
+	public static final ResourceKey<Biome> Soul_Sand_Valley = ModRegistry.createBiome("soul_sand_valley", ATMBiomes.soul_sand_valley());
+	public static final ResourceKey<Biome> Warped_Forest = ModRegistry.createBiome("warped_forest", ATMBiomes.warped_forest());
+
 	public static final ResourceKey<DimensionType> Mining_TYPE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, MINING_DIM_ID);
 	public static final ResourceKey<DimensionType> THE_OTHER_TYPE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, THE_OTHER_DIM_ID);
 	//public static final RegistryKey<World> THE_BEYOND = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"the_beyond"));
@@ -103,7 +116,6 @@ public class AllTheModium
     	ModRegistry.FEATURES.register(modEventBus);
 
     	ModRegistry.CARVERS.register(modEventBus);
-		ModRegistry.BIOMES.register(modEventBus);
 
     	ATMCraftingSetup.REGISTRY.register(modEventBus);
     	ATMStructures.STRUCTURES.register(modEventBus);
@@ -128,11 +140,29 @@ public class AllTheModium
 	public void setup(final FMLCommonSetupEvent event)
 	{
 		event.enqueueWork(() -> {
-			ATMCarvers.register();
-			ATMConfiguredStructures.registerConfiguredStructures();
+			//ATMConfiguredStructures.registerConfiguredStructures();
 			Registry.register(Registry.CHUNK_GENERATOR, MINING_DIM_ID, MiningDimSource.CODEC);
 			Registry.register(Registry.CHUNK_GENERATOR, THE_OTHER_DIM_ID, TheOtherDimSource.CODEC);
-		});
+
+				/** WorldCarver.CAVE */
+				ObfuscationReflectionHelper.setPrivateValue(WorldCarver.class, WorldCarver.CAVE, new ImmutableSet.Builder<Block>()
+						.addAll((Set<Block>) ObfuscationReflectionHelper.getPrivateValue(WorldCarver.class, WorldCarver.CAVE, "f_64983_"))
+						.add(ModRegistry.ANCIENT_STONE.get().defaultBlockState().getBlock())
+						.build(), "f_64983_");
+
+				/** WorldCarver.NETHER */
+				ObfuscationReflectionHelper.setPrivateValue(WorldCarver.class, WorldCarver.NETHER_CAVE, new ImmutableSet.Builder<Block>()
+						.addAll((Set<Block>) ObfuscationReflectionHelper.getPrivateValue(WorldCarver.class, WorldCarver.NETHER_CAVE, "f_64983_"))
+						.add(ModRegistry.ANCIENT_STONE.get().defaultBlockState().getBlock())
+						.build(), "f_64983_");
+
+				/** WorldCarver.CANYON **/
+				ObfuscationReflectionHelper.setPrivateValue(WorldCarver.class, WorldCarver.CANYON, new ImmutableSet.Builder<Block>()
+						.addAll((Set<Block>) ObfuscationReflectionHelper.getPrivateValue(WorldCarver.class, WorldCarver.CANYON, "f_64983_"))
+						.add(ModRegistry.ANCIENT_STONE.get().defaultBlockState().getBlock())
+						.build(), "f_64983_");
+			});
+
 	}
 	public void setupClient(final FMLClientSetupEvent event)
 	{

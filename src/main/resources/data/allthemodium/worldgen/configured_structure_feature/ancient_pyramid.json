@@ -1,0 +1,10 @@
+{
+  "type": "allthemodium:ancient_pyramid",
+  "config": {
+    "start_pool": "allthemodium:pyramid/start_pool",
+    "size": 7
+  },
+  "biomes": "#allthemodium:has_structure/ancient_pyramid_biomes",
+  "adapt_noise": true,
+  "spawn_overrides": {}
+}

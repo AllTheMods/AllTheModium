@@ -11,7 +11,7 @@ import net.minecraft.world.level.levelgen.structure.pools.StructurePoolElement;
 import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 
 public class DungeonPieces {
-    public static final Holder<StructureTemplatePool> START = Pools.register(new StructureTemplatePool(new ResourceLocation(Reference.MOD_ID,"dungeon/start_pool"), new ResourceLocation("empty"), ImmutableList.of(Pair.of(StructurePoolElement.single(Reference.MOD_ID + ":fortress", ProcessorLists.EMPTY), 1)), StructureTemplatePool.Projection.RIGID));
+    public static final Holder<StructureTemplatePool> START = Pools.register(new StructureTemplatePool(new ResourceLocation(Reference.MOD_ID,"dungeon/start_pool"), new ResourceLocation(Reference.MOD_ID,"dungeon/start_pool"), ImmutableList.of(Pair.of(StructurePoolElement.single(Reference.MOD_ID + ":fortress", ProcessorLists.EMPTY), 1)), StructureTemplatePool.Projection.RIGID));
 
     public static void bootstrap() {
 

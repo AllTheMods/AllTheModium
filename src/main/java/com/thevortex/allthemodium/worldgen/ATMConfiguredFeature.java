@@ -58,7 +58,7 @@ public class ATMConfiguredFeature {
 					,new OreConfiguration(OreFeatures.NETHER_ORE_REPLACEABLES,
 							ModRegistry.VIBRANIUM_ORE.get().defaultBlockState(), 4));
 
-	public static Holder<ConfiguredFeature<OreConfiguration, ?>> OTHER_ORE_VIBRANIUM = FeatureUtils.register("ore_vibranium",
+	public static Holder<ConfiguredFeature<OreConfiguration, ?>> OTHER_ORE_VIBRANIUM = FeatureUtils.register("other_ore_vibranium",
 			Feature.ORE
 					,new OreConfiguration(new TagMatchTest(ItemTagRegistry.ANCIENT_STONE),
 							ModRegistry.OTHER_VIBRANIUM_ORE.get().defaultBlockState(), 3));

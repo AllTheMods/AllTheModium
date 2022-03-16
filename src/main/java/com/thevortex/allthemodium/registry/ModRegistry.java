@@ -22,6 +22,7 @@ import com.thevortex.allthemodium.worldgen.carvers.OtherCaveCarver;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EntityType;
@@ -46,6 +47,7 @@ import net.minecraft.world.level.levelgen.carver.CanyonCarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
@@ -63,6 +65,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModRegistry {
@@ -91,14 +94,7 @@ public class ModRegistry {
 			.create(ForgeRegistries.WORLD_CARVERS, Reference.MOD_ID);
 	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister
 			.create(ForgeRegistries.ENTITIES, Reference.MOD_ID);
-	public static final DeferredRegister<Biome> BIOMES = DeferredRegister
-			.create(ForgeRegistries.BIOMES, Reference.MOD_ID);
 
-	//
-	//Registry.register(Registry.CHUNK_GENERATOR, MINING_DIM_ID, MiningDimSource.CODEC);
-	//Registry.register(Registry.CHUNK_GENERATOR, THE_OTHER_DIM_ID, TheOtherDimSource.CODEC);
-	public static final DeferredRegister<ChunkStatus> ChunkGen =
-			DeferredRegister.create(ForgeRegistries.CHUNK_STATUS, Reference.MOD_ID);
 
 
 	public static final DeferredRegister<Feature<?>> FEATURES =
@@ -870,79 +866,11 @@ public class ModRegistry {
 
 	public static final RegistryObject<WorldCarver<CaveCarverConfiguration>> OTHER_CAVE_CARVER = CARVERS.register("other_caverns", () -> new OtherCaveCarver(CaveCarverConfiguration.CODEC));
 
-	public static final RegistryObject<Biome> MINING = BIOMES.register("mining", () -> new Biome.BiomeBuilder()
-			.precipitation(Biome.Precipitation.NONE)
-			.biomeCategory(Biome.BiomeCategory.NONE)
-			.mobSpawnSettings(new MobSpawnSettings.Builder().build())
-			.temperature(1.0f)
-			.downfall(0f)
-			.specialEffects(new BiomeSpecialEffects.Builder().fogColor(12341234).waterColor(4159204).waterFogColor(329011).skyColor(7254527).foliageColorOverride(1787717).grassColorOverride(9470000).build())
-			.generationSettings(new BiomeGenerationSettings.Builder().build()).build());
 
-
-	public static final RegistryObject<Biome> THE_OTHER = BIOMES.register("the_other", () -> new Biome.BiomeBuilder()
-			.precipitation(Biome.Precipitation.NONE)
-			.biomeCategory(Biome.BiomeCategory.NONE)
-			.mobSpawnSettings(new MobSpawnSettings.Builder().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.WITHER_SKELETON, 100, 5, 10)).addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.BLAZE, 120, 3, 5)).addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 140, 8, 12)).build())
-			.temperature(1.5f)
-			.downfall(0f)
-			.specialEffects(new BiomeSpecialEffects.Builder().fogColor(3343107).waterColor(3343107).waterFogColor(3343107).skyColor(3343107).foliageColorOverride(1787717).grassColorOverride(1787717).build())
-			.generationSettings(new BiomeGenerationSettings.Builder().build()).build());
-
-	public static final RegistryObject<Biome> Basalt_Deltas = BIOMES.register("basalt_deltas", () -> new Biome.BiomeBuilder()
-			.precipitation(Biome.Precipitation.NONE)
-			.biomeCategory(Biome.BiomeCategory.NONE)
-			.mobSpawnSettings(new MobSpawnSettings.Builder().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.MAGMA_CUBE, 100, 5, 10)).addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.BLAZE, 120, 3, 5)).addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 140, 8, 12)).build())
-			.temperature(2.0f)
-			.downfall(0f)
-			.specialEffects(new BiomeSpecialEffects.Builder().fogColor(6840176).waterColor(3343107).waterFogColor(3343107).skyColor(3343107).foliageColorOverride(1787717).grassColorOverride(1787717).build())
-			.generationSettings(new BiomeGenerationSettings.Builder().build()).build());
-
-	public static final RegistryObject<Biome> Crimson_Forest = BIOMES.register("crimson_forest", () -> new Biome.BiomeBuilder()
-			.precipitation(Biome.Precipitation.NONE)
-			.biomeCategory(Biome.BiomeCategory.NONE)
-			.mobSpawnSettings(new MobSpawnSettings.Builder().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.WITHER_SKELETON, 100, 5, 10)).addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.BLAZE, 120, 3, 5)).addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 140, 8, 12)).build())
-			.temperature(1.3f)
-			.downfall(0f)
-			.specialEffects(new BiomeSpecialEffects.Builder().fogColor(3343107).waterColor(3343107).waterFogColor(3343107).skyColor(3343107).foliageColorOverride(1787717).grassColorOverride(1787717).build())
-			.generationSettings(new BiomeGenerationSettings.Builder().build()).build());
-
-	public static final RegistryObject<Biome> Desert = BIOMES.register("desert", () -> new Biome.BiomeBuilder()
-			.precipitation(Biome.Precipitation.NONE)
-			.biomeCategory(Biome.BiomeCategory.NONE)
-			.mobSpawnSettings(new MobSpawnSettings.Builder().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.WITHER_SKELETON, 100, 5, 10)).addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 120, 3, 5)).addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 140, 8, 12)).build())
-			.temperature(1.7f)
-			.downfall(0f)
-			.specialEffects(new BiomeSpecialEffects.Builder().fogColor(3343107).waterColor(3343107).waterFogColor(3343107).skyColor(3343107).foliageColorOverride(1787717).grassColorOverride(1787717).build())
-			.generationSettings(new BiomeGenerationSettings.Builder().build()).build());
-
-	public static final RegistryObject<Biome> Desert_Hills = BIOMES.register("desert_hills", () -> new Biome.BiomeBuilder()
-			.precipitation(Biome.Precipitation.NONE)
-			.biomeCategory(Biome.BiomeCategory.NONE)
-			.mobSpawnSettings(new MobSpawnSettings.Builder().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.WITHER_SKELETON, 100, 5, 10)).addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 120, 3, 5)).addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 140, 8, 12)).build())
-			.temperature(1.7f)
-			.downfall(0f)
-			.specialEffects(new BiomeSpecialEffects.Builder().fogColor(3343107).waterColor(3343107).waterFogColor(3343107).skyColor(3343107).foliageColorOverride(1787717).grassColorOverride(1787717).build())
-			.generationSettings(new BiomeGenerationSettings.Builder().build()).build());
-
-	public static final RegistryObject<Biome> Soul_Sand_Valley = BIOMES.register("soul_sand_valley", () -> new Biome.BiomeBuilder()
-			.precipitation(Biome.Precipitation.NONE)
-			.biomeCategory(Biome.BiomeCategory.NONE)
-			.mobSpawnSettings(new MobSpawnSettings.Builder().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.WITHER_SKELETON, 100, 5, 10)).addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.BLAZE, 120, 3, 5)).addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 140, 8, 12)).build())
-			.temperature(0.9f)
-			.downfall(0f)
-			.specialEffects(new BiomeSpecialEffects.Builder().fogColor(1705242).waterColor(3343107).waterFogColor(3343107).skyColor(3343107).foliageColorOverride(1787717).grassColorOverride(1787717).build())
-			.generationSettings(new BiomeGenerationSettings.Builder().build()).build());
-
-	public static final RegistryObject<Biome> Warped_Forest = BIOMES.register("warped_forest", () -> new Biome.BiomeBuilder()
-			.precipitation(Biome.Precipitation.NONE)
-			.biomeCategory(Biome.BiomeCategory.NONE)
-			.mobSpawnSettings(new MobSpawnSettings.Builder().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.WITHER_SKELETON, 100, 5, 10)).addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.BLAZE, 120, 3, 5)).addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 140, 8, 12)).build())
-			.temperature(1.5f)
-			.downfall(0f)
-			.specialEffects(new BiomeSpecialEffects.Builder().fogColor(1705242).waterColor(3343107).waterFogColor(3343107).skyColor(1705242).foliageColorOverride(1787717).grassColorOverride(1787717).build())
-			.generationSettings(new BiomeGenerationSettings.Builder().build()).build());
-
+	public static ResourceKey<Biome> createBiome(String name, Biome biome) {
+		ResourceLocation ATM = Reference.location(name);
+		return ResourceKey.create(Registry.BIOME_REGISTRY, ATM);
+	}
 	private static <T extends Monster> RegistryObject<EntityType<T>> createMonsterEntity(String name, EntityType.EntityFactory<T> factory, float width, float height, int eggPrimary, int eggSecondary) {
 		ResourceLocation location = new ResourceLocation(Reference.MOD_ID, name);
 		return ENTITIES.register(name, () ->EntityType.Builder.of(factory, MobCategory.MONSTER).sized(width, height).setTrackingRange(64).setUpdateInterval(1).build(location.toString()));

@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "allthemodium:piglin_village",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 1236549879,
+    "spacing": 20,
+    "separation": 15,
+    "type": "minecraft:random_spread"
+  }
+}

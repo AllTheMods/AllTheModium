@@ -1,0 +1,10 @@
+{
+  "type": "allthemodium:piglin_village",
+  "config": {
+    "start_pool": "allthemodium:village/start_pool",
+    "size": 7
+  },
+  "biomes": "#allthemodium:has_structure/piglin_village_biomes",
+  "adapt_noise": false,
+  "spawn_overrides": {}
+}
