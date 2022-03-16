@@ -30,14 +30,8 @@ import java.util.Optional;
 
 public class DungeonStructure extends StructureFeature<JigsawConfiguration> {
     public DungeonStructure(Codec<JigsawConfiguration> codec) {
-        super(codec, (context) -> {
-            if(!DungeonStructure.isFeatureChunk(context)) {
-                return Optional.empty();
-            }
-            else {
-                return DungeonStructure.createPiecesGenerator(context);
-            }
-        }, PostPlacementProcessor.NONE);
+
+        super(JigsawConfiguration.CODEC, DungeonStructure::createPiecesGenerator, PostPlacementProcessor.NONE);
     }
     private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
         BlockPos blockPos = context.chunkPos().getWorldPosition();
@@ -81,6 +75,7 @@ public class DungeonStructure extends StructureFeature<JigsawConfiguration> {
          * An example of a custom JigsawPlacement.addPieces in action can be found here:
          * https://github.com/TelepathicGrunt/RepurposedStructures/blob/1.18/src/main/java/com/telepathicgrunt/repurposedstructures/world/structures/pieces/PieceLimitedJigsawManager.java
          */
+        /*
         JigsawConfiguration newConfig = new JigsawConfiguration(
                 // The path to the starting Template Pool JSON file to read.
                 //
@@ -111,10 +106,10 @@ public class DungeonStructure extends StructureFeature<JigsawConfiguration> {
                 context.structureManager(),
                 context.registryAccess()
         );
-
+*/
         Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator =
                 JigsawPlacement.addPieces(
-                        newContext, // Used for JigsawPlacement to get all the proper behaviors done.
+                        context, // Used for JigsawPlacement to get all the proper behaviors done.
                         PoolElementStructurePiece::new, // Needed in order to create a list of jigsaw pieces when making the structure's layout.
                         blockpos, // Position of the structure. Y value is ignored if last parameter is set to true.
                         false,  // Special boundary adjustments for villages. It's... hard to explain. Keep this false and make your pieces not be partially intersecting.

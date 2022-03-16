@@ -33,14 +33,8 @@ public class PVStructure extends StructureFeature<JigsawConfiguration> {
 
 
     public PVStructure(Codec<JigsawConfiguration> codec) {
-        super(codec, (context) -> {
-            if(!PVStructure.isFeatureChunk(context)) {
-                return Optional.empty();
-            }
-            else {
-                return PVStructure.createPiecesGenerator(context);
-            }
-        }, PostPlacementProcessor.NONE);
+
+        super(JigsawConfiguration.CODEC, APStructure::createPiecesGenerator, PostPlacementProcessor.NONE);
     }
     private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
         BlockPos blockPos = context.chunkPos().getWorldPosition();
@@ -84,7 +78,7 @@ public class PVStructure extends StructureFeature<JigsawConfiguration> {
          * An example of a custom JigsawPlacement.addPieces in action can be found here:
          * https://github.com/TelepathicGrunt/RepurposedStructures/blob/1.18/src/main/java/com/telepathicgrunt/repurposedstructures/world/structures/pieces/PieceLimitedJigsawManager.java
          */
-        JigsawConfiguration newConfig = new JigsawConfiguration(
+        /*JigsawConfiguration newConfig = new JigsawConfiguration(
                 // The path to the starting Template Pool JSON file to read.
                 //
                 // Note, this is "structure_tutorial:run_down_house/start_pool" which means
@@ -115,11 +109,14 @@ public class PVStructure extends StructureFeature<JigsawConfiguration> {
                 context.registryAccess()
         );
 
+
+         */
+        BlockPos newPos = new BlockPos(blockpos.getX(),0, blockpos.getZ());
         Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator =
                 JigsawPlacement.addPieces(
-                        newContext, // Used for JigsawPlacement to get all the proper behaviors done.
+                        context, // Used for JigsawPlacement to get all the proper behaviors done.
                         PoolElementStructurePiece::new, // Needed in order to create a list of jigsaw pieces when making the structure's layout.
-                        blockpos, // Position of the structure. Y value is ignored if last parameter is set to true.
+                        newPos, // Position of the structure. Y value is ignored if last parameter is set to true.
                         false,  // Special boundary adjustments for villages. It's... hard to explain. Keep this false and make your pieces not be partially intersecting.
                         // Either not intersecting or fully contained will make children pieces spawn just fine. It's easier that way.
                         false // Place at heightmap (top land). Set this to false for structure to be place at the passed in blockpos's Y value instead.
@@ -149,7 +146,7 @@ public class PVStructure extends StructureFeature<JigsawConfiguration> {
     */
     @Override
     public GenerationStep.Decoration step() {
-        return GenerationStep.Decoration.SURFACE_STRUCTURES;
+        return GenerationStep.Decoration.UNDERGROUND_STRUCTURES;
     }
 
     private static final Lazy<List<MobSpawnSettings.SpawnerData>> STRUCTURE_MONSTERS = Lazy.of(() -> ImmutableList.of(
