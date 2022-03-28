@@ -34,7 +34,7 @@ public class PVStructure extends StructureFeature<JigsawConfiguration> {
 
     public PVStructure(Codec<JigsawConfiguration> codec) {
 
-        super(JigsawConfiguration.CODEC, APStructure::createPiecesGenerator, PostPlacementProcessor.NONE);
+        super(JigsawConfiguration.CODEC, PVStructure::createPiecesGenerator, PostPlacementProcessor.NONE);
     }
     private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
         BlockPos blockPos = context.chunkPos().getWorldPosition();

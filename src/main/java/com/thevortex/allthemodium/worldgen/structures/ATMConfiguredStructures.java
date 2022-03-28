@@ -9,7 +9,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredStructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.JigsawConfiguration;
 
 public class ATMConfiguredStructures {
-    public static ConfiguredStructureFeature<?, ?> CONFIGURED_DUNGEON = ATMStructures.DUNGEON.get().configured(new JigsawConfiguration(DungeonPieces.START,6), ATMBiomes.THE_OTHER);
+    public static ConfiguredStructureFeature<?, ?> CONFIGURED_DUNGEON = ATMStructures.DUNGEON.get().configured(new JigsawConfiguration(DungeonPieces.START,6), ATMBiomes.SOUL_SAND_VALLEY);
     public static ConfiguredStructureFeature<?, ?> CONFIGURED_PYRAMID = ATMStructures.PYRAMID.get().configured(new JigsawConfiguration(PyramidPieces.START,6), ATMBiomes.DESERT);
     public static ConfiguredStructureFeature<?, ?> CONFIGURED_VILLAGE = ATMStructures.VILLAGE.get().configured(new JigsawConfiguration(VillagePieces.START,6), ATMBiomes.WARPED_FOREST);
 

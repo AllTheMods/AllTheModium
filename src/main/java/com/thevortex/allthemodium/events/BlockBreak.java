@@ -23,7 +23,9 @@ public class BlockBreak {
 
 	@SubscribeEvent
 	public static void onPlace(BlockEvent.EntityPlaceEvent event) {
+		if(event.getPlacedBlock().is(TagRegistry.OTHER_TILE_WHITELIST)) { return; }
 		if(event.getPlacedBlock().hasBlockEntity() && (event.getWorld().dimensionType().hasCeiling() == false) && (event.getWorld().dimensionType().piglinSafe() == true) && (event.getWorld().dimensionType().hasFixedTime() == false)) {
+
 			event.getEntity().getLevel().destroyBlock(event.getPos(),false);
 			if(event.getEntity() instanceof ServerPlayer) {
 				ServerPlayer player = (ServerPlayer)event.getEntity();

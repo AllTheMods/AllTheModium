@@ -10,7 +10,7 @@
   "has_skylight": true,
   "has_ceiling": false,
   "min_y": -64,
-  "ambient_light": 0.05,
+  "ambient_light": 0.001,
   "logical_height": 384,
   "effects": "minecraft:the_nether",
   "infiniburn": "#minecraft:infiniburn_nether",

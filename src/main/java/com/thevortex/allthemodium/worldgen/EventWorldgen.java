@@ -122,13 +122,14 @@ public class EventWorldgen {
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.ORE_VIBRANIUM_OTHER);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(NetherPlacements.PATCH_SOUL_FIRE);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(NetherPlacements.PATCH_FIRE);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(ATMPlacedFeature.CAVE_ATM);
             //ATO Vanilla Other Ores
         }
 
 
         if (ModList.get().isLoaded("alltheores") && (mod.equals(Reference.MOD_ID)) && (biome.equals("basalt_deltas"))) {
             event.getGeneration().getFeatures(GenerationStep.Decoration.SURFACE_STRUCTURES).add(ATMPlacedFeature.VOLCANO_CF);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.SURFACE_STRUCTURES).add(ATMPlacedFeature.MOD_DELTAS);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.TOP_LAYER_MODIFICATION).add(ATMPlacedFeature.MOD_DELTAS);
 
             event.getGeneration().getFeatures(GenerationStep.Decoration.LOCAL_MODIFICATIONS).add(NetherPlacements.LARGE_BASALT_COLUMNS);
             event.getGeneration().getFeatures(GenerationStep.Decoration.LOCAL_MODIFICATIONS).add(NetherPlacements.SMALL_BASALT_COLUMNS);

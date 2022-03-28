@@ -5,6 +5,6 @@
     "size": 7
   },
   "biomes": "#allthemodium:has_structure/piglin_village_biomes",
-  "adapt_noise": false,
+  "adapt_noise": true,
   "spawn_overrides": {}
 }

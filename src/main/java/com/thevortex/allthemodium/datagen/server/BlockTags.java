@@ -7,6 +7,7 @@ import com.thevortex.allthemodium.reference.TagRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.ForgeBlockTagsProvider;
@@ -24,6 +25,14 @@ public class BlockTags extends BlockTagsProvider {
 
     @Override
     protected void addTags() {
+
+        tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.FURNACE);
+        tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.BLAST_FURNACE);
+        tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.BREWING_STAND);
+        tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.BARREL);
+        tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.CHEST);
+        tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.CAMPFIRE);
+        tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.SOUL_CAMPFIRE);
 
         tag(net.minecraft.tags.BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_DIRT.get());
         tag(net.minecraft.tags.BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_GRASS.get());

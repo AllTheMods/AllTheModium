@@ -2,7 +2,7 @@
     "type": "allthemodium:the_other",
     "generator": {
     "type": "allthemodium:the_other",
-    "seed": 0,
+    "seed": 8675309999,
     "settings": {
       "sea_level": 0,
       "disable_mob_generation": false,
@@ -73,7 +73,7 @@
         "temperature": {
           "type": "minecraft:shifted_noise",
           "noise": "minecraft:temperature",
-          "xz_scale": 1.25,
+          "xz_scale": 2.25,
           "y_scale": 0,
           "shift_x": "minecraft:shift_x",
           "shift_y": 1,
@@ -94,7 +94,7 @@
         "depth": "minecraft:overworld/depth",
         "initial_density_without_jaggedness": {
           "type": "minecraft:mul",
-          "argument1": 4,
+          "argument1": 8,
           "argument2": {
             "type": "minecraft:quarter_negative",
             "argument": {
@@ -839,7 +839,7 @@
         {
           "biome": "allthemodium:desert",
           "parameters": {
-            "temperature": 0.9,
+            "temperature": 0.7,
             "humidity": 0,
             "continentalness": 0.3,
             "erosion": -0.3,
@@ -875,7 +875,7 @@
         {
           "biome": "allthemodium:desert_hills",
           "parameters": {
-            "temperature": 0.8,
+            "temperature": 0.3,
             "humidity": 0,
             "continentalness": 0.1,
             "erosion": -0.2,
@@ -887,12 +887,12 @@
         {
           "biome": "allthemodium:basalt_deltas",
           "parameters": {
-            "temperature": 1.5,
-            "humidity": -0.6,
-            "continentalness": 0.5,
-            "erosion": -0.2,
+            "temperature": 0.9,
+            "humidity": 0.6,
+            "continentalness": 1.0,
+            "erosion": 0.2,
             "weirdness": 0,
-            "depth": 0.7,
+            "depth": 0.8,
             "offset": 0
           }
         }

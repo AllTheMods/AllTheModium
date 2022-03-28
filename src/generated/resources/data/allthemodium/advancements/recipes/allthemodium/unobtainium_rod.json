@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "has_ingots/unobtainium_ingot": {
+    "has_TagKey[minecraft:item / forge:ingots/unobtainium]_ingot": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_ingots/unobtainium_ingot",
+      "has_TagKey[minecraft:item / forge:ingots/unobtainium]_ingot",
       "has_the_recipe"
     ]
   ]

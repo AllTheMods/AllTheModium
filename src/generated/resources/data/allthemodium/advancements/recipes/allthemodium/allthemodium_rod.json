@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "has_ingots/allthemodium_ingot": {
+    "has_TagKey[minecraft:item / forge:ingots/allthemodium]_ingot": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_ingots/allthemodium_ingot",
+      "has_TagKey[minecraft:item / forge:ingots/allthemodium]_ingot",
       "has_the_recipe"
     ]
   ]

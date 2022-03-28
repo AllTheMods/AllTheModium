@@ -6,7 +6,7 @@
     ]
   },
   "criteria": {
-    "has_ingots/vibranium_ingot": {
+    "has_TagKey[minecraft:item / forge:ingots/vibranium]_ingot": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "has_ingots/vibranium_ingot",
+      "has_TagKey[minecraft:item / forge:ingots/vibranium]_ingot",
       "has_the_recipe"
     ]
   ]

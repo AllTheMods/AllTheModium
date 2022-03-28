@@ -33,16 +33,18 @@ public class Volcano extends Feature<VolcanoConfig> {
     private boolean place(WorldGenLevel world, ChunkGenerator generator, Random rand, BlockPos pos, FeatureConfiguration config) {
 
         setSeed(world.getSeed());
-
-        if (rand.nextFloat() < 0.0005F) {
+        int landHeight = generator.getFirstFreeHeight(pos.getX(), pos.getZ(), Heightmap.Types.WORLD_SURFACE_WG, world.getChunk(pos));
+        if (rand.nextFloat() < 0.001F) {
+            /*
             pos = world.getHeightmapPos(Heightmap.Types.OCEAN_FLOOR_WG, pos);
-            pos = new BlockPos(pos.getX(), pos.getY() - 10, pos.getZ());
 
+            */
+            pos = new BlockPos(pos.getX(),landHeight, pos.getZ());
             BlockPos.MutableBlockPos mutable = new BlockPos.MutableBlockPos();
 
             double baseRadius = 16;
             double lavaLeakage = 0.7;
-            int volcanoConeSize = 95;
+            int volcanoConeSize = 75;
             int volcanoStartHeight = volcanoConeSize - 5;
             double threshold = 0.5;
 

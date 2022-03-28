@@ -12,6 +12,9 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
+import net.minecraft.world.entity.monster.piglin.Piglin;
+import net.minecraft.world.entity.monster.piglin.PiglinArmPose;
 
 import java.util.Random;
 
@@ -89,6 +92,7 @@ public class PiglichModel<T extends Entity> extends EntityModel<T> {
         leftLeg.render(poseStack, buffer, packedLight, packedOverlay);
         rightLeg.render(poseStack, buffer, packedLight, packedOverlay);
     }
+
 
 
 }

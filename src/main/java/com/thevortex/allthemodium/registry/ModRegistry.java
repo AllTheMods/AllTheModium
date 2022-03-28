@@ -12,6 +12,7 @@ import com.thevortex.allthemodium.blocks.Vibranium_Block;
 import com.thevortex.allthemodium.blocks.Vibranium_Ore;
 import com.thevortex.allthemodium.entity.PiglichEntity;
 import com.thevortex.allthemodium.entity.shulkers.ATMShulkerEntity;
+import com.thevortex.allthemodium.init.ModFoods;
 import com.thevortex.allthemodium.items.*;
 import com.thevortex.allthemodium.material.ToolTiers;
 import com.thevortex.allthemodium.reference.Reference;
@@ -415,7 +416,7 @@ public class ModRegistry {
 
 
 	public static final RegistryObject<Item> ANCIENT_CAVEVINE_PLANT_ITEM = ITEMS.register("ancient_cavevines_plant", () ->new BlockItem(ANCIENT_CAVEVINES_PLANT_.get(),new Item.Properties().tab(AllTheModium.GROUP)));
-	public static final RegistryObject<Item> ANCIENT_SOULBERRY = ITEMS.register("ancient_soulberries",() -> new ItemNameBlockItem(ANCIENT_CAVEVINES_.get(),(new Item.Properties()).food(Foods.GLOW_BERRIES).tab(AllTheModium.GROUP)));
+	public static final RegistryObject<Item> ANCIENT_SOULBERRY = ITEMS.register("ancient_soulberries",() -> new SoulBerries(ANCIENT_CAVEVINES_.get(),(new Item.Properties()).food(ModFoods.SOUL_BERRIES).tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> ANCIENT_TRAP_DOOR_ITEM = ITEMS.register("ancient_trap_door", () -> new BlockItem(ANCIENT_TRAPDOOR.get(),new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> DEMONIC_TRAP_DOOR_ITEM = ITEMS.register("demonic_trap_door", () -> new BlockItem(DEMONIC_TRAPDOOR.get(),new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> SOUL_TRAP_DOOR_ITEM = ITEMS.register("soul_trap_door", () -> new BlockItem(SOUL_TRAPDOOR.get(),new Item.Properties().tab(AllTheModium.GROUP)));
@@ -873,6 +874,7 @@ public class ModRegistry {
 	}
 	private static <T extends Monster> RegistryObject<EntityType<T>> createMonsterEntity(String name, EntityType.EntityFactory<T> factory, float width, float height, int eggPrimary, int eggSecondary) {
 		ResourceLocation location = new ResourceLocation(Reference.MOD_ID, name);
+
 		return ENTITIES.register(name, () ->EntityType.Builder.of(factory, MobCategory.MONSTER).sized(width, height).setTrackingRange(64).setUpdateInterval(1).build(location.toString()));
 		//EntityType<T> entity = EntityType.Builder.of(factory, MobCategory.MONSTER).sized(width, height).setTrackingRange(64).setUpdateInterval(1).build(location.toString());
 		//Item spawnEgg = new SpawnEggItem(entity, eggPrimary, eggSecondary, (new Item.Properties()).tab(AllTheModium.GROUP));

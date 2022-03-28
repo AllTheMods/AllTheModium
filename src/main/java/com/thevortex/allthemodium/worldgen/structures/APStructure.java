@@ -39,9 +39,24 @@ public class APStructure extends StructureFeature<JigsawConfiguration> {
     }
     private static boolean isFeatureChunk(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
         BlockPos blockPos = context.chunkPos().getWorldPosition();
+        BlockPos north,south,east,west;
+        north = new BlockPos(blockPos.getX(),blockPos.getY(),blockPos.getZ() - 32);
+        south = new BlockPos(blockPos.getX(),blockPos.getY(),blockPos.getZ() + 32);
+        east = new BlockPos(blockPos.getX() + 32,blockPos.getY(),blockPos.getZ());
+        west = new BlockPos(blockPos.getX() - 32,blockPos.getY(),blockPos.getZ());
+        NoiseColumn checkNorth = context.chunkGenerator().getBaseColumn(north.getX(),north.getZ(), context.heightAccessor());
+        NoiseColumn checkSouth = context.chunkGenerator().getBaseColumn(south.getX(),south.getZ(), context.heightAccessor());
+        NoiseColumn checkEast = context.chunkGenerator().getBaseColumn(east.getX(),east.getZ(), context.heightAccessor());
+        NoiseColumn checkWest = context.chunkGenerator().getBaseColumn(west.getX(),west.getZ(), context.heightAccessor());
 
         // Grab height of land. Will stop at first non-air block.
         int landHeight = context.chunkGenerator().getFirstOccupiedHeight(blockPos.getX(), blockPos.getZ(), Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor());
+
+        BlockState stateNorth = checkNorth.getBlock(landHeight);
+        BlockState stateSouth = checkSouth.getBlock(landHeight);
+        BlockState stateEast = checkEast.getBlock(landHeight);
+        BlockState stateWest = checkWest.getBlock(landHeight);
+
 
         // Grabs column of blocks at given position. In overworld, this column will be made of stone, water, and air.
         // In nether, it will be netherrack, lava, and air. End will only be endstone and air. It depends on what block
@@ -54,7 +69,7 @@ public class APStructure extends StructureFeature<JigsawConfiguration> {
         // Now we test to make sure our structure is not spawning on water or other fluids.
         // You can do height check instead too to make it spawn at high elevations.
 
-        return topBlock.getFluidState().isEmpty(); //landHeight > 100;
+        return (topBlock.getFluidState().isEmpty() && !(stateNorth.isAir()) && !(stateSouth.isAir()) && !(stateEast.isAir()) && !(stateWest.isAir())); //confirm no chasms under structure;
     }
 
     public static Optional<PieceGenerator<JigsawConfiguration>> createPiecesGenerator(PieceGeneratorSupplier.Context<JigsawConfiguration> context) {
@@ -160,8 +175,7 @@ public class APStructure extends StructureFeature<JigsawConfiguration> {
     }
 
     private static final Lazy<List<MobSpawnSettings.SpawnerData>> STRUCTURE_MONSTERS = Lazy.of(() -> ImmutableList.of(
-            new MobSpawnSettings.SpawnerData(EntityType.PIGLIN, 100, 4, 9),
-            new MobSpawnSettings.SpawnerData(ModRegistry.PIGLICH.get(), 10, 1, 2)
+            new MobSpawnSettings.SpawnerData(ModRegistry.PIGLICH.get(), 400, 1, 1)
     ));
 
     private static final Lazy<List<MobSpawnSettings.SpawnerData>> STRUCTURE_CREATURES = Lazy.of(() -> ImmutableList.of(

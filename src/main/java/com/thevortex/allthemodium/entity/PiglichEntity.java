@@ -130,7 +130,7 @@ public class PiglichEntity extends Piglin {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-            return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED,0.21F).add(Attributes.ATTACK_DAMAGE,4).add(Attributes.ARMOR,18).add(Attributes.ARMOR_TOUGHNESS,12).add(Attributes.MAX_HEALTH,99);
+            return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED,0.21F).add(Attributes.ATTACK_DAMAGE,12).add(Attributes.ARMOR,24).add(Attributes.ARMOR_TOUGHNESS,24).add(Attributes.MAX_HEALTH,9999);
     }
 
     static class PigLichAttackGoal extends Goal {
