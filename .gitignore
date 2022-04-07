@@ -45,3 +45,6 @@ TCon/silent_assets/unobtainium.json
 TCon/silent_assets/vibranium.json
 TCon/silent_data/unobtainium.json
 TCon/silent_data/vibranium.json
+
+# datagen
+src/generated/resources/.cache

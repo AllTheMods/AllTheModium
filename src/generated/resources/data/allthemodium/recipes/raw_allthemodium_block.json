@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "allthemodium",
+  "ingredients": [
+    {
+      "tag": "forge:raw_materials/allthemodium"
+    },
+    {
+      "tag": "forge:raw_materials/allthemodium"
+    },
+    {
+      "tag": "forge:raw_materials/allthemodium"
+    },
+    {
+      "tag": "forge:raw_materials/allthemodium"
+    },
+    {
+      "tag": "forge:raw_materials/allthemodium"
+    },
+    {
+      "tag": "forge:raw_materials/allthemodium"
+    },
+    {
+      "tag": "forge:raw_materials/allthemodium"
+    },
+    {
+      "tag": "forge:raw_materials/allthemodium"
+    },
+    {
+      "tag": "forge:raw_materials/allthemodium"
+    }
+  ],
+  "result": {
+    "item": "allthemodium:raw_allthemodium_block"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "allthemodium:raw_allthemodium_block"
+    ]
+  },
+  "criteria": {
+    "has_raw_allthemodium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:raw_materials/allthemodium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "allthemodium:raw_allthemodium_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_allthemodium",
+      "has_the_recipe"
+    ]
+  ]
+}

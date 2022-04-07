@@ -5,11 +5,16 @@ import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.reference.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.allthemods.alltheores.datagen.builder.ShapedBlockBuilder;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.*;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.function.Consumer;
@@ -28,9 +33,31 @@ public class CraftingRecipes extends RecipeProvider {
             .group(Reference.MOD_ID);
     }
 
+    private static InventoryChangeTrigger.TriggerInstance hasTag(TagKey<Item> tagKey) {
+        return inventoryTrigger(ItemPredicate.Builder.item().of(tagKey).build());
+    }
+
 
     @Override
     protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
+
+        ShapelessRecipeBuilder.shapeless(ModRegistry.RAW_ALLTHEMODIUM_BLOCK.get())
+            .group(Reference.MOD_ID)
+            .requires(Ingredient.of(TagRegistry.RAW_ALLTHEMODIUM), 9)
+            .unlockedBy("has_raw_allthemodium", hasTag(TagRegistry.RAW_ALLTHEMODIUM))
+            .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(ModRegistry.RAW_VIBRANIUM_BLOCK.get())
+            .group(Reference.MOD_ID)
+            .requires(Ingredient.of(TagRegistry.RAW_VIBRANIUM), 9)
+            .unlockedBy("has_raw_vibranium", hasTag(TagRegistry.RAW_VIBRANIUM))
+            .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(ModRegistry.RAW_UNOBTAINIUM_BLOCK.get())
+            .group(Reference.MOD_ID)
+            .requires(Ingredient.of(TagRegistry.RAW_UNOBTAINIUM), 9)
+            .unlockedBy("has_raw_unobtainium", hasTag(TagRegistry.RAW_UNOBTAINIUM))
+            .save(consumer);
 
         shaped(ModRegistry.ALLTHEMODIUM_PICKAXE.get())
             .pattern("ara")

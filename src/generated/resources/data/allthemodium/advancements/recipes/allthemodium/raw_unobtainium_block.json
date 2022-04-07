@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "allthemodium:raw_unobtainium_block"
+    ]
+  },
+  "criteria": {
+    "has_raw_unobtainium": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:raw_materials/unobtainium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "allthemodium:raw_unobtainium_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_raw_unobtainium",
+      "has_the_recipe"
+    ]
+  ]
+}
