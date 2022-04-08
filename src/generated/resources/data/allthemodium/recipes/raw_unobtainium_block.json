@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "allthemodium",
+  "ingredients": [
+    {
+      "tag": "forge:raw_materials/unobtainium"
+    },
+    {
+      "tag": "forge:raw_materials/unobtainium"
+    },
+    {
+      "tag": "forge:raw_materials/unobtainium"
+    },
+    {
+      "tag": "forge:raw_materials/unobtainium"
+    },
+    {
+      "tag": "forge:raw_materials/unobtainium"
+    },
+    {
+      "tag": "forge:raw_materials/unobtainium"
+    },
+    {
+      "tag": "forge:raw_materials/unobtainium"
+    },
+    {
+      "tag": "forge:raw_materials/unobtainium"
+    },
+    {
+      "tag": "forge:raw_materials/unobtainium"
+    }
+  ],
+  "result": {
+    "item": "allthemodium:raw_unobtainium_block"
+  }
+}

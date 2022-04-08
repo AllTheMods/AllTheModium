@@ -64,9 +64,9 @@ public class TagRegistry {
     public static final TagKey<Block> VIBRANIUM_BLOCK = BlockTags.create(Reference.block("vibranium"));
     public static final TagKey<Block> UNOBTAINIUM_BLOCK = BlockTags.create(Reference.block("unobtainium"));
 
-    public static final TagKey<Item> RAW_ALLTHEMODIUM_BLOCK = ItemTags.create(Reference.raw_block("allthemodium"));
-    public static final TagKey<Item> RAW_VIBRANIUM_BLOCK = ItemTags.create(Reference.raw_block("vibranium"));
-    public static final TagKey<Item> RAW_UNOBTAINIUM_BLOCK = ItemTags.create(Reference.raw_block("unobtainium"));
+    public static final TagKey<Item> RAW_ALLTHEMODIUM_BLOCK = ItemTags.create(Reference.block("raw_allthemodium"));
+    public static final TagKey<Item> RAW_VIBRANIUM_BLOCK = ItemTags.create(Reference.block("raw_vibranium"));
+    public static final TagKey<Item> RAW_UNOBTAINIUM_BLOCK = ItemTags.create(Reference.block("raw_unobtainium"));
 
     public static final TagKey<Item> ALLTHEMODIUM_BLOCK_ITEM = ItemTags.create(Reference.block("allthemodium"));
     public static final TagKey<Item> VIBRANIUM_BLOCK_ITEM = ItemTags.create(Reference.block("vibranium"));
