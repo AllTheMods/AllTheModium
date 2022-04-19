@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:crushing",
+  "input": {
+    "ingredient": {
+      "tag": "forge:ingots/vibranium"
+    }
+  },
+  "output": {
+    "item": "allthemodium:vibranium_dust"
+  },
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "mekanism"
+    }
+]
+}

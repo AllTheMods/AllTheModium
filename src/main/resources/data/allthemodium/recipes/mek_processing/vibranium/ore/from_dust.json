@@ -1,0 +1,23 @@
+{
+  "type": "mekanism:combining",
+  "mainInput": {
+    "amount": 8,
+    "ingredient": {
+      "tag": "forge:dusts/vibranium"
+    }
+  },
+  "extraInput": {
+    "ingredient": {
+      "item": "minecraft:netherrack"
+    }
+  },
+  "output": {
+    "item": "allthemodium:vibranium_ore"
+  },
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "mekanism"
+    }
+]
+}

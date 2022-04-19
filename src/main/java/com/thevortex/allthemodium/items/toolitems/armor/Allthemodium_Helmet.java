@@ -41,8 +41,14 @@ public class Allthemodium_Helmet extends ArmorItem {
         });
     }
 
-
-
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+    @Override
+    public boolean canBeDepleted() {
+        return false;
+    }
     @Override
     public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer)
     {
@@ -51,7 +57,8 @@ public class Allthemodium_Helmet extends ArmorItem {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-        tooltip.add(this.getTooltip("piglin.friend").withStyle(ChatFormatting.GOLD));
+        tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+        tooltip.add(this.getTooltip("piglin.friend").withStyle(ChatFormatting.YELLOW));
         tooltip.add(this.getTooltip("hard.head").withStyle(ChatFormatting.YELLOW));
         tooltip.add(this.getTooltip("aqua.lungs").withStyle(ChatFormatting.DARK_AQUA));
         super.appendHoverText(stack, worldIn, tooltip, flagIn);

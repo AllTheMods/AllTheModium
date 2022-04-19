@@ -28,17 +28,17 @@ public class ToolTiers {
     public static final TagKey<Block> UNOBTAINIUM_TIER_TAG = TagRegistry.NEEDS_UNOBTAINIUM_TOOL;
 
     public static final Tier UNOBTAINIUM_TIER = TierSortingRegistry.registerTier(
-            new ForgeTier(7, 20000, 30, 200, 500, UNOBTAINIUM_TIER_TAG, () -> Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get())),
+            new ForgeTier(7, 20000, 30, 200, 130, UNOBTAINIUM_TIER_TAG, () -> Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get())),
             new ResourceLocation(Reference.MOD_ID,"unobtainium"),
             List.of(Tiers.NETHERITE), List.of());
 
     public static final Tier VIBRANIUM_TIER = TierSortingRegistry.registerTier(
-            new ForgeTier(6, 10000, 40, 100, 250, VIBRANIUM_TIER_TAG, () -> Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get())),
+            new ForgeTier(6, 10000, 40, 100, 100, VIBRANIUM_TIER_TAG, () -> Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get())),
             new ResourceLocation(Reference.MOD_ID,"vibranium"),
             List.of(Tiers.NETHERITE), List.of(UNOBTAINIUM_TIER));
 
     public static final Tier ALLTHEMODIUM_TIER = TierSortingRegistry.registerTier(
-            new ForgeTier(5, 15000, 10, 50, 125, ALLTHEMODIUM_TIER_TAG, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get())),
+            new ForgeTier(5, 15000, 10, 50, 90, ALLTHEMODIUM_TIER_TAG, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get())),
             new ResourceLocation(Reference.MOD_ID,"allthemodium"),
             List.of(Tiers.NETHERITE), List.of(VIBRANIUM_TIER));
 

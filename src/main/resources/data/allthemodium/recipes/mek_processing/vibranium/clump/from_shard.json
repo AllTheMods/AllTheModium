@@ -1,0 +1,21 @@
+{
+  "type": "mekanism:purifying",
+  "itemInput": {
+    "ingredient": {
+      "item": "allthemodium:vibranium_shard"
+    }
+  },
+  "chemicalInput": {
+    "amount": 1,
+    "gas": "mekanism:oxygen"
+  },
+  "output": {
+    "item": "allthemodium:vibranium_clump"
+  },
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "mekanism"
+    }
+]
+}

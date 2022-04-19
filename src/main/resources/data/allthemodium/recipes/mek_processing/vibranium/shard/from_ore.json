@@ -1,0 +1,22 @@
+{
+  "type": "mekanism:injecting",
+  "itemInput": {
+    "ingredient": {
+      "tag": "forge:ores/vibranium"
+    }
+  },
+  "chemicalInput": {
+    "amount": 1,
+    "gas": "mekanism:hydrogen_chloride"
+  },
+  "output": {
+    "item": "allthemodium:vibranium_shard",
+    "count": 4
+  },
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "mekanism"
+    }
+]
+}

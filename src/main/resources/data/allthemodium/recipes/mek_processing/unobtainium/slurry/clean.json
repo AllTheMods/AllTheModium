@@ -1,0 +1,21 @@
+{
+  "type": "mekanism:washing",
+  "fluidInput": {
+    "amount": 5,
+    "tag": "minecraft:water"
+  },
+  "slurryInput": {
+    "amount": 1,
+    "slurry": "allthemodium:dirty_unobtainium"
+  },
+  "output": {
+    "slurry": "allthemodium:clean_unobtainium",
+    "amount": 1
+  },
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "mekanism"
+    }
+]
+}

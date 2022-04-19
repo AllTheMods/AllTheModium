@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "result": "allthemodium:allthemodium_ingot",
+  "ingredient": {
+    "item": "allthemodium:crushed_allthemodium_ore"
+  },
+  "cookingtime": 100,
+  "experience": 0.1
+}

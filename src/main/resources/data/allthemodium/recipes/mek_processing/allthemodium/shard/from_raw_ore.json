@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:injecting",
+  "itemInput": {
+    "amount": 3,
+    "ingredient": {
+      "tag": "forge:raw_materials/allthemodium"
+    }
+  },
+  "chemicalInput": {
+    "amount": 1,
+    "gas": "mekanism:hydrogen_chloride"
+  },
+  "output": {
+    "item": "allthemodium:allthemodium_shard",
+    "count": 8
+  }
+}

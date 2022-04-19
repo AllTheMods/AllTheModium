@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "allthemodium:dirty_allthemodium_dust"
+    }
+  },
+  "output": {
+    "item": "allthemodium:allthemodium_dust"
+  }
+}

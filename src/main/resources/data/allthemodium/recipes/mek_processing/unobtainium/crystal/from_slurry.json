@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:crystallizing",
+  "chemicalType": "slurry",
+  "input": {
+    "amount": 200,
+    "slurry": "allthemodium:clean_unobtainium"
+  },
+  "output": {
+    "item": "allthemodium:unobtainium_crystal"
+  },
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "mekanism"
+    }
+]
+}

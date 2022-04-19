@@ -8,11 +8,13 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.serialization.Codec;
 import com.thevortex.allthemodium.events.PlayerHarvest;
 import com.thevortex.allthemodium.init.*;
+import com.thevortex.allthemodium.registry.MekRegistry;
 import com.thevortex.allthemodium.worldgen.MiningDimSource;
 import com.thevortex.allthemodium.worldgen.TheOtherDimSource;
 import com.thevortex.allthemodium.worldgen.biomes.ATMBiomes;
 import com.thevortex.allthemodium.worldgen.carvers.ATMCarvers;
 import com.thevortex.allthemodium.worldgen.structures.*;
+import mekanism.api.chemical.slurry.Slurry;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Registry;
@@ -124,7 +126,7 @@ public class AllTheModium
 
 
     	if(ModList.get().isLoaded("mekanism")) {
-			//modEventBus.register(MekRegistry.class);
+			modEventBus.register(ATMMekRegistry.class);
 		}
 
 		MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, APStructure::setupStructureSpawns);
@@ -134,7 +136,7 @@ public class AllTheModium
         MinecraftForge.EVENT_BUS.register(this);
         MinecraftForge.EVENT_BUS.register(BlockBreak.class);
         MinecraftForge.EVENT_BUS.register(ArmorEvents.class);
-		//MinecraftForge.EVENT_BUS.register(PlayerHarvest.class);
+
     }
 
 	public void setup(final FMLCommonSetupEvent event) {
@@ -180,9 +182,13 @@ public class AllTheModium
 				//IAFForgeRecipes.init();
 				//IAFForgeRecipes.regIaFItems(event); //for gold piles items
 			}
+
 		}
 
 
 	}
-
+	public static class ATMMekRegistry {
+		@SubscribeEvent
+		public static void onSlurryRegistry(final RegistryEvent.Register<Slurry> event) {	if(ModList.get().isLoaded("mekanism")) { MekRegistry.init(event);		} }
+	}
 }

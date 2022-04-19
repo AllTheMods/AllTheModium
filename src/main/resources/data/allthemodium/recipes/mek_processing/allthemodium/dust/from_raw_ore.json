@@ -1,0 +1,13 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "amount": 3,
+    "ingredient": {
+      "tag": "forge:raw_materials/allthemodium"
+    }
+  },
+  "output": {
+    "item": "allthemodium:allthemodium_dust",
+    "count": 4
+  }
+}

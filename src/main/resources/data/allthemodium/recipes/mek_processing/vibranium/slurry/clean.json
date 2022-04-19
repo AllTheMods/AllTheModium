@@ -1,0 +1,21 @@
+{
+  "type": "mekanism:washing",
+  "fluidInput": {
+    "amount": 5,
+    "tag": "minecraft:water"
+  },
+  "slurryInput": {
+    "amount": 1,
+    "slurry": "allthemodium:dirty_vibranium"
+  },
+  "output": {
+    "slurry": "allthemodium:clean_vibranium",
+    "amount": 1
+  },
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "mekanism"
+    }
+]
+}

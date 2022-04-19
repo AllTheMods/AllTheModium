@@ -26,7 +26,14 @@ public class Unobtainium_Chestplate extends ArmorItem {
 		super(materialIn, slot, builder);
 		
 	}
-
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+    @Override
+    public boolean canBeDepleted() {
+        return false;
+    }
     @Override
     public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer)
     {
@@ -36,7 +43,8 @@ public class Unobtainium_Chestplate extends ArmorItem {
     @Override
     public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
         //tooltip.add(this.getTooltip("breath.proof").mergeStyle(TextFormatting.GOLD));
-        tooltip.add(this.getTooltip("piglin.friend").withStyle(ChatFormatting.GOLD));
+        tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+        tooltip.add(this.getTooltip("piglin.friend").withStyle(ChatFormatting.YELLOW));
         tooltip.add(this.getTooltip("fire.proof").withStyle(ChatFormatting.RED));
 
         super.appendHoverText(stack, worldIn, tooltip, flagIn);

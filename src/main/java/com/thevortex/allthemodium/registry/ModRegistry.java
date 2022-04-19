@@ -20,9 +20,12 @@ import com.thevortex.allthemodium.worldgen.features.*;
 import com.thevortex.allthemodium.worldgen.carvers.OtherCanyonCarver;
 import com.thevortex.allthemodium.worldgen.carvers.OtherCarver;
 import com.thevortex.allthemodium.worldgen.carvers.OtherCaveCarver;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -33,6 +36,7 @@ import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
@@ -64,6 +68,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -614,7 +619,26 @@ public class ModRegistry {
 	public static final RegistryObject<Block> TELEPORT_PAD = SHAPED_BLOCKS.register("teleport_pad", () -> new TeleportPad(Block.Properties.of(Material.METAL).noDrops().noOcclusion().strength(20.0F)));
 	public static final RegistryObject<Item> TELEPORT_PAD_ITEM = ITEMS.register("teleport_pad", () -> new BlockItem(TELEPORT_PAD.get(), new Item.Properties().tab(AllTheModium.GROUP)));
 
-	public static final RegistryObject<SwordItem> ALLTHEMODIUM_SWORD = ITEMS.register("allthemodium_sword",() -> new SwordItem(ToolTiers.ALLTHEMODIUM_TIER,8,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<SwordItem> ALLTHEMODIUM_SWORD = ITEMS.register("allthemodium_sword",() -> new SwordItem(ToolTiers.ALLTHEMODIUM_TIER,8,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)){
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+		protected TranslatableComponent getTooltip(String key){
+			return new TranslatableComponent(key);
+		}
+
+	});
 
 	public static final RegistryObject<PickaxeItem> ALLTHEMODIUM_PICKAXE = ITEMS.register("allthemodium_pickaxe",() -> new PickaxeItem(ToolTiers.ALLTHEMODIUM_TIER,6,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
@@ -622,6 +646,23 @@ public class ModRegistry {
 		{
 			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) return speed;
 			return super.getDestroySpeed(stack, state);
+		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+		protected TranslatableComponent getTooltip(String key){
+			return new TranslatableComponent(key);
 		}
 
 		@Override
@@ -642,6 +683,23 @@ public class ModRegistry {
 			if (state.is(BlockTags.MINEABLE_WITH_AXE)) return speed;
 			return super.getDestroySpeed(stack, state);
 		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+		protected TranslatableComponent getTooltip(String key){
+			return new TranslatableComponent(key);
+		}
 
 		@Override
 		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
@@ -661,7 +719,23 @@ public class ModRegistry {
 			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) return speed;
 			return super.getDestroySpeed(stack, state);
 		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
 
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+		protected TranslatableComponent getTooltip(String key){
+			return new TranslatableComponent(key);
+		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
 		@Override
 		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
 		{
@@ -680,6 +754,23 @@ public class ModRegistry {
 			if (state.is(BlockTags.MINEABLE_WITH_HOE)) return speed;
 			return super.getDestroySpeed(stack, state);
 		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+		protected TranslatableComponent getTooltip(String key){
+			return new TranslatableComponent(key);
+		}
 
 		@Override
 		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
@@ -691,7 +782,26 @@ public class ModRegistry {
 			return false;
 		}
 	});
-	public static final RegistryObject<SwordItem> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword",() -> new SwordItem(ToolTiers.VIBRANIUM_TIER,16,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)));
+	public static final RegistryObject<SwordItem> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword",() -> new SwordItem(ToolTiers.VIBRANIUM_TIER,16,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)){
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+		protected TranslatableComponent getTooltip(String key){
+			return new TranslatableComponent(key);
+		}
+
+	});
 
 	public static final RegistryObject<PickaxeItem> VIBRANIUM_PICKAXE = ITEMS.register("vibranium_pickaxe",() -> new PickaxeItem(ToolTiers.VIBRANIUM_TIER,12,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
@@ -699,6 +809,23 @@ public class ModRegistry {
 		{
 			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) return speed;
 			return super.getDestroySpeed(stack, state);
+		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+		protected TranslatableComponent getTooltip(String key){
+			return new TranslatableComponent(key);
 		}
 
 		@Override
@@ -719,6 +846,23 @@ public class ModRegistry {
 			if (state.is(BlockTags.MINEABLE_WITH_AXE)) return speed;
 			return super.getDestroySpeed(stack, state);
 		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+		protected TranslatableComponent getTooltip(String key){
+			return new TranslatableComponent(key);
+		}
 
 		@Override
 		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
@@ -737,6 +881,23 @@ public class ModRegistry {
 		{
 			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) return speed;
 			return super.getDestroySpeed(stack, state);
+		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+		protected TranslatableComponent getTooltip(String key){
+			return new TranslatableComponent(key);
 		}
 
 		@Override
@@ -757,6 +918,23 @@ public class ModRegistry {
 			if (state.is(BlockTags.MINEABLE_WITH_HOE)) return speed;
 			return super.getDestroySpeed(stack, state);
 		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+		protected TranslatableComponent getTooltip(String key){
+			return new TranslatableComponent(key);
+		}
 
 		@Override
 		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
@@ -768,7 +946,26 @@ public class ModRegistry {
 			return false;
 		}
 	});
-		public static final RegistryObject<SwordItem> UNOBTAINIUM_SWORD = ITEMS.register("unobtainium_sword",() -> new SwordItem(ToolTiers.UNOBTAINIUM_TIER,32,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)));
+		public static final RegistryObject<SwordItem> UNOBTAINIUM_SWORD = ITEMS.register("unobtainium_sword",() -> new SwordItem(ToolTiers.UNOBTAINIUM_TIER,32,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)){
+			@Override
+			public boolean isEnchantable(ItemStack stack) {
+				return true;
+			}
+			@Override
+			public boolean canBeDepleted() {
+				return false;
+			}
+			@Override
+			public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+				tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+
+				super.appendHoverText(stack, worldIn, tooltip, flagIn);
+			}
+			protected TranslatableComponent getTooltip(String key){
+				return new TranslatableComponent(key);
+			}
+
+		});
 
 		public static final RegistryObject<PickaxeItem> UNOBTAINIUM_PICKAXE = ITEMS.register("unobtainium_pickaxe",() -> new PickaxeItem(ToolTiers.UNOBTAINIUM_TIER,24,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
@@ -777,8 +974,25 @@ public class ModRegistry {
 			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) return speed;
 			return super.getDestroySpeed(stack, state);
 		}
+			@Override
+			public boolean isEnchantable(ItemStack stack) {
+				return true;
+			}
+			@Override
+			public boolean canBeDepleted() {
+				return false;
+			}
+			@Override
+			public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+				tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
 
-		@Override
+				super.appendHoverText(stack, worldIn, tooltip, flagIn);
+			}
+			protected TranslatableComponent getTooltip(String key){
+				return new TranslatableComponent(key);
+			}
+
+			@Override
 		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
 		{
 			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE))
@@ -795,6 +1009,23 @@ public class ModRegistry {
 		{
 			if (state.is(BlockTags.MINEABLE_WITH_AXE)) return speed;
 			return super.getDestroySpeed(stack, state);
+		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+		protected TranslatableComponent getTooltip(String key){
+			return new TranslatableComponent(key);
 		}
 
 		@Override
@@ -815,6 +1046,23 @@ public class ModRegistry {
 			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) return speed;
 			return super.getDestroySpeed(stack, state);
 		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+		protected TranslatableComponent getTooltip(String key){
+			return new TranslatableComponent(key);
+		}
 
 		@Override
 		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
@@ -833,6 +1081,23 @@ public class ModRegistry {
 		{
 			if (state.is(BlockTags.MINEABLE_WITH_HOE)) return speed;
 			return super.getDestroySpeed(stack, state);
+		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+		protected TranslatableComponent getTooltip(String key){
+			return new TranslatableComponent(key);
 		}
 
 		@Override

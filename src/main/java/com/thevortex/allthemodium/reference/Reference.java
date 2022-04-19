@@ -12,7 +12,13 @@ public class Reference {
 	public static final ResourceLocation ORETYPE2 = location("forge:ores/vibranium");
 	public static final ResourceLocation ORETYPE3 = location("forge:ores/unobtainium");
 	public static final String MOD_ID = "allthemodium";
-	
+
+	public static ResourceLocation atm(String path) {
+		return new ResourceLocation(MOD_ID, path);
+	}
+	public static ResourceLocation mek(String path) {
+		return new ResourceLocation("mekanism", path);
+	}
 	public static ResourceLocation location(String pathIn) {
 		return new ResourceLocation(pathIn);
 	}
@@ -30,6 +36,18 @@ public class Reference {
 	}
 	public static ResourceLocation dust(String path) {
 		return forge("dusts/" + path);
+	}
+	public static ResourceLocation dirty(String path) {
+		return mek("dirty_dusts/" + path);
+	}
+	public static ResourceLocation shard(String path) {
+		return mek("shards/" + path);
+	}
+	public static ResourceLocation clump(String path) {
+		return mek("clumps/" + path);
+	}
+	public static ResourceLocation crystal(String path) {
+		return mek("crystals/" + path);
 	}
 	public static ResourceLocation nugget(String path) {
 		return forge("nuggets/" + path);

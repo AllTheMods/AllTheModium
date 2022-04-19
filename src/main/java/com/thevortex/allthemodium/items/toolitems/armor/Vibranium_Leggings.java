@@ -28,7 +28,14 @@ public class Vibranium_Leggings extends ArmorItem {
 		super(materialIn, slot, builder);
     
 	   }
-	
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return true;
+    }
+    @Override
+    public boolean canBeDepleted() {
+        return false;
+    }
     @Override
     public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer)
     {
@@ -37,7 +44,8 @@ public class Vibranium_Leggings extends ArmorItem {
     @OnlyIn(Dist.CLIENT)
     @Override
     public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-        tooltip.add(this.getTooltip("piglin.friend").withStyle(ChatFormatting.GOLD));
+        tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+        tooltip.add(this.getTooltip("piglin.friend").withStyle(ChatFormatting.YELLOW));
         tooltip.add(this.getTooltip("wither.proof").withStyle(ChatFormatting.DARK_GREEN));
         tooltip.add(this.getTooltip("magic.resistance").withStyle(ChatFormatting.GREEN));
         tooltip.add(this.getTooltip("steady.guts").withStyle(ChatFormatting.GREEN));

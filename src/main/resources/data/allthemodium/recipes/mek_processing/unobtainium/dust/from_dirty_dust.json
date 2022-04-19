@@ -1,0 +1,17 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "ingredient": {
+      "item": "allthemodium:dirty_unobtainium_dust"
+    }
+  },
+  "output": {
+    "item": "allthemodium:unobtainium_dust"
+  },
+  "conditions": [
+    {
+        "type": "forge:mod_loaded",
+        "modid": "mekanism"
+    }
+]
+}
