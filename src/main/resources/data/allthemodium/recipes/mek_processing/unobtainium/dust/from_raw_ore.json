@@ -1,0 +1,13 @@
+{
+  "type": "mekanism:enriching",
+  "input": {
+    "amount": 3,
+    "ingredient": {
+      "tag": "forge:raw_materials/unobtainium"
+    }
+  },
+  "output": {
+    "item": "allthemodium:unobtainium_dust",
+    "count": 4
+  }
+}
