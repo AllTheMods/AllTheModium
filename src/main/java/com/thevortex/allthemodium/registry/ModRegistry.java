@@ -11,7 +11,9 @@ import com.thevortex.allthemodium.blocks.Unobtainium_Ore;
 import com.thevortex.allthemodium.blocks.Vibranium_Block;
 import com.thevortex.allthemodium.blocks.Vibranium_Ore;
 import com.thevortex.allthemodium.entity.PiglichEntity;
-import com.thevortex.allthemodium.entity.shulkers.ATMShulkerEntity;
+import com.thevortex.allthemodium.entity.shulkers.atm.ATMShulkerEntity;
+import com.thevortex.allthemodium.entity.shulkers.unob.UNOBShulkerEntity;
+import com.thevortex.allthemodium.entity.shulkers.vib.VIBShulkerEntity;
 import com.thevortex.allthemodium.init.ModFoods;
 import com.thevortex.allthemodium.items.*;
 import com.thevortex.allthemodium.material.ToolTiers;
@@ -22,7 +24,6 @@ import com.thevortex.allthemodium.worldgen.carvers.OtherCarver;
 import com.thevortex.allthemodium.worldgen.carvers.OtherCaveCarver;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
@@ -32,28 +33,18 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.animal.AbstractGolem;
-import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeGenerationSettings;
-import net.minecraft.world.level.biome.BiomeSpecialEffects;
-import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.chunk.ChunkSource;
-import net.minecraft.world.level.chunk.ChunkStatus;
 import net.minecraft.world.level.levelgen.carver.CanyonCarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.StructureFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.DripstoneClusterConfiguration;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
 
@@ -68,7 +59,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -135,7 +125,6 @@ public class ModRegistry {
 			"block/fluid/molten_metal");
 	public static final ResourceLocation UNOBTAINIUM_VAPOR_FLOW = new ResourceLocation(Reference.MOD_ID,
 			"block/fluid/molten_metal_flow");
-	public static final ResourceLocation UNOB_SHULKER = new ResourceLocation("minecraft", "block/shulker_box");
 
 	public static final ResourceLocation VIBRANIUM_MOLTEN_STILL = new ResourceLocation(Reference.MOD_ID,
 			"block/fluid/vibranium_molten_still");
@@ -145,7 +134,6 @@ public class ModRegistry {
 			"block/fluid/molten_metal");
 	public static final ResourceLocation VIBRANIUM_VAPOR_FLOW = new ResourceLocation(Reference.MOD_ID,
 			"block/fluid/molten_metal_flow");
-	public static final ResourceLocation VIB_SHULKER = new ResourceLocation("minecraft", "block/shulker_box");
 
 	public static Feature<VolcanoConfig> VOLCANO_F = new Volcano(VolcanoConfig.CODEC);
 	public static RegistryObject<Feature<VolcanoConfig>> VOLCANO = FEATURES.register("volcano", () -> VOLCANO_F);
@@ -1122,7 +1110,6 @@ public class ModRegistry {
 	public static final RegistryObject<Item> PIGLICH_HEART = ITEMS.register("piglich_heart", () -> new PiglichHeart(new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<EntityType<PiglichEntity>> PIGLICH = createMonsterEntity("piglich",PiglichEntity::new,0.6F,3.0F,0x000000,0xebe834);
 
-	//public static final RegistryObject<EntityType<ATMShulkerEntity>> ATM_SHULKER = createShulkerEntity("allthemodium_shulker", ATMShulkerEntity::new,0.6F,3.0F,0x000000,0xebe834);
 
 
 
@@ -1162,7 +1149,7 @@ public class ModRegistry {
 	@SubscribeEvent
 	public static void addEntityAttributes(EntityAttributeCreationEvent event) {
 		event.put(PIGLICH.get(), PiglichEntity.createAttributes().build());
-		//event.put(ATM_SHULKER.get(), ATMShulkerEntity.createAttributes().build());
+		//event.put(ATM_SHULKER.get(), UNOBShulkerEntity.createAttributes().build());
 	}
 	private static RotatedPillarBlock log(MaterialColor color1, MaterialColor color2) {
 		return new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.NETHER_WOOD, (woodLog) -> {

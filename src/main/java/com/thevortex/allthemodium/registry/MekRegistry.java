@@ -9,7 +9,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@Mod.EventBusSubscriber
 public class MekRegistry {
 
     public static final ResourceLocation SLURRY_STILL = new ResourceLocation("minecraft","block/water_still");

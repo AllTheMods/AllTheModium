@@ -1,7 +1,7 @@
 {
   "type": "tconstruct:melting",
   "ingredient": {
-    "tag": "forge:raw_blocks/vibranium"
+    "tag": "forge:storage_blocks/raw_vibranium"
   },
   "result": {
     "fluid": "allthemodium:molten_vibranium",

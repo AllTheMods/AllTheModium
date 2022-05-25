@@ -16,10 +16,10 @@ import com.thevortex.allthemodium.init.ModItems;
 import javax.swing.*;
 
 public enum AArmorMaterial implements ArmorMaterial {
-	   ALLTHEMODIUM("allthemodium", 45, new int[]{10, 15, 15, 10}, 90, SoundEvents.ARMOR_EQUIP_CHAIN, 125.0F, () -> {
+	   ALLTHEMODIUM("allthemodium", 45, new int[]{10, 15, 15, 10}, 85, SoundEvents.ARMOR_EQUIP_CHAIN, 125.0F, () -> {
 		      return Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get());
 		   }),
-	   VIBRANIUM("vibranium", 75, new int[]{15, 30, 30, 15}, 100, SoundEvents.ARMOR_EQUIP_CHAIN, 250.0F, () -> {
+	   VIBRANIUM("vibranium", 75, new int[]{15, 30, 30, 15}, 95, SoundEvents.ARMOR_EQUIP_CHAIN, 250.0F, () -> {
 	      return Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get());
 	   }),
 	   UNOBTAINIUM("unobtainium",100, new int[]{25, 45, 45, 25}, 130, SoundEvents.ARMOR_EQUIP_CHAIN, 500.0F, () -> {

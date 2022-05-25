@@ -1,8 +1,6 @@
-package com.thevortex.allthemodium.entity.shulkers;
+package com.thevortex.allthemodium.entity.shulkers.atm;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.thevortex.allthemodium.entity.PiglichEntity;
-import com.thevortex.allthemodium.entity.PiglichModel;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

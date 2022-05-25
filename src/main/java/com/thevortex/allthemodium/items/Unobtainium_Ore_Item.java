@@ -26,6 +26,7 @@ public class Unobtainium_Ore_Item extends BlockItem {
 	@Override
 	public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
 		tooltip.add(this.getTooltip("unobtainium.loc").withStyle(ChatFormatting.DARK_PURPLE));
+		tooltip.add(this.getTooltip("allthemodium.mine").withStyle(ChatFormatting.RED));
 		super.appendHoverText(stack, worldIn, tooltip, flagIn);
 	}
 	protected TranslatableComponent getTooltip(String key){

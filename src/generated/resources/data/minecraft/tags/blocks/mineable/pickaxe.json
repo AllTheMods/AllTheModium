@@ -9,13 +9,19 @@
     "allthemodium:ancient_cracked_stone_bricks",
     "allthemodium:ancient_chiseled_stone_bricks",
     "allthemodium:raw_allthemodium_block",
+    "allthemodium:allthemodium_block",
     "allthemodium:allthemodium_ore",
     "allthemodium:allthemodium_slate_ore",
+    "allthemodium:vibranium_block",
     "allthemodium:raw_vibranium_block",
     "allthemodium:vibranium_ore",
     "allthemodium:other_vibranium_ore",
+    "allthemodium:unobtainium_block",
     "allthemodium:raw_unobtainium_block",
     "allthemodium:unobtainium_ore",
+    "allthemodium:unobtainium_vibranium_alloy_block",
+    "allthemodium:unobtainium_allthemodium_alloy_block",
+    "allthemodium:vibranium_allthemodium_alloy_block",
     "allthemodium:teleport_pad"
   ]
 }

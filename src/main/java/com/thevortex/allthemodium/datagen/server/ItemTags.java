@@ -102,6 +102,7 @@ public class ItemTags extends ItemTagsProvider {
         tag(TagRegistry.RAW_VIBRANIUM).add(ModRegistry.RAW_VIBRANIUM.get());
         tag(TagRegistry.RAW_UNOBTAINIUM).add(ModRegistry.RAW_UNOBTAINIUM.get());
 
+
         tag(TagRegistry.RAW_ALLTHEMODIUM_FORGE).add(ModRegistry.RAW_ALLTHEMODIUM.get());
         tag(TagRegistry.RAW_VIBRANIUM_FORGE).add(ModRegistry.RAW_VIBRANIUM.get());
         tag(TagRegistry.RAW_UNOBTAINIUM_FORGE).add(ModRegistry.RAW_UNOBTAINIUM.get());

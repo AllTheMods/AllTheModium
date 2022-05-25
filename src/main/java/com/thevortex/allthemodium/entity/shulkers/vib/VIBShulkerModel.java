@@ -1,4 +1,4 @@
-package com.thevortex.allthemodium.entity.shulkers;
+package com.thevortex.allthemodium.entity.shulkers.vib;
 
 import com.google.common.collect.ImmutableList;
 import com.thevortex.allthemodium.reference.Reference;
@@ -15,14 +15,14 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.monster.Shulker;
 
-public class ATMShulkerModel<T extends Shulker> extends ListModel<T> {
+public class VIBShulkerModel<T extends Shulker> extends ListModel<T> {
     private static final String LID = "lid";
     private static final String BASE = "base";
     private final ModelPart base;
     private final ModelPart lid;
     private final ModelPart head;
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Reference.MOD_ID, "allthemodium_shulker"),"main");
-    public ATMShulkerModel(ModelPart p_170922_, boolean bool) {
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Reference.MOD_ID, "vibranium_shulker"),"main");
+    public VIBShulkerModel(ModelPart p_170922_, boolean bool) {
         super(RenderType::entityCutoutNoCullZOffset);
         this.lid = p_170922_.getChild("lid");
         this.base = p_170922_.getChild("base");

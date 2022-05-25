@@ -27,46 +27,46 @@ import java.util.Random;
 public class ATMPlacedFeature {
 
 
-    public static final Holder<PlacedFeature> ORE_ALLTHEMODIUM = PlacementUtils.register("ore_allthemodium", ATMConfiguredFeature.ORE_ALLTHEMODIUM,rareOrePlacement(9, HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(15), VerticalAnchor.absolute(20))));
-    public static final Holder<PlacedFeature> ORE_ALLTHEMODIUM_MOUNTAIN = PlacementUtils.register("ore_allthemodium_mountain", ATMConfiguredFeature.ORE_ALLTHEMODIUM,commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(170),VerticalAnchor.belowTop(20))));
-    public static final Holder<PlacedFeature> ORE_ATM_MINING = PlacementUtils.register("ore_atm_mining", ATMConfiguredFeature.ORE_ATM_MINING,rareOrePlacement(9, HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(5), VerticalAnchor.absolute(20))));
-    public static final Holder<PlacedFeature> ORE_VIBRANIUM = PlacementUtils.register("ore_vibranium", ATMConfiguredFeature.ORE_VIBRANIUM,rareOrePlacement(7, HeightRangePlacement.uniform(VerticalAnchor.belowTop(28), VerticalAnchor.belowTop(5))));
-    public static final Holder<PlacedFeature> ORE_VIBRANIUM_OTHER = PlacementUtils.register("other_vibranium_ore", ATMConfiguredFeature.OTHER_ORE_VIBRANIUM,commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(1), VerticalAnchor.absolute(20))));
+    public static final Holder<PlacedFeature> ORE_ALLTHEMODIUM = PlacementUtils.register("allthemodium:ore_allthemodium", ATMConfiguredFeature.ORE_ALLTHEMODIUM,rareOrePlacement(9, HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(15), VerticalAnchor.absolute(20))));
+    public static final Holder<PlacedFeature> ORE_ALLTHEMODIUM_MOUNTAIN = PlacementUtils.register("allthemodium:ore_allthemodium_mountain", ATMConfiguredFeature.ORE_ALLTHEMODIUM,commonOrePlacement(10, HeightRangePlacement.uniform(VerticalAnchor.absolute(170),VerticalAnchor.belowTop(20))));
+    public static final Holder<PlacedFeature> ORE_ATM_MINING = PlacementUtils.register("allthemodium:ore_atm_mining", ATMConfiguredFeature.ORE_ATM_MINING,rareOrePlacement(9, HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(5), VerticalAnchor.absolute(20))));
+    public static final Holder<PlacedFeature> ORE_VIBRANIUM = PlacementUtils.register("allthemodium:ore_vibranium", ATMConfiguredFeature.ORE_VIBRANIUM,rareOrePlacement(7, HeightRangePlacement.uniform(VerticalAnchor.belowTop(28), VerticalAnchor.belowTop(5))));
+    public static final Holder<PlacedFeature> ORE_VIBRANIUM_OTHER = PlacementUtils.register("allthemodium:other_vibranium_ore", ATMConfiguredFeature.OTHER_ORE_VIBRANIUM,commonOrePlacement(2, HeightRangePlacement.uniform(VerticalAnchor.absolute(1), VerticalAnchor.absolute(20))));
 
-    public static final Holder<PlacedFeature> ORE_UNOBTAINIUM = PlacementUtils.register("ore_unobtainium", ATMConfiguredFeature.ORE_UNOBTAINIUM,rareOrePlacement(9, HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(15), VerticalAnchor.absolute(78))));
+    public static final Holder<PlacedFeature> ORE_UNOBTAINIUM = PlacementUtils.register("allthemodium:ore_unobtainium", ATMConfiguredFeature.ORE_UNOBTAINIUM,rareOrePlacement(9, HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(15), VerticalAnchor.absolute(78))));
 
-    public static final Holder<PlacedFeature> VOLCANO_CF = PlacementUtils.register("volcano", ATMConfiguredFeature.VOLCANO_CF);
-    public static final Holder<PlacedFeature> MOD_DELTAS = PlacementUtils.register("other_deltas", ATMConfiguredFeature.MOD_DELTAS);
-    public static final Holder<PlacedFeature> ANCIENT_TREE = PlacementUtils.register("ancient_tree", ATMConfiguredFeature.ANCIENT_TREE,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
-    public static final Holder<PlacedFeature> ANCIENT_TREE_MEDIUM = PlacementUtils.register("ancient_tree_medium", ATMConfiguredFeature.ANCIENT_TREE_MEDIUM,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
-    public static final Holder<PlacedFeature> ANCIENT_TREE_GIANT = PlacementUtils.register("ancient_tree_giant", ATMConfiguredFeature.ANCIENT_TREE_GIANT,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
+    public static final Holder<PlacedFeature> VOLCANO_CF = PlacementUtils.register("allthemodium:volcano", ATMConfiguredFeature.VOLCANO_CF);
+    public static final Holder<PlacedFeature> MOD_DELTAS = PlacementUtils.register("allthemodium:other_deltas", ATMConfiguredFeature.MOD_DELTAS);
+    public static final Holder<PlacedFeature> ANCIENT_TREE = PlacementUtils.register("allthemodium:ancient_tree", ATMConfiguredFeature.ANCIENT_TREE,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
+    public static final Holder<PlacedFeature> ANCIENT_TREE_MEDIUM = PlacementUtils.register("allthemodium:ancient_tree_medium", ATMConfiguredFeature.ANCIENT_TREE_MEDIUM,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
+    public static final Holder<PlacedFeature> ANCIENT_TREE_GIANT = PlacementUtils.register("allthemodium:ancient_tree_giant", ATMConfiguredFeature.ANCIENT_TREE_GIANT,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
 
-    public static final Holder<PlacedFeature> DEMONIC_TREE = PlacementUtils.register("demonic_tree", ATMConfiguredFeature.DEMONIC_TREE,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
-    public static final Holder<PlacedFeature> DEMONIC_TREE_MEDIUM = PlacementUtils.register("demonic_tree_medium", ATMConfiguredFeature.DEMONIC_TREE_MEDIUM,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
-    public static final Holder<PlacedFeature> DEMONIC_TREE_GIANT = PlacementUtils.register("demonic_tree_giant", ATMConfiguredFeature.DEMONIC_TREE_GIANT,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
+    public static final Holder<PlacedFeature> DEMONIC_TREE = PlacementUtils.register("allthemodium:demonic_tree", ATMConfiguredFeature.DEMONIC_TREE,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
+    public static final Holder<PlacedFeature> DEMONIC_TREE_MEDIUM = PlacementUtils.register("allthemodium:demonic_tree_medium", ATMConfiguredFeature.DEMONIC_TREE_MEDIUM,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
+    public static final Holder<PlacedFeature> DEMONIC_TREE_GIANT = PlacementUtils.register("allthemodium:demonic_tree_giant", ATMConfiguredFeature.DEMONIC_TREE_GIANT,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
 
-    public static final Holder<PlacedFeature> SOUL_TREE = PlacementUtils.register("soul_tree", ATMConfiguredFeature.SOUL_TREE,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
-    public static final Holder<PlacedFeature> SOUL_TREE_MEDIUM = PlacementUtils.register("soul_tree_medium", ATMConfiguredFeature.SOUL_TREE_MEDIUM,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
-    public static final Holder<PlacedFeature> SOUL_TREE_GIANT = PlacementUtils.register("soul_tree_giant", ATMConfiguredFeature.SOUL_TREE_GIANT,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
+    public static final Holder<PlacedFeature> SOUL_TREE = PlacementUtils.register("allthemodium:soul_tree", ATMConfiguredFeature.SOUL_TREE,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
+    public static final Holder<PlacedFeature> SOUL_TREE_MEDIUM = PlacementUtils.register("allthemodium:soul_tree_medium", ATMConfiguredFeature.SOUL_TREE_MEDIUM,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
+    public static final Holder<PlacedFeature> SOUL_TREE_GIANT = PlacementUtils.register("allthemodium:soul_tree_giant", ATMConfiguredFeature.SOUL_TREE_GIANT,treePlacement(PlacementUtils.countExtra(2, 0.1F, 1)));
 
-    public static final Holder<PlacedFeature> CAVE_VINES = PlacementUtils.register("cave_vines", ATMConfiguredFeature.CAVE_VINE,CountPlacement.of(188), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.hasSturdyFace(Direction.DOWN), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(-1)), BiomeFilter.biome());
-
-
-    public static final Holder<PlacedFeature> CAVE_ATM = PlacementUtils.register("cave_ore", ATMConfiguredFeature.ORE_ALLTHEMODIUM,CountPlacement.of(50), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.hasSturdyFace(Direction.DOWN), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(-1)), BiomeFilter.biome());
+    public static final Holder<PlacedFeature> CAVE_VINES = PlacementUtils.register("allthemodium:cave_vines", ATMConfiguredFeature.CAVE_VINE,CountPlacement.of(188), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.hasSturdyFace(Direction.DOWN), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(-1)), BiomeFilter.biome());
 
 
+    public static final Holder<PlacedFeature> CAVE_ATM = PlacementUtils.register("allthemodium:cave_ore", ATMConfiguredFeature.ORE_ALLTHEMODIUM,CountPlacement.of(50), InSquarePlacement.spread(), PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT, EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.hasSturdyFace(Direction.DOWN), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(-1)), BiomeFilter.biome());
 
 
 
-    public static final Holder<PlacedFeature> OTHER_ORE_COAL = PlacementUtils.register("ore_coal", ATOOtherFeatures.OTHER_ORE_COAL,commonOrePlacement(30, HeightRangePlacement.uniform(VerticalAnchor.absolute(136), VerticalAnchor.top())));
-    public static final Holder<PlacedFeature> OTHER_ORE_COPPER = PlacementUtils.register("ore_copper", ATOOtherFeatures.OTHER_ORE_COPPER,commonOrePlacement(16, HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(112))));
-    public static final Holder<PlacedFeature> OTHER_ORE_DIAMOND = PlacementUtils.register("ore_diamond", ATOOtherFeatures.OTHER_ORE_DIAMOND,commonOrePlacement(14, HeightRangePlacement.triangle(VerticalAnchor.absolute(-10), VerticalAnchor.absolute(129))));
-    public static final Holder<PlacedFeature> OTHER_ORE_EMERALD = PlacementUtils.register("ore_emerald", ATOOtherFeatures.OTHER_ORE_EMERALD,commonOrePlacement(20, HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(480))));
-    public static final Holder<PlacedFeature> OTHER_ORE_GOLD = PlacementUtils.register("ore_gold", ATOOtherFeatures.OTHER_ORE_GOLD,commonOrePlacement(20, PlacementUtils.RANGE_10_10));
-    public static final Holder<PlacedFeature> OTHER_ORE_IRON = PlacementUtils.register("ore_iron", ATOOtherFeatures.OTHER_ORE_IRON,commonOrePlacement(50, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(384))));
-    public static final Holder<PlacedFeature> OTHER_ORE_LAPIS = PlacementUtils.register("ore_lapis", ATOOtherFeatures.OTHER_ORE_LAPIS,commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(64))));
-    public static final Holder<PlacedFeature> OTHER_ORE_QUARTZ = PlacementUtils.register("ore_quartz", ATOOtherFeatures.OTHER_ORE_QUARTZ,commonOrePlacement(16, PlacementUtils.RANGE_10_10));
-    public static final Holder<PlacedFeature> OTHER_ORE_REDSTONE = PlacementUtils.register("ore_redstone", ATOOtherFeatures.OTHER_ORE_REDSTONE,commonOrePlacement(14, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(15))));
+
+
+    public static final Holder<PlacedFeature> OTHER_ORE_COAL = PlacementUtils.register("allthemodium:ore_coal", ATOOtherFeatures.OTHER_ORE_COAL,commonOrePlacement(30, HeightRangePlacement.uniform(VerticalAnchor.absolute(136), VerticalAnchor.top())));
+    public static final Holder<PlacedFeature> OTHER_ORE_COPPER = PlacementUtils.register("allthemodium:ore_copper", ATOOtherFeatures.OTHER_ORE_COPPER,commonOrePlacement(16, HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(112))));
+    public static final Holder<PlacedFeature> OTHER_ORE_DIAMOND = PlacementUtils.register("allthemodium:ore_diamond", ATOOtherFeatures.OTHER_ORE_DIAMOND,commonOrePlacement(14, HeightRangePlacement.triangle(VerticalAnchor.absolute(-10), VerticalAnchor.absolute(129))));
+    public static final Holder<PlacedFeature> OTHER_ORE_EMERALD = PlacementUtils.register("allthemodium:ore_emerald", ATOOtherFeatures.OTHER_ORE_EMERALD,commonOrePlacement(20, HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(480))));
+    public static final Holder<PlacedFeature> OTHER_ORE_GOLD = PlacementUtils.register("allthemodium:ore_gold", ATOOtherFeatures.OTHER_ORE_GOLD,commonOrePlacement(20, PlacementUtils.RANGE_10_10));
+    public static final Holder<PlacedFeature> OTHER_ORE_IRON = PlacementUtils.register("allthemodium:ore_iron", ATOOtherFeatures.OTHER_ORE_IRON,commonOrePlacement(50, HeightRangePlacement.triangle(VerticalAnchor.absolute(-24), VerticalAnchor.absolute(384))));
+    public static final Holder<PlacedFeature> OTHER_ORE_LAPIS = PlacementUtils.register("allthemodium:ore_lapis", ATOOtherFeatures.OTHER_ORE_LAPIS,commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(64))));
+    public static final Holder<PlacedFeature> OTHER_ORE_QUARTZ = PlacementUtils.register("allthemodium:ore_quartz", ATOOtherFeatures.OTHER_ORE_QUARTZ,commonOrePlacement(16, PlacementUtils.RANGE_10_10));
+    public static final Holder<PlacedFeature> OTHER_ORE_REDSTONE = PlacementUtils.register("allthemodium:ore_redstone", ATOOtherFeatures.OTHER_ORE_REDSTONE,commonOrePlacement(14, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.absolute(15))));
 
 
 

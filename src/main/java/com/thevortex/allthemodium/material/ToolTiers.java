@@ -33,12 +33,12 @@ public class ToolTiers {
             List.of(Tiers.NETHERITE), List.of());
 
     public static final Tier VIBRANIUM_TIER = TierSortingRegistry.registerTier(
-            new ForgeTier(6, 10000, 40, 100, 100, VIBRANIUM_TIER_TAG, () -> Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get())),
+            new ForgeTier(6, 10000, 40, 100, 95, VIBRANIUM_TIER_TAG, () -> Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get())),
             new ResourceLocation(Reference.MOD_ID,"vibranium"),
             List.of(Tiers.NETHERITE), List.of(UNOBTAINIUM_TIER));
 
     public static final Tier ALLTHEMODIUM_TIER = TierSortingRegistry.registerTier(
-            new ForgeTier(5, 15000, 10, 50, 90, ALLTHEMODIUM_TIER_TAG, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get())),
+            new ForgeTier(5, 15000, 10, 50, 85, ALLTHEMODIUM_TIER_TAG, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get())),
             new ResourceLocation(Reference.MOD_ID,"allthemodium"),
             List.of(Tiers.NETHERITE), List.of(VIBRANIUM_TIER));
 

@@ -8,6 +8,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.serialization.Codec;
 import com.thevortex.allthemodium.events.PlayerHarvest;
 import com.thevortex.allthemodium.init.*;
+import com.thevortex.allthemodium.registry.ATMMekRegistry;
 import com.thevortex.allthemodium.registry.MekRegistry;
 import com.thevortex.allthemodium.worldgen.MiningDimSource;
 import com.thevortex.allthemodium.worldgen.TheOtherDimSource;
@@ -187,8 +188,5 @@ public class AllTheModium
 
 
 	}
-	public static class ATMMekRegistry {
-		@SubscribeEvent
-		public static void onSlurryRegistry(final RegistryEvent.Register<Slurry> event) {	if(ModList.get().isLoaded("mekanism")) { MekRegistry.init(event);		} }
-	}
+
 }

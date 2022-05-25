@@ -169,6 +169,25 @@ private ResourceLocation recipeDir(String typeIn, String typeOut) {
                 .requires(TagRegistry.UNOBTAINIUM_INGOT)
                 .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.UNOBTAINIUM_INGOT.get()))
                 .save(consumer,recipeDir("unobtainium_nugget","ingot"));
+
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.RAW_ALLTHEMODIUM.get(),9)
+                .requires(TagRegistry.RAW_ALLTHEMODIUM_BLOCK)
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.RAW_ALLTHEMODIUM_BLOCK_ITEM.get()))
+                .save(consumer,recipeDir("raw_allthemodium","block"));
+
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.RAW_VIBRANIUM.get(),9)
+                .requires(TagRegistry.RAW_VIBRANIUM_BLOCK)
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.RAW_VIBRANIUM_BLOCK_ITEM.get()))
+                .save(consumer,recipeDir("raw_vibranium","block"));
+
+        ShapelessRecipeBuilder
+                .shapeless(ModRegistry.RAW_UNOBTAINIUM.get(),9)
+                .requires(TagRegistry.RAW_UNOBTAINIUM_BLOCK)
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.RAW_UNOBTAINIUM_BLOCK_ITEM.get()))
+                .save(consumer,recipeDir("raw_unobtainium","block"));
+
     }
 
     public ShapelessCrafting(DataGenerator generatorIn) {

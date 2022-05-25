@@ -1,21 +1,14 @@
 package com.thevortex.allthemodium.events;
 
-import com.thevortex.allthemodium.entity.PiglichEntity;
 import com.thevortex.allthemodium.entity.PiglichModel;
 import com.thevortex.allthemodium.entity.PiglichRenderer;
-import com.thevortex.allthemodium.entity.shulkers.ATMShulkerModel;
-import com.thevortex.allthemodium.entity.shulkers.ATMShulkerRenderer;
+import com.thevortex.allthemodium.entity.shulkers.atm.ATMShulkerModel;
 import com.thevortex.allthemodium.items.toolitems.armor.models.allthemodium_helmet;
 import com.thevortex.allthemodium.items.toolitems.armor.models.unobtainium_helmet;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.ModRegistry;
-import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
-import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.server.packs.resources.PreparableReloadListener;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -27,8 +20,8 @@ public class ClientEvents {
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
                 event.registerEntityRenderer(ModRegistry.PIGLICH.get(), PiglichRenderer::new);
-
-              // event.registerEntityRenderer(ModRegistry.ATM_SHULKER.get(), ATMShulkerRenderer::new);
+              // event.registerEntityRenderer(ModRegistry.ATM_SHULKER.get(), UNOBShulkerRenderer::new);
+              // event.registerEntityRenderer(ModRegistry.ATM_SHULKER.get(), UNOBShulkerRenderer::new);
     }
 
     @SubscribeEvent

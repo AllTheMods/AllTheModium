@@ -23,15 +23,24 @@ public class PiglichModel<T extends Entity> extends EntityModel<T> {
     private final ModelPart body;
     private final ModelPart leftLeg;
     private final ModelPart rightLeg;
+
+
+
+    private final PartPose bodyDefault;
+    private final PartPose headDefault;
+
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Reference.MOD_ID, "piglich"),"main");
 
     public PiglichModel(ModelPart root, boolean bool) {
         this.head = root.getChild("head");
         this.body = root.getChild("body");
+
+
         this.leftLeg = root.getChild("leftLeg");
         this.rightLeg = root.getChild("rightLeg");
-
-    }
+         this.bodyDefault = this.body.storePose();
+        this.headDefault = this.head.storePose();
+     }
 
 
     public static LayerDefinition createBodyLayer() {
@@ -82,8 +91,8 @@ public class PiglichModel<T extends Entity> extends EntityModel<T> {
 
     @Override
     public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+     }
 
-    }
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {

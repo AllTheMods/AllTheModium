@@ -1,7 +1,7 @@
 {
   "type": "tconstruct:melting",
   "ingredient": {
-    "tag": "forge:raw_blocks/allthemodium"
+    "tag": "forge:storage_blocks/raw_allthemodium"
   },
   "result": {
     "fluid": "allthemodium:molten_allthemodium",

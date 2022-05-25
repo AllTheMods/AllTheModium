@@ -1,7 +1,7 @@
 {
   "type": "tconstruct:melting",
   "ingredient": {
-    "tag": "forge:raw_blocks/unobtainium"
+    "tag": "forge:storage_blocks/raw_unobtainium"
   },
   "result": {
     "fluid": "allthemodium:molten_unobtainium",

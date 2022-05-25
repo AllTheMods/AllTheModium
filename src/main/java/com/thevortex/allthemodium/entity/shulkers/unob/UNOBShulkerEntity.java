@@ -1,4 +1,4 @@
-package com.thevortex.allthemodium.entity.shulkers;
+package com.thevortex.allthemodium.entity.shulkers.unob;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -7,8 +7,8 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Shulker;
 import net.minecraft.world.level.Level;
 
-public class ATMShulkerEntity extends Shulker {
-    public ATMShulkerEntity(EntityType<? extends Shulker> p_33404_, Level p_33405_) {
+public class UNOBShulkerEntity extends Shulker {
+    public UNOBShulkerEntity(EntityType<? extends Shulker> p_33404_, Level p_33405_) {
         super(p_33404_, p_33405_);
     }
     public static AttributeSupplier.Builder createAttributes() {
