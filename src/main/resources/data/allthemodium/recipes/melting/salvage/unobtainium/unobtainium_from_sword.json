@@ -1,13 +1,13 @@
 {
   "type": "tconstruct:melting",
   "ingredient": {
-    "tag": "forge:storage_blocks/allthemodium"
+    "item": "allthemodium:unobtainium_sword"
   },
   "result": {
-    "fluid": "allthemodium:molten_allthemodium",
-    "amount": 810
+    "fluid": "allthemodium:molten_unobtainium",
+    "amount": 270
   },
-  "temperature": 1500,
+  "temperature": 9000,
   "time": 200,
   "conditions": [
       {

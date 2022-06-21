@@ -1,11 +1,11 @@
 {
   "type": "tconstruct:melting",
   "ingredient": {
-    "tag": "forge:storage_blocks/allthemodium"
+    "item": "allthemodium:allthemodium_sword"
   },
   "result": {
     "fluid": "allthemodium:molten_allthemodium",
-    "amount": 810
+    "amount": 270
   },
   "temperature": 1500,
   "time": 200,
