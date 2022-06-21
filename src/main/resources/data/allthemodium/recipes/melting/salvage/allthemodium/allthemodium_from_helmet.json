@@ -1,11 +1,11 @@
 {
   "type": "tconstruct:melting",
   "ingredient": {
-    "tag": "forge:storage_blocks/allthemodium"
+    "item": "allthemodium:allthemodium_helmet"
   },
   "result": {
     "fluid": "allthemodium:molten_allthemodium",
-    "amount": 720
+    "amount": 450
   },
   "temperature": 1500,
   "time": 200,
