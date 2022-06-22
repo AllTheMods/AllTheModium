@@ -27,6 +27,9 @@ public class EventWorldgen {
             //event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATMPlacedFeature.ORE_ALLTHEMODIUM);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.CAVE_ATM);
         }
+        if (event.getCategory() == Biome.BiomeCategory.UNDERGROUND) {
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.CAVE_ATM);
+        }
         if ((biome.equals("crimson_forest")) || (biome.equals("warped_forest")) && !mod.equals(Reference.MOD_ID)) {
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_DECORATION).add(ATMPlacedFeature.ORE_VIBRANIUM);
         }
