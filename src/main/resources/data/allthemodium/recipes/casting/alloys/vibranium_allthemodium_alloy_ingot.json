@@ -3,6 +3,7 @@
   "cast": {
     "item": "allthemodium:piglich_heart"
   },
+  "cast_consumed": true,
   "fluid": {
     "name": "allthemodium:molten_atmvib",
     "amount": 90

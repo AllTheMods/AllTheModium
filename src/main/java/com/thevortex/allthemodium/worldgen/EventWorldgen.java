@@ -2,24 +2,11 @@ package com.thevortex.allthemodium.worldgen;
 
 
 import com.thevortex.allthemodium.reference.Reference;
-import com.thevortex.allthemodium.worldgen.carvers.ATMCarvers;
-import net.allthemods.alltheores.worldgen.ATOConfiguredFeature;
+import com.thevortex.allthemodium.worldgen.ATOtherPlacedFeatures;
 import net.allthemods.alltheores.worldgen.ATOPlacedFeatures;
-import net.minecraft.data.worldgen.Carvers;
-import net.minecraft.data.worldgen.StructureFeatures;
 import net.minecraft.data.worldgen.placement.*;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
-import net.minecraft.world.level.levelgen.feature.DesertPyramidFeature;
-import net.minecraft.world.level.levelgen.feature.GeodeFeature;
-import net.minecraft.world.level.levelgen.feature.NetherFortressFeature;
-import net.minecraft.world.level.levelgen.feature.StructureFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-import net.minecraft.world.level.levelgen.feature.configurations.GeodeConfiguration;
-import net.minecraft.world.level.levelgen.placement.CarvingMaskPlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
@@ -38,6 +25,9 @@ public class EventWorldgen {
         if (event.getCategory() == Biome.BiomeCategory.MOUNTAIN) {
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.ORE_ALLTHEMODIUM_MOUNTAIN);
             //event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(() -> ATMPlacedFeature.ORE_ALLTHEMODIUM);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.CAVE_ATM);
+        }
+        if (event.getCategory() == Biome.BiomeCategory.UNDERGROUND) {
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.CAVE_ATM);
         }
         if ((biome.equals("crimson_forest")) || (biome.equals("warped_forest")) && !mod.equals(Reference.MOD_ID)) {
@@ -110,15 +100,15 @@ public class EventWorldgen {
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATOPlacedFeatures.ORE_URANIUM);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATOPlacedFeatures.ORE_ZINC);
 
-            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.OTHER_ORE_COAL);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.OTHER_ORE_COPPER);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.OTHER_ORE_DIAMOND);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.OTHER_ORE_EMERALD);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.OTHER_ORE_GOLD);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.OTHER_ORE_IRON);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.OTHER_ORE_LAPIS);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.OTHER_ORE_QUARTZ);
-            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.OTHER_ORE_REDSTONE);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATOtherPlacedFeatures.OTHER_ORE_COAL);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATOtherPlacedFeatures.OTHER_ORE_COPPER);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATOtherPlacedFeatures.OTHER_ORE_DIAMOND);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATOtherPlacedFeatures.OTHER_ORE_EMERALD);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATOtherPlacedFeatures.OTHER_ORE_GOLD);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATOtherPlacedFeatures.OTHER_ORE_IRON);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATOtherPlacedFeatures.OTHER_ORE_LAPIS);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATOtherPlacedFeatures.OTHER_ORE_QUARTZ);
+            event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATOtherPlacedFeatures.OTHER_ORE_REDSTONE);
             event.getGeneration().getFeatures(GenerationStep.Decoration.UNDERGROUND_ORES).add(ATMPlacedFeature.ORE_VIBRANIUM_OTHER);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(NetherPlacements.PATCH_SOUL_FIRE);
             event.getGeneration().getFeatures(GenerationStep.Decoration.VEGETAL_DECORATION).add(NetherPlacements.PATCH_FIRE);

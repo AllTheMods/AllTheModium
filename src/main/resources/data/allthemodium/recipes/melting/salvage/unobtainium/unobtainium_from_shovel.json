@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "allthemodium:unobtainium_shovel"
+  },
+  "result": {
+    "fluid": "allthemodium:molten_unobtainium",
+    "amount": 270
+  },
+  "temperature": 9000,
+  "time": 200,
+  "conditions": [
+      {
+          "type": "forge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

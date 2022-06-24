@@ -3,6 +3,7 @@ package com.thevortex.allthemodium.worldgen.biomes;
 import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.worldgen.ATMPlacedFeature;
+import com.thevortex.allthemodium.worldgen.ATOtherPlacedFeatures;
 import com.thevortex.allthemodium.worldgen.carvers.ATMCarvers;
 import net.allthemods.alltheores.worldgen.ATOPlacedFeatures;
 import net.minecraft.core.Registry;
@@ -64,15 +65,15 @@ public class ATMBiomes {
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOPlacedFeatures.ORE_URANIUM);
         builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOPlacedFeatures.ORE_ZINC);
 
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATMPlacedFeature.OTHER_ORE_COAL);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATMPlacedFeature.OTHER_ORE_COPPER);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATMPlacedFeature.OTHER_ORE_DIAMOND);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATMPlacedFeature.OTHER_ORE_EMERALD);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATMPlacedFeature.OTHER_ORE_GOLD);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATMPlacedFeature.OTHER_ORE_IRON);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATMPlacedFeature.OTHER_ORE_LAPIS);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATMPlacedFeature.OTHER_ORE_QUARTZ);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATMPlacedFeature.OTHER_ORE_REDSTONE);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ATOtherPlacedFeatures.OTHER_ORE_COAL);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_COPPER);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_DIAMOND);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_EMERALD);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_GOLD);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_IRON);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_LAPIS);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_QUARTZ);
+        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_REDSTONE);
     }
 
     public static Biome mining() {

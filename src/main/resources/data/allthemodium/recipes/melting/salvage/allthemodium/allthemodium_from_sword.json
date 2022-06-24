@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "allthemodium:allthemodium_sword"
+  },
+  "result": {
+    "fluid": "allthemodium:molten_allthemodium",
+    "amount": 270
+  },
+  "temperature": 1500,
+  "time": 200,
+  "conditions": [
+      {
+          "type": "forge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

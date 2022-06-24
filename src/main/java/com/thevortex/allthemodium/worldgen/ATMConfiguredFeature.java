@@ -5,9 +5,9 @@ import com.google.common.collect.ImmutableList;
 import com.thevortex.allthemodium.blocks.ACaveVines;
 import com.thevortex.allthemodium.blocks.AncientCaveVines;
 import com.thevortex.allthemodium.reference.Reference;
+import com.thevortex.allthemodium.reference.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.worldgen.features.VolcanoConfig;
-import net.allthemods.alltheores.infos.ItemTagRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -60,7 +60,7 @@ public class ATMConfiguredFeature {
 
 	public static Holder<ConfiguredFeature<OreConfiguration, ?>> OTHER_ORE_VIBRANIUM = FeatureUtils.register("allthemodium:other_ore_vibranium",
 			Feature.ORE
-					,new OreConfiguration(new TagMatchTest(ItemTagRegistry.ANCIENT_STONE),
+					,new OreConfiguration(new TagMatchTest(TagRegistry.ANCIENT_STONE),
 							ModRegistry.OTHER_VIBRANIUM_ORE.get().defaultBlockState(), 3));
 
 	public static Holder<ConfiguredFeature<OreConfiguration, ?>> ORE_UNOBTAINIUM = FeatureUtils.register("allthemodium:ore_unobtainium",

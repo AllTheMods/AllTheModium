@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "allthemodium:vibranium_leggings"
+  },
+  "result": {
+    "fluid": "allthemodium:molten_vibranium",
+    "amount": 630
+  },
+  "temperature": 5000,
+  "time": 200,
+  "conditions": [
+      {
+          "type": "forge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

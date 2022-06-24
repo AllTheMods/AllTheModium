@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "allthemodium:vibranium_helmet"
+  },
+  "result": {
+    "fluid": "allthemodium:molten_vibranium",
+    "amount": 450
+  },
+  "temperature": 5000,
+  "time": 200,
+  "conditions": [
+      {
+          "type": "forge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}

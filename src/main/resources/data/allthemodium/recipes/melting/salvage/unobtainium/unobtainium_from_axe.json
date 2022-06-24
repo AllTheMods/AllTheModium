@@ -1,0 +1,18 @@
+{
+  "type": "tconstruct:melting",
+  "ingredient": {
+    "item": "allthemodium:unobtainium_axe"
+  },
+  "result": {
+    "fluid": "allthemodium:molten_unobtainium",
+    "amount": 450
+  },
+  "temperature": 9000,
+  "time": 200,
+  "conditions": [
+      {
+          "type": "forge:mod_loaded",
+          "modid": "tconstruct"
+      }
+  ]
+}
