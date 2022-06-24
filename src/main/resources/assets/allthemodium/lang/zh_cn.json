@@ -23,6 +23,7 @@
   "vibranium.loc": "诡异森林和绯红森林，Y100至123",
   "vibranium.other.loc": "所有异界生物群系，Y0至20",
   "unobtainium.loc": "仅在末地高岛生成",
+  "allthemodium.mine": "只能由玩家挖掘。机器挖掘无效",
   "entity.allthemodium.piglich": "猪巫妖",
   "biome.allthemodium.mining": "ATM挖矿维度",
   "material.allthemodium.allthemodium": "ATM",
