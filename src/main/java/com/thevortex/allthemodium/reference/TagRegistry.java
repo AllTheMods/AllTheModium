@@ -29,7 +29,9 @@ public class TagRegistry {
     public static final TagKey<Item> FORGE_HOES = ItemTags.create(Reference.forge("tools/hoes"));
 
     public static final TagKey<Item> PIGLIN_LOVED = ItemTags.create(Reference.location("minecraft:items/piglin_loved"));
-
+    public static final TagKey<Item> RAW_MATERIALS = ItemTags.create(Reference.forge("raw_materials"));
+    public static final TagKey<Item> DUSTS = ItemTags.create(Reference.forge("dusts"));
+    public static final TagKey<Item> ORES = ItemTags.create(Reference.forge("ores"));
 
     public static final TagKey<Block> OTHER_TILE_WHITELIST = BlockTags.create(Reference.location("allthemodium:other_te_whitelist"));
     public static final TagKey<Block> ANCIENT_DIRT = BlockTags.create(Reference.location("allthemodium:ancient_dirt"));

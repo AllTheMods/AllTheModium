@@ -102,6 +102,9 @@ public class ItemTags extends ItemTagsProvider {
         tag(TagRegistry.RAW_VIBRANIUM).add(ModRegistry.RAW_VIBRANIUM.get());
         tag(TagRegistry.RAW_UNOBTAINIUM).add(ModRegistry.RAW_UNOBTAINIUM.get());
 
+        tag(TagRegistry.RAW_MATERIALS).add(ModRegistry.RAW_ALLTHEMODIUM.get());
+        tag(TagRegistry.RAW_MATERIALS).add(ModRegistry.RAW_VIBRANIUM.get());
+        tag(TagRegistry.RAW_MATERIALS).add(ModRegistry.RAW_UNOBTAINIUM.get());
 
         tag(TagRegistry.RAW_ALLTHEMODIUM_FORGE).add(ModRegistry.RAW_ALLTHEMODIUM.get());
         tag(TagRegistry.RAW_VIBRANIUM_FORGE).add(ModRegistry.RAW_VIBRANIUM.get());
@@ -123,6 +126,10 @@ public class ItemTags extends ItemTagsProvider {
         tag(TagRegistry.VIBRANIUM_DUST).add(ModRegistry.VIBRANIUM_DUST.get());
         tag(TagRegistry.UNOBTAINIUM_DUST).add(ModRegistry.UNOBTAINIUM_DUST.get());
 
+        tag(TagRegistry.DUSTS).add(ModRegistry.ALLTHEMODIUM_DUST.get());
+        tag(TagRegistry.DUSTS).add(ModRegistry.VIBRANIUM_DUST.get());
+        tag(TagRegistry.DUSTS).add(ModRegistry.UNOBTAINIUM_DUST.get());
+
         tag(TagRegistry.ALLTHEMODIUM_NUGGET).add(ModRegistry.ALLTHEMODIUM_NUGGET.get());
         tag(TagRegistry.VIBRANIUM_NUGGET).add(ModRegistry.VIBRANIUM_NUGGET.get());
         tag(TagRegistry.UNOBTAINIUM_NUGGET).add(ModRegistry.UNOBTAINIUM_NUGGET.get());
@@ -141,6 +148,12 @@ public class ItemTags extends ItemTagsProvider {
         tag(TagRegistry.VIBRANIUM_ORE_ITEM).add(ModRegistry.VIBRANIUM_ORE_ITEM.get());
         tag(TagRegistry.VIBRANIUM_ORE_ITEM).add(ModRegistry.OTHER_VIBRANIUM_ORE_ITEM.get());
         tag(TagRegistry.UNOBTAINIUM_ORE_ITEM).add(ModRegistry.UNOBTAINIUM_ORE_ITEM.get());
+
+        tag(TagRegistry.ORES).add(ModRegistry.ALLTHEMODIUM_ORE_ITEM.get());
+        tag(TagRegistry.ORES).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE_ITEM.get());
+        tag(TagRegistry.ORES).add(ModRegistry.VIBRANIUM_ORE_ITEM.get());
+        tag(TagRegistry.ORES).add(ModRegistry.OTHER_VIBRANIUM_ORE_ITEM.get());
+        tag(TagRegistry.ORES).add(ModRegistry.UNOBTAINIUM_ORE_ITEM.get());
 
         tag(TagRegistry.ALLTHEMODIUM_GEAR).add(ModRegistry.ATM_GEAR.get());
         tag(TagRegistry.VIBRANIUM_GEAR).add(ModRegistry.VIB_GEAR.get());

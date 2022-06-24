@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "allthemodium:allthemodium_ore",
+    "allthemodium:allthemodium_slate_ore",
+    "allthemodium:vibranium_ore",
+    "allthemodium:other_vibranium_ore",
+    "allthemodium:unobtainium_ore"
+  ]
+}
