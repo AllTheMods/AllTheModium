@@ -15,33 +15,18 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.monster.piglin.PiglinArmPose;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
 
 import java.util.Random;
 
-public class PiglichModel<T extends Entity> extends EntityModel<T> {
-    private final ModelPart head;
-    private final ModelPart body;
-    private final ModelPart leftLeg;
-    private final ModelPart rightLeg;
+public class PiglichModel extends AnimatedGeoModel<PiglichEntity> {
 
-
-
-    private final PartPose bodyDefault;
-    private final PartPose headDefault;
 
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Reference.MOD_ID, "piglich"),"main");
 
-    public PiglichModel(ModelPart root, boolean bool) {
-        this.head = root.getChild("head");
-        this.body = root.getChild("body");
-
-
-        this.leftLeg = root.getChild("leftLeg");
-        this.rightLeg = root.getChild("rightLeg");
-         this.bodyDefault = this.body.storePose();
-        this.headDefault = this.head.storePose();
+    public PiglichModel() {
      }
-
 
     public static LayerDefinition createBodyLayer() {
         MeshDefinition meshdefinition = new MeshDefinition();
@@ -89,19 +74,23 @@ public class PiglichModel<T extends Entity> extends EntityModel<T> {
         return LayerDefinition.create(meshdefinition, 128, 64);
     }
 
-    @Override
-    public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-     }
 
 
+
+
+
     @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        head.render(poseStack, buffer, packedLight, packedOverlay);
-        body.render(poseStack, buffer, packedLight, packedOverlay);
-        leftLeg.render(poseStack, buffer, packedLight, packedOverlay);
-        rightLeg.render(poseStack, buffer, packedLight, packedOverlay);
+    public ResourceLocation getModelLocation(PiglichEntity piglichEntity) {
+        return new ResourceLocation(Reference.MOD_ID,"geo/piglich_anim.geo.json");
     }
 
+    @Override
+    public ResourceLocation getTextureLocation(PiglichEntity piglichEntity) {
+        return new ResourceLocation(Reference.MOD_ID,"textures/entity/piglich.png");
+    }
 
-
+    @Override
+    public ResourceLocation getAnimationFileLocation(PiglichEntity piglichEntity) {
+        return new ResourceLocation(Reference.MOD_ID,"animations/piglich.animation.json");
+    }
 }

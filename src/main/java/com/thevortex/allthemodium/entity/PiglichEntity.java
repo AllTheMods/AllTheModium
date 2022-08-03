@@ -4,9 +4,12 @@ import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.util.Mth;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -28,16 +31,25 @@ import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.NaturalSpawner;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
+import software.bernie.geckolib3.core.manager.AnimationData;
+import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 import java.util.EnumSet;
 
 
-public class PiglichEntity extends Piglin {
+public class PiglichEntity extends Piglin implements IAnimatable {
     private final SimpleContainer inventory = new SimpleContainer(8);
-
+    private AnimationFactory factory = new AnimationFactory(this);
+    private boolean isSummoning = false;
     public PiglichEntity(EntityType<? extends Piglin> type, Level world) {
             super(type, world);
             this.setImmuneToZombification(true);
@@ -117,11 +129,9 @@ public class PiglichEntity extends Piglin {
     @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor sla, DifficultyInstance difficultyInstance, MobSpawnType mobSpawnType, @Nullable SpawnGroupData spawnGroupData, @Nullable CompoundTag tag) {
         if (mobSpawnType != MobSpawnType.STRUCTURE) {
-            if (sla.getRandom().nextFloat() < 0.2F) {
-                this.setBaby(true);
-            } else if (this.isAdult()) {
+
                 this.setItemSlot(EquipmentSlot.MAINHAND, this.createSpawnWeapon());
-            }
+
         }
 
         this.populateDefaultEquipementSlots(difficultyInstance);
@@ -133,15 +143,41 @@ public class PiglichEntity extends Piglin {
             return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED,0.21F).add(Attributes.ATTACK_DAMAGE,12).add(Attributes.ARMOR,24).add(Attributes.ARMOR_TOUGHNESS,24).add(Attributes.MAX_HEALTH,9999);
     }
 
+    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
+
+        if(event.isMoving()) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("walk.piglich.nik", true));
+            return PlayState.CONTINUE;
+        }
+        if(this.isSummoning) {
+            event.getController().setAnimation(new AnimationBuilder().addAnimation("summon.piglich.nik", true));
+            return PlayState.CONTINUE;
+        }
+        event.getController().setAnimation(new AnimationBuilder().addAnimation("idle.piglich.nik",true));
+        return PlayState.CONTINUE;
+
+
+    }
+    @Override
+    public void registerControllers(AnimationData animationData) {
+        animationData.addAnimationController(new AnimationController(this,"controller",0,this::predicate));
+    }
+
+    @Override
+    public AnimationFactory getFactory() {
+        return this.factory;
+    }
+
     static class PigLichAttackGoal extends Goal {
         private final PiglichEntity piglich;
         private int attackStep;
         private int attackTime;
         private int lastSeen;
 
+
         public PigLichAttackGoal(PiglichEntity p_32247_) {
             this.piglich = p_32247_;
-            this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
+            this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK, Flag.TARGET));
         }
 
         public boolean canUse() {
@@ -207,9 +243,9 @@ public class PiglichEntity extends Piglin {
                                 this.piglich.level.levelEvent((Player)null, 1018, this.piglich.blockPosition(), 0);
                             }
 
-                            for(int i = 0; i < 1; ++i) {
+                            for(int i = 0; i < 3; ++i) {
                                 Vec3 vec3 = this.piglich.getViewVector(1.0F);
-
+                                this.piglich.isSummoning = true;
                                 LargeFireball largefireball = new LargeFireball(this.piglich.level, this.piglich, d2, d3, d4, (int)this.piglich.getHealth());
                                 largefireball.setPos(this.piglich.getX() + vec3.x * 4.0D, this.piglich.getY(0.5D) + 0.5D, largefireball.getZ() + vec3.z * 4.0D);
                                 this.piglich.level.addFreshEntity(largefireball);
@@ -228,6 +264,72 @@ public class PiglichEntity extends Piglin {
 
         private double getFollowDistance() {
             return this.piglich.getAttributeValue(Attributes.FOLLOW_RANGE);
+        }
+    }
+
+    @Override
+    public boolean hurt(DamageSource source, float damage) {
+        if (!super.hurt(source, damage)) {
+            return false;
+        } else if (!(this.level instanceof ServerLevel)) {
+            return false;
+        } else {
+            ServerLevel serverlevel = (ServerLevel)this.level;
+            LivingEntity livingentity = this.getTarget();
+            if (livingentity == null && source.getEntity() instanceof LivingEntity) {
+                livingentity = (LivingEntity)source.getEntity();
+            }
+
+            if (!(livingentity instanceof Player)) {
+                return false;
+            } else {
+                int i = Mth.floor(this.getX());
+                int j = Mth.floor(this.getY());
+                int k = Mth.floor(this.getZ());
+                return this.spawnSupport(this, i, j, k);
+            }
+        }
+    }
+    protected boolean spawnSupport(PiglichEntity piglich, int i, int j, int k) {
+        ServerLevel serverlevel = (ServerLevel)piglich.level;
+        LivingEntity livingentity = piglich.getTarget();
+        int mobType = Mth.nextInt(piglich.random, 1, 6);
+        Monster spawnmob = (Monster)EntityType.PIGLIN_BRUTE.create(piglich.level);
+        switch(mobType) {
+            case 1:
+                spawnmob = (Monster)EntityType.PIGLIN_BRUTE.create(piglich.level);
+            case 2:
+                spawnmob = (Monster)EntityType.BLAZE.create(piglich.level);
+            case 3:
+                spawnmob = (Monster)EntityType.ENDERMAN.create(piglich.level);
+            case 4:
+                spawnmob = (Monster)EntityType.EVOKER.create(piglich.level);
+            case 5:
+                spawnmob = (Monster)EntityType.VINDICATOR.create(piglich.level);
+            case 6:
+                spawnmob = (Monster)EntityType.WITCH.create(piglich.level);
+            default:
+                for(int l = 0; l < 5; ++l) {
+                    int i1 = i + Mth.nextInt(piglich.random, 7, 40) * Mth.nextInt(piglich.random, -1, 1);
+                    int j1 = j + Mth.nextInt(piglich.random, 7, 40) * Mth.nextInt(piglich.random, -1, 1);
+                    int k1 = k + Mth.nextInt(piglich.random, 7, 40) * Mth.nextInt(piglich.random, -1, 1);
+                    BlockPos blockpos = new BlockPos(i1, j1, k1);
+                    EntityType<?> entitytype = spawnmob.getType();
+                    SpawnPlacements.Type spawnplacements$type = SpawnPlacements.getPlacementType(entitytype);
+                    if (NaturalSpawner.isSpawnPositionOk(spawnplacements$type, piglich.level, blockpos, entitytype) && SpawnPlacements.checkSpawnRules(entitytype, serverlevel, MobSpawnType.REINFORCEMENT, blockpos, piglich.level.random)) {
+                        spawnmob.setPos((double)i1, (double)j1, (double)k1);
+                        if (!piglich.level.hasNearbyAlivePlayer((double)i1, (double)j1, (double)k1, 7.0D) && piglich.level.isUnobstructed(spawnmob) && piglich.level.noCollision(spawnmob) && !piglich.level.containsAnyLiquid(spawnmob.getBoundingBox())) {
+                            if (livingentity != null) {
+                                spawnmob.setTarget(livingentity);
+                            }
+
+                            spawnmob.finalizeSpawn(serverlevel, piglich.level.getCurrentDifficultyAt(spawnmob.blockPosition()), MobSpawnType.REINFORCEMENT, (SpawnGroupData)null, (CompoundTag)null);
+                            serverlevel.addFreshEntityWithPassengers(spawnmob);
+                        }
+                    }
+                }
+                this.isSummoning = true;
+                return true;
         }
     }
 

@@ -63,6 +63,7 @@ import com.thevortex.allthemodium.crafting.ATMCraftingSetup;
 import com.thevortex.allthemodium.events.ArmorEvents;
 import com.thevortex.allthemodium.events.BlockBreak;
 import com.thevortex.allthemodium.registry.ModRegistry;
+import software.bernie.geckolib3.GeckoLib;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -125,6 +126,7 @@ public class AllTheModium
 		modEventBus.register(ModRegistry.class);
 		modEventBus.addListener(this::setup);
 
+		GeckoLib.initialize();
 
     	if(ModList.get().isLoaded("mekanism")) {
 			modEventBus.register(ATMMekRegistry.class);

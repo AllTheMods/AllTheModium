@@ -1,9 +1,11 @@
 package com.thevortex.allthemodium.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -11,24 +13,26 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib3.model.AnimatedGeoModel;
+import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
-public class PiglichRenderer extends MobRenderer<PiglichEntity, PiglichModel<PiglichEntity>> {
+public class PiglichRenderer extends GeoEntityRenderer<PiglichEntity> {
 
     public PiglichRenderer(EntityRendererProvider.Context context) {
-        super(context, new PiglichModel<>(context.bakeLayer(PiglichModel.LAYER_LOCATION), true), 0.5F);
-    }
-    @Override
-    public void render(PiglichEntity p_114485_, float p_114486_, float p_114487_, PoseStack p_114488_, MultiBufferSource p_114489_, int p_114490_) {
-        super.render(p_114485_, p_114486_, p_114487_, p_114488_, p_114489_, p_114490_);
+        super(context,new PiglichModel());
+        this.shadowRadius = 0.3f;
     }
 
     @Override
-    public ResourceLocation getTextureLocation(PiglichEntity p_114482_) {
+    public ResourceLocation getTextureLocation(PiglichEntity instance) {
         return new ResourceLocation(Reference.MOD_ID, "textures/entity/piglich.png");
-
     }
 
-
-
+    @Override
+    public RenderType getRenderType(PiglichEntity animatable, float partialTicks, PoseStack stack, @Nullable MultiBufferSource renderTypeBuffer, @Nullable VertexConsumer vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
+        stack.scale(1.1f,1.1f,1.1f);
+        return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
+    }
 }

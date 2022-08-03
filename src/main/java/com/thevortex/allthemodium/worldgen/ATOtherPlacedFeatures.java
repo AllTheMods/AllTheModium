@@ -8,6 +8,7 @@ import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
+
 public class ATOtherPlacedFeatures {
     public static final Holder<PlacedFeature> OTHER_ORE_COAL = PlacementUtils.register("allthemodium:ore_coal", ATOOtherFeatures.OTHER_ORE_COAL,commonOrePlacement(30, HeightRangePlacement.uniform(VerticalAnchor.absolute(136), VerticalAnchor.top())));
     public static final Holder<PlacedFeature> OTHER_ORE_COPPER = PlacementUtils.register("allthemodium:ore_copper", ATOOtherFeatures.OTHER_ORE_COPPER,commonOrePlacement(16, HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(112))));

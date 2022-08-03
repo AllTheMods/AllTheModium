@@ -19,6 +19,8 @@ public class TagRegistry {
     public static final TagKey<Block> VIBRANIUM_ORE = BlockTags.create(Reference.ore("vibranium"));
     public static final TagKey<Block> UNOBTAINIUM_ORE = BlockTags.create(Reference.ore("unobtainium"));
 
+    public static final TagKey<Block> OTHER_PROTECTION = BlockTags.create(Reference.atm("blocks/blocklist"));
+
     public static final TagKey<Block> NEEDS_ALLTHEMODIUM_TOOL = BlockTags.create(Reference.forge("needs_allthemodium_tool"));
     public static final TagKey<Block> NEEDS_VIBRANIUM_TOOL = BlockTags.create(Reference.forge("needs_vibranium_tool"));
     public static final TagKey<Block> NEEDS_UNOBTAINIUM_TOOL = BlockTags.create(Reference.forge("needs_unobtainium_tool"));
@@ -32,6 +34,7 @@ public class TagRegistry {
     public static final TagKey<Item> RAW_MATERIALS = ItemTags.create(Reference.forge("raw_materials"));
     public static final TagKey<Item> DUSTS = ItemTags.create(Reference.forge("dusts"));
     public static final TagKey<Item> ORES = ItemTags.create(Reference.forge("ores"));
+    public static final TagKey<Block> BLOCK_ORES = BlockTags.create(Reference.forge("ores"));
 
     public static final TagKey<Block> OTHER_TILE_WHITELIST = BlockTags.create(Reference.location("allthemodium:other_te_whitelist"));
     public static final TagKey<Block> ANCIENT_DIRT = BlockTags.create(Reference.location("allthemodium:ancient_dirt"));

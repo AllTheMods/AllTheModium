@@ -4,8 +4,10 @@ package com.thevortex.allthemodium.datagen.server;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.reference.TagRegistry;
+import net.allthemods.alltheores.blocks.BlockList;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
@@ -185,6 +187,75 @@ public class BlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.VA_ALLOY.get());
 
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.TELEPORT_PAD.get());
-        }
+
+
+        ModRegistry.BLOCKS.getEntries().stream()
+                .forEach(blockRegistryObject -> {
+                    tag(TagRegistry.OTHER_PROTECTION).add(blockRegistryObject.get());
+                });
+        ModRegistry.SHAPED_BLOCKS.getEntries().stream()
+                .forEach(blockRegistryObject -> {
+                    tag(TagRegistry.OTHER_PROTECTION).add(blockRegistryObject.get());
+                });
+        ModRegistry.STAIRBLOCKS.getEntries().stream()
+                .forEach(blockRegistryObject -> {
+                    tag(TagRegistry.OTHER_PROTECTION).add(blockRegistryObject.get());
+                });
+        ModRegistry.SLABBLOCKS.getEntries().stream()
+                .forEach(blockRegistryObject -> {
+                    tag(TagRegistry.OTHER_PROTECTION).add(blockRegistryObject.get());
+                });
+        ModRegistry.WALLBLOCKS.getEntries().stream()
+                .forEach(blockRegistryObject -> {
+                    tag(TagRegistry.OTHER_PROTECTION).add(blockRegistryObject.get());
+                });
+        ModRegistry.PILLARBLOCKS.getEntries().stream()
+                .forEach(blockRegistryObject -> {
+                    tag(TagRegistry.OTHER_PROTECTION).add(blockRegistryObject.get());
+                });
+        tag(TagRegistry.OTHER_PROTECTION).add(Blocks.SAND);
+        tag(TagRegistry.OTHER_PROTECTION).add(Blocks.SANDSTONE);
+        tag(TagRegistry.OTHER_PROTECTION).add(Blocks.CRIMSON_NYLIUM);
+        tag(TagRegistry.OTHER_PROTECTION).add(Blocks.WARPED_NYLIUM);
+        tag(TagRegistry.OTHER_PROTECTION).add(Blocks.NETHERRACK);
+        tag(TagRegistry.OTHER_PROTECTION).add(Blocks.SOUL_SAND);
+        tag(TagRegistry.OTHER_PROTECTION).add(Blocks.SOUL_SOIL);
+        tag(TagRegistry.OTHER_PROTECTION).add(Blocks.DEEPSLATE);
+
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_ALUMINUM_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_COAL_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_COPPER_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_DIAMOND_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_LEAD_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_NICKEL_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_IRIDIUM_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_LAPIS_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_PLATINUM_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_SILVER_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_OSMIUM_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_URANIUM_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_ZINC_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_TIN_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_IRON_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_REDSTONE_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_GOLD_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_QUARTZ_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OTHER_EMERALD_ORE.get());
+
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.ALUMINUM_SLATE_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.LEAD_SLATE_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.NICKEL_SLATE_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.OSMIUM_SLATE_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.PLATINUM_SLATE_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.SILVER_SLATE_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.TIN_SLATE_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.URANIUM_SLATE_ORE.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.ZINC_SLATE_ORE.get());
+
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.IRIDIUM_SLATE_ORE.get());
+
+        tag(TagRegistry.OTHER_PROTECTION).addTag(TagRegistry.BLOCK_ORES);
+
+    }
 
 }
