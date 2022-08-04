@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "allthemodium:unobtainium_ingot"
+    ]
+  },
+  "criteria": {
+    "has_TagKey[minecraft:item / forge:nuggets/unobtainium]_nugget": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:nuggets/unobtainium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "allthemodium:unobtainium_ingot"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_TagKey[minecraft:item / forge:nuggets/unobtainium]_nugget",
+      "has_the_recipe"
+    ]
+  ]
+}

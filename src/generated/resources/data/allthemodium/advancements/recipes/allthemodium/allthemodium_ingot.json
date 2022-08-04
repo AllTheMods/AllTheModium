@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "allthemodium:allthemodium_ingot"
+    ]
+  },
+  "criteria": {
+    "has_TagKey[minecraft:item / forge:nuggets/allthemodium]_nugget": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:nuggets/allthemodium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "allthemodium:allthemodium_ingot"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_TagKey[minecraft:item / forge:nuggets/allthemodium]_nugget",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,5 +1,6 @@
 package com.thevortex.allthemodium.datagen.server;
 
+import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.reference.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
@@ -187,6 +188,25 @@ private ResourceLocation recipeDir(String typeIn, String typeOut) {
                 .requires(TagRegistry.RAW_UNOBTAINIUM_BLOCK)
                 .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.RAW_UNOBTAINIUM_BLOCK_ITEM.get()))
                 .save(consumer,recipeDir("raw_unobtainium","block"));
+
+
+        ShapelessRecipeBuilder
+                .shapeless(ModItems.UNOBTAINIUM_ALLTHEMODIUM_ALLOY,9)
+                .requires(TagRegistry.UNOBTAINIUM_ALLTHEMODIUM_BLOCK)
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.UA_ALLOY_ITEM.get()))
+                .save(consumer,recipeDir("unobtainium_allthemodium_alloy_ingot","block"));
+
+        ShapelessRecipeBuilder
+                .shapeless(ModItems.UNOBTAINIUM_VIBRANIUM_ALLOY,9)
+                .requires(TagRegistry.UNOBTAINIUM_VIBRANIUM_BLOCK)
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.UV_ALLOY_ITEM.get()))
+                .save(consumer,recipeDir("unobtainium_vibranium_alloy_ingot","block"));
+
+        ShapelessRecipeBuilder
+                .shapeless(ModItems.VIBRANIUM_ALLTHEMODIUM_ALLOY,9)
+                .requires(TagRegistry.VIBRANIUM_ALLTHEMODIUM_BLOCK)
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.VA_ALLOY_ITEM.get()))
+                .save(consumer,recipeDir("vibranium_allthemodium_alloy_ingot","block"));
 
     }
 

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "allthemodium",
+  "pattern": [
+    "a a",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:ingots/allthemodium"
+    }
+  },
+  "result": {
+    "item": "allthemodium:allthemodium_chestplate"
+  }
+}

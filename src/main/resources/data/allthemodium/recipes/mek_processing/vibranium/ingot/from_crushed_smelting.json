@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "result": "allthemodium:vibranium_ingot",
-  "ingredient": {
-    "item": "allthemodium:crushed_vibranium_ore"
-  },
-  "cookingtime": 200,
-  "experience": 0.3
-}

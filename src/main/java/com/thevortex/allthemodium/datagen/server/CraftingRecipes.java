@@ -1,6 +1,9 @@
 package com.thevortex.allthemodium.datagen.server;
 
 import com.thevortex.allthemodium.datagen.builder.ShapedAncientStones;
+import com.thevortex.allthemodium.datagen.builder.ShapedArmorBuilder;
+import com.thevortex.allthemodium.datagen.builder.ShapedIngotBuilder;
+import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.reference.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
@@ -14,8 +17,10 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
 
@@ -58,6 +63,34 @@ public class CraftingRecipes extends RecipeProvider {
             .requires(Ingredient.of(TagRegistry.RAW_UNOBTAINIUM), 9)
             .unlockedBy("has_raw_unobtainium", hasTag(TagRegistry.RAW_UNOBTAINIUM))
             .save(consumer);
+
+        shaped(ModItems.ALLTHEMODIUM_APPLE)
+                .pattern("nnn")
+                .pattern("nan")
+                .pattern("nnn")
+                .define('n', TagRegistry.ALLTHEMODIUM_NUGGET)
+                .define('a', Items.APPLE)
+                .unlockedBy("has_allthemodium_nugget", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ALLTHEMODIUM_NUGGET).build()))
+                .save(consumer);
+
+        shaped(ModItems.ALLTHEMODIUM_CARROT)
+                .pattern("nnn")
+                .pattern("nan")
+                .pattern("nnn")
+                .define('n', TagRegistry.ALLTHEMODIUM_NUGGET)
+                .define('a', Items.CARROT)
+                .unlockedBy("has_allthemodium_nugget", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ALLTHEMODIUM_NUGGET).build()))
+                .save(consumer);
+
+        shaped(ModRegistry.TELEPORT_PAD_ITEM.get())
+                .pattern(" n ")
+                .pattern("nan")
+                .pattern(" n ")
+                .define('n', TagRegistry.ALLTHEMODIUM_NUGGET)
+                .define('a', Items.ENDER_PEARL)
+                .unlockedBy("has_allthemodium_nugget", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ALLTHEMODIUM_NUGGET).build()))
+                .unlockedBy("has_ender_pearl", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(Items.ENDER_PEARL).build()))
+                .save(consumer);
 
         shaped(ModRegistry.ALLTHEMODIUM_PICKAXE.get())
             .pattern("ara")
@@ -279,6 +312,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .setPlate(ModRegistry.ATM_PLATE)
                 .setRod(ModRegistry.ATM_ROD)
                 .build(consumer);
+
         ShapedBlockBuilder.builder(TagRegistry.VIBRANIUM_INGOT)
                 .setBlock(ModRegistry.VIBRANIUM_BLOCK_ITEM)
                 .setGear(ModRegistry.VIB_GEAR)
@@ -293,13 +327,49 @@ public class CraftingRecipes extends RecipeProvider {
                 .setRod(ModRegistry.ONOB_ROD)
                 .build(consumer);
 
-     /*
-        ShapedIngotBuilder.builder(ItemTagRegistry.ALUMINUM_NUGGET)
-                .setIngot(BlockList.ALUMINUM_INGOT)
+        ShapedBlockBuilder.builder(TagRegistry.UNOBTAINIUM_ALLTHEMODIUM_INGOT)
+                .setBlock(ModRegistry.UA_ALLOY_ITEM)
                 .build(consumer);
 
-      */
+        ShapedBlockBuilder.builder(TagRegistry.UNOBTAINIUM_VIBRANIUM_INGOT)
+                .setBlock(ModRegistry.UV_ALLOY_ITEM)
+                .build(consumer);
 
+        ShapedBlockBuilder.builder(TagRegistry.VIBRANIUM_ALLTHEMODIUM_INGOT)
+                .setBlock(ModRegistry.VA_ALLOY_ITEM)
+                .build(consumer);
+
+        ShapedIngotBuilder.builder(TagRegistry.ALLTHEMODIUM_NUGGET)
+                .setIngot(ModRegistry.ALLTHEMODIUM_INGOT)
+                .build(consumer);
+        ShapedIngotBuilder.builder(TagRegistry.VIBRANIUM_NUGGET)
+                .setIngot(ModRegistry.VIBRANIUM_INGOT)
+                .build(consumer);
+        ShapedIngotBuilder.builder(TagRegistry.UNOBTAINIUM_NUGGET)
+                .setIngot(ModRegistry.UNOBTAINIUM_INGOT)
+                .build(consumer);
+
+
+        ShapedArmorBuilder.builder(TagRegistry.ALLTHEMODIUM_INGOT)
+                .setBoots(ModRegistry.ALLTHEMODIUM_BOOTS)
+                .setLeggings(ModRegistry.ALLTHEMODIUM_LEGGINGS)
+                .setChestplate(ModRegistry.ALLTHEMODIUM_CHESTPLATE)
+                .setHelmet(ModRegistry.ALLTHEMODIUM_HELMET)
+                .build(consumer);
+
+        ShapedArmorBuilder.builder(TagRegistry.VIBRANIUM_INGOT)
+                .setBoots(ModRegistry.VIBRANIUM_BOOTS)
+                .setLeggings(ModRegistry.VIBRANIUM_LEGGINGS)
+                .setChestplate(ModRegistry.VIBRANIUM_CHESTPLATE)
+                .setHelmet(ModRegistry.VIBRANIUM_HELMET)
+                .build(consumer);
+
+        ShapedArmorBuilder.builder(TagRegistry.UNOBTAINIUM_INGOT)
+                .setBoots(ModRegistry.UNOBTAINIUM_BOOTS)
+                .setLeggings(ModRegistry.UNOBTAINIUM_LEGGINGS)
+                .setChestplate(ModRegistry.UNOBTAINIUM_CHESTPLATE)
+                .setHelmet(ModRegistry.UNOBTAINIUM_HELMET)
+                .build(consumer);
 
     }
 }

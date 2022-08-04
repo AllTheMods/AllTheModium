@@ -117,10 +117,10 @@ public class ModItems {
 		event.getRegistry().register(ModItems.ALLTHEMODIUM_APPLE);
 		event.getRegistry().register(ModItems.ALLTHEMODIUM_CARROT);
 
-		event.getRegistry().register(ModItems.ALLTHEMODIUM_BOOTS);
-		event.getRegistry().register(ModItems.ALLTHEMODIUM_LEGGINGS);
-		event.getRegistry().register(ModItems.ALLTHEMODIUM_CHESTPLATE);
-		event.getRegistry().register(ModItems.ALLTHEMODIUM_HELMET);
+		//event.getRegistry().register(ModItems.ALLTHEMODIUM_BOOTS);
+		//event.getRegistry().register(ModItems.ALLTHEMODIUM_LEGGINGS);
+		//event.getRegistry().register(ModItems.ALLTHEMODIUM_CHESTPLATE);
+		//event.getRegistry().register(ModItems.ALLTHEMODIUM_HELMET);
 		
 		//event.getRegistry().register(ModItems.ALLTHEMODIUM_PICKAXE);
 		//event.getRegistry().register(ModItems.ALLTHEMODIUM_AXE);
@@ -128,15 +128,15 @@ public class ModItems {
 		//event.getRegistry().register(ModItems.ALLTHEMODIUM_SHOVEL);
 		//event.getRegistry().register(ModItems.ALLTHEMODIUM_PAXEL);
 
-		event.getRegistry().register(ModItems.UNOBTAINIUM_BOOTS);
-		event.getRegistry().register(ModItems.UNOBTAINIUM_LEGGINGS);
-		event.getRegistry().register(ModItems.UNOBTAINIUM_CHESTPLATE);
-		event.getRegistry().register(ModItems.UNOBTAINIUM_HELMET);
+		//event.getRegistry().register(ModItems.UNOBTAINIUM_BOOTS);
+		//event.getRegistry().register(ModItems.UNOBTAINIUM_LEGGINGS);
+		//event.getRegistry().register(ModItems.UNOBTAINIUM_CHESTPLATE);
+		//event.getRegistry().register(ModItems.UNOBTAINIUM_HELMET);
 
-		event.getRegistry().register(ModItems.VIBRANIUM_BOOTS);
-		event.getRegistry().register(ModItems.VIBRANIUM_LEGGINGS);
-		event.getRegistry().register(ModItems.VIBRANIUM_CHESTPLATE);
-		event.getRegistry().register(ModItems.VIBRANIUM_HELMET);
+		//event.getRegistry().register(ModItems.VIBRANIUM_BOOTS);
+		//event.getRegistry().register(ModItems.VIBRANIUM_LEGGINGS);
+		//event.getRegistry().register(ModItems.VIBRANIUM_CHESTPLATE);
+		//event.getRegistry().register(ModItems.VIBRANIUM_HELMET);
 
 		event.getRegistry().register(ModItems.UNOBTAINIUM_ALLTHEMODIUM_DUST);
 		event.getRegistry().register(ModItems.UNOBTAINIUM_VIBRANIUM_DUST);

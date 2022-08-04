@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "allthemodium:unobtainium_ore"
-  },
-  "result": "allthemodium:unobtainium_ingot",
-  "experience": 3.0,
-  "cookingtime": 200
-}

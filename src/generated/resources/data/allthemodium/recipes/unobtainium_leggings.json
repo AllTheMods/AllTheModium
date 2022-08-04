@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "allthemodium",
+  "pattern": [
+    "aaa",
+    "a a",
+    "a a"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:ingots/unobtainium"
+    }
+  },
+  "result": {
+    "item": "allthemodium:unobtainium_leggings"
+  }
+}

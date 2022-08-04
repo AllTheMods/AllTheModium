@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "allthemodium:allthemodium_boots"
+    ]
+  },
+  "criteria": {
+    "has_TagKey[minecraft:item / forge:ingots/allthemodium]_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "forge:ingots/allthemodium"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "allthemodium:allthemodium_boots"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_TagKey[minecraft:item / forge:ingots/allthemodium]_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

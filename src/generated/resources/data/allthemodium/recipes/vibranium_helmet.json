@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "allthemodium",
+  "pattern": [
+    "aaa",
+    "a a",
+    "   "
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:ingots/vibranium"
+    }
+  },
+  "result": {
+    "item": "allthemodium:vibranium_helmet"
+  }
+}

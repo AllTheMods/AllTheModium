@@ -27,7 +27,7 @@ public class SmeltingRecipes extends RecipeProvider {
         SimpleCookingRecipeBuilder
                 .smelting(Ingredient.of(ModRegistry.ANCIENT_STONE_ITEM.get()),ModRegistry.ANCIENT_SMOOTH_STONE_ITEM.get(),0.15f,200)
                 .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_STONE_ITEM.get()))
-                .save(consumer,recipeDir("ancient_smooth_stone","smelting"));
+                .save(consumer,recipeDir("ancient_smooth_stone","ancient_stone"));
 
         SimpleCookingRecipeBuilder
                 .smelting(Ingredient.of(ModRegistry.RAW_ALLTHEMODIUM.get()),ModRegistry.ALLTHEMODIUM_INGOT.get(),0.15f,200)

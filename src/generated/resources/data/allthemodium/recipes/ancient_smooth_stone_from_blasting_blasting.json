@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "allthemodium:ancient_stone"
+  },
+  "result": "allthemodium:ancient_smooth_stone",
+  "experience": 0.15,
+  "cookingtime": 200
+}
