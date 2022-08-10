@@ -34,7 +34,7 @@ public class Volcano extends Feature<VolcanoConfig> {
 
         setSeed(world.getSeed());
         int landHeight = generator.getFirstFreeHeight(pos.getX(), pos.getZ(), Heightmap.Types.WORLD_SURFACE_WG, world.getChunk(pos));
-        if (rand.nextFloat() < 0.001F) {
+        if (rand.nextFloat() < 0.0005F) {
             /*
             pos = world.getHeightmapPos(Heightmap.Types.OCEAN_FLOOR_WG, pos);
 

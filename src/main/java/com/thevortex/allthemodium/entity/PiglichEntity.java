@@ -63,10 +63,10 @@ public class PiglichEntity extends Piglin implements IAnimatable {
 
     protected void populateDefaultEquipementSlots(DifficultyInstance diff) {
             if (this.isAdult()) {
-                this.maybeWearArmor(EquipmentSlot.HEAD, new ItemStack(ModItems.ALLTHEMODIUM_HELMET));
-                this.maybeWearArmor(EquipmentSlot.CHEST, new ItemStack(ModItems.ALLTHEMODIUM_CHESTPLATE));
-                this.maybeWearArmor(EquipmentSlot.LEGS, new ItemStack(ModItems.ALLTHEMODIUM_LEGGINGS));
-                this.maybeWearArmor(EquipmentSlot.FEET, new ItemStack(ModItems.ALLTHEMODIUM_BOOTS));
+                this.maybeWearArmor(EquipmentSlot.HEAD, new ItemStack(ModRegistry.ALLTHEMODIUM_HELMET.get()));
+                this.maybeWearArmor(EquipmentSlot.CHEST, new ItemStack(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get()));
+                this.maybeWearArmor(EquipmentSlot.LEGS, new ItemStack(ModRegistry.ALLTHEMODIUM_LEGGINGS.get()));
+                this.maybeWearArmor(EquipmentSlot.FEET, new ItemStack(ModRegistry.ALLTHEMODIUM_BOOTS.get()));
             }
 
         }

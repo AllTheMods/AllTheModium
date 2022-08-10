@@ -2,16 +2,18 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "allthemodium:vibranium_leggings"
+      "allthemodium:ancient_smooth_stone_from_ancient_stone"
     ]
   },
   "criteria": {
-    "has_TagKey[minecraft:item / forge:ingots/vibranium]_ingot": {
+    "has_item": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "tag": "forge:ingots/vibranium"
+            "items": [
+              "allthemodium:ancient_stone"
+            ]
           }
         ]
       }
@@ -19,13 +21,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "allthemodium:vibranium_leggings"
+        "recipe": "allthemodium:ancient_smooth_stone_from_ancient_stone"
       }
     }
   },
   "requirements": [
     [
-      "has_TagKey[minecraft:item / forge:ingots/vibranium]_ingot",
+      "has_item",
       "has_the_recipe"
     ]
   ]

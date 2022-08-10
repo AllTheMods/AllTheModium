@@ -2,6 +2,7 @@ package com.thevortex.allthemodium.items.toolitems.armor;
 
 import com.thevortex.allthemodium.init.ModItems;
 
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -53,7 +54,7 @@ public class Vibranium_Helmet extends ArmorItem {
     }
     @Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {
-        if((stack.getItem() == ModItems.VIBRANIUM_HELMET) && (!world.isClientSide)) {
+        if((stack.getItem() == ModRegistry.VIBRANIUM_HELMET.get()) && (!world.isClientSide)) {
 
             if(player.isInWater() && player.isSwimming()){
 

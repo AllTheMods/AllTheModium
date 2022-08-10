@@ -71,21 +71,21 @@ public class ItemTags extends ItemTagsProvider {
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.VIBRANIUM_HOE.get());
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.UNOBTAINIUM_HOE.get());
 
-        tag(TagRegistry.PIGLIN_LOVED).add(ModItems.ALLTHEMODIUM_BOOTS);
-        tag(TagRegistry.PIGLIN_LOVED).add(ModItems.VIBRANIUM_BOOTS);
-        tag(TagRegistry.PIGLIN_LOVED).add(ModItems.UNOBTAINIUM_BOOTS);
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_BOOTS.get());
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.VIBRANIUM_BOOTS.get());
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.UNOBTAINIUM_BOOTS.get());
 
-        tag(TagRegistry.PIGLIN_LOVED).add(ModItems.ALLTHEMODIUM_LEGGINGS);
-        tag(TagRegistry.PIGLIN_LOVED).add(ModItems.VIBRANIUM_LEGGINGS);
-        tag(TagRegistry.PIGLIN_LOVED).add(ModItems.UNOBTAINIUM_LEGGINGS);
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get());
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.VIBRANIUM_LEGGINGS.get());
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.UNOBTAINIUM_LEGGINGS.get());
 
-        tag(TagRegistry.PIGLIN_LOVED).add(ModItems.ALLTHEMODIUM_CHESTPLATE);
-        tag(TagRegistry.PIGLIN_LOVED).add(ModItems.VIBRANIUM_CHESTPLATE);
-        tag(TagRegistry.PIGLIN_LOVED).add(ModItems.UNOBTAINIUM_CHESTPLATE);
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.VIBRANIUM_CHESTPLATE.get());
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.UNOBTAINIUM_CHESTPLATE.get());
 
-        tag(TagRegistry.PIGLIN_LOVED).add(ModItems.ALLTHEMODIUM_HELMET);
-        tag(TagRegistry.PIGLIN_LOVED).add(ModItems.VIBRANIUM_HELMET);
-        tag(TagRegistry.PIGLIN_LOVED).add(ModItems.UNOBTAINIUM_HELMET);
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_HELMET.get());
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.VIBRANIUM_HELMET.get());
+        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.UNOBTAINIUM_HELMET.get());
 
         tag(TagRegistry.ANCIENT_WOODEN_PLANKS_ITEM).add(ModRegistry.ANCIENT_PLANKS_ITEM.get());
         tag(TagRegistry.DEMONIC_WOODEN_PLANKS_ITEM).add(ModRegistry.DEMONIC_PLANKS_ITEM.get());

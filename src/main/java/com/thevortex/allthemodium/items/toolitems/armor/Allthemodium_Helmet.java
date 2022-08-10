@@ -3,6 +3,7 @@ package com.thevortex.allthemodium.items.toolitems.armor;
 import com.thevortex.allthemodium.init.ModItems;
 
 import com.thevortex.allthemodium.items.toolitems.armor.models.allthemodium_helmet;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
@@ -69,7 +70,7 @@ public class Allthemodium_Helmet extends ArmorItem {
     }
     @Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {
-        if((stack.getItem() == ModItems.ALLTHEMODIUM_HELMET) && (!world.isClientSide)) {
+        if((stack.getItem() == ModRegistry.ALLTHEMODIUM_HELMET.get()) && (!world.isClientSide)) {
 
             if(player.isInWater() && player.isSwimming()){
 

@@ -349,27 +349,5 @@ public class CraftingRecipes extends RecipeProvider {
                 .setIngot(ModRegistry.UNOBTAINIUM_INGOT)
                 .build(consumer);
 
-
-        ShapedArmorBuilder.builder(TagRegistry.ALLTHEMODIUM_INGOT)
-                .setBoots(ModRegistry.ALLTHEMODIUM_BOOTS)
-                .setLeggings(ModRegistry.ALLTHEMODIUM_LEGGINGS)
-                .setChestplate(ModRegistry.ALLTHEMODIUM_CHESTPLATE)
-                .setHelmet(ModRegistry.ALLTHEMODIUM_HELMET)
-                .build(consumer);
-
-        ShapedArmorBuilder.builder(TagRegistry.VIBRANIUM_INGOT)
-                .setBoots(ModRegistry.VIBRANIUM_BOOTS)
-                .setLeggings(ModRegistry.VIBRANIUM_LEGGINGS)
-                .setChestplate(ModRegistry.VIBRANIUM_CHESTPLATE)
-                .setHelmet(ModRegistry.VIBRANIUM_HELMET)
-                .build(consumer);
-
-        ShapedArmorBuilder.builder(TagRegistry.UNOBTAINIUM_INGOT)
-                .setBoots(ModRegistry.UNOBTAINIUM_BOOTS)
-                .setLeggings(ModRegistry.UNOBTAINIUM_LEGGINGS)
-                .setChestplate(ModRegistry.UNOBTAINIUM_CHESTPLATE)
-                .setHelmet(ModRegistry.UNOBTAINIUM_HELMET)
-                .build(consumer);
-
     }
 }

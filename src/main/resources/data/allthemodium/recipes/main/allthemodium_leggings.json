@@ -1,14 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "allthemodium",
   "pattern": [
-    "aaa",
-    "a a",
-    "a a"
+    "XXX",
+    "X X",
+    "X X"
   ],
   "key": {
-    "a": {
-      "tag": "forge:ingots/allthemodium"
+    "X": {
+      "item": "allthemodium:allthemodium_ingot"
     }
   },
   "result": {

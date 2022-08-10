@@ -5,6 +5,7 @@ import java.util.ConcurrentModificationException;
 import java.util.List;
 
 import com.thevortex.allthemodium.init.ModItems;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -57,7 +58,7 @@ public class Vibranium_Leggings extends ArmorItem {
 
     @Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {
-	    if((stack.getItem() == ModItems.VIBRANIUM_LEGGINGS) && (!world.isClientSide)) {
+	    if((stack.getItem() == ModRegistry.VIBRANIUM_LEGGINGS.get()) && (!world.isClientSide)) {
             Collection<MobEffectInstance> potions = player.getActiveEffects();
             try {
                 for (MobEffectInstance effectInstance : potions) {

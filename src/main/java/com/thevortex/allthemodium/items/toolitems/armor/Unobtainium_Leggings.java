@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.thevortex.allthemodium.init.ModItems;
 
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
@@ -59,7 +60,7 @@ public class Unobtainium_Leggings extends ArmorItem {
 
 	@Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {
-    	if((stack.getItem() == ModItems.UNOBTAINIUM_LEGGINGS) && (!world.isClientSide)) {
+    	if((stack.getItem() == ModRegistry.UNOBTAINIUM_LEGGINGS.get()) && (!world.isClientSide)) {
 
     		Collection<MobEffectInstance> potions = player.getActiveEffects();
 			try {
