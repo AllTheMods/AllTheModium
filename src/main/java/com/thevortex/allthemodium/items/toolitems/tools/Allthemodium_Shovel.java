@@ -1,6 +1,5 @@
 package com.thevortex.allthemodium.items.toolitems.tools;
 
-import com.thevortex.allthemodium.init.ModItems;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.Tier;
 

@@ -12,6 +12,7 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Mob;
 
 import java.util.Random;
@@ -70,7 +71,7 @@ public class PiglichModelOld<T extends Mob> extends PlayerModel<T> {
     }
 
     @Override
-    public ModelPart getRandomModelPart(Random p_103407_) {
+    public ModelPart getRandomModelPart(RandomSource p_103407_) {
         return super.getRandomModelPart(p_103407_);
     }
 

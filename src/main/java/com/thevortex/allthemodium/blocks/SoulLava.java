@@ -8,6 +8,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -60,7 +61,7 @@ public class SoulLava extends LiquidBlock {
 		return false;
 	}
 	@Override
-	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		if (level.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)) {
 			int i = random.nextInt(10);
 			if (i > 0) {
@@ -101,7 +102,7 @@ public class SoulLava extends LiquidBlock {
 
 	@OnlyIn(Dist.CLIENT)
 	@Override
-	public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
+	public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, RandomSource rand) {
 		this.tickcount++;
 
 		if(stateIn.is(ModRegistry.molten_BlueLava_block.get()) && this.tickcount >= 40) {
@@ -113,7 +114,7 @@ public class SoulLava extends LiquidBlock {
 
 	private static void spawnParticles(Level world, BlockPos worldIn) {
 		double d0 = 0.5625D;
-		Random random = world.random;
+		RandomSource random = world.random;
 
 		if(world.getFluidState(worldIn).isSource() && (random.nextBoolean() == true)) {
 			for (Direction direction : Direction.values()) {

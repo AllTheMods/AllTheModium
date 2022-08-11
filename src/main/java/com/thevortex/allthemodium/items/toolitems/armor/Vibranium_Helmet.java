@@ -1,12 +1,8 @@
 package com.thevortex.allthemodium.items.toolitems.armor;
 
-import com.thevortex.allthemodium.init.ModItems;
-
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -40,19 +36,7 @@ public class Vibranium_Helmet extends ArmorItem {
     {
         return true;
     }
-    @OnlyIn(Dist.CLIENT)
-    @Override
-    public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-        tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
-        tooltip.add(this.getTooltip("piglin.friend").withStyle(ChatFormatting.YELLOW));
-        tooltip.add(this.getTooltip("hard.head").withStyle(ChatFormatting.YELLOW));
-        tooltip.add(this.getTooltip("aqua.lungs").withStyle(ChatFormatting.DARK_AQUA));
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
-    }
-    protected TranslatableComponent getTooltip(String key){
-        return new TranslatableComponent(key);
-    }
-    @Override
+      @Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {
         if((stack.getItem() == ModRegistry.VIBRANIUM_HELMET.get()) && (!world.isClientSide)) {
 

@@ -4,6 +4,7 @@ import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -17,7 +18,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import java.util.Random;
 
 public class AncientCaveVinesPlant extends GrowingPlantBodyBlock implements BonemealableBlock, ACaveVines {
     public AncientCaveVinesPlant(Properties p_53886_, Direction p_53887_, VoxelShape p_53888_, boolean p_53889_) {
@@ -51,12 +51,12 @@ public class AncientCaveVinesPlant extends GrowingPlantBodyBlock implements Bone
     }
 
     @Override
-    public boolean isBonemealSuccess(Level p_153016_, Random p_153017_, BlockPos p_153018_, BlockState p_153019_) {
+    public boolean isBonemealSuccess(Level p_153016_, RandomSource p_153017_, BlockPos p_153018_, BlockState p_153019_) {
         return true;
     }
 
     @Override
-    public void performBonemeal(ServerLevel p_153002_, Random p_153003_, BlockPos p_153004_, BlockState p_153005_) {
+    public void performBonemeal(ServerLevel p_153002_, RandomSource p_153003_, BlockPos p_153004_, BlockState p_153005_) {
         p_153002_.setBlock(p_153004_, p_153005_.setValue(BERRIES, Boolean.valueOf(true)), 2);
     }
     @Override

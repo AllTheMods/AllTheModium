@@ -4,10 +4,12 @@ import com.mojang.serialization.Codec;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.worldgen.biomes.ATMBiomes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.RandomState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
@@ -30,10 +32,10 @@ public class Volcano extends Feature<VolcanoConfig> {
     }
 
 
-    private boolean place(WorldGenLevel world, ChunkGenerator generator, Random rand, BlockPos pos, FeatureConfiguration config) {
+    private boolean place(WorldGenLevel world, ChunkGenerator generator, RandomSource rand, BlockPos pos, FeatureConfiguration config) {
 
         setSeed(world.getSeed());
-        int landHeight = generator.getFirstFreeHeight(pos.getX(), pos.getZ(), Heightmap.Types.WORLD_SURFACE_WG, world.getChunk(pos));
+        int landHeight = generator.getSpawnHeight(world.getChunk(pos).getHeightAccessorForGeneration());
         if (rand.nextFloat() < 0.0005F) {
             /*
             pos = world.getHeightmapPos(Heightmap.Types.OCEAN_FLOOR_WG, pos);

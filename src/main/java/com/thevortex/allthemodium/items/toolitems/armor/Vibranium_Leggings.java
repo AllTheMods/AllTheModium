@@ -4,12 +4,9 @@ import java.util.Collection;
 import java.util.ConcurrentModificationException;
 import java.util.List;
 
-import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -41,19 +38,6 @@ public class Vibranium_Leggings extends ArmorItem {
     public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer)
     {
         return true;
-    }
-    @OnlyIn(Dist.CLIENT)
-    @Override
-    public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-        tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
-        tooltip.add(this.getTooltip("piglin.friend").withStyle(ChatFormatting.YELLOW));
-        tooltip.add(this.getTooltip("wither.proof").withStyle(ChatFormatting.DARK_GREEN));
-        tooltip.add(this.getTooltip("magic.resistance").withStyle(ChatFormatting.GREEN));
-        tooltip.add(this.getTooltip("steady.guts").withStyle(ChatFormatting.GREEN));
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
-    }
-    protected TranslatableComponent getTooltip(String key){
-        return new TranslatableComponent(key);
     }
 
     @Override

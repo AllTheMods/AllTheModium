@@ -26,11 +26,13 @@ public class AncientLeavesBottom extends LeavesBlock {
     public static final int DECAY_DISTANCE = 7;
     public static final IntegerProperty DISTANCE = BlockStateProperties.DISTANCE;
     public static final BooleanProperty PERSISTENT = BlockStateProperties.PERSISTENT;
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+
     private static final int TICK_DELAY = 1;
 
     public AncientLeavesBottom(Properties p_54422_) {
         super(p_54422_);
-        this.registerDefaultState(this.stateDefinition.any().setValue(DISTANCE, Integer.valueOf(7)).setValue(PERSISTENT, Boolean.valueOf(false)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(DISTANCE, Integer.valueOf(7)).setValue(PERSISTENT, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
 
     }
 
@@ -117,7 +119,7 @@ public class AncientLeavesBottom extends LeavesBlock {
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_54447_) {
-        p_54447_.add(DISTANCE, PERSISTENT);
+        p_54447_.add(DISTANCE, PERSISTENT,WATERLOGGED);
     }
 
     public BlockState getStateForPlacement(BlockPlaceContext p_54424_) {

@@ -1,0 +1,84 @@
+{
+  "type": "minecraft:ore",
+  "config": {
+    "size": 24,
+    "discard_chance_on_air_exposure": 0,
+    "targets": [
+      {
+        "target": {
+          "predicate_type": "minecraft:has_sturdy_face",
+          "direction": "down"
+        },
+        "state": {
+          "Name": "allthemodium:raw_aluminum_block"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:random_block_match",
+          "block": "minecraft:deepslate",
+          "probability": 0.05
+        },
+        "state": {
+          "Name": "alltheores:raw_aluminum_block"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:random_block_match",
+          "block": "minecraft:netherrack",
+          "probability": 0.08
+        },
+        "state": {
+          "Name": "alltheores:raw_aluminum_block"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:random_block_match",
+          "block": "minecraft:end_stone",
+          "probability": 0.1
+        },
+        "state": {
+          "Name": "alltheores:raw_aluminum_block"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "minecraft:stone_ore_replaceables"
+        },
+        "state": {
+          "Name": "alltheores:aluminum_ore"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:tag_match",
+          "tag": "minecraft:deepslate_ore_replaceables"
+        },
+        "state": {
+          "Name": "alltheores:aluminum_slate_ore"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:netherrack"
+        },
+        "state": {
+          "Name": "alltheores:aluminum_nether_ore"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:end_stone"
+        },
+        "state": {
+          "Name": "alltheores:aluminum_end_ore"
+        }
+      }
+    ]
+  }
+}

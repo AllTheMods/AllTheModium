@@ -5,7 +5,6 @@ import com.thevortex.allthemodium.reference.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.Tag;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;

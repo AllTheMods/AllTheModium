@@ -1,10 +1,8 @@
 package com.thevortex.allthemodium.items;
 
-import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -33,16 +31,6 @@ public class SoulBerries extends ItemNameBlockItem {
         }
         return super.finishUsingItem(stack, worldIn, entityLiving);
     }
-    @OnlyIn(Dist.CLIENT)
-    @Override
-    public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-        tooltip.add(this.getTooltip("quick.snack").withStyle(ChatFormatting.GOLD));
-        tooltip.add(this.getTooltip("low.cal").withStyle(ChatFormatting.GOLD));
-        tooltip.add(this.getTooltip("cats.eyes").withStyle(ChatFormatting.GREEN));
-        super.appendHoverText(stack, worldIn, tooltip, flagIn);
-    }
-    protected TranslatableComponent getTooltip(String key){
-        return new TranslatableComponent(key);
-    }
-}
+
+   }
 

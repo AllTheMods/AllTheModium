@@ -6,6 +6,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -29,12 +30,14 @@ public class SoulLeaves extends LeavesBlock {
     public static final int DECAY_DISTANCE = 7;
     public static final IntegerProperty DISTANCE = BlockStateProperties.DISTANCE;
     public static final BooleanProperty PERSISTENT = BlockStateProperties.PERSISTENT;
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+
     private static final int TICK_DELAY = 80;
     private static int TICK_COUNT;
 
     public SoulLeaves(Properties p_54422_) {
         super(p_54422_.randomTicks());
-        this.registerDefaultState(this.stateDefinition.any().setValue(DISTANCE, Integer.valueOf(7)).setValue(PERSISTENT, Boolean.valueOf(false)));
+        this.registerDefaultState(this.stateDefinition.any().setValue(DISTANCE, Integer.valueOf(7)).setValue(PERSISTENT, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
 
     }
 
@@ -49,7 +52,7 @@ public class SoulLeaves extends LeavesBlock {
         return p_54449_.getValue(DISTANCE) == 7 && !p_54449_.getValue(PERSISTENT);
     }
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random rand) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
         if (!state.getValue(PERSISTENT) && state.getValue(DISTANCE) == 7) {
             dropResources(state, level, pos);
             level.removeBlock(pos, false);
@@ -115,7 +118,7 @@ public class SoulLeaves extends LeavesBlock {
         }
     }
     @Override
-    public void animateTick(BlockState p_54431_, Level p_54432_, BlockPos p_54433_, Random p_54434_) {
+    public void animateTick(BlockState p_54431_, Level p_54432_, BlockPos p_54433_, RandomSource p_54434_) {
         if (p_54432_.isRainingAt(p_54433_.above())) {
             if (p_54434_.nextInt(15) == 1) {
                 BlockPos blockpos = p_54433_.below();
@@ -131,7 +134,7 @@ public class SoulLeaves extends LeavesBlock {
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> p_54447_) {
-        p_54447_.add(DISTANCE, PERSISTENT);
+        p_54447_.add(DISTANCE, PERSISTENT,WATERLOGGED);
     }
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext p_54424_) {

@@ -56,13 +56,13 @@ public class LootTables extends LootTableProvider {
                 return;
             }
 
-            if(block.getRegistryName().getPath().contains("ancient_bookshelf")) {
+            if(block.getName().getString().contains("ancient_bookshelf")) {
                 this.add(ModRegistry.ANCIENT_BOOKSHELF.get(), (p_124241_) -> {
                     return createSingleItemTableWithSilkTouch(p_124241_, Items.BOOK, ConstantValue.exactly(3.0F));
                 });
             }
-            if (block instanceof OreBlock) {
-                String oretype = block.getRegistryName().getPath();
+            if (block instanceof DropExperienceBlock) {
+                String oretype = block.getName().getString();
                 if (oretype.contains("allthemodium_ore") || oretype.contains("allthemodium_slate_ore")) {
                     this.add(block, (block1) -> createOreDrop(block1, ModRegistry.RAW_ALLTHEMODIUM.get()));
                 }

@@ -3,8 +3,6 @@ package com.thevortex.allthemodium.blocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.thevortex.allthemodium.init.ModItems;
-
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;

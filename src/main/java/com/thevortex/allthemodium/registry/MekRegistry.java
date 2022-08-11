@@ -1,36 +1,30 @@
 package com.thevortex.allthemodium.registry;
 
-import com.thevortex.allthemodium.reference.Reference;
+
+import com.thevortex.allthemodium.registry.resource.ATMResource;
+import mekanism.api.MekanismAPI;
 import mekanism.api.chemical.slurry.Slurry;
 import mekanism.api.chemical.slurry.SlurryBuilder;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.IForgeRegistry;
+import mekanism.common.registration.WrappedDeferredRegister;
+import mekanism.common.registration.impl.SlurryRegistryObject;
 
-public class MekRegistry {
+import java.util.function.UnaryOperator;
 
-    public static final ResourceLocation SLURRY_STILL = new ResourceLocation("minecraft","block/water_still");
-
-    public static final Slurry DIRTY_ATM = new Slurry(SlurryBuilder.builder(SLURRY_STILL).ore(new ResourceLocation("forge","ores/allthemodium")).color(0xFFFFEF0E)).getChemical().setRegistryName(new ResourceLocation(Reference.MOD_ID,"dirty_allthemodium"));
-    public static final Slurry DIRTY_VIB = new Slurry(SlurryBuilder.builder(SLURRY_STILL).ore(new ResourceLocation("forge","ores/vibranium")).color(0xFF26DE88)).getChemical().setRegistryName(new ResourceLocation(Reference.MOD_ID,"dirty_vibranium"));
-    public static final Slurry DIRTY_UNOB = new Slurry(SlurryBuilder.builder(SLURRY_STILL).ore(new ResourceLocation("forge","ores/unobtainium")).color(0xFFD152E3)).getChemical().setRegistryName(new ResourceLocation(Reference.MOD_ID,"dirty_unobtainium"));
-
-    public static final Slurry CLEAN_ATM = new Slurry(SlurryBuilder.builder(SLURRY_STILL).ore(new ResourceLocation("forge","ores/allthemodium")).color(0xFFFFEF0E)).getChemical().setRegistryName(new ResourceLocation(Reference.MOD_ID,"clean_allthemodium"));
-    public static final Slurry CLEAN_VIB = new Slurry(SlurryBuilder.builder(SLURRY_STILL).ore(new ResourceLocation("forge","ores/vibranium")).color(0xFF26DE88)).getChemical().setRegistryName(new ResourceLocation(Reference.MOD_ID,"clean_vibranium"));
-    public static final Slurry CLEAN_UNOB = new Slurry(SlurryBuilder.builder(SLURRY_STILL).ore(new ResourceLocation("forge","ores/unobtainium")).color(0xFFD152E3)).getChemical().setRegistryName(new ResourceLocation(Reference.MOD_ID,"clean_unobtainium"));
-
-    @SubscribeEvent
-    public static void init(RegistryEvent.Register<Slurry> event) {
-        IForgeRegistry<Slurry> registry = event.getRegistry();
+public class MekRegistry extends WrappedDeferredRegister<Slurry> {
 
 
-        registry.registerAll(
-                DIRTY_ATM,DIRTY_VIB,DIRTY_UNOB,
-                CLEAN_ATM,CLEAN_VIB,
-                CLEAN_UNOB
-        );
+public MekRegistry(String modid) {
+        super(modid, MekanismAPI.slurryRegistryName());
+        }
 
-    }
-}
+public SlurryRegistryObject<Slurry, Slurry> register(ATMResource resource) {
+        return register(resource.getRegistrySuffix(), builder -> builder.color(resource.getTint()).ore(resource.getOreTag()));
+        }
+
+public SlurryRegistryObject<Slurry, Slurry> register(String baseName, UnaryOperator<SlurryBuilder> builderModifier) {
+        return new SlurryRegistryObject<>(internal.register("dirty_" + baseName, () -> new Slurry(builderModifier.apply(SlurryBuilder.dirty()))),
+        internal.register("clean_" + baseName, () -> new Slurry(builderModifier.apply(SlurryBuilder.clean()))));
+        }
+
+
+        }

@@ -32,7 +32,7 @@ minecraft {
     // stable_#            Stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'official', version: '1.18.2'
+    mappings channel: 'official', version: '1.19.2'
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     
      accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
@@ -109,9 +109,9 @@ dependencies {
     // compile "some.group:artifact:version"
 	//implementation fg.deobf("curse.maven:${mekanism}")
     implementation fg.deobf("curse.maven:${geckolib}")
-    runtimeOnly fg.deobf("curse.maven:top-245211:3671753")
+    runtimeOnly fg.deobf("curse.maven:top-245211:3927520")
     implementation fg.deobf("curse.maven:${ato}")
-    runtimeOnly fg.deobf("curse.maven:${potions}")
+    //runtimeOnly fg.deobf("curse.maven:${potions}")
     //implementation fileTree(dir: 'libs', include: '*.jar')
     //runtimeOnly fg.deobf("curse.maven:${worldedit}")
     implementation fg.deobf("curse.maven:${mekanism}")

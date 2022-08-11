@@ -3,7 +3,7 @@ package com.thevortex.allthemodium.datagen.server;
 import com.thevortex.allthemodium.datagen.builder.ShapedAncientStones;
 import com.thevortex.allthemodium.datagen.builder.ShapedArmorBuilder;
 import com.thevortex.allthemodium.datagen.builder.ShapedIngotBuilder;
-import com.thevortex.allthemodium.init.ModItems;
+
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.reference.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
@@ -64,7 +64,7 @@ public class CraftingRecipes extends RecipeProvider {
             .unlockedBy("has_raw_unobtainium", hasTag(TagRegistry.RAW_UNOBTAINIUM))
             .save(consumer);
 
-        shaped(ModItems.ALLTHEMODIUM_APPLE)
+        shaped(ModRegistry.ALLTHEMODIUM_APPLE.get())
                 .pattern("nnn")
                 .pattern("nan")
                 .pattern("nnn")
@@ -73,7 +73,7 @@ public class CraftingRecipes extends RecipeProvider {
                 .unlockedBy("has_allthemodium_nugget", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ALLTHEMODIUM_NUGGET).build()))
                 .save(consumer);
 
-        shaped(ModItems.ALLTHEMODIUM_CARROT)
+        shaped(ModRegistry.ALLTHEMODIUM_CARROT.get())
                 .pattern("nnn")
                 .pattern("nan")
                 .pattern("nnn")

@@ -11,9 +11,6 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import com.thevortex.allthemodium.init.ModItems;
-
-import javax.swing.*;
 
 public enum AArmorMaterial implements ArmorMaterial {
 	   ALLTHEMODIUM("allthemodium", 45, new int[]{10, 15, 15, 10}, 85, SoundEvents.ARMOR_EQUIP_CHAIN, 125.0F, () -> {

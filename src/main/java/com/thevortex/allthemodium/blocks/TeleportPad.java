@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.thevortex.allthemodium.AllTheModium;
-import com.thevortex.allthemodium.init.ModItems;
 
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.ModRegistry;
@@ -67,7 +66,7 @@ public class TeleportPad extends Block {
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		if(player.level.dimension().getRegistryName().getNamespace().contains(Reference.MOD_ID)) {
+		if(player.level.dimension().registry().getNamespace().contains(Reference.MOD_ID)) {
 			return false;
 		} else {
 			return true;
@@ -83,7 +82,7 @@ public class TeleportPad extends Block {
 			while (y >= 1) {
 				BlockPos posa = new BlockPos(Math.round(pos.getX()), y, Math.round(pos.getZ()));
 				Block potential = targetWorld.getBlockState(posa).getBlock();
-				if (potential.getRegistryName().getPath().equals("teleport_pad")) {
+				if (potential.getName().toString().contains("teleport_pad")) {
 					located = true;
 					break;
 
@@ -116,7 +115,7 @@ public class TeleportPad extends Block {
 			if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {
 
 				LevelHeightAccessor accessor = targetWorld.getChunk(pos).getHeightAccessorForGeneration();
-				int y = targetWorld.getChunkSource().getGenerator().getFirstOccupiedHeight(pos.getX(),pos.getZ(), Heightmap.Types.WORLD_SURFACE_WG, accessor);
+				int y = targetWorld.getChunkSource().getGenerator().getSpawnHeight(accessor);
 				targetWorld.setBlockAndUpdate(new BlockPos(targetPos.getX(),y,targetPos.getZ()), ModRegistry.TELEPORT_PAD.get().defaultBlockState());
 
 				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);
@@ -131,7 +130,7 @@ public class TeleportPad extends Block {
 			while (y >= 1) {
 				BlockPos posa = new BlockPos(Math.round(pos.getX()), y, Math.round(pos.getZ()));
 				Block potential = targetWorld.getBlockState(posa).getBlock();
-				if (potential.getRegistryName().getPath().equals("teleport_pad")) {
+				if (potential.getName().toString().contains("teleport_pad")) {
 					located = true;
 					break;
 

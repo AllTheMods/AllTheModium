@@ -6,10 +6,8 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
-import net.minecraftforge.registries.ForgeRegistryEntry;
 
-public class ATMShapelessRecipeSerializer extends ForgeRegistryEntry<RecipeSerializer<?>>
-		implements RecipeSerializer<ATMShapelessRecipe> {
+public class ATMShapelessRecipeSerializer implements RecipeSerializer<ATMShapelessRecipe> {
 
 	@Override
 	public ATMShapelessRecipe fromJson(ResourceLocation recipeId, JsonObject json) {

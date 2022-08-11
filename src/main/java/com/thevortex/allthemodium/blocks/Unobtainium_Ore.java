@@ -5,7 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.block.OreBlock;
+import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -14,7 +14,7 @@ import net.minecraft.world.level.material.PushReaction;
 
 import net.minecraftforge.common.util.FakePlayer;
 
-public class Unobtainium_Ore extends OreBlock {
+public class Unobtainium_Ore extends DropExperienceBlock {
 
 	public Unobtainium_Ore() {//func_235861_h_ = setRequiresTool
 		super(Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.NETHER_GOLD_ORE).strength(-1.0f,5000f));
@@ -32,7 +32,7 @@ public class Unobtainium_Ore extends OreBlock {
 	@Override
 	public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity player) {
 		if((player instanceof FakePlayer) && (state.getBlock() == ModRegistry.UNOBTAINIUM_ORE.get())) { return false; }
-		return super.canEntityDestroy(state,world,pos,player) && (distanceTo(pos,player.blockPosition()) < 16.0F);
+		return super.canEntityDestroy(state,world,pos,player) && (distanceTo(pos,player.blockPosition) < 16.0F);
 	}
 
 	private double distanceTo(BlockPos block,BlockPos player) {

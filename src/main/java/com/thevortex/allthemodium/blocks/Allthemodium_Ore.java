@@ -5,13 +5,15 @@ import java.util.Random;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.OreBlock;
+import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.RedStoneOreBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -22,7 +24,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.FakePlayer;
 
-public class Allthemodium_Ore extends OreBlock {
+public class Allthemodium_Ore extends RedStoneOreBlock {
 	  // public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
 	public Allthemodium_Ore() {	//func_235861_h_ = setRequiresTool
 		super(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.ANCIENT_DEBRIS).lightLevel((state) -> { return 15;}).strength(-1.0f,1500.0f));
@@ -44,7 +46,7 @@ public class Allthemodium_Ore extends OreBlock {
 	public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity player) {
 		if((player instanceof FakePlayer) && (state.getBlock() == ModRegistry.ALLTHEMODIUM_ORE.get())) { return false; }
 
-	return super.canEntityDestroy(state,world,pos,player) && (distanceTo(pos,player.blockPosition()) < 16.0F);
+	return super.canEntityDestroy(state,world,pos,player) && (distanceTo(pos,player.blockPosition) < 16.0F);
 	}
 
 	private double distanceTo(BlockPos block,BlockPos player) {
@@ -68,7 +70,7 @@ public class Allthemodium_Ore extends OreBlock {
    }
    @OnlyIn(Dist.CLIENT)
    @Override
-   public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
+   public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, RandomSource rand) {
 
          spawnParticles(worldIn, pos);
 
@@ -76,7 +78,7 @@ public class Allthemodium_Ore extends OreBlock {
    }
    @OnlyIn(Dist.CLIENT)
    private static void spawnParticles(Level world, BlockPos worldIn) {
-	      Random random = world.random;
+	      RandomSource random = world.random;
 
 	      for(Direction direction : Direction.values()) {
 	         BlockPos blockpos = worldIn.offset(direction.getNormal());

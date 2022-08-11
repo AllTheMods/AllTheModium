@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:deep_dark",
+  "features": "allthemodium:cave_ore_placed",
+  "step": "underground_ores"
+}

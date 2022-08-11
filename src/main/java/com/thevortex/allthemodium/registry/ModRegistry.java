@@ -15,21 +15,18 @@ import com.thevortex.allthemodium.entity.shulkers.atm.ATMShulkerEntity;
 import com.thevortex.allthemodium.entity.shulkers.unob.UNOBShulkerEntity;
 import com.thevortex.allthemodium.entity.shulkers.vib.VIBShulkerEntity;
 import com.thevortex.allthemodium.init.ModFoods;
-import com.thevortex.allthemodium.init.ModItems;
 import com.thevortex.allthemodium.items.*;
 import com.thevortex.allthemodium.items.toolitems.armor.*;
 import com.thevortex.allthemodium.material.AArmorMaterial;
 import com.thevortex.allthemodium.material.ToolTiers;
 import com.thevortex.allthemodium.reference.Reference;
+import com.thevortex.allthemodium.worldgen.biomes.ATMBiomes;
 import com.thevortex.allthemodium.worldgen.features.*;
-import com.thevortex.allthemodium.worldgen.carvers.OtherCanyonCarver;
-import com.thevortex.allthemodium.worldgen.carvers.OtherCarver;
-import com.thevortex.allthemodium.worldgen.carvers.OtherCaveCarver;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -54,15 +51,16 @@ import net.minecraft.world.level.material.Material;
 
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.TierSortingRegistry;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fluids.FluidAttributes;
+import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.ObjectHolder;
 import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.server.command.TextComponentHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,17 +81,20 @@ public class ModRegistry {
 			Reference.MOD_ID);
 	public static final DeferredRegister<Block> PILLARBLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,
 			Reference.MOD_ID);
-
+	public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES,
+			Reference.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MOD_ID);
+
 	public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS,
 			Reference.MOD_ID);
+
 	public static final DeferredRegister<BlockEntityType<?>> ENTITY = DeferredRegister
-			.create(ForgeRegistries.BLOCK_ENTITIES, Reference.MOD_ID);
+			.create(ForgeRegistries.BLOCK_ENTITY_TYPES, Reference.MOD_ID);
 	public static final DeferredRegister<WorldCarver<?>> CARVERS = DeferredRegister
 			.create(ForgeRegistries.WORLD_CARVERS, Reference.MOD_ID);
 	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister
-			.create(ForgeRegistries.ENTITIES, Reference.MOD_ID);
+			.create(ForgeRegistries.ENTITY_TYPES, Reference.MOD_ID);
 
 
 
@@ -139,24 +140,42 @@ public class ModRegistry {
 	public static final ResourceLocation VIBRANIUM_VAPOR_FLOW = new ResourceLocation(Reference.MOD_ID,
 			"block/fluid/molten_metal_flow");
 
+
+	// BIOMES
+	/*
+	RegistryObject<Biome> MINING = BIOMES.register("mining", () -> ATMBiomes.mining());
+	RegistryObject<Biome> THE_OTHER = BIOMES.register("the_other", () -> ATMBiomes.the_other());
+	RegistryObject<Biome> DESERT = BIOMES.register("desert", () -> ATMBiomes.desert());
+	RegistryObject<Biome> DESERT_HILLS = BIOMES.register("desert_hills", () -> ATMBiomes.desert_hills());
+	RegistryObject<Biome> SOULSAND = BIOMES.register("soul_sand_valley", () -> ATMBiomes.soul_sand_valley());
+	RegistryObject<Biome> WARPED_FOREST = BIOMES.register("warped_forest", () -> ATMBiomes.warped_forest());
+	RegistryObject<Biome> CRIMSON_FOREST = BIOMES.register("crimson_forest", () -> ATMBiomes.crimson_forest());
+	 */
+
+
+	// FOOD
+
+	public static RegistryObject<Item> ALLTHEMODIUM_APPLE = ITEMS.register("allthemodium_apple", () -> new Allthemodium_Apple(new Item.Properties().tab(AllTheModium.GROUP).fireResistant().food(ModFoods.ALLTHEMODIUM_APPLE)));
+	public static RegistryObject<Item> ALLTHEMODIUM_CARROT = ITEMS.register("allthemodium_carrot", () -> new Allthemodium_Carrot(new Item.Properties().tab(AllTheModium.GROUP).fireResistant().food(ModFoods.ALLTHEMODIUM_CARROT)));
+
 	// ARMORS
 
-	public static RegistryObject<ArmorItem> ALLTHEMODIUM_BOOTS = ITEMS.register("allthemodium_boots", () -> (ArmorItem) new Allthemodium_Boots(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.FEET, new Item.Properties().tab(ModItems.group).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> ALLTHEMODIUM_LEGGINGS = ITEMS.register("allthemodium_leggings", () -> (ArmorItem) new Allthemodium_Leggings(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.LEGS, new Item.Properties().tab(ModItems.group).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> ALLTHEMODIUM_CHESTPLATE = ITEMS.register("allthemodium_chestplate", () -> (ArmorItem) new Allthemodium_Chestplate(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.CHEST, new Item.Properties().tab(ModItems.group).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> ALLTHEMODIUM_HELMET = ITEMS.register("allthemodium_helmet", () -> (ArmorItem) new Allthemodium_Helmet(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.HEAD, new Item.Properties().tab(ModItems.group).stacksTo(1).fireResistant()));
+	public static RegistryObject<ArmorItem> ALLTHEMODIUM_BOOTS = ITEMS.register("allthemodium_boots", () -> (ArmorItem) new Allthemodium_Boots(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.FEET, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
+	public static RegistryObject<ArmorItem> ALLTHEMODIUM_LEGGINGS = ITEMS.register("allthemodium_leggings", () -> (ArmorItem) new Allthemodium_Leggings(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.LEGS, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
+	public static RegistryObject<ArmorItem> ALLTHEMODIUM_CHESTPLATE = ITEMS.register("allthemodium_chestplate", () -> (ArmorItem) new Allthemodium_Chestplate(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.CHEST, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
+	public static RegistryObject<ArmorItem> ALLTHEMODIUM_HELMET = ITEMS.register("allthemodium_helmet", () -> (ArmorItem) new Allthemodium_Helmet(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.HEAD, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
 
-	public static RegistryObject<ArmorItem> VIBRANIUM_BOOTS = ITEMS.register("vibranium_boots", () -> (ArmorItem) new Vibranium_Boots(AArmorMaterial.VIBRANIUM, EquipmentSlot.FEET, new Item.Properties().tab(ModItems.group).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> VIBRANIUM_LEGGINGS = ITEMS.register("vibranium_leggings", () -> (ArmorItem) new Vibranium_Leggings(AArmorMaterial.VIBRANIUM, EquipmentSlot.LEGS, new Item.Properties().tab(ModItems.group).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> VIBRANIUM_CHESTPLATE = ITEMS.register("vibranium_chestplate", () -> (ArmorItem) new Vibranium_Chestplate(AArmorMaterial.VIBRANIUM, EquipmentSlot.CHEST, new Item.Properties().tab(ModItems.group).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> VIBRANIUM_HELMET = ITEMS.register("vibranium_helmet", () -> (ArmorItem) new Vibranium_Helmet(AArmorMaterial.VIBRANIUM, EquipmentSlot.HEAD, new Item.Properties().tab(ModItems.group).stacksTo(1).fireResistant()));
+	public static RegistryObject<ArmorItem> VIBRANIUM_BOOTS = ITEMS.register("vibranium_boots", () -> (ArmorItem) new Vibranium_Boots(AArmorMaterial.VIBRANIUM, EquipmentSlot.FEET, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
+	public static RegistryObject<ArmorItem> VIBRANIUM_LEGGINGS = ITEMS.register("vibranium_leggings", () -> (ArmorItem) new Vibranium_Leggings(AArmorMaterial.VIBRANIUM, EquipmentSlot.LEGS, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
+	public static RegistryObject<ArmorItem> VIBRANIUM_CHESTPLATE = ITEMS.register("vibranium_chestplate", () -> (ArmorItem) new Vibranium_Chestplate(AArmorMaterial.VIBRANIUM, EquipmentSlot.CHEST, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
+	public static RegistryObject<ArmorItem> VIBRANIUM_HELMET = ITEMS.register("vibranium_helmet", () -> (ArmorItem) new Vibranium_Helmet(AArmorMaterial.VIBRANIUM, EquipmentSlot.HEAD, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
 
-	public static RegistryObject<ArmorItem> UNOBTAINIUM_BOOTS = ITEMS.register("unobtainium_boots", () -> (ArmorItem) new Unobtainium_Boots(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.FEET, new Item.Properties().tab(ModItems.group).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> UNOBTAINIUM_LEGGINGS = ITEMS.register("unobtainium_leggings", () -> (ArmorItem) new Unobtainium_Leggings(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.LEGS, new Item.Properties().tab(ModItems.group).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> UNOBTAINIUM_CHESTPLATE = ITEMS.register("unobtainium_chestplate", () -> (ArmorItem) new Unobtainium_Chestplate(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.CHEST, new Item.Properties().tab(ModItems.group).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> UNOBTAINIUM_HELMET = ITEMS.register("unobtainium_helmet", () -> (ArmorItem) new Unobtainium_Helmet(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.HEAD, new Item.Properties().tab(ModItems.group).stacksTo(1).fireResistant()));
+	public static RegistryObject<ArmorItem> UNOBTAINIUM_BOOTS = ITEMS.register("unobtainium_boots", () -> (ArmorItem) new Unobtainium_Boots(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.FEET, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
+	public static RegistryObject<ArmorItem> UNOBTAINIUM_LEGGINGS = ITEMS.register("unobtainium_leggings", () -> (ArmorItem) new Unobtainium_Leggings(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.LEGS, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
+	public static RegistryObject<ArmorItem> UNOBTAINIUM_CHESTPLATE = ITEMS.register("unobtainium_chestplate", () -> (ArmorItem) new Unobtainium_Chestplate(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.CHEST, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
+	public static RegistryObject<ArmorItem> UNOBTAINIUM_HELMET = ITEMS.register("unobtainium_helmet", () -> (ArmorItem) new Unobtainium_Helmet(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.HEAD, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
 
-
+    //Volcano
 
 	public static Feature<VolcanoConfig> VOLCANO_F = new Volcano(VolcanoConfig.CODEC);
 	public static RegistryObject<Feature<VolcanoConfig>> VOLCANO = FEATURES.register("volcano", () -> VOLCANO_F);
@@ -180,12 +199,12 @@ public class ModRegistry {
 			.register("molten_allthemodium_block", () -> new LiquidBlock(moltenAllthemodium,
 					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
 						return 12;
-					}).strength(100.0F).noDrops()));
+					}).strength(100.0F).noLootTable()));
 	public static final RegistryObject<LiquidBlock> vapor_allthemodium_block = BLOCKS
 			.register("vapor_allthemodium_block", () -> new LiquidBlock(vaporAllthemodium,
 					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
 						return 12;
-					}).strength(100.0F).noDrops()));
+					}).strength(100.0F).noLootTable()));
 	public static final RegistryObject<Item> moltenAllthemodium_bucket = ITEMS.register("molten_allthemodium_bucket",
 			() -> new BucketItem(moltenAllthemodium,
 					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(AllTheModium.GROUP)));
@@ -207,12 +226,12 @@ public class ModRegistry {
 			.register("molten_vibranium_block", () -> new LiquidBlock(moltenVibranium,
 					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
 						return 10;
-					}).strength(100.0F).noDrops()));
+					}).strength(100.0F).noLootTable()));
 	public static final RegistryObject<LiquidBlock> vapor_vibranium_block = BLOCKS
 			.register("vapor_vibranium_block", () -> new LiquidBlock(moltenVibranium,
 					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
 						return 10;
-					}).strength(100.0F).noDrops()));
+					}).strength(100.0F).noLootTable()));
 
 	public static final RegistryObject<Item> moltenVibranium_bucket = ITEMS.register("molten_vibranium_bucket",
 			() -> new BucketItem(moltenVibranium,
@@ -234,12 +253,12 @@ public class ModRegistry {
 			.register("molten_unobtainium_block", () -> new LiquidBlock(moltenUnobtainium,
 					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
 						return 6;
-					}).strength(100.0F).noDrops()));
+					}).strength(100.0F).noLootTable()));
 	public static final RegistryObject<LiquidBlock> vapor_unobtainium_block = BLOCKS
 			.register("vapor_unobtainium_block", () -> new LiquidBlock(moltenUnobtainium,
 					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
 						return 6;
-					}).strength(100.0F).noDrops()));
+					}).strength(100.0F).noLootTable()));
 	public static final RegistryObject<Item> moltenUnobtainium_bucket = ITEMS.register("molten_unobtainium_bucket",
 			() -> new BucketItem(moltenUnobtainium,
 					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(AllTheModium.GROUP)));
@@ -257,7 +276,7 @@ public class ModRegistry {
 			.register("soul_lava_block", () -> new SoulLava(blueLava,
 					Block.Properties.of(Material.LAVA).randomTicks().lightLevel((state) -> {
 						return 15;
-					}).noOcclusion().strength(100.0F).jumpFactor(0.1F).speedFactor(0.01F).noDrops()));
+					}).noOcclusion().strength(100.0F).jumpFactor(0.1F).speedFactor(0.01F).noLootTable()));
 	public static final RegistryObject<Item> moltenBluelava_bucket = ITEMS.register("soul_lava_bucket",
 			() -> new SoulBucket(blueLava,
 					new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(AllTheModium.GROUP)));
@@ -286,62 +305,41 @@ public class ModRegistry {
 
 
 	private static ForgeFlowingFluid.Properties makeBlueLavaProperties() {
-		return new ForgeFlowingFluid.Properties(blueLava, flowing_blueLava,
-				FluidAttributes.builder(SOUL_LAVA_STILL, SOUL_LAVA_FLOW).overlay(SOUL_LAVA_STILL).color(0xFF8AFBFF)
-						.luminosity(15).density(3000).viscosity(3000).temperature(9999)).bucket(moltenBluelava_bucket)
-				.block(molten_BlueLava_block);
+		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(9999).viscosity(3000).density(3000)), blueLava, flowing_blueLava).block(() -> molten_BlueLava_block.get()).bucket(() -> moltenBluelava_bucket.get()).explosionResistance(1000);
+
 	}
 
 
 	private static ForgeFlowingFluid.Properties makeATMProperties() {
-		return new ForgeFlowingFluid.Properties(moltenAllthemodium, flowing_moltenAllthemodium,
-				FluidAttributes.builder(ATM_MOLTEN_STILL, ATM_MOLTEN_FLOW).overlay(ATM_MOLTEN_STILL).color(0xFFFFEF0E))
-						.bucket(moltenAllthemodium_bucket).block(molten_allthemodium_block);
+		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(1500).viscosity(3000).density(3000)), moltenAllthemodium, flowing_moltenAllthemodium).block(() -> molten_allthemodium_block.get()).bucket(() -> moltenAllthemodium_bucket.get()).explosionResistance(1000);
 	}
 	private static ForgeFlowingFluid.Properties makeATMGasProperties() {
-		return new ForgeFlowingFluid.Properties(vaporAllthemodium, flowing_vaporAllthemodium,
-				FluidAttributes.builder(ATM_VAPOR_STILL, ATM_VAPOR_FLOW).gaseous().overlay(ATM_MOLTEN_STILL).color(0xFFFFEF0E))
-				.bucket(vaporAllthemodium_bucket).block(vapor_allthemodium_block);
+		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(false).temperature(1500).viscosity(3000).density(3000)), vaporAllthemodium, flowing_vaporAllthemodium).block(() -> vapor_allthemodium_block.get()).bucket(() -> vaporAllthemodium_bucket.get()).explosionResistance(1000);
 	}
 
 	private static ForgeFlowingFluid.Properties makeATMVIBProperties() {
-		return new ForgeFlowingFluid.Properties(moltenATMVIB, flowing_moltenATMVIB,
-				FluidAttributes.builder(ATM_MOLTEN_STILL, ATM_MOLTEN_FLOW).overlay(ATM_MOLTEN_STILL).color(0xFF26DE88));
+		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(2500).viscosity(3000).density(3000)), moltenATMVIB, flowing_moltenATMVIB).explosionResistance(1000);
 	}
 
 	private static ForgeFlowingFluid.Properties makeATMUNOBProperties() {
-		return new ForgeFlowingFluid.Properties(moltenATMUNOB, flowing_moltenATMUNOB,
-				FluidAttributes.builder(UNOBTAINIUM_MOLTEN_STILL, UNOBTAINIUM_MOLTEN_STILL).overlay(UNOBTAINIUM_MOLTEN_STILL).color(0xFFFFEF0E));
+		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(9000).viscosity(3000).density(3000)), moltenATMUNOB, flowing_moltenATMUNOB).explosionResistance(1000);
 	}
 
 	private static ForgeFlowingFluid.Properties makeVIBUNOBProperties() {
-		return new ForgeFlowingFluid.Properties(moltenVIBUNOB, flowing_moltenVIBUNOB,
-				FluidAttributes.builder(VIBRANIUM_MOLTEN_STILL, VIBRANIUM_MOLTEN_FLOW).overlay(UNOBTAINIUM_MOLTEN_STILL).color(0xFFD152E3));
+		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(9000).viscosity(3000).density(3000)), moltenVIBUNOB, flowing_moltenVIBUNOB).explosionResistance(1000);
 	}
 
 	private static ForgeFlowingFluid.Properties makeVibProperties() {
-		return new ForgeFlowingFluid.Properties(moltenVibranium, flowing_moltenVibranium,
-				FluidAttributes.builder(VIBRANIUM_MOLTEN_STILL, VIBRANIUM_MOLTEN_FLOW).overlay(VIBRANIUM_MOLTEN_STILL)
-						.color(0xFF26DE88)).bucket(moltenVibranium_bucket).block(molten_vibranium_block);
-
-	}
+		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(2500).viscosity(3000).density(3000)), moltenVibranium, flowing_moltenVibranium).explosionResistance(1000);
+			}
 	private static ForgeFlowingFluid.Properties makeVibGasProperties() {
-		return new ForgeFlowingFluid.Properties(vaporVibranium, flowing_vaporVibranium,
-				FluidAttributes.builder(VIBRANIUM_VAPOR_STILL, VIBRANIUM_VAPOR_FLOW).gaseous().overlay(VIBRANIUM_MOLTEN_STILL)
-						.color(0xFF26DE88)).bucket(vaporVibranium_bucket).block(vapor_vibranium_block);
-
+		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(2500).viscosity(3000).density(3000)), vaporVibranium, flowing_vaporVibranium).explosionResistance(1000);
 	}
 	private static ForgeFlowingFluid.Properties makeUnobProperties() {
-		return new ForgeFlowingFluid.Properties(moltenUnobtainium, flowing_moltenUnobtainium,
-				FluidAttributes.builder(UNOBTAINIUM_MOLTEN_STILL, UNOBTAINIUM_MOLTEN_FLOW)
-						.overlay(UNOBTAINIUM_MOLTEN_STILL).color(0xFFD152E3)).bucket(moltenUnobtainium_bucket)
-								.block(molten_unobtainium_block);
+		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(9000).viscosity(3000).density(3000)), moltenUnobtainium, flowing_moltenUnobtainium).explosionResistance(1000);
 	}
 	private static ForgeFlowingFluid.Properties makeUnobGasProperties() {
-		return new ForgeFlowingFluid.Properties(vaporUnobtainium, flowing_vaporUnobtainium,
-				FluidAttributes.builder(UNOBTAINIUM_VAPOR_STILL, UNOBTAINIUM_VAPOR_FLOW).gaseous()
-						.overlay(UNOBTAINIUM_MOLTEN_STILL).color(0xFFD152E3)).bucket(vaporUnobtainium_bucket)
-				.block(vapor_unobtainium_block);
+		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(9000).viscosity(3000).density(3000)), vaporUnobtainium, flowing_vaporUnobtainium).explosionResistance(1000);
 	}
 
 
@@ -627,7 +625,17 @@ public class ModRegistry {
 	public static final RegistryObject<Item> VIB_CRYSTAL = ITEMS.register("vibranium_crystal", () -> new Crystal(new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> ONOB_CRYSTAL = ITEMS.register("unobtainium_crystal", () -> new Crystal(new Item.Properties().tab(AllTheModium.GROUP)));
 
-	public static final RegistryObject<Block> TELEPORT_PAD = SHAPED_BLOCKS.register("teleport_pad", () -> new TeleportPad(Block.Properties.of(Material.METAL).noDrops().noOcclusion().strength(20.0F)));
+	public static final RegistryObject<Item> UNOBTAINIUM_ALLTHEMODIUM_DUST = ITEMS.register("unobtainium_allthemodium_alloy_dust",() -> new Alloy_Dust(new Item.Properties().tab(AllTheModium.GROUP).fireResistant()));
+	public static final RegistryObject<Item> UNOBTAINIUM_VIBRANIUM_DUST = ITEMS.register("unobtainium_vibranium_alloy_dust" , () -> new Alloy_Dust(new Item.Properties().tab(AllTheModium.GROUP).fireResistant()));
+	public static final RegistryObject<Item> VIBRANIUM_ALLTHEMODIUM_DUST = ITEMS.register("vibranium_allthemodium_alloy_dust", ()-> new Alloy_Dust(new Item.Properties().tab(AllTheModium.GROUP).fireResistant()));
+
+	public static final RegistryObject<Item> UNOBTAINIUM_ALLTHEMODIUM_ALLOY = ITEMS.register("unobtainium_allthemodium_alloy_ingot", () -> new Alloy_Ingot(new Item.Properties().tab(AllTheModium.GROUP).fireResistant()));
+	public static final RegistryObject<Item> UNOBTAINIUM_VIBRANIUM_ALLOY = ITEMS.register("unobtainium_vibranium_alloy_ingot", () -> new Alloy_Ingot(new Item.Properties().tab(AllTheModium.GROUP).fireResistant()));
+	public static final RegistryObject<Item> VIBRANIUM_ALLTHEMODIUM_ALLOY = ITEMS.register("vibranium_allthemodium_alloy_ingot", ()-> new Alloy_Ingot(new Item.Properties().tab(AllTheModium.GROUP).fireResistant()));
+
+
+
+	public static final RegistryObject<Block> TELEPORT_PAD = SHAPED_BLOCKS.register("teleport_pad", () -> new TeleportPad(Block.Properties.of(Material.METAL).noLootTable().noOcclusion().strength(20.0F)));
 	public static final RegistryObject<Item> TELEPORT_PAD_ITEM = ITEMS.register("teleport_pad", () -> new BlockItem(TELEPORT_PAD.get(), new Item.Properties().tab(AllTheModium.GROUP)));
 
 	public static final RegistryObject<SwordItem> ALLTHEMODIUM_SWORD = ITEMS.register("allthemodium_sword",() -> new SwordItem(ToolTiers.ALLTHEMODIUM_TIER,8,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)){
@@ -641,12 +649,12 @@ public class ModRegistry {
 		}
 		@Override
 		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
 			super.appendHoverText(stack, worldIn, tooltip, flagIn);
 		}
-		protected TranslatableComponent getTooltip(String key){
-			return new TranslatableComponent(key);
+		protected TranslatableContents getTooltip(String key){
+			return new TranslatableContents(key);
 		}
 
 	});
@@ -668,12 +676,12 @@ public class ModRegistry {
 		}
 		@Override
 		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
 			super.appendHoverText(stack, worldIn, tooltip, flagIn);
 		}
-		protected TranslatableComponent getTooltip(String key){
-			return new TranslatableComponent(key);
+		protected TranslatableContents getTooltip(String key){
+			return new TranslatableContents(key);
 		}
 
 		@Override
@@ -704,12 +712,12 @@ public class ModRegistry {
 		}
 		@Override
 		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
 			super.appendHoverText(stack, worldIn, tooltip, flagIn);
 		}
-		protected TranslatableComponent getTooltip(String key){
-			return new TranslatableComponent(key);
+		protected TranslatableContents getTooltip(String key){
+			return new TranslatableContents(key);
 		}
 
 		@Override
@@ -732,12 +740,12 @@ public class ModRegistry {
 		}
 		@Override
 		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
 			super.appendHoverText(stack, worldIn, tooltip, flagIn);
 		}
-		protected TranslatableComponent getTooltip(String key){
-			return new TranslatableComponent(key);
+		protected TranslatableContents getTooltip(String key){
+			return new TranslatableContents(key);
 		}
 		@Override
 		public boolean isEnchantable(ItemStack stack) {
@@ -775,12 +783,12 @@ public class ModRegistry {
 		}
 		@Override
 		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
 			super.appendHoverText(stack, worldIn, tooltip, flagIn);
 		}
-		protected TranslatableComponent getTooltip(String key){
-			return new TranslatableComponent(key);
+		protected TranslatableContents getTooltip(String key){
+			return new TranslatableContents(key);
 		}
 
 		@Override
@@ -804,12 +812,12 @@ public class ModRegistry {
 		}
 		@Override
 		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
 			super.appendHoverText(stack, worldIn, tooltip, flagIn);
 		}
-		protected TranslatableComponent getTooltip(String key){
-			return new TranslatableComponent(key);
+		protected TranslatableContents getTooltip(String key){
+			return new TranslatableContents(key);
 		}
 
 	});
@@ -831,12 +839,12 @@ public class ModRegistry {
 		}
 		@Override
 		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
 			super.appendHoverText(stack, worldIn, tooltip, flagIn);
 		}
-		protected TranslatableComponent getTooltip(String key){
-			return new TranslatableComponent(key);
+		protected TranslatableContents getTooltip(String key){
+			return new TranslatableContents(key);
 		}
 
 		@Override
@@ -867,12 +875,12 @@ public class ModRegistry {
 		}
 		@Override
 		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
 			super.appendHoverText(stack, worldIn, tooltip, flagIn);
 		}
-		protected TranslatableComponent getTooltip(String key){
-			return new TranslatableComponent(key);
+		protected TranslatableContents getTooltip(String key){
+			return new TranslatableContents(key);
 		}
 
 		@Override
@@ -903,12 +911,12 @@ public class ModRegistry {
 		}
 		@Override
 		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
 			super.appendHoverText(stack, worldIn, tooltip, flagIn);
 		}
-		protected TranslatableComponent getTooltip(String key){
-			return new TranslatableComponent(key);
+		protected TranslatableContents getTooltip(String key){
+			return new TranslatableContents(key);
 		}
 
 		@Override
@@ -939,12 +947,12 @@ public class ModRegistry {
 		}
 		@Override
 		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
 			super.appendHoverText(stack, worldIn, tooltip, flagIn);
 		}
-		protected TranslatableComponent getTooltip(String key){
-			return new TranslatableComponent(key);
+		protected TranslatableContents getTooltip(String key){
+			return new TranslatableContents(key);
 		}
 
 		@Override
@@ -968,12 +976,12 @@ public class ModRegistry {
 			}
 			@Override
 			public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-				tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+				tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
 				super.appendHoverText(stack, worldIn, tooltip, flagIn);
 			}
-			protected TranslatableComponent getTooltip(String key){
-				return new TranslatableComponent(key);
+			protected TranslatableContents getTooltip(String key){
+				return new TranslatableContents(key);
 			}
 
 		});
@@ -995,12 +1003,12 @@ public class ModRegistry {
 			}
 			@Override
 			public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-				tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+				tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
 				super.appendHoverText(stack, worldIn, tooltip, flagIn);
 			}
-			protected TranslatableComponent getTooltip(String key){
-				return new TranslatableComponent(key);
+			protected TranslatableContents getTooltip(String key){
+				return new TranslatableContents(key);
 			}
 
 			@Override
@@ -1031,12 +1039,12 @@ public class ModRegistry {
 		}
 		@Override
 		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
 			super.appendHoverText(stack, worldIn, tooltip, flagIn);
 		}
-		protected TranslatableComponent getTooltip(String key){
-			return new TranslatableComponent(key);
+		protected TranslatableContents getTooltip(String key){
+			return new TranslatableContents(key);
 		}
 
 		@Override
@@ -1067,12 +1075,12 @@ public class ModRegistry {
 		}
 		@Override
 		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
 			super.appendHoverText(stack, worldIn, tooltip, flagIn);
 		}
-		protected TranslatableComponent getTooltip(String key){
-			return new TranslatableComponent(key);
+		protected TranslatableContents getTooltip(String key){
+			return new TranslatableContents(key);
 		}
 
 		@Override
@@ -1103,12 +1111,12 @@ public class ModRegistry {
 		}
 		@Override
 		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(this.getTooltip("indestructible").withStyle(ChatFormatting.GOLD));
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
 			super.appendHoverText(stack, worldIn, tooltip, flagIn);
 		}
-		protected TranslatableComponent getTooltip(String key){
-			return new TranslatableComponent(key);
+		protected TranslatableContents getTooltip(String key){
+			return new TranslatableContents(key);
 		}
 
 		@Override
@@ -1136,17 +1144,8 @@ public class ModRegistry {
 
 
 
-	public static final RegistryObject<WorldCarver<CanyonCarverConfiguration>> OTHER_CANYON_CARVER = CARVERS.register("other_canyons", () -> new OtherCanyonCarver(CanyonCarverConfiguration.CODEC));
-
-	public static final RegistryObject<WorldCarver<CaveCarverConfiguration>> OTHER_CARVER = CARVERS.register("other_caves", () -> new OtherCarver(CaveCarverConfiguration.CODEC));
-
-	public static final RegistryObject<WorldCarver<CaveCarverConfiguration>> OTHER_CAVE_CARVER = CARVERS.register("other_caverns", () -> new OtherCaveCarver(CaveCarverConfiguration.CODEC));
 
 
-	public static ResourceKey<Biome> createBiome(String name, Biome biome) {
-		ResourceLocation ATM = Reference.location(name);
-		return ResourceKey.create(Registry.BIOME_REGISTRY, ATM);
-	}
 	private static <T extends Monster> RegistryObject<EntityType<T>> createMonsterEntity(String name, EntityType.EntityFactory<T> factory, float width, float height, int eggPrimary, int eggSecondary) {
 		ResourceLocation location = new ResourceLocation(Reference.MOD_ID, name);
 
@@ -1158,7 +1157,7 @@ public class ModRegistry {
 
 		//return ENTITIES.register(name, () -> entity);
 	}
-
+/*
 	private static <T extends AbstractGolem> RegistryObject<EntityType<T>> createShulkerEntity(String name, EntityType.EntityFactory<T> factory, float width, float height, int eggPrimary, int eggSecondary) {
 		ResourceLocation location = new ResourceLocation(Reference.MOD_ID, name);
 		EntityType<T> entity = EntityType.Builder.of(factory, MobCategory.MONSTER).sized(width, height).setTrackingRange(64).setUpdateInterval(1).build(location.toString());
@@ -1168,6 +1167,8 @@ public class ModRegistry {
 
 		return ENTITIES.register(name, () -> entity);
 	}
+
+ */
 
 	@SubscribeEvent
 	public static void addEntityAttributes(EntityAttributeCreationEvent event) {
@@ -1180,14 +1181,7 @@ public class ModRegistry {
 		}).strength(2.0F).sound(SoundType.WOOD));
 	}
 
-	@SubscribeEvent
-	public static void registerSpawnEggs(RegistryEvent.Register<Item> event) {
 
-		for (Item spawnEgg : SPAWN_EGGS) {
-			Preconditions.checkNotNull(spawnEgg.getRegistryName(), "registryName");
-			//event.getRegistry().register(spawnEgg);
-		}
-	}
 
 
 }

@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-import java.util.Random;
+import net.minecraft.util.RandomSource;
 
 public class AncientCaveVines extends GrowingPlantHeadBlock implements BonemealableBlock, ACaveVines {
     private static final float CHANCE_OF_BERRIES_ON_GROWTH = 0.11F;
@@ -26,7 +26,7 @@ public class AncientCaveVines extends GrowingPlantHeadBlock implements Bonemeala
         super(p_53928_, Direction.DOWN, SHAPE, false, 0.1D);
         this.registerDefaultState(this.stateDefinition.any().setValue(AGE, Integer.valueOf(0)).setValue(BERRIES, Boolean.valueOf(false)));
     }
-    protected int getBlocksToGrowWhenBonemealed(Random p_152995_) {
+    protected int getBlocksToGrowWhenBonemealed(RandomSource p_152995_) {
         return 1;
     }
 
@@ -38,7 +38,7 @@ public class AncientCaveVines extends GrowingPlantHeadBlock implements Bonemeala
         return p_152988_.setValue(BERRIES, p_152987_.getValue(BERRIES));
     }
 
-    protected BlockState getGrowIntoState(BlockState p_152990_, Random p_152991_) {
+    protected BlockState getGrowIntoState(BlockState p_152990_, RandomSource p_152991_) {
         return super.getGrowIntoState(p_152990_, p_152991_).setValue(BERRIES, Boolean.valueOf(p_152991_.nextFloat() < 0.11F));
     }
 
@@ -59,11 +59,11 @@ public class AncientCaveVines extends GrowingPlantHeadBlock implements Bonemeala
         return !p_152972_.getValue(BERRIES);
     }
 
-    public boolean isBonemealSuccess(Level p_152975_, Random p_152976_, BlockPos p_152977_, BlockState p_152978_) {
+    public boolean isBonemealSuccess(Level p_152975_, RandomSource p_152976_, BlockPos p_152977_, BlockState p_152978_) {
         return true;
     }
 
-    public void performBonemeal(ServerLevel p_152961_, Random p_152962_, BlockPos p_152963_, BlockState p_152964_) {
+    public void performBonemeal(ServerLevel p_152961_, RandomSource p_152962_, BlockPos p_152963_, BlockState p_152964_) {
         p_152961_.setBlock(p_152963_, p_152964_.setValue(BERRIES, Boolean.valueOf(true)), 2);
     }
     @Override

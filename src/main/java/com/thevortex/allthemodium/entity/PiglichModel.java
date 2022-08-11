@@ -80,17 +80,17 @@ public class PiglichModel extends AnimatedGeoModel<PiglichEntity> {
 
 
     @Override
-    public ResourceLocation getModelLocation(PiglichEntity piglichEntity) {
+    public ResourceLocation getModelResource(PiglichEntity piglichEntity) {
         return new ResourceLocation(Reference.MOD_ID,"geo/piglich_anim.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureLocation(PiglichEntity piglichEntity) {
+    public ResourceLocation getTextureResource(PiglichEntity piglichEntity) {
         return new ResourceLocation(Reference.MOD_ID,"textures/entity/piglich.png");
     }
 
     @Override
-    public ResourceLocation getAnimationFileLocation(PiglichEntity piglichEntity) {
+    public ResourceLocation getAnimationResource(PiglichEntity piglichEntity) {
         return new ResourceLocation(Reference.MOD_ID,"animations/piglich.animation.json");
     }
 }

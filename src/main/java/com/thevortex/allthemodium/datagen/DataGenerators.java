@@ -7,9 +7,9 @@ import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 import java.io.IOException;
 
@@ -24,18 +24,18 @@ public final class DataGenerators {
 
         if (event.includeServer()) {
             BlockTagsProvider blockTagsProvider = new BlockTags(generator, fileHelper);
-            generator.addProvider(new ItemTags(generator, blockTagsProvider, fileHelper));
-            generator.addProvider(blockTagsProvider);
-            generator.addProvider(new FluidTags(generator, Reference.MOD_ID,fileHelper));
-            generator.addProvider(new CraftingRecipes(generator));
-            generator.addProvider(new ShapelessCrafting(generator));
-            generator.addProvider(new BlastingRecipes(generator));
-            generator.addProvider(new SmeltingRecipes(generator));
-            generator.addProvider(new LootTables(generator));
+            generator.addProvider(true,new ItemTags(generator, blockTagsProvider, fileHelper));
+            generator.addProvider(true,blockTagsProvider);
+            generator.addProvider(true,new FluidTags(generator, Reference.MOD_ID,fileHelper));
+            generator.addProvider(true,new CraftingRecipes(generator));
+            generator.addProvider(true,new ShapelessCrafting(generator));
+            generator.addProvider(true,new BlastingRecipes(generator));
+            generator.addProvider(true,new SmeltingRecipes(generator));
+            generator.addProvider(true,new LootTables(generator));
         }
         if (event.includeClient()) {
-            generator.addProvider(new BlockStates(generator, fileHelper));
-            generator.addProvider(new ItemModels(generator, fileHelper));
+            generator.addProvider(true,new BlockStates(generator, fileHelper));
+            generator.addProvider(true,new ItemModels(generator, fileHelper));
         }
     }
 }
