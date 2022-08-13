@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:end_highlands",
+  "features": "allthemodium:unobtainium_ore",
+  "step": "underground_ores"
+}
