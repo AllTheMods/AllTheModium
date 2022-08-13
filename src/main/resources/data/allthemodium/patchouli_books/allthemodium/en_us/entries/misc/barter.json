@@ -2,7 +2,7 @@
     "name": "Bartering",
     "icon": "minecraft:piglin_spawn_egg",
     "category": "allthemodium:misc",
-    "sortnum": "2",
+    "sortnum": 2,
     "pages": [{
             "type": "entity",
             "entity": "minecraft:piglin",
