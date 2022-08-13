@@ -1,7 +1,7 @@
 {
     "variants": {
         "": {
-            "model": "allthemodium:block/molten"
+            "model": "allthemodium:block/fluid/molten"
         }
     }
 }

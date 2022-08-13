@@ -2,7 +2,7 @@
     "name": "Vibranium Ore",
     "icon": "allthemodium:vibranium_ore",
     "category": "allthemodium:ore",
-    "sortnum": "2",
+    "sortnum": 2,
     "pages": [{
         "type": "spotlight",
         "item": "allthemodium:vibranium_ore",

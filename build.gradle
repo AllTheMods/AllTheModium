@@ -40,6 +40,11 @@ minecraft {
     // Default run configurations.
     // These can be tweaked, removed, or duplicated as needed.
     runs {
+        configureEach {
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+        }
+
         client {
             workingDirectory project.file('run')
 			 // Recommended logging data for a userdev environment
@@ -110,6 +115,7 @@ dependencies {
 	//implementation fg.deobf("curse.maven:${mekanism}")
     implementation fg.deobf("curse.maven:${geckolib}")
     runtimeOnly fg.deobf("curse.maven:top-245211:3671753")
+    runtimeOnly fg.deobf("curse.maven:patchouli-306770:3846086")
     implementation fg.deobf("curse.maven:${ato}")
     runtimeOnly fg.deobf("curse.maven:${potions}")
     //implementation fileTree(dir: 'libs', include: '*.jar')
