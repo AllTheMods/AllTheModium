@@ -116,24 +116,6 @@ public class AllTheModium
 			//ATMConfiguredStructures.registerConfiguredStructures();
 			Registry.register(Registry.CHUNK_GENERATOR, MINING_DIM_ID, MiningDimSource.CODEC);
 			Registry.register(Registry.CHUNK_GENERATOR, THE_OTHER_DIM_ID, TheOtherDimSource.CODEC);
-
-				/** WorldCarver.CAVE */
-				ObfuscationReflectionHelper.setPrivateValue(WorldCarver.class, WorldCarver.CAVE, new ImmutableSet.Builder<Block>()
-						.addAll((Set<Block>) ObfuscationReflectionHelper.getPrivateValue(WorldCarver.class, WorldCarver.CAVE, "f_64983_"))
-						.add(ModRegistry.ANCIENT_STONE.get().defaultBlockState().getBlock())
-						.build(), "f_64983_");
-
-				/** WorldCarver.NETHER */
-				ObfuscationReflectionHelper.setPrivateValue(WorldCarver.class, WorldCarver.NETHER_CAVE, new ImmutableSet.Builder<Block>()
-						.addAll((Set<Block>) ObfuscationReflectionHelper.getPrivateValue(WorldCarver.class, WorldCarver.NETHER_CAVE, "f_64983_"))
-						.add(ModRegistry.ANCIENT_STONE.get().defaultBlockState().getBlock())
-						.build(), "f_64983_");
-
-				/** WorldCarver.CANYON **/
-				ObfuscationReflectionHelper.setPrivateValue(WorldCarver.class, WorldCarver.CANYON, new ImmutableSet.Builder<Block>()
-						.addAll((Set<Block>) ObfuscationReflectionHelper.getPrivateValue(WorldCarver.class, WorldCarver.CANYON, "f_64983_"))
-						.add(ModRegistry.ANCIENT_STONE.get().defaultBlockState().getBlock())
-						.build(), "f_64983_");
 			});
 
 	}
