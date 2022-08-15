@@ -1,9 +1,9 @@
 {
   "type": "minecraft:blasting",
+  "cookingtime": 200,
+  "experience": 0.15,
   "ingredient": {
     "item": "allthemodium:raw_unobtainium"
   },
-  "result": "allthemodium:unobtainium_ingot",
-  "experience": 0.15,
-  "cookingtime": 200
+  "result": "allthemodium:unobtainium_ingot"
 }

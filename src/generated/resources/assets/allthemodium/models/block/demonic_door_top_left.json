@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:block/door_bottom",
+  "parent": "minecraft:block/door_top_left",
   "textures": {
     "bottom": "allthemodium:block/demonic_door_bottom",
     "top": "allthemodium:block/demonic_door_top"

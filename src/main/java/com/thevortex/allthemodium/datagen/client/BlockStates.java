@@ -14,6 +14,7 @@ import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.List;
@@ -114,6 +115,7 @@ public class BlockStates extends BlockStateProvider {
         doorBlock(ModRegistry.SOUL_DOOR_.get(),new ResourceLocation(Reference.MOD_ID,"block/soul_door_bottom"),new ResourceLocation(Reference.MOD_ID,"block/soul_door_top"));
 
 
+
     }
 
 
@@ -124,9 +126,9 @@ public class BlockStates extends BlockStateProvider {
      * @param block the block
      */
     private void simpleBlockAndItem(Block block) {
-        String blockName = Objects.requireNonNull(block.getName()).toString();
+        ResourceLocation blockName = ForgeRegistries.BLOCKS.getKey(block);
         simpleBlock(block);
-        BlockModelBuilder builder = models().getBuilder(blockName);
+        BlockModelBuilder builder = models().getBuilder(blockName.toString());
         simpleBlockItem(block, builder);
     }
 

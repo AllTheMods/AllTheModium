@@ -142,9 +142,9 @@ public class ModRegistry {
 
 
 	// BIOMES
-	/*
+
 	RegistryObject<Biome> MINING = BIOMES.register("mining", () -> ATMBiomes.mining());
-	RegistryObject<Biome> THE_OTHER = BIOMES.register("the_other", () -> ATMBiomes.the_other());
+	/*RegistryObject<Biome> THE_OTHER = BIOMES.register("the_other", () -> ATMBiomes.the_other());
 	RegistryObject<Biome> DESERT = BIOMES.register("desert", () -> ATMBiomes.desert());
 	RegistryObject<Biome> DESERT_HILLS = BIOMES.register("desert_hills", () -> ATMBiomes.desert_hills());
 	RegistryObject<Biome> SOULSAND = BIOMES.register("soul_sand_valley", () -> ATMBiomes.soul_sand_valley());
