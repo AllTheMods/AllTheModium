@@ -8,6 +8,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.serialization.Codec;
 import com.thevortex.allthemodium.events.PlayerHarvest;
 import com.thevortex.allthemodium.init.*;
+import com.thevortex.allthemodium.reference.TweakCheck;
 import com.thevortex.allthemodium.registry.ATMMekRegistry;
 import com.thevortex.allthemodium.registry.MekRegistry;
 import com.thevortex.allthemodium.worldgen.MiningDimSource;
@@ -97,7 +98,7 @@ public class AllTheModium
 	public static final ResourceKey<DimensionType> THE_OTHER_TYPE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, THE_OTHER_DIM_ID);
 	//public static final RegistryKey<World> THE_BEYOND = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"the_beyond"));
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
-	public static boolean ALLOW_TELEPORT_MINING = false;
+	public static boolean ALLOW_TELEPORT_MINING = true;
 	public static final CreativeModeTab GROUP = new CreativeModeTab(MOD_ID) {
 		public ItemStack makeIcon() { return new ItemStack(ModRegistry.ALLTHEMODIUM_ORE_ITEM.get()); }
 	};
@@ -147,7 +148,9 @@ public class AllTheModium
 			//ATMConfiguredStructures.registerConfiguredStructures();
 			Registry.register(Registry.CHUNK_GENERATOR, MINING_DIM_ID, MiningDimSource.CODEC);
 			Registry.register(Registry.CHUNK_GENERATOR, THE_OTHER_DIM_ID, TheOtherDimSource.CODEC);
-
+			if(ModList.get().isLoaded("allthetweaks")) {
+				ALLOW_TELEPORT_MINING = TweakCheck.init();
+			}
 				/** WorldCarver.CAVE */
 				ObfuscationReflectionHelper.setPrivateValue(WorldCarver.class, WorldCarver.CAVE, new ImmutableSet.Builder<Block>()
 						.addAll((Set<Block>) ObfuscationReflectionHelper.getPrivateValue(WorldCarver.class, WorldCarver.CAVE, "f_64983_"))
