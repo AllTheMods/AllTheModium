@@ -2,8 +2,14 @@ package com.thevortex.allthemodium.events;
 
 
 import com.thevortex.allthemodium.reference.TagRegistry;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraftforge.client.event.sound.SoundEvent;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.level.BlockEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -25,6 +31,7 @@ public class BlockBreak {
 			event.setCanceled(true);
 			return;
 		}
+
 		if((event.getState().is(TagRegistry.VIBRANIUM_ORE)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null || (event.getPlayer().getMainHandItem().isEmpty())))) {
 			
 			event.setCanceled(true);

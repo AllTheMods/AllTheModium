@@ -1,0 +1,40 @@
+{
+  "type": "allthemodium:the_other",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "allthemodium:the_other",
+      "lakes": true,
+      "disable_mob_generation": false,
+      "noodle_caves_enabled": true,
+      "ore_veins_enabled": true,
+      "aquifers_enabled": true,
+      "legacy_random_source": true,
+      "noise_caves_enabled": true,
+      "features": true,
+      "layers": [
+        {
+          "block": "minecraft:bedrock",
+          "height": 1
+        },
+        {
+          "block": "allthemodium:ancient_stone",
+          "height": 256
+        },
+        {
+          "block": "minecraft:deepslate",
+          "height": 128
+        },
+        {
+          "block": "minecraft:tuff",
+          "height": 32
+        },
+        {
+          "block": "minecraft:bedrock",
+          "height": 1
+        }
+      ],
+      "structure_overrides": []
+    }
+  }
+}

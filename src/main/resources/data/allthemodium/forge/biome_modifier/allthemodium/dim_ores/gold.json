@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "allthemodium:mining",
+  "features": ["allthemodium:ore_gold","allthemodium:ore_gold_lower"],
+  "step": "underground_ores"
+}

@@ -160,7 +160,7 @@ public class TeleportPad extends Block {
 */
 		else if (player.level.dimension().equals(AllTheModium.OverWorld) && (config != 2)) {
 			ServerLevel targetWorld = player.server.getLevel(AllTheModium.Mining);
-			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), 75, Math.round(pos.getZ()));
+			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), 253, Math.round(pos.getZ()));
 			if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {
 				targetWorld.setBlockAndUpdate(targetPos, ModRegistry.TELEPORT_PAD.get().defaultBlockState());
 				targetWorld.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY(), pos.getZ(), 0, 1, 0);

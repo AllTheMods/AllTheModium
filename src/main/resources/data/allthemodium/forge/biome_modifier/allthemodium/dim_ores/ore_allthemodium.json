@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "allthemodium:mining",
+  "features": "allthemodium:allthemodium_mining",
+  "step": "underground_ores"
+}

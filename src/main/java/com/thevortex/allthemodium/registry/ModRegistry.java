@@ -51,6 +51,8 @@ import net.minecraft.world.level.material.Material;
 
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.TierSortingRegistry;
+import net.minecraftforge.common.extensions.IForgeFluidState;
+import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidType;

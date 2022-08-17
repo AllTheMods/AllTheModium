@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "allthemodium:mining",
+  "features": ["allthemodium:ore_iron_small","allthemodium:ore_iron_middle","allthemodium:ore_iron_upper"],
+  "step": "underground_ores"
+}

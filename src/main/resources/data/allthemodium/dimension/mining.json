@@ -12,12 +12,20 @@
           "height": 1
         },
         {
+          "block": "minecraft:end_stone",
+          "height": 64
+        },
+        {
+          "block": "minecraft:netherrack",
+          "height": 64
+        },
+        {
           "block": "minecraft:deepslate",
           "height": 64
         },
         {
           "block": "minecraft:stone",
-          "height": 69
+          "height": 119
         },
         {
           "block": "minecraft:dirt",
