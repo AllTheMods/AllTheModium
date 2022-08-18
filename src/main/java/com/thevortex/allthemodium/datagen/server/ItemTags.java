@@ -21,6 +21,10 @@ public class ItemTags extends ItemTagsProvider {
     @Override
     protected void addTags() {
 
+        tag(net.minecraft.tags.ItemTags.SAPLINGS).add(ModRegistry.ANCIENT_SAPLING_ITEM.get());
+        tag(net.minecraft.tags.ItemTags.SAPLINGS).add(ModRegistry.SOUL_SAPLING_ITEM.get());
+        tag(net.minecraft.tags.ItemTags.SAPLINGS).add(ModRegistry.DEMONIC_SAPLING_ITEM.get());
+
         tag(net.minecraft.tags.ItemTags.PLANKS).add(ModRegistry.ANCIENT_PLANKS_ITEM.get());
         tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_0_ITEM.get());
         tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_1_ITEM.get());

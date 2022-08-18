@@ -36,6 +36,10 @@ public class BlockTags extends BlockTagsProvider {
         tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.CAMPFIRE);
         tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.SOUL_CAMPFIRE);
 
+        tag(net.minecraft.tags.BlockTags.SAPLINGS).add(ModRegistry.ANCIENT_SAPLING.get());
+        tag(net.minecraft.tags.BlockTags.SAPLINGS).add(ModRegistry.SOUL_SAPLING.get());
+        tag(net.minecraft.tags.BlockTags.SAPLINGS).add(ModRegistry.DEMONIC_SAPLING.get());
+
         tag(net.minecraft.tags.BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_DIRT.get());
         tag(net.minecraft.tags.BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_GRASS.get());
         tag(net.minecraft.tags.BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_LOG_0.get());
