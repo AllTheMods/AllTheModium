@@ -88,8 +88,7 @@ public class ModRegistry {
 
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MOD_ID);
 
-	public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(ForgeRegistries.FLUIDS,
-			Reference.MOD_ID);
+
 
 	public static final DeferredRegister<BlockEntityType<?>> ENTITY = DeferredRegister
 			.create(ForgeRegistries.BLOCK_ENTITY_TYPES, Reference.MOD_ID);
@@ -98,52 +97,12 @@ public class ModRegistry {
 	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister
 			.create(ForgeRegistries.ENTITY_TYPES, Reference.MOD_ID);
 
-
-
 	public static final DeferredRegister<Feature<?>> FEATURES =
 			DeferredRegister.create(ForgeRegistries.FEATURES, Reference.MOD_ID);
 
 	private static ArrayList<Item> SPAWN_EGGS = new ArrayList<Item>();
 
-	public static final ResourceLocation SOUL_LAVA_STILL = new ResourceLocation(Reference.MOD_ID,
-			"block/fluid/soul_lava_still");
-	public static final ResourceLocation SOUL_LAVA_FLOW = new ResourceLocation(Reference.MOD_ID,
-			"block/fluid/soul_lava_flow");
-
-	public static final ResourceLocation ATM_MOLTEN_STILL = new ResourceLocation(Reference.MOD_ID,
-			"block/fluid/atm_molten_still");
-	public static final ResourceLocation ATM_MOLTEN_FLOW = new ResourceLocation(Reference.MOD_ID,
-			"block/fluid/atm_molten_flow");
-
-	public static final ResourceLocation ATM_VAPOR_STILL = new ResourceLocation(Reference.MOD_ID,
-			"block/fluid/molten_metal");
-	public static final ResourceLocation ATM_VAPOR_FLOW = new ResourceLocation(Reference.MOD_ID,
-			"block/fluid/molten_metal_flow");
-
-
-	public static final ResourceLocation ATM_SHULKER_model = new ResourceLocation("minecraft", "block/shulker_box");
-
-	public static final ResourceLocation UNOBTAINIUM_MOLTEN_STILL = new ResourceLocation(Reference.MOD_ID,
-			"block/fluid/unobtainium_molten_still");
-	public static final ResourceLocation UNOBTAINIUM_MOLTEN_FLOW = new ResourceLocation(Reference.MOD_ID,
-			"block/fluid/unobtainium_molten_flow");
-
-	public static final ResourceLocation UNOBTAINIUM_VAPOR_STILL = new ResourceLocation(Reference.MOD_ID,
-			"block/fluid/molten_metal");
-	public static final ResourceLocation UNOBTAINIUM_VAPOR_FLOW = new ResourceLocation(Reference.MOD_ID,
-			"block/fluid/molten_metal_flow");
-
-	public static final ResourceLocation VIBRANIUM_MOLTEN_STILL = new ResourceLocation(Reference.MOD_ID,
-			"block/fluid/vibranium_molten_still");
-	public static final ResourceLocation VIBRANIUM_MOLTEN_FLOW = new ResourceLocation(Reference.MOD_ID,
-			"block/fluid/vibranium_molten_flow");
-	public static final ResourceLocation VIBRANIUM_VAPOR_STILL = new ResourceLocation(Reference.MOD_ID,
-			"block/fluid/molten_metal");
-	public static final ResourceLocation VIBRANIUM_VAPOR_FLOW = new ResourceLocation(Reference.MOD_ID,
-			"block/fluid/molten_metal_flow");
-
-
-	// BIOMES
+		// BIOMES
 
 	RegistryObject<Biome> MINING = BIOMES.register("mining", () -> ATMBiomes.mining());
 	/*RegistryObject<Biome> THE_OTHER = BIOMES.register("the_other", () -> ATMBiomes.the_other());
@@ -181,173 +140,6 @@ public class ModRegistry {
 
 	public static Feature<VolcanoConfig> VOLCANO_F = new Volcano(VolcanoConfig.CODEC);
 	public static RegistryObject<Feature<VolcanoConfig>> VOLCANO = FEATURES.register("volcano", () -> VOLCANO_F);
-
-
-
-	public static final RegistryObject<ForgeFlowingFluid.Source> moltenAllthemodium = FLUIDS.register("molten_allthemodium",
-			() -> new ForgeFlowingFluid.Source(makeATMProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> flowing_moltenAllthemodium = FLUIDS
-			.register("flowing_molten_allthemodium", () -> new ForgeFlowingFluid.Flowing(makeATMProperties()));
-
-
-
-	public static final RegistryObject<ForgeFlowingFluid.Source> vaporAllthemodium = FLUIDS.register("vapor_allthemodium",
-			() -> new ForgeFlowingFluid.Source(makeATMGasProperties()));
-
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> flowing_vaporAllthemodium = FLUIDS
-			.register("flowing_vapor_allthemodium", () -> new ForgeFlowingFluid.Flowing(makeATMGasProperties()));
-
-	public static final RegistryObject<LiquidBlock> molten_allthemodium_block = BLOCKS
-			.register("molten_allthemodium_block", () -> new LiquidBlock(moltenAllthemodium,
-					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
-						return 12;
-					}).strength(100.0F).noLootTable()));
-	public static final RegistryObject<LiquidBlock> vapor_allthemodium_block = BLOCKS
-			.register("vapor_allthemodium_block", () -> new LiquidBlock(vaporAllthemodium,
-					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
-						return 12;
-					}).strength(100.0F).noLootTable()));
-	public static final RegistryObject<Item> moltenAllthemodium_bucket = ITEMS.register("molten_allthemodium_bucket",
-			() -> new BucketItem(moltenAllthemodium,
-					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(AllTheModium.GROUP)));
-	public static final RegistryObject<Item> vaporAllthemodium_bucket = ITEMS.register("vapor_allthemodium_bucket",
-			() -> new BucketItem(vaporAllthemodium,
-					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(AllTheModium.GROUP)));
-
-	public static final RegistryObject<ForgeFlowingFluid.Source> moltenVibranium = FLUIDS.register("molten_vibranium",
-			() -> new ForgeFlowingFluid.Source(makeVibProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> flowing_moltenVibranium = FLUIDS.register("flowing_molten_vibranium",
-			() -> new ForgeFlowingFluid.Flowing(makeVibProperties()));
-
-	public static final RegistryObject<ForgeFlowingFluid.Source> vaporVibranium = FLUIDS.register("vapor_vibranium",
-			() -> new ForgeFlowingFluid.Source(makeVibGasProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> flowing_vaporVibranium = FLUIDS.register("flowing_vapor_vibranium",
-			() -> new ForgeFlowingFluid.Flowing(makeVibGasProperties()));
-
-	public static final RegistryObject<LiquidBlock> molten_vibranium_block = BLOCKS
-			.register("molten_vibranium_block", () -> new LiquidBlock(moltenVibranium,
-					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
-						return 10;
-					}).strength(100.0F).noLootTable()));
-	public static final RegistryObject<LiquidBlock> vapor_vibranium_block = BLOCKS
-			.register("vapor_vibranium_block", () -> new LiquidBlock(moltenVibranium,
-					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
-						return 10;
-					}).strength(100.0F).noLootTable()));
-
-	public static final RegistryObject<Item> moltenVibranium_bucket = ITEMS.register("molten_vibranium_bucket",
-			() -> new BucketItem(moltenVibranium,
-					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(AllTheModium.GROUP)));
-	public static final RegistryObject<Item> vaporVibranium_bucket = ITEMS.register("vapor_vibranium_bucket",
-			() -> new BucketItem(moltenVibranium,
-					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(AllTheModium.GROUP)));
-
-	public static final RegistryObject<ForgeFlowingFluid.Source> moltenUnobtainium = FLUIDS.register("molten_unobtainium",
-			() -> new ForgeFlowingFluid.Source(makeUnobProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> flowing_moltenUnobtainium = FLUIDS
-			.register("flowing_molten_unobtainium", () -> new ForgeFlowingFluid.Flowing(makeUnobProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Source> vaporUnobtainium = FLUIDS.register("vapor_unobtainium",
-			() -> new ForgeFlowingFluid.Source(makeUnobGasProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> flowing_vaporUnobtainium = FLUIDS
-			.register("flowing_vapor_unobtainium", () -> new ForgeFlowingFluid.Flowing(makeUnobGasProperties()));
-
-	public static final RegistryObject<LiquidBlock> molten_unobtainium_block = BLOCKS
-			.register("molten_unobtainium_block", () -> new LiquidBlock(moltenUnobtainium,
-					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
-						return 6;
-					}).strength(100.0F).noLootTable()));
-	public static final RegistryObject<LiquidBlock> vapor_unobtainium_block = BLOCKS
-			.register("vapor_unobtainium_block", () -> new LiquidBlock(moltenUnobtainium,
-					Block.Properties.of(Material.LAVA).lightLevel((state) -> {
-						return 6;
-					}).strength(100.0F).noLootTable()));
-	public static final RegistryObject<Item> moltenUnobtainium_bucket = ITEMS.register("molten_unobtainium_bucket",
-			() -> new BucketItem(moltenUnobtainium,
-					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(AllTheModium.GROUP)));
-	public static final RegistryObject<Item> vaporUnobtainium_bucket = ITEMS.register("vapor_unobtainium_bucket",
-			() -> new BucketItem(vaporUnobtainium,
-					new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(AllTheModium.GROUP)));
-
-
-	public static final RegistryObject<ForgeFlowingFluid.Source> blueLava = FLUIDS.register("soul_lava",
-			() -> new ForgeFlowingFluid.Source(makeBlueLavaProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> flowing_blueLava = FLUIDS.register("flowing_soul_lava",
-			() -> new ForgeFlowingFluid.Flowing(makeBlueLavaProperties()));
-
-	public static final RegistryObject<LiquidBlock> molten_BlueLava_block = BLOCKS
-			.register("soul_lava_block", () -> new SoulLava(blueLava,
-					Block.Properties.of(Material.LAVA).randomTicks().lightLevel((state) -> {
-						return 15;
-					}).noOcclusion().strength(100.0F).jumpFactor(0.1F).speedFactor(0.01F).noLootTable()));
-	public static final RegistryObject<Item> moltenBluelava_bucket = ITEMS.register("soul_lava_bucket",
-			() -> new SoulBucket(blueLava,
-					new BucketItem.Properties().craftRemainder(Items.BUCKET).stacksTo(1).tab(AllTheModium.GROUP)));
-
-
-	public static final RegistryObject<ForgeFlowingFluid.Source> moltenATMVIB = FLUIDS.register("molten_atmvib",
-			() -> new ForgeFlowingFluid.Source(makeATMVIBProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> flowing_moltenATMVIB = FLUIDS
-			.register("flowing_molten_atmvib", () -> new ForgeFlowingFluid.Flowing(makeATMVIBProperties()));
-
-
-	public static final RegistryObject<ForgeFlowingFluid.Source> moltenATMUNOB = FLUIDS.register("molten_atmunob",
-			() -> new ForgeFlowingFluid.Source(makeATMUNOBProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> flowing_moltenATMUNOB = FLUIDS
-			.register("flowing_molten_atmunob", () -> new ForgeFlowingFluid.Flowing(makeATMUNOBProperties()));
-
-
-	public static final RegistryObject<ForgeFlowingFluid.Source> moltenVIBUNOB = FLUIDS.register("molten_vibunob",
-			() -> new ForgeFlowingFluid.Source(makeVIBUNOBProperties()));
-	public static final RegistryObject<ForgeFlowingFluid.Flowing> flowing_moltenVIBUNOB = FLUIDS
-			.register("flowing_molten_vibunob", () -> new ForgeFlowingFluid.Flowing(makeVIBUNOBProperties()));
-
-
-
-
-
-
-	private static ForgeFlowingFluid.Properties makeBlueLavaProperties() {
-		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(9999).viscosity(3000).density(3000)), blueLava, flowing_blueLava).block(() -> molten_BlueLava_block.get()).bucket(() -> moltenBluelava_bucket.get()).explosionResistance(1000);
-
-	}
-
-
-	private static ForgeFlowingFluid.Properties makeATMProperties() {
-		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(1500).viscosity(3000).density(3000)), moltenAllthemodium, flowing_moltenAllthemodium).block(() -> molten_allthemodium_block.get()).bucket(() -> moltenAllthemodium_bucket.get()).explosionResistance(1000);
-	}
-	private static ForgeFlowingFluid.Properties makeATMGasProperties() {
-		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(false).temperature(1500).viscosity(3000).density(3000)), vaporAllthemodium, flowing_vaporAllthemodium).block(() -> vapor_allthemodium_block.get()).bucket(() -> vaporAllthemodium_bucket.get()).explosionResistance(1000);
-	}
-
-	private static ForgeFlowingFluid.Properties makeATMVIBProperties() {
-		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(2500).viscosity(3000).density(3000)), moltenATMVIB, flowing_moltenATMVIB).explosionResistance(1000);
-	}
-
-	private static ForgeFlowingFluid.Properties makeATMUNOBProperties() {
-		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(9000).viscosity(3000).density(3000)), moltenATMUNOB, flowing_moltenATMUNOB).explosionResistance(1000);
-	}
-
-	private static ForgeFlowingFluid.Properties makeVIBUNOBProperties() {
-		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(9000).viscosity(3000).density(3000)), moltenVIBUNOB, flowing_moltenVIBUNOB).explosionResistance(1000);
-	}
-
-	private static ForgeFlowingFluid.Properties makeVibProperties() {
-		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(2500).viscosity(3000).density(3000)), moltenVibranium, flowing_moltenVibranium).explosionResistance(1000);
-			}
-	private static ForgeFlowingFluid.Properties makeVibGasProperties() {
-		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(2500).viscosity(3000).density(3000)), vaporVibranium, flowing_vaporVibranium).explosionResistance(1000);
-	}
-	private static ForgeFlowingFluid.Properties makeUnobProperties() {
-		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(9000).viscosity(3000).density(3000)), moltenUnobtainium, flowing_moltenUnobtainium).explosionResistance(1000);
-	}
-	private static ForgeFlowingFluid.Properties makeUnobGasProperties() {
-		return new ForgeFlowingFluid.Properties(() -> new FluidType(FluidType.Properties.create().lightLevel(15).canDrown(true).canSwim(true).temperature(9000).viscosity(3000).density(3000)), vaporUnobtainium, flowing_vaporUnobtainium).explosionResistance(1000);
-	}
-
-
-
-
-
 
 
 	public static final RegistryObject<AncientCaveVines> ANCIENT_CAVEVINES_ = PILLARBLOCKS.register("ancient_cavevines", () -> new AncientCaveVines(BlockBehaviour.Properties.of(Material.PLANT)

@@ -1,6 +1,7 @@
 package com.thevortex.allthemodium.datagen.server;
 
 import com.thevortex.allthemodium.reference.TagRegistry;
+import com.thevortex.allthemodium.registry.FluidRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.FluidTagsProvider;
@@ -14,14 +15,14 @@ public class FluidTags extends FluidTagsProvider {
     @Override
     protected void addTags() {
 
-    tag(TagRegistry.SOUL_LAVA).add(ModRegistry.blueLava.get());
-    tag(TagRegistry.SOUL_LAVA).add(ModRegistry.flowing_blueLava.get());
-    tag(net.minecraft.tags.FluidTags.LAVA).add(ModRegistry.blueLava.get());
-    tag(net.minecraft.tags.FluidTags.LAVA).add(ModRegistry.flowing_blueLava.get());
+    tag(TagRegistry.SOUL_LAVA).add(FluidRegistry.SOULLAVA.get());
+    tag(TagRegistry.SOUL_LAVA).add(FluidRegistry.FLOWING_SOULLAVA.get());
+    tag(net.minecraft.tags.FluidTags.LAVA).add(FluidRegistry.SOULLAVA.get());
+    tag(net.minecraft.tags.FluidTags.LAVA).add(FluidRegistry.FLOWING_SOULLAVA.get());
 
-    tag(TagRegistry.ALLTHEMODIUM).add(ModRegistry.moltenAllthemodium.get());
-    tag(TagRegistry.VIBRANIUM).add(ModRegistry.moltenVibranium.get());
-    tag(TagRegistry.UNOBTAINIUM).add(ModRegistry.moltenUnobtainium.get());
+   // tag(TagRegistry.ALLTHEMODIUM).add(ModRegistry.moltenAllthemodium.get());
+   // tag(TagRegistry.VIBRANIUM).add(ModRegistry.moltenVibranium.get());
+   // tag(TagRegistry.UNOBTAINIUM).add(ModRegistry.moltenUnobtainium.get());
     }
 
 }

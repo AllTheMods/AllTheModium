@@ -3,7 +3,7 @@ package com.thevortex.allthemodium;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import com.thevortex.allthemodium.registry.MekRegistry;
+import com.thevortex.allthemodium.registry.*;
 import com.thevortex.allthemodium.registry.resource.ATMSlurries;
 import com.thevortex.allthemodium.worldgen.MiningDimSource;
 import com.thevortex.allthemodium.worldgen.TheOtherDimSource;
@@ -40,7 +40,6 @@ import org.apache.logging.log4j.Logger;
 import com.thevortex.allthemodium.crafting.ATMCraftingSetup;
 import com.thevortex.allthemodium.events.ArmorEvents;
 import com.thevortex.allthemodium.events.BlockBreak;
-import com.thevortex.allthemodium.registry.ModRegistry;
 import software.bernie.geckolib3.GeckoLib;
 
 import java.util.Set;
@@ -74,7 +73,9 @@ public class AllTheModium
 
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-    	ModRegistry.FLUIDS.register(modEventBus);
+		FluidTypeRegistry.FLUID_TYPES.register(modEventBus);
+    	FluidRegistry.FLUIDS.register(modEventBus);
+		BlockRegistry.BLOCKS.register(modEventBus);
        	ModRegistry.BLOCKS.register(modEventBus);
 		ModRegistry.SHAPED_BLOCKS.register(modEventBus);
 		ModRegistry.STAIRBLOCKS.register(modEventBus);
@@ -82,6 +83,7 @@ public class AllTheModium
 		ModRegistry.WALLBLOCKS.register(modEventBus);
 		ModRegistry.PILLARBLOCKS.register(modEventBus);
 
+		ItemRegistry.ITEMS.register(modEventBus);
     	ModRegistry.ITEMS.register(modEventBus);
     	ModRegistry.ENTITIES.register(modEventBus);
     	ModRegistry.FEATURES.register(modEventBus);
