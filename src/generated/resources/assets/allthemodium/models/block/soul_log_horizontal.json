@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column_horizontal",
   "textures": {
-    "side": "allthemodium:block/soul_log",
-    "end": "allthemodium:block/soul_log_top"
+    "end": "allthemodium:block/soul_log_top",
+    "side": "allthemodium:block/soul_log"
   }
 }

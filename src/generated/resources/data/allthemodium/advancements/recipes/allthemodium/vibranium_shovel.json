@@ -1,26 +1,21 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "allthemodium:vibranium_shovel"
-    ]
-  },
   "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "allthemodium:vibranium_shovel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
     "has_vibranium_rod": {
-      "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
             "tag": "forge:rods/vibranium"
           }
         ]
-      }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "allthemodium:vibranium_shovel"
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
@@ -28,5 +23,10 @@
       "has_vibranium_rod",
       "has_the_recipe"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "allthemodium:vibranium_shovel"
+    ]
+  }
 }

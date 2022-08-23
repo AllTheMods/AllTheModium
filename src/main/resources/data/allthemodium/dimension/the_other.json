@@ -1,40 +1,96 @@
 {
   "type": "allthemodium:the_other",
   "generator": {
-    "type": "minecraft:flat",
-    "settings": {
-      "biome": "allthemodium:the_other",
-      "lakes": true,
-      "disable_mob_generation": false,
-      "noodle_caves_enabled": true,
-      "ore_veins_enabled": true,
-      "aquifers_enabled": true,
-      "legacy_random_source": true,
-      "noise_caves_enabled": true,
-      "features": true,
-      "layers": [
+    "type": "minecraft:noise",
+    "settings": "allthemodium:the_other",
+    "biome_source": {
+      "type": "minecraft:multi_noise",
+      "biomes": [
         {
-          "block": "minecraft:bedrock",
-          "height": 1
+          "biome": "allthemodium:soul_sand_valley",
+          "parameters": {
+            "temperature": -0.1,
+            "humidity": -0.7,
+            "continentalness": -0.5,
+            "erosion": 0.1,
+            "weirdness": 0.3,
+            "depth": 0.1,
+            "offset": 0
+          }
         },
         {
-          "block": "allthemodium:ancient_stone",
-          "height": 256
+          "biome": "allthemodium:the_other",
+          "parameters": {
+            "temperature": 0.4,
+            "humidity": 0.5,
+            "continentalness": 0.5,
+            "erosion": 0.5,
+            "weirdness": 0.2,
+            "depth": -0.1,
+            "offset": 0
+          }
         },
         {
-          "block": "minecraft:deepslate",
-          "height": 128
+          "biome": "allthemodium:desert",
+          "parameters": {
+            "temperature": 0.9,
+            "humidity": 0,
+            "continentalness": 0.1,
+            "erosion": 0.9,
+            "weirdness": 0.9,
+            "depth": 0,
+            "offset": 0
+          }
         },
         {
-          "block": "minecraft:tuff",
-          "height": 32
+          "biome": "allthemodium:basalt_deltas",
+          "parameters": {
+            "temperature": 1.0,
+            "humidity": 0.7,
+            "continentalness": -0.5,
+            "erosion": 0.1,
+            "weirdness": 0.3,
+            "depth": 0.5,
+            "offset": 0
+          }
         },
         {
-          "block": "minecraft:bedrock",
-          "height": 1
+          "biome": "allthemodium:warped_forest",
+          "parameters": {
+            "temperature": 0.7,
+            "humidity": 0.9,
+            "continentalness": 0.5,
+            "erosion": 0.5,
+            "weirdness": 0.2,
+            "depth": -0.1,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "allthemodium:desert_hills",
+          "parameters": {
+            "temperature": 0.9,
+            "humidity": 0,
+            "continentalness": 0.2,
+            "erosion": 0.1,
+            "weirdness": 0.9,
+            "depth": 0,
+            "offset": 0
+          }
+        },
+        {
+          "biome": "allthemodium:crimson_forest",
+          "parameters": {
+            "temperature": 0.6,
+            "humidity": 0.6,
+            "continentalness": 0.3,
+            "erosion": 0.9,
+            "weirdness": 0.3,
+            "depth": -0.1,
+            "offset": 0
+          }
         }
-      ],
-      "structure_overrides": []
+      ]
     }
   }
 }

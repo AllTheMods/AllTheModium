@@ -1,11 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "alltheores",
-  "pattern": [
-    "ha ",
-    "a  ",
-    "   "
-  ],
   "key": {
     "a": {
       "tag": "forge:ingots/allthemodium"
@@ -14,6 +9,11 @@
       "tag": "alltheores:ore_hammers"
     }
   },
+  "pattern": [
+    "ha ",
+    "a  ",
+    "   "
+  ],
   "result": {
     "item": "allthemodium:allthemodium_plate"
   }

@@ -1,0 +1,10 @@
+{
+  "type": "allthemodium:dungeon",
+  "config": {
+    "start_pool": "allthemodium:dungeon/start_pool",
+    "size": 7
+  },
+  "biomes": "#allthemodium:has_structure/dungeon_biomes",
+  "adapt_noise": false,
+  "spawn_overrides": {}
+}

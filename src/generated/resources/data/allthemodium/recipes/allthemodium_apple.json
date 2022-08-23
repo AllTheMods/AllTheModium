@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "allthemodium",
+  "key": {
+    "a": {
+      "item": "minecraft:apple"
+    },
+    "n": {
+      "tag": "forge:nuggets/allthemodium"
+    }
+  },
   "pattern": [
     "nnn",
     "nan",
     "nnn"
   ],
-  "key": {
-    "n": {
-      "tag": "forge:nuggets/allthemodium"
-    },
-    "a": {
-      "item": "minecraft:apple"
-    }
-  },
   "result": {
     "item": "allthemodium:allthemodium_apple"
   }

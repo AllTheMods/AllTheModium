@@ -1,13 +1,5 @@
 {
-  "replace": false,
   "values": [
-    "allthemodium:molten_allthemodium_block",
-    "allthemodium:vapor_allthemodium_block",
-    "allthemodium:molten_vibranium_block",
-    "allthemodium:vapor_vibranium_block",
-    "allthemodium:molten_unobtainium_block",
-    "allthemodium:vapor_unobtainium_block",
-    "allthemodium:soul_lava_block",
     "allthemodium:ancient_smooth_stone",
     "allthemodium:ancient_stone",
     "allthemodium:ancient_dirt",

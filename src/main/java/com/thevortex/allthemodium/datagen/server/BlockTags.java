@@ -162,6 +162,10 @@ public class BlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.STAIRS).add(ModRegistry.ANCIENT_CHISELED_STONE_STAIRS.get());
         tag(net.minecraft.tags.BlockTags.STAIRS).add(ModRegistry.ANCIENT_STONE_BRICK_STAIRS.get());
 
+        tag(net.minecraft.tags.BlockTags.LEAVES).add(ModRegistry.ANCIENT_LEAVES.get());
+        tag(net.minecraft.tags.BlockTags.LEAVES).add(ModRegistry.SOUL_LEAVES.get());
+        tag(net.minecraft.tags.BlockTags.LEAVES).add(ModRegistry.DEMONIC_LEAVES.get());
+
         tag(TagRegistry.ALLTHEMODIUM_BLOCK).add(ModRegistry.ALLTHEMODIUM_BLOCK.get());
         tag(TagRegistry.ALLTHEMODIUM_ORE).add(ModRegistry.ALLTHEMODIUM_ORE.get());
         tag(TagRegistry.ALLTHEMODIUM_ORE).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());

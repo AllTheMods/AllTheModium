@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "allthemodium",
-  "pattern": [
-    "a  ",
-    "aa ",
-    "aaa"
-  ],
   "key": {
     "a": {
       "tag": "allthemodium:soul_planks"
     }
   },
+  "pattern": [
+    "a  ",
+    "aa ",
+    "aaa"
+  ],
   "result": {
-    "item": "allthemodium:soul_wooden_stairs",
-    "count": 4
+    "count": 4,
+    "item": "allthemodium:soul_wooden_stairs"
   }
 }

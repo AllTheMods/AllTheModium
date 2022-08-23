@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "allthemodium:the_other",
+  "features": "allthemodium:ancient_tree",
+  "step": "vegetal_decoration"
+}

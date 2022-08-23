@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "allthemodium:mining",
+  "biomes": "#allthemodium:mining_features/mining_biomes",
   "features": ["allthemodium:ore_redstone","allthemodium:ore_redstone_lower"],
   "step": "underground_ores"
 }
