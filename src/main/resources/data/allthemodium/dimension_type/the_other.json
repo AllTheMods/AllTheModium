@@ -13,7 +13,7 @@
   "infiniburn": "#minecraft:infiniburn_nether",
   "min_y": -64,
   "height": 384,
-  "effects": "minecraft:nether",
+  "effects": "allthemodium:the_other",
   "monster_spawn_light_level": {
     "type": "minecraft:uniform",
     "value": {

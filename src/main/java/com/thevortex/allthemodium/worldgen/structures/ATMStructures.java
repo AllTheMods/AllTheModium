@@ -13,6 +13,8 @@ public class ATMStructures {
 
 
 public static final RegistryObject<StructureType<APStructure>> ANCIENT_PYRAMID = STRUCTURES.register("ancient_pyramid", () -> () -> APStructure.CODEC);
+    public static final RegistryObject<StructureType<PVStructure>> PIGLIN_VILLAGE = STRUCTURES.register("piglin_village", () -> () -> PVStructure.CODEC);
+    public static final RegistryObject<StructureType<DungeonStructure>> ANCIENT_DUNGEON = STRUCTURES.register("dungeon", () -> () -> DungeonStructure.CODEC);
 
 
 }

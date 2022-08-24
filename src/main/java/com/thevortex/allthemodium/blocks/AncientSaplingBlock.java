@@ -1,10 +1,10 @@
 package com.thevortex.allthemodium.blocks;
 
-import com.thevortex.allthemodium.datagen.server.BlockTags;
 import com.thevortex.allthemodium.reference.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -12,6 +12,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -21,10 +22,11 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.Tags;
 
 import java.util.Random;
 
-public class AncientSaplingBlock extends BushBlock implements BonemealableBlock {
+public class AncientSaplingBlock extends SaplingBlock implements BonemealableBlock {
 
 
     public static final IntegerProperty STAGE = BlockStateProperties.STAGE;
@@ -33,7 +35,7 @@ public class AncientSaplingBlock extends BushBlock implements BonemealableBlock 
     private final AbstractTreeGrower treeGrower;
 
     public AncientSaplingBlock(AbstractTreeGrower p_55978_, BlockBehaviour.Properties p_55979_) {
-        super(p_55979_);
+        super(p_55978_,p_55979_);
         this.treeGrower = p_55978_;
         this.registerDefaultState(this.stateDefinition.any().setValue(STAGE, Integer.valueOf(0)));
     }
@@ -43,13 +45,19 @@ public class AncientSaplingBlock extends BushBlock implements BonemealableBlock 
     }
 
     @Override
+    protected boolean mayPlaceOn(BlockState p_51042_, BlockGetter p_51043_, BlockPos p_51044_) {
+        return p_51042_.is(TagRegistry.ANCIENT_DIRT);
+    }
+
+    @Override
     public VoxelShape getBlockSupportShape(BlockState p_60581_, BlockGetter p_60582_, BlockPos p_60583_) {
         return Shapes.empty();
     }
 
+
     @Override
     public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
-        return true;
+        return state.is(TagRegistry.ANCIENT_DIRT);
     }
 
     public void randomTick(BlockState p_56003_, ServerLevel p_56004_, BlockPos p_56005_, RandomSource p_56006_) {

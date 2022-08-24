@@ -11,10 +11,10 @@
           "parameters": {
             "temperature": -0.1,
             "humidity": -0.7,
-            "continentalness": -0.5,
+            "continentalness": -0.3,
             "erosion": 0.1,
             "weirdness": 0.3,
-            "depth": 0.1,
+            "depth": 0.2,
             "offset": 0
           }
         },
@@ -23,10 +23,10 @@
           "parameters": {
             "temperature": 0.4,
             "humidity": 0.5,
-            "continentalness": 0.5,
+            "continentalness": 0.3,
             "erosion": 0.5,
             "weirdness": 0.2,
-            "depth": -0.1,
+            "depth": 0.4,
             "offset": 0
           }
         },
@@ -47,7 +47,7 @@
           "parameters": {
             "temperature": 1.0,
             "humidity": 0.7,
-            "continentalness": -0.5,
+            "continentalness": -0.2,
             "erosion": 0.1,
             "weirdness": 0.3,
             "depth": 0.5,
@@ -59,10 +59,10 @@
           "parameters": {
             "temperature": 0.7,
             "humidity": 0.9,
-            "continentalness": 0.5,
+            "continentalness": 0.2,
             "erosion": 0.5,
             "weirdness": 0.2,
-            "depth": -0.1,
+            "depth": 0.3,
             "offset": 0
           }
         },
@@ -71,22 +71,22 @@
           "parameters": {
             "temperature": 0.9,
             "humidity": 0,
-            "continentalness": 0.2,
+            "continentalness": 0.23,
             "erosion": 0.1,
             "weirdness": 0.9,
-            "depth": 0,
+            "depth": 0.1,
             "offset": 0
           }
         },
         {
           "biome": "allthemodium:crimson_forest",
           "parameters": {
-            "temperature": 0.6,
-            "humidity": 0.6,
+            "temperature": 0.9,
+            "humidity": 0.3,
             "continentalness": 0.3,
-            "erosion": 0.9,
+            "erosion": 0.4,
             "weirdness": 0.3,
-            "depth": -0.1,
+            "depth": 0.2,
             "offset": 0
           }
         }

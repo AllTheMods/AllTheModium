@@ -8,6 +8,7 @@ import com.thevortex.allthemodium.registry.resource.ATMSlurries;
 import com.thevortex.allthemodium.worldgen.MiningDimSource;
 import com.thevortex.allthemodium.worldgen.TheOtherDimSource;
 import com.thevortex.allthemodium.worldgen.biomes.ATMBiomes;
+import com.thevortex.allthemodium.worldgen.structures.ATMStructures;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -83,13 +84,13 @@ public class AllTheModium
 		ItemRegistry.ITEMS.register(modEventBus);
     	ModRegistry.ITEMS.register(modEventBus);
     	ModRegistry.ENTITIES.register(modEventBus);
-    	ModRegistry.FEATURES.register(modEventBus);
 
     	ModRegistry.CARVERS.register(modEventBus);
-
+		ModRegistry.BIOMES.register(modEventBus);
     	ATMCraftingSetup.REGISTRY.register(modEventBus);
-    	//ATMStructures.STRUCTURES.register(modEventBus);
-    	ModRegistry.BIOMES.register(modEventBus);
+    	ATMStructures.STRUCTURES.register(modEventBus);
+		ModRegistry.FEATURES.register(modEventBus);
+
 		modEventBus.register(ModRegistry.class);
 		modEventBus.addListener(this::setup);
 

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "allthemodium:the_other"
+    "allthemodium:desert",
+    "allthemodium:desert_hills"
   ]
 }
