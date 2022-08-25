@@ -70,7 +70,7 @@ public class ATMConfiguredFeature {
 
 	public static Holder<ConfiguredFeature<VolcanoConfig, ?>> VOLCANO_CF = FeatureUtils.register("allthemodium:volcano",ModRegistry.VOLCANO.get(),VolcanoConfig.INSTANCE);
 
-	public static Holder<ConfiguredFeature<DeltaFeatureConfiguration, ?>> MOD_DELTAS = FeatureUtils.register("allthemodium:other_deltas", Feature.DELTA_FEATURE,new DeltaFeatureConfiguration(ModRegistry.ANCIENT_STONE.get().defaultBlockState(), Blocks.MAGMA_BLOCK.defaultBlockState(), UniformInt.of(3, 4), UniformInt.of(0, 2)));
+	public static final Holder<ConfiguredFeature<DeltaFeatureConfiguration, ?>> MOD_DELTAS = FeatureUtils.register("allthemodium:other_deltas", Feature.DELTA_FEATURE,new DeltaFeatureConfiguration(ModRegistry.ANCIENT_STONE.get().defaultBlockState(), Blocks.MAGMA_BLOCK.defaultBlockState(), UniformInt.of(3, 4), UniformInt.of(0, 2)));
 
 	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> ANCIENT_TREE_GIANT = FeatureUtils.register("allthemodium:ancient_tree_giant", Feature.TREE,createAncientGiantTree().build());
 	public static final Holder<ConfiguredFeature<TreeConfiguration, ?>> ANCIENT_TREE_MEDIUM = FeatureUtils.register("allthemodium:ancient_tree_medium", Feature.TREE,createAncientMediumTree().build());

@@ -125,7 +125,7 @@ public class DungeonStructure extends Structure {
         // the chunk generator will place for that dimension.
         NoiseColumn columnOfBlocks = context.chunkGenerator().getBaseColumn(blockPos.getX(), blockPos.getZ(), context.heightAccessor(),context.randomState());
 
-        int startY = landHeight;
+        int startY = landHeight -10;
 
         // Turns the chunk coordinates into actual coordinates we can use. (Gets corner of that chunk)
         ChunkPos chunkPos = context.chunkPos();
