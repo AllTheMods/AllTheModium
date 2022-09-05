@@ -37,9 +37,11 @@ public class OtherSky extends DimensionSpecialEffects {
         public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f projectionMatrix) {
             return false;
         }
-
+/*
         @Override
         public boolean renderSky(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, Camera camera, Matrix4f projectionMatrix, boolean isFoggy, Runnable setupFog) {
             return ((level.getBiome(camera.getBlockPosition()).is(ATMBiomes.CRIMSON_FOREST)) || (level.getBiome(camera.getBlockPosition()).is(ATMBiomes.WARPED_FOREST)) || (level.getBiome(camera.getBlockPosition()).is(ATMBiomes.THE_OTHER)));
         }
+
+ */
 }

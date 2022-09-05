@@ -13,15 +13,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public enum AArmorMaterial implements ArmorMaterial {
-	   ALLTHEMODIUM("allthemodium", 45, new int[]{10, 15, 15, 10}, 85, SoundEvents.ARMOR_EQUIP_CHAIN, 125.0F, () -> {
+	   ALLTHEMODIUM("allthemodium", 42, new int[]{4, 7, 9, 4}, 85, SoundEvents.ARMOR_EQUIP_NETHERITE, 5.0F, 0.5f, () -> {
 		      return Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get());
-		   }),
-	   VIBRANIUM("vibranium", 75, new int[]{15, 30, 30, 15}, 95, SoundEvents.ARMOR_EQUIP_CHAIN, 250.0F, () -> {
-	      return Ingredient.of(ModRegistry.VIBRANIUM_INGOT.get());
-	   }),
-	   UNOBTAINIUM("unobtainium",100, new int[]{25, 45, 45, 25}, 130, SoundEvents.ARMOR_EQUIP_CHAIN, 500.0F, () -> {
-	      return Ingredient.of(ModRegistry.UNOBTAINIUM_INGOT.get());
-	   });
+		   });
     
 
    private static final int[] MAX_DAMAGE_ARRAY = new int[]{25, 45, 45, 25};
@@ -35,15 +29,15 @@ public enum AArmorMaterial implements ArmorMaterial {
    private final float knockback;
    private final LazyLoadedValue<Ingredient> repairMaterial;
 
-   AArmorMaterial(String nameIn, int maxDamageFactorIn, int[] damageReductionAmountsIn, int enchantabilityIn, SoundEvent equipSoundIn, float p_i48533_8_, Supplier<Ingredient> repairMaterialSupplier) {
+   AArmorMaterial(String nameIn, int maxDamageFactorIn, int[] damageReductionAmountsIn, int enchantabilityIn, SoundEvent equipSoundIn, float toughness, float knockback, Supplier<Ingredient> repairMaterialSupplier) {
       this.name = nameIn;
       this.maxDamageFactor = maxDamageFactorIn;
       this.damageReductionAmountArray = damageReductionAmountsIn;
       this.enchantability = enchantabilityIn;
       this.soundEvent = equipSoundIn;
-      this.toughness = p_i48533_8_;
+      this.toughness = toughness;
       this.repairMaterial = new LazyLoadedValue(repairMaterialSupplier);
-      this.knockback = this.toughness/100.0F;
+      this.knockback = knockback;
    }
    @Override
    public int getDurabilityForSlot(EquipmentSlot slotIn) { return MAX_DAMAGE_ARRAY[slotIn.getIndex()] * this.maxDamageFactor; }

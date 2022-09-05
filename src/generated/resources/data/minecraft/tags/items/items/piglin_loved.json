@@ -1,28 +1,12 @@
 {
   "values": [
     "allthemodium:allthemodium_pickaxe",
-    "allthemodium:vibranium_pickaxe",
-    "allthemodium:unobtainium_pickaxe",
     "allthemodium:allthemodium_axe",
-    "allthemodium:vibranium_axe",
-    "allthemodium:unobtainium_axe",
     "allthemodium:allthemodium_shovel",
-    "allthemodium:vibranium_shovel",
-    "allthemodium:unobtainium_shovel",
     "allthemodium:allthemodium_hoe",
-    "allthemodium:vibranium_hoe",
-    "allthemodium:unobtainium_hoe",
     "allthemodium:allthemodium_boots",
-    "allthemodium:vibranium_boots",
-    "allthemodium:unobtainium_boots",
     "allthemodium:allthemodium_leggings",
-    "allthemodium:vibranium_leggings",
-    "allthemodium:unobtainium_leggings",
     "allthemodium:allthemodium_chestplate",
-    "allthemodium:vibranium_chestplate",
-    "allthemodium:unobtainium_chestplate",
-    "allthemodium:allthemodium_helmet",
-    "allthemodium:vibranium_helmet",
-    "allthemodium:unobtainium_helmet"
+    "allthemodium:allthemodium_helmet"
   ]
 }

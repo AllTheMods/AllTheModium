@@ -38,53 +38,25 @@ public class ItemTags extends ItemTagsProvider {
         tag(net.minecraft.tags.ItemTags.STONE_TOOL_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
 
         tag(TagRegistry.FORGE_PICKAXES).add(ModRegistry.ALLTHEMODIUM_PICKAXE.get());
-        tag(TagRegistry.FORGE_PICKAXES).add(ModRegistry.VIBRANIUM_PICKAXE.get());
-        tag(TagRegistry.FORGE_PICKAXES).add(ModRegistry.UNOBTAINIUM_PICKAXE.get());
 
         tag(TagRegistry.FORGE_AXES).add(ModRegistry.ALLTHEMODIUM_AXE.get());
-        tag(TagRegistry.FORGE_AXES).add(ModRegistry.VIBRANIUM_AXE.get());
-        tag(TagRegistry.FORGE_AXES).add(ModRegistry.UNOBTAINIUM_AXE.get());
 
         tag(TagRegistry.FORGE_SHOVELS).add(ModRegistry.ALLTHEMODIUM_SHOVEL.get());
-        tag(TagRegistry.FORGE_SHOVELS).add(ModRegistry.VIBRANIUM_SHOVEL.get());
-        tag(TagRegistry.FORGE_SHOVELS).add(ModRegistry.UNOBTAINIUM_SHOVEL.get());
 
         tag(TagRegistry.FORGE_HOES).add(ModRegistry.ALLTHEMODIUM_HOE.get());
-        tag(TagRegistry.FORGE_HOES).add(ModRegistry.VIBRANIUM_HOE.get());
-        tag(TagRegistry.FORGE_HOES).add(ModRegistry.UNOBTAINIUM_HOE.get());
-
 
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_PICKAXE.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.VIBRANIUM_PICKAXE.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.UNOBTAINIUM_PICKAXE.get());
 
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_AXE.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.VIBRANIUM_AXE.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.UNOBTAINIUM_AXE.get());
 
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_SHOVEL.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.VIBRANIUM_SHOVEL.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.UNOBTAINIUM_SHOVEL.get());
 
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_HOE.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.VIBRANIUM_HOE.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.UNOBTAINIUM_HOE.get());
 
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_BOOTS.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.VIBRANIUM_BOOTS.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.UNOBTAINIUM_BOOTS.get());
-
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.VIBRANIUM_LEGGINGS.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.UNOBTAINIUM_LEGGINGS.get());
-
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.VIBRANIUM_CHESTPLATE.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.UNOBTAINIUM_CHESTPLATE.get());
-
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_HELMET.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.VIBRANIUM_HELMET.get());
-        tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.UNOBTAINIUM_HELMET.get());
 
         tag(TagRegistry.ANCIENT_WOODEN_PLANKS_ITEM).add(ModRegistry.ANCIENT_PLANKS_ITEM.get());
         tag(TagRegistry.DEMONIC_WOODEN_PLANKS_ITEM).add(ModRegistry.DEMONIC_PLANKS_ITEM.get());

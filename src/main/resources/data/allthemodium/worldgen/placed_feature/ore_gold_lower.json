@@ -1,5 +1,5 @@
 {
-  "feature": "minecraft:ore_gold_buried",
+  "feature": "allthemodium:ore_gold",
   "placement": [
     {
       "count": {

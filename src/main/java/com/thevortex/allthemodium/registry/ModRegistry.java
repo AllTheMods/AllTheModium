@@ -126,15 +126,6 @@ public class ModRegistry {
 	public static RegistryObject<ArmorItem> ALLTHEMODIUM_CHESTPLATE = ITEMS.register("allthemodium_chestplate", () -> (ArmorItem) new Allthemodium_Chestplate(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.CHEST, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
 	public static RegistryObject<ArmorItem> ALLTHEMODIUM_HELMET = ITEMS.register("allthemodium_helmet", () -> (ArmorItem) new Allthemodium_Helmet(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.HEAD, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
 
-	public static RegistryObject<ArmorItem> VIBRANIUM_BOOTS = ITEMS.register("vibranium_boots", () -> (ArmorItem) new Vibranium_Boots(AArmorMaterial.VIBRANIUM, EquipmentSlot.FEET, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> VIBRANIUM_LEGGINGS = ITEMS.register("vibranium_leggings", () -> (ArmorItem) new Vibranium_Leggings(AArmorMaterial.VIBRANIUM, EquipmentSlot.LEGS, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> VIBRANIUM_CHESTPLATE = ITEMS.register("vibranium_chestplate", () -> (ArmorItem) new Vibranium_Chestplate(AArmorMaterial.VIBRANIUM, EquipmentSlot.CHEST, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> VIBRANIUM_HELMET = ITEMS.register("vibranium_helmet", () -> (ArmorItem) new Vibranium_Helmet(AArmorMaterial.VIBRANIUM, EquipmentSlot.HEAD, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
-
-	public static RegistryObject<ArmorItem> UNOBTAINIUM_BOOTS = ITEMS.register("unobtainium_boots", () -> (ArmorItem) new Unobtainium_Boots(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.FEET, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> UNOBTAINIUM_LEGGINGS = ITEMS.register("unobtainium_leggings", () -> (ArmorItem) new Unobtainium_Leggings(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.LEGS, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> UNOBTAINIUM_CHESTPLATE = ITEMS.register("unobtainium_chestplate", () -> (ArmorItem) new Unobtainium_Chestplate(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.CHEST, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> UNOBTAINIUM_HELMET = ITEMS.register("unobtainium_helmet", () -> (ArmorItem) new Unobtainium_Helmet(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.HEAD, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
 
     //Volcano
 
@@ -346,8 +337,8 @@ public class ModRegistry {
 	public static final RegistryObject<Item> ANCIENT_CRACKED_STONE_BRICKS_ITEM = ITEMS.register("ancient_cracked_stone_bricks", () -> new BlockItem(ANCIENT_CRACKED_STONE_BRICKS.get(), new Item.Properties().tab(AllTheModium.GROUP)));
 	public static final RegistryObject<Item> ANCIENT_POLISHED_STONE_ITEM = ITEMS.register("ancient_polished_stone", () -> new BlockItem(ANCIENT_POLISHED_STONE.get(), new Item.Properties().tab(AllTheModium.GROUP)));
 
-	public static final RegistryObject<Block> ALLTHEMODIUM_ORE = BLOCKS.register("allthemodium_ore", Allthemodium_Ore::new);
-	public static final RegistryObject<Block> ALLTHEMODIUM_SLATE_ORE = BLOCKS.register("allthemodium_slate_ore", Allthemodium_Ore::new);
+	public static final RegistryObject<Allthemodium_Ore> ALLTHEMODIUM_ORE = BLOCKS.register("allthemodium_ore", Allthemodium_Ore::new);
+	public static final RegistryObject<Allthemodium_Ore> ALLTHEMODIUM_SLATE_ORE = BLOCKS.register("allthemodium_slate_ore", Allthemodium_Ore::new);
 
 	public static final RegistryObject<Block> VIBRANIUM_ORE = BLOCKS.register("vibranium_ore", Vibranium_Ore::new);
 	public static final RegistryObject<Block> OTHER_VIBRANIUM_ORE = BLOCKS.register("other_vibranium_ore", Vibranium_Ore::new);
@@ -432,7 +423,7 @@ public class ModRegistry {
 	public static final RegistryObject<Block> TELEPORT_PAD = SHAPED_BLOCKS.register("teleport_pad", () -> new TeleportPad(Block.Properties.of(Material.METAL).noLootTable().noOcclusion().strength(20.0F)));
 	public static final RegistryObject<Item> TELEPORT_PAD_ITEM = ITEMS.register("teleport_pad", () -> new BlockItem(TELEPORT_PAD.get(), new Item.Properties().tab(AllTheModium.GROUP)));
 
-	public static final RegistryObject<SwordItem> ALLTHEMODIUM_SWORD = ITEMS.register("allthemodium_sword",() -> new SwordItem(ToolTiers.ALLTHEMODIUM_TIER,8,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)){
+	public static final RegistryObject<SwordItem> ALLTHEMODIUM_SWORD = ITEMS.register("allthemodium_sword",() -> new SwordItem(ToolTiers.ALLTHEMODIUM_TIER,4,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)){
 		@Override
 		public boolean isEnchantable(ItemStack stack) {
 			return true;
@@ -453,7 +444,7 @@ public class ModRegistry {
 
 	});
 
-	public static final RegistryObject<PickaxeItem> ALLTHEMODIUM_PICKAXE = ITEMS.register("allthemodium_pickaxe",() -> new PickaxeItem(ToolTiers.ALLTHEMODIUM_TIER,6,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<PickaxeItem> ALLTHEMODIUM_PICKAXE = ITEMS.register("allthemodium_pickaxe",() -> new PickaxeItem(ToolTiers.ALLTHEMODIUM_TIER,2,1.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -489,7 +480,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<AxeItem> ALLTHEMODIUM_AXE = ITEMS.register("allthemodium_axe",() -> new AxeItem(ToolTiers.ALLTHEMODIUM_TIER,6,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<AxeItem> ALLTHEMODIUM_AXE = ITEMS.register("allthemodium_axe",() -> new AxeItem(ToolTiers.ALLTHEMODIUM_TIER,6,1.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -525,7 +516,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<ShovelItem> ALLTHEMODIUM_SHOVEL = ITEMS.register("allthemodium_shovel",() -> new ShovelItem(ToolTiers.ALLTHEMODIUM_TIER,4,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<ShovelItem> ALLTHEMODIUM_SHOVEL = ITEMS.register("allthemodium_shovel",() -> new ShovelItem(ToolTiers.ALLTHEMODIUM_TIER,1,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -560,7 +551,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<HoeItem> ALLTHEMODIUM_HOE = ITEMS.register("allthemodium_hoe",() -> new HoeItem(ToolTiers.ALLTHEMODIUM_TIER,4,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<HoeItem> ALLTHEMODIUM_HOE = ITEMS.register("allthemodium_hoe",() -> new HoeItem(ToolTiers.ALLTHEMODIUM_TIER,0,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -595,334 +586,7 @@ public class ModRegistry {
 			return false;
 		}
 	});
-	public static final RegistryObject<SwordItem> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword",() -> new SwordItem(ToolTiers.VIBRANIUM_TIER,16,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)){
-		@Override
-		public boolean isEnchantable(ItemStack stack) {
-			return true;
-		}
-		@Override
-		public boolean canBeDepleted() {
-			return false;
-		}
-		@Override
-		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
 
-			super.appendHoverText(stack, worldIn, tooltip, flagIn);
-		}
-		protected TranslatableContents getTooltip(String key){
-			return new TranslatableContents(key);
-		}
-
-	});
-
-	public static final RegistryObject<PickaxeItem> VIBRANIUM_PICKAXE = ITEMS.register("vibranium_pickaxe",() -> new PickaxeItem(ToolTiers.VIBRANIUM_TIER,12,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
-		@Override
-		public float getDestroySpeed(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) return speed;
-			return super.getDestroySpeed(stack, state);
-		}
-		@Override
-		public boolean isEnchantable(ItemStack stack) {
-			return true;
-		}
-		@Override
-		public boolean canBeDepleted() {
-			return false;
-		}
-		@Override
-		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
-
-			super.appendHoverText(stack, worldIn, tooltip, flagIn);
-		}
-		protected TranslatableContents getTooltip(String key){
-			return new TranslatableContents(key);
-		}
-
-		@Override
-		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
-			if (state.is(ToolTiers.VIBRANIUM_TOOL_TAG))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
-			return false;
-		}
-	});
-
-	public static final RegistryObject<AxeItem> VIBRANIUM_AXE = ITEMS.register("vibranium_axe",() -> new AxeItem(ToolTiers.VIBRANIUM_TIER,12,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
-		@Override
-		public float getDestroySpeed(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_AXE)) return speed;
-			return super.getDestroySpeed(stack, state);
-		}
-		@Override
-		public boolean isEnchantable(ItemStack stack) {
-			return true;
-		}
-		@Override
-		public boolean canBeDepleted() {
-			return false;
-		}
-		@Override
-		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
-
-			super.appendHoverText(stack, worldIn, tooltip, flagIn);
-		}
-		protected TranslatableContents getTooltip(String key){
-			return new TranslatableContents(key);
-		}
-
-		@Override
-		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_AXE))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
-			if (state.is(ToolTiers.VIBRANIUM_TOOL_TAG))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
-			return false;
-		}
-	});
-
-	public static final RegistryObject<ShovelItem> VIBRANIUM_SHOVEL = ITEMS.register("vibranium_shovel",() -> new ShovelItem(ToolTiers.VIBRANIUM_TIER,8,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
-		@Override
-		public float getDestroySpeed(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) return speed;
-			return super.getDestroySpeed(stack, state);
-		}
-		@Override
-		public boolean isEnchantable(ItemStack stack) {
-			return true;
-		}
-		@Override
-		public boolean canBeDepleted() {
-			return false;
-		}
-		@Override
-		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
-
-			super.appendHoverText(stack, worldIn, tooltip, flagIn);
-		}
-		protected TranslatableContents getTooltip(String key){
-			return new TranslatableContents(key);
-		}
-
-		@Override
-		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
-			if (state.is(ToolTiers.VIBRANIUM_TOOL_TAG))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
-			return false;
-		}
-	});
-
-	public static final RegistryObject<HoeItem> VIBRANIUM_HOE = ITEMS.register("vibranium_hoe",() -> new HoeItem(ToolTiers.VIBRANIUM_TIER,8,3.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
-		@Override
-		public float getDestroySpeed(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_HOE)) return speed;
-			return super.getDestroySpeed(stack, state);
-		}
-		@Override
-		public boolean isEnchantable(ItemStack stack) {
-			return true;
-		}
-		@Override
-		public boolean canBeDepleted() {
-			return false;
-		}
-		@Override
-		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
-
-			super.appendHoverText(stack, worldIn, tooltip, flagIn);
-		}
-		protected TranslatableContents getTooltip(String key){
-			return new TranslatableContents(key);
-		}
-
-		@Override
-		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_HOE))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
-			if (state.is(ToolTiers.VIBRANIUM_TOOL_TAG))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
-			return false;
-		}
-	});
-		public static final RegistryObject<SwordItem> UNOBTAINIUM_SWORD = ITEMS.register("unobtainium_sword",() -> new SwordItem(ToolTiers.UNOBTAINIUM_TIER,32,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)){
-			@Override
-			public boolean isEnchantable(ItemStack stack) {
-				return true;
-			}
-			@Override
-			public boolean canBeDepleted() {
-				return false;
-			}
-			@Override
-			public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-				tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
-
-				super.appendHoverText(stack, worldIn, tooltip, flagIn);
-			}
-			protected TranslatableContents getTooltip(String key){
-				return new TranslatableContents(key);
-			}
-
-		});
-
-		public static final RegistryObject<PickaxeItem> UNOBTAINIUM_PICKAXE = ITEMS.register("unobtainium_pickaxe",() -> new PickaxeItem(ToolTiers.UNOBTAINIUM_TIER,24,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
-		@Override
-		public float getDestroySpeed(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) return speed;
-			return super.getDestroySpeed(stack, state);
-		}
-			@Override
-			public boolean isEnchantable(ItemStack stack) {
-				return true;
-			}
-			@Override
-			public boolean canBeDepleted() {
-				return false;
-			}
-			@Override
-			public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-				tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
-
-				super.appendHoverText(stack, worldIn, tooltip, flagIn);
-			}
-			protected TranslatableContents getTooltip(String key){
-				return new TranslatableContents(key);
-			}
-
-			@Override
-		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
-			if (state.is(ToolTiers.UNOBTAINIUM_TOOL_TAG))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
-			return false;
-		}
-	});
-
-	public static final RegistryObject<AxeItem> UNOBTAINIUM_AXE = ITEMS.register("unobtainium_axe",() -> new AxeItem(ToolTiers.UNOBTAINIUM_TIER,24,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
-		@Override
-		public float getDestroySpeed(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_AXE)) return speed;
-			return super.getDestroySpeed(stack, state);
-		}
-		@Override
-		public boolean isEnchantable(ItemStack stack) {
-			return true;
-		}
-		@Override
-		public boolean canBeDepleted() {
-			return false;
-		}
-		@Override
-		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
-
-			super.appendHoverText(stack, worldIn, tooltip, flagIn);
-		}
-		protected TranslatableContents getTooltip(String key){
-			return new TranslatableContents(key);
-		}
-
-		@Override
-		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_AXE))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
-			if (state.is(ToolTiers.UNOBTAINIUM_TOOL_TAG))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
-			return false;
-		}
-	});
-
-	public static final RegistryObject<ShovelItem> UNOBTAINIUM_SHOVEL = ITEMS.register("unobtainium_shovel",() -> new ShovelItem(ToolTiers.UNOBTAINIUM_TIER,16,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
-		@Override
-		public float getDestroySpeed(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) return speed;
-			return super.getDestroySpeed(stack, state);
-		}
-		@Override
-		public boolean isEnchantable(ItemStack stack) {
-			return true;
-		}
-		@Override
-		public boolean canBeDepleted() {
-			return false;
-		}
-		@Override
-		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
-
-			super.appendHoverText(stack, worldIn, tooltip, flagIn);
-		}
-		protected TranslatableContents getTooltip(String key){
-			return new TranslatableContents(key);
-		}
-
-		@Override
-		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
-			if (state.is(ToolTiers.UNOBTAINIUM_TOOL_TAG))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
-			return false;
-		}
-	});
-
-	public static final RegistryObject<HoeItem> UNOBTAINIUM_HOE = ITEMS.register("unobtainium_hoe",() -> new HoeItem(ToolTiers.UNOBTAINIUM_TIER,16,5.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
-		@Override
-		public float getDestroySpeed(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_HOE)) return speed;
-			return super.getDestroySpeed(stack, state);
-		}
-		@Override
-		public boolean isEnchantable(ItemStack stack) {
-			return true;
-		}
-		@Override
-		public boolean canBeDepleted() {
-			return false;
-		}
-		@Override
-		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
-
-			super.appendHoverText(stack, worldIn, tooltip, flagIn);
-		}
-		protected TranslatableContents getTooltip(String key){
-			return new TranslatableContents(key);
-		}
-
-		@Override
-		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
-		{
-			if (state.is(BlockTags.MINEABLE_WITH_HOE))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
-			if (state.is(ToolTiers.UNOBTAINIUM_TOOL_TAG))
-				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
-			return false;
-		}
-	});
 	public static final RegistryObject<Block> UA_ALLOY = BLOCKS.register("unobtainium_allthemodium_alloy_block", UAAlloy_Block::new);
 	public static final RegistryObject<Block> UV_ALLOY = BLOCKS.register("unobtainium_vibranium_alloy_block", UVAlloy_Block::new);
 	public static final RegistryObject<Block> VA_ALLOY = BLOCKS.register("vibranium_allthemodium_alloy_block", VAAlloy_Block::new);

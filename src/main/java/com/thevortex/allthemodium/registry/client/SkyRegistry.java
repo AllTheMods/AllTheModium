@@ -13,6 +13,6 @@ import net.minecraftforge.fml.common.Mod;
 public class SkyRegistry {
         @SubscribeEvent
         public static void register(RegisterDimensionSpecialEffectsEvent event) {
-            event.register(new ResourceLocation(Reference.MOD_ID, "the_other"), new OtherSky(512, true, DimensionSpecialEffects.SkyType.NORMAL, false, false));
+            event.register(new ResourceLocation(Reference.MOD_ID, "the_other"), new OtherSky(Float.NaN, true, DimensionSpecialEffects.SkyType.NORMAL, false, false));
         }
 }

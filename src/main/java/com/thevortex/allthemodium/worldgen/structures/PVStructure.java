@@ -107,7 +107,7 @@ public class PVStructure extends Structure {
                 chunkpos.getMinBlockZ(),
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 context.heightAccessor(),
-                context.randomState()) < 150;
+                context.randomState()) < 50;
     }
 
     @Override

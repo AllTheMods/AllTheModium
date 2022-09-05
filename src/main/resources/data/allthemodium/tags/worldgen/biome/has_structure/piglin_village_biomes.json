@@ -1,7 +1,10 @@
 {
   "replace": false,
   "values": [
+    "allthemodium:desert",
+    "allthemodium:crimson_forest",
     "allthemodium:warped_forest",
-    "allthemodium:the_other"
+    "allthemodium:the_other",
+    "allthemodium:basalt_deltas"
   ]
 }

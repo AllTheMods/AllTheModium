@@ -24,7 +24,7 @@ public class ArmorEvents {
 		Iterator<ItemStack> iterator = armorlist.iterator();
 		while(iterator.hasNext()) {
 			ItemStack armor = iterator.next();
-			if((armor.getItem() == ModRegistry.ALLTHEMODIUM_BOOTS.get()) || (armor.getItem() == ModRegistry.VIBRANIUM_BOOTS.get()) || (armor.getItem() == ModRegistry.UNOBTAINIUM_BOOTS.get())) { event.setCanceled(true);}
+			if((armor.getItem() == ModRegistry.ALLTHEMODIUM_BOOTS.get())) { event.setCanceled(true);}
 		}	
 			
 	}
@@ -41,26 +41,13 @@ public class ArmorEvents {
 			Iterator<ItemStack> iterator = armorlist.iterator();
 			while (iterator.hasNext()) {
 				ItemStack armor = iterator.next();
-				if ((armor.getItem() == ModRegistry.ALLTHEMODIUM_CHESTPLATE.get()) || (armor.getItem() == ModRegistry.VIBRANIUM_CHESTPLATE.get()) || (armor.getItem() == ModRegistry.UNOBTAINIUM_CHESTPLATE.get())) {
-					if ((event.getSource() == DamageSource.DRAGON_BREATH) && (armor.getItem() == ModRegistry.UNOBTAINIUM_CHESTPLATE.get())) {
-						event.setCanceled(true);
-					}
+				if ((armor.getItem() == ModRegistry.ALLTHEMODIUM_CHESTPLATE.get())) {
 					if ((event.getSource() == DamageSource.HOT_FLOOR) || (event.getSource() == DamageSource.IN_FIRE) || (event.getSource() == DamageSource.LAVA) || (event.getSource() == DamageSource.ON_FIRE)) {
 						event.getEntity().clearFire();
 						event.setCanceled(true);
 					}
 				}
-				if ((armor.getItem() == ModRegistry.VIBRANIUM_LEGGINGS.get()) || (armor.getItem() == ModRegistry.UNOBTAINIUM_LEGGINGS.get())) {
-					if (event.getSource() == DamageSource.WITHER) {
-						event.getEntity().removeEffect(MobEffects.WITHER);
-						event.setCanceled(true);
-					}
-					if (!event.isCanceled() && armor.getItem() == ModRegistry.UNOBTAINIUM_LEGGINGS.get()) {
-						event.getEntity().removeEffect(MobEffects.LEVITATION);
-					}
-				}
-
-				if ((armor.getItem() == ModRegistry.ALLTHEMODIUM_HELMET.get()) || (armor.getItem() == ModRegistry.VIBRANIUM_HELMET.get()) || (armor.getItem() == ModRegistry.UNOBTAINIUM_HELMET.get())) {
+				if ((armor.getItem() == ModRegistry.ALLTHEMODIUM_HELMET.get())) {
 					if (event.getSource() == DamageSource.FLY_INTO_WALL) {
 						event.setCanceled(true);
 					}

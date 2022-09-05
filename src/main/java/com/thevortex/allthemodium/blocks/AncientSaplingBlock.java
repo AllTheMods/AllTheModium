@@ -45,8 +45,8 @@ public class AncientSaplingBlock extends SaplingBlock implements BonemealableBlo
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState p_51042_, BlockGetter p_51043_, BlockPos p_51044_) {
-        return p_51042_.is(TagRegistry.ANCIENT_DIRT);
+    protected boolean mayPlaceOn(BlockState state, BlockGetter p_51043_, BlockPos p_51044_) {
+        return state.is(TagRegistry.ANCIENT_DIRT) || state.is(BlockTags.NYLIUM) || state.is(ModRegistry.ANCIENT_GRASS.get());
     }
 
     @Override
@@ -57,7 +57,7 @@ public class AncientSaplingBlock extends SaplingBlock implements BonemealableBlo
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
-        return state.is(TagRegistry.ANCIENT_DIRT);
+        return state.is(TagRegistry.ANCIENT_DIRT) || state.is(BlockTags.NYLIUM) || state.is(ModRegistry.ANCIENT_GRASS.get());
     }
 
     public void randomTick(BlockState p_56003_, ServerLevel p_56004_, BlockPos p_56005_, RandomSource p_56006_) {

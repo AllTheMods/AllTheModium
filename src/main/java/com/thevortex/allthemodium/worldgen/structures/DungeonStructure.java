@@ -100,9 +100,9 @@ public class DungeonStructure extends Structure {
         return context.chunkGenerator().getFirstOccupiedHeight(
                 chunkpos.getMinBlockX(),
                 chunkpos.getMinBlockZ(),
-                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Heightmap.Types.WORLD_SURFACE,
                 context.heightAccessor(),
-                context.randomState()) < 150;
+                context.randomState()) < 40;
     }
 
     @Override
@@ -118,14 +118,20 @@ public class DungeonStructure extends Structure {
         // In nether, it will be netherrack, lava, and air. End will only be endstone and air. It depends on what block
         // the chunk generator will place for that dimension.
         BlockPos blockPos = context.chunkPos().getWorldPosition();
-        int landHeight = context.chunkGenerator().getFirstOccupiedHeight(blockPos.getX(), blockPos.getZ(), Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(),context.randomState());
+        int landHeight = context.chunkGenerator().getFirstOccupiedHeight(blockPos.getX(), blockPos.getZ(), Heightmap.Types.WORLD_SURFACE_WG, context.heightAccessor(), context.randomState());
 
         // Grabs column of blocks at given position. In overworld, this column will be made of stone, water, and air.
         // In nether, it will be netherrack, lava, and air. End will only be endstone and air. It depends on what block
         // the chunk generator will place for that dimension.
-        NoiseColumn columnOfBlocks = context.chunkGenerator().getBaseColumn(blockPos.getX(), blockPos.getZ(), context.heightAccessor(),context.randomState());
+        NoiseColumn columnOfBlocks = context.chunkGenerator().getBaseColumn(blockPos.getX(), blockPos.getZ(), context.heightAccessor(), context.randomState());
 
-        int startY = landHeight -10;
+        int startY;
+        for (startY = 32; startY < 100; startY++) {
+            if (columnOfBlocks.getBlock(startY).isAir()) {
+                break;
+            }
+        }
+
 
         // Turns the chunk coordinates into actual coordinates we can use. (Gets corner of that chunk)
         ChunkPos chunkPos = context.chunkPos();
