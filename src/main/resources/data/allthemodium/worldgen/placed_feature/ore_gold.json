@@ -14,7 +14,7 @@
           "absolute": -64
         },
         "max_inclusive": {
-          "absolute": 32
+          "absolute": 200
         },
         "type": "minecraft:trapezoid"
       },

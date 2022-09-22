@@ -20,7 +20,7 @@
           "absolute": -64
         },
         "max_inclusive": {
-          "absolute": -48
+          "absolute": 198
         },
         "type": "minecraft:uniform"
       },
