@@ -7,10 +7,7 @@ import net.allthemods.alltheores.blocks.BlockList;
 import net.allthemods.alltheores.infos.ItemTagRegistry;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.*;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
@@ -207,7 +204,8 @@ private ResourceLocation recipeDir(String typeIn, String typeOut) {
                 .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.VA_ALLOY_ITEM.get()))
                 .save(consumer,recipeDir("vibranium_allthemodium_alloy_ingot","block"));
 
-    }
+
+}
 
     public ShapelessCrafting(DataGenerator generatorIn) {
         super(generatorIn);

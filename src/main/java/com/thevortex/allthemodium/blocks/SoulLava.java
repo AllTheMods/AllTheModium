@@ -3,6 +3,7 @@ package com.thevortex.allthemodium.blocks;
 import java.util.Random;
 import java.util.function.Supplier;
 
+import com.thevortex.allthemodium.registry.BlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -105,7 +106,7 @@ public class SoulLava extends LiquidBlock {
 	public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, RandomSource rand) {
 		this.tickcount++;
 
-		if(stateIn.is(ModRegistry.molten_BlueLava_block.get()) && this.tickcount >= 40) {
+		if(stateIn.is(BlockRegistry.SOULLAVA_BLOCK.get()) && this.tickcount >= 40) {
 			spawnParticles(worldIn, pos);
 			this.tickcount = 0;
 		}

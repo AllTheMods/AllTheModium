@@ -13,6 +13,7 @@ public class AncientDirt extends Block {
         super(p_49795_);
     }
 
+
     @Override
     public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing, IPlantable plantable) {
         return true;

@@ -60,7 +60,7 @@
       {
         "type": "minecraft:wither_skeleton",
         "weight": 140,
-        "minCount": 1,
+        "minCount": 4,
         "maxCount": 4
       },
       {

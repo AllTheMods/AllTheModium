@@ -1,5 +1,5 @@
 {
-  "feature": "minecraft:ore_gold_buried",
+  "feature": "allthemodium:ore_gold",
   "placement": [
     {
       "count": {
@@ -17,10 +17,10 @@
     {
       "height": {
         "min_inclusive": {
-          "absolute": -64
+          "absolute": 64
         },
         "max_inclusive": {
-          "absolute": 198
+          "absolute": 175
         },
         "type": "minecraft:uniform"
       },

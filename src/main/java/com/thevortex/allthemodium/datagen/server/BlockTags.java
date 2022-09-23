@@ -82,22 +82,25 @@ public class BlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_0.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_1.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_2.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_STRIPPED.get());
 
         tag(NEEDS_NETHERITE_TOOL).add(ModRegistry.ALLTHEMODIUM_ORE.get());
         tag(NEEDS_NETHERITE_TOOL).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
         tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
         tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
-        tag(TagRegistry.NEEDS_VIBRANIUM_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
 
 
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.DEMONIC_PLANKS.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.DEMONIC_LOG.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.DEMONIC_LOG_STRIPPED.get());
 
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_PLANKS.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG_0.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG_1.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG_2.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG_STRIPPED.get());
 
         tag(net.minecraft.tags.BlockTags.NYLIUM).add(ModRegistry.ANCIENT_STONE.get());
         tag(net.minecraft.tags.BlockTags.INFINIBURN_NETHER).add(ModRegistry.ANCIENT_STONE.get());
@@ -161,6 +164,10 @@ public class BlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.STAIRS).add(ModRegistry.ANCIENT_CRACKED_STONE_STAIRS.get());
         tag(net.minecraft.tags.BlockTags.STAIRS).add(ModRegistry.ANCIENT_CHISELED_STONE_STAIRS.get());
         tag(net.minecraft.tags.BlockTags.STAIRS).add(ModRegistry.ANCIENT_STONE_BRICK_STAIRS.get());
+
+        tag(net.minecraft.tags.BlockTags.LEAVES).add(ModRegistry.ANCIENT_LEAVES.get());
+        tag(net.minecraft.tags.BlockTags.LEAVES).add(ModRegistry.SOUL_LEAVES.get());
+        tag(net.minecraft.tags.BlockTags.LEAVES).add(ModRegistry.DEMONIC_LEAVES.get());
 
         tag(TagRegistry.ALLTHEMODIUM_BLOCK).add(ModRegistry.ALLTHEMODIUM_BLOCK.get());
         tag(TagRegistry.ALLTHEMODIUM_ORE).add(ModRegistry.ALLTHEMODIUM_ORE.get());

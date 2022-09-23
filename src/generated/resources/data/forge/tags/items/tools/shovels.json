@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "allthemodium:allthemodium_shovel",
-    "allthemodium:vibranium_shovel",
-    "allthemodium:unobtainium_shovel"
+    "allthemodium:allthemodium_shovel"
   ]
 }

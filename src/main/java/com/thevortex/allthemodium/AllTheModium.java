@@ -3,11 +3,12 @@ package com.thevortex.allthemodium;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import com.thevortex.allthemodium.registry.MekRegistry;
+import com.thevortex.allthemodium.registry.*;
 import com.thevortex.allthemodium.registry.resource.ATMSlurries;
 import com.thevortex.allthemodium.worldgen.MiningDimSource;
 import com.thevortex.allthemodium.worldgen.TheOtherDimSource;
 import com.thevortex.allthemodium.worldgen.biomes.ATMBiomes;
+import com.thevortex.allthemodium.worldgen.structures.ATMStructures;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -40,7 +41,6 @@ import org.apache.logging.log4j.Logger;
 import com.thevortex.allthemodium.crafting.ATMCraftingSetup;
 import com.thevortex.allthemodium.events.ArmorEvents;
 import com.thevortex.allthemodium.events.BlockBreak;
-import com.thevortex.allthemodium.registry.ModRegistry;
 import software.bernie.geckolib3.GeckoLib;
 
 import java.util.Set;
@@ -56,9 +56,6 @@ public class AllTheModium
 	public static final ResourceKey<Level> The_End = Level.END;
 	public static final ResourceLocation MINING_DIM_ID = new ResourceLocation(MOD_ID,"mining");
 	public static final ResourceLocation THE_OTHER_DIM_ID = new ResourceLocation(MOD_ID,"the_other");
-	public static final ResourceKey<Level> Mining = ResourceKey.create(Registry.DIMENSION_REGISTRY, MINING_DIM_ID);
-
-	public static final ResourceKey<Level> THE_OTHER = ResourceKey.create(Registry.DIMENSION_REGISTRY, THE_OTHER_DIM_ID);
 
 	//public static final ResourceKey<DimensionType> Mining_TYPE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, MINING_DIM_ID);
 	//public static final ResourceKey<DimensionType> THE_OTHER_TYPE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, THE_OTHER_DIM_ID);
@@ -74,7 +71,9 @@ public class AllTheModium
 
 		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-    	ModRegistry.FLUIDS.register(modEventBus);
+		FluidTypeRegistry.FLUID_TYPES.register(modEventBus);
+    	FluidRegistry.FLUIDS.register(modEventBus);
+		BlockRegistry.BLOCKS.register(modEventBus);
        	ModRegistry.BLOCKS.register(modEventBus);
 		ModRegistry.SHAPED_BLOCKS.register(modEventBus);
 		ModRegistry.STAIRBLOCKS.register(modEventBus);
@@ -82,15 +81,16 @@ public class AllTheModium
 		ModRegistry.WALLBLOCKS.register(modEventBus);
 		ModRegistry.PILLARBLOCKS.register(modEventBus);
 
+		ItemRegistry.ITEMS.register(modEventBus);
     	ModRegistry.ITEMS.register(modEventBus);
     	ModRegistry.ENTITIES.register(modEventBus);
-    	ModRegistry.FEATURES.register(modEventBus);
 
     	ModRegistry.CARVERS.register(modEventBus);
-
+		ModRegistry.BIOMES.register(modEventBus);
     	ATMCraftingSetup.REGISTRY.register(modEventBus);
-    	//ATMStructures.STRUCTURES.register(modEventBus);
-    	ModRegistry.BIOMES.register(modEventBus);
+    	ATMStructures.STRUCTURES.register(modEventBus);
+		ModRegistry.FEATURES.register(modEventBus);
+
 		modEventBus.register(ModRegistry.class);
 		modEventBus.addListener(this::setup);
 

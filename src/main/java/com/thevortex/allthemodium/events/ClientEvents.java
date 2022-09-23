@@ -4,7 +4,6 @@ import com.thevortex.allthemodium.entity.PiglichModel;
 import com.thevortex.allthemodium.entity.PiglichRenderer;
 import com.thevortex.allthemodium.entity.shulkers.atm.ATMShulkerModel;
 import com.thevortex.allthemodium.items.toolitems.armor.models.allthemodium_helmet;
-import com.thevortex.allthemodium.items.toolitems.armor.models.unobtainium_helmet;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -62,7 +61,6 @@ public class ClientEvents {
         event.registerLayerDefinition(PiglichModel.LAYER_LOCATION, () -> PiglichModel.createBodyLayer());
         event.registerLayerDefinition(ATMShulkerModel.LAYER_LOCATION, () -> ATMShulkerModel.createBodyLayer());
         event.registerLayerDefinition(allthemodium_helmet.LAYER_LOCATION, allthemodium_helmet::createBodyLayer);
-        event.registerLayerDefinition(unobtainium_helmet.LAYER_LOCATION, unobtainium_helmet::createBodyLayer);
     }
 
 }

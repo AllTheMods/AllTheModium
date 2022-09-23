@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "allthemodium:allthemodium_axe",
-    "allthemodium:vibranium_axe",
-    "allthemodium:unobtainium_axe"
+    "allthemodium:allthemodium_axe"
   ]
 }

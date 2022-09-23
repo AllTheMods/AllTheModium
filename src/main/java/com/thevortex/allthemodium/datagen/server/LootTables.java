@@ -2,6 +2,9 @@ package com.thevortex.allthemodium.datagen.server;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
+import com.thevortex.allthemodium.blocks.Allthemodium_Ore;
+import com.thevortex.allthemodium.blocks.Unobtainium_Ore;
+import com.thevortex.allthemodium.blocks.Vibranium_Ore;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.BlockLoot;
@@ -61,23 +64,22 @@ public class LootTables extends LootTableProvider {
                     return createSingleItemTableWithSilkTouch(p_124241_, Items.BOOK, ConstantValue.exactly(3.0F));
                 });
             }
-            if (block instanceof DropExperienceBlock) {
-                String oretype = block.getName().getString();
-                if (oretype.contains("allthemodium_ore") || oretype.contains("allthemodium_slate_ore")) {
-                    this.add(block, (block1) -> createOreDrop(block1, ModRegistry.RAW_ALLTHEMODIUM.get()));
-                }
-                if (oretype.contains("vibranium_ore")) {
-                    this.add(block, (block1) -> createOreDrop(block1, ModRegistry.RAW_VIBRANIUM.get()));
-                }
-                if (oretype.contains("unobtainium_ore")) {
-                    this.add(block, (block1) -> createOreDrop(block1, ModRegistry.RAW_UNOBTAINIUM.get()));
-                }
-                if (oretype.contains("raw_")) {
-                    this.dropSelf(block);
-                }
-            } else {
+            String oretype = block.getName().getString();
+
+            if (block instanceof Allthemodium_Ore) {
+                this.add(block, (block1) -> createOreDrop(block1, ModRegistry.RAW_ALLTHEMODIUM.get()));
+            }
+            else if (block instanceof Vibranium_Ore) {
+                this.add(block, (block1) -> createOreDrop(block1, ModRegistry.RAW_VIBRANIUM.get()));
+            }
+            else if (block instanceof Unobtainium_Ore) {
+                this.add(block, (block1) -> createOreDrop(block1, ModRegistry.RAW_UNOBTAINIUM.get()));
+            }
+            else if (oretype.contains("raw_")) {
                 this.dropSelf(block);
             }
+            else { this.dropSelf(block); }
+
         }
 
 

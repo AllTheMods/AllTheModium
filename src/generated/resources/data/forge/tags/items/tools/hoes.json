@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "allthemodium:allthemodium_hoe",
-    "allthemodium:vibranium_hoe",
-    "allthemodium:unobtainium_hoe"
+    "allthemodium:allthemodium_hoe"
   ]
 }

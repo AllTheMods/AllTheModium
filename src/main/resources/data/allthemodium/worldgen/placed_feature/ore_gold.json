@@ -1,5 +1,5 @@
 {
-  "feature": "minecraft:ore_gold_buried",
+  "feature": "allthemodium:ore_gold",
   "placement": [
     {
       "count": 4,
@@ -11,10 +11,10 @@
     {
       "height": {
         "min_inclusive": {
-          "absolute": -64
+          "absolute": 64
         },
         "max_inclusive": {
-          "absolute": 200
+          "absolute": 132
         },
         "type": "minecraft:trapezoid"
       },

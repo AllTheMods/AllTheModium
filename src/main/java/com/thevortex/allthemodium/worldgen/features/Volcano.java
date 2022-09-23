@@ -1,6 +1,7 @@
 package com.thevortex.allthemodium.worldgen.features;
 
 import com.mojang.serialization.Codec;
+import com.thevortex.allthemodium.registry.BlockRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.worldgen.biomes.ATMBiomes;
 import net.minecraft.core.BlockPos;
@@ -59,7 +60,7 @@ public class Volcano extends Feature<VolcanoConfig> {
                         double scaledNoise = (noise3 / 11) * (-(y * baseRadius) / ((x * x) + (z * z)));
                         if (scaledNoise - lavaLeakage >= threshold) {
                             if (mutable.getY() <= pos.getY() + (volcanoStartHeight - 19)) {
-                                world.setBlock(mutable, ModRegistry.molten_BlueLava_block.get().defaultBlockState(), 2);
+                                world.setBlock(mutable, BlockRegistry.SOULLAVA_BLOCK.get().defaultBlockState(), 2);
 
                             }
                         } else if (scaledNoise >= threshold) {

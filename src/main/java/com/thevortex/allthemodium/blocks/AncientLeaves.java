@@ -31,7 +31,7 @@ public class AncientLeaves extends LeavesBlock {
     public static final BooleanProperty PERSISTENT = BlockStateProperties.PERSISTENT;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    private static final int TICK_DELAY = 80;
+    private static final int TICK_DELAY = 800;
     private static int TICK_COUNT;
 
     public AncientLeaves(Properties p_54422_) {
@@ -52,14 +52,16 @@ public class AncientLeaves extends LeavesBlock {
     }
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
-        if (!state.getValue(PERSISTENT) && state.getValue(DISTANCE) == 7) {
-            dropResources(state, level, pos);
-            level.removeBlock(pos, false);
+        this.TICK_COUNT++;
+        if(this.TICK_COUNT>=this.TICK_DELAY) {
+            if (!state.getValue(PERSISTENT) && state.getValue(DISTANCE) == 7) {
+                dropResources(state, level, pos);
+                level.removeBlock(pos, false);
+            }
+            if (level.getBlockState(pos.below()).isAir()) {
+                level.setBlock(pos.below(), ModRegistry.ANCIENT_LEAVES_BOTTOM.get().defaultBlockState(), 3);
+            }
         }
-        if(level.getBlockState(pos.below()).isAir()) {
-            level.setBlock(pos.below(), ModRegistry.ANCIENT_LEAVES_BOTTOM.get().defaultBlockState(), 3);
-        }
-
 
     }
 
