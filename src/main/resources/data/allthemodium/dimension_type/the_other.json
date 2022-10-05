@@ -21,5 +21,6 @@
       "max_inclusive": 15
     }
   },
-  "monster_spawn_block_light_limit": 15
+  "monster_spawn_block_light_limit": 15,
+  "fixed_time": 18000
 }

@@ -72,8 +72,6 @@
 	"spawn_costs": {},
 	"carvers": {
 		"air": [
-			"minecraft:nether_cave",
-			"minecraft:canyon",
 			"minecraft:cave_extra_underground",
 			"minecraft:cave"
 		]

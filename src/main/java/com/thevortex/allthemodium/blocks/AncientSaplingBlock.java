@@ -9,10 +9,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -46,7 +43,7 @@ public class AncientSaplingBlock extends SaplingBlock implements BonemealableBlo
 
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter p_51043_, BlockPos p_51044_) {
-        return state.is(TagRegistry.ANCIENT_DIRT) || state.is(BlockTags.NYLIUM) || state.is(ModRegistry.ANCIENT_GRASS.get());
+        return (state.is(TagRegistry.ANCIENT_DIRT) || state.is(Blocks.WARPED_NYLIUM) || state.is(Blocks.CRIMSON_NYLIUM) || state.is(ModRegistry.ANCIENT_GRASS.get()));
     }
 
     @Override
@@ -57,7 +54,7 @@ public class AncientSaplingBlock extends SaplingBlock implements BonemealableBlo
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader reader, BlockPos pos) {
-        return state.is(TagRegistry.ANCIENT_DIRT) || state.is(BlockTags.NYLIUM) || state.is(ModRegistry.ANCIENT_GRASS.get());
+        return (state.is(TagRegistry.ANCIENT_DIRT) || state.is(Blocks.WARPED_NYLIUM) || state.is(Blocks.CRIMSON_NYLIUM) || state.is(ModRegistry.ANCIENT_GRASS.get()));
     }
 
     public void randomTick(BlockState p_56003_, ServerLevel p_56004_, BlockPos p_56005_, RandomSource p_56006_) {

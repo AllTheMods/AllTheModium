@@ -34,6 +34,8 @@ public class OtherSky extends DimensionSpecialEffects {
         }
 
         @Override
+        public float getCloudHeight() { return Float.NaN; }
+        @Override
         public boolean renderClouds(ClientLevel level, int ticks, float partialTick, PoseStack poseStack, double camX, double camY, double camZ, Matrix4f projectionMatrix) {
             return false;
         }
