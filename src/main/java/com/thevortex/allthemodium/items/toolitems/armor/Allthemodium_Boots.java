@@ -1,14 +1,12 @@
 package com.thevortex.allthemodium.items.toolitems.armor;
 
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -22,7 +20,14 @@ public class Allthemodium_Boots extends ArmorItem {
 		super(materialIn, slot, builder);
 
 	}
-	@Override
+    @Override
+    public boolean canWalkOnPowderedSnow(ItemStack stack, LivingEntity wearer)
+    {
+        return stack.is(ModRegistry.ALLTHEMODIUM_BOOTS.get());
+    }
+
+
+    @Override
     public boolean isEnchantable(ItemStack stack) {
         return true;
     }
