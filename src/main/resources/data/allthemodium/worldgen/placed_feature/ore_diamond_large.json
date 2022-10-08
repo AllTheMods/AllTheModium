@@ -2,7 +2,7 @@
   "feature": "allthemodium:ore_diamond_large",
   "placement": [
     {
-      "count": 14,
+      "count": 6,
       "type": "minecraft:count"
     },
     {
