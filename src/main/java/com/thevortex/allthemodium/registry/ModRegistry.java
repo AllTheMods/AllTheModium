@@ -11,9 +11,6 @@ import com.thevortex.allthemodium.blocks.Unobtainium_Ore;
 import com.thevortex.allthemodium.blocks.Vibranium_Block;
 import com.thevortex.allthemodium.blocks.Vibranium_Ore;
 import com.thevortex.allthemodium.entity.PiglichEntity;
-import com.thevortex.allthemodium.entity.shulkers.atm.ATMShulkerEntity;
-import com.thevortex.allthemodium.entity.shulkers.unob.UNOBShulkerEntity;
-import com.thevortex.allthemodium.entity.shulkers.vib.VIBShulkerEntity;
 import com.thevortex.allthemodium.init.ModFoods;
 import com.thevortex.allthemodium.items.*;
 import com.thevortex.allthemodium.items.toolitems.armor.*;
@@ -116,15 +113,15 @@ public class ModRegistry {
 
 	// FOOD
 
-	public static RegistryObject<Item> ALLTHEMODIUM_APPLE = ITEMS.register("allthemodium_apple", () -> new Allthemodium_Apple(new Item.Properties().tab(AllTheModium.GROUP).fireResistant().food(ModFoods.ALLTHEMODIUM_APPLE)));
-	public static RegistryObject<Item> ALLTHEMODIUM_CARROT = ITEMS.register("allthemodium_carrot", () -> new Allthemodium_Carrot(new Item.Properties().tab(AllTheModium.GROUP).fireResistant().food(ModFoods.ALLTHEMODIUM_CARROT)));
+	public static RegistryObject<Item> ALLTHEMODIUM_APPLE = ITEMS.register("allthemodium_apple", () -> new Allthemodium_Apple(new Item.Properties().tab(AllTheModium.GROUP).fireResistant().food(ModFoods.ALLTHEMODIUM_APPLE).rarity(Rarity.EPIC)));
+	public static RegistryObject<Item> ALLTHEMODIUM_CARROT = ITEMS.register("allthemodium_carrot", () -> new Allthemodium_Carrot(new Item.Properties().tab(AllTheModium.GROUP).fireResistant().food(ModFoods.ALLTHEMODIUM_CARROT).rarity(Rarity.EPIC)));
 
 	// ARMORS
 
-	public static RegistryObject<ArmorItem> ALLTHEMODIUM_BOOTS = ITEMS.register("allthemodium_boots", () -> (ArmorItem) new Allthemodium_Boots(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.FEET, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> ALLTHEMODIUM_LEGGINGS = ITEMS.register("allthemodium_leggings", () -> (ArmorItem) new Allthemodium_Leggings(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.LEGS, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> ALLTHEMODIUM_CHESTPLATE = ITEMS.register("allthemodium_chestplate", () -> (ArmorItem) new Allthemodium_Chestplate(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.CHEST, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
-	public static RegistryObject<ArmorItem> ALLTHEMODIUM_HELMET = ITEMS.register("allthemodium_helmet", () -> (ArmorItem) new Allthemodium_Helmet(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.HEAD, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant()));
+	public static RegistryObject<ArmorItem> ALLTHEMODIUM_BOOTS = ITEMS.register("allthemodium_boots", () -> (ArmorItem) new Allthemodium_Boots(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.FEET, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+	public static RegistryObject<ArmorItem> ALLTHEMODIUM_LEGGINGS = ITEMS.register("allthemodium_leggings", () -> (ArmorItem) new Allthemodium_Leggings(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.LEGS, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+	public static RegistryObject<ArmorItem> ALLTHEMODIUM_CHESTPLATE = ITEMS.register("allthemodium_chestplate", () -> (ArmorItem) new Allthemodium_Chestplate(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.CHEST, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+	public static RegistryObject<ArmorItem> ALLTHEMODIUM_HELMET = ITEMS.register("allthemodium_helmet", () -> (ArmorItem) new Allthemodium_Helmet(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.HEAD, new Item.Properties().tab(AllTheModium.GROUP).stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
 
 
     //Volcano
@@ -423,7 +420,7 @@ public class ModRegistry {
 	public static final RegistryObject<Block> TELEPORT_PAD = SHAPED_BLOCKS.register("teleport_pad", () -> new TeleportPad(Block.Properties.of(Material.METAL).noLootTable().noOcclusion().strength(20.0F)));
 	public static final RegistryObject<Item> TELEPORT_PAD_ITEM = ITEMS.register("teleport_pad", () -> new BlockItem(TELEPORT_PAD.get(), new Item.Properties().tab(AllTheModium.GROUP)));
 
-	public static final RegistryObject<SwordItem> ALLTHEMODIUM_SWORD = ITEMS.register("allthemodium_sword",() -> new SwordItem(ToolTiers.ALLTHEMODIUM_TIER,4,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)){
+	public static final RegistryObject<SwordItem> ALLTHEMODIUM_SWORD = ITEMS.register("allthemodium_sword",() -> new SwordItem(ToolTiers.ALLTHEMODIUM_TIER,4,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP).rarity(Rarity.EPIC)) {
 		@Override
 		public boolean isEnchantable(ItemStack stack) {
 			return true;
@@ -444,7 +441,7 @@ public class ModRegistry {
 
 	});
 
-	public static final RegistryObject<PickaxeItem> ALLTHEMODIUM_PICKAXE = ITEMS.register("allthemodium_pickaxe",() -> new PickaxeItem(ToolTiers.ALLTHEMODIUM_TIER,2,1.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<PickaxeItem> ALLTHEMODIUM_PICKAXE = ITEMS.register("allthemodium_pickaxe",() -> new PickaxeItem(ToolTiers.ALLTHEMODIUM_TIER,2,1.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP).rarity(Rarity.EPIC)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -480,7 +477,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<AxeItem> ALLTHEMODIUM_AXE = ITEMS.register("allthemodium_axe",() -> new AxeItem(ToolTiers.ALLTHEMODIUM_TIER,6,1.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<AxeItem> ALLTHEMODIUM_AXE = ITEMS.register("allthemodium_axe",() -> new AxeItem(ToolTiers.ALLTHEMODIUM_TIER,6,1.0f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP).rarity(Rarity.EPIC)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -516,7 +513,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<ShovelItem> ALLTHEMODIUM_SHOVEL = ITEMS.register("allthemodium_shovel",() -> new ShovelItem(ToolTiers.ALLTHEMODIUM_TIER,1,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<ShovelItem> ALLTHEMODIUM_SHOVEL = ITEMS.register("allthemodium_shovel",() -> new ShovelItem(ToolTiers.ALLTHEMODIUM_TIER,1,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP).rarity(Rarity.EPIC)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -551,7 +548,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<HoeItem> ALLTHEMODIUM_HOE = ITEMS.register("allthemodium_hoe",() -> new HoeItem(ToolTiers.ALLTHEMODIUM_TIER,0,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP)) {
+	public static final RegistryObject<HoeItem> ALLTHEMODIUM_HOE = ITEMS.register("allthemodium_hoe",() -> new HoeItem(ToolTiers.ALLTHEMODIUM_TIER,0,1.5f, new Item.Properties().fireResistant().tab(AllTheModium.GROUP).rarity(Rarity.EPIC)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{

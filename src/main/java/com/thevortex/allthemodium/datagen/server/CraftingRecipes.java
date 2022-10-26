@@ -1,11 +1,10 @@
 package com.thevortex.allthemodium.datagen.server;
 
 import com.thevortex.allthemodium.datagen.builder.ShapedAncientStones;
-import com.thevortex.allthemodium.datagen.builder.ShapedArmorBuilder;
 import com.thevortex.allthemodium.datagen.builder.ShapedIngotBuilder;
 
 import com.thevortex.allthemodium.reference.Reference;
-import com.thevortex.allthemodium.reference.TagRegistry;
+import com.thevortex.allthemodium.registry.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.allthemods.alltheores.datagen.builder.ShapedBlockBuilder;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -20,7 +19,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.common.Tags;
 
 import java.util.function.Consumer;
 

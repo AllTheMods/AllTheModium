@@ -3,17 +3,12 @@ package com.thevortex.allthemodium.datagen.server;
 
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
-import com.thevortex.allthemodium.reference.TagRegistry;
+import com.thevortex.allthemodium.registry.TagRegistry;
 import net.allthemods.alltheores.blocks.BlockList;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
-import net.minecraft.data.tags.TagsProvider;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.ForgeBlockTagsProvider;
-import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.Nullable;
 
 import static net.minecraftforge.common.Tags.Blocks.NEEDS_NETHERITE_TOOL;
@@ -35,6 +30,11 @@ public class BlockTags extends BlockTagsProvider {
         tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.CHEST);
         tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.CAMPFIRE);
         tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.SOUL_CAMPFIRE);
+
+        tag(TagRegistry.PAXEL_TARGETS).addTag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE);
+        tag(TagRegistry.PAXEL_TARGETS).addTag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE);
+        tag(TagRegistry.PAXEL_TARGETS).addTag(net.minecraft.tags.BlockTags.MINEABLE_WITH_SHOVEL);
+        tag(TagRegistry.PAXEL_TARGETS).addTag(net.minecraft.tags.BlockTags.MINEABLE_WITH_HOE);
 
         tag(net.minecraft.tags.BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_DIRT.get());
         tag(net.minecraft.tags.BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_GRASS.get());

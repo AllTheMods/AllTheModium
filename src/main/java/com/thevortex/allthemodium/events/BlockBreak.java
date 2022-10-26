@@ -1,15 +1,9 @@
 package com.thevortex.allthemodium.events;
 
 
-import com.thevortex.allthemodium.reference.TagRegistry;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.client.event.sound.SoundEvent;
+import com.thevortex.allthemodium.registry.TagRegistry;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -21,7 +15,7 @@ public class BlockBreak {
 	public static void on(BlockEvent.BreakEvent event) {
 		if(event.getPlayer().isCreative()) { return; }
 
-		if((event.getState().is(TagRegistry.OTHER_PROTECTION)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null)) && ((event.getLevel().dimensionType().hasCeiling() == false) && (event.getLevel().dimensionType().piglinSafe() == true) && (event.getLevel().dimensionType().hasFixedTime() == false))) {
+		if((event.getState().is(TagRegistry.OTHER_PROTECTION)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null)) && ((!event.getLevel().dimensionType().hasCeiling()) && (event.getLevel().dimensionType().piglinSafe()) && (!event.getLevel().dimensionType().hasFixedTime()))) {
 
 			event.setCanceled(true);
 			return;

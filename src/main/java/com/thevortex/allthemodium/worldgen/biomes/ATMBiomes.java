@@ -52,27 +52,7 @@ public class ATMBiomes {
         builder.addCarver(GenerationStep.Carving.AIR , Carvers.CANYON);
     }
 
-    public static void addDefaultOres(BiomeGenerationSettings.Builder builder) {
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOPlacedFeatures.ORE_ALUMINIUM);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOPlacedFeatures.ORE_LEAD);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOPlacedFeatures.ORE_NICKEL);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOPlacedFeatures.ORE_OSMIUM);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOPlacedFeatures.ORE_PLATINUM);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOPlacedFeatures.ORE_SILVER);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOPlacedFeatures.ORE_TIN);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOPlacedFeatures.ORE_URANIUM);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOPlacedFeatures.ORE_ZINC);
 
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ATOtherPlacedFeatures.OTHER_ORE_COAL);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_COPPER);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_DIAMOND);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_EMERALD);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_GOLD);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_IRON);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_LAPIS);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_QUARTZ);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES,ATOtherPlacedFeatures.OTHER_ORE_REDSTONE);
-    }
 
     public static Biome mining() {
        return new Biome.BiomeBuilder()

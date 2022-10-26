@@ -1909,7 +1909,7 @@
 				}
 			}
 		},
-		"meleeAttack.piglich.nik": {
+		"meleeattack.piglich.nik": {
 			"loop": true,
 			"animation_length": 1,
 			"bones": {

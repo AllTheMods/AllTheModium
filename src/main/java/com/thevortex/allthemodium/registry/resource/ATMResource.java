@@ -1,6 +1,6 @@
 package com.thevortex.allthemodium.registry.resource;
 
-import com.thevortex.allthemodium.reference.TagRegistry;
+import com.thevortex.allthemodium.registry.TagRegistry;
 import mekanism.common.resource.BlockResourceInfo;
 import mekanism.common.resource.IResource;
 import mekanism.common.resource.ResourceType;

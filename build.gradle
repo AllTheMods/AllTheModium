@@ -109,7 +109,7 @@ dependencies {
     // compile "some.group:artifact:version"
 	//implementation fg.deobf("curse.maven:${mekanism}")
     implementation fg.deobf("curse.maven:${geckolib}")
-    runtimeOnly fg.deobf("curse.maven:top-245211:3927520")
+   // runtimeOnly fg.deobf("curse.maven:top-245211:3927520")
     implementation fg.deobf("curse.maven:${ato}")
     //runtimeOnly fg.deobf("curse.maven:${potions}")
     //implementation fileTree(dir: 'libs', include: '*.jar')

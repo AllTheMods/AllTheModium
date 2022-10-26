@@ -48,6 +48,9 @@ public class PiglichEntity extends Piglin implements IAnimatable {
 
     @Override
     public boolean canAttack(LivingEntity entity) {
+        if(entity instanceof Player) {
+            if(((Player)entity).isCreative()) { return false; }
+        }
         return true;
     }
 
@@ -69,31 +72,21 @@ public class PiglichEntity extends Piglin implements IAnimatable {
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
-        if (this.isBaby()) {
-            tag.putBoolean("IsBaby", true);
-        }
 
         tag.put("Inventory", this.inventory.createTag());
     }
     @Override
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
-        this.setBaby(tag.getBoolean("IsBaby"));
-
         this.inventory.fromTag(tag.getList("Inventory", 10));
     }
     @Override
         protected void registerGoals() {
-            this.goalSelector.addGoal(1, new MeleeAttackGoal(this,3.0D,true));
+            this.goalSelector.addGoal(3, new MeleeAttackGoal(this,3.0D,true));
             this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this,0.9D,32.0F));
-            this.goalSelector.addGoal(3, new PigLichAttackGoal(this));
+            this.goalSelector.addGoal(1, new PigLichAttackGoal(this));
             this.targetSelector.addGoal(1, new NearestAttackableTargetGoal(this, Skeleton.class, true));
             this.targetSelector.addGoal(1, new NearestAttackableTargetGoal(this, WitherSkeleton.class, true));
-            this.targetSelector.addGoal(1, new NearestAttackableTargetGoal(this, Zombie.class, true));
-            this.targetSelector.addGoal(1, new NearestAttackableTargetGoal(this, Spider.class, true));
-            this.targetSelector.addGoal(1, new NearestAttackableTargetGoal(this, Creeper.class, true));
-            this.targetSelector.addGoal(1, new NearestAttackableTargetGoal(this, Evoker.class, true));
-            this.targetSelector.addGoal(1, new NearestAttackableTargetGoal(this, Illusioner.class, true));
             this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
             this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Player.class, true));
             this.goalSelector.addGoal(4, new LookAtPlayerGoal(this, Player.class, 8.0F));
@@ -232,13 +225,15 @@ public class PiglichEntity extends Piglin implements IAnimatable {
                                 this.piglich.level.levelEvent((Player)null, 1018, this.piglich.blockPosition(), 0);
                             }
 
-                            for(int i = 0; i < 3; ++i) {
+                           /* for(int i = 0; i < 3; ++i) {
                                 Vec3 vec3 = this.piglich.getViewVector(1.0F);
                                 this.piglich.isSummoning = true;
                                 LargeFireball largefireball = new LargeFireball(this.piglich.level, this.piglich, d2, d3, d4, (int)this.piglich.getHealth());
                                 largefireball.setPos(this.piglich.getX() + vec3.x * 4.0D, this.piglich.getY(0.5D) + 0.5D, largefireball.getZ() + vec3.z * 4.0D);
                                 this.piglich.level.addFreshEntity(largefireball);
                             }
+
+                            */
                         }
                     }
 
@@ -280,6 +275,7 @@ public class PiglichEntity extends Piglin implements IAnimatable {
         }
     }
     protected boolean spawnSupport(PiglichEntity piglich, int i, int j, int k) {
+
         ServerLevel serverlevel = (ServerLevel)piglich.level;
         LivingEntity livingentity = piglich.getTarget();
         int mobType = Mth.nextInt(piglich.random, 1, 6);

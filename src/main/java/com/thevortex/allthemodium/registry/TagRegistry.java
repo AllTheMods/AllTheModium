@@ -1,5 +1,6 @@
-package com.thevortex.allthemodium.reference;
+package com.thevortex.allthemodium.registry;
 
+import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.*;
@@ -25,14 +26,17 @@ public class TagRegistry {
     public static final TagKey<Block> NEEDS_VIBRANIUM_TOOL = BlockTags.create(Reference.forge("needs_vibranium_tool"));
     public static final TagKey<Block> NEEDS_UNOBTAINIUM_TOOL = BlockTags.create(Reference.forge("needs_unobtainium_tool"));
 
+    public static final TagKey<Item> FORGE_SWORDS = ItemTags.create(Reference.forge("tools/swords"));
     public static final TagKey<Item> FORGE_PICKAXES = ItemTags.create(Reference.forge("tools/pickaxes"));
     public static final TagKey<Item> FORGE_AXES = ItemTags.create(Reference.forge("tools/axes"));
     public static final TagKey<Item> FORGE_SHOVELS = ItemTags.create(Reference.forge("tools/shovels"));
     public static final TagKey<Item> FORGE_HOES = ItemTags.create(Reference.forge("tools/hoes"));
+     public static final TagKey<Block> PAXEL_TARGETS = BlockTags.create(Reference.atm("paxel_effective"));
 
     public static final TagKey<Item> PIGLIN_LOVED = ItemTags.create(Reference.location("minecraft:items/piglin_loved"));
     public static final TagKey<Item> RAW_MATERIALS = ItemTags.create(Reference.forge("raw_materials"));
     public static final TagKey<Item> DUSTS = ItemTags.create(Reference.forge("dusts"));
+    public static final TagKey<Item> INGOTS = ItemTags.create(Reference.forge("ingots"));
     public static final TagKey<Item> ORES = ItemTags.create(Reference.forge("ores"));
     public static final TagKey<Block> BLOCK_ORES = BlockTags.create(Reference.forge("ores"));
 

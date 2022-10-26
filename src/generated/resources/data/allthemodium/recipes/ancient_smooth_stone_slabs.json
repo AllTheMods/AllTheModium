@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "allthemodium",
-  "pattern": [
-    "   ",
-    "   ",
-    "aaa"
-  ],
   "key": {
     "a": {
       "tag": "allthemodium:ancient_smooth_stone"
     }
   },
+  "pattern": [
+    "   ",
+    "   ",
+    "aaa"
+  ],
   "result": {
-    "item": "allthemodium:ancient_smooth_stone_slabs",
-    "count": 6
+    "count": 6,
+    "item": "allthemodium:ancient_smooth_stone_slabs"
   }
 }

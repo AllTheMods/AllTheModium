@@ -2,12 +2,13 @@ package com.thevortex.allthemodium.datagen.server;
 
 
 import com.thevortex.allthemodium.reference.Reference;
-import com.thevortex.allthemodium.reference.TagRegistry;
+import com.thevortex.allthemodium.registry.TagRegistry;
+import com.thevortex.allthemodium.registry.ItemRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.tags.BlockTags;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ItemTags extends ItemTagsProvider {
@@ -44,6 +45,20 @@ public class ItemTags extends ItemTagsProvider {
         tag(TagRegistry.FORGE_SHOVELS).add(ModRegistry.ALLTHEMODIUM_SHOVEL.get());
 
         tag(TagRegistry.FORGE_HOES).add(ModRegistry.ALLTHEMODIUM_HOE.get());
+
+        tag(TagRegistry.FORGE_PICKAXES).add(ItemRegistry.ATM_ALLOY_PICK.get());
+        tag(TagRegistry.FORGE_PICKAXES).add(ItemRegistry.ATM_ALLOY_PAXEL.get());
+
+        tag(TagRegistry.FORGE_AXES).add(ItemRegistry.ATM_ALLOY_AXE.get());
+
+        tag(TagRegistry.FORGE_AXES).add(ItemRegistry.ATM_ALLOY_PAXEL.get());
+
+        tag(TagRegistry.FORGE_SHOVELS).add(ItemRegistry.ATM_ALLOY_SHOVEL.get());
+        tag(TagRegistry.FORGE_SHOVELS).add(ItemRegistry.ATM_ALLOY_PAXEL.get());
+
+        tag(Tags.Items.SHEARS).add(ItemRegistry.ATM_ALLOY_PAXEL.get());
+
+        tag(TagRegistry.FORGE_HOES).add(ItemRegistry.ATM_ALLOY_PAXEL.get());
 
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_PICKAXE.get());
 
@@ -100,6 +115,10 @@ public class ItemTags extends ItemTagsProvider {
         tag(TagRegistry.DUSTS).add(ModRegistry.ALLTHEMODIUM_DUST.get());
         tag(TagRegistry.DUSTS).add(ModRegistry.VIBRANIUM_DUST.get());
         tag(TagRegistry.DUSTS).add(ModRegistry.UNOBTAINIUM_DUST.get());
+
+        tag(TagRegistry.INGOTS).add(ModRegistry.ALLTHEMODIUM_INGOT.get());
+        tag(TagRegistry.INGOTS).add(ModRegistry.VIBRANIUM_INGOT.get());
+        tag(TagRegistry.INGOTS).add(ModRegistry.UNOBTAINIUM_INGOT.get());
 
         tag(TagRegistry.ALLTHEMODIUM_NUGGET).add(ModRegistry.ALLTHEMODIUM_NUGGET.get());
         tag(TagRegistry.VIBRANIUM_NUGGET).add(ModRegistry.VIBRANIUM_NUGGET.get());

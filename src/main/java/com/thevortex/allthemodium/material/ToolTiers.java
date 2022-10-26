@@ -1,7 +1,7 @@
 package com.thevortex.allthemodium.material;
 
 import com.thevortex.allthemodium.reference.Reference;
-import com.thevortex.allthemodium.reference.TagRegistry;
+import com.thevortex.allthemodium.registry.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -13,7 +13,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.ForgeTier;
 import net.minecraftforge.common.TierSortingRegistry;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ToolTiers {
@@ -28,5 +27,10 @@ public class ToolTiers {
             new ForgeTier(5, 15000, 10, 11.0F, 85, ALLTHEMODIUM_TIER_TAG, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get())),
             new ResourceLocation(Reference.MOD_ID,"allthemodium"),
             List.of(Tiers.NETHERITE), List.of());
+
+    public static final Tier ALLOY_TIER = TierSortingRegistry.registerTier(
+            new ForgeTier(5, 15000, 10, 11.0F, 85, ALLTHEMODIUM_TIER_TAG, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get())),
+            new ResourceLocation(Reference.MOD_ID,"allthemodium_alloy"),
+            List.of(ToolTiers.ALLTHEMODIUM_TIER), List.of());
 
 }

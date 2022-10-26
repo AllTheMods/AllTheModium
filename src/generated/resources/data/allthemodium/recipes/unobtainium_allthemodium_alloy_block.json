@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "alltheores",
-  "pattern": [
-    "aaa",
-    "aaa",
-    "aaa"
-  ],
   "key": {
     "a": {
       "tag": "forge:ingots/unobtainium_allthemodium_alloy"
     }
   },
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
   "result": {
     "item": "allthemodium:unobtainium_allthemodium_alloy_block"
   }

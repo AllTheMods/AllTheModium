@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "allthemodium",
+  "key": {
+    "a": {
+      "tag": "forge:plates/allthemodium"
+    },
+    "r": {
+      "tag": "forge:rods/allthemodium"
+    }
+  },
   "pattern": [
     " a ",
     " r ",
     " r "
   ],
-  "key": {
-    "r": {
-      "tag": "forge:rods/allthemodium"
-    },
-    "a": {
-      "tag": "forge:plates/allthemodium"
-    }
-  },
   "result": {
     "item": "allthemodium:allthemodium_shovel"
   }

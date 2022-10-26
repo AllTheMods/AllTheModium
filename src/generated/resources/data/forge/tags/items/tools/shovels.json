@@ -1,6 +1,7 @@
 {
-  "replace": false,
   "values": [
-    "allthemodium:allthemodium_shovel"
+    "allthemodium:allthemodium_shovel",
+    "allthemodium:alloy_shovel",
+    "allthemodium:alloy_paxel"
   ]
 }

@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "allthemodium",
-  "pattern": [
-    "aa ",
-    "aa ",
-    "aa "
-  ],
   "key": {
     "a": {
       "tag": "allthemodium:ancient_planks"
     }
   },
+  "pattern": [
+    "aa ",
+    "aa ",
+    "aa "
+  ],
   "result": {
-    "item": "allthemodium:ancient_door",
-    "count": 3
+    "count": 3,
+    "item": "allthemodium:ancient_door"
   }
 }

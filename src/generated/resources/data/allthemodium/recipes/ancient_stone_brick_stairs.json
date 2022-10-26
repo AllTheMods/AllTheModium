@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "allthemodium",
-  "pattern": [
-    "a  ",
-    "aa ",
-    "aaa"
-  ],
   "key": {
     "a": {
       "tag": "allthemodium:ancient_stone_bricks"
     }
   },
+  "pattern": [
+    "a  ",
+    "aa ",
+    "aaa"
+  ],
   "result": {
-    "item": "allthemodium:ancient_stone_brick_stairs",
-    "count": 4
+    "count": 4,
+    "item": "allthemodium:ancient_stone_brick_stairs"
   }
 }

@@ -1,8 +1,7 @@
 package com.thevortex.allthemodium.datagen.server;
 
-import com.thevortex.allthemodium.reference.TagRegistry;
+import com.thevortex.allthemodium.registry.TagRegistry;
 import com.thevortex.allthemodium.registry.FluidRegistry;
-import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;

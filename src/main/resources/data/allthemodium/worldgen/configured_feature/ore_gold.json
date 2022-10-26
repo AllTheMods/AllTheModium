@@ -18,9 +18,18 @@
         "state": {
           "Name": "minecraft:deepslate_gold_ore"
         }
+      },
+      {
+        "target": {
+          "tag": "minecraft:base_stone_nether",
+          "predicate_type": "minecraft:tag_match"
+        },
+        "state": {
+          "Name": "minecraft:nether_gold_ore"
+        }
       }
     ],
-    "size": 9,
+    "size": 18,
     "discard_chance_on_air_exposure": 0.0
   },
   "type": "minecraft:ore"

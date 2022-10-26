@@ -1,11 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "allthemodium",
-  "pattern": [
-    "   ",
-    "sas",
-    "sas"
-  ],
   "key": {
     "a": {
       "tag": "allthemodium:soul_planks"
@@ -14,6 +9,11 @@
       "item": "minecraft:stick"
     }
   },
+  "pattern": [
+    "   ",
+    "sas",
+    "sas"
+  ],
   "result": {
     "item": "allthemodium:soul_wooden_fence_gate"
   }

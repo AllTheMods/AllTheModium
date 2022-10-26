@@ -1,19 +1,15 @@
 package com.thevortex.allthemodium.datagen.server;
 
 import com.thevortex.allthemodium.reference.Reference;
-import com.thevortex.allthemodium.reference.TagRegistry;
+import com.thevortex.allthemodium.registry.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
-import net.allthemods.alltheores.blocks.BlockList;
 import net.allthemods.alltheores.infos.ItemTagRegistry;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.*;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 
-import java.io.IOException;
-import java.nio.file.Path;
 import java.util.function.Consumer;
 
 public class ShapelessCrafting extends RecipeProvider {

@@ -1,6 +1,6 @@
 {
-  "replace": false,
   "values": [
-    "allthemodium:allthemodium_hoe"
+    "allthemodium:allthemodium_hoe",
+    "allthemodium:alloy_paxel"
   ]
 }

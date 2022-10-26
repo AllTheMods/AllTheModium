@@ -12,6 +12,7 @@ import com.thevortex.allthemodium.worldgen.structures.ATMStructures;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -95,7 +96,6 @@ public class AllTheModium
 		modEventBus.addListener(this::setup);
 
 		GeckoLib.initialize();
-
     	if(ModList.get().isLoaded("mekanism")) {
 			ATMSlurries.SLURRIES.register(modEventBus);
 		}

@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
   "group": "allthemodium",
-  "pattern": [
-    "   ",
-    "aaa",
-    "aaa"
-  ],
   "key": {
     "a": {
       "tag": "allthemodium:demonic_planks"
     }
   },
+  "pattern": [
+    "   ",
+    "aaa",
+    "aaa"
+  ],
   "result": {
-    "item": "allthemodium:demonic_trap_door",
-    "count": 2
+    "count": 2,
+    "item": "allthemodium:demonic_trap_door"
   }
 }
