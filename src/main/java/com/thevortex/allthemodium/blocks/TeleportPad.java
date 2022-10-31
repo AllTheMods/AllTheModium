@@ -60,7 +60,7 @@ public class TeleportPad extends Block {
 		if ((player instanceof ServerPlayer) && (player.isCrouching() == true)) {
 
 			transferPlayer((ServerPlayer) player, pos);
-			worldIn.addParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY() + 1, pos.getZ(), 0, 1, 0);
+			worldIn.addAlwaysVisibleParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY() + 1, pos.getZ(), 0, 1, 0);
 		}
 		return super.use(state, worldIn, pos, player, handIn, hit);
 	}

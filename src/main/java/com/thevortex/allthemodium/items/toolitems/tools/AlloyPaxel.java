@@ -22,14 +22,19 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
+import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.TierSortingRegistry;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.server.command.TextComponentHelper;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class AlloyPaxel extends DiggerItem {
 
@@ -41,9 +46,10 @@ public class AlloyPaxel extends DiggerItem {
     public float getDestroySpeed(ItemStack stack, BlockState state)
     {
         if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) return speed *1.4f;
-        if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) return speed*1.4f;
-        if (state.is(BlockTags.MINEABLE_WITH_AXE)) return speed*1.4f;
-        if (state.is(BlockTags.MINEABLE_WITH_HOE)) return speed*1.4f;
+        if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) return speed*1.8f;
+        if (state.is(BlockTags.MINEABLE_WITH_AXE)) return speed*1.8f;
+        if (state.is(BlockTags.MINEABLE_WITH_HOE)) return speed*1.9f;
+        if (state.is(Tags.Blocks.GLASS))  return speed*3.0F;
         return super.getDestroySpeed(stack, state);
     }
     @Override
@@ -82,7 +88,7 @@ public class AlloyPaxel extends DiggerItem {
         Level world = context.getLevel();
         BlockPos blockpos = context.getClickedPos();
         BlockState blockstate = world.getBlockState(blockpos);
-        if(blockstate.getBlock() == Blocks.OBSIDIAN) {
+        if (blockstate.getBlock() == Blocks.OBSIDIAN) {
             BlockState bpos = Blocks.CRYING_OBSIDIAN.defaultBlockState();
             Player playerentity = context.getPlayer();
             world.playSound(playerentity, blockpos, SoundEvents.NETHER_ORE_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -115,10 +121,10 @@ public class AlloyPaxel extends DiggerItem {
                 return InteractionResult.sidedSuccess(world.isClientSide);
             }
         }
-        if((blockstate.is(BlockTags.DIRT))) {
+        if ((blockstate.is(BlockTags.DIRT))) {
             //tags dirt
             boolean isSneaking = context.getPlayer().isCrouching();
-            BlockState blockPath = isSneaking ? Blocks.FARMLAND.defaultBlockState() :  Blocks.DIRT_PATH.defaultBlockState();
+            BlockState blockPath = isSneaking ? Blocks.FARMLAND.defaultBlockState() : Blocks.DIRT_PATH.defaultBlockState();
             Player playerentity = context.getPlayer();
             world.playSound(playerentity, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
             if (!world.isClientSide) {
@@ -132,11 +138,11 @@ public class AlloyPaxel extends DiggerItem {
 
             return InteractionResult.sidedSuccess(world.isClientSide);
         }
-        if(blockstate.is(BlockTags.LOGS)) {
+        if (blockstate.is(BlockTags.LOGS)) {
 
             //tags logs
             Block check = STRIPPABLES.get(blockstate.getBlock());
-            if(check != null) {
+            if (check != null) {
                 BlockState block = check.defaultBlockState();
                 Player playerentity = context.getPlayer();
                 world.playSound(playerentity, blockpos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -150,9 +156,13 @@ public class AlloyPaxel extends DiggerItem {
                 }
                 return InteractionResult.sidedSuccess(world.isClientSide);
             }
+
+
+
         }
         return InteractionResult.PASS;
     }
+
 
 
     @Override
