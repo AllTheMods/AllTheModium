@@ -7,10 +7,10 @@
 		"height": 1.6
 	},
 	"valid_gear_sets": [
-		"#the_nether"
+		"#the_other"
 	],
 	"dimensions": [
-		"minecraft:the_nether"
+		"allthemodium:the_other"
 	],
 	"min_rarity": "epic",
 	"max_rarity": "mythic",
