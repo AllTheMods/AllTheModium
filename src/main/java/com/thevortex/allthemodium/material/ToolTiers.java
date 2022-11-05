@@ -21,6 +21,7 @@ public class ToolTiers {
     public static final TagKey<Block> ALLTHEMODIUM_TOOL_TAG = BlockTags.create(new ResourceLocation("mineable/pickaxe"));
 
     public static final TagKey<Block> ALLTHEMODIUM_TIER_TAG = TagRegistry.NEEDS_ALLTHEMODIUM_TOOL;
+    public static final TagKey<Block> ALLOY_TIER_TAG = TagRegistry.NEEDS_ALLOY_TOOL;
 
 
     public static final Tier ALLTHEMODIUM_TIER = TierSortingRegistry.registerTier(
@@ -29,7 +30,7 @@ public class ToolTiers {
             List.of(Tiers.NETHERITE), List.of());
 
     public static final Tier ALLOY_TIER = TierSortingRegistry.registerTier(
-            new ForgeTier(5, 15000, 10, 11.0F, 85, ALLTHEMODIUM_TIER_TAG, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get())),
+            new ForgeTier(5, 15000, 10, 11.0F, 85, ALLOY_TIER_TAG, () -> Ingredient.of(ModRegistry.ALLTHEMODIUM_INGOT.get())),
             new ResourceLocation(Reference.MOD_ID,"allthemodium_alloy"),
             List.of(ToolTiers.ALLTHEMODIUM_TIER), List.of());
 

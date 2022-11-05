@@ -57,7 +57,7 @@ public class AllTheModium
 	public static final ResourceKey<Level> The_End = Level.END;
 	public static final ResourceLocation MINING_DIM_ID = new ResourceLocation(MOD_ID,"mining");
 	public static final ResourceLocation THE_OTHER_DIM_ID = new ResourceLocation(MOD_ID,"the_other");
-
+	public static final ResourceKey<Level> THE_OTHER = ResourceKey.create(Registry.DIMENSION_REGISTRY, THE_OTHER_DIM_ID);
 	//public static final ResourceKey<DimensionType> Mining_TYPE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, MINING_DIM_ID);
 	//public static final ResourceKey<DimensionType> THE_OTHER_TYPE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, THE_OTHER_DIM_ID);
 	//public static final RegistryKey<World> THE_BEYOND = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"the_beyond"));

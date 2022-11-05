@@ -1,6 +1,7 @@
 package com.thevortex.allthemodium.events;
 
 
+import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.registry.TagRegistry;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.level.BlockEvent;
@@ -15,7 +16,7 @@ public class BlockBreak {
 	public static void on(BlockEvent.BreakEvent event) {
 		if(event.getPlayer().isCreative()) { return; }
 
-		if((event.getState().is(TagRegistry.OTHER_PROTECTION)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null)) && ((!event.getLevel().dimensionType().hasCeiling()) && (event.getLevel().dimensionType().piglinSafe()) && (!event.getLevel().dimensionType().hasFixedTime()))) {
+		if((event.getState().is(TagRegistry.OTHER_PROTECTION)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null)) && AllTheModium.THE_OTHER.equals(event.getPlayer().getLevel().dimension()) ) {
 
 			event.setCanceled(true);
 			return;
