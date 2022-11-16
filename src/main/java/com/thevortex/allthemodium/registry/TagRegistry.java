@@ -24,7 +24,7 @@ public class TagRegistry {
 
     public static final TagKey<Block> NEEDS_ALLTHEMODIUM_TOOL = BlockTags.create(Reference.forge("needs_allthemodium_tool"));
     public static final TagKey<Block> NEEDS_ALLOY_TOOL = BlockTags.create(Reference.forge("needs_allthemodiumalloy_tool"));
-    
+
     public static final TagKey<Item> FORGE_SWORDS = ItemTags.create(Reference.forge("tools/swords"));
     public static final TagKey<Item> FORGE_PICKAXES = ItemTags.create(Reference.forge("tools/pickaxes"));
     public static final TagKey<Item> FORGE_AXES = ItemTags.create(Reference.forge("tools/axes"));
@@ -34,6 +34,8 @@ public class TagRegistry {
 
     public static final TagKey<Item> PIGLIN_LOVED = ItemTags.create(Reference.location("minecraft:items/piglin_loved"));
     public static final TagKey<Item> RAW_MATERIALS = ItemTags.create(Reference.forge("raw_materials"));
+
+    public static final TagKey<Item> SAPLINGS = ItemTags.create(Reference.location("saplings"));
     public static final TagKey<Item> DUSTS = ItemTags.create(Reference.forge("dusts"));
     public static final TagKey<Item> INGOTS = ItemTags.create(Reference.forge("ingots"));
     public static final TagKey<Item> ORES = ItemTags.create(Reference.forge("ores"));

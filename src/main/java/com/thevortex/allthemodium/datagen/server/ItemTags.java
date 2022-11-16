@@ -35,6 +35,11 @@ public class ItemTags extends ItemTagsProvider {
         tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_1_ITEM.get());
         tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_2_ITEM.get());
 
+
+        tag(TagRegistry.SAPLINGS).add(ModRegistry.SOUL_SAPLING_ITEM.get());
+        tag(TagRegistry.SAPLINGS).add(ModRegistry.DEMONIC_SAPLING_ITEM.get());
+        tag(TagRegistry.SAPLINGS).add(ModRegistry.ANCIENT_SAPLING_ITEM.get());
+
         tag(net.minecraft.tags.ItemTags.STONE_CRAFTING_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
         tag(net.minecraft.tags.ItemTags.STONE_TOOL_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
 
@@ -45,6 +50,10 @@ public class ItemTags extends ItemTagsProvider {
         tag(TagRegistry.FORGE_SHOVELS).add(ModRegistry.ALLTHEMODIUM_SHOVEL.get());
 
         tag(TagRegistry.FORGE_HOES).add(ModRegistry.ALLTHEMODIUM_HOE.get());
+
+        tag(TagRegistry.FORGE_SWORDS).add(ModRegistry.ALLTHEMODIUM_SWORD.get());
+        tag(TagRegistry.FORGE_SWORDS).add(ItemRegistry.ATM_ALLOY_SWORD.get());
+
 
         tag(TagRegistry.FORGE_PICKAXES).add(ItemRegistry.ATM_ALLOY_PICK.get());
         tag(TagRegistry.FORGE_PICKAXES).add(ItemRegistry.ATM_ALLOY_PAXEL.get());
