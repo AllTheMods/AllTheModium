@@ -262,6 +262,24 @@ public class BlockTags extends BlockTagsProvider {
 
         tag(TagRegistry.OTHER_PROTECTION).add(BlockList.IRIDIUM_SLATE_ORE.get());
 
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_ALUMINUM_BLOCK.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_LEAD_BLOCK.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_NICKEL_BLOCK.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_OSMIUM_BLOCK.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_PLATINUM_BLOCK.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_SILVER_BLOCK.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_TIN_BLOCK.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_URANIUM_BLOCK.get());
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_ZINC_BLOCK.get());
+
+        tag(TagRegistry.OTHER_PROTECTION).add(BlockList.RAW_IRIDIUM_BLOCK.get());
+
+        tag(TagRegistry.OTHER_PROTECTION).add(Blocks.NETHERITE_BLOCK);
+        tag(TagRegistry.OTHER_PROTECTION).add(Blocks.DIAMOND_BLOCK);
+        tag(TagRegistry.OTHER_PROTECTION).add(Blocks.AMETHYST_BLOCK);
+        tag(TagRegistry.OTHER_PROTECTION).add(Blocks.AMETHYST_CLUSTER);
+        tag(TagRegistry.OTHER_PROTECTION).add(Blocks.GOLD_BLOCK);
+
         tag(TagRegistry.OTHER_PROTECTION).addTag(TagRegistry.BLOCK_ORES);
 
     }

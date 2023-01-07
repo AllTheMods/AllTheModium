@@ -2,7 +2,11 @@ package com.thevortex.allthemodium.events;
 
 
 import com.thevortex.allthemodium.AllTheModium;
+import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -16,7 +20,7 @@ public class BlockBreak {
 	public static void on(BlockEvent.BreakEvent event) {
 		if(event.getPlayer().isCreative()) { return; }
 
-		if((event.getState().is(TagRegistry.OTHER_PROTECTION)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null)) && AllTheModium.THE_OTHER.equals(event.getPlayer().getLevel().dimension()) ) {
+		if((event.getState().is(TagRegistry.OTHER_PROTECTION)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null)) && event.getLevel().getBiome(event.getPos()).is(TagRegistry.OTHER_BIOMES)) {
 
 			event.setCanceled(true);
 			return;
@@ -27,7 +31,7 @@ public class BlockBreak {
 			return;
 		}
 
-		if((event.getState().is(TagRegistry.VIBRANIUM_ORE)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null || (event.getPlayer().getMainHandItem().isEmpty())))) {
+		if((event.getState().is(TagRegistry.VIBRANIUM_ORE)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null) || (event.getPlayer().getMainHandItem().isEmpty()))) {
 			
 			event.setCanceled(true);
 			return;

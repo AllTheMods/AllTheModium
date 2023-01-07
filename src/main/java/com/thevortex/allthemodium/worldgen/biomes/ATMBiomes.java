@@ -25,21 +25,15 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ATMBiomes {
 
-    public static Biome The_Other;
-    public static Biome Basalt_Deltas;
-    public static Biome Crimson_Forest;
-    public static Biome Desert;
-    public static Biome Desert_Hills;
-    public static Biome Soul_Sand_Valley;
-    public static Biome Warped_Forest;
+    public static Biome The_Other = the_other();
+    public static Biome Basalt_Deltas = basalt_deltas();
+    public static Biome Crimson_Forest = crimson_forest();
+    public static Biome Desert = desert();
+    public static Biome Desert_Hills = desert_hills();
+    public static Biome Soul_Sand_Valley = soul_sand_valley();
+    public static Biome Warped_Forest = warped_forest();
 
-    public static final TagKey<Biome> THE_OTHER = register("the_other");
-    public static final TagKey<Biome> BASALT_DELTAS = register("basalt_deltas");
-    public static final TagKey<Biome> CRIMSON_FOREST = register("crimson_forest");
-    public static final TagKey<Biome> DESERT = register("desert");
-    public static final TagKey<Biome> DESERT_HILLS = register("desert_hills");
-    public static final TagKey<Biome> SOUL_SAND_VALLEY = register("soul_sand_valley");
-    public static final TagKey<Biome> WARPED_FOREST = register("warped_forest");
+
 
 
     private static TagKey<Biome> register(String names) {

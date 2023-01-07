@@ -108,6 +108,7 @@ public class ModRegistry {
 	RegistryObject<Biome> SOULSAND = BIOMES.register("soul_sand_valley", () -> ATMBiomes.soul_sand_valley());
 	RegistryObject<Biome> WARPED_FOREST = BIOMES.register("warped_forest", () -> ATMBiomes.warped_forest());
 	RegistryObject<Biome> CRIMSON_FOREST = BIOMES.register("crimson_forest", () -> ATMBiomes.crimson_forest());
+	RegistryObject<Biome> BASALT_DELTAS = BIOMES.register("basalt_deltas", () -> ATMBiomes.basalt_deltas());
 
 
 
