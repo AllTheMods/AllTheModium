@@ -27,12 +27,12 @@ public class AncientCaveVinesPlant extends GrowingPlantBodyBlock implements Bone
     @Override
     protected BlockState updateHeadAfterConvertedFromBody(BlockState p_153028_, BlockState p_153029_) {
 
-        return p_153029_.setValue(BERRIES, p_153028_.getValue(BERRIES));
+        return p_153029_.setValue(BERRIES, Boolean.FALSE);
     }
 
     @Override
     public ItemStack getCloneItemStack(BlockGetter p_153007_, BlockPos p_153008_, BlockState p_153009_) {
-        return new ItemStack(ModRegistry.ANCIENT_SOULBERRY.get());
+        return new ItemStack(ModRegistry.ANCIENT_CAVEVINES_PLANT_.get());
     }
 
     @Override

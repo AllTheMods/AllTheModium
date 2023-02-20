@@ -1,13 +1,16 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "allthemodium:atmshaped_crafting",
   "pattern": [
-    "X X",
+    "XNX",
     "XXX",
     "XXX"
   ],
   "key": {
     "X": {
       "item": "allthemodium:allthemodium_ingot"
+    },
+    "N": {
+      "item": "minecraft:netherite_chestplate"
     }
   },
   "result": {

@@ -35,7 +35,7 @@ public class AncientCaveVines extends GrowingPlantHeadBlock implements Bonemeala
     }
 
     protected BlockState updateBodyAfterConvertedFromHead(BlockState p_152987_, BlockState p_152988_) {
-        return p_152988_.setValue(BERRIES, p_152987_.getValue(BERRIES));
+        return p_152988_.setValue(BERRIES, Boolean.FALSE);
     }
 
     protected BlockState getGrowIntoState(BlockState p_152990_, RandomSource p_152991_) {
@@ -43,7 +43,7 @@ public class AncientCaveVines extends GrowingPlantHeadBlock implements Bonemeala
     }
 
     public ItemStack getCloneItemStack(BlockGetter p_152966_, BlockPos p_152967_, BlockState p_152968_) {
-        return new ItemStack(ModRegistry.ANCIENT_SOULBERRY.get());
+        return new ItemStack(ModRegistry.ANCIENT_CAVEVINES_.get());
     }
 
     public InteractionResult use(BlockState p_152980_, Level p_152981_, BlockPos p_152982_, Player p_152983_, InteractionHand p_152984_, BlockHitResult p_152985_) {
