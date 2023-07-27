@@ -9,15 +9,13 @@ import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.PushReaction;
 
 import net.minecraftforge.common.util.FakePlayer;
 
 public class Unobtainium_Ore extends DropExperienceBlock {
 
 	public Unobtainium_Ore() {//func_235861_h_ = setRequiresTool
-		super(Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.NETHER_GOLD_ORE).strength(-1.0f,5000f));
+		super(Properties.of().requiresCorrectToolForDrops().sound(SoundType.NETHER_GOLD_ORE).strength(-1.0f,5000f));
 	}
 	@Override
 	@SuppressWarnings("java:S1874") // deprecated method from super class
@@ -32,16 +30,12 @@ public class Unobtainium_Ore extends DropExperienceBlock {
 	@Override
 	public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity player) {
 		if((player instanceof FakePlayer) && (state.getBlock() == ModRegistry.UNOBTAINIUM_ORE.get())) { return false; }
-		return super.canEntityDestroy(state,world,pos,player) && (distanceTo(pos,player.blockPosition) < 16.0F);
+		return super.canEntityDestroy(state,world,pos,player) && (distanceTo(pos,player.blockPosition()) < 16.0F);
 	}
 
 	private double distanceTo(BlockPos block,BlockPos player) {
 		return Math.sqrt(Math.pow(block.getX() - player.getX(), 2) + Math.pow(block.getY() - player.getY(), 2) + Math.pow(block.getZ() - player.getZ(), 2));
 	}
-	@Override
-	public PushReaction getPistonPushReaction(BlockState state) {
 
-		return PushReaction.BLOCK;
-	}
 
 }

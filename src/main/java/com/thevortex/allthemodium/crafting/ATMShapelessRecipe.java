@@ -5,12 +5,11 @@ import java.util.Map.Entry;
 
 
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.ShapelessRecipe;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -35,15 +34,15 @@ public class 	ATMShapelessRecipe implements IATMShapelessRecipe {
 		// Note: We do not override the matches method if it matches ignoring NBT,
 		// to ensure that we return the proper value for if there is a match that gives
 		// a proper output
-		return recipe.matches(inv, world) && !assemble(inv).isEmpty();
+		return recipe.matches(inv, world);
 	}
 
 	@Override
-	public ItemStack assemble(CraftingContainer inv) {
-		if (getResultItem().isEmpty()) {
+	public ItemStack assemble(CraftingContainer inv, RegistryAccess blah) {
+		if (getResultItem(blah).isEmpty()) {
 			return ItemStack.EMPTY;
 		}
-		ItemStack toReturn = getResultItem().copy();
+		ItemStack toReturn = getResultItem(blah).copy();
 
 		Map<Enchantment,Integer> enchant = new HashMap<>();
 
@@ -60,7 +59,9 @@ public class 	ATMShapelessRecipe implements IATMShapelessRecipe {
 		EnchantmentHelper.setEnchantments(enchant,toReturn);
 		return toReturn;
 	}
-
+	public ShapelessRecipe getInternal() {
+		return recipe;
+	}
 	@Override
 	public NonNullList<ItemStack> getRemainingItems(CraftingContainer inv) {
 		return recipe.getRemainingItems(inv);
@@ -80,13 +81,18 @@ public class 	ATMShapelessRecipe implements IATMShapelessRecipe {
 	}
 
 	@Override
-	public ItemStack getResultItem() {
-		return recipe.getResultItem();
+	public ItemStack getResultItem(RegistryAccess blah) {
+		return recipe.getResultItem(blah);
 	}
+
 
 	@Override
 	public ResourceLocation getId() {
 		return recipe.getId();
 	}
 
+	@Override
+	public CraftingBookCategory category() {
+		return CraftingBookCategory.MISC;
+	}
 }

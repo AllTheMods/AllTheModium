@@ -24,20 +24,21 @@ public class ATMShapelessRecipeSerializer implements RecipeSerializer<ATMShapele
 	}
 
 	private void write(FriendlyByteBuf buffer, ShapelessRecipe recipe) {
-		
-			try {
-				RecipeSerializer.SHAPELESS_RECIPE.toNetwork(buffer, recipe);
-			} catch (Exception e) {
-				throw e;
-			}
+
+		try {
+			RecipeSerializer.SHAPELESS_RECIPE.toNetwork(buffer, recipe);
+		} catch (Exception e) {
+			throw e;
 		}
+	}
 
 	@Override
 	public void toNetwork(FriendlyByteBuf buffer, ATMShapelessRecipe recipe) {
-		ShapelessRecipe recip = new ShapelessRecipe(recipe.getId(),recipe.getGroup(),recipe.getResultItem(),recipe.getIngredients());
-		write(buffer,recip);
-		
+		try {
+			RecipeSerializer.SHAPELESS_RECIPE.toNetwork(buffer, recipe.getInternal());
+		} catch (Exception e) {
+			throw e;
+		}
 	}
-		
-	}
+}
 

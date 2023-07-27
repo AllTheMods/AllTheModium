@@ -9,9 +9,11 @@ import java.util.Map;
 
 import com.thevortex.allthemodium.AllTheModium;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapedRecipe;
@@ -19,6 +21,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import org.codehaus.plexus.util.CachedMap;
+import org.jetbrains.annotations.NotNull;
 
 public class ATMShapedRecipe implements IATMShapedRecipe {
 
@@ -42,15 +45,17 @@ public class ATMShapedRecipe implements IATMShapedRecipe {
 		// Note: We do not override the matches method if it matches ignoring NBT,
 		// to ensure that we return the proper value for if there is a match that gives
 		// a proper output
-		return internal.matches(inv, world) && !assemble(inv).isEmpty();
+		return internal.matches(inv, world);
 	}
 
+
+
 	@Override
-	public ItemStack assemble(CraftingContainer inv) {
-		if (getResultItem().isEmpty()) {
+	public ItemStack assemble(CraftingContainer inv,RegistryAccess blah) {
+		if (getResultItem(blah).isEmpty()) {
 			return ItemStack.EMPTY;
 		}
-		ItemStack toReturn = getResultItem().copy();
+		ItemStack toReturn = getResultItem(blah).copy();
 		Map<Enchantment,Integer> enchant = new HashMap<>();
 
 		for (int i = 0; i < inv.getContainerSize(); i++) {
@@ -74,9 +79,11 @@ public class ATMShapedRecipe implements IATMShapedRecipe {
 		return internal.canCraftInDimensions(width, height);
 	}
 
+
+
 	@Override
-	public ItemStack getResultItem() {
-		return internal.getResultItem();
+	public @NotNull ItemStack getResultItem(RegistryAccess blah) {
+		return internal.getResultItem(blah);
 	}
 
 	@Override
@@ -109,4 +116,8 @@ public class ATMShapedRecipe implements IATMShapedRecipe {
 		return internal.getId();
 	}
 
+	@Override
+	public CraftingBookCategory category() {
+		return CraftingBookCategory.MISC;
+	}
 }

@@ -12,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -46,7 +47,7 @@ public class AncientCaveVinesPlant extends GrowingPlantBodyBlock implements Bone
     }
 
     @Override
-    public boolean isValidBonemealTarget(BlockGetter p_153011_, BlockPos p_153012_, BlockState p_153013_, boolean p_153014_) {
+    public boolean isValidBonemealTarget(LevelReader p_153011_, BlockPos p_153012_, BlockState p_153013_, boolean p_153014_) {
         return !p_153013_.getValue(BERRIES);
     }
 

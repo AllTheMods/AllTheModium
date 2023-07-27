@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeManager;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.Tags;
@@ -44,7 +45,7 @@ public class TagRegistry {
     public static final TagKey<Item> ORES = ItemTags.create(Reference.forge("ores"));
     public static final TagKey<Block> BLOCK_ORES = BlockTags.create(Reference.forge("ores"));
 
-    public static final TagKey<Biome> OTHER_BIOMES = TagKey.create(Registry.BIOME_REGISTRY, Reference.location("allthemodium:other_biomes"));
+    //public static final TagKey<Biome> OTHER_BIOMES = TagKey.create(, Reference.location("allthemodium:other_biomes"));
 
     public static final TagKey<Block> OTHER_TILE_WHITELIST = BlockTags.create(Reference.location("allthemodium:other_te_whitelist"));
     public static final TagKey<Block> ANCIENT_DIRT = BlockTags.create(Reference.location("allthemodium:ancient_dirt"));

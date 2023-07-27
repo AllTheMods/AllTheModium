@@ -41,10 +41,6 @@ public class TeleportPad extends Block {
 		return TELEPORTPAD_AABB;
 	}
 
-	@Override
-	public PushReaction getPistonPushReaction(BlockState state) {
-		return PushReaction.BLOCK;
-	}
 
 
 	@Override
@@ -67,7 +63,7 @@ public class TeleportPad extends Block {
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		if(player.level.dimension().registry().getNamespace().contains(Reference.MOD_ID)) {
+		if(player.level().dimension().registry().getNamespace().contains(Reference.MOD_ID)) {
 			return false;
 		} else {
 			return true;
@@ -76,7 +72,7 @@ public class TeleportPad extends Block {
 
 	public void transferPlayer(ServerPlayer player, BlockPos pos) {
 		int config = 0;
-		if (player.level.dimension().equals(LevelRegistry.Mining)) {
+		if (player.level().dimension().equals(LevelRegistry.Mining)) {
 			ServerLevel targetWorld = player.server.getLevel(AllTheModium.OverWorld);
 			int y = 256;
 			boolean located = false;
@@ -109,7 +105,7 @@ public class TeleportPad extends Block {
 						player.yya);
 			}
 
-		}  else if (player.level.dimension().equals(AllTheModium.Nether)) {
+		}  else if (player.level().dimension().equals(AllTheModium.Nether)) {
 			ServerLevel targetWorld = player.server.getLevel(LevelRegistry.THE_OTHER);
 			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), Math.round(pos.getY()), Math.round(pos.getZ()));
 
@@ -124,7 +120,7 @@ public class TeleportPad extends Block {
 
 
 			}
-		} else if (player.level.dimension().equals(LevelRegistry.THE_OTHER)) {
+		} else if (player.level().dimension().equals(LevelRegistry.THE_OTHER)) {
 			ServerLevel targetWorld = player.server.getLevel(AllTheModium.Nether);
 			int y = 128;
 			boolean located = false;
@@ -159,7 +155,7 @@ public class TeleportPad extends Block {
 			}
 		}
 
-		else if (player.level.dimension().equals(AllTheModium.OverWorld) && (config != 2)) {
+		else if (player.level().dimension().equals(AllTheModium.OverWorld) && (config != 2)) {
 			ServerLevel targetWorld = player.server.getLevel(LevelRegistry.Mining);
 			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), 253, Math.round(pos.getZ()));
 			if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {
@@ -172,9 +168,5 @@ public class TeleportPad extends Block {
 
 	}
 
-	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-		List<ItemStack> list = new ArrayList<ItemStack>();
-		return list;
-	}
+
 }

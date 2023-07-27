@@ -65,13 +65,12 @@ public class AncientSaplingBlock extends SaplingBlock implements BonemealableBlo
         if (p_55983_.getValue(STAGE) == 0) {
             p_55981_.setBlock(p_55982_, p_55983_.cycle(STAGE), 4);
         } else {
-            if (!net.minecraftforge.event.ForgeEventFactory.saplingGrowTree(p_55981_, p_55984_, p_55982_)) return;
-            this.treeGrower.growTree(p_55981_, p_55981_.getChunkSource().getGenerator(), p_55982_, p_55983_, p_55984_);
+                this.treeGrower.growTree(p_55981_, p_55981_.getChunkSource().getGenerator(), p_55982_, p_55983_, p_55984_);
         }
 
     }
 
-    public boolean isValidBonemealTarget(BlockGetter p_55991_, BlockPos p_55992_, BlockState p_55993_, boolean p_55994_) {
+    public boolean isValidBonemealTarget(LevelReader p_55991_, BlockPos p_55992_, BlockState p_55993_, boolean p_55994_) {
         return true;
     }
 
