@@ -12,7 +12,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 public class ItemModels extends ItemModelProvider {
 
     public ItemModels(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, Reference.MOD_ID, fileHelper);
+        super(generator.getPackOutput(), Reference.MOD_ID, fileHelper);
     }
 
     private ResourceLocation res(String name) {

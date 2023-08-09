@@ -5,21 +5,26 @@ import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
 import com.thevortex.allthemodium.registry.ItemRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
+
+import java.util.concurrent.CompletableFuture;
 
 public class ItemTags extends ItemTagsProvider {
 
 
-    public ItemTags(DataGenerator generator, BlockTagsProvider blockTagsProvider, ExistingFileHelper existingFileHelper) {
-        super(generator, blockTagsProvider, Reference.MOD_ID, existingFileHelper);
+    public ItemTags(PackOutput packOutPut, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagsProvider.TagLookup<Block>> tagLookup, ExistingFileHelper existingFileHelper) {
+        super(packOutPut, lookupProvider,tagLookup, Reference.MOD_ID, existingFileHelper);
     }
 
+
     @Override
-    protected void addTags() {
+    protected void addTags(HolderLookup.Provider provider) {
 
         tag(net.minecraft.tags.ItemTags.PLANKS).add(ModRegistry.ANCIENT_PLANKS_ITEM.get());
         tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_0_ITEM.get());
@@ -36,9 +41,6 @@ public class ItemTags extends ItemTagsProvider {
         tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_2_ITEM.get());
 
 
-        tag(TagRegistry.SAPLINGS).add(ModRegistry.SOUL_SAPLING_ITEM.get());
-        tag(TagRegistry.SAPLINGS).add(ModRegistry.DEMONIC_SAPLING_ITEM.get());
-        tag(TagRegistry.SAPLINGS).add(ModRegistry.ANCIENT_SAPLING_ITEM.get());
 
         tag(net.minecraft.tags.ItemTags.STONE_CRAFTING_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
         tag(net.minecraft.tags.ItemTags.STONE_TOOL_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());

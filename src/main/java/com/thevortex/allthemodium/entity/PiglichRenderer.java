@@ -14,8 +14,7 @@ import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
-import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
 public class PiglichRenderer extends GeoEntityRenderer<PiglichEntity> {
@@ -31,8 +30,8 @@ public class PiglichRenderer extends GeoEntityRenderer<PiglichEntity> {
     }
 
     @Override
-    public RenderType getRenderType(PiglichEntity animatable, float partialTicks, PoseStack stack, @Nullable MultiBufferSource renderTypeBuffer, @Nullable VertexConsumer vertexBuilder, int packedLightIn, ResourceLocation textureLocation) {
-        stack.scale(1.1f,1.1f,1.1f);
-        return super.getRenderType(animatable, partialTicks, stack, renderTypeBuffer, vertexBuilder, packedLightIn, textureLocation);
+    public RenderType getRenderType(PiglichEntity animatable, ResourceLocation textureLocation, @Nullable MultiBufferSource renderTypeBuffer,float partialTicks) {
+
+        return RenderType.entityTranslucent(getTextureLocation(animatable));
     }
 }

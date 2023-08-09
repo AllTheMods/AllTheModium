@@ -33,9 +33,7 @@ public class AlloyShovel extends ShovelItem {
 
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
-    protected TranslatableContents getTooltip(String key){
-        return new TranslatableContents(key);
-    }
+
     @Override
     public boolean isEnchantable(ItemStack stack) {
         return true;

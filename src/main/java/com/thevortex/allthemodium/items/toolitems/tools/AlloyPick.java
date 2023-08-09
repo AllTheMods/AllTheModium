@@ -41,9 +41,6 @@ public class AlloyPick extends PickaxeItem {
 
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
-    protected TranslatableContents getTooltip(String key){
-        return new TranslatableContents(key);
-    }
 
     @Override
     public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)

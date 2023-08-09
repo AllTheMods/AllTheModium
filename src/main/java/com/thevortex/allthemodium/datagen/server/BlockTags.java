@@ -5,24 +5,28 @@ import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
 import net.allthemods.alltheores.blocks.BlockList;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.concurrent.CompletableFuture;
 
 import static net.minecraftforge.common.Tags.Blocks.NEEDS_NETHERITE_TOOL;
 
 
 public class BlockTags extends BlockTagsProvider {
 
-    public BlockTags(DataGenerator generator, @Nullable ExistingFileHelper existingFileHelper) {
-        super(generator, Reference.MOD_ID, existingFileHelper);
+    public BlockTags(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+        super(packOutput,lookupProvider, Reference.MOD_ID, existingFileHelper);
     }
 
     @Override
-    protected void addTags() {
+    protected void addTags(HolderLookup.Provider provider) {
 
         tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.FURNACE);
         tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.BLAST_FURNACE);
@@ -107,10 +111,8 @@ public class BlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.INFINIBURN_NETHER).add(ModRegistry.ANCIENT_STONE.get());
         tag(net.minecraft.tags.BlockTags.INFINIBURN_NETHER).add(ModRegistry.ANCIENT_GRASS.get());
         tag(net.minecraft.tags.BlockTags.INFINIBURN_NETHER).add(ModRegistry.ANCIENT_DIRT.get());
-        tag(net.minecraft.tags.BlockTags.BEE_GROWABLES).add(ModRegistry.ANCIENT_SAPLING.get());
         tag(net.minecraft.tags.BlockTags.DIRT).add(ModRegistry.ANCIENT_GRASS.get());
         tag(net.minecraft.tags.BlockTags.DIRT).add(ModRegistry.ANCIENT_DIRT.get());
-        tag(net.minecraft.tags.BlockTags.SAPLINGS).add(ModRegistry.ANCIENT_SAPLING.get());
 
         tag(net.minecraft.tags.BlockTags.WOODEN_FENCES).add(ModRegistry.ANCIENT_WOOD_FENCE.get());
         tag(net.minecraft.tags.BlockTags.FENCES).add(ModRegistry.ANCIENT_WOOD_FENCE.get());

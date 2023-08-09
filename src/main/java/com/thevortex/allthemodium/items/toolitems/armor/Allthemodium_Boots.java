@@ -17,7 +17,7 @@ public class Allthemodium_Boots extends ArmorItem {
 
 
     public Allthemodium_Boots(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
-		super(materialIn, slot, builder);
+		super(materialIn, Type.BOOTS, builder);
 
 	}
     @Override

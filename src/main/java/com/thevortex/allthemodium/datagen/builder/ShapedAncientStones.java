@@ -6,6 +6,7 @@ import com.thevortex.allthemodium.registry.TagRegistry;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -135,11 +136,11 @@ public class ShapedAncientStones {
 
     }
     private ShapedRecipeBuilder shaped(ItemLike provider, int integer) {
-        return ShapedRecipeBuilder.shaped(provider,integer)
+        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC,provider,integer)
                 .group(Reference.MOD_ID);
     }
     private ShapedRecipeBuilder shaped(ItemLike provider) {
-        return ShapedRecipeBuilder.shaped(provider)
+        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC,provider)
                 .group(Reference.MOD_ID);
     }
 

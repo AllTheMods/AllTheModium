@@ -2,7 +2,6 @@ package com.thevortex.allthemodium.registry.resource;
 
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.math.Vector3f;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
@@ -20,6 +19,7 @@ import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.fluids.FluidType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
 
 import java.util.function.Consumer;
 

@@ -19,7 +19,7 @@ public class Allthemodium_Chestplate extends ArmorItem {
 
 
     public Allthemodium_Chestplate(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
-		super(materialIn, slot, builder);
+		super(materialIn, Type.CHESTPLATE, builder);
 
 	}
     @Override

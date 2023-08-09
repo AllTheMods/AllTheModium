@@ -63,7 +63,7 @@ public class FluidVIB extends FlowingFluid {
         }
 
         @Override
-        protected boolean canConvertToSource() {
+        protected boolean canConvertToSource(Level level) {
             return false;
         }
 

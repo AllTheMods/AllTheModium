@@ -15,12 +15,10 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.monster.piglin.PiglinArmPose;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.model.AnimatedGeoModel;
-
+import software.bernie.geckolib.model.GeoModel;
 import java.util.Random;
 
-public class PiglichModel extends AnimatedGeoModel<PiglichEntity> {
+public class PiglichModel extends GeoModel<PiglichEntity> {
 
 
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Reference.MOD_ID, "piglich"),"main");

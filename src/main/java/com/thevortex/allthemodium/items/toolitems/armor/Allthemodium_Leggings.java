@@ -16,7 +16,7 @@ import java.util.List;
 public class Allthemodium_Leggings extends ArmorItem {
 	
 	public Allthemodium_Leggings(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
-		super(materialIn, slot, builder);
+		super(materialIn, Type.LEGGINGS, builder);
 	 
 	   }
     @Override

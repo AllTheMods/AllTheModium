@@ -26,7 +26,7 @@ import java.util.function.Consumer;
 public class Allthemodium_Helmet extends ArmorItem {
 
 	public Allthemodium_Helmet(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
-		super(materialIn, slot, builder);
+		super(materialIn, Type.HELMET, builder);
 		
 	}
 

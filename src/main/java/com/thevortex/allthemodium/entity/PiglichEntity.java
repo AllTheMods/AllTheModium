@@ -25,23 +25,27 @@ import net.minecraft.world.level.NaturalSpawner;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.core.IAnimatable;
-import software.bernie.geckolib.core.PlayState;
-import software.bernie.geckolib.core.builder.AnimationBuilder;
-import software.bernie.geckolib.core.controller.AnimationController;
-import software.bernie.geckolib.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib.core.manager.AnimationData;
-import software.bernie.geckolib.core.manager.AnimationFactory;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.AnimatableManager;
+import software.bernie.geckolib.core.animation.AnimationController;
+import software.bernie.geckolib.core.animation.RawAnimation;
+import software.bernie.geckolib.core.object.PlayState;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.EnumSet;
 
 
-public class PiglichEntity extends Piglin implements IAnimatable {
+public class PiglichEntity extends Piglin implements GeoEntity {
     private final SimpleContainer inventory = new SimpleContainer(8);
-    private AnimationFactory factory = new AnimationFactory(this);
+    private static final RawAnimation ANIMATION = RawAnimation.begin().thenLoop("idle.piglich.nik").thenLoop("walk.piglich.nik");
+    private final AnimatableInstanceCache animationCache = GeckoLibUtil.createInstanceCache(this);
+    private final Level level;
+
     private boolean isSummoning = false;
     public PiglichEntity(EntityType<? extends Piglin> type, Level world) {
             super(type, world);
+            this.level = world;
             this.setImmuneToZombification(true);
             this.registerGoals();
         }
@@ -125,29 +129,19 @@ public class PiglichEntity extends Piglin implements IAnimatable {
             return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED,0.21F).add(Attributes.ATTACK_DAMAGE,12).add(Attributes.ARMOR,24).add(Attributes.ARMOR_TOUGHNESS,24).add(Attributes.MAX_HEALTH,9999);
     }
 
-    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-
-        if(event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("walk.piglich.nik", true));
-            return PlayState.CONTINUE;
-        }
-        if(this.isSummoning) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("summon.piglich.nik", true));
-            return PlayState.CONTINUE;
-        }
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("idle.piglich.nik",true));
-        return PlayState.CONTINUE;
 
 
-    }
     @Override
-    public void registerControllers(AnimationData animationData) {
-        animationData.addAnimationController(new AnimationController(this,"controller",0,this::predicate));
+    public void registerControllers(AnimatableManager.ControllerRegistrar data) {
+        data.add(new AnimationController<>(this, "controller", 0, state -> {
+            state.getController().setAnimation(ANIMATION);
+            return PlayState.CONTINUE;
+        }));
     }
 
     @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return animationCache;
     }
 
     static class PigLichAttackGoal extends Goal {

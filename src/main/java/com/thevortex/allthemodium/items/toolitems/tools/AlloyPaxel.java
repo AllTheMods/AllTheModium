@@ -55,10 +55,10 @@ public class AlloyPaxel extends DiggerItem {
     @Override
     public net.minecraft.world.InteractionResult interactLivingEntity(ItemStack stack, net.minecraft.world.entity.player.Player playerIn, LivingEntity entity, net.minecraft.world.InteractionHand hand) {
         if (entity instanceof net.minecraftforge.common.IForgeShearable target) {
-            if (entity.level.isClientSide) return net.minecraft.world.InteractionResult.SUCCESS;
-            BlockPos pos = new BlockPos(entity.getX(), entity.getY(), entity.getZ());
-            if (target.isShearable(stack, entity.level, pos)) {
-                java.util.List<ItemStack> drops = target.onSheared(playerIn, stack, entity.level, pos,
+            if (entity.level().isClientSide) return net.minecraft.world.InteractionResult.SUCCESS;
+            BlockPos pos = new BlockPos(entity.blockPosition());
+            if (target.isShearable(stack, entity.level(), pos)) {
+                java.util.List<ItemStack> drops = target.onSheared(playerIn, stack, entity.level(), pos,
                         net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel(net.minecraft.world.item.enchantment.Enchantments.BLOCK_FORTUNE, stack));
                 java.util.Random rand = new java.util.Random();
                 drops.forEach(d -> {
@@ -179,9 +179,7 @@ public class AlloyPaxel extends DiggerItem {
 
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
-    protected TranslatableContents getTooltip(String key){
-        return new TranslatableContents(key);
-    }
+
 
     @Override
     public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)

@@ -6,17 +6,10 @@ import com.thevortex.allthemodium.blocks.Allthemodium_Ore;
 import com.thevortex.allthemodium.blocks.Unobtainium_Ore;
 import com.thevortex.allthemodium.blocks.Vibranium_Ore;
 import com.thevortex.allthemodium.registry.ModRegistry;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.loot.BlockLoot;
-import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -29,23 +22,13 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class LootTables extends LootTableProvider {
+public class LootTables extends VanillaBlockLoot {
 
-    public LootTables(DataGenerator generator) {
-        super(generator);
-    }
 
-    @Override
-    protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
-        return ImmutableList.of(
-                Pair.of(BlockLoots::new, LootContextParamSets.BLOCK)
-        );
-    }
 
-    public static class BlockLoots extends BlockLoot {
 
         @Override
-        public void addTables() {
+        public void generate() {
 
             getKnownBlocks().forEach(this::dropRaw);
 
@@ -121,12 +104,8 @@ public class LootTables extends LootTableProvider {
                     .collect(Collectors.toList());
 
         }
-    }
-        @Override
-        protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationtracker)
-        {
-            map.forEach((name, table) -> net.minecraft.world.level.storage.loot.LootTables.validate(validationtracker, name, table));
-        }
+
+
 
 
 }

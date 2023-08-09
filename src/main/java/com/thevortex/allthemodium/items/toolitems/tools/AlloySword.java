@@ -31,8 +31,6 @@ public class AlloySword extends SwordItem {
 
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
-    protected TranslatableContents getTooltip(String key){
-        return new TranslatableContents(key);
-    }
+
 
 }

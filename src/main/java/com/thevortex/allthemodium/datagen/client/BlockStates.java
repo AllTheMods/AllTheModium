@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 
 public class BlockStates extends BlockStateProvider {
     public BlockStates(DataGenerator generator, ExistingFileHelper fileHelper) {
-        super(generator, Reference.MOD_ID, fileHelper);
+        super(generator.getPackOutput(), Reference.MOD_ID, fileHelper);
     }
 
     @Override

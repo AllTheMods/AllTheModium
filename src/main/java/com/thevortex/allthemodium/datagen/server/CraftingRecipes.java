@@ -10,10 +10,7 @@ import net.allthemods.alltheores.datagen.builder.ShapedBlockBuilder;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.data.*;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -24,15 +21,15 @@ import java.util.function.Consumer;
 
 public class CraftingRecipes extends RecipeProvider {
     public CraftingRecipes(DataGenerator generatorIn) {
-        super(generatorIn);
+        super(generatorIn.getPackOutput());
     }
 
     private ShapedRecipeBuilder shaped(ItemLike provider, int integer) {
-        return ShapedRecipeBuilder.shaped(provider,integer)
+        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC,provider,integer)
                 .group(Reference.MOD_ID);
     }
     private ShapedRecipeBuilder shaped(ItemLike provider) {
-        return ShapedRecipeBuilder.shaped(provider)
+        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC,provider)
             .group(Reference.MOD_ID);
     }
 
@@ -42,21 +39,21 @@ public class CraftingRecipes extends RecipeProvider {
 
 
     @Override
-    protected void buildCraftingRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
 
-        ShapelessRecipeBuilder.shapeless(ModRegistry.RAW_ALLTHEMODIUM_BLOCK.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModRegistry.RAW_ALLTHEMODIUM_BLOCK.get())
             .group(Reference.MOD_ID)
             .requires(Ingredient.of(TagRegistry.RAW_ALLTHEMODIUM), 9)
             .unlockedBy("has_raw_allthemodium", hasTag(TagRegistry.RAW_ALLTHEMODIUM))
             .save(consumer);
 
-        ShapelessRecipeBuilder.shapeless(ModRegistry.RAW_VIBRANIUM_BLOCK.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModRegistry.RAW_VIBRANIUM_BLOCK.get())
             .group(Reference.MOD_ID)
             .requires(Ingredient.of(TagRegistry.RAW_VIBRANIUM), 9)
             .unlockedBy("has_raw_vibranium", hasTag(TagRegistry.RAW_VIBRANIUM))
             .save(consumer);
 
-        ShapelessRecipeBuilder.shapeless(ModRegistry.RAW_UNOBTAINIUM_BLOCK.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModRegistry.RAW_UNOBTAINIUM_BLOCK.get())
             .group(Reference.MOD_ID)
             .requires(Ingredient.of(TagRegistry.RAW_UNOBTAINIUM), 9)
             .unlockedBy("has_raw_unobtainium", hasTag(TagRegistry.RAW_UNOBTAINIUM))
