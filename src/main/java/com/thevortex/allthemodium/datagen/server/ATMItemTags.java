@@ -15,10 +15,10 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ItemTags extends ItemTagsProvider {
+public class ATMItemTags extends ItemTagsProvider {
 
 
-    public ItemTags(PackOutput packOutPut, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagsProvider.TagLookup<Block>> tagLookup, ExistingFileHelper existingFileHelper) {
+    public ATMItemTags(PackOutput packOutPut, CompletableFuture<HolderLookup.Provider> lookupProvider, CompletableFuture<TagsProvider.TagLookup<Block>> tagLookup, ExistingFileHelper existingFileHelper) {
         super(packOutPut, lookupProvider,tagLookup, Reference.MOD_ID, existingFileHelper);
     }
 
