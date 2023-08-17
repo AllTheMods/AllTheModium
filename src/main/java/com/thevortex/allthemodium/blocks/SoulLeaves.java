@@ -36,7 +36,7 @@ public class SoulLeaves extends LeavesBlock {
     private static int TICK_COUNT;
 
     public SoulLeaves(Properties p_54422_) {
-        super(p_54422_.randomTicks());
+        super(p_54422_.randomTicks().noCollission());
         this.registerDefaultState(this.stateDefinition.any().setValue(DISTANCE, Integer.valueOf(7)).setValue(PERSISTENT, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
 
     }

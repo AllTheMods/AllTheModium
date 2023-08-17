@@ -4,7 +4,9 @@ package com.thevortex.allthemodium;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.thevortex.allthemodium.registry.*;
+import com.thevortex.allthemodium.worldgen.structures.ATMStructures;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -53,8 +55,8 @@ public class AllTheModium
 	public static final ResourceLocation MINING_DIM_ID = new ResourceLocation(MOD_ID,"mining");
 	public static final ResourceLocation THE_OTHER_DIM_ID = new ResourceLocation(MOD_ID,"the_other");
 
-	//public static final ResourceKey<DimensionType> Mining_TYPE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, MINING_DIM_ID);
-	//public static final ResourceKey<DimensionType> THE_OTHER_TYPE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, THE_OTHER_DIM_ID);
+	public static final ResourceKey<DimensionType> Mining_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, MINING_DIM_ID);
+	public static final ResourceKey<DimensionType> THE_OTHER_TYPE = ResourceKey.create(Registries.DIMENSION_TYPE, THE_OTHER_DIM_ID);
 	//public static final RegistryKey<World> THE_BEYOND = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"the_beyond"));
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 	public static boolean ALLOW_TELEPORT_MINING = false;
@@ -82,9 +84,9 @@ public class AllTheModium
     	ModRegistry.CARVERS.register(modEventBus);
 		ModRegistry.BIOMES.register(modEventBus);
     	ATMCraftingSetup.REGISTRY.register(modEventBus);
-
+		ATMStructures.STRUCTURES.register(modEventBus);
 		ModRegistry.FEATURES.register(modEventBus);
-
+		ModRegistry.CREATIVE_TABS.register(modEventBus);
 		modEventBus.register(ModRegistry.class);
 		modEventBus.addListener(this::setup);
 

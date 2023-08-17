@@ -10,7 +10,9 @@ public class Reference {
 	public static final ResourceLocation ORETYPE2 = location("forge:ores/vibranium");
 	public static final ResourceLocation ORETYPE3 = location("forge:ores/unobtainium");
 	public static final String MOD_ID = "allthemodium";
-
+	public static String tab() {
+		return String.format("itemGroup.%s", MOD_ID);
+	}
 	public static ResourceLocation atm(String path) {
 		return new ResourceLocation(MOD_ID, path);
 	}

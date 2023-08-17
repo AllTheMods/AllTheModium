@@ -1,0 +1,9 @@
+{
+  "asset_name": "allthemodium",
+  "description": {
+    "color": "#ffef0e",
+    "translate": "trim_material.allthemodium.allthemodium"
+  },
+  "ingredient": "allthemodium:raw_allthemodium",
+  "item_model_index": 1.0
+}

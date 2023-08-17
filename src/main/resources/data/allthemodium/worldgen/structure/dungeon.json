@@ -1,7 +1,7 @@
 {
   "type": "allthemodium:dungeon",
   "start_pool": "allthemodium:dungeon/start_pool",
-  "size": 25,
+  "size": 15,
   "max_distance_from_center": 80,
   "biomes": "#allthemodium:has_structure/dungeon_biomes",
   "step": "underground_structures",

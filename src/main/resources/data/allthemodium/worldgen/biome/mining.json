@@ -1,7 +1,7 @@
 {
   "temperature": 1,
   "downfall": 0.0,
-  "precipitation": "none",
+  "has_precipitation": false,
   "temperature_modifier": "none",
   "category": "none",
   "effects": {

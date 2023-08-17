@@ -35,7 +35,7 @@ public class DemonicLeaves extends LeavesBlock {
     private static int TICK_COUNT;
 
     public DemonicLeaves(Properties p_54422_) {
-        super(p_54422_.randomTicks());
+        super(p_54422_.randomTicks().noCollission());
         this.registerDefaultState(this.stateDefinition.any().setValue(DISTANCE, Integer.valueOf(7)).setValue(PERSISTENT, Boolean.valueOf(false)).setValue(WATERLOGGED, Boolean.valueOf(false)));
 
     }

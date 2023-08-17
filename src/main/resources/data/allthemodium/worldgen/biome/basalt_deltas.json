@@ -90,7 +90,7 @@
   },
   "spawn_costs": {},
   "player_spawn_friendly": false,
-  "precipitation": "none",
+  "has_precipitation": false,
   "temperature": 0.9,
   "downfall": 0.0,
   "category": "none"

@@ -1,7 +1,7 @@
 {
   "type": "allthemodium:ancient_pyramid",
   "start_pool": "allthemodium:pyramid/start_pool",
-  "size": 25,
+  "size": 7,
   "max_distance_from_center": 80,
   "biomes": "#allthemodium:has_structure/ancient_pyramid_biomes",
   "step": "surface_structures",

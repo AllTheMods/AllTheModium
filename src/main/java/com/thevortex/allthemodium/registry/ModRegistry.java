@@ -1,7 +1,5 @@
 package com.thevortex.allthemodium.registry;
 
-import com.google.common.base.Preconditions;
-import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.blocks.*;
 import com.thevortex.allthemodium.blocks.Allthemodium_Block;
 import com.thevortex.allthemodium.blocks.Allthemodium_Ore;
@@ -18,51 +16,35 @@ import com.thevortex.allthemodium.material.AArmorMaterial;
 import com.thevortex.allthemodium.material.ToolTiers;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.ChatFormatting;
+import net.minecraft.Util;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.contents.TranslatableContents;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.grower.AbstractTreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockSetType;
-import net.minecraft.world.level.block.state.properties.WoodType;
-import net.minecraft.world.level.levelgen.carver.CanyonCarverConfiguration;
-import net.minecraft.world.level.levelgen.carver.CaveCarverConfiguration;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 
 import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.common.TierSortingRegistry;
-import net.minecraftforge.common.extensions.IForgeFluidState;
-import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fluids.FluidType;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.ObjectHolder;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.server.command.TextComponentHelper;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -88,6 +70,7 @@ public class ModRegistry {
 
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MOD_ID);
 
+	public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Reference.MOD_ID);
 
 
 	public static final DeferredRegister<BlockEntityType<?>> ENTITY = DeferredRegister
@@ -104,7 +87,8 @@ public class ModRegistry {
 
 		// BIOMES
 
-	
+	RegistryObject<Biome> MINING = BIOMES.register("mining", () -> ATMBiomes.mining());
+	//
 
 
 
@@ -563,11 +547,24 @@ public class ModRegistry {
 	public static final RegistryObject<Item> UV_ALLOY_ITEM = ITEMS.register("unobtainium_vibranium_alloy_block", () -> new BlockItem(UV_ALLOY.get(),new Item.Properties()));
 	public static final RegistryObject<Item> VA_ALLOY_ITEM = ITEMS.register("vibranium_allthemodium_alloy_block", () -> new BlockItem(VA_ALLOY.get(),new Item.Properties()));
 
+	public static final RegistryObject<Item> ATM_SMITHING = ITEMS.register("allthemodium_smithing_template", () -> new Item(new Item.Properties()));
+
+	public static final RegistryObject<Item> VIB_SMITHING = ITEMS.register("vibranium_smithing_template", () -> new Item(new Item.Properties()));
+
+	public static final RegistryObject<Item> UNO_SMITHING = ITEMS.register("unobtainium_smithing_template", () -> new Item(new Item.Properties()));
 
 	public static final RegistryObject<Item> PIGLICH_HEART = ITEMS.register("piglich_heart", () -> new PiglichHeart(new Item.Properties()));
 	public static final RegistryObject<EntityType<PiglichEntity>> PIGLICH = createMonsterEntity("piglich",PiglichEntity::new,0.6F,3.0F,0x000000,0xebe834);
 
-
+	public static final RegistryObject<CreativeModeTab> CREATIVE_TAB = CREATIVE_TABS.register("creative_tab", () -> CreativeModeTab.builder()
+			.title(Component.translatable(Reference.tab()))
+			.icon(() -> RAW_ALLTHEMODIUM.get().getDefaultInstance())
+			.displayItems((parameters, output) -> ITEMS.getEntries().stream()
+					.map(RegistryObject::get)
+					.map(Item::getDefaultInstance)
+					.forEach(output::accept))
+			.build()
+	);
 
 
 
