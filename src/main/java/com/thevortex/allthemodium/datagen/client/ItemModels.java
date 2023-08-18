@@ -38,6 +38,9 @@ public class ItemModels extends ItemModelProvider {
 
             }});
 
+        basicItem(ModRegistry.ATM_SMITHING.get());
+        basicItem(ModRegistry.VIB_SMITHING.get());
+        basicItem(ModRegistry.UNO_SMITHING.get());
 
         stairs("ancient_wooden_stairs",
                 new ResourceLocation(Reference.MOD_ID,"block/ancient_planks"),

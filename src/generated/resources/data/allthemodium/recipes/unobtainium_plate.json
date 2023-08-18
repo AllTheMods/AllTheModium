@@ -1,20 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "alltheores",
+  "category": "misc",
+  "group": "allthemodium",
   "key": {
     "a": {
       "tag": "forge:ingots/unobtainium"
-    },
-    "h": {
-      "tag": "alltheores:ore_hammers"
     }
   },
   "pattern": [
-    "ha ",
-    "a  ",
+    "aa ",
+    "aa ",
     "   "
   ],
   "result": {
     "item": "allthemodium:unobtainium_plate"
-  }
+  },
+  "show_notification": true
 }

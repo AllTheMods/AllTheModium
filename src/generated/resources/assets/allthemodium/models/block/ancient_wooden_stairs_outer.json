@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/outer_stairs",
   "textures": {
-    "side": "allthemodium:block/ancient_planks",
     "bottom": "allthemodium:block/ancient_planks",
+    "side": "allthemodium:block/ancient_planks",
     "top": "allthemodium:block/ancient_planks"
   }
 }

@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "group": "allthemodium",
   "key": {
     "a": {
@@ -14,5 +15,6 @@
   "result": {
     "count": 6,
     "item": "allthemodium:ancient_stone_brick_wall"
-  }
+  },
+  "show_notification": true
 }

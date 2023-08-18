@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "group": "allthemodium",
   "key": {
     "a": {
@@ -14,5 +15,6 @@
   "result": {
     "count": 3,
     "item": "allthemodium:demonic_door"
-  }
+  },
+  "show_notification": true
 }

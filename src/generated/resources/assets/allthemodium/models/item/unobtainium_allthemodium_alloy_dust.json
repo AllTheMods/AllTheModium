@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "allthemodium:item/unobtainium_allthemodium_alloy_dust"
+  }
+}

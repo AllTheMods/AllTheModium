@@ -1,16 +1,18 @@
 {
-  "replace": false,
   "values": [
     "allthemodium:ancient_planks",
     "allthemodium:ancient_log_0",
     "allthemodium:ancient_log_1",
     "allthemodium:ancient_log_2",
+    "allthemodium:stripped_ancient_log",
     "allthemodium:demonic_planks",
     "allthemodium:demonic_log",
+    "allthemodium:stripped_demonic_log",
     "allthemodium:soul_planks",
     "allthemodium:soul_log",
     "allthemodium:soul_log_0",
     "allthemodium:soul_log_1",
-    "allthemodium:soul_log_2"
+    "allthemodium:soul_log_2",
+    "allthemodium:stripped_soul_log"
   ]
 }

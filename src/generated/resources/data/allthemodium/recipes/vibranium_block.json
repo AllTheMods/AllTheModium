@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "alltheores",
+  "category": "misc",
+  "group": "allthemodium",
   "key": {
     "a": {
       "tag": "forge:ingots/vibranium"
@@ -13,5 +14,6 @@
   ],
   "result": {
     "item": "allthemodium:vibranium_block"
-  }
+  },
+  "show_notification": true
 }

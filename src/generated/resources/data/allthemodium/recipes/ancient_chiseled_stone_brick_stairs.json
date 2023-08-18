@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "group": "allthemodium",
   "key": {
     "a": {
@@ -14,5 +15,6 @@
   "result": {
     "count": 4,
     "item": "allthemodium:ancient_chiseled_stone_brick_stairs"
-  }
+  },
+  "show_notification": true
 }

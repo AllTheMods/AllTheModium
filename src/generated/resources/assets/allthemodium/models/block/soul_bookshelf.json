@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/cube_column",
   "textures": {
-    "side": "allthemodium:block/soul_bookshelf",
-    "end": "allthemodium:block/soul_bookshelf_top"
+    "end": "allthemodium:block/soul_bookshelf_top",
+    "side": "allthemodium:block/soul_bookshelf"
   }
 }

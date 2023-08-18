@@ -1,5 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "group": "allthemodium",
   "key": {
     "a": {
@@ -16,5 +17,6 @@
   ],
   "result": {
     "item": "allthemodium:soul_bookshelf"
-  }
+  },
+  "show_notification": true
 }

@@ -1,7 +1,5 @@
 {
-  "replace": false,
   "values": [
-    "allthemodium:allthemodium_sword",
     "allthemodium:allthemodium_pickaxe",
     "allthemodium:allthemodium_axe",
     "allthemodium:allthemodium_shovel",

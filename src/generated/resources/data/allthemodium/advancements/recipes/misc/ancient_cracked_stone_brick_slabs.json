@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_TagKey[minecraft:block / allthemodium:ancient_stone]_block": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "allthemodium:ancient_cracked_stone_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "allthemodium:ancient_cracked_stone_brick_slabs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_TagKey[minecraft:block / allthemodium:ancient_stone]_block",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "allthemodium:ancient_cracked_stone_brick_slabs"
+    ]
+  },
+  "sends_telemetry_event": false
+}

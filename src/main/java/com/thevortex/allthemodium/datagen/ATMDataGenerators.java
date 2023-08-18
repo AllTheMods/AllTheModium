@@ -3,6 +3,7 @@ package com.thevortex.allthemodium.datagen;
 import com.thevortex.allthemodium.datagen.client.BlockStates;
 import com.thevortex.allthemodium.datagen.client.ItemModels;
 import com.thevortex.allthemodium.datagen.server.*;
+import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
@@ -16,7 +17,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, modid = Reference.MOD_ID)
 public final class ATMDataGenerators {
 
     private ATMDataGenerators() {

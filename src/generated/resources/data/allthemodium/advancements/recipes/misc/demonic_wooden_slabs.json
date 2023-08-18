@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_TagKey[minecraft:block / allthemodium:ancient_stone]_block": {
+      "conditions": {
+        "items": [
+          {
+            "tag": "allthemodium:demonic_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "allthemodium:demonic_wooden_slabs"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_TagKey[minecraft:block / allthemodium:ancient_stone]_block",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "allthemodium:demonic_wooden_slabs"
+    ]
+  },
+  "sends_telemetry_event": false
+}
