@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "allthemodium:allthemodium_ingot"
+  },
+  "base": {
+    "item": "minecraft:netherite_sword"
+  },
+  "result": {
+    "item": "allthemodium:allthemodium_sword"
+  },
+  "template": {
+    "item": "allthemodium:allthemodium_upgrade_smithing_template"
+  }
+}

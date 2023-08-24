@@ -3,7 +3,6 @@ package com.thevortex.allthemodium.datagen.server;
 
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
-import com.thevortex.allthemodium.registry.ItemRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -54,22 +53,22 @@ public class ATMItemTags extends ItemTagsProvider {
         tag(TagRegistry.FORGE_HOES).add(ModRegistry.ALLTHEMODIUM_HOE.get());
 
         tag(TagRegistry.FORGE_SWORDS).add(ModRegistry.ALLTHEMODIUM_SWORD.get());
-        tag(TagRegistry.FORGE_SWORDS).add(ItemRegistry.ATM_ALLOY_SWORD.get());
+        tag(TagRegistry.FORGE_SWORDS).add(ModRegistry.ATM_ALLOY_SWORD.get());
 
 
-        tag(TagRegistry.FORGE_PICKAXES).add(ItemRegistry.ATM_ALLOY_PICK.get());
-        tag(TagRegistry.FORGE_PICKAXES).add(ItemRegistry.ATM_ALLOY_PAXEL.get());
+        tag(TagRegistry.FORGE_PICKAXES).add(ModRegistry.ATM_ALLOY_PICK.get());
+        tag(TagRegistry.FORGE_PICKAXES).add(ModRegistry.ATM_ALLOY_PAXEL.get());
 
-        tag(TagRegistry.FORGE_AXES).add(ItemRegistry.ATM_ALLOY_AXE.get());
+        tag(TagRegistry.FORGE_AXES).add(ModRegistry.ATM_ALLOY_AXE.get());
 
-        tag(TagRegistry.FORGE_AXES).add(ItemRegistry.ATM_ALLOY_PAXEL.get());
+        tag(TagRegistry.FORGE_AXES).add(ModRegistry.ATM_ALLOY_PAXEL.get());
 
-        tag(TagRegistry.FORGE_SHOVELS).add(ItemRegistry.ATM_ALLOY_SHOVEL.get());
-        tag(TagRegistry.FORGE_SHOVELS).add(ItemRegistry.ATM_ALLOY_PAXEL.get());
+        tag(TagRegistry.FORGE_SHOVELS).add(ModRegistry.ATM_ALLOY_SHOVEL.get());
+        tag(TagRegistry.FORGE_SHOVELS).add(ModRegistry.ATM_ALLOY_PAXEL.get());
 
-        tag(Tags.Items.SHEARS).add(ItemRegistry.ATM_ALLOY_PAXEL.get());
+        tag(Tags.Items.SHEARS).add(ModRegistry.ATM_ALLOY_PAXEL.get());
 
-        tag(TagRegistry.FORGE_HOES).add(ItemRegistry.ATM_ALLOY_PAXEL.get());
+        tag(TagRegistry.FORGE_HOES).add(ModRegistry.ATM_ALLOY_PAXEL.get());
 
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_PICKAXE.get());
 

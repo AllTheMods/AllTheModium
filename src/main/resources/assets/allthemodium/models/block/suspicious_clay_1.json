@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "allthemodium:block/suspicious_clay_1"
+  }
+}

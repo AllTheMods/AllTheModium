@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "allthemodium:unobtainium_ingot"
+  },
+  "base": {
+    "item": "allthemodium:vibranium_axe"
+  },
+  "result": {
+    "item": "allthemodium:unobtainium_axe"
+  },
+  "template": {
+    "item": "allthemodium:unobtainium_upgrade_smithing_template"
+  }
+}

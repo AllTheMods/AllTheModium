@@ -27,6 +27,10 @@ public class TagRegistry {
     public static final TagKey<Block> OTHER_PROTECTION = BlockTags.create(Reference.atm("blocks/blocklist"));
 
     public static final TagKey<Block> NEEDS_ALLTHEMODIUM_TOOL = BlockTags.create(Reference.forge("needs_allthemodium_tool"));
+
+    public static final TagKey<Block> NEEDS_VIBRANIUM_TOOL = BlockTags.create(Reference.forge("needs_vibranium_tool"));
+
+    public static final TagKey<Block> NEEDS_UNOBTAINIUM_TOOL = BlockTags.create(Reference.forge("needs_unobtainium_tool"));
     public static final TagKey<Block> NEEDS_ALLOY_TOOL = BlockTags.create(Reference.forge("needs_allthemodiumalloy_tool"));
 
     public static final TagKey<Item> FORGE_SWORDS = ItemTags.create(Reference.forge("tools/swords"));

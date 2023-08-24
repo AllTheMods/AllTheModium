@@ -12,6 +12,7 @@ import com.thevortex.allthemodium.entity.PiglichEntity;
 import com.thevortex.allthemodium.init.ModFoods;
 import com.thevortex.allthemodium.items.*;
 import com.thevortex.allthemodium.items.toolitems.armor.*;
+import com.thevortex.allthemodium.items.toolitems.tools.*;
 import com.thevortex.allthemodium.material.AArmorMaterial;
 import com.thevortex.allthemodium.material.ToolTiers;
 import com.thevortex.allthemodium.reference.Reference;
@@ -104,8 +105,17 @@ public class ModRegistry {
 	public static RegistryObject<ArmorItem> ALLTHEMODIUM_CHESTPLATE = ITEMS.register("allthemodium_chestplate", () -> (ArmorItem) new Allthemodium_Chestplate(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.CHEST, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
 	public static RegistryObject<ArmorItem> ALLTHEMODIUM_HELMET = ITEMS.register("allthemodium_helmet", () -> (ArmorItem) new Allthemodium_Helmet(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.HEAD, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
 
+	public static RegistryObject<ArmorItem> VIBRANIUM_BOOTS = ITEMS.register("vibranium_boots", () -> (ArmorItem) new Allthemodium_Boots(AArmorMaterial.VIBRANIUM, EquipmentSlot.FEET, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+	public static RegistryObject<ArmorItem> VIBRANIUM_LEGGINGS = ITEMS.register("vibranium_leggings", () ->  new ArmorItem(AArmorMaterial.VIBRANIUM, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+	public static RegistryObject<ArmorItem> VIBRANIUM_CHESTPLATE = ITEMS.register("vibranium_chestplate", () -> (ArmorItem) new Allthemodium_Chestplate(AArmorMaterial.VIBRANIUM, EquipmentSlot.CHEST, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+	public static RegistryObject<ArmorItem> VIBRANIUM_HELMET = ITEMS.register("vibranium_helmet", () ->  new ArmorItem(AArmorMaterial.VIBRANIUM, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
 
-    //Volcano
+	public static RegistryObject<ArmorItem> UNOBTAINIUM_BOOTS = ITEMS.register("unobtainium_boots", () -> (ArmorItem) new Allthemodium_Boots(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.FEET, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+	public static RegistryObject<ArmorItem> UNOBTAINIUM_LEGGINGS = ITEMS.register("unobtainium_leggings", () ->  new ArmorItem(AArmorMaterial.UNOBTAINIUM, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+	public static RegistryObject<ArmorItem> UNOBTAINIUM_CHESTPLATE = ITEMS.register("unobtainium_chestplate", () -> (ArmorItem) new Allthemodium_Chestplate(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.CHEST, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+	public static RegistryObject<ArmorItem> UNOBTAINIUM_HELMET = ITEMS.register("unobtainium_helmet", () ->  new ArmorItem(AArmorMaterial.UNOBTAINIUM, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+
+	//Volcano
 
 
 
@@ -539,6 +549,299 @@ public class ModRegistry {
 		}
 	});
 
+	public static final RegistryObject<SwordItem> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword",() -> new SwordItem(ToolTiers.VIBRANIUM_TIER,10,2.2f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+
+	});
+	public static final RegistryObject<PickaxeItem> VIBRANIUM_PICKAXE = ITEMS.register("vibranium_pickaxe",() -> new PickaxeItem(ToolTiers.VIBRANIUM_TIER,8,2.0f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) return speed *2.0f;
+			return super.getDestroySpeed(stack, state);
+		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			if (state.is(ToolTiers.VIBRANIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			return false;
+		}
+	});
+
+	public static final RegistryObject<AxeItem> VIBRANIUM_AXE = ITEMS.register("vibranium_axe",() -> new AxeItem(ToolTiers.VIBRANIUM_TIER,6,1.0f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_AXE)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_AXE))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			if (state.is(ToolTiers.VIBRANIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			return false;
+		}
+	});
+
+	public static final RegistryObject<ShovelItem> VIBRANIUM_SHOVEL = ITEMS.register("vibranium_shovel",() -> new ShovelItem(ToolTiers.VIBRANIUM_TIER,1,1.5f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			if (state.is(ToolTiers.VIBRANIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			return false;
+		}
+	});
+
+	public static final RegistryObject<HoeItem> VIBRANIUM_HOE = ITEMS.register("vibranium_hoe",() -> new HoeItem(ToolTiers.VIBRANIUM_TIER,0,1.5f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_HOE)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_HOE))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			if (state.is(ToolTiers.VIBRANIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.VIBRANIUM_TIER, state);
+			return false;
+		}
+	});
+	public static final RegistryObject<SwordItem> UNOBTAINIUM_SWORD = ITEMS.register("unobtainium_sword",() -> new SwordItem(ToolTiers.UNOBTAINIUM_TIER,10,2.2f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+
+	});
+	public static final RegistryObject<PickaxeItem> UNOBTAINIUM_PICKAXE = ITEMS.register("unobtainium_pickaxe",() -> new PickaxeItem(ToolTiers.UNOBTAINIUM_TIER,16,4.0f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) return speed *8.0f;
+			return super.getDestroySpeed(stack, state);
+		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_PICKAXE))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			if (state.is(ToolTiers.UNOBTAINIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			return false;
+		}
+	});
+	public static final RegistryObject<AxeItem> UNOBTAINIUM_AXE = ITEMS.register("unobtainium_axe",() -> new AxeItem(ToolTiers.UNOBTAINIUM_TIER,6,1.0f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_AXE)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_AXE))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			if (state.is(ToolTiers.UNOBTAINIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			return false;
+		}
+	});
+
+	public static final RegistryObject<ShovelItem> UNOBTAINIUM_SHOVEL = ITEMS.register("unobtainium_shovel",() -> new ShovelItem(ToolTiers.UNOBTAINIUM_TIER,1,1.5f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_SHOVEL))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			if (state.is(ToolTiers.UNOBTAINIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			return false;
+		}
+	});
+
+	public static final RegistryObject<HoeItem> UNOBTAINIUM_HOE = ITEMS.register("unobtainium_hoe",() -> new HoeItem(ToolTiers.UNOBTAINIUM_TIER,0,1.5f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+		@Override
+		public float getDestroySpeed(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_HOE)) return speed;
+			return super.getDestroySpeed(stack, state);
+		}
+		@Override
+		public boolean isEnchantable(ItemStack stack) {
+			return true;
+		}
+		@Override
+		public boolean canBeDepleted() {
+			return false;
+		}
+		@Override
+		public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
+
+			super.appendHoverText(stack, worldIn, tooltip, flagIn);
+		}
+
+		@Override
+		public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
+		{
+			if (state.is(BlockTags.MINEABLE_WITH_HOE))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			if (state.is(ToolTiers.UNOBTAINIUM_TOOL_TAG))
+				return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.UNOBTAINIUM_TIER, state);
+			return false;
+		}
+	});
 	public static final RegistryObject<Block> UA_ALLOY = BLOCKS.register("unobtainium_allthemodium_alloy_block", UAAlloy_Block::new);
 	public static final RegistryObject<Block> UV_ALLOY = BLOCKS.register("unobtainium_vibranium_alloy_block", UVAlloy_Block::new);
 	public static final RegistryObject<Block> VA_ALLOY = BLOCKS.register("vibranium_allthemodium_alloy_block", VAAlloy_Block::new);
@@ -547,11 +850,19 @@ public class ModRegistry {
 	public static final RegistryObject<Item> UV_ALLOY_ITEM = ITEMS.register("unobtainium_vibranium_alloy_block", () -> new BlockItem(UV_ALLOY.get(),new Item.Properties()));
 	public static final RegistryObject<Item> VA_ALLOY_ITEM = ITEMS.register("vibranium_allthemodium_alloy_block", () -> new BlockItem(VA_ALLOY.get(),new Item.Properties()));
 
-	public static final RegistryObject<Item> ATM_SMITHING = ITEMS.register("allthemodium_smithing_template", () -> new Item(new Item.Properties()));
 
-	public static final RegistryObject<Item> VIB_SMITHING = ITEMS.register("vibranium_smithing_template", () -> new Item(new Item.Properties()));
+	public static final RegistryObject<SwordItem> ATM_ALLOY_SWORD = ITEMS.register("alloy_sword", () -> new AlloySword(ToolTiers.ALLOY_TIER,35,5.0F,new Item.Properties().fireResistant().stacksTo(1).rarity(Rarity.EPIC)));
+	public static final RegistryObject<AxeItem> ATM_ALLOY_AXE = ITEMS.register("alloy_axe", () -> new AlloyAxe(ToolTiers.ALLOY_TIER,39,5.0F,new Item.Properties().fireResistant().stacksTo(1).rarity(Rarity.EPIC)));
+	public static final RegistryObject<PickaxeItem> ATM_ALLOY_PICK = ITEMS.register("alloy_pick", () -> new AlloyPick(ToolTiers.ALLOY_TIER,15,5.0F,new Item.Properties().fireResistant().stacksTo(1).rarity(Rarity.EPIC)));
+	public static final RegistryObject<ShovelItem> ATM_ALLOY_SHOVEL = ITEMS.register("alloy_shovel", () -> new AlloyShovel(ToolTiers.ALLOY_TIER,13,5.0F,new Item.Properties().fireResistant().stacksTo(1).rarity(Rarity.EPIC)));
+	public static final RegistryObject<DiggerItem> ATM_ALLOY_PAXEL = ITEMS.register("alloy_paxel", () -> new AlloyPaxel(33,5.0F,ToolTiers.ALLOY_TIER, TagRegistry.PAXEL_TARGETS,new Item.Properties().fireResistant().stacksTo(1).rarity(Rarity.EPIC)));
 
-	public static final RegistryObject<Item> UNO_SMITHING = ITEMS.register("unobtainium_smithing_template", () -> new Item(new Item.Properties()));
+
+	public static final RegistryObject<Item> ATM_SMITHING = ITEMS.register("allthemodium_upgrade_smithing_template", () -> ATMSmithingItem.createAllthemodiumUpgradeTemplate());
+
+	public static final RegistryObject<Item> VIB_SMITHING = ITEMS.register("vibranium_upgrade_smithing_template", () -> ATMSmithingItem.createVibraniumUpgradeTemplate());
+
+	public static final RegistryObject<Item> UNO_SMITHING = ITEMS.register("unobtainium_upgrade_smithing_template", () -> ATMSmithingItem.createUnobtainiumUpgradeTemplate());
 
 	public static final RegistryObject<Item> PIGLICH_HEART = ITEMS.register("piglich_heart", () -> new PiglichHeart(new Item.Properties()));
 	public static final RegistryObject<EntityType<PiglichEntity>> PIGLICH = createMonsterEntity("piglich",PiglichEntity::new,0.6F,3.0F,0x000000,0xebe834);
