@@ -51,7 +51,7 @@
           {
             "block_entity_modifier": {
               "type": "minecraft:append_loot",
-              "loot_table": "minecraft:archaeology/trail_ruins_common"
+              "loot_table": "allthemodium:arch"
             },
             "input_predicate": {
               "predicate_type": "minecraft:tag_match",
@@ -61,7 +61,7 @@
               "predicate_type": "minecraft:always_true"
             },
             "output_state": {
-              "Name": "minecraft:suspicious_gravel",
+              "Name": "allthemodium:suspicious_clay",
               "Properties": {
                 "dusted": "0"
               }
@@ -69,7 +69,7 @@
           }
         ]
       },
-      "limit": 6,
+      "limit": 1,
       "processor_type": "minecraft:capped"
     },
     {

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "dusted=0": {
+      "model": "allthemodium:block/suspicious_soul_sand_0"
+    },
+    "dusted=1": {
+      "model": "allthemodium:block/suspicious_soul_sand_1"
+    },
+    "dusted=2": {
+      "model": "allthemodium:block/suspicious_soul_sand_2"
+    },
+    "dusted=3": {
+      "model": "allthemodium:block/suspicious_soul_sand_3"
+    }
+  }
+}
