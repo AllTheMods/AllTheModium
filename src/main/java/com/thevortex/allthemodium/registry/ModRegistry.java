@@ -8,6 +8,7 @@ import com.thevortex.allthemodium.blocks.Unobtainium_Block;
 import com.thevortex.allthemodium.blocks.Unobtainium_Ore;
 import com.thevortex.allthemodium.blocks.Vibranium_Block;
 import com.thevortex.allthemodium.blocks.Vibranium_Ore;
+import com.thevortex.allthemodium.blocks.entity.ATMBrushableBlockEntity;
 import com.thevortex.allthemodium.entity.PiglichEntity;
 import com.thevortex.allthemodium.init.ModFoods;
 import com.thevortex.allthemodium.items.*;
@@ -17,11 +18,11 @@ import com.thevortex.allthemodium.material.AArmorMaterial;
 import com.thevortex.allthemodium.material.ToolTiers;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.ChatFormatting;
-import net.minecraft.Util;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -32,12 +33,16 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.BrushableBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.feature.Feature;
 
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.common.TierSortingRegistry;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -347,6 +352,18 @@ public class ModRegistry {
 	public static final RegistryObject<Item> RAW_ALLTHEMODIUM = ITEMS.register("raw_allthemodium", () -> new RawOre(new Item.Properties()));
 	public static final RegistryObject<Item> RAW_VIBRANIUM = ITEMS.register("raw_vibranium", () -> new RawOre(new Item.Properties()));
 	public static final RegistryObject<Item> RAW_UNOBTAINIUM = ITEMS.register("raw_unobtainium", () -> new RawOre(new Item.Properties()));
+
+	public static final RegistryObject<Block> SUS_CLAY = BLOCKS.register("suspicious_clay", () -> new ATMBrushableBlock(Blocks.CLAY, BlockBehaviour.Properties.of().mapColor(MapColor.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
+	public static final RegistryObject<Block> SUS_SOUL_SAND = BLOCKS.register("suspicious_soul_sand", () -> new ATMBrushableBlock(Blocks.SOUL_SAND, BlockBehaviour.Properties.of().mapColor(MapColor.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
+
+	public static final RegistryObject<Item> SUS_CLAY_ITEM = ITEMS.register("suspicious_clay", () -> new BlockItem(SUS_CLAY.get(), new Item.Properties()));
+	public static final RegistryObject<Item> SUS_SOUL_SAND_ITEM = ITEMS.register("suspicious_soul_sand", () -> new BlockItem(SUS_SOUL_SAND.get(), new Item.Properties()));
+	public static final RegistryObject<BlockEntityType<ATMBrushableBlockEntity>> BRUSHABLE_BLOCK = ENTITY.register("brushable_block", () ->
+			BlockEntityType.Builder.of(ATMBrushableBlockEntity::new,
+					SUS_CLAY.get(),
+					SUS_SOUL_SAND.get()
+			).build(null)
+	);
 
 	public static final RegistryObject<Item> ALLTHEMODIUM_INGOT = ITEMS.register("allthemodium_ingot", () -> new Ingot(new Item.Properties()));
 	public static final RegistryObject<Item> VIBRANIUM_INGOT = ITEMS.register("vibranium_ingot", () -> new Ingot(new Item.Properties()));

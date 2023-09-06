@@ -80,6 +80,7 @@ public class AllTheModium
 		ItemRegistry.ITEMS.register(modEventBus);
     	ModRegistry.ITEMS.register(modEventBus);
     	ModRegistry.ENTITIES.register(modEventBus);
+    	ModRegistry.ENTITY.register(modEventBus);
 
     	ModRegistry.CARVERS.register(modEventBus);
 		ModRegistry.BIOMES.register(modEventBus);
