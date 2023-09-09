@@ -168,6 +168,7 @@ dependencies {
 
 //    implementation fg.deobf("curse.maven:alltheores-405593:4590570")
     implementation fg.deobf("net.allthemods.alltheores:AllTheOres:2.0.4")
+    implementation fg.deobf("curse.maven:${tweaks}")
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")

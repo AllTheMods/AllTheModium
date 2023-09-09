@@ -19,5 +19,11 @@
         "type": "forge:mod_loaded",
         "modid": "mekanism"
     }
-]
+],
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }

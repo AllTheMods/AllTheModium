@@ -8,5 +8,11 @@
   "output": {
     "count": 12,
     "item": "allthemodium:vibranium_dust"
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }

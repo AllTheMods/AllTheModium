@@ -2,5 +2,11 @@
   "type": "forge:add_features",
   "biomes": "#allthemodium:mining_features/mining_biomes",
   "features": "alltheores:ore_nickel_placed",
-  "step": "underground_ores"
+  "step": "underground_ores",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "alltheores"
+    }
+  ]
 }

@@ -12,5 +12,11 @@
   "output": {
     "count": 18,
     "item": "allthemodium:allthemodium_clump"
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }

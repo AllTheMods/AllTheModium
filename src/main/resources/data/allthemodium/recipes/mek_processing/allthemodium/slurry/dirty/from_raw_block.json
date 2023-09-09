@@ -13,5 +13,11 @@
     "amount": 6000,
     "chemicalType": "slurry",
     "slurry": "allthemodium:dirty_allthemodium"
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }

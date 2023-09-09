@@ -6,6 +6,7 @@ import java.util.List;
 import com.thevortex.allthemodium.AllTheModium;
 
 import com.thevortex.allthemodium.reference.Reference;
+import com.thevortex.allthemodium.reference.TweakProxy;
 import com.thevortex.allthemodium.registry.LevelRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
@@ -71,7 +72,7 @@ public class TeleportPad extends Block {
 	}
 
 	public void transferPlayer(ServerPlayer player, BlockPos pos) {
-		int config = 0;
+		int config = TweakProxy.packMode();
 		if (player.level().dimension().equals(LevelRegistry.Mining)) {
 			ServerLevel targetWorld = player.server.getLevel(AllTheModium.OverWorld);
 			int y = 256;
@@ -155,7 +156,7 @@ public class TeleportPad extends Block {
 			}
 		}
 
-		else if (player.level().dimension().equals(AllTheModium.OverWorld) && (config != 2)) {
+		else if (player.level().dimension().equals(AllTheModium.OverWorld) && (config != 5)) {
 			ServerLevel targetWorld = player.server.getLevel(LevelRegistry.Mining);
 			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), 253, Math.round(pos.getZ()));
 			if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {

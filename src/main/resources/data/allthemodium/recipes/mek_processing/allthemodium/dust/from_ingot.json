@@ -7,5 +7,11 @@
   },
   "output": {
     "item": "allthemodium:allthemodium_dust"
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }

@@ -9,5 +9,11 @@
   "output": {
     "item": "allthemodium:allthemodium_dust",
     "count": 4
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }

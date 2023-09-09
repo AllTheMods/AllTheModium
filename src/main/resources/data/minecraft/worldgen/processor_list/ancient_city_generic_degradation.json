@@ -1,11 +1,16 @@
 {
   "processors": [
     {
+      "integrity": 0.95,
+      "processor_type": "minecraft:block_rot",
+      "rottable_blocks": "#minecraft:ancient_city_replaceable"
+    },
+    {
       "processor_type": "minecraft:rule",
       "rules": [
         {
           "input_predicate": {
-            "block": "minecraft:polished_blackstone_bricks",
+            "block": "minecraft:deepslate_bricks",
             "predicate_type": "minecraft:random_block_match",
             "probability": 0.3
           },
@@ -13,14 +18,27 @@
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:cracked_polished_blackstone_bricks"
+            "Name": "minecraft:cracked_deepslate_bricks"
           }
         },
         {
           "input_predicate": {
-            "block": "minecraft:blackstone",
+            "block": "minecraft:deepslate_tiles",
             "predicate_type": "minecraft:random_block_match",
-            "probability": 1.0E-4
+            "probability": 0.3
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:cracked_deepslate_tiles"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:soul_lantern",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.05
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
@@ -30,47 +48,30 @@
           }
         },
         {
+          "block_entity_modifier": {
+            "type": "minecraft:append_loot",
+            "loot_table": "allthemodium:arch"
+          },
           "input_predicate": {
-            "block": "minecraft:gold_block",
+            "block": "minecraft:polished_basalt",
             "predicate_type": "minecraft:random_block_match",
-            "probability": 0.3
+            "probability": 0.009
           },
           "location_predicate": {
             "predicate_type": "minecraft:always_true"
           },
           "output_state": {
-            "Name": "minecraft:cracked_polished_blackstone_bricks"
-          }
-        },
-        {
-          "input_predicate": {
-            "block": "minecraft:gilded_blackstone",
-            "predicate_type": "minecraft:random_block_match",
-            "probability": 0.5
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:blackstone"
-          }
-        },
-        {
-          "input_predicate": {
-            "block": "minecraft:blackstone",
-            "predicate_type": "minecraft:random_block_match",
-            "probability": 0.01
-          },
-          "location_predicate": {
-            "predicate_type": "minecraft:always_true"
-          },
-          "output_state": {
-            "Name": "minecraft:gilded_blackstone"
+            "Name": "allthemodium:suspicious_clay",
+            "Properties": {
+              "dusted": "0"
+            }
           }
         }
-
       ]
+    },
+    {
+      "processor_type": "minecraft:protected_blocks",
+      "value": "#minecraft:features_cannot_replace"
     }
   ]
-
 }

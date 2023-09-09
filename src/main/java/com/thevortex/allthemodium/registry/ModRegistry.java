@@ -353,15 +353,13 @@ public class ModRegistry {
 	public static final RegistryObject<Item> RAW_VIBRANIUM = ITEMS.register("raw_vibranium", () -> new RawOre(new Item.Properties()));
 	public static final RegistryObject<Item> RAW_UNOBTAINIUM = ITEMS.register("raw_unobtainium", () -> new RawOre(new Item.Properties()));
 
-	public static final RegistryObject<Block> SUS_CLAY = BLOCKS.register("suspicious_clay", () -> new ATMBrushableBlock(Blocks.CLAY, BlockBehaviour.Properties.of().mapColor(MapColor.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
-	public static final RegistryObject<Block> SUS_SOUL_SAND = BLOCKS.register("suspicious_soul_sand", () -> new ATMBrushableBlock(Blocks.SOUL_SAND, BlockBehaviour.Properties.of().mapColor(MapColor.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
 
-	public static final RegistryObject<Item> SUS_CLAY_ITEM = ITEMS.register("suspicious_clay", () -> new BlockItem(SUS_CLAY.get(), new Item.Properties()));
-	public static final RegistryObject<Item> SUS_SOUL_SAND_ITEM = ITEMS.register("suspicious_soul_sand", () -> new BlockItem(SUS_SOUL_SAND.get(), new Item.Properties()));
+	public static final RegistryObject<Item> SUS_CLAY_ITEM = ITEMS.register("suspicious_clay", () -> new BlockItem(BlockRegistry.SUS_CLAY.get(), new Item.Properties()));
+	public static final RegistryObject<Item> SUS_SOUL_SAND_ITEM = ITEMS.register("suspicious_soul_sand", () -> new BlockItem(BlockRegistry.SUS_SOUL_SAND.get(), new Item.Properties()));
 	public static final RegistryObject<BlockEntityType<ATMBrushableBlockEntity>> BRUSHABLE_BLOCK = ENTITY.register("brushable_block", () ->
 			BlockEntityType.Builder.of(ATMBrushableBlockEntity::new,
-					SUS_CLAY.get(),
-					SUS_SOUL_SAND.get()
+					BlockRegistry.SUS_CLAY.get(),
+					BlockRegistry.SUS_SOUL_SAND.get()
 			).build(null)
 	);
 

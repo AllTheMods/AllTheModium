@@ -13,5 +13,11 @@
   "output": {
     "item": "allthemodium:allthemodium_shard",
     "count": 8
-  }
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "mekanism"
+    }
+  ]
 }
