@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "allthemodium:suspicious_clay"
+          "name": "allthemodium:piglich_heart_block"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "allthemodium:blocks/suspicious_clay"
+  "random_sequence": "allthemodium:blocks/piglich_heart_block"
 }

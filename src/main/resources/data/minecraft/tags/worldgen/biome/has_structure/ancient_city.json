@@ -1,8 +1,6 @@
 {
   "values": [
     "minecraft:deep_dark",
-    "allthemodium:basalt_deltas",
-    "allthemodium:desert",
-    "allthemodium:desert_hills"
+    "allthemodium:basalt_deltas"
   ]
 }

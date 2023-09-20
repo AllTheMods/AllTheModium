@@ -111,14 +111,14 @@ public class ModRegistry {
 	public static RegistryObject<ArmorItem> ALLTHEMODIUM_HELMET = ITEMS.register("allthemodium_helmet", () -> (ArmorItem) new Allthemodium_Helmet(AArmorMaterial.ALLTHEMODIUM, EquipmentSlot.HEAD, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
 
 	public static RegistryObject<ArmorItem> VIBRANIUM_BOOTS = ITEMS.register("vibranium_boots", () -> (ArmorItem) new Allthemodium_Boots(AArmorMaterial.VIBRANIUM, EquipmentSlot.FEET, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
-	public static RegistryObject<ArmorItem> VIBRANIUM_LEGGINGS = ITEMS.register("vibranium_leggings", () ->  new ArmorItem(AArmorMaterial.VIBRANIUM, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+	public static RegistryObject<ArmorItem> VIBRANIUM_LEGGINGS = ITEMS.register("vibranium_leggings", () ->  new Allthemodium_Leggings(AArmorMaterial.VIBRANIUM, EquipmentSlot.LEGS, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
 	public static RegistryObject<ArmorItem> VIBRANIUM_CHESTPLATE = ITEMS.register("vibranium_chestplate", () -> (ArmorItem) new Allthemodium_Chestplate(AArmorMaterial.VIBRANIUM, EquipmentSlot.CHEST, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
-	public static RegistryObject<ArmorItem> VIBRANIUM_HELMET = ITEMS.register("vibranium_helmet", () ->  new ArmorItem(AArmorMaterial.VIBRANIUM, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+	public static RegistryObject<ArmorItem> VIBRANIUM_HELMET = ITEMS.register("vibranium_helmet", () ->  new Allthemodium_Helmet(AArmorMaterial.VIBRANIUM, EquipmentSlot.HEAD, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
 
 	public static RegistryObject<ArmorItem> UNOBTAINIUM_BOOTS = ITEMS.register("unobtainium_boots", () -> (ArmorItem) new Allthemodium_Boots(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.FEET, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
-	public static RegistryObject<ArmorItem> UNOBTAINIUM_LEGGINGS = ITEMS.register("unobtainium_leggings", () ->  new ArmorItem(AArmorMaterial.UNOBTAINIUM, ArmorItem.Type.LEGGINGS, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+	public static RegistryObject<ArmorItem> UNOBTAINIUM_LEGGINGS = ITEMS.register("unobtainium_leggings", () ->  new Allthemodium_Leggings(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.LEGS, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
 	public static RegistryObject<ArmorItem> UNOBTAINIUM_CHESTPLATE = ITEMS.register("unobtainium_chestplate", () -> (ArmorItem) new Allthemodium_Chestplate(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.CHEST, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
-	public static RegistryObject<ArmorItem> UNOBTAINIUM_HELMET = ITEMS.register("unobtainium_helmet", () ->  new ArmorItem(AArmorMaterial.UNOBTAINIUM, ArmorItem.Type.HELMET, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+	public static RegistryObject<ArmorItem> UNOBTAINIUM_HELMET = ITEMS.register("unobtainium_helmet", () ->  new Allthemodium_Helmet(AArmorMaterial.UNOBTAINIUM, EquipmentSlot.HEAD, new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
 
 	//Volcano
 
@@ -145,6 +145,9 @@ public class ModRegistry {
 			,Direction.DOWN
 			,ACaveVines.SHAPE
 			, false));
+
+	public static final RegistryObject<Block> PIGLICH_HEART_BLOCK = BLOCKS.register("piglich_heart_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.AMETHYST)));
+	public static final RegistryObject<Item> PIGLICH_HEART_BLOCK_ITEM = ITEMS.register("piglich_heart_block", () -> new BlockItem(PIGLICH_HEART_BLOCK.get(),new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
 
 	public static final RegistryObject<Block> ANCIENT_HERB = PILLARBLOCKS.register("ancient_herb",() -> new AncientHerb(BlockBehaviour.Properties.of().sound(SoundType.WET_GRASS).instabreak().noCollission()));
 

@@ -112,7 +112,7 @@
       }
     },
     {
-      "weight": 10,
+      "weight": 5,
       "element": {
         "location": "allthemodium:merchant",
         "processors": "minecraft:empty",
@@ -121,7 +121,7 @@
       }
     },
     {
-      "weight": 10,
+      "weight": 5,
       "element": {
         "location": "allthemodium:merchant_2",
         "processors": "minecraft:empty",
@@ -130,7 +130,7 @@
       }
     },
     {
-      "weight": 10,
+      "weight": 5,
       "element": {
         "location": "allthemodium:merchant_3",
         "processors": "minecraft:empty",

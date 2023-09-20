@@ -71,6 +71,14 @@ public class ATMCraftingRecipes extends RecipeProvider {
             .unlockedBy("has_raw_unobtainium", hasTag(TagRegistry.RAW_UNOBTAINIUM))
             .save(consumer);
 
+        shaped(ModRegistry.PIGLICH_HEART_BLOCK_ITEM.get())
+                .pattern("nnn")
+                .pattern("nnn")
+                .pattern("nnn")
+                .define('n', ModRegistry.PIGLICH_HEART.get())
+                .unlockedBy("has_piglich_heartt", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(ModRegistry.PIGLICH_HEART.get()).build()))
+                .save(consumer);
+
         shaped(ModRegistry.ALLTHEMODIUM_APPLE.get())
                 .pattern("nnn")
                 .pattern("nan")
