@@ -2,7 +2,7 @@ package com.thevortex.allthemodium.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
-public class AllTheModiumClientConfigs {
+public class AllthemodiumClientConfigs {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec SPEC;
 

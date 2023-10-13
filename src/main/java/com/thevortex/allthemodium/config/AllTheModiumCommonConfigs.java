@@ -4,7 +4,7 @@ import java.util.List;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
-public class AllTheModiumCommonConfigs {
+public class AllthemodiumCommonConfigs {
     public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
     public static final ForgeConfigSpec SPEC;
 
