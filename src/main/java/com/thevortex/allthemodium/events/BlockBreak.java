@@ -2,6 +2,7 @@ package com.thevortex.allthemodium.events;
 
 
 import com.thevortex.allthemodium.AllTheModium;
+import com.thevortex.allthemodium.config.AllthemodiumCommonConfigs;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
 import net.minecraft.core.Registry;
@@ -25,18 +26,18 @@ public class BlockBreak {
 			event.setCanceled(true);
 			return;
 		}
-		if((event.getState().is(TagRegistry.ALLTHEMODIUM_ORE)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null) || (event.getPlayer().getMainHandItem().isEmpty()))) {
+		if((event.getState().is(TagRegistry.ALLTHEMODIUM_ORE)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null) || (event.getPlayer().getMainHandItem().isEmpty())) && !AllthemodiumCommonConfigs.ALLTHEMODIUM_QUARRYABLE.get()) {
 			
 			event.setCanceled(true);
 			return;
 		}
 
-		if((event.getState().is(TagRegistry.VIBRANIUM_ORE)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null) || (event.getPlayer().getMainHandItem().isEmpty()))) {
+		if((event.getState().is(TagRegistry.VIBRANIUM_ORE)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null) || (event.getPlayer().getMainHandItem().isEmpty())) && !AllthemodiumCommonConfigs.VIBRANIUM_QUARRYABLE.get()) {
 			
 			event.setCanceled(true);
 			return;
 		}
-		if((event.getState().is(TagRegistry.UNOBTAINIUM_ORE)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null) || (event.getPlayer().getMainHandItem().isEmpty()))) {
+		if((event.getState().is(TagRegistry.UNOBTAINIUM_ORE)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null) || (event.getPlayer().getMainHandItem().isEmpty())) && !AllthemodiumCommonConfigs.UNOBTAINIUM_QUARRYABLE.get()) {
 			
 			event.setCanceled(true);
 			return;

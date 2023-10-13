@@ -1,6 +1,7 @@
 package com.thevortex.allthemodium.items;
 
 
+import com.thevortex.allthemodium.config.AllthemodiumCommonConfigs;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -23,7 +24,8 @@ public class Unobtainium_Ore_Item extends BlockItem {
 	@Override
 	public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
 		tooltip.add(TextComponentHelper.createComponentTranslation(null,"unobtainium.loc" , new Object()).withStyle(ChatFormatting.GOLD));
-		tooltip.add(TextComponentHelper.createComponentTranslation(null,"allthemodium.mine" , new Object()).withStyle(ChatFormatting.GOLD));
+		if(!AllthemodiumCommonConfigs.UNOBTAINIUM_QUARRYABLE.get())
+			tooltip.add(TextComponentHelper.createComponentTranslation(null,"allthemodium.mine" , new Object()).withStyle(ChatFormatting.GOLD));
 		super.appendHoverText(stack, worldIn, tooltip, flagIn);
 	}
 	}
