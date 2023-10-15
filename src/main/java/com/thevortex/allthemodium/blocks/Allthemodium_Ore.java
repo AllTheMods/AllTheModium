@@ -4,6 +4,8 @@ import java.util.Random;
 
 import com.thevortex.allthemodium.config.AllthemodiumCommonConfigs;
 import com.thevortex.allthemodium.registry.ModRegistry;
+import com.thevortex.allthemodium.registry.TagRegistry;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -48,7 +50,7 @@ public class Allthemodium_Ore extends RedStoneOreBlock {
 
 	@Override
 	public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity player) {
-		if((player instanceof FakePlayer) && (state.getBlock() == ModRegistry.ALLTHEMODIUM_ORE.get())) { 
+		if((player instanceof FakePlayer) && (state.is(TagRegistry.ALLTHEMODIUM_ORE))) { 
 			return AllthemodiumCommonConfigs.ALLTHEMODIUM_QUARRYABLE.get(); 
 		}
 

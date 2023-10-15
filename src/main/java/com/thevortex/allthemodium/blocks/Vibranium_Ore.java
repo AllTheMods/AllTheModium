@@ -2,6 +2,8 @@ package com.thevortex.allthemodium.blocks;
 
 import com.thevortex.allthemodium.config.AllthemodiumCommonConfigs;
 import com.thevortex.allthemodium.registry.ModRegistry;
+import com.thevortex.allthemodium.registry.TagRegistry;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -34,7 +36,9 @@ public class Vibranium_Ore extends DropExperienceBlock {
 	}
 	@Override
 	public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity player) {
-		if((player instanceof FakePlayer) && (state.getBlock() == ModRegistry.VIBRANIUM_ORE.get())) { return AllthemodiumCommonConfigs.VIBRANIUM_QUARRYABLE.get(); }
+		if((player instanceof FakePlayer) && state.is(TagRegistry.VIBRANIUM_ORE)) { 
+			return AllthemodiumCommonConfigs.VIBRANIUM_QUARRYABLE.get(); 
+		}
 		return super.canEntityDestroy(state,world,pos,player) && (distanceTo(pos,player.blockPosition) < 16.0F);
 	}
 
