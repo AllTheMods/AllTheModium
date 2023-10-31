@@ -1,7 +1,7 @@
 {
   "type": "allthemodium:piglin_village",
   "start_pool": "allthemodium:village/start_pool",
-  "size": 12,
+  "size": 30,
   "max_distance_from_center": 25,
   "biomes": "#allthemodium:has_structure/piglin_village_biomes",
   "step": "underground_structures",

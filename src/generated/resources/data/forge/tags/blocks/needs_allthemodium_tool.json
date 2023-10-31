@@ -2,6 +2,22 @@
   "values": [
     "allthemodium:vibranium_ore",
     "allthemodium:other_vibranium_ore",
-    "allthemodium:unobtainium_ore"
+    "allthemodium:unobtainium_ore",
+    "allthemodium:ancient_chiseled_stone_brick_wall",
+    "allthemodium:ancient_chiseled_stone_bricks",
+    "allthemodium:ancient_chiseled_stone_brick_slabs",
+    "allthemodium:ancient_chiseled_stone_brick_stairs",
+    "allthemodium:ancient_polished_stone",
+    "allthemodium:ancient_polished_stone_wall",
+    "allthemodium:ancient_polished_stone_slabs",
+    "allthemodium:ancient_polished_stone_stairs",
+    "allthemodium:ancient_cracked_stone_brick_wall",
+    "allthemodium:ancient_cracked_stone_bricks",
+    "allthemodium:ancient_cracked_stone_brick_slabs",
+    "allthemodium:ancient_cracked_stone_brick_stairs",
+    "allthemodium:ancient_smooth_stone_wall",
+    "allthemodium:ancient_smooth_stone",
+    "allthemodium:ancient_smooth_stone_stairs",
+    "allthemodium:ancient_smooth_stone_slabs"
   ]
 }

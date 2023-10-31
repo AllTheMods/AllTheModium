@@ -173,6 +173,23 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(TagRegistry.ALLTHEMODIUM_BLOCK).add(ModRegistry.ALLTHEMODIUM_BLOCK.get());
         tag(TagRegistry.ALLTHEMODIUM_ORE).add(ModRegistry.ALLTHEMODIUM_ORE.get());
         tag(TagRegistry.ALLTHEMODIUM_ORE).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICK_WALL.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_SLABS.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_STAIRS.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_POLISHED_STONE.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_POLISHED_STONE_WALL.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_POLISHED_STONE_SLABS.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_POLISHED_STONE_STAIRS.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICK_WALL.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_SLABS.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_STAIRS.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_SMOOTH_STONE_WALL.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_SMOOTH_STONE.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_SMOOTH_STONE_STAIRS.get());
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_SMOOTH_STONE_SLABS.get());
+
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.RAW_ALLTHEMODIUM_BLOCK.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ALLTHEMODIUM_BLOCK.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ALLTHEMODIUM_ORE.get());

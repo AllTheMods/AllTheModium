@@ -47,7 +47,7 @@ public class Allthemodium_Helmet extends ArmorItem {
     }
     @Override
     public void onArmorTick(ItemStack stack, Level world, Player player) {
-        if((stack.getItem() == ModRegistry.ALLTHEMODIUM_HELMET.get()) && (!world.isClientSide)) {
+        if((stack.getItem() == ModRegistry.ALLTHEMODIUM_HELMET.get()) || (stack.getItem() == ModRegistry.VIBRANIUM_HELMET.get()) || (stack.getItem() == ModRegistry.UNOBTAINIUM_HELMET.get()) && (!world.isClientSide)) {
 
             if(player.isInWater() && player.isSwimming()){
 

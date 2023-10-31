@@ -23,7 +23,11 @@ public class Allthemodium_Boots extends ArmorItem {
     @Override
     public boolean canWalkOnPowderedSnow(ItemStack stack, LivingEntity wearer)
     {
-        return stack.is(ModRegistry.ALLTHEMODIUM_BOOTS.get());
+        if(stack.is(ModRegistry.ALLTHEMODIUM_BOOTS.get())){ return true; }
+        if(stack.is(ModRegistry.VIBRANIUM_BOOTS.get())){ return true; }
+
+        if(stack.is(ModRegistry.UNOBTAINIUM_BOOTS.get())){ return true; }
+        return false;
     }
 
 

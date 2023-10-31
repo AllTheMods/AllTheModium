@@ -53,14 +53,14 @@ public class SoulLeaves extends LeavesBlock {
     }
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
-        if (!state.getValue(PERSISTENT) && state.getValue(DISTANCE) == 7) {
+  /*      if (!state.getValue(PERSISTENT) && state.getValue(DISTANCE) == 7) {
             dropResources(state, level, pos);
             level.removeBlock(pos, false);
         }
         if(level.getBlockState(pos.below()).isAir()) {
             level.setBlock(pos.below(), ModRegistry.SOUL_LEAVES_BOTTOM.get().defaultBlockState(), 3);
         }
-
+*/
 
     }
 
