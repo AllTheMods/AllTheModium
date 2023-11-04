@@ -567,7 +567,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<SwordItem> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword",() -> new SwordItem(ToolTiers.VIBRANIUM_TIER,10,2.2f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+	public static final RegistryObject<SwordItem> VIBRANIUM_SWORD = ITEMS.register("vibranium_sword",() -> new SwordItem(ToolTiers.VIBRANIUM_TIER,10,2.8f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
 		@Override
 		public boolean isEnchantable(ItemStack stack) {
 			return true;
@@ -584,7 +584,7 @@ public class ModRegistry {
 		}
 
 	});
-	public static final RegistryObject<PickaxeItem> VIBRANIUM_PICKAXE = ITEMS.register("vibranium_pickaxe",() -> new PickaxeItem(ToolTiers.VIBRANIUM_TIER,8,2.0f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+	public static final RegistryObject<PickaxeItem> VIBRANIUM_PICKAXE = ITEMS.register("vibranium_pickaxe",() -> new PickaxeItem(ToolTiers.VIBRANIUM_TIER,7,2.0f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -617,7 +617,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<AxeItem> VIBRANIUM_AXE = ITEMS.register("vibranium_axe",() -> new AxeItem(ToolTiers.VIBRANIUM_TIER,6,1.0f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+	public static final RegistryObject<AxeItem> VIBRANIUM_AXE = ITEMS.register("vibranium_axe",() -> new AxeItem(ToolTiers.VIBRANIUM_TIER,11,1.0f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -650,7 +650,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<ShovelItem> VIBRANIUM_SHOVEL = ITEMS.register("vibranium_shovel",() -> new ShovelItem(ToolTiers.VIBRANIUM_TIER,1,1.5f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+	public static final RegistryObject<ShovelItem> VIBRANIUM_SHOVEL = ITEMS.register("vibranium_shovel",() -> new ShovelItem(ToolTiers.VIBRANIUM_TIER,2,1.5f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -682,7 +682,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<HoeItem> VIBRANIUM_HOE = ITEMS.register("vibranium_hoe",() -> new HoeItem(ToolTiers.VIBRANIUM_TIER,0,1.5f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+	public static final RegistryObject<HoeItem> VIBRANIUM_HOE = ITEMS.register("vibranium_hoe",() -> new HoeItem(ToolTiers.VIBRANIUM_TIER,1,1.5f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -714,7 +714,7 @@ public class ModRegistry {
 			return false;
 		}
 	});
-	public static final RegistryObject<SwordItem> UNOBTAINIUM_SWORD = ITEMS.register("unobtainium_sword",() -> new SwordItem(ToolTiers.UNOBTAINIUM_TIER,10,2.2f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+	public static final RegistryObject<SwordItem> UNOBTAINIUM_SWORD = ITEMS.register("unobtainium_sword",() -> new SwordItem(ToolTiers.UNOBTAINIUM_TIER,16,3.2f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
 		@Override
 		public boolean isEnchantable(ItemStack stack) {
 			return true;
@@ -731,7 +731,7 @@ public class ModRegistry {
 		}
 
 	});
-	public static final RegistryObject<PickaxeItem> UNOBTAINIUM_PICKAXE = ITEMS.register("unobtainium_pickaxe",() -> new PickaxeItem(ToolTiers.UNOBTAINIUM_TIER,16,4.0f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+	public static final RegistryObject<PickaxeItem> UNOBTAINIUM_PICKAXE = ITEMS.register("unobtainium_pickaxe",() -> new PickaxeItem(ToolTiers.UNOBTAINIUM_TIER,12,4.0f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -763,7 +763,7 @@ public class ModRegistry {
 			return false;
 		}
 	});
-	public static final RegistryObject<AxeItem> UNOBTAINIUM_AXE = ITEMS.register("unobtainium_axe",() -> new AxeItem(ToolTiers.UNOBTAINIUM_TIER,6,1.0f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+	public static final RegistryObject<AxeItem> UNOBTAINIUM_AXE = ITEMS.register("unobtainium_axe",() -> new AxeItem(ToolTiers.UNOBTAINIUM_TIER,20,1.4f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -796,7 +796,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<ShovelItem> UNOBTAINIUM_SHOVEL = ITEMS.register("unobtainium_shovel",() -> new ShovelItem(ToolTiers.UNOBTAINIUM_TIER,1,1.5f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+	public static final RegistryObject<ShovelItem> UNOBTAINIUM_SHOVEL = ITEMS.register("unobtainium_shovel",() -> new ShovelItem(ToolTiers.UNOBTAINIUM_TIER,3,1.5f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{
@@ -828,7 +828,7 @@ public class ModRegistry {
 		}
 	});
 
-	public static final RegistryObject<HoeItem> UNOBTAINIUM_HOE = ITEMS.register("unobtainium_hoe",() -> new HoeItem(ToolTiers.UNOBTAINIUM_TIER,0,1.5f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
+	public static final RegistryObject<HoeItem> UNOBTAINIUM_HOE = ITEMS.register("unobtainium_hoe",() -> new HoeItem(ToolTiers.UNOBTAINIUM_TIER,2,1.5f, new Item.Properties().fireResistant().rarity(Rarity.EPIC)) {
 		@Override
 		public float getDestroySpeed(ItemStack stack, BlockState state)
 		{

@@ -62,3 +62,17 @@ mandatory=true
 versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
+#ato
+[[dependencies.${mod_id}]]
+modId="alltheores"
+mandatory=true
+versionRange="[2.2.0,)"
+ordering="NONE"
+side="BOTH"
+#geckolib
+[[dependencies.${mod_id}]]
+modId="geckolib"
+mandatory=true
+versionRange="[4.2,)"
+ordering="NONE"
+side="BOTH"
