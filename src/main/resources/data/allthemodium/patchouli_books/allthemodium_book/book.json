@@ -1,0 +1,9 @@
+{
+    "name": "allthemodium_book",
+    "landing_text": "This Book wil give you information about the Allthemodium Mod, and the ATM Mod Packs",
+    "subtitle": 1,
+    "show_progress": false,
+    "dont_generate_book": false,
+    "macros": {},
+    "use_resource_pack": true
+}
