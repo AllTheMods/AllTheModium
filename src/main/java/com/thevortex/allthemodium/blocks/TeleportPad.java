@@ -75,7 +75,7 @@ public class TeleportPad extends Block {
 	}
 
 	public void transferPlayer(ServerPlayer player, BlockPos pos) {
-		int config = 0;
+		boolean config = AllTheModium.ALLOW_TELEPORT_MINING;
 		if (player.level.dimension().equals(LevelRegistry.Mining)) {
 			ServerLevel targetWorld = player.server.getLevel(AllTheModium.OverWorld);
 			int y = 256;
@@ -159,7 +159,7 @@ public class TeleportPad extends Block {
 			}
 		}
 
-		else if (player.level.dimension().equals(AllTheModium.OverWorld) && (config != 2)) {
+		else if (player.level.dimension().equals(AllTheModium.OverWorld) && (config == true)) {
 			ServerLevel targetWorld = player.server.getLevel(LevelRegistry.Mining);
 			BlockPos targetPos = new BlockPos(Math.round(pos.getX()), 253, Math.round(pos.getZ()));
 			if (!targetWorld.getBlockState(targetPos).hasBlockEntity()) {

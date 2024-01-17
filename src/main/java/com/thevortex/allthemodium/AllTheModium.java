@@ -9,6 +9,7 @@ import com.thevortex.allthemodium.worldgen.MiningDimSource;
 import com.thevortex.allthemodium.worldgen.TheOtherDimSource;
 import com.thevortex.allthemodium.worldgen.biomes.ATMBiomes;
 import com.thevortex.allthemodium.worldgen.structures.ATMStructures;
+import com.thevortex.allthetweaks.config.Configuration;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -62,7 +63,7 @@ public class AllTheModium
 	//public static final ResourceKey<DimensionType> THE_OTHER_TYPE = ResourceKey.create(Registry.DIMENSION_TYPE_REGISTRY, THE_OTHER_DIM_ID);
 	//public static final RegistryKey<World> THE_BEYOND = RegistryKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Reference.MOD_ID,"the_beyond"));
 	public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
-	public static boolean ALLOW_TELEPORT_MINING = false;
+	public static boolean ALLOW_TELEPORT_MINING = true;
 	public static final CreativeModeTab GROUP = new CreativeModeTab(MOD_ID) {
 		public ItemStack makeIcon() { return new ItemStack(ModRegistry.ALLTHEMODIUM_ORE_ITEM.get()); }
 	};
@@ -116,7 +117,11 @@ public class AllTheModium
 			//ATMConfiguredStructures.registerConfiguredStructures();
 			Registry.register(Registry.CHUNK_GENERATOR, MINING_DIM_ID, MiningDimSource.CODEC);
 			Registry.register(Registry.CHUNK_GENERATOR, THE_OTHER_DIM_ID, TheOtherDimSource.CODEC);
-
+			if(ModList.get().isLoaded("allthetweaks")) {
+				if (5 == Configuration.COMMON.mainmode.get()) {
+					ALLOW_TELEPORT_MINING = false;
+				}
+			}
 		});
 
 	}

@@ -58,12 +58,6 @@ Allthemodium!
         ordering="NONE"
         side="BOTH"
 [[dependencies.allthemodium]]
-        modId="iceandfire"
-        mandatory=false
-        versionRange="[2.1,]"
-        ordering="AFTER"
-        side="BOTH"
-[[dependencies.allthemodium]]
         modId="alltheores"
         mandatory=false
         versionRange="[1.0,]"

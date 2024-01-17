@@ -107,7 +107,7 @@ dependencies {
     // You may put jars on which you depend on in ./libs or you may define them like so..
     // compile "some.group:artifact:version:classifier"
     // compile "some.group:artifact:version"
-	//implementation fg.deobf("curse.maven:${mekanism}")
+	implementation fg.deobf("curse.maven:${tweaks}")
     implementation fg.deobf("curse.maven:${geckolib}")
    // runtimeOnly fg.deobf("curse.maven:top-245211:3927520")
     implementation fg.deobf("curse.maven:${ato}")
