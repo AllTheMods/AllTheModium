@@ -1,6 +1,9 @@
 package com.thevortex.allthemodium.blocks;
 
+import com.thevortex.allthemodium.config.AllthemodiumCommonConfigs;
 import com.thevortex.allthemodium.registry.ModRegistry;
+import com.thevortex.allthemodium.registry.TagRegistry;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -17,13 +20,15 @@ import net.minecraftforge.common.util.FakePlayer;
 public class Vibranium_Ore extends DropExperienceBlock {
 
 	public Vibranium_Ore() {//func_235861_h_ = setRequiresTool
-		super(Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.NETHER_ORE).strength(-1.0f,2500.0f));
+		super(Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.NETHER_ORE).strength(80.0f,2500.0f));
 	}
 	@Override
 	@SuppressWarnings("java:S1874") // deprecated method from super class
 	public float getDestroyProgress(BlockState state, Player player, BlockGetter getter, BlockPos blockPos) {
 		BlockEntity blockEntity = getter.getBlockEntity(blockPos);
 		if (canEntityDestroy(state,getter,blockPos, player)) {
+			if(AllthemodiumCommonConfigs.VIBRANIUM_QUARRYABLE.get())
+				return super.getDestroyProgress(state, player, getter, blockPos);
 			int i = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(state, player) ? 500 : 2500;
 			return player.getDigSpeed(state, blockPos) / 2.0F / i;
 		}
@@ -31,7 +36,9 @@ public class Vibranium_Ore extends DropExperienceBlock {
 	}
 	@Override
 	public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity player) {
-		if((player instanceof FakePlayer) && (state.getBlock() == ModRegistry.VIBRANIUM_ORE.get())) { return false; }
+		if((player instanceof FakePlayer) && state.is(TagRegistry.VIBRANIUM_ORE)) { 
+			return AllthemodiumCommonConfigs.VIBRANIUM_QUARRYABLE.get(); 
+		}
 		return super.canEntityDestroy(state,world,pos,player) && (distanceTo(pos,player.blockPosition) < 16.0F);
 	}
 

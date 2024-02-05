@@ -2,9 +2,13 @@ package com.thevortex.allthemodium.events;
 
 
 import com.thevortex.allthemodium.AllTheModium;
+import com.thevortex.allthemodium.config.AllthemodiumCommonConfigs;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraftforge.common.util.FakePlayer;
@@ -20,23 +24,26 @@ public class BlockBreak {
 	public static void on(BlockEvent.BreakEvent event) {
 		if(event.getPlayer().isCreative()) { return; }
 
-		if((event.getState().is(TagRegistry.OTHER_PROTECTION)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null)) && event.getLevel().getBiome(event.getPos()).is(TagRegistry.OTHER_BIOMES)) {
+		boolean fakePlayer = (event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null);
+		boolean emptyHand = event.getPlayer().getMainHandItem().isEmpty();
+
+		if((event.getState().is(TagRegistry.OTHER_PROTECTION)) && fakePlayer && event.getLevel().getBiome(event.getPos()).is(TagRegistry.OTHER_BIOMES)) {
 
 			event.setCanceled(true);
 			return;
 		}
-		if((event.getState().is(TagRegistry.ALLTHEMODIUM_ORE)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null) || (event.getPlayer().getMainHandItem().isEmpty()))) {
+		if((event.getState().is(TagRegistry.ALLTHEMODIUM_ORE)) && (fakePlayer || emptyHand) && !AllthemodiumCommonConfigs.ALLTHEMODIUM_QUARRYABLE.get()) {
 			
 			event.setCanceled(true);
 			return;
 		}
 
-		if((event.getState().is(TagRegistry.VIBRANIUM_ORE)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null) || (event.getPlayer().getMainHandItem().isEmpty()))) {
+		if((event.getState().is(TagRegistry.VIBRANIUM_ORE)) && (fakePlayer || emptyHand) && !AllthemodiumCommonConfigs.VIBRANIUM_QUARRYABLE.get()) {
 			
 			event.setCanceled(true);
 			return;
 		}
-		if((event.getState().is(TagRegistry.UNOBTAINIUM_ORE)) && ((event.getPlayer() instanceof FakePlayer) || (event.getPlayer() == null) || (event.getPlayer().getMainHandItem().isEmpty()))) {
+		if((event.getState().is(TagRegistry.UNOBTAINIUM_ORE)) && (fakePlayer || emptyHand) && !AllthemodiumCommonConfigs.UNOBTAINIUM_QUARRYABLE.get()) {
 			
 			event.setCanceled(true);
 			return;
@@ -45,10 +52,5 @@ public class BlockBreak {
 
 			return;
 		}
-
-		
 	}
-
-
-	
 }

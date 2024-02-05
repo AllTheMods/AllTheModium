@@ -2,7 +2,10 @@ package com.thevortex.allthemodium.blocks;
 
 import java.util.Random;
 
+import com.thevortex.allthemodium.config.AllthemodiumCommonConfigs;
 import com.thevortex.allthemodium.registry.ModRegistry;
+import com.thevortex.allthemodium.registry.TagRegistry;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -27,7 +30,7 @@ import net.minecraftforge.common.util.FakePlayer;
 public class Allthemodium_Ore extends RedStoneOreBlock {
 	  // public static final BooleanProperty LIT = RedstoneTorchBlock.LIT;
 	public Allthemodium_Ore() {	//func_235861_h_ = setRequiresTool
-		super(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.ANCIENT_DEBRIS).lightLevel((state) -> { return 15;}).strength(-1.0f,1500.0f));
+		super(BlockBehaviour.Properties.of(Material.STONE).requiresCorrectToolForDrops().sound(SoundType.ANCIENT_DEBRIS).lightLevel((state) -> { return 15;}).strength(80.0f,1500.0f));
 	}
 
 	@Override
@@ -35,6 +38,9 @@ public class Allthemodium_Ore extends RedStoneOreBlock {
 	public float getDestroyProgress(BlockState state, Player player, BlockGetter getter, BlockPos blockPos) {
 		BlockEntity blockEntity = getter.getBlockEntity(blockPos);
 		if (canEntityDestroy(state,getter,blockPos, player)) {
+			if(AllthemodiumCommonConfigs.ALLTHEMODIUM_QUARRYABLE.get())
+				return super.getDestroyProgress(state, player, getter, blockPos);
+
 			int i = net.minecraftforge.common.ForgeHooks.isCorrectToolForDrops(state, player) ? 250 : 1500;
 			return player.getDigSpeed(state, blockPos) / 2.0F / i;
 		}
@@ -44,7 +50,9 @@ public class Allthemodium_Ore extends RedStoneOreBlock {
 
 	@Override
 	public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity player) {
-		if((player instanceof FakePlayer) && (state.getBlock() == ModRegistry.ALLTHEMODIUM_ORE.get())) { return false; }
+		if((player instanceof FakePlayer) && (state.is(TagRegistry.ALLTHEMODIUM_ORE))) { 
+			return AllthemodiumCommonConfigs.ALLTHEMODIUM_QUARRYABLE.get(); 
+		}
 
 	return super.canEntityDestroy(state,world,pos,player) && (distanceTo(pos,player.blockPosition) < 16.0F);
 	}
