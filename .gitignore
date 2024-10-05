@@ -48,3 +48,6 @@ TCon/silent_data/vibranium.json
 
 # datagen
 src/generated/resources/.cache
+
+# vscode
+.vscode

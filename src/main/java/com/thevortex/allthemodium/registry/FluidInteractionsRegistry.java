@@ -21,8 +21,19 @@ public class FluidInteractionsRegistry {
 
     // Lava + Water = Obsidian (Source Lava) / Cobblestone (Flowing Lava)
     private static void addInteraction(FluidType fluidType) {
-        FluidInteractionRegistry.addInteraction(ForgeMod.LAVA_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(fluidType, fluidState -> fluidState.isSource() ? Blocks.GILDED_BLACKSTONE.defaultBlockState() : Blocks.BLACKSTONE.defaultBlockState()));
-        FluidInteractionRegistry.addInteraction(ForgeMod.WATER_TYPE.get(), new FluidInteractionRegistry.InteractionInformation(fluidType, fluidState -> fluidState.isSource() ? Blocks.CRYING_OBSIDIAN.defaultBlockState() : Blocks.OBSIDIAN.defaultBlockState()));
-
+        FluidInteractionRegistry.addInteraction(
+                ForgeMod.LAVA_TYPE.get(),
+                new FluidInteractionRegistry.InteractionInformation(
+                        fluidType,
+                        fluidState -> fluidState.isSource()
+                                ? Blocks.GILDED_BLACKSTONE.defaultBlockState()
+                                : Blocks.BLACKSTONE.defaultBlockState()));
+        FluidInteractionRegistry.addInteraction(
+                ForgeMod.WATER_TYPE.get(),
+                new FluidInteractionRegistry.InteractionInformation(
+                        fluidType,
+                        fluidState -> fluidState.isSource()
+                                ? Blocks.CRYING_OBSIDIAN.defaultBlockState()
+                                : Blocks.OBSIDIAN.defaultBlockState()));
     }
 }

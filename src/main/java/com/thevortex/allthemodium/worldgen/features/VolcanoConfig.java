@@ -5,13 +5,12 @@ import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfigur
 
 public class VolcanoConfig implements FeatureConfiguration {
 
-        public static final Codec<VolcanoConfig> CODEC;
-        public static final VolcanoConfig INSTANCE = new VolcanoConfig();
+    public static final Codec<VolcanoConfig> CODEC;
+    public static final VolcanoConfig INSTANCE = new VolcanoConfig();
 
-        static {
-            CODEC = Codec.unit(() -> {
-                return INSTANCE;
-            });
-        }
-
+    static {
+        CODEC = Codec.unit(() -> {
+            return INSTANCE;
+        });
+    }
 }

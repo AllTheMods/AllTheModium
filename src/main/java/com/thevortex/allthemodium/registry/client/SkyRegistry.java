@@ -8,13 +8,26 @@ import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class SkyRegistry {
-        @SubscribeEvent
-        public static void register(RegisterDimensionSpecialEffectsEvent event) {
-            event.register(new ResourceLocation(Reference.MOD_ID, "the_other"), new OtherSky(Float.NaN, true, DimensionSpecialEffects.SkyType.NORMAL, false, false));
-            event.register(new ResourceLocation(Reference.MOD_ID, "mining"), new OtherSky(Float.NaN, true, DimensionSpecialEffects.SkyType.NORMAL, true, true));
 
-        }
+    @SubscribeEvent
+    public static void register(RegisterDimensionSpecialEffectsEvent event) {
+        event.register(
+                new ResourceLocation(Reference.MOD_ID, "the_other"),
+                new OtherSky(
+                        Float.NaN,
+                        true,
+                        DimensionSpecialEffects.SkyType.NORMAL,
+                        false,
+                        false));
+        event.register(
+                new ResourceLocation(Reference.MOD_ID, "mining"),
+                new OtherSky(
+                        Float.NaN,
+                        true,
+                        DimensionSpecialEffects.SkyType.NORMAL,
+                        true,
+                        true));
+    }
 }

@@ -1,13 +1,14 @@
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://plugins.gradle.org/m2/' }
         jcenter()
 
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-
+        classpath group: 'com.diffplug.spotless', name: 'spotless-plugin-gradle', version: '6.25.0'
     }
 }
 
@@ -19,7 +20,6 @@ version = "${versionn}-${forge}"
 group = 'com.thevortex.allthemodium' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'allthemodium'
 sourceSets.main.resources { srcDir 'src/generated/resources' }
-
 
 // Mojang ships Java 16 to end users in 1.17+ instead of Java 8 in 1.16 or lower, so your mod should target Java 16.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -34,7 +34,7 @@ minecraft {
     // Simply re-run your setup task after changing the mappings to update your workspace.
     mappings channel: 'official', version: '1.19.2'
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
-    
+
      accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
     // Default run configurations.
@@ -42,7 +42,7 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
-			 // Recommended logging data for a userdev environment
+             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
             // Recommended logging level for the console
@@ -107,7 +107,7 @@ dependencies {
     // You may put jars on which you depend on in ./libs or you may define them like so..
     // compile "some.group:artifact:version:classifier"
     // compile "some.group:artifact:version"
-	implementation fg.deobf("curse.maven:${tweaks}")
+    implementation fg.deobf("curse.maven:${tweaks}")
     implementation fg.deobf("curse.maven:${geckolib}")
    // runtimeOnly fg.deobf("curse.maven:top-245211:3927520")
     implementation fg.deobf("curse.maven:${ato}")
@@ -173,4 +173,27 @@ publishing {
             url "file:///${project.projectDir}/mcmodsrepo"
         }
     }
+}
+
+apply plugin: 'com.diffplug.spotless'
+
+spotless {
+   format 'misc', {
+      // define the files to apply `misc` to
+      target '*.gradle', '*.md', '.gitignore'
+
+      // define the steps to apply to those files
+      trimTrailingWhitespace()
+      indentWithSpaces()
+      endWithNewline()
+      setEncoding('utf-8')
+   }
+   java {
+     eclipse().configFile('eclipse-formatter.xml')
+   }
+   json {
+    target 'resources/**/*.json'
+    prettier(['prettier': '3.0.3', 'prettier-plugin-java': '2.3.0'])
+      .config(['parser': 'json', 'tabWidth': 4, 'plugins': ['prettier-plugin-java']])
+   }
 }

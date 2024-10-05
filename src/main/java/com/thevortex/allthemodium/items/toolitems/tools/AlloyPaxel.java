@@ -1,10 +1,13 @@
 package com.thevortex.allthemodium.items.toolitems.tools;
 
-import com.google.common.collect.ImmutableMap;
 import com.thevortex.allthemodium.material.ToolTiers;
-import com.thevortex.allthemodium.registry.ModRegistry;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.commands.CommandSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
@@ -22,50 +25,86 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
-import net.minecraft.world.level.block.LevelEvent;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.TierSortingRegistry;
-import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.server.command.TextComponentHelper;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 public class AlloyPaxel extends DiggerItem {
 
     public static Map<Block, Block> STRIPPABLES = AxeItem.STRIPPABLES;
-    public AlloyPaxel(float attack, float speed, Tier tier, TagKey<Block> effectiveBlocks, Properties properties) {
+
+    public AlloyPaxel(
+            float attack,
+            float speed,
+            Tier tier,
+            TagKey<Block> effectiveBlocks,
+            Properties properties) {
         super(attack, speed, tier, effectiveBlocks, properties);
     }
+
     @Override
-    public float getDestroySpeed(ItemStack stack, BlockState state)
-    {
-        if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) return speed *1.4f;
-        if (state.is(BlockTags.MINEABLE_WITH_SHOVEL)) return speed*1.8f;
-        if (state.is(BlockTags.MINEABLE_WITH_AXE)) return speed*1.8f;
-        if (state.is(BlockTags.MINEABLE_WITH_HOE)) return speed*1.9f;
-        if (state.is(Tags.Blocks.GLASS))  return speed*3.0F;
+    public float getDestroySpeed(
+            @Nonnull ItemStack stack,
+            @Nonnull BlockState state) {
+        if (state.is(BlockTags.MINEABLE_WITH_PICKAXE))
+            return speed * 1.4f;
+        if (state.is(BlockTags.MINEABLE_WITH_SHOVEL))
+            return speed * 1.8f;
+        if (state.is(BlockTags.MINEABLE_WITH_AXE))
+            return speed * 1.8f;
+        if (state.is(BlockTags.MINEABLE_WITH_HOE))
+            return speed * 1.9f;
+        if (state.is(Tags.Blocks.GLASS))
+            return speed * 3.0F;
         return super.getDestroySpeed(stack, state);
     }
+
     @Override
-    public net.minecraft.world.InteractionResult interactLivingEntity(ItemStack stack, net.minecraft.world.entity.player.Player playerIn, LivingEntity entity, net.minecraft.world.InteractionHand hand) {
+    public net.minecraft.world.InteractionResult interactLivingEntity(
+            @Nonnull ItemStack stack,
+            @Nonnull net.minecraft.world.entity.player.Player playerIn,
+            @Nonnull LivingEntity entity,
+            @Nonnull net.minecraft.world.InteractionHand hand) {
         if (entity instanceof net.minecraftforge.common.IForgeShearable target) {
-            if (entity.level.isClientSide) return net.minecraft.world.InteractionResult.SUCCESS;
-            BlockPos pos = new BlockPos(entity.getX(), entity.getY(), entity.getZ());
+            if (entity.level.isClientSide)
+                return net.minecraft.world.InteractionResult.SUCCESS;
+            BlockPos pos = new BlockPos(
+                    entity.getX(),
+                    entity.getY(),
+                    entity.getZ());
             if (target.isShearable(stack, entity.level, pos)) {
-                java.util.List<ItemStack> drops = target.onSheared(playerIn, stack, entity.level, pos,
-                        net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel(net.minecraft.world.item.enchantment.Enchantments.BLOCK_FORTUNE, stack));
+                @SuppressWarnings("deprecation")
+                java.util.List<ItemStack> drops = target.onSheared(
+                        playerIn,
+                        stack,
+                        entity.level,
+                        pos,
+                        net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel(
+                                net.minecraft.world.item.enchantment.Enchantments.BLOCK_FORTUNE,
+                                stack));
                 java.util.Random rand = new java.util.Random();
                 drops.forEach(d -> {
-                    net.minecraft.world.entity.item.ItemEntity ent = entity.spawnAtLocation(d, 1.0F);
-                    ent.setDeltaMovement(ent.getDeltaMovement().add((double)((rand.nextFloat() - rand.nextFloat()) * 0.1F), (double)(rand.nextFloat() * 0.05F), (double)((rand.nextFloat() - rand.nextFloat()) * 0.1F)));
+                    net.minecraft.world.entity.item.ItemEntity dropEntity = entity.spawnAtLocation(d, 1.0F);
+                    if (dropEntity == null)
+                        return;
+
+                    dropEntity.setDeltaMovement(
+                            dropEntity
+                                    .getDeltaMovement()
+                                    .add(
+                                            (double) ((rand.nextFloat() -
+                                                    rand.nextFloat()) *
+                                                    0.1F),
+                                            (double) (rand.nextFloat() * 0.05F),
+                                            (double) ((rand.nextFloat() -
+                                                    rand.nextFloat()) *
+                                                    0.1F)));
                 });
-                stack.hurtAndBreak(1, playerIn, e -> e.broadcastBreakEvent(hand));
+                stack.hurtAndBreak(
+                        1,
+                        playerIn,
+                        e -> e.broadcastBreakEvent(hand));
             }
             return net.minecraft.world.InteractionResult.SUCCESS;
         }
@@ -73,129 +112,208 @@ public class AlloyPaxel extends DiggerItem {
     }
 
     @Override
-    public boolean canPerformAction(ItemStack stack, net.minecraftforge.common.ToolAction toolAction) {
-        return net.minecraftforge.common.ToolActions.DEFAULT_SHEARS_ACTIONS.contains(toolAction);
+    public boolean canPerformAction(
+            ItemStack stack,
+            net.minecraftforge.common.ToolAction toolAction) {
+        return net.minecraftforge.common.ToolActions.DEFAULT_SHEARS_ACTIONS.contains(
+                toolAction);
     }
 
     @Override
-    public boolean hurtEnemy(ItemStack stack, LivingEntity entity, LivingEntity player) {
-        //entity.setSecondsOnFire(30);
+    public boolean hurtEnemy(
+            @Nonnull ItemStack stack,
+            @Nonnull LivingEntity entity,
+            @Nonnull LivingEntity player) {
+        // entity.setSecondsOnFire(30);
         return super.hurtEnemy(stack, entity, player);
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext context) {
+    public InteractionResult useOn(@Nonnull UseOnContext context) {
         Level world = context.getLevel();
-        BlockPos blockpos = context.getClickedPos();
-        BlockState blockstate = world.getBlockState(blockpos);
-        if (blockstate.getBlock() == Blocks.OBSIDIAN) {
-            BlockState bpos = Blocks.CRYING_OBSIDIAN.defaultBlockState();
-            Player playerentity = context.getPlayer();
-            world.playSound(playerentity, blockpos, SoundEvents.NETHER_ORE_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+        BlockPos blockPos = context.getClickedPos();
+        BlockState blockState = world.getBlockState(blockPos);
+        if (blockState.getBlock() == Blocks.OBSIDIAN) {
+            BlockState defaultBlockState = Blocks.CRYING_OBSIDIAN.defaultBlockState();
+            Player playerEntity = context.getPlayer();
+            world.playSound(
+                    playerEntity,
+                    blockPos,
+                    SoundEvents.NETHER_ORE_BREAK,
+                    SoundSource.BLOCKS,
+                    1.0F,
+                    1.0F);
             if (!world.isClientSide) {
-                world.setBlock(blockpos, bpos, 11);
-                if (playerentity != null) {
-                    context.getItemInHand().hurtAndBreak(1, playerentity, (p_220040_1_) -> {
-                        p_220040_1_.broadcastBreakEvent(context.getHand());
-                    });
+                world.setBlock(blockPos, defaultBlockState, 11);
+                if (playerEntity != null) {
+                    context
+                            .getItemInHand()
+                            .hurtAndBreak(
+                                    1,
+                                    playerEntity,
+                                    p_220040_1_ -> {
+                                        p_220040_1_.broadcastBreakEvent(
+                                                context.getHand());
+                                    });
                 }
             }
 
             return InteractionResult.sidedSuccess(world.isClientSide);
         }
-        if (blockstate.getBlock() instanceof GrowingPlantHeadBlock growingplantheadblock) {
-            if (!growingplantheadblock.isMaxAge(blockstate)) {
+        if (blockState.getBlock() instanceof GrowingPlantHeadBlock growingPlantHeadBlock) {
+            if (!growingPlantHeadBlock.isMaxAge(blockState)) {
                 Player player = context.getPlayer();
-                assert player != null;
-                ItemStack itemstack = context.getItemInHand();
+
+                if (player == null)
+                    return InteractionResult.PASS;
+
+                ItemStack itemStack = context.getItemInHand();
                 if (player instanceof ServerPlayer) {
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) player, blockpos, itemstack);
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(
+                            (ServerPlayer) player,
+                            blockPos,
+                            itemStack);
                 }
 
-                world.playSound(player, blockpos, SoundEvents.GROWING_PLANT_CROP, SoundSource.BLOCKS, 1.0F, 1.0F);
-                world.setBlockAndUpdate(blockpos, growingplantheadblock.getMaxAgeState(blockstate));
-                itemstack.hurtAndBreak(1, player, (p_186374_) -> {
-                    p_186374_.broadcastBreakEvent(context.getHand());
-                });
+                world.playSound(
+                        player,
+                        blockPos,
+                        SoundEvents.GROWING_PLANT_CROP,
+                        SoundSource.BLOCKS,
+                        1.0F,
+                        1.0F);
+                world.setBlockAndUpdate(
+                        blockPos,
+                        growingPlantHeadBlock.getMaxAgeState(blockState));
+                itemStack.hurtAndBreak(
+                        1,
+                        player,
+                        p_186374_ -> {
+                            p_186374_.broadcastBreakEvent(context.getHand());
+                        });
 
                 return InteractionResult.sidedSuccess(world.isClientSide);
             }
         }
-        if ((blockstate.is(BlockTags.DIRT))) {
-            //tags dirt
-            boolean isSneaking = context.getPlayer().isCrouching();
-            BlockState blockPath = isSneaking ? Blocks.FARMLAND.defaultBlockState() : Blocks.DIRT_PATH.defaultBlockState();
-            Player playerentity = context.getPlayer();
-            world.playSound(playerentity, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
+        if ((blockState.is(BlockTags.DIRT))) {
+            Player player = context.getPlayer();
+            if (player == null)
+                return InteractionResult.PASS;
+
+            // tags dirt
+            boolean isSneaking = player.isCrouching();
+            BlockState blockPath = isSneaking
+                    ? Blocks.FARMLAND.defaultBlockState()
+                    : Blocks.DIRT_PATH.defaultBlockState();
+
+            world.playSound(
+                    player,
+                    blockPos,
+                    SoundEvents.SHOVEL_FLATTEN,
+                    SoundSource.BLOCKS,
+                    1.0F,
+                    1.0F);
             if (!world.isClientSide) {
-                world.setBlock(blockpos, blockPath, 11);
-                if (playerentity != null) {
-                    context.getItemInHand().hurtAndBreak(1, playerentity, (p_220040_1_) -> {
-                        p_220040_1_.broadcastBreakEvent(context.getHand());
-                    });
-                }
+                world.setBlock(blockPos, blockPath, 11);
+
+                context
+                        .getItemInHand()
+                        .hurtAndBreak(
+                                1,
+                                player,
+                                p_220040_1_ -> {
+                                    p_220040_1_.broadcastBreakEvent(context.getHand());
+                                });
             }
 
             return InteractionResult.sidedSuccess(world.isClientSide);
         }
-        if (blockstate.is(BlockTags.LOGS)) {
-
-            //tags logs
-            Block check = STRIPPABLES.get(blockstate.getBlock());
+        if (blockState.is(BlockTags.LOGS)) {
+            // tags logs
+            Block check = STRIPPABLES.get(blockState.getBlock());
             if (check != null) {
                 BlockState block = check.defaultBlockState();
-                Player playerentity = context.getPlayer();
-                world.playSound(playerentity, blockpos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+                Player playerEntity = context.getPlayer();
+                world.playSound(
+                        playerEntity,
+                        blockPos,
+                        SoundEvents.AXE_STRIP,
+                        SoundSource.BLOCKS,
+                        1.0F,
+                        1.0F);
                 if (!world.isClientSide) {
-                    world.setBlock(blockpos, block, 11);
-                    if (playerentity != null) {
-                        context.getItemInHand().hurtAndBreak(1, playerentity, (p_220040_1_) -> {
-                            p_220040_1_.broadcastBreakEvent(context.getHand());
-                        });
+                    world.setBlock(blockPos, block, 11);
+                    if (playerEntity != null) {
+                        context
+                                .getItemInHand()
+                                .hurtAndBreak(
+                                        1,
+                                        playerEntity,
+                                        p_220040_1_ -> {
+                                            p_220040_1_.broadcastBreakEvent(
+                                                    context.getHand());
+                                        });
                     }
                 }
                 return InteractionResult.sidedSuccess(world.isClientSide);
             }
-
-
-
         }
         return InteractionResult.PASS;
     }
 
-
-
     @Override
-    public boolean isEnchantable(ItemStack stack) {
+    public boolean isEnchantable(@Nonnull ItemStack stack) {
         return true;
     }
+
     @Override
     public boolean canBeDepleted() {
         return false;
     }
+
     @Override
-    public void appendHoverText(ItemStack stack, Level worldIn, List<Component> tooltip, TooltipFlag flagIn){
-        tooltip.add(TextComponentHelper.createComponentTranslation(null,"indestructible" , new Object()).withStyle(ChatFormatting.GOLD));
+    public void appendHoverText(
+            @Nonnull ItemStack stack,
+            @Nullable Level worldIn,
+            @Nonnull List<Component> tooltip,
+            @Nonnull TooltipFlag flagIn) {
+        tooltip.add(
+                TextComponentHelper
+                        .createComponentTranslation(
+                                CommandSource.NULL,
+                                "indestructible",
+                                new Object())
+                        .withStyle(ChatFormatting.GOLD));
 
         super.appendHoverText(stack, worldIn, tooltip, flagIn);
     }
-    protected TranslatableContents getTooltip(String key){
+
+    protected TranslatableContents getTooltip(String key) {
         return new TranslatableContents(key);
     }
 
     @Override
-    public boolean isCorrectToolForDrops(ItemStack stack, BlockState state)
-    {
+    public boolean isCorrectToolForDrops(ItemStack stack, BlockState state) {
         if (state.is(BlockTags.MINEABLE_WITH_PICKAXE))
-            return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.ALLTHEMODIUM_TIER, state);
+            return TierSortingRegistry.isCorrectTierForDrops(
+                    ToolTiers.ALLTHEMODIUM_TIER,
+                    state);
         if (state.is(BlockTags.MINEABLE_WITH_HOE))
-            return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.ALLTHEMODIUM_TIER, state);
+            return TierSortingRegistry.isCorrectTierForDrops(
+                    ToolTiers.ALLTHEMODIUM_TIER,
+                    state);
         if (state.is(BlockTags.MINEABLE_WITH_SHOVEL))
-            return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.ALLTHEMODIUM_TIER, state);
+            return TierSortingRegistry.isCorrectTierForDrops(
+                    ToolTiers.ALLTHEMODIUM_TIER,
+                    state);
         if (state.is(BlockTags.MINEABLE_WITH_AXE))
-            return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.ALLTHEMODIUM_TIER, state);
+            return TierSortingRegistry.isCorrectTierForDrops(
+                    ToolTiers.ALLTHEMODIUM_TIER,
+                    state);
         if (state.is(ToolTiers.ALLTHEMODIUM_TOOL_TAG))
-            return TierSortingRegistry.isCorrectTierForDrops(ToolTiers.ALLTHEMODIUM_TIER, state);
+            return TierSortingRegistry.isCorrectTierForDrops(
+                    ToolTiers.ALLTHEMODIUM_TIER,
+                    state);
         return false;
     }
 }
