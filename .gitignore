@@ -50,3 +50,4 @@ TCon/silent_data/vibranium.json
 
 # datagen
 src/generated/resources/.cache
+libs/geckolib-neoforge-1.21.1-4.7.3.jar
