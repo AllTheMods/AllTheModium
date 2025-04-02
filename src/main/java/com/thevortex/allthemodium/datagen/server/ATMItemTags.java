@@ -368,37 +368,37 @@ public class ATMItemTags extends ItemTagsProvider {
         tag(TagRegistry.VIBRANIUM_ROD).add(ModRegistry.VIB_ROD.get());
         tag(TagRegistry.UNOBTAINIUM_ROD).add(ModRegistry.ONOB_ROD.get());
 
-        tag(TagRegistry.ALLTHEMODIUM_SHARD).add(MekProcReg.ATM_SHARD.get());
-        tag(TagRegistry.VIBRANIUM_SHARD).add(MekProcReg.VIB_SHARD.get());
-        tag(TagRegistry.UNOBTAINIUM_SHARD).add(MekProcReg.ONOB_SHARD.get());
+        tag(TagRegistry.ALLTHEMODIUM_SHARD).addOptional(MekProcReg.ATM_SHARD.getId());
+        tag(TagRegistry.VIBRANIUM_SHARD).addOptional(MekProcReg.VIB_SHARD.getId());
+        tag(TagRegistry.UNOBTAINIUM_SHARD).addOptional(MekProcReg.ONOB_SHARD.getId());
 
-        tag(TagRegistry.ALLTHEMODIUM_CLUMP).add(MekProcReg.ATM_CLUMP.get());
-        tag(TagRegistry.VIBRANIUM_CLUMP).add(MekProcReg.VIB_CLUMP.get());
-        tag(TagRegistry.UNOBTAINIUM_CLUMP).add(MekProcReg.ONOB_CLUMP.get());
+        tag(TagRegistry.ALLTHEMODIUM_CLUMP).addOptional(MekProcReg.ATM_CLUMP.getId());
+        tag(TagRegistry.VIBRANIUM_CLUMP).addOptional(MekProcReg.VIB_CLUMP.getId());
+        tag(TagRegistry.UNOBTAINIUM_CLUMP).addOptional(MekProcReg.ONOB_CLUMP.getId());
 
-        tag(TagRegistry.ALLTHEMODIUM_CRYSTAL).add(MekProcReg.ATM_CRYSTAL.get());
-        tag(TagRegistry.VIBRANIUM_CRYSTAL).add(MekProcReg.VIB_CRYSTAL.get());
-        tag(TagRegistry.UNOBTAINIUM_CRYSTAL).add(MekProcReg.ONOB_CRYSTAL.get());
+        tag(TagRegistry.ALLTHEMODIUM_CRYSTAL).addOptional(MekProcReg.ATM_CRYSTAL.getId());
+        tag(TagRegistry.VIBRANIUM_CRYSTAL).addOptional(MekProcReg.VIB_CRYSTAL.getId());
+        tag(TagRegistry.UNOBTAINIUM_CRYSTAL).addOptional(MekProcReg.ONOB_CRYSTAL.getId());
 
-        tag(TagRegistry.ALLTHEMODIUM_DIRTYDUST).add(MekProcReg.ATM_DIRTY.get());
-        tag(TagRegistry.VIBRANIUM_DIRTYDUST).add(MekProcReg.VIB_DIRTY.get());
-        tag(TagRegistry.UNOBTAINIUM_DIRTYDUST).add(MekProcReg.ONOB_DIRTY.get());
+        tag(TagRegistry.ALLTHEMODIUM_DIRTYDUST).addOptional(MekProcReg.ATM_DIRTY.getId());
+        tag(TagRegistry.VIBRANIUM_DIRTYDUST).addOptional(MekProcReg.VIB_DIRTY.getId());
+        tag(TagRegistry.UNOBTAINIUM_DIRTYDUST).addOptional(MekProcReg.ONOB_DIRTY.getId());
 
-        tag(TagRegistry.SHARD).add(MekProcReg.ATM_SHARD.get());
-        tag(TagRegistry.SHARD).add(MekProcReg.VIB_SHARD.get());
-        tag(TagRegistry.SHARD).add(MekProcReg.ONOB_SHARD.get());
+        tag(TagRegistry.SHARD).addOptional(MekProcReg.ATM_SHARD.getId());
+        tag(TagRegistry.SHARD).addOptional(MekProcReg.VIB_SHARD.getId());
+        tag(TagRegistry.SHARD).addOptional(MekProcReg.ONOB_SHARD.getId());
 
-        tag(TagRegistry.CLUMP).add(MekProcReg.ATM_CLUMP.get());
-        tag(TagRegistry.CLUMP).add(MekProcReg.VIB_CLUMP.get());
-        tag(TagRegistry.CLUMP).add(MekProcReg.ONOB_CLUMP.get());
+        tag(TagRegistry.CLUMP).addOptional(MekProcReg.ATM_CLUMP.getId());
+        tag(TagRegistry.CLUMP).addOptional(MekProcReg.VIB_CLUMP.getId());
+        tag(TagRegistry.CLUMP).addOptional(MekProcReg.ONOB_CLUMP.getId());
 
-        tag(TagRegistry.CRYSTAL).add(MekProcReg.ATM_CRYSTAL.get());
-        tag(TagRegistry.CRYSTAL).add(MekProcReg.VIB_CRYSTAL.get());
-        tag(TagRegistry.CRYSTAL).add(MekProcReg.ONOB_CRYSTAL.get());
+        tag(TagRegistry.CRYSTAL).addOptional(MekProcReg.ATM_CRYSTAL.getId());
+        tag(TagRegistry.CRYSTAL).addOptional(MekProcReg.VIB_CRYSTAL.getId());
+        tag(TagRegistry.CRYSTAL).addOptional(MekProcReg.ONOB_CRYSTAL.getId());
 
-        tag(TagRegistry.DIRTYDUST).add(MekProcReg.ATM_DIRTY.get());
-        tag(TagRegistry.DIRTYDUST).add(MekProcReg.VIB_DIRTY.get());
-        tag(TagRegistry.DIRTYDUST).add(MekProcReg.ONOB_DIRTY.get());
+        tag(TagRegistry.DIRTYDUST).addOptional(MekProcReg.ATM_DIRTY.getId());
+        tag(TagRegistry.DIRTYDUST).addOptional(MekProcReg.VIB_DIRTY.getId());
+        tag(TagRegistry.DIRTYDUST).addOptional(MekProcReg.ONOB_DIRTY.getId());
 
     }
 }

@@ -1,5 +1,8 @@
 {
   "values": [
-    "allthemodium:vibranium_clump"
+    {
+      "id": "allthemodium:vibranium_clump",
+      "required": false
+    }
   ]
 }

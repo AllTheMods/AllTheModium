@@ -1,7 +1,16 @@
 {
   "values": [
-    "allthemodium:dirty_allthemodium_dust",
-    "allthemodium:dirty_vibranium_dust",
-    "allthemodium:dirty_unobtainium_dust"
+    {
+      "id": "allthemodium:dirty_allthemodium_dust",
+      "required": false
+    },
+    {
+      "id": "allthemodium:dirty_vibranium_dust",
+      "required": false
+    },
+    {
+      "id": "allthemodium:dirty_unobtainium_dust",
+      "required": false
+    }
   ]
 }

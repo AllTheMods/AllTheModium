@@ -1,7 +1,16 @@
 {
   "values": [
-    "allthemodium:allthemodium_crystal",
-    "allthemodium:vibranium_crystal",
-    "allthemodium:unobtainium_crystal"
+    {
+      "id": "allthemodium:allthemodium_crystal",
+      "required": false
+    },
+    {
+      "id": "allthemodium:vibranium_crystal",
+      "required": false
+    },
+    {
+      "id": "allthemodium:unobtainium_crystal",
+      "required": false
+    }
   ]
 }

@@ -1,5 +1,8 @@
 {
   "values": [
-    "allthemodium:dirty_vibranium_dust"
+    {
+      "id": "allthemodium:dirty_vibranium_dust",
+      "required": false
+    }
   ]
 }

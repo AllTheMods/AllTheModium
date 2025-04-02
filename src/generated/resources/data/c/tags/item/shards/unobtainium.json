@@ -1,5 +1,8 @@
 {
   "values": [
-    "allthemodium:unobtainium_shard"
+    {
+      "id": "allthemodium:unobtainium_shard",
+      "required": false
+    }
   ]
 }

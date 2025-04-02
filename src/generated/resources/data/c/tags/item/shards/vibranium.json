@@ -1,5 +1,8 @@
 {
   "values": [
-    "allthemodium:vibranium_shard"
+    {
+      "id": "allthemodium:vibranium_shard",
+      "required": false
+    }
   ]
 }

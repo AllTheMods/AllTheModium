@@ -1,5 +1,8 @@
 {
   "values": [
-    "allthemodium:dirty_allthemodium_dust"
+    {
+      "id": "allthemodium:dirty_allthemodium_dust",
+      "required": false
+    }
   ]
 }

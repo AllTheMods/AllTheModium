@@ -1,5 +1,8 @@
 {
   "values": [
-    "allthemodium:allthemodium_crystal"
+    {
+      "id": "allthemodium:allthemodium_crystal",
+      "required": false
+    }
   ]
 }

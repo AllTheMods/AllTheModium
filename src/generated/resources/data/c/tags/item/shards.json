@@ -1,7 +1,16 @@
 {
   "values": [
-    "allthemodium:allthemodium_shard",
-    "allthemodium:vibranium_shard",
-    "allthemodium:unobtainium_shard"
+    {
+      "id": "allthemodium:allthemodium_shard",
+      "required": false
+    },
+    {
+      "id": "allthemodium:vibranium_shard",
+      "required": false
+    },
+    {
+      "id": "allthemodium:unobtainium_shard",
+      "required": false
+    }
   ]
 }

@@ -1,5 +1,8 @@
 {
   "values": [
-    "allthemodium:allthemodium_clump"
+    {
+      "id": "allthemodium:allthemodium_clump",
+      "required": false
+    }
   ]
 }

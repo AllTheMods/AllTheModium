@@ -105,7 +105,6 @@ dependencies {
     implementation "curse.maven:${mekanism}"
     implementation "curse.maven:${ato}"
     implementation "curse.maven:${ars_nouveau}"
-    implementation "curse.maven:adorned-1036809:5740650"
     runtimeOnly "curse.maven:jei-238222:5846880"
     //implementation "curse.maven:${jei}"
     // For more info:

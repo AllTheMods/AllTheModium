@@ -1,5 +1,8 @@
 {
   "values": [
-    "allthemodium:dirty_unobtainium_dust"
+    {
+      "id": "allthemodium:dirty_unobtainium_dust",
+      "required": false
+    }
   ]
 }

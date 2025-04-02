@@ -1,5 +1,8 @@
 {
   "values": [
-    "allthemodium:unobtainium_crystal"
+    {
+      "id": "allthemodium:unobtainium_crystal",
+      "required": false
+    }
   ]
 }

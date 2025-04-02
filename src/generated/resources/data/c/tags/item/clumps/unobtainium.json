@@ -1,5 +1,8 @@
 {
   "values": [
-    "allthemodium:unobtainium_clump"
+    {
+      "id": "allthemodium:unobtainium_clump",
+      "required": false
+    }
   ]
 }

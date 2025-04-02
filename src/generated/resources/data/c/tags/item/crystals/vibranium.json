@@ -1,5 +1,8 @@
 {
   "values": [
-    "allthemodium:vibranium_crystal"
+    {
+      "id": "allthemodium:vibranium_crystal",
+      "required": false
+    }
   ]
 }

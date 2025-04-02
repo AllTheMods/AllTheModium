@@ -1,7 +1,16 @@
 {
   "values": [
-    "allthemodium:allthemodium_clump",
-    "allthemodium:vibranium_clump",
-    "allthemodium:unobtainium_clump"
+    {
+      "id": "allthemodium:allthemodium_clump",
+      "required": false
+    },
+    {
+      "id": "allthemodium:vibranium_clump",
+      "required": false
+    },
+    {
+      "id": "allthemodium:unobtainium_clump",
+      "required": false
+    }
   ]
 }
