@@ -46,7 +46,7 @@ public class ATMItemTags extends ItemTagsProvider {
         tag(TagRegistry.ATM_BOOTS).add(ModRegistry.VIBRANIUM_BOOTS.get());
         tag(TagRegistry.ATM_BOOTS).add(ModRegistry.UNOBTAINIUM_BOOTS.get());
         
-
+        tag(TagRegistry.UNOBATM_ALLOY).add(ModRegistry.UNOBTAINIUM_ALLTHEMODIUM_ALLOY.get());
         tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_HELMET.get());
         tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());
         tag(ItemTags.ARMOR_ENCHANTABLE).add(ModRegistry.ALLTHEMODIUM_LEGGINGS.get());
