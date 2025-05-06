@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
-import java.util.Collection;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -68,7 +68,7 @@ public class ATMLootTables extends VanillaBlockLoot {
 
         @Override
         protected Iterable<Block> getKnownBlocks() {
-            return Stream.of(ModRegistry.BLOCKS.getEntries(),
+            List<Block> list = Stream.of(ModRegistry.BLOCKS.getEntries(),
                     ModRegistry.STAIRBLOCKS.getEntries(),
                     ModRegistry.SLABBLOCKS.getEntries(),
                     ModRegistry.WALLBLOCKS.getEntries(),
@@ -77,7 +77,8 @@ public class ATMLootTables extends VanillaBlockLoot {
                     .flatMap(Collection::stream)
                     .map(DeferredHolder::get)
                     .collect(Collectors.toList());
-
+            list.add(ModRegistry.TELEPORT_PAD.get());
+            return list;
         }
         protected Iterable<Block> getKnownStairs() {
             return ModRegistry.STAIRBLOCKS.getEntries()

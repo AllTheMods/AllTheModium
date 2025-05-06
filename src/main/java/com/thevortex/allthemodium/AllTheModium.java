@@ -95,6 +95,7 @@ public class AllTheModium
     	//ATMCraftingSetup.REGISTRY.register(modEventBus);
 		ATMStructures.STRUCTURES.register(modEventBus);
 		ModRegistry.FEATURES.register(modEventBus);
+		ModRegistry.POI_TYPES.register(modEventBus);
 		ModRegistry.CREATIVE_TABS.register(modEventBus);
 		
 
