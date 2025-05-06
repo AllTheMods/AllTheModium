@@ -41,6 +41,7 @@ public class TagRegistry {
     public static final TagKey<Block> NEEDS_ALLOY_TOOL = BlockTags.create(Reference.forge("needs_allthemodiumalloy_tool"));
     public static final TagKey<Block> INCORRECT_FOR_ALLOY_TOOL = BlockTags.create(Reference.forge("incorrect_for_allthemodiumalloy_tool"));
 
+    public static final TagKey<Item> UNOBATM_ALLOY = ItemTags.create(Reference.ingot("unobtainium_allthemodium_alloy"));
     public static final TagKey<Item> FORGE_SWORDS = ItemTags.create(Reference.forge("tools/swords"));
     public static final TagKey<Item> FORGE_PICKAXES = ItemTags.create(Reference.forge("tools/pickaxes"));
     public static final TagKey<Item> FORGE_AXES = ItemTags.create(Reference.forge("tools/axes"));
