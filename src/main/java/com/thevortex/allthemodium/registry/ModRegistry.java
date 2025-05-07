@@ -1,5 +1,6 @@
 package com.thevortex.allthemodium.registry;
 
+import com.google.common.collect.ImmutableSet;
 import com.thevortex.allthemodium.blocks.*;
 import com.thevortex.allthemodium.blocks.entity.ATMBrushableBlockEntity;
 import com.thevortex.allthemodium.init.ModFoods;
@@ -28,6 +29,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
@@ -64,8 +66,8 @@ public class ModRegistry {
 	public static final DeferredRegister<Block> WALLBLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
 	public static final DeferredRegister<Block> SLABBLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
 	public static final DeferredRegister<Block> PILLARBLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
-	public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(Registries.BIOME,
-			Reference.MOD_ID);
+	public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(Registries.BIOME, Reference.MOD_ID);
+	public static final DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, Reference.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.createItems(Reference.MOD_ID);
 
@@ -88,9 +90,11 @@ public class ModRegistry {
 
 	public static final DeferredHolder<Biome,Biome> MINING = BIOMES.register("mining", () -> ATMBiomes.mining());
 	
-	//
+	// POI TYPES
 
-
+	public static final DeferredHolder<PoiType, PoiType> TELEPORT_PAD_POI = POI_TYPES.register("teleport_pad",
+			() -> new PoiType(ImmutableSet.copyOf(ModRegistry.TELEPORT_PAD.get().getStateDefinition().getPossibleStates()), 1, 1)
+	);
 
 	// FOOD
 
@@ -406,7 +410,7 @@ public class ModRegistry {
 
 
 
-	public static final DeferredHolder<Block,Block> TELEPORT_PAD = SHAPED_BLOCKS.register("teleport_pad", () -> new TeleportPad(Block.Properties.of().noLootTable().noOcclusion().strength(20.0F)));
+	public static final DeferredHolder<Block,Block> TELEPORT_PAD = SHAPED_BLOCKS.register("teleport_pad", () -> new TeleportPad(Block.Properties.of().noOcclusion().strength(20.0F)));
 	public static final DeferredHolder<Item,Item> TELEPORT_PAD_ITEM = ITEMS.register("teleport_pad", () -> new BlockItem(TELEPORT_PAD.get(), new Item.Properties()));
 
 	
