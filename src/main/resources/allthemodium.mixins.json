@@ -6,9 +6,10 @@
     "refmap": "allthemodium.refmap.json",
     "mixins": [
       "MixinAxeItem"
+      
     ],
     "client": [
-
+      "MixinLocalPlayer"
     ],
     "injectors": {
       "defaultRequire": 1

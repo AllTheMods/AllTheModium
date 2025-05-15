@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.178'
+    id 'net.neoforged.gradle.userdev' version '7.0.173'
 }
 
 version = mod_version + "_mc_" + minecraft_version 
@@ -104,6 +104,7 @@ dependencies {
     
     implementation "curse.maven:${mekanism}"
     implementation "curse.maven:${ato}"
+
     implementation "curse.maven:${ars_nouveau}"
     runtimeOnly "curse.maven:jei-238222:5846880"
     //implementation "curse.maven:${jei}"
@@ -156,7 +157,23 @@ publishing {
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
+jar {
+    manifest {
+        attributes([
+            "Specification-Title"     : mod_id,
+            "Specification-Vendor"    : group,
+            "Specification-Version"   : "1", // We are version 1 of ourselves
+            "Implementation-Title"    : project.name,
+            "Implementation-Version"  : project.jar.archiveVersion,
+            "MixinConfigs": "${mod_id}.mixins.json"
+        ])
+    }
 
+    // The settings below make sure that your build is reproducible
+    // More information at https://docs.gradle.org/current/userguide/working_with_files.html#sec:reproducible_archives
+    preserveFileTimestamps = false
+    reproducibleFileOrder = true
+}
 // IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
 idea {
     module {
