@@ -49,12 +49,13 @@ public class MixinLocalPlayer extends AbstractClientPlayer {
         shift = At.Shift.AFTER
     ), cancellable = true)
     public void aiStep(CallbackInfo ci) {
-        AllTheModium.LOGGER.debug("MixinLocalPlayer: aiStep");
         LocalPlayer self = (LocalPlayer)(Object)this;
         if ((self.getItemInHand(InteractionHand.OFF_HAND).getItem() instanceof Vib_Shield) && self.isUsingItem()) {
+            super.aiStep();
             ci.cancel();
         }
     }
+
 
    
 }
