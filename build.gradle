@@ -53,7 +53,7 @@ neoForge {
 
         systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
         programArgument "-Dmixin.debug.export=true"
-
+        client()
 
     }
 

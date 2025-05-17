@@ -6,7 +6,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 import com.google.common.collect.Maps;
-import com.thevortex.allthemodium.mixins.MixinAxeItem;
 import com.thevortex.allthemodium.registry.TagRegistry;
 
 import net.minecraft.advancements.CriteriaTriggers;
@@ -123,12 +122,12 @@ public class ATMPaxel extends DiggerItem {
 
     @Nullable
     public static BlockState getAxeStrippingState(BlockState originalState) {
-        Block block = MixinAxeItem.getStrippables().get(originalState.getBlock());
+        Block block = AxeItem.STRIPPABLES.get(originalState.getBlock());
         return block != null ? block.defaultBlockState().setValue(RotatedPillarBlock.AXIS, originalState.getValue(RotatedPillarBlock.AXIS)) : null;
     }
 
     private Optional<BlockState> getStripped(BlockState p_150691_) {
-        return Optional.ofNullable(MixinAxeItem.getStrippables().get(p_150691_.getBlock()))
+        return Optional.ofNullable(AxeItem.STRIPPABLES.get(p_150691_.getBlock()))
             .map(p_150689_ -> p_150689_.defaultBlockState().setValue(RotatedPillarBlock.AXIS, p_150691_.getValue(RotatedPillarBlock.AXIS)));
     }
 
