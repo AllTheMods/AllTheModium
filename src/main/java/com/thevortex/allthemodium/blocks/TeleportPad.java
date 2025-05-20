@@ -6,6 +6,8 @@ import com.mojang.serialization.MapCodec;
 
 import com.thevortex.allthemodium.registry.LevelRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
+
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
@@ -34,6 +36,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class TeleportPad extends Block {
 	MapCodec<? extends TeleportPad> codec = simpleCodec(TeleportPad::new);
 	
@@ -184,7 +190,7 @@ public class TeleportPad extends Block {
 		player.teleportTo(level, targetPos.getX() + 0.5D, targetPos.getY() + 0.25D, targetPos.getZ() + 0.5D, player.rotA, player.yya);
 	}
 
-	private @Nullable ResourceKey<Level> getPartner(ResourceKey<Level> level, int packMode) {
+	public static @Nullable ResourceKey<Level> getPartner(ResourceKey<Level> level, int packMode) {
 		Map<ResourceKey<Level>, ResourceKey<Level>> map = OVERRIDES.getOrDefault(packMode, DEFAULT_PARTNERS);
         return map.get(level);
 	}

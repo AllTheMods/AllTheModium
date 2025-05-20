@@ -121,6 +121,7 @@ dependencies {
     implementation "curse.maven:${curios}"
     runtimeOnly "curse.maven:jei-238222:5846880"
     runtimeOnly "curse.maven:${patchouli}"
+    implementation "curse.maven:${jade}"
     //implementation "curse.maven:${jei}"
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
