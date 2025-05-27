@@ -293,4 +293,12 @@
   "block.iceandfire.unobtainium_pile": "堆積したアンオブタニウム",
   "block.iceandfire.vibranium_pile": "堆積したヴィブラニウム",
   "block.allthemodium.allthemodium_source_jar": "アンオブタニウムのソース瓶"
+  "config.jade.plugin_allthemodium.teleport_pad": "テレポートパッド",
+  "jade.allthemodium.teleport_pad.tip": "手に何も持たずにShift + 右クリック",
+  "jade.allthemodium.teleport_pad.no_drop": "採掘してもドロップしません！",
+  "jade.allthemodium.teleport_pad.transports_to": "テレポート先：",
+  "dimension.allthemodium.unknown": "不明なディメンション",
+  "dimension.allthemodium.mining": "採掘ディメンション",
+  "dimension.allthemodium.the_other": "アザー",
+  "dimension.allthemodium.the_beyond": "ザ・ビヨンド"
 }
