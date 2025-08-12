@@ -1,0 +1,12 @@
+{
+    "name": "Reddit",
+    "icon": "allthemodium:allthemodium_block",
+    "category": "allthemodium:links",
+    "sortnum": 3,
+    "pages": [{
+        "type": "link",
+        "url": "https://www.reddit.com/r/allthemods/",
+        "link_text": "Reddit Bağlantısı",
+        "text": "Reddit, sunucu listelerini görmek ve ayrıca yardım istemek ve yapıları göstermek için iyi bir yerdir."
+    }]
+}

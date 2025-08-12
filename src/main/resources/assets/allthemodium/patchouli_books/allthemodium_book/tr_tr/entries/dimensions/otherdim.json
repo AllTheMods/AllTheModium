@@ -1,0 +1,10 @@
+{
+    "name": "Other",
+    "icon": "allthemodium:other_vibranium_ore",
+    "category": "allthemodium:dimensions",
+    "sortnum": 3,
+    "pages": [{
+        "type": "text",
+        "text": "Other çok saldırgan bir boyuttur. Boyuta ışınlanmak için Nether'da $(l:dimensions/teleport_pad)Işınlanma Pedi'ni$(/c) kullan. Burası hakkında çok az şey biliniyor, ancak Piglinlerin geldiği yer gibi görünüyor, yüzeyde ağaç örtüsü olan herhangi bir biyomda devasa yeraltı şehirleri, canavarlar ve ganimetlerle dolu zindanlar ve antik piramitler var"
+    }]
+}

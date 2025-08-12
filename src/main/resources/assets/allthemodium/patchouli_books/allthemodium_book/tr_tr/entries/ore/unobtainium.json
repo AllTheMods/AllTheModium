@@ -1,0 +1,13 @@
+{
+    "name": "Unobtainium Cevheri",
+    "icon": "allthemodium:unobtainium_ore",
+    "category": "allthemodium:ore",
+    "sortnum": 3,
+    "pages": [{
+        "type": "spotlight",
+        "item": "allthemodium:unobtainium_ore",
+        "title": "Unobtainium Cevheri",
+        "link_recipe": false,
+        "text": "Unobtainium cevheri End Dağlıkları biyomunda bulunabilir. Y 78'in altında ortaya çıkar."
+    }]
+}

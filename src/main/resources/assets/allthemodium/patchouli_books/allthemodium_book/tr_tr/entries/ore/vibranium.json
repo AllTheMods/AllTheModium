@@ -1,0 +1,13 @@
+{
+    "name": "Vibranium Cevheri",
+    "icon": "allthemodium:vibranium_ore",
+    "category": "allthemodium:ore",
+    "sortnum": 2,
+    "pages": [{
+        "type": "spotlight",
+        "item": "allthemodium:vibranium_ore",
+        "title": "Vibranium Cevheri",
+        "link_recipe": false,
+        "text": "Vibranyum cevheri Nether'da, Y 64'ün üzerinde bulunabilir. Ayrıca Other boyutunda, mağaraların derinliklerinde de bulunur"
+    }]
+}

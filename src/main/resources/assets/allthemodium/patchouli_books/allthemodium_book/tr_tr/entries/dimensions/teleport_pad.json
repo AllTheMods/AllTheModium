@@ -1,0 +1,15 @@
+{
+    "name": "Işınlanma Pedi",
+    "icon": "allthemodium:teleport_pad",
+    "category": "allthemodium:dimensions",
+    "sortnum": 1,
+    "pages": [{
+            "type": "crafting",
+            "recipe": "allthemodium:teleport_pad"
+        },
+        {
+            "type": "text",
+            "text": "Işınlanma Pedi $(l:dimensions/miningdim)Madencilik Boyutuna$(/c) ve $(l:dimensions/otherdim)Other'a$(/c)ışınlanmak için kullanılır, hem boş elle hem de diğer elle shift sağ tıklama yapmanız gerekir.$(br2)Not olarak, $(l:dimensions/miningdim)Madencilik Boyutu$(/c) ATM6: To The Sky paketinde devre dışı bırakılmıştır"
+        }
+    ]
+}

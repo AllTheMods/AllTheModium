@@ -1,0 +1,13 @@
+{
+    "name": "Allthemodium Cevheri",
+    "icon": "allthemodium:allthemodium_ore",
+    "category": "allthemodium:ore",
+    "sortnum": 1,
+    "pages": [{
+        "type": "spotlight",
+        "item": "allthemodium:allthemodium_ore",
+        "title": "Allthemodium Cevheri",
+        "link_recipe": false,
+        "text": "Allthemodium Cevheri, Karanlık Derinlikler biyomunda mağara duvarlarında ve tavanlarında ortaya çıkar, ayrıca 170Y'nin üzerindeki çok yüksek Dağlarda yaygın bir şekilde ortaya çıkabilir, ayrıca madencilik boyutunda Y -59 ile Y 20 arasında her yerde bulunabilir. Ayrıca Other Boyutunun Kayrak Taşı katmanının mağaralarında da bulunabilir"
+    }]
+}

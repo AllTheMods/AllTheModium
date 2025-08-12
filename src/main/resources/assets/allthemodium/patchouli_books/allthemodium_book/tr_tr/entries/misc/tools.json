@@ -1,0 +1,11 @@
+{
+    "name": "Allthemodium Aletleri",
+    "icon": "allthemodium:allthemodium_pickaxe",
+    "category": "allthemodium:misc",
+    "sortnum": 1,
+    "pages": [{
+            "type": "text",
+            "text": "Allthemodium, hepsi yok edilemez olan çeşitli aletlere sahiptir."
+        }
+    ]
+}

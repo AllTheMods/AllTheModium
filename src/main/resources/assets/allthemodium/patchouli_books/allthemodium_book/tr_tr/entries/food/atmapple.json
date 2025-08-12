@@ -1,0 +1,15 @@
+{
+    "name": "Allthemodium Elma",
+    "icon": "allthemodium:allthemodium_apple",
+    "category": "allthemodium:food",
+    "pages": [{
+            "type": "crafting",
+            "recipe": "allthemodium:allthemodium_apple",
+            "title": "Allthemodium Elma"
+        },
+        {
+            "type": "text",
+            "text": "Allthemodium Elma, 20 tokluk ve 80 doygunluk verir. Elmanın şu etkileri vardır:$(li)Hızlı Yenir$(li)Her Zaman Yenebilir$(li)30 Saniye boyunca Emilim X$(li)30 Saniye boyunca Yenilenme X"
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+	"name": "Cevherler",
+	"description": "Bu sana Allthemodium'a özgü cevherleri nerede bulacağını gösterecektir.$(br2)Allthemodium, Vibranium ve Unobtainium çok nadir cevherlerdir ve bulunmaları zor olabilir.",
+	"icon": "allthemodium:allthemodium_ore",
+	"sortnum": 2
+}

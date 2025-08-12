@@ -1,0 +1,28 @@
+{
+    "name": "Allthemodium Zırhı",
+    "icon": "allthemodium:allthemodium_chestplate",
+    "category": "allthemodium:armour",
+    "sortnum": 1,
+    "pages": [{
+            "type": "text",
+            "text": "Allthemodium zırhının sadece zırh, sertlik ve geri savurma direnci dışında çeşitli faydaları vardır:$(li)Suda Nefes Alma$(li)Elitra ile Uçarken Çarpma Hasarı Yok$(li)Ateş Hasarına Bağışıklık$(li)Düşme Hasarı Yok$(li)Zırhı Netherit'den yükselttiğinde, büyüleri korur"
+        },
+        {
+            "type": "smithing",
+            "recipe": "allthemodium:smithing/allthemodium_helmet_smithing"
+        },
+
+        {
+            "type": "smithing",
+            "recipe": "allthemodium:smithing/allthemodium_chestplate_smithing"
+        },
+        {
+            "type": "smithing",
+            "recipe": "allthemodium:smithing/allthemodium_leggings_smithing"
+        },
+        {
+            "type": "smithing",
+            "recipe": "allthemodium:smithing/allthemodium_boots_smithing"
+        }
+    ]
+}

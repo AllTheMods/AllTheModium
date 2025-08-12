@@ -1,0 +1,15 @@
+{
+    "name": "Allthemodium Havuç",
+    "icon": "allthemodium:allthemodium_carrot",
+    "category": "allthemodium:food",
+    "pages": [{
+            "type": "crafting",
+            "recipe": "allthemodium:allthemodium_carrot",
+            "title": "Allthemodium Havuç"
+        },
+        {
+            "type": "text",
+            "text": "Allthemodium havuç 40 tokluk ve 320 doygunluk verir. Havuç şu etkilere sahiptir:$(li)Hızlı Yenir$(li)Her Zaman Yenebilir$(li)30 Saniye boyunca Emilim X$(li)30 Saniye boyunca Yenilenme X"
+        }
+    ]
+}

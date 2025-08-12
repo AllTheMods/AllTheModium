@@ -1,0 +1,10 @@
+{
+    "name": "Madencilik Boyutu",
+    "icon": "allthemodium:allthemodium_ore",
+    "category": "allthemodium:dimensions",
+    "sortnum": 2,
+    "pages": [{
+        "type": "text",
+        "text": "Madencilik Boyutu, madencilik yapmak için maden ocakları kurmak için kullanışlıdır. Süper düz bir boyut olduğu için test alanı olarak kullanmak için de kullanışlıdır. Boyuta ışınlanmak için Ana Dünya'da $(l:dimensions/teleport_pad)Işınlanma Pedi'ni$(/c) kullan."
+    }]
+}

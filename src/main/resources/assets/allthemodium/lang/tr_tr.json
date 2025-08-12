@@ -40,7 +40,7 @@
   "steady.legs": "Shulker'in Hava Yükseltme Saldırılarına Karşı Koruma",
   "steady.guts": "Bulantıya karşı Bağışıklık",
   "light.step": "Düşüş Hasarı Yok",
-  "hard.head": "Elytra ile uçarken çarpma hasarı yok",
+  "hard.head": "Elitra ile uçarken çarpma hasarı yok",
   "aqua.lungs": "Suda Nefes Almak",
   "teleport.pad": "Madencilik Boyutu ve Other yerleri",
   "how.to.teleport": "Ana Dünya'ya Yerleştir, eğilip sağ tıkla, boş ELLERLE",
@@ -291,4 +291,5 @@
   "block.iceandfire.allthemodium_pile": "Allthemodium Parça Yığını",
   "block.iceandfire.unobtainium_pile": "Unobtainium Parça Yığını",
   "block.iceandfire.vibranium_pile": "Vibranium Parça Yığını"
+  "block.allthemodium.allthemodium_source_jar": "Allthemodium Kaynak Kavanozu"
 }
