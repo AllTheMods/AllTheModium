@@ -1,5 +1,6 @@
 {
   "itemGroup.allthemodium": "AllTheModium",
+  "itemGroup.allthemodium_mek": "AllTheModium Mek互換性",
   "allthemodium.description": "Allthemodium塊！最初の一歩だ！（そしてもっと！）",
   "upgrade.allthemodium.allthemodium_upgrade": "Allthemodium強化",
   "upgrade.allthemodium.vibranium_upgrade": "ヴィブラニウム強化",
@@ -222,9 +223,9 @@
   "item.allthemodium.unobtainium_ingot": "アンオブタニウムインゴット",
   "item.allthemodium.unobtainium_dust": "アンオブタニウムの粉",
   "block.allthemodium.teleport_pad": "テレポートパッド",
-  "block.allthemodium.molten_allthemodium_block" : "溶融したAllthemodium",
-  "block.allthemodium.molten_vibranium_block" : "溶融したヴィブラニウム",
-  "block.allthemodium.molten_unobtainium_block" : "溶融したアンオブタニウム",
+  "block.allthemodium.molten_allthemodium" : "溶融したAllthemodium",
+  "block.allthemodium.molten_vibranium" : "溶融したヴィブラニウム",
+  "block.allthemodium.molten_unobtainium" : "溶融したアンオブタニウム",
   "block.allthemodium.soul_lava" : "魂の溶岩",
   "item.allthemodium.soul_lava_bucket": "魂の溶岩入りバケツ",
   "fluid.allthemodium.molten_allthemodium":"溶融したAllthemodium",
@@ -291,5 +292,13 @@
   "block.iceandfire.allthemodium_pile": "堆積したAllthemodium",
   "block.iceandfire.unobtainium_pile": "堆積したアンオブタニウム",
   "block.iceandfire.vibranium_pile": "堆積したヴィブラニウム",
-  "block.allthemodium.allthemodium_source_jar": "Allthemodiumのソース瓶"
+  "block.allthemodium.allthemodium_source_jar": "アンオブタニウムのソース瓶",
+  "config.jade.plugin_allthemodium.teleport_pad": "テレポートパッド",
+  "jade.allthemodium.teleport_pad.tip": "手に何も持たずにShift + 右クリック",
+  "jade.allthemodium.teleport_pad.no_drop": "採掘してもドロップしません！",
+  "jade.allthemodium.teleport_pad.transports_to": "テレポート先：",
+  "dimension.allthemodium.unknown": "不明なディメンション",
+  "dimension.allthemodium.mining": "採掘ディメンション",
+  "dimension.allthemodium.the_other": "アザー",
+  "dimension.allthemodium.the_beyond": "ザ・ビヨンド"
 }
