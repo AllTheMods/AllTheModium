@@ -8,12 +8,14 @@ import com.thevortex.allthemodium.reference.TweakProxy;
 import com.thevortex.allthemodium.registry.LevelRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 
-import com.thevortex.allthetweaks.AllTheTweaks;
+import net.minecraft.ChatFormatting;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -24,6 +26,9 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
 import net.minecraft.world.entity.ai.village.poi.PoiRecord;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -39,7 +44,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import net.neoforged.fml.ModList;
-import net.neoforged.neoforge.event.level.PistonEvent;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -48,8 +52,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @ParametersAreNonnullByDefault
 public class TeleportPad extends Block {
 	MapCodec<? extends TeleportPad> codec = simpleCodec(TeleportPad::new);
-
-
+    
 	protected static final VoxelShape TELEPORTPAD_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D);
 
 	public static final BooleanProperty SPAWNED = BooleanProperty.create("spawned");
@@ -65,6 +68,14 @@ public class TeleportPad extends Block {
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(SPAWNED, spawned));
 	}
+    
+    private int config() {
+        return isLoaded() ? TweakProxy.packMode() : 0;
+    }
+    
+    public static boolean isLoaded() {
+        return ModList.get().isLoaded("aoa3") && ModList.get().isLoaded("allthetweaks");
+    }
 
 	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
@@ -95,15 +106,24 @@ public class TeleportPad extends Block {
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
 		return !state.getValue(SPAWNED);
 	}
-public static boolean isLoaded() {
-		return ModList.get().isLoaded("aoa3") && ModList.get().isLoaded("allthetweaks");
-}
+    
+    @Override
+    public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable("tooltip.allthemodium.teleport_pad").withStyle(ChatFormatting.GRAY));
+        getSorted(config()).forEach((a, b) -> { 
+            tooltipComponents.add(dim(a).append(Component.literal(" ↔ ").withStyle(ChatFormatting.GRAY)).append(dim(b)));
+        });
+    }
+    
+    private MutableComponent dim(ResourceKey<Level> dim) {
+        return Component.translatable(String.join(".", dim.registry().getPath(), dim.location().getNamespace(), dim.location().getPath())).withStyle(ChatFormatting.YELLOW);
+    }
+
 	public void transferPlayer(ServerPlayer player, BlockPos pos) {
-		int config = isLoaded() ? TweakProxy.packMode() : 0;
 
 		// We can ignore the Warning here since if getPartner returns null, targetLevel will just be null and we return
 		@SuppressWarnings("ConstantConditions")
-		ServerLevel targetLevel = player.server.getLevel(getPartner(player.level().dimension(), config));
+		ServerLevel targetLevel = player.server.getLevel(getPartner(player.level().dimension(), config()));
 		if (targetLevel == null) return;
 
 		BlockPos targetPos = findSafeExit(targetLevel, pos);
@@ -209,8 +229,9 @@ public static boolean isLoaded() {
 
 	public record LevelPair(ResourceKey<Level> a, ResourceKey<Level> b) {}
 
-	private static Map<ResourceKey<Level>, ResourceKey<Level>> buildMap(LevelPair... pairs) {
-		Map<ResourceKey<Level>, ResourceKey<Level>> m = new HashMap<>();
+    // Use a Linked Map to preserve insertion order
+	private static LinkedHashMap<ResourceKey<Level>, ResourceKey<Level>> buildMap(LevelPair... pairs) {
+        LinkedHashMap<ResourceKey<Level>, ResourceKey<Level>> m = new LinkedHashMap<>();
 		// Bidirectional
 		for (var p : pairs) {
 			m.put(p.a, p.b);
@@ -219,7 +240,21 @@ public static boolean isLoaded() {
 		return m;
 	}
 
-	private static final Map<ResourceKey<Level>,ResourceKey<Level>> DEFAULT_PARTNERS =
+    // Filter the list so that we only have one of each dimension, following the originally given pairs
+    private static LinkedHashMap<ResourceKey<Level>, ResourceKey<Level>> getSorted(int config) {
+        LinkedHashMap<ResourceKey<Level>, ResourceKey<Level>> copy = new LinkedHashMap<>(OVERRIDES.getOrDefault(config, DEFAULT_PARTNERS));
+        Iterator<Map.Entry<ResourceKey<Level>, ResourceKey<Level>>> it = copy.entrySet().iterator();
+        
+        int i = 0;
+        while (it.hasNext()) {
+            it.next();
+            if (i % 2 == 1) it.remove();
+            i++;
+        }
+        return copy;
+    }
+
+	private static final LinkedHashMap<ResourceKey<Level>,ResourceKey<Level>> DEFAULT_PARTNERS =
 			buildMap(
 					new LevelPair(ServerLevel.OVERWORLD, LevelRegistry.Mining),
 					new LevelPair(ServerLevel.NETHER,    LevelRegistry.THE_OTHER),
