@@ -10,6 +10,7 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 
@@ -52,7 +53,15 @@ public class ArmorEvents {
 						}
 						return;
 			}
-		
+			if(event.getSource().is(DamageTypes.FELL_OUT_OF_WORLD)) {
+
+				while (iterator.hasNext()) {
+					ItemStack armor = iterator.next();
+					if (armor.getItem() == ModRegistry.UNOBTAINIUM_CHESTPLATE.get()){
+						event.setNewDamage(0.0F);
+					}
+				}
+			}
 			while (iterator.hasNext()) {
 				ItemStack armor = iterator.next();
 				if ((armor.getItem() == ModRegistry.ALLTHEMODIUM_CHESTPLATE.get())||(armor.getItem() == ModRegistry.VIBRANIUM_CHESTPLATE.get())||(armor.getItem() == ModRegistry.UNOBTAINIUM_CHESTPLATE.get())) {

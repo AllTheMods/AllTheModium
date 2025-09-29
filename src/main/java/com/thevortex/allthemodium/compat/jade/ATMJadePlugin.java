@@ -1,5 +1,6 @@
 package com.thevortex.allthemodium.compat.jade;
 
+import com.thevortex.allthemodium.reference.TweakProxy;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -39,7 +40,7 @@ public class ATMJadePlugin implements IWailaPlugin {
                 IPluginConfig config
         ) {
             tooltip.add(Component.translatable(String.format("jade.%s.teleport_pad.tip", Reference.MOD_ID)));
-            tooltip.add(getTranslation(TeleportPad.getPartner(accessor.getLevel().dimension(), 1)));
+            tooltip.add(getTranslation(TeleportPad.getPartner(accessor.getLevel().dimension(), TeleportPad.isLoaded() ? TweakProxy.packMode() : 0)));
             if(accessor.getBlockState().getValue(TeleportPad.SPAWNED))
                 tooltip.add(Component.translatable(String.format("jade.%s.teleport_pad.no_drop", Reference.MOD_ID)).withStyle(ChatFormatting.RED));
         }

@@ -115,6 +115,7 @@ dependencies {
     
     implementation "curse.maven:${mekanism}"
     implementation "curse.maven:${ato}"
+    implementation "curse.maven:${tweaks}"
 
     implementation "curse.maven:${ars_nouveau}"
     implementation "curse.maven:${geckolib}"

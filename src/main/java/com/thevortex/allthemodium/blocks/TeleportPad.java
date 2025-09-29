@@ -4,15 +4,19 @@ import java.util.*;
 
 import com.mojang.serialization.MapCodec;
 
+import com.thevortex.allthemodium.reference.TweakProxy;
 import com.thevortex.allthemodium.registry.LevelRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
 
+import com.thevortex.allthetweaks.AllTheTweaks;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
@@ -34,6 +38,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.event.level.PistonEvent;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -42,10 +48,14 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @ParametersAreNonnullByDefault
 public class TeleportPad extends Block {
 	MapCodec<? extends TeleportPad> codec = simpleCodec(TeleportPad::new);
-	
+
+
 	protected static final VoxelShape TELEPORTPAD_AABB = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D);
 
 	public static final BooleanProperty SPAWNED = BooleanProperty.create("spawned");
+	private static final ResourceKey<Level> PRECASIA = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath("aoa3","precasia"));
+	private static final ResourceKey<Level> BARATHOS = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath("aoa3","barathos"));
+	private static final ResourceKey<Level> ABYSS = ResourceKey.create(Registries.DIMENSION, ResourceLocation.fromNamespaceAndPath("aoa3","abyss"));
 
 	public TeleportPad(Properties properties) {
 		this(false, properties);
@@ -85,9 +95,11 @@ public class TeleportPad extends Block {
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
 		return !state.getValue(SPAWNED);
 	}
-
+public static boolean isLoaded() {
+		return ModList.get().isLoaded("aoa3") && ModList.get().isLoaded("allthetweaks");
+}
 	public void transferPlayer(ServerPlayer player, BlockPos pos) {
-		int config = 1;//TweakProxy.packMode();
+		int config = isLoaded() ? TweakProxy.packMode() : 0;
 
 		// We can ignore the Warning here since if getPartner returns null, targetLevel will just be null and we return
 		@SuppressWarnings("ConstantConditions")
@@ -216,10 +228,11 @@ public class TeleportPad extends Block {
 
 	// Used for special pairs in individual pack modes
 	private static final Map<Integer, Map<ResourceKey<Level>,ResourceKey<Level>>> OVERRIDES = Map.of(
-			/*
-			[packmode], buildMap(
-					new LevelPair(SomeDimension, SomeOtherDimension)
-			);
-			*/
-	);
+
+			7, buildMap(
+					new LevelPair(PRECASIA,LevelRegistry.Mining),
+					new LevelPair(BARATHOS,LevelRegistry.THE_OTHER),
+					new LevelPair(ABYSS,LevelRegistry.THE_BEYOND)
+			));
+
 }
