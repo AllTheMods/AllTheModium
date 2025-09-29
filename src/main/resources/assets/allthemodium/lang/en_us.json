@@ -300,5 +300,6 @@
   "dimension.allthemodium.unknown": "Unknown Dimension",
   "dimension.allthemodium.mining": "Mining Dimension",
   "dimension.allthemodium.the_other": "The Other",
-  "dimension.allthemodium.the_beyond": "The Beyond"
+  "dimension.allthemodium.the_beyond": "The Beyond",
+  "tooltip.allthemodium.teleport_pad": "Sneak + Right Click with both hands empty to teleport"
 }
