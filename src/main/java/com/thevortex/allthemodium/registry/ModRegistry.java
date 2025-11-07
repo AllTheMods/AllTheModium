@@ -103,27 +103,23 @@ public class ModRegistry {
 
 	// ARMORS
 
-	public static final DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_HELMET = ITEMS.register("allthemodium_helmet", () -> new Allthemodium_Helmet(ArmorRegistries.ATM, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static final DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_CHESTPLATE = ITEMS.register("allthemodium_chestplate", () -> new Allthemodium_Chestplate(ArmorRegistries.ATM, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static final DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_LEGGINGS = ITEMS.register("allthemodium_leggings", () -> new Allthemodium_Leggings(ArmorRegistries.ATM, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static final DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_BOOTS = ITEMS.register("allthemodium_boots", () -> new Allthemodium_Boots(ArmorRegistries.ATM, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_HELMET = ITEMS.register("allthemodium_helmet", () -> new Allthemodium_Helmet(ArmorRegistries.ATM, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(1)));
+	public static final DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_CHESTPLATE = ITEMS.register("allthemodium_chestplate", () -> new Allthemodium_Chestplate(ArmorRegistries.ATM, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(1)));
+	public static final DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_LEGGINGS = ITEMS.register("allthemodium_leggings", () -> new Allthemodium_Leggings(ArmorRegistries.ATM, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(1)));
+	public static final DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_BOOTS = ITEMS.register("allthemodium_boots", () -> new Allthemodium_Boots(ArmorRegistries.ATM, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(1)));
 
 
-	public static final DeferredHolder<Item,ArmorItem> VIBRANIUM_HELMET = ITEMS.register("vibranium_helmet", () -> new Allthemodium_Helmet(ArmorRegistries.VIB, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static final DeferredHolder<Item,ArmorItem> VIBRANIUM_CHESTPLATE = ITEMS.register("vibranium_chestplate", () -> new Allthemodium_Chestplate(ArmorRegistries.VIB, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static final DeferredHolder<Item,ArmorItem> VIBRANIUM_LEGGINGS = ITEMS.register("vibranium_leggings", () -> new Allthemodium_Leggings(ArmorRegistries.VIB, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static final DeferredHolder<Item,ArmorItem> VIBRANIUM_BOOTS = ITEMS.register("vibranium_boots", () -> new Allthemodium_Boots(ArmorRegistries.VIB, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,ArmorItem> VIBRANIUM_HELMET = ITEMS.register("vibranium_helmet", () -> new Allthemodium_Helmet(ArmorRegistries.VIB, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(1)));
+	public static final DeferredHolder<Item,ArmorItem> VIBRANIUM_CHESTPLATE = ITEMS.register("vibranium_chestplate", () -> new Allthemodium_Chestplate(ArmorRegistries.VIB, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(1)));
+	public static final DeferredHolder<Item,ArmorItem> VIBRANIUM_LEGGINGS = ITEMS.register("vibranium_leggings", () -> new Allthemodium_Leggings(ArmorRegistries.VIB, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(1)));
+	public static final DeferredHolder<Item,ArmorItem> VIBRANIUM_BOOTS = ITEMS.register("vibranium_boots", () -> new Allthemodium_Boots(ArmorRegistries.VIB, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(1)));
 
-	public static final DeferredHolder<Item,ArmorItem> UNOBTAINIUM_HELMET = ITEMS.register("unobtainium_helmet", () -> new Allthemodium_Helmet(ArmorRegistries.UNOB, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static final DeferredHolder<Item,ArmorItem> UNOBTAINIUM_CHESTPLATE = ITEMS.register("unobtainium_chestplate", () -> new Allthemodium_Chestplate(ArmorRegistries.UNOB, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static final DeferredHolder<Item,ArmorItem> UNOBTAINIUM_LEGGINGS = ITEMS.register("unobtainium_leggings", () -> new Allthemodium_Leggings(ArmorRegistries.UNOB, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
-	public static final DeferredHolder<Item,ArmorItem> UNOBTAINIUM_BOOTS = ITEMS.register("unobtainium_boots", () -> new Allthemodium_Boots(ArmorRegistries.UNOB, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,ArmorItem> UNOBTAINIUM_HELMET = ITEMS.register("unobtainium_helmet", () -> new Allthemodium_Helmet(ArmorRegistries.UNOB, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(1)));
+	public static final DeferredHolder<Item,ArmorItem> UNOBTAINIUM_CHESTPLATE = ITEMS.register("unobtainium_chestplate", () -> new Allthemodium_Chestplate(ArmorRegistries.UNOB, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(1)));
+	public static final DeferredHolder<Item,ArmorItem> UNOBTAINIUM_LEGGINGS = ITEMS.register("unobtainium_leggings", () -> new Allthemodium_Leggings(ArmorRegistries.UNOB, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(1)));
+	public static final DeferredHolder<Item,ArmorItem> UNOBTAINIUM_BOOTS = ITEMS.register("unobtainium_boots", () -> new Allthemodium_Boots(ArmorRegistries.UNOB, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC).stacksTo(1)));
 
-	
-	
 	//Volcano
-
-
 
 	public static final DeferredHolder<Block, AncientCaveVines> ANCIENT_CAVEVINES_ = PILLARBLOCKS.register("ancient_cavevines", () -> new AncientCaveVines(BlockBehaviour.Properties.of()
 			.randomTicks()
@@ -480,7 +476,6 @@ public class ModRegistry {
 		return new RotatedPillarBlock(BlockBehaviour.Properties.of().strength(2.0F).sound(SoundType.WOOD));
 	}
 
-
 	public static final DeferredHolder<Item,SwordItem> ATM_SWORD = ITEMS.register("allthemodium_sword", () -> new SwordItem(ATMTier.ALLTHEMODIUM, (new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).attributes(SwordItem.createAttributes(ATMTier.ALLTHEMODIUM, 5, -1.4F))));
 	public static final DeferredHolder<Item,SwordItem> VIB_SWORD = ITEMS.register("vibranium_sword", () -> new SwordItem(ATMTier.VIBRANIUM, (new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).attributes(SwordItem.createAttributes(ATMTier.VIBRANIUM, 10, -0.4F))));
 	public static final DeferredHolder<Item,SwordItem> UNO_SWORD = ITEMS.register("unobtainium_sword", () -> new SwordItem(ATMTier.UNOBTAINIUM, (new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).attributes(SwordItem.createAttributes(ATMTier.UNOBTAINIUM, 15, 0.4F))));
@@ -502,17 +497,17 @@ public class ModRegistry {
 	public static final DeferredHolder<Item,HoeItem> UNO_HOE = ITEMS.register("unobtainium_hoe", () -> new HoeItem(ATMTier.UNOBTAINIUM, (new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).attributes(HoeItem.createAttributes(ATMTier.UNOBTAINIUM, -1, 0.0F))));	
 
 
-	public static final DeferredHolder<Item,MaceItem> ATM_MACE = ITEMS.register("allthemodium_mace", () -> new ATMMace(ATMTier.ALLTHEMODIUM,(new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.ALLTHEMODIUM)).attributes(ATMMace.createAttributes(ATMTier.ALLTHEMODIUM))));
-	public static final DeferredHolder<Item,MaceItem> VIB_MACE = ITEMS.register("vibranium_mace", () -> new ATMMace(ATMTier.VIBRANIUM,(new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.VIBRANIUM)).attributes(ATMMace.createAttributes(ATMTier.VIBRANIUM))));
-	public static final DeferredHolder<Item,MaceItem> UNO_MACE = ITEMS.register("unobtainium_mace", () -> new ATMMace(ATMTier.UNOBTAINIUM,(new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.UNOBTAINIUM)).attributes(ATMMace.createAttributes(ATMTier.UNOBTAINIUM))));
+	public static final DeferredHolder<Item,MaceItem> ATM_MACE = ITEMS.register("allthemodium_mace", () -> new ATMMace(ATMTier.ALLTHEMODIUM,(new Item.Properties()).rarity(Rarity.EPIC).stacksTo(1).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.ALLTHEMODIUM)).attributes(ATMMace.createAttributes(ATMTier.ALLTHEMODIUM))));
+	public static final DeferredHolder<Item,MaceItem> VIB_MACE = ITEMS.register("vibranium_mace", () -> new ATMMace(ATMTier.VIBRANIUM,(new Item.Properties()).rarity(Rarity.EPIC).stacksTo(1).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.VIBRANIUM)).attributes(ATMMace.createAttributes(ATMTier.VIBRANIUM))));
+	public static final DeferredHolder<Item,MaceItem> UNO_MACE = ITEMS.register("unobtainium_mace", () -> new ATMMace(ATMTier.UNOBTAINIUM,(new Item.Properties()).rarity(Rarity.EPIC).stacksTo(1).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.UNOBTAINIUM)).attributes(ATMMace.createAttributes(ATMTier.UNOBTAINIUM))));
 
-	public static final DeferredHolder<Item,BowItem> ATM_BOW = ITEMS.register("allthemodium_bow", () -> new ATMBow((new Item.Properties()).fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,BowItem> ATM_BOW = ITEMS.register("allthemodium_bow", () -> new ATMBow((new Item.Properties()).fireResistant().rarity(Rarity.EPIC).stacksTo(1)));
 
-	public static final DeferredHolder<Item,CrossbowItem> UNO_BOW = ITEMS.register("unobtainium_crossbow", () -> new Unobow((new Item.Properties()).fireResistant().rarity(Rarity.EPIC)));
+	public static final DeferredHolder<Item,CrossbowItem> UNO_BOW = ITEMS.register("unobtainium_crossbow", () -> new Unobow((new Item.Properties()).fireResistant().rarity(Rarity.EPIC).stacksTo(1)));
 
 	public static final DeferredHolder<Item,ShieldItem> VIB_SHIELD = ITEMS.register("vibranium_shield", () -> new Vib_Shield((new Item.Properties()).fireResistant().stacksTo(1).rarity(Rarity.EPIC)));
 
-	public static final DeferredHolder<Item,TridentItem> ALLOY_TRIDENT = ITEMS.register("alloy_trident", () -> new ATMTrident((new Item.Properties()).fireResistant().rarity(Rarity.EPIC).attributes(ATMTrident.createAttributes()).component(DataComponents.UNBREAKABLE, new Unbreakable(true)).component(DataComponents.TOOL, ATMTrident.createToolProperties())));
+	public static final DeferredHolder<Item,TridentItem> ALLOY_TRIDENT = ITEMS.register("alloy_trident", () -> new ATMTrident((new Item.Properties()).fireResistant().rarity(Rarity.EPIC).stacksTo(1).attributes(ATMTrident.createAttributes()).component(DataComponents.UNBREAKABLE, new Unbreakable(true)).component(DataComponents.TOOL, ATMTrident.createToolProperties())));
 	public static final DeferredHolder<EntityType<?>,EntityType<ThrownATMTrident>> ALLOY_TRIDENT_ENTITY = ENTITIES.register("alloy_trident", () -> EntityType.Builder.<ThrownATMTrident>of(ThrownATMTrident::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(10).build("alloy_trident"));
 	
 	public static final DeferredHolder<Item,SwordItem> ALLOY_SWORD = ITEMS.register("alloy_sword", () -> new SwordItem(ATMTier.ALLOY, new Item.Properties().rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).attributes(SwordItem.createAttributes(ATMTier.ALLOY, 3, 2.9F))));

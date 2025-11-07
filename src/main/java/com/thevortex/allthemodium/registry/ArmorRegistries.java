@@ -21,24 +21,24 @@ public class ArmorRegistries {
     @SuppressWarnings("unchecked")
     public static final Map<ArmorItem.Type,Integer> ALLTHEMODIUM = (EnumMap)Util.make(new EnumMap(ArmorItem.Type.class), (allthemodium) -> {
     allthemodium.put(ArmorItem.Type.HELMET, 4);
-    allthemodium.put(ArmorItem.Type.CHESTPLATE, 7);
-    allthemodium.put(ArmorItem.Type.LEGGINGS, 9);
+    allthemodium.put(ArmorItem.Type.CHESTPLATE, 9);
+    allthemodium.put(ArmorItem.Type.LEGGINGS, 7);
     allthemodium.put(ArmorItem.Type.BOOTS, 4);
     allthemodium.put(ArmorItem.Type.BODY, 8);});
 
     @SuppressWarnings("unchecked")
     public static final Map<ArmorItem.Type,Integer> VIBRANIUM = (EnumMap)Util.make(new EnumMap(ArmorItem.Type.class), (vibranium) -> {
     vibranium.put(ArmorItem.Type.HELMET, 6);
-    vibranium.put(ArmorItem.Type.CHESTPLATE, 9);
-    vibranium.put(ArmorItem.Type.LEGGINGS, 11);
+    vibranium.put(ArmorItem.Type.CHESTPLATE, 11);
+    vibranium.put(ArmorItem.Type.LEGGINGS, 9);
     vibranium.put(ArmorItem.Type.BOOTS, 6);
     vibranium.put(ArmorItem.Type.BODY, 10);});
 
     @SuppressWarnings("unchecked")
     public static final Map<ArmorItem.Type,Integer> UNOBTAINIUM = (EnumMap)Util.make(new EnumMap(ArmorItem.Type.class), (unobtainium) -> {
     unobtainium.put(ArmorItem.Type.HELMET, 8);
-    unobtainium.put(ArmorItem.Type.CHESTPLATE, 11);
-    unobtainium.put(ArmorItem.Type.LEGGINGS, 13);
+    unobtainium.put(ArmorItem.Type.CHESTPLATE, 13);
+    unobtainium.put(ArmorItem.Type.LEGGINGS, 11);
     unobtainium.put(ArmorItem.Type.BOOTS, 8);
     unobtainium.put(ArmorItem.Type.BODY, 12);});
 
