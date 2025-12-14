@@ -1,24 +1,25 @@
 package com.thevortex.allthemodium.datagen.server;
 
 
-import com.thevortex.allthemodium.AllTheModium;
-import com.thevortex.allthemodium.compat.ars_nouveau.ArsCompat;
-import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.registry.TagRegistry;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-
-import org.checkerframework.checker.units.qual.t;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
 
 public class ATMBlockTags extends BlockTagsProvider {
@@ -27,38 +28,88 @@ public class ATMBlockTags extends BlockTagsProvider {
         super(packOutput,lookupProvider, Reference.MOD_ID, existingFileHelper);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
-        tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).add(ModRegistry.ALLTHEMODIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).add(ModRegistry.ALLTHEMODIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_IRON_TOOL).add(ModRegistry.ALLTHEMODIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_IRON_TOOL).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_IRON_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_IRON_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_IRON_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_STONE_TOOL).add(ModRegistry.ALLTHEMODIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_STONE_TOOL).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_STONE_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_STONE_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_STONE_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add(ModRegistry.ALLTHEMODIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
-        
+        tag(Tags.Blocks.NEEDS_NETHERITE_TOOL)
+            .add(ModRegistry.ALLTHEMODIUM_ORE.get())
+            .add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
+
+        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL)
+            .add(ModRegistry.VIBRANIUM_ORE.get())
+            .add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
+
+        tag(TagRegistry.NEEDS_VIBRANIUM_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
+
+        tag(TagRegistry.NEEDS_UNOBTAINIUM_TOOL)
+            .add(ModRegistry.ANCIENT_STONE_BRICKS.get())
+            .add(ModRegistry.ANCIENT_CHISELED_STONE_BRICK_WALL.get())
+            .add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get())
+            .add(ModRegistry.ANCIENT_CHISELED_STONE_SLABS.get())
+            .add(ModRegistry.ANCIENT_CHISELED_STONE_STAIRS.get())
+            .add(ModRegistry.ANCIENT_POLISHED_STONE.get())
+            .add(ModRegistry.ANCIENT_POLISHED_STONE_WALL.get())
+            .add(ModRegistry.ANCIENT_POLISHED_STONE_SLABS.get())
+            .add(ModRegistry.ANCIENT_POLISHED_STONE_STAIRS.get())
+            .add(ModRegistry.ANCIENT_CRACKED_STONE_BRICK_WALL.get())
+            .add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get())
+            .add(ModRegistry.ANCIENT_CRACKED_STONE_SLABS.get())
+            .add(ModRegistry.ANCIENT_CRACKED_STONE_STAIRS.get())
+            .add(ModRegistry.ANCIENT_SMOOTH_STONE_WALL.get())
+            .add(ModRegistry.ANCIENT_SMOOTH_STONE.get())
+            .add(ModRegistry.ANCIENT_SMOOTH_STONE_STAIRS.get())
+            .add(ModRegistry.ANCIENT_SMOOTH_STONE_SLABS.get());
+
+        // Nothing exclusively needs it yet?
+        tag(TagRegistry.NEEDS_ALLOY_TOOL);
+
+        // Update vanilla tiers
+        List<TagKey<Block>> vanillaTiers = List.of(BlockTags.INCORRECT_FOR_WOODEN_TOOL,BlockTags.INCORRECT_FOR_STONE_TOOL,BlockTags.INCORRECT_FOR_IRON_TOOL,BlockTags.INCORRECT_FOR_GOLD_TOOL,BlockTags.INCORRECT_FOR_DIAMOND_TOOL,BlockTags.INCORRECT_FOR_NETHERITE_TOOL);
+        vanillaTiers.forEach(tag -> {
+            tag(tag)
+                .addTags(
+                    TagRegistry.NEEDS_ALLTHEMODIUM_TOOL,
+                    TagRegistry.NEEDS_VIBRANIUM_TOOL,
+                    TagRegistry.NEEDS_UNOBTAINIUM_TOOL,
+                    TagRegistry.NEEDS_ALLOY_TOOL
+                );
+        });
+
+        // Mystical Agiculture up to tier 4
+        List<TagKey<Block>> maTiers = Stream.of("incorrect_for_inferium_tool","incorrect_for_prudentium_tool","incorrect_for_tertium_tool","incorrect_for_imperium_tool").map(path -> TagKey.create(Registries.BLOCK,ResourceLocation.fromNamespaceAndPath("mysticalagriculture",path))).toList();
+        maTiers.forEach(tag -> {
+            tag(tag)
+                .addTags(
+                    Tags.Blocks.NEEDS_NETHERITE_TOOL,
+                    TagRegistry.NEEDS_ALLTHEMODIUM_TOOL,
+                    TagRegistry.NEEDS_VIBRANIUM_TOOL,
+                    TagRegistry.NEEDS_UNOBTAINIUM_TOOL,
+                    TagRegistry.NEEDS_ALLOY_TOOL
+                );
+        });
+
+        // Update our own tiers
+        tag(TagRegistry.INCORRECT_FOR_ALLTHEMODIUM_TOOL)
+            .addTags(
+                TagRegistry.NEEDS_VIBRANIUM_TOOL,
+                TagRegistry.NEEDS_UNOBTAINIUM_TOOL,
+                TagRegistry.NEEDS_ALLOY_TOOL
+            );
+
+        tag(TagRegistry.INCORRECT_FOR_VIBRANIUM_TOOL)
+            .addTags(
+                TagRegistry.NEEDS_UNOBTAINIUM_TOOL,
+                TagRegistry.NEEDS_ALLOY_TOOL
+            );
+
+        tag(TagRegistry.INCORRECT_FOR_UNOBTAINIUM_TOOL)
+            .addTags(
+                TagRegistry.NEEDS_ALLOY_TOOL
+            );
+
+        tag(TagRegistry.INCORRECT_FOR_ALLOY_TOOL);
+
         tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.FURNACE);
         tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.BLAST_FURNACE);
         tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.BREWING_STAND);
@@ -119,18 +170,6 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_1.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_2.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_STRIPPED.get());
-
-        tag(Tags.Blocks.NEEDS_NETHERITE_TOOL).add(ModRegistry.ALLTHEMODIUM_ORE.get());
-        tag(Tags.Blocks.NEEDS_NETHERITE_TOOL).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
-        tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
-        tag(TagRegistry.INCORRECT_FOR_ALLTHEMODIUM_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.VIBRANIUM_ORE.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
-        tag(TagRegistry.NEEDS_VIBRANIUM_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
-        
-
 
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.DEMONIC_PLANKS.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.DEMONIC_LOG.get());
@@ -211,22 +250,6 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(TagRegistry.ALLTHEMODIUM_BLOCK).add(ModRegistry.ALLTHEMODIUM_BLOCK.get());
         tag(TagRegistry.ALLTHEMODIUM_ORE).add(ModRegistry.ALLTHEMODIUM_ORE.get());
         tag(TagRegistry.ALLTHEMODIUM_ORE).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICK_WALL.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_SLABS.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_STAIRS.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_POLISHED_STONE.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_POLISHED_STONE_WALL.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_POLISHED_STONE_SLABS.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_POLISHED_STONE_STAIRS.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICK_WALL.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_SLABS.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_STAIRS.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_SMOOTH_STONE_WALL.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_SMOOTH_STONE.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_SMOOTH_STONE_STAIRS.get());
-        tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_SMOOTH_STONE_SLABS.get());
 
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.RAW_ALLTHEMODIUM_BLOCK.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ALLTHEMODIUM_BLOCK.get());
@@ -302,54 +325,6 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(ModRegistry.UNOBTAINIUM_ORE.get());
         tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(ModRegistry.TELEPORT_PAD.get());
 
-        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add(ModRegistry.ANCIENT_STONE.get());        
-        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add(ModRegistry.ANCIENT_STONE_BRICKS.get());
-        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
-        tag(BlockTags.INCORRECT_FOR_WOODEN_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
-        
-        tag(BlockTags.INCORRECT_FOR_STONE_TOOL).add(ModRegistry.ANCIENT_STONE.get());
-        tag(BlockTags.INCORRECT_FOR_STONE_TOOL).add(ModRegistry.ANCIENT_STONE_BRICKS.get());
-        tag(BlockTags.INCORRECT_FOR_STONE_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
-        tag(BlockTags.INCORRECT_FOR_STONE_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
-        
-        tag(BlockTags.INCORRECT_FOR_IRON_TOOL).add(ModRegistry.ANCIENT_STONE.get());
-        tag(BlockTags.INCORRECT_FOR_IRON_TOOL).add(ModRegistry.ANCIENT_STONE_BRICKS.get());
-        tag(BlockTags.INCORRECT_FOR_IRON_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
-        tag(BlockTags.INCORRECT_FOR_IRON_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
-
-        tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).add(ModRegistry.ANCIENT_STONE.get());
-        tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).add(ModRegistry.ANCIENT_STONE_BRICKS.get());
-        tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
-        tag(BlockTags.INCORRECT_FOR_GOLD_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
-    
-        tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).add(ModRegistry.ANCIENT_STONE.get());
-        tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).add(ModRegistry.ANCIENT_STONE_BRICKS.get());
-        tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
-        tag(BlockTags.INCORRECT_FOR_DIAMOND_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
-        
-        tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).add(ModRegistry.ANCIENT_STONE.get());
-        tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).add(ModRegistry.ANCIENT_STONE_BRICKS.get());
-        tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
-        tag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
-
-
-        tag(TagRegistry.INCORRECT_FOR_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
-        tag(TagRegistry.INCORRECT_FOR_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_STONE_BRICKS.get());
-        tag(TagRegistry.INCORRECT_FOR_ALLTHEMODIUM_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
-
-        tag(TagRegistry.INCORRECT_FOR_VIBRANIUM_TOOL).add(ModRegistry.ANCIENT_STONE_BRICKS.get());
-        tag(TagRegistry.INCORRECT_FOR_VIBRANIUM_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
-        tag(TagRegistry.INCORRECT_FOR_VIBRANIUM_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
-
-        tag(TagRegistry.INCORRECT_FOR_UNOBTAINIUM_TOOL).add(ModRegistry.ANCIENT_STONE_BRICKS.get());
-        tag(TagRegistry.INCORRECT_FOR_UNOBTAINIUM_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
-        tag(TagRegistry.INCORRECT_FOR_UNOBTAINIUM_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
-    
-
-        tag(TagRegistry.NEEDS_ALLOY_TOOL).add(ModRegistry.ANCIENT_STONE_BRICKS.get());
-        tag(TagRegistry.NEEDS_ALLOY_TOOL).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
-        tag(TagRegistry.NEEDS_ALLOY_TOOL).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
-        
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).addOptional(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,"allthemodium_source_jar" ));
     }
 
