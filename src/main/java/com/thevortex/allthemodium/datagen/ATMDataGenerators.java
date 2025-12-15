@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-@EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = Reference.MOD_ID)
+@EventBusSubscriber(modid = Reference.MOD_ID)
 public final class ATMDataGenerators {
 
     private ATMDataGenerators() {

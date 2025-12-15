@@ -3,6 +3,7 @@ package com.thevortex.allthemodium;
 
 import com.thevortex.allthemodium.compat.ars_nouveau.ArsClientHandler;
 import com.thevortex.allthemodium.compat.ars_nouveau.ArsCompat;
+import com.thevortex.allthemodium.compat.jade.ATMJadePlugin;
 import com.thevortex.allthemodium.registry.*;
 import com.thevortex.allthemodium.registry.mek_reg.ATMSlurries;
 import com.thevortex.allthemodium.registry.mek_reg.MekProcReg;
@@ -19,6 +20,8 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
 
 import com.thevortex.allthemodium.reference.Reference;
@@ -119,6 +122,7 @@ public class AllTheModium
         // Register ourselves for server and other game events we are interested in
         NeoForge.EVENT_BUS.register(BlockBreak.class);
 		NeoForge.EVENT_BUS.register(ArmorEvents.class);
+		modEventBus.addListener(this::onModsLoaded);
 		setupLogFilter();
 	}
 
@@ -132,6 +136,10 @@ public class AllTheModium
 		}
 	}
 
-
+	public void onModsLoaded(FMLLoadCompleteEvent event) {
+		if (FMLEnvironment.dist.isClient() && ModList.get().isLoaded("jade")) {
+			event.enqueueWork(ATMJadePlugin::registerPickaxes);
+		}
+	}
 
 }

@@ -32,9 +32,19 @@ public class BlockStates extends BlockStateProvider {
             .filter(block -> !(block instanceof GrassBlock))
             .filter(block -> !(block instanceof LiquidBlock))
             .filter(block -> !(block instanceof SaplingBlock))
+            .filter(block -> !(block instanceof LeavesBlock))
+            .filter(block -> !(block.builtInRegistryHolder().unwrapKey().get().location().getPath().contains("planks")))
             .collect(Collectors.toList());
 
         entries.forEach(this::simpleBlockAndItem);
+
+        simpleBlockWithItem(ModRegistry.ANCIENT_PLANKS.get(), cubeAll(ModRegistry.ANCIENT_PLANKS.get()));
+        simpleBlockWithItem(ModRegistry.DEMONIC_PLANKS.get(), cubeAll(ModRegistry.DEMONIC_PLANKS.get()));
+        simpleBlockWithItem(ModRegistry.SOUL_PLANKS.get(), cubeAll(ModRegistry.SOUL_PLANKS.get()));
+
+        simpleBlockWithItem(ModRegistry.ANCIENT_LEAVES.get(), cubeAll(ModRegistry.ANCIENT_LEAVES.get()));
+        simpleBlockWithItem(ModRegistry.DEMONIC_LEAVES.get(), cubeAll(ModRegistry.DEMONIC_LEAVES.get()));
+        simpleBlockWithItem(ModRegistry.SOUL_LEAVES.get(), cubeAll(ModRegistry.SOUL_LEAVES.get()));
 
         logBlock((RotatedPillarBlock)ModRegistry.ANCIENT_LOG_0.get());
         logBlock((RotatedPillarBlock)ModRegistry.ANCIENT_LOG_1.get());
