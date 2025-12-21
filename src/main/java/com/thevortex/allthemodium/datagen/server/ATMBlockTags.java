@@ -34,13 +34,21 @@ public class ATMBlockTags extends BlockTagsProvider {
 
         tag(Tags.Blocks.NEEDS_NETHERITE_TOOL)
             .add(ModRegistry.ALLTHEMODIUM_ORE.get())
-            .add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
+            .add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get())
+            .add(ModRegistry.RAW_ALLTHEMODIUM_BLOCK.get())
+            .add(ModRegistry.ALLTHEMODIUM_BLOCK.get());
 
         tag(TagRegistry.NEEDS_ALLTHEMODIUM_TOOL)
             .add(ModRegistry.VIBRANIUM_ORE.get())
-            .add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
+            .add(ModRegistry.OTHER_VIBRANIUM_ORE.get())
+            .add(ModRegistry.RAW_VIBRANIUM_BLOCK.get())
+            .add(ModRegistry.VIBRANIUM_BLOCK.get());
 
-        tag(TagRegistry.NEEDS_VIBRANIUM_TOOL).add(ModRegistry.UNOBTAINIUM_ORE.get());
+        tag(TagRegistry.NEEDS_VIBRANIUM_TOOL)
+            .add(ModRegistry.UNOBTAINIUM_ORE.get())
+            .add(ModRegistry.RAW_UNOBTAINIUM_BLOCK.get())
+            .add(ModRegistry.UNOBTAINIUM_BLOCK.get())
+        ;
 
         tag(TagRegistry.NEEDS_UNOBTAINIUM_TOOL)
             .add(ModRegistry.ANCIENT_STONE_BRICKS.get())
@@ -59,7 +67,10 @@ public class ATMBlockTags extends BlockTagsProvider {
             .add(ModRegistry.ANCIENT_SMOOTH_STONE_WALL.get())
             .add(ModRegistry.ANCIENT_SMOOTH_STONE.get())
             .add(ModRegistry.ANCIENT_SMOOTH_STONE_STAIRS.get())
-            .add(ModRegistry.ANCIENT_SMOOTH_STONE_SLABS.get());
+            .add(ModRegistry.ANCIENT_SMOOTH_STONE_SLABS.get())
+            .add(ModRegistry.UV_ALLOY.get())
+            .add(ModRegistry.VA_ALLOY.get())
+            .add(ModRegistry.UA_ALLOY.get());
 
         // Nothing exclusively needs it yet?
         tag(TagRegistry.NEEDS_ALLOY_TOOL);
