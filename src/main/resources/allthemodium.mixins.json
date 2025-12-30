@@ -7,10 +7,14 @@
     "mixins": [
     ],
     "client": [
-      "MixinLocalPlayer"
+      "MixinLocalPlayer",
+      "HarvestToolProviderMixin"
     ],
     "injectors": {
       "defaultRequire": 1
+    },
+    "mixinextras": {
+      "minVersion": "0.5.0"
     }
   }
   

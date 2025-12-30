@@ -100,7 +100,7 @@ public class AllTheModium
 		ModRegistry.FEATURES.register(modEventBus);
 		ModRegistry.POI_TYPES.register(modEventBus);
 		ModRegistry.CREATIVE_TABS.register(modEventBus);
-		
+		ChunkGenRegistry.CHUNKGENERATORS.register(modEventBus);
 
 		if(ModList.get().isLoaded("mekanism")) {
 
