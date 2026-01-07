@@ -2,18 +2,15 @@ package com.thevortex.allthemodium.datagen.server;
 
 import com.thevortex.allthemodium.blocks.*;
 import com.thevortex.allthemodium.registry.ModRegistry;
-import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.loot.CanItemPerformAbility;
@@ -71,7 +68,6 @@ public class ATMLootTables extends VanillaBlockLoot
                         ModRegistry.SLABBLOCKS.getEntries(),
                         ModRegistry.WALLBLOCKS.getEntries(),
                         ModRegistry.PILLARBLOCKS.getEntries())
-                .filter(block -> !(block instanceof LeavesBlock)) // this does nothing
                 .flatMap(Collection::stream)
                 .map(DeferredHolder::get)
                 .filter(block -> !(block instanceof ATMBrushableBlock))
