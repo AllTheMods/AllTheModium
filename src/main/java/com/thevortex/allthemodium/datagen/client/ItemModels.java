@@ -1,17 +1,14 @@
 package com.thevortex.allthemodium.datagen.client;
 
-import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.registry.mek_reg.MekProcReg;
-import net.minecraft.client.model.Model;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.TrapDoorBlock;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -54,9 +51,9 @@ public class ItemModels extends ItemModelProvider {
         basicItem(ModRegistry.UNO_SMITHING.get());
         
         // Saplings
-        basicItem(ModRegistry.ANCIENT_SAPLING_Item.get());
-        basicItem(ModRegistry.DEMONIC_SAPLING_Item.get());
-        basicItem(ModRegistry.SOUL_SAPLING_Item.get());
+        basicItem(ModRegistry.ANCIENT_SAPLING.get().asItem());
+        basicItem(ModRegistry.DEMONIC_SAPLING.get().asItem());
+        basicItem(ModRegistry.SOUL_SAPLING.get().asItem());
 
         cubeAll("ancient_dirt", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/ancient_dirt"));
         cubeAll("piglich_heart_block", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/piglich_heart_block"));

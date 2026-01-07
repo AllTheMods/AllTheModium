@@ -1,11 +1,8 @@
 package com.thevortex.allthemodium.items.toolitems.tools;
 
-import net.minecraft.util.Mth;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 import java.util.function.Predicate;
 

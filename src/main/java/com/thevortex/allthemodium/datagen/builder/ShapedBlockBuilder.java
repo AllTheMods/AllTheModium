@@ -3,7 +3,6 @@ package com.thevortex.allthemodium.datagen.builder;
 
 import com.thevortex.allthemodium.datagen.RecipeException;
 import com.thevortex.allthemodium.reference.Reference;
-
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger.TriggerInstance;
@@ -12,16 +11,13 @@ import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.EnumMap;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 
@@ -55,8 +51,8 @@ public class ShapedBlockBuilder {
 
 
 
-    public ShapedBlockBuilder setBlock(DeferredHolder<Item,BlockItem> object) {
-        pieces.put(Slot.BLOCK, object.get());
+    public ShapedBlockBuilder setBlock(Item object) {
+        pieces.put(Slot.BLOCK, object);
         return this;
     }
     public ShapedBlockBuilder setGear(DeferredHolder<Item,Item> object) {

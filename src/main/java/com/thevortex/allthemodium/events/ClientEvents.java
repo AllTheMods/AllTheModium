@@ -3,10 +3,8 @@ package com.thevortex.allthemodium.events;
 import com.thevortex.allthemodium.entity.PiglichModel;
 import com.thevortex.allthemodium.entity.PiglichRenderer;
 import com.thevortex.allthemodium.entity.ThrownATMTridentRenderer;
-import com.thevortex.allthemodium.entity.TridentRenderSetup;
 import com.thevortex.allthemodium.entity.alloy_trident;
 import com.thevortex.allthemodium.items.toolitems.armor.models.allthemodium_helmet;
-import com.thevortex.allthemodium.items.toolitems.tools.ATMBow;
 import com.thevortex.allthemodium.items.toolitems.tools.Unobow;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.ModRegistry;
@@ -16,7 +14,6 @@ import net.minecraft.client.renderer.blockentity.BrushableBlockRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ChargedProjectiles;
 import net.neoforged.api.distmarker.Dist;
@@ -44,23 +41,23 @@ public class ClientEvents {
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_LEAVES.get(), RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_LEAVES_BOTTOM.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_TRAPDOOR.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_DOOR_.get(), RenderType.cutoutMipped());
+        ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_DOOR.get(), RenderType.cutoutMipped());
 
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.DEMONIC_HERB.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.DEMONIC_SAPLING.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.DEMONIC_LEAVES.get(), RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.DEMONIC_LEAVES_BOTTOM.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.DEMONIC_TRAPDOOR.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(ModRegistry.DEMONIC_DOOR_.get(), RenderType.cutoutMipped());
+        ItemBlockRenderTypes.setRenderLayer(ModRegistry.DEMONIC_DOOR.get(), RenderType.cutoutMipped());
 
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.SOUL_HERB.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.SOUL_SAPLING.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.SOUL_LEAVES.get(), RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.SOUL_LEAVES_BOTTOM.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.SOUL_TRAPDOOR.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(ModRegistry.SOUL_DOOR_.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_CAVEVINES_.get(), RenderType.cutoutMipped());
-        ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_CAVEVINES_PLANT_.get(), RenderType.cutoutMipped());
+        ItemBlockRenderTypes.setRenderLayer(ModRegistry.SOUL_DOOR.get(), RenderType.cutoutMipped());
+        ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_CAVEVINES.get(), RenderType.cutoutMipped());
+        ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_CAVEVINES_PLANT.get(), RenderType.cutoutMipped());
 
         ItemProperties.register(ModRegistry.ATM_BOW.get(), ResourceLocation.withDefaultNamespace("pull"), (itemStack, clientWorld, livingEntity, i) -> {
             if (livingEntity == null) {

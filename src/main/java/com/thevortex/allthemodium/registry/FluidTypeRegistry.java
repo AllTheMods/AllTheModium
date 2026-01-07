@@ -1,17 +1,11 @@
 package com.thevortex.allthemodium.registry;
 
-import java.util.function.Supplier;
-
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.resource.MoltenATMType;
 import com.thevortex.allthemodium.registry.resource.MoltenUNOBType;
 import com.thevortex.allthemodium.registry.resource.MoltenVIBType;
 import com.thevortex.allthemodium.registry.resource.SoulLavaType;
-
-import mekanism.common.registration.impl.FluidDeferredRegister;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.common.SoundActions;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredHolder;

@@ -163,8 +163,8 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.LOGS).add(ModRegistry.ANCIENT_LOG_2.get());
         tag(net.minecraft.tags.BlockTags.PLANKS).add(ModRegistry.ANCIENT_PLANKS.get());
 
-        tag(net.minecraft.tags.BlockTags.CLIMBABLE).add(ModRegistry.ANCIENT_CAVEVINES_.get());
-        tag(net.minecraft.tags.BlockTags.CLIMBABLE).add(ModRegistry.ANCIENT_CAVEVINES_PLANT_.get());
+        tag(net.minecraft.tags.BlockTags.CLIMBABLE).add(ModRegistry.ANCIENT_CAVEVINES.get());
+        tag(net.minecraft.tags.BlockTags.CLIMBABLE).add(ModRegistry.ANCIENT_CAVEVINES_PLANT.get());
         
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_STONE.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_SHOVEL).add(ModRegistry.ANCIENT_DIRT.get(), ModRegistry.ANCIENT_GRASS.get(), ModRegistry.ANCIENT_PODZOL.get());

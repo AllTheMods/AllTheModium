@@ -2,9 +2,9 @@ package com.thevortex.allthemodium.datagen.server;
 
 
 import com.thevortex.allthemodium.reference.Reference;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.registry.TagRegistry;
 import com.thevortex.allthemodium.registry.mek_reg.MekProcReg;
-import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -13,11 +13,8 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.common.data.internal.NeoForgeItemTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
-
-import org.checkerframework.checker.units.qual.t;
 
 public class ATMItemTags extends ItemTagsProvider {
 
@@ -264,36 +261,34 @@ public class ATMItemTags extends ItemTagsProvider {
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_CHESTPLATE.get());
         tag(TagRegistry.PIGLIN_LOVED).add(ModRegistry.ALLTHEMODIUM_HELMET.get());
 
-        tag(net.minecraft.tags.ItemTags.PLANKS).add(ModRegistry.ANCIENT_PLANKS_ITEM.get());
-        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_0_ITEM.get());
-        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_1_ITEM.get());
-        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_2_ITEM.get());
+        tag(net.minecraft.tags.ItemTags.PLANKS).add(ModRegistry.ANCIENT_PLANKS.get().asItem());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_0.get().asItem());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_1.get().asItem());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.ANCIENT_LOG_2.get().asItem());
 
-        tag(net.minecraft.tags.ItemTags.PLANKS).add(ModRegistry.DEMONIC_PLANKS_ITEM.get());
-        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.DEMONIC_LOG_ITEM.get());
+        tag(net.minecraft.tags.ItemTags.PLANKS).add(ModRegistry.DEMONIC_PLANKS.get().asItem());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.DEMONIC_LOG.get().asItem());
 
-        tag(net.minecraft.tags.ItemTags.PLANKS).add(ModRegistry.SOUL_PLANKS_ITEM.get());
-        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_ITEM.get());
-        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_0_ITEM.get());
-        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_1_ITEM.get());
-        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_2_ITEM.get());
+        tag(net.minecraft.tags.ItemTags.PLANKS).add(ModRegistry.SOUL_PLANKS.get().asItem());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG.get().asItem());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_0.get().asItem());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_1.get().asItem());
+        tag(net.minecraft.tags.ItemTags.LOGS).add(ModRegistry.SOUL_LOG_2.get().asItem());
 
-
-
-        tag(net.minecraft.tags.ItemTags.STONE_CRAFTING_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
-        tag(net.minecraft.tags.ItemTags.STONE_TOOL_MATERIALS).add(ModRegistry.ANCIENT_STONE_ITEM.get());
+        tag(net.minecraft.tags.ItemTags.STONE_CRAFTING_MATERIALS).add(ModRegistry.ANCIENT_STONE.get().asItem());
+        tag(net.minecraft.tags.ItemTags.STONE_TOOL_MATERIALS).add(ModRegistry.ANCIENT_STONE.get().asItem());
 
 
-        tag(TagRegistry.ANCIENT_WOODEN_PLANKS_ITEM).add(ModRegistry.ANCIENT_PLANKS_ITEM.get());
-        tag(TagRegistry.DEMONIC_WOODEN_PLANKS_ITEM).add(ModRegistry.DEMONIC_PLANKS_ITEM.get());
-        tag(TagRegistry.SOUL_WOODEN_PLANKS_ITEM).add(ModRegistry.SOUL_PLANKS_ITEM.get());
-        tag(TagRegistry.ANCIENT_STONE_ITEM).add(ModRegistry.ANCIENT_STONE_ITEM.get());
-        tag(TagRegistry.ANCIENT_MOSSY_STONE_ITEM).add(ModRegistry.ANCIENT_MOSSY_STONE_ITEM.get());
-        tag(TagRegistry.ANCIENT_POLISHED_STONE_ITEM).add(ModRegistry.ANCIENT_POLISHED_STONE_ITEM.get());
-        tag(TagRegistry.ANCIENT_SMOOTH_STONE_ITEM).add(ModRegistry.ANCIENT_SMOOTH_STONE_ITEM.get());
-        tag(TagRegistry.ANCIENT_STONE_BRICKS_ITEM).add(ModRegistry.ANCIENT_STONE_BRICKS_ITEM.get());
-        tag(TagRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM.get());
-        tag(TagRegistry.ANCIENT_CHISELED_STONE_BRICKS_ITEM).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS_ITEM.get());
+        tag(TagRegistry.ANCIENT_WOODEN_PLANKS_ITEM).add(ModRegistry.ANCIENT_PLANKS.get().asItem());
+        tag(TagRegistry.DEMONIC_WOODEN_PLANKS_ITEM).add(ModRegistry.DEMONIC_PLANKS.get().asItem());
+        tag(TagRegistry.SOUL_WOODEN_PLANKS_ITEM).add(ModRegistry.SOUL_PLANKS.get().asItem());
+        tag(TagRegistry.ANCIENT_STONE_ITEM).add(ModRegistry.ANCIENT_STONE.get().asItem());
+        tag(TagRegistry.ANCIENT_MOSSY_STONE_ITEM).add(ModRegistry.ANCIENT_MOSSY_STONE.get().asItem());
+        tag(TagRegistry.ANCIENT_POLISHED_STONE_ITEM).add(ModRegistry.ANCIENT_POLISHED_STONE.get().asItem());
+        tag(TagRegistry.ANCIENT_SMOOTH_STONE_ITEM).add(ModRegistry.ANCIENT_SMOOTH_STONE.get().asItem());
+        tag(TagRegistry.ANCIENT_STONE_BRICKS_ITEM).add(ModRegistry.ANCIENT_STONE_BRICKS.get().asItem());
+        tag(TagRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get().asItem());
+        tag(TagRegistry.ANCIENT_CHISELED_STONE_BRICKS_ITEM).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get().asItem());
 
         tag(TagRegistry.RAW_ALLTHEMODIUM).add(ModRegistry.RAW_ALLTHEMODIUM.get());
         tag(TagRegistry.RAW_VIBRANIUM).add(ModRegistry.RAW_VIBRANIUM.get());
@@ -315,9 +310,9 @@ public class ATMItemTags extends ItemTagsProvider {
         tag(TagRegistry.UNOBTAINIUM_ALLTHEMODIUM_INGOT).add(ModRegistry.UNOBTAINIUM_ALLTHEMODIUM_ALLOY.get());
         tag(TagRegistry.UNOBTAINIUM_VIBRANIUM_INGOT).add(ModRegistry.UNOBTAINIUM_VIBRANIUM_ALLOY.get());
 
-        tag(TagRegistry.VIBRANIUM_ALLTHEMODIUM_BLOCK).add(ModRegistry.VA_ALLOY_ITEM.get());
-        tag(TagRegistry.UNOBTAINIUM_ALLTHEMODIUM_BLOCK).add(ModRegistry.UA_ALLOY_ITEM.get());
-        tag(TagRegistry.UNOBTAINIUM_VIBRANIUM_BLOCK).add(ModRegistry.UV_ALLOY_ITEM.get());
+        tag(TagRegistry.VIBRANIUM_ALLTHEMODIUM_BLOCK).add(ModRegistry.VA_ALLOY.get().asItem());
+        tag(TagRegistry.UNOBTAINIUM_ALLTHEMODIUM_BLOCK).add(ModRegistry.UA_ALLOY.get().asItem());
+        tag(TagRegistry.UNOBTAINIUM_VIBRANIUM_BLOCK).add(ModRegistry.UV_ALLOY.get().asItem());
 
         tag(TagRegistry.ALLTHEMODIUM_DUST).add(ModRegistry.ALLTHEMODIUM_DUST.get());
         tag(TagRegistry.VIBRANIUM_DUST).add(ModRegistry.VIBRANIUM_DUST.get());
@@ -335,26 +330,26 @@ public class ATMItemTags extends ItemTagsProvider {
         tag(TagRegistry.VIBRANIUM_NUGGET).add(ModRegistry.VIBRANIUM_NUGGET.get());
         tag(TagRegistry.UNOBTAINIUM_NUGGET).add(ModRegistry.UNOBTAINIUM_NUGGET.get());
 
-        tag(TagRegistry.ALLTHEMODIUM_BLOCK_ITEM).add(ModRegistry.ALLTHEMODIUM_BLOCK_ITEM.get());
-        tag(TagRegistry.VIBRANIUM_BLOCK_ITEM).add(ModRegistry.VIBRANIUM_BLOCK_ITEM.get());
-        tag(TagRegistry.UNOBTAINIUM_BLOCK_ITEM).add(ModRegistry.UNOBTAINIUM_BLOCK_ITEM.get());
+        tag(TagRegistry.ALLTHEMODIUM_BLOCK_ITEM).add(ModRegistry.ALLTHEMODIUM_BLOCK.get().asItem());
+        tag(TagRegistry.VIBRANIUM_BLOCK_ITEM).add(ModRegistry.VIBRANIUM_BLOCK.get().asItem());
+        tag(TagRegistry.UNOBTAINIUM_BLOCK_ITEM).add(ModRegistry.UNOBTAINIUM_BLOCK.get().asItem());
 
-        tag(TagRegistry.RAW_ALLTHEMODIUM_BLOCK).add(ModRegistry.RAW_ALLTHEMODIUM_BLOCK_ITEM.get());
-        tag(TagRegistry.RAW_VIBRANIUM_BLOCK).add(ModRegistry.RAW_VIBRANIUM_BLOCK_ITEM.get());
-        tag(TagRegistry.RAW_UNOBTAINIUM_BLOCK).add(ModRegistry.RAW_UNOBTAINIUM_BLOCK_ITEM.get());
+        tag(TagRegistry.RAW_ALLTHEMODIUM_BLOCK).add(ModRegistry.RAW_ALLTHEMODIUM_BLOCK.get().asItem());
+        tag(TagRegistry.RAW_VIBRANIUM_BLOCK).add(ModRegistry.RAW_VIBRANIUM_BLOCK.get().asItem());
+        tag(TagRegistry.RAW_UNOBTAINIUM_BLOCK).add(ModRegistry.RAW_UNOBTAINIUM_BLOCK.get().asItem());
 
 
-        tag(TagRegistry.ALLTHEMODIUM_ORE_ITEM).add(ModRegistry.ALLTHEMODIUM_ORE_ITEM.get());
-        tag(TagRegistry.ALLTHEMODIUM_ORE_ITEM).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE_ITEM.get());
-        tag(TagRegistry.VIBRANIUM_ORE_ITEM).add(ModRegistry.VIBRANIUM_ORE_ITEM.get());
-        tag(TagRegistry.VIBRANIUM_ORE_ITEM).add(ModRegistry.OTHER_VIBRANIUM_ORE_ITEM.get());
-        tag(TagRegistry.UNOBTAINIUM_ORE_ITEM).add(ModRegistry.UNOBTAINIUM_ORE_ITEM.get());
+        tag(TagRegistry.ALLTHEMODIUM_ORE_ITEM).add(ModRegistry.ALLTHEMODIUM_ORE.get().asItem());
+        tag(TagRegistry.ALLTHEMODIUM_ORE_ITEM).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get().asItem());
+        tag(TagRegistry.VIBRANIUM_ORE_ITEM).add(ModRegistry.VIBRANIUM_ORE.get().asItem());
+        tag(TagRegistry.VIBRANIUM_ORE_ITEM).add(ModRegistry.OTHER_VIBRANIUM_ORE.get().asItem());
+        tag(TagRegistry.UNOBTAINIUM_ORE_ITEM).add(ModRegistry.UNOBTAINIUM_ORE.get().asItem());
 
-        tag(TagRegistry.ORES).add(ModRegistry.ALLTHEMODIUM_ORE_ITEM.get());
-        tag(TagRegistry.ORES).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE_ITEM.get());
-        tag(TagRegistry.ORES).add(ModRegistry.VIBRANIUM_ORE_ITEM.get());
-        tag(TagRegistry.ORES).add(ModRegistry.OTHER_VIBRANIUM_ORE_ITEM.get());
-        tag(TagRegistry.ORES).add(ModRegistry.UNOBTAINIUM_ORE_ITEM.get());
+        tag(TagRegistry.ORES).add(ModRegistry.ALLTHEMODIUM_ORE.get().asItem());
+        tag(TagRegistry.ORES).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get().asItem());
+        tag(TagRegistry.ORES).add(ModRegistry.VIBRANIUM_ORE.get().asItem());
+        tag(TagRegistry.ORES).add(ModRegistry.OTHER_VIBRANIUM_ORE.get().asItem());
+        tag(TagRegistry.ORES).add(ModRegistry.UNOBTAINIUM_ORE.get().asItem());
 
         tag(TagRegistry.ALLTHEMODIUM_GEAR).add(ModRegistry.ATM_GEAR.get());
         tag(TagRegistry.VIBRANIUM_GEAR).add(ModRegistry.VIB_GEAR.get());

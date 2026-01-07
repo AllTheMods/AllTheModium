@@ -1,17 +1,5 @@
 package com.thevortex.allthemodium.events;
 
-import com.mojang.datafixers.TypeRewriteRule;
-import com.thevortex.allthemodium.blocks.Allthemodium_Ore;
-import com.thevortex.allthemodium.blocks.Unobtainium_Ore;
-import com.thevortex.allthemodium.blocks.Vibranium_Ore;
-import com.thevortex.allthemodium.material.ToolTiers;
-import com.thevortex.allthemodium.registry.ModRegistry;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.fml.common.EventBusSubscriber;
-
 public class PlayerHarvest {
 
     /*

@@ -1,20 +1,14 @@
 package com.thevortex.allthemodium.items.toolitems.armor;
 
-import com.thevortex.allthemodium.AllTheModium;
-import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.registry.TagRegistry;
-
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-
-import java.util.List;
 
 public class Allthemodium_Boots extends ArmorItem {
 

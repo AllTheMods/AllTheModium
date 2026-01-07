@@ -1,7 +1,6 @@
 package com.thevortex.allthemodium.entity;
 
 import com.thevortex.allthemodium.reference.Reference;
-
 import net.minecraft.client.model.TridentModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
