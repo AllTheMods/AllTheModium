@@ -3,6 +3,7 @@ package com.thevortex.allthemodium.worldgen.structures;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -136,6 +137,6 @@ public class PVStructure extends Structure {
 
     @Override
     public StructureType<PVStructure> type() {
-        return ATMStructures.PIGLIN_VILLAGE.get();
+        return ModRegistry.PIGLIN_VILLAGE.get();
     }
 }

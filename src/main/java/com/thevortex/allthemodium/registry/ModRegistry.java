@@ -19,12 +19,17 @@ import com.thevortex.allthemodium.entity.ThrownATMTrident;
 import com.thevortex.allthemodium.entity.alloy_trident;
 import com.thevortex.allthemodium.compat.ars_nouveau.*;
 
+import com.thevortex.allthemodium.worldgen.feature.BottomBranchDecorator;
+import com.thevortex.allthemodium.worldgen.structures.APStructure;
+import com.thevortex.allthemodium.worldgen.structures.DungeonStructure;
+import com.thevortex.allthemodium.worldgen.structures.PVStructure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.MobCategory;
@@ -42,8 +47,11 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.levelgen.carver.WorldCarver;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
+import net.minecraft.world.level.levelgen.structure.StructureType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -66,40 +74,33 @@ public class ModRegistry {
 	public static final DeferredRegister<Block> WALLBLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
 	public static final DeferredRegister<Block> SLABBLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
 	public static final DeferredRegister<Block> PILLARBLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.createItems(Reference.MOD_ID);
+	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, Reference.MOD_ID);
 	public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(Registries.BIOME, Reference.MOD_ID);
 	public static final DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, Reference.MOD_ID);
-
-	public static final DeferredRegister<Item> ITEMS = DeferredRegister.createItems(Reference.MOD_ID);
-
+	public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(Registries.FEATURE, Reference.MOD_ID);
+	public static final DeferredRegister<TreeDecoratorType<?>> TREE_DECORATORS = DeferredRegister.create(Registries.TREE_DECORATOR_TYPE, Reference.MOD_ID);
+	public static final DeferredRegister<BlockEntityType<?>> ENTITY = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, Reference.MOD_ID);
+	public static final DeferredRegister<WorldCarver<?>> CARVERS = DeferredRegister.create(Registries.CARVER, Reference.MOD_ID);
+	public static final DeferredRegister<StructureType<?>> STRUCTURES = DeferredRegister.create(Registries.STRUCTURE_TYPE, Reference.MOD_ID);
 	public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Reference.MOD_ID);
 
 
-	public static final DeferredRegister<BlockEntityType<?>> ENTITY = DeferredRegister
-			.create(Registries.BLOCK_ENTITY_TYPE, Reference.MOD_ID);
-	public static final DeferredRegister<WorldCarver<?>> CARVERS = DeferredRegister
-			.create(Registries.CARVER, Reference.MOD_ID);
-	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister
-			.create(Registries.ENTITY_TYPE, Reference.MOD_ID);
-
 	private static ArrayList<Item> SPAWN_EGGS = new ArrayList<Item>();
 
-		// BIOMES
-
+	// BIOMES
 	public static final DeferredHolder<Biome,Biome> MINING = BIOMES.register("mining", () -> ATMBiomes.mining());
 	
 	// POI TYPES
-
 	public static final DeferredHolder<PoiType, PoiType> TELEPORT_PAD_POI = POI_TYPES.register("teleport_pad",
 			() -> new PoiType(ImmutableSet.copyOf(ModRegistry.TELEPORT_PAD.get().getStateDefinition().getPossibleStates()), 1, 1)
 	);
 
 	// FOOD
-
 	public static final DeferredHolder<Item,Item> ALLTHEMODIUM_APPLE = ITEMS.register("allthemodium_apple", () -> new Allthemodium_Apple(new Item.Properties().fireResistant().food(ModFoods.ALLTHEMODIUM_APPLE).rarity(Rarity.EPIC)));
 	public static final DeferredHolder<Item,Item> ALLTHEMODIUM_CARROT = ITEMS.register("allthemodium_carrot", () -> new Allthemodium_Carrot(new Item.Properties().fireResistant().food(ModFoods.ALLTHEMODIUM_CARROT).rarity(Rarity.EPIC)));
 
 	// ARMORS
-
 	public static final DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_HELMET = ITEMS.register("allthemodium_helmet", () -> new Allthemodium_Helmet(ArmorRegistries.ATM, EquipmentSlot.HEAD, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
 	public static final DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_CHESTPLATE = ITEMS.register("allthemodium_chestplate", () -> new Allthemodium_Chestplate(ArmorRegistries.ATM, EquipmentSlot.CHEST, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
 	public static final DeferredHolder<Item,ArmorItem> ALLTHEMODIUM_LEGGINGS = ITEMS.register("allthemodium_leggings", () -> new Allthemodium_Leggings(ArmorRegistries.ATM, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
@@ -116,8 +117,14 @@ public class ModRegistry {
 	public static final DeferredHolder<Item,ArmorItem> UNOBTAINIUM_LEGGINGS = ITEMS.register("unobtainium_leggings", () -> new Allthemodium_Leggings(ArmorRegistries.UNOB, EquipmentSlot.LEGS, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
 	public static final DeferredHolder<Item,ArmorItem> UNOBTAINIUM_BOOTS = ITEMS.register("unobtainium_boots", () -> new Allthemodium_Boots(ArmorRegistries.UNOB, EquipmentSlot.FEET, new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
 
-	
-	
+	// Worldgen
+	public static final DeferredHolder<TreeDecoratorType<?>, TreeDecoratorType<BottomBranchDecorator>> BOTTOM_BRANCH_DECORATOR = TREE_DECORATORS.register("bottom_branch", () -> new TreeDecoratorType<>(BottomBranchDecorator.CODEC));;
+
+	public static final DeferredHolder<StructureType<?>,StructureType<APStructure>> ANCIENT_PYRAMID = STRUCTURES.register("ancient_pyramid", () -> () -> APStructure.CODEC);
+	public static final DeferredHolder<StructureType<?>,StructureType<PVStructure>> PIGLIN_VILLAGE = STRUCTURES.register("piglin_village", () -> () -> PVStructure.CODEC);
+	public static final DeferredHolder<StructureType<?>,StructureType<DungeonStructure>> ANCIENT_DUNGEON = STRUCTURES.register("dungeon", () -> () -> DungeonStructure.CODEC);
+
+
 	//Volcano
 
 
@@ -184,15 +191,29 @@ public class ModRegistry {
 	public static final DeferredHolder<Block, FenceGateBlock> DEMONIC_WOOD_FENCE_GATE = PILLARBLOCKS.register("demonic_wooden_fence_gate", () -> new FenceGateBlock(ATMBlockSets.DEMONICWOOD,BlockBehaviour.Properties.of().strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
 	public static final DeferredHolder<Block, DoorBlock> DEMONIC_DOOR_ = PILLARBLOCKS.register("demonic_door", () -> new DoorBlock(ATMBlockSets.DEMONIC, BlockBehaviour.Properties.of().strength(2.0F).sound(SoundType.WOOD)));
 
-	public static final DeferredHolder<Block, AncientSaplingBlock> SOUL_SAPLING = BLOCKS.register("soul_sapling", () -> new AncientSaplingBlock(new TreeGrower("soul_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(AllTheModium.SOUL_TREE), Optional.empty(), Optional.empty(), Optional.empty()), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
-	public static final DeferredHolder<Block, AncientSaplingBlock> ANCIENT_SAPLING = BLOCKS.register("ancient_sapling", () -> new AncientSaplingBlock(new TreeGrower("ancient_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(AllTheModium.ANCIENT_TREE), Optional.empty(), Optional.empty(), Optional.empty()), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
-	public static final DeferredHolder<Block, AncientSaplingBlock> DEMONIC_SAPLING = BLOCKS.register("demonic_sapling", () -> new AncientSaplingBlock(new TreeGrower("demonic_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(AllTheModium.DEMONIC_TREE), Optional.empty(), Optional.empty(), Optional.empty()), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
+	public static final DeferredHolder<Block, AncientSaplingBlock> SOUL_SAPLING = BLOCKS.register("soul_sapling", () -> new AncientSaplingBlock(new TreeGrower("soul_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(Reference.SOUL_TREE), Optional.empty(), Optional.empty(), Optional.empty()), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
+	public static final DeferredHolder<Block, AncientSaplingBlock> ANCIENT_SAPLING = BLOCKS.register("ancient_sapling", () -> new AncientSaplingBlock(new TreeGrower("ancient_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(Reference.ANCIENT_TREE), Optional.empty(), Optional.empty(), Optional.empty()), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
+	public static final DeferredHolder<Block, AncientSaplingBlock> DEMONIC_SAPLING = BLOCKS.register("demonic_sapling", () -> new AncientSaplingBlock(new TreeGrower("demonic_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(Reference.DEMONIC_TREE), Optional.empty(), Optional.empty(), Optional.empty()), BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
 
 	public static final DeferredHolder<Item, BlockItem> SOUL_SAPLING_Item = ITEMS.register("soul_sapling", () -> new BlockItem(SOUL_SAPLING.get(), new Item.Properties()));
 	public static final DeferredHolder<Item, BlockItem> ANCIENT_SAPLING_Item = ITEMS.register("ancient_sapling", () -> new BlockItem(ANCIENT_SAPLING.get(), new Item.Properties()));
 	public static final DeferredHolder<Item, BlockItem> DEMONIC_SAPLING_Item = ITEMS.register("demonic_sapling", () -> new BlockItem(DEMONIC_SAPLING.get(), new Item.Properties()));
 
+	public static final DeferredHolder<Block, SoulLava> SOULLAVA_BLOCK = BLOCKS.register("soul_lava",() -> new SoulLava(FluidRegistry.SOULLAVA, Block.Properties.of().noCollission().strength(100f).noOcclusion().jumpFactor(0.1F).speedFactor(0.01F).lightLevel((light) -> {
+		return 15;
+	}).mapColor(DyeColor.BLUE).noLootTable()));
 
+	public static final DeferredHolder<Block, LiquidBlock> MOLTEN_ATM_BLOCK = BLOCKS.register("molten_allthemodium_block",() -> new LiquidBlock(FluidRegistry.ALLTHEMODIUM.value(), Block.Properties.of().noCollission().strength(100f).mapColor(DyeColor.YELLOW).noLootTable()));
+	public static final DeferredHolder<Block, LiquidBlock> MOLTEN_VIB_BLOCK = BLOCKS.register("molten_vibranium_block",() -> new LiquidBlock(FluidRegistry.VIBRANIUM.value(), Block.Properties.of().noCollission().strength(100f).mapColor(DyeColor.GREEN).noLootTable()));
+	public static final DeferredHolder<Block, LiquidBlock> MOLTEN_UNOB_BLOCK = BLOCKS.register("molten_unobtainium_block",() -> new LiquidBlock(FluidRegistry.UNOBTAINIUM.value(), Block.Properties.of().noCollission().strength(100f).mapColor(DyeColor.PURPLE).noLootTable()));
+
+	public static final DeferredHolder<Block, ATMBrushableBlock> SUS_CLAY = BLOCKS.register("suspicious_clay", () -> new ATMBrushableBlock(Blocks.CLAY, BlockBehaviour.Properties.of().mapColor(MapColor.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
+	public static final DeferredHolder<Block, ATMBrushableBlock> SUS_SOUL_SAND = BLOCKS.register("suspicious_soul_sand", () -> new ATMBrushableBlock(Blocks.SOUL_SAND, BlockBehaviour.Properties.of().mapColor(MapColor.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
+
+	public static final DeferredHolder<Item,BucketItem> SOUL_LAVA_BUCKET = ITEMS.register("soul_lava_bucket", () -> new BucketItem(FluidRegistry.SOULLAVA.value(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+	public static final DeferredHolder<Item,BucketItem> MOLTEN_ATM_BUCKET = ITEMS.register("molten_allthemodium_bucket", () -> new BucketItem(FluidRegistry.ALLTHEMODIUM.value(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+	public static final DeferredHolder<Item,BucketItem> MOLTEN_VIB_BUCKET = ITEMS.register("molten_vibranium_bucket", () -> new BucketItem(FluidRegistry.VIBRANIUM.value(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+	public static final DeferredHolder<Item,BucketItem> MOLTEN_UNOB_BUCKET = ITEMS.register("molten_unobtainium_bucket", () -> new BucketItem(FluidRegistry.UNOBTAINIUM.value(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
 	public static final DeferredHolder<Block,Block> SOUL_HERB = PILLARBLOCKS.register("soul_herb",() -> new AncientHerb(BlockBehaviour.Properties.of().sound(SoundType.WET_GRASS).instabreak().noCollission()));
 	public static final DeferredHolder<Block,Block> SOUL_LOG = PILLARBLOCKS.register("soul_log",() -> log(DyeColor.LIGHT_BLUE, DyeColor.LIGHT_BLUE));
@@ -369,12 +390,12 @@ public class ModRegistry {
 	public static final DeferredHolder<Item,Item> RAW_UNOBTAINIUM = ITEMS.register("raw_unobtainium", () -> new RawOre(new Item.Properties()));
 
 
-	public static final DeferredHolder<Item,Item> SUS_CLAY_ITEM = ITEMS.register("suspicious_clay", () -> new BlockItem(BlockRegistry.SUS_CLAY.get(), new Item.Properties()));
-	public static final DeferredHolder<Item,Item> SUS_SOUL_SAND_ITEM = ITEMS.register("suspicious_soul_sand", () -> new BlockItem(BlockRegistry.SUS_SOUL_SAND.get(), new Item.Properties()));
+	public static final DeferredHolder<Item,Item> SUS_CLAY_ITEM = ITEMS.register("suspicious_clay", () -> new BlockItem(ModRegistry.SUS_CLAY.get(), new Item.Properties()));
+	public static final DeferredHolder<Item,Item> SUS_SOUL_SAND_ITEM = ITEMS.register("suspicious_soul_sand", () -> new BlockItem(ModRegistry.SUS_SOUL_SAND.get(), new Item.Properties()));
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ATMBrushableBlockEntity>> BRUSHABLE_BLOCK = ENTITY.register("brushable_block", () ->
 			BlockEntityType.Builder.of(ATMBrushableBlockEntity::new,
-					BlockRegistry.SUS_CLAY.get(),
-					BlockRegistry.SUS_SOUL_SAND.get()
+					ModRegistry.SUS_CLAY.get(),
+					ModRegistry.SUS_SOUL_SAND.get()
 			).build(null)
 	);
 

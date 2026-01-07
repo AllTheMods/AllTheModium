@@ -1,9 +1,6 @@
 package com.thevortex.allthemodium.fluid;
 
-import com.thevortex.allthemodium.registry.BlockRegistry;
-import com.thevortex.allthemodium.registry.FluidRegistry;
-import com.thevortex.allthemodium.registry.FluidTypeRegistry;
-import com.thevortex.allthemodium.registry.ItemRegistry;
+import com.thevortex.allthemodium.registry.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
@@ -41,7 +38,7 @@ public class FluidVIB extends FlowingFluid {
 
         @Override
         public Item getBucket() {
-            return ItemRegistry.MOLTEN_VIB_BUCKET.get();
+            return ModRegistry.MOLTEN_VIB_BUCKET.get();
         }
 
         @Override
@@ -80,7 +77,7 @@ public class FluidVIB extends FlowingFluid {
 
         @Override
         protected BlockState createLegacyBlock(FluidState p_76136_) {
-            return BlockRegistry.MOLTEN_VIB_BLOCK.get().defaultBlockState().setValue(LiquidBlock.LEVEL, Integer.valueOf(getLegacyLevel(p_76136_)));
+            return ModRegistry.MOLTEN_VIB_BLOCK.get().defaultBlockState().setValue(LiquidBlock.LEVEL, Integer.valueOf(getLegacyLevel(p_76136_)));
         }
 
         @Override

@@ -3,6 +3,7 @@ package com.thevortex.allthemodium.worldgen.structures;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -131,6 +132,6 @@ public class DungeonStructure extends Structure {
 
     @Override
     public StructureType<DungeonStructure> type() {
-        return ATMStructures.ANCIENT_DUNGEON.get();
+        return ModRegistry.ANCIENT_DUNGEON.get();
     }
 }
