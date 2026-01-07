@@ -167,8 +167,7 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.CLIMBABLE).add(ModRegistry.ANCIENT_CAVEVINES_PLANT_.get());
         
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_STONE.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_SHOVEL).add(ModRegistry.ANCIENT_DIRT.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_SHOVEL).add(ModRegistry.ANCIENT_GRASS.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_SHOVEL).add(ModRegistry.ANCIENT_DIRT.get(), ModRegistry.ANCIENT_GRASS.get(), ModRegistry.ANCIENT_PODZOL.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_MOSSY_STONE.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_POLISHED_STONE.get());
         tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_SMOOTH_STONE.get());
@@ -199,6 +198,7 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(net.minecraft.tags.BlockTags.INFINIBURN_NETHER).add(ModRegistry.ANCIENT_DIRT.get());
         tag(net.minecraft.tags.BlockTags.DIRT).add(ModRegistry.ANCIENT_GRASS.get());
         tag(net.minecraft.tags.BlockTags.DIRT).add(ModRegistry.ANCIENT_DIRT.get());
+        tag(net.minecraft.tags.BlockTags.DIRT).add(ModRegistry.ANCIENT_PODZOL.get());
 
         tag(net.minecraft.tags.BlockTags.WOODEN_FENCES).add(ModRegistry.ANCIENT_WOOD_FENCE.get());
         tag(net.minecraft.tags.BlockTags.FENCES).add(ModRegistry.ANCIENT_WOOD_FENCE.get());

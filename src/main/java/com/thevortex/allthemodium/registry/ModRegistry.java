@@ -81,9 +81,6 @@ public class ModRegistry {
 	public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister
 			.create(Registries.ENTITY_TYPE, Reference.MOD_ID);
 
-	public static final DeferredRegister<Feature<?>> FEATURES =
-			DeferredRegister.create(Registries.FEATURE, Reference.MOD_ID);
-
 	private static ArrayList<Item> SPAWN_EGGS = new ArrayList<Item>();
 
 		// BIOMES
@@ -146,6 +143,7 @@ public class ModRegistry {
 			,Direction.DOWN
 			,ACaveVines.SHAPE
 			, false));
+	public static final DeferredHolder<Block,Block> ANCIENT_FERN = BLOCKS.register("ancient_fern", () -> new TallGrassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FERN)));
 
 	public static final DeferredHolder<Block,Block> PIGLICH_HEART_BLOCK = BLOCKS.register("piglich_heart_block", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.AMETHYST)));
 	public static final DeferredHolder<Item,BlockItem> PIGLICH_HEART_BLOCK_ITEM = ITEMS.register("piglich_heart_block", () -> new BlockItem(PIGLICH_HEART_BLOCK.get(),new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
@@ -156,6 +154,7 @@ public class ModRegistry {
 	public static final DeferredHolder<Block,Block> ANCIENT_STONE = BLOCKS.register("ancient_stone", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.STONE).isRedstoneConductor((BlockState state, BlockGetter level, BlockPos pos) -> false).strength(1.5f)));
 	public static final DeferredHolder<Block,Block> ANCIENT_DIRT = BLOCKS.register("ancient_dirt", () -> new AncientDirt(BlockBehaviour.Properties.of().sound(SoundType.WET_GRASS).strength(0.6f)));
 	public static final DeferredHolder<Block,Block> ANCIENT_GRASS = BLOCKS.register("ancient_grass", () -> new Ancient_Grass(BlockBehaviour.Properties.of().sound(SoundType.MOSS).strength(0.6f)));
+	public static final DeferredHolder<Block,Block> ANCIENT_PODZOL = BLOCKS.register("ancient_podzol", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.PODZOL)));
 	public static final DeferredHolder<Block,Block> ANCIENT_MOSSY_STONE = BLOCKS.register("ancient_mossy_stone", () -> new Block(BlockBehaviour.Properties.of().sound(SoundType.MOSS_CARPET).isRedstoneConductor((BlockState state, BlockGetter level, BlockPos pos) -> false).strength(1.5f)));
 	public static final DeferredHolder<Block,Block> ANCIENT_STONE_BRICKS = BLOCKS.register("ancient_stone_bricks", () -> new AncientStone());
 	public static final DeferredHolder<Block,Block> ANCIENT_CHISELED_STONE_BRICKS = BLOCKS.register("ancient_chiseled_stone_bricks", () -> new AncientStone());
@@ -220,6 +219,7 @@ public class ModRegistry {
 
 
 	public static final DeferredHolder<Item,BlockItem> ANCIENT_CAVEVINE_PLANT_ITEM = ITEMS.register("ancient_cavevines_plant", () ->new BlockItem(ANCIENT_CAVEVINES_PLANT_.get(),new Item.Properties()));
+	public static final DeferredHolder<Item,BlockItem> ANCIENT_FERN_ITEM = ITEMS.register("ancient_fern", () ->new BlockItem(ANCIENT_FERN.get(), new Item.Properties()));
 	public static final DeferredHolder<Item,BlockItem> ANCIENT_SOULBERRY = ITEMS.register("ancient_soulberries",() -> new SoulBerries(ANCIENT_CAVEVINES_.get(),(new Item.Properties()).food(ModFoods.SOUL_BERRIES)));
 	public static final DeferredHolder<Item,BlockItem> ANCIENT_TRAP_DOOR_ITEM = ITEMS.register("ancient_trap_door", () -> new BlockItem(ANCIENT_TRAPDOOR.get(),new Item.Properties()));
 	public static final DeferredHolder<Item,BlockItem> DEMONIC_TRAP_DOOR_ITEM = ITEMS.register("demonic_trap_door", () -> new BlockItem(DEMONIC_TRAPDOOR.get(),new Item.Properties()));
@@ -327,6 +327,7 @@ public class ModRegistry {
 	public static final DeferredHolder<Item,BlockItem> ANCIENT_STONE_ITEM = ITEMS.register("ancient_stone", () -> new BlockItem(ANCIENT_STONE.get(), new Item.Properties()));
 	public static final DeferredHolder<Item,BlockItem> ANCIENT_DIRT_ITEM = ITEMS.register("ancient_dirt", () -> new BlockItem(ANCIENT_DIRT.get(), new Item.Properties()));
 	public static final DeferredHolder<Item,BlockItem> ANCIENT_GRASS_ITEM = ITEMS.register("ancient_grass", () -> new BlockItem(ANCIENT_GRASS.get(), new Item.Properties()));
+	public static final DeferredHolder<Item,BlockItem> ANCIENT_PODZOL_ITEM = ITEMS.register("ancient_podzol", () -> new BlockItem(ANCIENT_PODZOL.get(), new Item.Properties()));
 	public static final DeferredHolder<Item,BlockItem> ANCIENT_MOSSY_STONE_ITEM = ITEMS.register("ancient_mossy_stone", () -> new BlockItem(ANCIENT_MOSSY_STONE.get(), new Item.Properties()));
 	public static final DeferredHolder<Item,BlockItem> ANCIENT_STONE_BRICKS_ITEM = ITEMS.register("ancient_stone_bricks", () -> new BlockItem(ANCIENT_STONE_BRICKS.get(), new Item.Properties()));
 	public static final DeferredHolder<Item,BlockItem> ANCIENT_CHISELED_STONE_BRICKS_ITEM = ITEMS.register("ancient_chiseled_stone_bricks", () -> new BlockItem(ANCIENT_CHISELED_STONE_BRICKS.get(), new Item.Properties()));
