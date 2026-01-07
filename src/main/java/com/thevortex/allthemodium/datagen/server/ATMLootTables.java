@@ -1,9 +1,6 @@
 package com.thevortex.allthemodium.datagen.server;
 
-import com.thevortex.allthemodium.blocks.ATMBrushableBlock;
-import com.thevortex.allthemodium.blocks.Allthemodium_Ore;
-import com.thevortex.allthemodium.blocks.Unobtainium_Ore;
-import com.thevortex.allthemodium.blocks.Vibranium_Ore;
+import com.thevortex.allthemodium.blocks.*;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
@@ -73,6 +70,9 @@ public class ATMLootTables extends VanillaBlockLoot
                 .flatMap(Collection::stream)
                 .map(DeferredHolder::get)
                 .filter(block -> !(block instanceof ATMBrushableBlock))
+                .filter(block -> !(block instanceof AncientLeavesBottom))
+                .filter(block -> !(block instanceof DemonicLeavesBottom))
+                .filter(block -> !(block instanceof SoulLeavesBottom))
                 .collect(Collectors.toList());
         list.add(ModRegistry.TELEPORT_PAD.get());
         return list;
