@@ -3,24 +3,19 @@ package com.thevortex.allthemodium.compat.ars_nouveau;
 import com.hollingsworth.arsnouveau.common.items.ModBlockItem;
 import com.hollingsworth.arsnouveau.setup.registry.BlockEntityTypeRegistryWrapper;
 import com.hollingsworth.arsnouveau.setup.registry.BlockRegistryWrapper;
-import com.hollingsworth.arsnouveau.setup.registry.ItemsRegistry;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
 
 import static com.hollingsworth.arsnouveau.setup.registry.CapabilityRegistry.SOURCE_CAPABILITY;
-import static com.thevortex.allthemodium.registry.ModRegistry.CREATIVE_TABS;
 
 public class ArsCompat {
 

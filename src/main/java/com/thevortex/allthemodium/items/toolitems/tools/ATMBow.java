@@ -1,9 +1,5 @@
 package com.thevortex.allthemodium.items.toolitems.tools;
 
-import java.util.List;
-
-import org.jetbrains.annotations.Nullable;
-
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
@@ -11,9 +7,11 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class ATMBow extends BowItem {
 

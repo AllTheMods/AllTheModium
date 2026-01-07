@@ -8,8 +8,6 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
-import static com.thevortex.allthemodium.AllTheModium.*;
-
 
 public class Reference {
 

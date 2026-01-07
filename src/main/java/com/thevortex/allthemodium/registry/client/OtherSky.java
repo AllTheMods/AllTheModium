@@ -1,13 +1,7 @@
 package com.thevortex.allthemodium.registry.client;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.thevortex.allthemodium.registry.ATMBiomes;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.world.phys.Vec3;
-import org.joml.Matrix4f;
 
 public class OtherSky extends DimensionSpecialEffects {
 

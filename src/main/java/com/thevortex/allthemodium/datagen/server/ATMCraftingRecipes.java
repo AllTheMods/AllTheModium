@@ -1,20 +1,17 @@
 package com.thevortex.allthemodium.datagen.server;
 
 import com.thevortex.allthemodium.datagen.builder.ShapedAncientStones;
-import com.thevortex.allthemodium.datagen.builder.ShapedIngotBuilder;
-
 import com.thevortex.allthemodium.datagen.builder.ShapedBlockBuilder;
-
+import com.thevortex.allthemodium.datagen.builder.ShapedIngotBuilder;
 import com.thevortex.allthemodium.reference.Reference;
-import com.thevortex.allthemodium.registry.TagRegistry;
 import com.thevortex.allthemodium.registry.ModRegistry;
-
+import com.thevortex.allthemodium.registry.TagRegistry;
 import net.allthemods.alltheores.registry.ATOTagRegistry;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger.TriggerInstance;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup.Provider;
-import net.minecraft.data.*;
+import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -22,7 +19,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.neoforged.neoforge.common.Tags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -74,7 +70,7 @@ public class ATMCraftingRecipes extends RecipeProvider {
             .unlockedBy("has_raw_unobtainium", hasTag(TagRegistry.RAW_UNOBTAINIUM))
             .save(consumer);
 
-        shaped(ModRegistry.PIGLICH_HEART_BLOCK_ITEM.get())
+        shaped(ModRegistry.PIGLICH_HEART_BLOCK.get())
                 .pattern("nnn")
                 .pattern("nnn")
                 .pattern("nnn")
@@ -100,7 +96,7 @@ public class ATMCraftingRecipes extends RecipeProvider {
                 .unlockedBy("has_allthemodium_nugget", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ALLTHEMODIUM_NUGGET).build()))
                 .save(consumer);
 
-        shaped(ModRegistry.TELEPORT_PAD_ITEM.get())
+        shaped(ModRegistry.TELEPORT_PAD.get())
                 .pattern(" n ")
                 .pattern("nan")
                 .pattern(" n ")
@@ -169,109 +165,109 @@ public class ATMCraftingRecipes extends RecipeProvider {
         final String hasCondition = "has_item";
 
         ShapedAncientStones.builder(TagRegistry.DEMONIC_WOODEN_PLANKS_ITEM)
-                .setBookShelf(ModRegistry.DEMONIC_BOOKSHELF_ITEM)
-                .setDoor(ModRegistry.DEMONIC_DOOR_ITEM)
-                .setTrapDoor(ModRegistry.DEMONIC_TRAP_DOOR_ITEM)
-                .setStairs(ModRegistry.DEMONIC_WOODEN_STAIRS_ITEM)
-                .setFence(ModRegistry.DEMONIC_WOOD_FENCE_ITEM)
-                .setFenceGate(ModRegistry.DEMONIC_WOOD_FENCE_GATE_ITEM)
-                .setSlab(ModRegistry.DEMONIC_WOODEN_SLABS_ITEM)
+                .setBookShelf(ModRegistry.DEMONIC_BOOKSHELF.get().asItem())
+                .setDoor(ModRegistry.DEMONIC_DOOR.get().asItem())
+                .setTrapDoor(ModRegistry.DEMONIC_TRAPDOOR.get().asItem())
+                .setStairs(ModRegistry.DEMONIC_WOODEN_STAIRS.get().asItem())
+                .setFence(ModRegistry.DEMONIC_WOOD_FENCE.get().asItem())
+                .setFenceGate(ModRegistry.DEMONIC_WOOD_FENCE_GATE.get().asItem())
+                .setSlab(ModRegistry.DEMONIC_WOODEN_SLABS.get().asItem())
                 .build(consumer);
 
         ShapedAncientStones.builder(TagRegistry.SOUL_WOODEN_PLANKS_ITEM)
-                .setBookShelf(ModRegistry.SOUL_BOOKSHELF_ITEM)
-                .setDoor(ModRegistry.SOUL_DOOR_ITEM)
-                .setTrapDoor(ModRegistry.SOUL_TRAP_DOOR_ITEM)
-                .setStairs(ModRegistry.SOUL_WOODEN_STAIRS_ITEM)
-                .setFence(ModRegistry.SOUL_WOOD_FENCE_ITEM)
-                .setFenceGate(ModRegistry.SOUL_WOOD_FENCE_GATE_ITEM)
-                .setSlab(ModRegistry.SOUL_WOODEN_SLABS_ITEM)
+                .setBookShelf(ModRegistry.SOUL_BOOKSHELF.get().asItem())
+                .setDoor(ModRegistry.SOUL_DOOR.get().asItem())
+                .setTrapDoor(ModRegistry.SOUL_TRAPDOOR.get().asItem())
+                .setStairs(ModRegistry.SOUL_WOODEN_STAIRS.get().asItem())
+                .setFence(ModRegistry.SOUL_WOOD_FENCE.get().asItem())
+                .setFenceGate(ModRegistry.SOUL_WOOD_FENCE_GATE.get().asItem())
+                .setSlab(ModRegistry.SOUL_WOODEN_SLABS.get().asItem())
                 .build(consumer);
 
         ShapedAncientStones.builder(TagRegistry.ANCIENT_WOODEN_PLANKS_ITEM)
-                .setBookShelf(ModRegistry.ANCIENT_BOOKSHELF_ITEM)
-                .setTrapDoor(ModRegistry.ANCIENT_TRAP_DOOR_ITEM)
-                .setDoor(ModRegistry.ANCIENT_DOOR_ITEM)
-                .setStairs(ModRegistry.ANCIENT_WOODEN_STAIRS_ITEM)
-                .setFence(ModRegistry.ANCIENT_WOOD_FENCE_ITEM)
-                .setFenceGate(ModRegistry.ANCIENT_WOOD_FENCE_GATE_ITEM)
-                .setSlab(ModRegistry.ANCIENT_WOODEN_SLABS_ITEM)
+                .setBookShelf(ModRegistry.ANCIENT_BOOKSHELF.get().asItem())
+                .setTrapDoor(ModRegistry.ANCIENT_TRAPDOOR.get().asItem())
+                .setDoor(ModRegistry.ANCIENT_DOOR.get().asItem())
+                .setStairs(ModRegistry.ANCIENT_WOODEN_STAIRS.get().asItem())
+                .setFence(ModRegistry.ANCIENT_WOOD_FENCE.get().asItem())
+                .setFenceGate(ModRegistry.ANCIENT_WOOD_FENCE_GATE.get().asItem())
+                .setSlab(ModRegistry.ANCIENT_WOODEN_SLABS.get().asItem())
                 .build(consumer);
 
         ShapedAncientStones.builder(TagRegistry.ANCIENT_STONE_BRICKS_ITEM)
-                .setStairs(ModRegistry.ANCIENT_STONE_BRICK_STAIRS_ITEM)
-                .setWall(ModRegistry.ANCIENT_STONE_BRICK_WALL_ITEM)
-                .setSlab(ModRegistry.ANCIENT_STONE_BRICK_SLABS_ITEM)
+                .setStairs(ModRegistry.ANCIENT_STONE_BRICK_STAIRS.get().asItem())
+                .setWall(ModRegistry.ANCIENT_STONE_BRICK_WALL.get().asItem())
+                .setSlab(ModRegistry.ANCIENT_STONE_BRICK_SLABS.get().asItem())
                 .build(consumer);
 
         ShapedAncientStones.builder(TagRegistry.ANCIENT_STONE_ITEM)
-                .setBrick(ModRegistry.ANCIENT_STONE_BRICKS_ITEM)
-                .setStairs(ModRegistry.ANCIENT_STONE_STAIRS_ITEM)
-                .setWall(ModRegistry.ANCIENT_STONE_WALL_ITEM)
-                .setSlab(ModRegistry.ANCIENT_STONE_SLABS_ITEM)
+                .setBrick(ModRegistry.ANCIENT_STONE_BRICKS.get().asItem())
+                .setStairs(ModRegistry.ANCIENT_STONE_STAIRS.get().asItem())
+                .setWall(ModRegistry.ANCIENT_STONE_WALL.get().asItem())
+                .setSlab(ModRegistry.ANCIENT_STONE_SLABS.get().asItem())
                 .build(consumer);
 
         ShapedAncientStones.builder(TagRegistry.ANCIENT_MOSSY_STONE_ITEM)
-                .setStairs(ModRegistry.ANCIENT_MOSSY_STONE_STAIRS_ITEM)
-                .setWall(ModRegistry.ANCIENT_MOSSY_STONE_WALL_ITEM)
-                .setSlab(ModRegistry.ANCIENT_MOSSY_STONE_SLABS_ITEM)
+                .setStairs(ModRegistry.ANCIENT_MOSSY_STONE_STAIRS.get().asItem())
+                .setWall(ModRegistry.ANCIENT_MOSSY_STONE_WALL.get().asItem())
+                .setSlab(ModRegistry.ANCIENT_MOSSY_STONE_SLABS.get().asItem())
                 .build(consumer);
 
         ShapedAncientStones.builder(TagRegistry.ANCIENT_SMOOTH_STONE_ITEM)
-                .setStairs(ModRegistry.ANCIENT_SMOOTH_STONE_STAIRS_ITEM)
-                .setWall(ModRegistry.ANCIENT_SMOOTH_STONE_WALL_ITEM)
-                .setSlab(ModRegistry.ANCIENT_SMOOTH_STONE_SLABS_ITEM)
+                .setStairs(ModRegistry.ANCIENT_SMOOTH_STONE_STAIRS.get().asItem())
+                .setWall(ModRegistry.ANCIENT_SMOOTH_STONE_WALL.get().asItem())
+                .setSlab(ModRegistry.ANCIENT_SMOOTH_STONE_SLABS.get().asItem())
                 .build(consumer);
 
         ShapedAncientStones.builder(TagRegistry.ANCIENT_POLISHED_STONE_ITEM)
-                .setStairs(ModRegistry.ANCIENT_POLISHED_STONE_STAIRS_ITEM)
-                .setWall(ModRegistry.ANCIENT_POLISHED_STONE_WALL_ITEM)
-                .setSlab(ModRegistry.ANCIENT_POLISHED_STONE_SLABS_ITEM)
+                .setStairs(ModRegistry.ANCIENT_POLISHED_STONE_STAIRS.get().asItem())
+                .setWall(ModRegistry.ANCIENT_POLISHED_STONE_WALL.get().asItem())
+                .setSlab(ModRegistry.ANCIENT_POLISHED_STONE_SLABS.get().asItem())
                 .build(consumer);
 
         ShapedAncientStones.builder(TagRegistry.ANCIENT_CHISELED_STONE_BRICKS_ITEM)
-                .setStairs(ModRegistry.ANCIENT_CHISELED_STONE_STAIRS_ITEM)
-                .setWall(ModRegistry.ANCIENT_CHISELED_STONE_BRICK_WALL_ITEM)
-                .setSlab(ModRegistry.ANCIENT_CHISELED_STONE_SLABS_ITEM)
+                .setStairs(ModRegistry.ANCIENT_CHISELED_STONE_STAIRS.get().asItem())
+                .setWall(ModRegistry.ANCIENT_CHISELED_STONE_BRICK_WALL.get().asItem())
+                .setSlab(ModRegistry.ANCIENT_CHISELED_STONE_SLABS.get().asItem())
                 .build(consumer);
 
         ShapedAncientStones.builder(TagRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM)
-                .setStairs(ModRegistry.ANCIENT_CRACKED_STONE_STAIRS_ITEM)
-                .setWall(ModRegistry.ANCIENT_CRACKED_STONE_BRICK_WALL_ITEM)
-                .setSlab(ModRegistry.ANCIENT_CRACKED_STONE_SLABS_ITEM)
+                .setStairs(ModRegistry.ANCIENT_CRACKED_STONE_STAIRS.get().asItem())
+                .setWall(ModRegistry.ANCIENT_CRACKED_STONE_BRICK_WALL.get().asItem())
+                .setSlab(ModRegistry.ANCIENT_CRACKED_STONE_SLABS.get().asItem())
                 .build(consumer);
 
         ShapedBlockBuilder.builder(TagRegistry.ALLTHEMODIUM_INGOT)
-                .setBlock(ModRegistry.ALLTHEMODIUM_BLOCK_ITEM)
+                .setBlock(ModRegistry.ALLTHEMODIUM_BLOCK.get().asItem())
                 .setGear(ModRegistry.ATM_GEAR)
                 .setPlate(ModRegistry.ATM_PLATE)
                 .setRod(ModRegistry.ATM_ROD)
                 .build(consumer);
 
         ShapedBlockBuilder.builder(TagRegistry.VIBRANIUM_INGOT)
-                .setBlock(ModRegistry.VIBRANIUM_BLOCK_ITEM)
+                .setBlock(ModRegistry.VIBRANIUM_BLOCK.get().asItem())
                 .setGear(ModRegistry.VIB_GEAR)
                 .setPlate(ModRegistry.VIB_PLATE)
                 .setRod(ModRegistry.VIB_ROD)
                 .build(consumer);
 
         ShapedBlockBuilder.builder(TagRegistry.UNOBTAINIUM_INGOT)
-                .setBlock(ModRegistry.UNOBTAINIUM_BLOCK_ITEM)
+                .setBlock(ModRegistry.UNOBTAINIUM_BLOCK.get().asItem())
                 .setGear(ModRegistry.ONOB_GEAR)
                 .setPlate(ModRegistry.ONOB_PLATE)
                 .setRod(ModRegistry.ONOB_ROD)
                 .build(consumer);
 
         ShapedBlockBuilder.builder(TagRegistry.UNOBTAINIUM_ALLTHEMODIUM_INGOT)
-                .setBlock(ModRegistry.UA_ALLOY_ITEM)
+                .setBlock(ModRegistry.UA_ALLOY.get().asItem())
                 .build(consumer);
 
         ShapedBlockBuilder.builder(TagRegistry.UNOBTAINIUM_VIBRANIUM_INGOT)
-                .setBlock(ModRegistry.UV_ALLOY_ITEM)
+                .setBlock(ModRegistry.UV_ALLOY.get().asItem())
                 .build(consumer);
 
         ShapedBlockBuilder.builder(TagRegistry.VIBRANIUM_ALLTHEMODIUM_INGOT)
-                .setBlock(ModRegistry.VA_ALLOY_ITEM)
+                .setBlock(ModRegistry.VA_ALLOY.get().asItem())
                 .build(consumer);
 
         ShapedIngotBuilder.builder(TagRegistry.ALLTHEMODIUM_NUGGET)
@@ -293,8 +289,8 @@ public class ATMCraftingRecipes extends RecipeProvider {
         final String hasCondition = "has_item";
 
         SimpleCookingRecipeBuilder
-                .blasting(Ingredient.of(ModRegistry.ANCIENT_STONE_ITEM.get()), RecipeCategory.MISC,ModRegistry.ANCIENT_SMOOTH_STONE_ITEM.get(),0.15f,200)
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_STONE_ITEM.get()))
+                .blasting(Ingredient.of(ModRegistry.ANCIENT_STONE.get()), RecipeCategory.MISC,ModRegistry.ANCIENT_SMOOTH_STONE.get(),0.15f,200)
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_STONE.get()))
                 .save(consumer,recipeDir("ancient_smooth_stone","ancient_stone_blasting"));
 
         SimpleCookingRecipeBuilder
@@ -337,82 +333,82 @@ public class ATMCraftingRecipes extends RecipeProvider {
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.DEMONIC_PLANKS.get(),4)
-                .requires(ModRegistry.DEMONIC_LOG_ITEM.get())
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.DEMONIC_LOG_ITEM.get()))
+                .requires(ModRegistry.DEMONIC_LOG.get().asItem())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.DEMONIC_LOG.get().asItem()))
                 .save(consumer,recipeDir("demonic_planks","shapelesscrafting"));
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.SOUL_PLANKS.get(),4)
-                .requires(ModRegistry.SOUL_LOG_ITEM.get())
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.SOUL_LOG_ITEM.get()))
+                .requires(ModRegistry.SOUL_LOG.get().asItem())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.SOUL_LOG.get().asItem()))
                 .save(consumer,recipeDir("soul_planks","shapelesscrafting"));
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.SOUL_PLANKS.get(),4)
-                .requires(ModRegistry.SOUL_LOG_0_ITEM.get())
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.SOUL_LOG_0_ITEM.get()))
+                .requires(ModRegistry.SOUL_LOG_0.get().asItem())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.SOUL_LOG_0.get().asItem()))
                 .save(consumer,recipeDir("soul_planks_0","shapelesscrafting"));
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.SOUL_PLANKS.get(),4)
-                .requires(ModRegistry.SOUL_LOG_1_ITEM.get())
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.SOUL_LOG_1_ITEM.get()))
+                .requires(ModRegistry.SOUL_LOG_1.get().asItem())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.SOUL_LOG_1.get().asItem()))
                 .save(consumer,recipeDir("soul_planks_1","shapelesscrafting"));
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.SOUL_PLANKS.get(),4)
-                .requires(ModRegistry.SOUL_LOG_2_ITEM.get())
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.SOUL_LOG_2_ITEM.get()))
+                .requires(ModRegistry.SOUL_LOG_2.get().asItem())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.SOUL_LOG_2.get().asItem()))
                 .save(consumer,recipeDir("soul_planks_2","shapelesscrafting"));
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.ANCIENT_PLANKS.get(),4)
-                .requires(ModRegistry.ANCIENT_LOG_0_ITEM.get())
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_LOG_0_ITEM.get()))
+                .requires(ModRegistry.ANCIENT_LOG_0.get())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_LOG_0.get()))
                 .save(consumer,recipeDir("ancient_planks","shapelesscrafting"));
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.ANCIENT_PLANKS.get(),4)
-                .requires(ModRegistry.ANCIENT_LOG_1_ITEM.get())
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_LOG_1_ITEM.get()))
+                .requires(ModRegistry.ANCIENT_LOG_1.get())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_LOG_1.get()))
                 .save(consumer,recipeDir("ancient_planks_1","shapelesscrafting"));
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.ANCIENT_PLANKS.get(),4)
-                .requires(ModRegistry.ANCIENT_LOG_2_ITEM.get())
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_LOG_2_ITEM.get()))
+                .requires(ModRegistry.ANCIENT_LOG_2.get())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_LOG_2.get()))
                 .save(consumer,recipeDir("ancient_planks_2","shapelesscrafting"));
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.ANCIENT_PLANKS.get(),4)
-                .requires(ModRegistry.ANCIENT_LOG_STRIPPED_ITEM.get())
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_LOG_STRIPPED_ITEM.get()))
+                .requires(ModRegistry.ANCIENT_LOG_STRIPPED.get().asItem())
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_LOG_STRIPPED.get().asItem()))
                 .save(consumer,recipeDir("ancient_planks_3","shapelesscrafting"));
 
         ShapelessRecipeBuilder
-                .shapeless(RecipeCategory.MISC,ModRegistry.ANCIENT_MOSSY_STONE_ITEM.get(),1)
-                .requires(ModRegistry.ANCIENT_STONE_ITEM.get())
+                .shapeless(RecipeCategory.MISC,ModRegistry.ANCIENT_MOSSY_STONE.get(),1)
+                .requires(ModRegistry.ANCIENT_STONE.get())
                 .requires(Items.VINE)
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_STONE_ITEM.get()))
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_STONE.get()))
                 .save(consumer,recipeDir("ancient_mossy_stone","vinecrafting"));
 
         ShapelessRecipeBuilder
-                .shapeless(RecipeCategory.MISC,ModRegistry.ANCIENT_POLISHED_STONE_ITEM.get(),1)
-                .requires(ModRegistry.ANCIENT_SMOOTH_STONE_ITEM.get())
+                .shapeless(RecipeCategory.MISC, ModRegistry.ANCIENT_POLISHED_STONE.get(),1)
+                .requires(ModRegistry.ANCIENT_SMOOTH_STONE.get())
                 .requires(Items.HONEYCOMB)
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_SMOOTH_STONE_ITEM.get()))
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_SMOOTH_STONE.get()))
                 .save(consumer,recipeDir("ancient_polished_stone","waxing"));
 
 
         ShapelessRecipeBuilder
-                .shapeless(RecipeCategory.MISC,ModRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM.get(),1)
+                .shapeless(RecipeCategory.MISC,ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get(),1)
                 .requires(TagRegistry.ANCIENT_STONE_BRICKS_ITEM)
                 .requires(ATOTagRegistry.ORE_HAMMERS)
                 .unlockedBy(hasCondition,RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ANCIENT_STONE_BRICKS_ITEM).build()))
                 .save(consumer,recipeDir("ancient_cracked_stone_bricks","crushing"));
 
         ShapelessRecipeBuilder
-                .shapeless(RecipeCategory.MISC,ModRegistry.ANCIENT_CHISELED_STONE_BRICKS_ITEM.get(),1)
+                .shapeless(RecipeCategory.MISC,ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get(),1)
                 .requires(TagRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM)
                 .requires(ATOTagRegistry.ORE_HAMMERS)
                 .unlockedBy(hasCondition,RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ANCIENT_CRACKED_STONE_BRICKS_ITEM).build()))
@@ -428,7 +424,7 @@ public class ATMCraftingRecipes extends RecipeProvider {
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.ALLTHEMODIUM_INGOT.get(),9)
                 .requires(TagRegistry.ALLTHEMODIUM_BLOCK_ITEM)
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ALLTHEMODIUM_BLOCK_ITEM.get()))
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ALLTHEMODIUM_BLOCK.get()))
                 .save(consumer,recipeDir("allthemodium_ingot","block"));
 
         ShapelessRecipeBuilder
@@ -455,7 +451,7 @@ public class ATMCraftingRecipes extends RecipeProvider {
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.VIBRANIUM_INGOT.get(),9)
                 .requires(TagRegistry.VIBRANIUM_BLOCK_ITEM)
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.VIBRANIUM_BLOCK_ITEM.get()))
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.VIBRANIUM_BLOCK.get()))
                 .save(consumer,recipeDir("vibranium_ingot","block"));
 
         ShapelessRecipeBuilder
@@ -467,7 +463,7 @@ public class ATMCraftingRecipes extends RecipeProvider {
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.UNOBTAINIUM_INGOT.get(),9)
                 .requires(TagRegistry.UNOBTAINIUM_BLOCK_ITEM)
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.UNOBTAINIUM_BLOCK_ITEM.get()))
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.UNOBTAINIUM_BLOCK.get()))
                 .save(consumer,recipeDir("unobtainium_ingot","block"));
 
         ShapelessRecipeBuilder
@@ -479,38 +475,38 @@ public class ATMCraftingRecipes extends RecipeProvider {
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.RAW_ALLTHEMODIUM.get(),9)
                 .requires(TagRegistry.RAW_ALLTHEMODIUM_BLOCK)
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.RAW_ALLTHEMODIUM_BLOCK_ITEM.get()))
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.RAW_ALLTHEMODIUM_BLOCK.get()))
                 .save(consumer,recipeDir("raw_allthemodium","block"));
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.RAW_VIBRANIUM.get(),9)
                 .requires(TagRegistry.RAW_VIBRANIUM_BLOCK)
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.RAW_VIBRANIUM_BLOCK_ITEM.get()))
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.RAW_VIBRANIUM_BLOCK.get()))
                 .save(consumer,recipeDir("raw_vibranium","block"));
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.RAW_UNOBTAINIUM.get(),9)
                 .requires(TagRegistry.RAW_UNOBTAINIUM_BLOCK)
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.RAW_UNOBTAINIUM_BLOCK_ITEM.get()))
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.RAW_UNOBTAINIUM_BLOCK.get()))
                 .save(consumer,recipeDir("raw_unobtainium","block"));
 
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.UNOBTAINIUM_ALLTHEMODIUM_ALLOY.get(),9)
                 .requires(TagRegistry.UNOBTAINIUM_ALLTHEMODIUM_BLOCK)
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.UA_ALLOY_ITEM.get()))
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.UA_ALLOY.get()))
                 .save(consumer,recipeDir("unobtainium_allthemodium_alloy_ingot","block"));
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.UNOBTAINIUM_VIBRANIUM_ALLOY.get(),9)
                 .requires(TagRegistry.UNOBTAINIUM_VIBRANIUM_BLOCK)
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.UV_ALLOY_ITEM.get()))
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.UV_ALLOY.get()))
                 .save(consumer,recipeDir("unobtainium_vibranium_alloy_ingot","block"));
 
         ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC,ModRegistry.VIBRANIUM_ALLTHEMODIUM_ALLOY.get(),9)
                 .requires(TagRegistry.VIBRANIUM_ALLTHEMODIUM_BLOCK)
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.VA_ALLOY_ITEM.get()))
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.VA_ALLOY.get()))
                 .save(consumer,recipeDir("vibranium_allthemodium_alloy_ingot","block"));
 
 
@@ -522,8 +518,8 @@ public class ATMCraftingRecipes extends RecipeProvider {
         final String hasCondition = "has_item";
 
         SimpleCookingRecipeBuilder
-                .smelting(Ingredient.of(ModRegistry.ANCIENT_STONE_ITEM.get()), RecipeCategory.MISC,ModRegistry.ANCIENT_SMOOTH_STONE_ITEM.get(),0.15f,200)
-                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_STONE_ITEM.get()))
+                .smelting(Ingredient.of(ModRegistry.ANCIENT_STONE.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_SMOOTH_STONE.get(),0.15f,200)
+                .unlockedBy(hasCondition,RecipeProvider.has(ModRegistry.ANCIENT_STONE.get()))
                 .save(consumer,recipeDir("ancient_smooth_stone","ancient_stone_smelting"));
 
         SimpleCookingRecipeBuilder

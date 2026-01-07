@@ -4,17 +4,12 @@ package com.thevortex.allthemodium;
 import com.thevortex.allthemodium.compat.ars_nouveau.ArsClientHandler;
 import com.thevortex.allthemodium.compat.ars_nouveau.ArsCompat;
 import com.thevortex.allthemodium.compat.jade.ATMJadePlugin;
+import com.thevortex.allthemodium.events.ArmorEvents;
+import com.thevortex.allthemodium.events.BlockBreak;
+import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.*;
 import com.thevortex.allthemodium.registry.mek_reg.ATMSlurries;
 import com.thevortex.allthemodium.registry.mek_reg.MekProcReg;
-
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.dimension.DimensionType;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
@@ -22,17 +17,11 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
-
-import com.thevortex.allthemodium.reference.Reference;
-
-import static com.thevortex.allthemodium.reference.Reference.MOD_ID;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.launch.MixinBootstrap;
 
-import com.thevortex.allthemodium.events.ArmorEvents;
-import com.thevortex.allthemodium.events.BlockBreak;
+import static com.thevortex.allthemodium.reference.Reference.MOD_ID;
 
 @Mod(Reference.MOD_ID)
 public class AllTheModium

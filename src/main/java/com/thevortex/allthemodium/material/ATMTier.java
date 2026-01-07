@@ -1,10 +1,7 @@
 package com.thevortex.allthemodium.material;
 
-import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.registry.TagRegistry;
-
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;

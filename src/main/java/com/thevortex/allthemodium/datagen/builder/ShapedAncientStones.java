@@ -3,7 +3,6 @@ package com.thevortex.allthemodium.datagen.builder;
 import com.thevortex.allthemodium.datagen.RecipeException;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
-
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger.TriggerInstance;
@@ -13,11 +12,9 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.EnumMap;
 import java.util.Locale;
@@ -49,44 +46,44 @@ public class ShapedAncientStones {
         return new ShapedAncientStones(ancientstone);
     }
 
-    public ShapedAncientStones setBookShelf(DeferredHolder<Item,BlockItem> object) {
-        pieces.put(Slot.BOOKSHELF, object.get());
+    public ShapedAncientStones setBookShelf(Item object) {
+        pieces.put(Slot.BOOKSHELF, object);
         return this;
     }
-    public ShapedAncientStones setDoor(DeferredHolder<Item,BlockItem> object) {
-        pieces.put(Slot.DOOR, object.get());
+    public ShapedAncientStones setDoor(Item object) {
+        pieces.put(Slot.DOOR, object);
         return this;
     }
-    public ShapedAncientStones setTrapDoor(DeferredHolder<Item,BlockItem> object) {
-        pieces.put(Slot.TRAPDOOR, object.get());
+    public ShapedAncientStones setTrapDoor(Item object) {
+        pieces.put(Slot.TRAPDOOR, object);
         return this;
     }
-    public ShapedAncientStones setBrick(DeferredHolder<Item,BlockItem> object) {
-        pieces.put(Slot.BRICK, object.get());
+    public ShapedAncientStones setBrick(Item object) {
+        pieces.put(Slot.BRICK, object);
         return this;
     }
-    public ShapedAncientStones setStairs(DeferredHolder<Item,BlockItem> object) {
-        pieces.put(Slot.STAIRS, object.get());
-        return this;
-    }
-
-    public ShapedAncientStones setFence(DeferredHolder<Item,BlockItem> object) {
-        pieces.put(Slot.FENCE, object.get());
+    public ShapedAncientStones setStairs(Item object) {
+        pieces.put(Slot.STAIRS, object);
         return this;
     }
 
-    public ShapedAncientStones setFenceGate(DeferredHolder<Item,BlockItem> object) {
-        pieces.put(Slot.FENCEGATE, object.get());
+    public ShapedAncientStones setFence(Item object) {
+        pieces.put(Slot.FENCE, object);
         return this;
     }
 
-    public ShapedAncientStones setSlab(DeferredHolder<Item,BlockItem> object) {
-        pieces.put(Slot.SLAB, object.get());
+    public ShapedAncientStones setFenceGate(Item object) {
+        pieces.put(Slot.FENCEGATE, object);
         return this;
     }
 
-    public ShapedAncientStones setWall(DeferredHolder<Item,BlockItem> object) {
-        pieces.put(Slot.WALL, object.get());
+    public ShapedAncientStones setSlab(Item object) {
+        pieces.put(Slot.SLAB, object);
+        return this;
+    }
+
+    public ShapedAncientStones setWall(Item object) {
+        pieces.put(Slot.WALL, object);
         return this;
     }
 

@@ -1,9 +1,7 @@
 package com.thevortex.allthemodium.registry.mek_reg;
 
 
-
 import com.thevortex.allthemodium.reference.Reference;
-
 import mekanism.api.chemical.Chemical;
 import mekanism.common.registration.impl.SlurryRegistryObject;
 

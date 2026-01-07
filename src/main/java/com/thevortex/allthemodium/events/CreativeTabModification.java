@@ -1,14 +1,13 @@
 package com.thevortex.allthemodium.events;
 
+import com.thevortex.allthemodium.compat.ars_nouveau.ArsCompat;
+import com.thevortex.allthemodium.reference.Reference;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-
-import com.thevortex.allthemodium.compat.ars_nouveau.ArsCompat;
-import com.thevortex.allthemodium.reference.Reference;
-import com.thevortex.allthemodium.registry.ModRegistry;
 
 @EventBusSubscriber(modid = Reference.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public class CreativeTabModification {

@@ -1,6 +1,5 @@
 package com.thevortex.allthemodium.blocks;
 
-import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;

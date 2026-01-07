@@ -1,14 +1,9 @@
 package com.thevortex.allthemodium.events;
 
 
-import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.SubscribeEvent;

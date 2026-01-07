@@ -2,18 +2,13 @@ package com.thevortex.allthemodium.registry;
 
 import com.thevortex.allthemodium.fluid.FluidATM;
 import com.thevortex.allthemodium.fluid.FluidSoulLava;
-import com.thevortex.allthemodium.fluid.FluidSoulLava.Flowing;
-import com.thevortex.allthemodium.fluid.FluidSoulLava.Source;
 import com.thevortex.allthemodium.fluid.FluidUNOB;
 import com.thevortex.allthemodium.fluid.FluidVIB;
 import com.thevortex.allthemodium.reference.Reference;
-
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class FluidRegistry {
     public static final DeferredRegister<Fluid> FLUIDS = DeferredRegister.create(Registries.FLUID, Reference.MOD_ID);

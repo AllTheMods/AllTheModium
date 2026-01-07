@@ -1,8 +1,9 @@
 package com.thevortex.allthemodium.fluid;
 
 import com.thevortex.allthemodium.blocks.SoulLava;
-import com.thevortex.allthemodium.registry.*;
-
+import com.thevortex.allthemodium.registry.FluidRegistry;
+import com.thevortex.allthemodium.registry.FluidTypeRegistry;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
