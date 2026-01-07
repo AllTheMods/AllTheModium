@@ -1,5 +1,6 @@
 package com.thevortex.allthemodium.datagen.client;
 
+import com.thevortex.allthemodium.blocks.ATMBrushableBlock;
 import com.thevortex.allthemodium.blocks.Ancient_Grass;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
@@ -36,6 +37,7 @@ public class BlockStates extends BlockStateProvider {
             .filter(block -> !(block instanceof LiquidBlock))
             .filter(block -> !(block instanceof SaplingBlock))
             .filter(block -> !(block instanceof LeavesBlock))
+            .filter(block -> !(block instanceof ATMBrushableBlock))
             .filter(block -> !(block.builtInRegistryHolder().unwrapKey().get().location().getPath().contains("planks")))
             .collect(Collectors.toList());
 

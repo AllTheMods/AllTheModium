@@ -115,7 +115,7 @@ public class SoulLava extends LiquidBlock {
 	public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, RandomSource rand) {
 		this.tickcount++;
 
-		if(stateIn.is(BlockRegistry.SOULLAVA_BLOCK.get()) && this.tickcount >= 40) {
+		if(stateIn.is(ModRegistry.SOULLAVA_BLOCK.get()) && this.tickcount >= 40) {
 			spawnParticles(worldIn, pos);
 			this.tickcount = 0;
 		}

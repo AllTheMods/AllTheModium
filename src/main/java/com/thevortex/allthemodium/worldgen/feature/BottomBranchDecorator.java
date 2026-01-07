@@ -3,6 +3,7 @@ package com.thevortex.allthemodium.worldgen.feature;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.world.level.levelgen.feature.configurations.BlockColumnConfiguration;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
@@ -44,7 +45,7 @@ public class BottomBranchDecorator extends TreeDecorator
 
     @Override
     protected TreeDecoratorType<?> type() {
-        return ATMFeatures.BOTTOM_BRANCH_DECORATOR.get();
+        return ModRegistry.BOTTOM_BRANCH_DECORATOR.get();
     }
 
     @Override

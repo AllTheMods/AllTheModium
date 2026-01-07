@@ -39,7 +39,7 @@ public class FluidSoulLava extends FlowingFluid {
 
         @Override
         public Item getBucket() {
-            return ItemRegistry.SOUL_LAVA_BUCKET.get();
+            return ModRegistry.SOUL_LAVA_BUCKET.get();
         }
 
         @Override
@@ -78,7 +78,7 @@ public class FluidSoulLava extends FlowingFluid {
 
         @Override
         protected BlockState createLegacyBlock(FluidState p_76136_) {
-            return BlockRegistry.SOULLAVA_BLOCK.get().defaultBlockState().setValue(SoulLava.LEVEL, Integer.valueOf(getLegacyLevel(p_76136_)));
+            return ModRegistry.SOULLAVA_BLOCK.get().defaultBlockState().setValue(SoulLava.LEVEL, Integer.valueOf(getLegacyLevel(p_76136_)));
         }
 
         @Override
