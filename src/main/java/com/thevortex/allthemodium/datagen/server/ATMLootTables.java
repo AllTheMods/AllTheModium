@@ -63,6 +63,8 @@ public class ATMLootTables extends VanillaBlockLoot {
             }
             else { this.dropSelf(block); }
 
+            this.add(ModRegistry.ANCIENT_PODZOL.get(), b -> this.createSingleItemTableWithSilkTouch(b, Blocks.DIRT));
+            dropWhenSilkTouch(ModRegistry.ANCIENT_FERN.get());
         }
 
 

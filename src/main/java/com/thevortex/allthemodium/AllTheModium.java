@@ -7,6 +7,7 @@ import com.thevortex.allthemodium.compat.jade.ATMJadePlugin;
 import com.thevortex.allthemodium.registry.*;
 import com.thevortex.allthemodium.registry.mek_reg.ATMSlurries;
 import com.thevortex.allthemodium.registry.mek_reg.MekProcReg;
+import com.thevortex.allthemodium.worldgen.feature.ATMFeatures;
 import com.thevortex.allthemodium.worldgen.structures.ATMStructures;
 
 import net.minecraft.core.registries.Registries;
@@ -97,7 +98,8 @@ public class AllTheModium
 		ModRegistry.BIOMES.register(modEventBus);
     	//ATMCraftingSetup.REGISTRY.register(modEventBus);
 		ATMStructures.STRUCTURES.register(modEventBus);
-		ModRegistry.FEATURES.register(modEventBus);
+		ATMFeatures.FEATURES.register(modEventBus);
+		ATMFeatures.TREE_DECORATORS.register(modEventBus);
 		ModRegistry.POI_TYPES.register(modEventBus);
 		ModRegistry.CREATIVE_TABS.register(modEventBus);
 		ChunkGenRegistry.CHUNKGENERATORS.register(modEventBus);
