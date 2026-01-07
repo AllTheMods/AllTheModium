@@ -2,14 +2,21 @@ package com.thevortex.allthemodium.datagen.server;
 
 import com.thevortex.allthemodium.blocks.*;
 import com.thevortex.allthemodium.registry.ModRegistry;
+import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup.Provider;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.loot.CanItemPerformAbility;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.Collection;
@@ -35,10 +42,6 @@ public class ATMLootTables extends VanillaBlockLoot
     private static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
 
     private void dropRaw(Block block) {
-        if (block instanceof LiquidBlock) {
-            return;
-        }
-
         if (block.getName().getString().contains("ancient_bookshelf")) {
             this.add(ModRegistry.ANCIENT_BOOKSHELF.get(), (p_124241_) -> {
                 return createSingleItemTableWithSilkTouch(p_124241_, Items.BOOK, ConstantValue.exactly(3.0F));
@@ -54,6 +57,8 @@ public class ATMLootTables extends VanillaBlockLoot
             this.add(block, (block1) -> createOreDrop(block1, ModRegistry.RAW_UNOBTAINIUM.get()));
         } else if (oretype.contains("raw_")) {
             this.dropSelf(block);
+        } else if (block instanceof LeavesBlock) {
+            this.add(block, this.createLeavesDrops(block, BuiltInRegistries.BLOCK.get(BuiltInRegistries.BLOCK.getKey(block).withPath(p -> p.replace("_leaves", "_sapling"))), NORMAL_LEAVES_SAPLING_CHANCES));
         } else {
             this.dropSelf(block);
         }
@@ -73,8 +78,14 @@ public class ATMLootTables extends VanillaBlockLoot
                 .filter(block -> !(block instanceof AncientLeavesBottom))
                 .filter(block -> !(block instanceof DemonicLeavesBottom))
                 .filter(block -> !(block instanceof SoulLeavesBottom))
+                .filter(block -> !(block instanceof LiquidBlock))
                 .collect(Collectors.toList());
         list.add(ModRegistry.TELEPORT_PAD.get());
         return list;
+    }
+
+    @Override
+    public LootItemCondition.Builder hasShearsOrSilkTouch() {
+        return CanItemPerformAbility.canItemPerformAbility(ItemAbilities.SHEARS_HARVEST).or(this.hasSilkTouch());
     }
 }
