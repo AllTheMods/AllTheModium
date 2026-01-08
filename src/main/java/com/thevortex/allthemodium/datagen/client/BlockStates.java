@@ -28,8 +28,8 @@ public class BlockStates extends BlockStateProvider {
     protected void registerStatesAndModels() {
         List<Block> entries = ModRegistry.BLOCKS.getEntries()
             .stream()
-            .filter(block -> !block.is(ModRegistry.ANCIENT_PODZOL))
-            .filter(block -> !block.is(ModRegistry.ANCIENT_FERN))
+            .filter(block -> !block.is(ModRegistry.ANCIENT_PODZOL.getId()))
+            .filter(block -> !block.is(ModRegistry.ANCIENT_FERN.getId()))
             .map(DeferredHolder::get)
             .filter(block -> !(block instanceof GrassBlock))
             .filter(block -> !(block instanceof LiquidBlock))
@@ -135,8 +135,6 @@ public class BlockStates extends BlockStateProvider {
 
 
     }
-
-
 
 
     /**
