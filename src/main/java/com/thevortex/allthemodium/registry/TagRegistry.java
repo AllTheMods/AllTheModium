@@ -19,13 +19,16 @@ public class TagRegistry {
     public static final TagKey<Block> VIBRANIUM_ORE = BlockTags.create(Reference.ore("vibranium"));
     public static final TagKey<Block> UNOBTAINIUM_ORE = BlockTags.create(Reference.ore("unobtainium"));
 
+    public static final TagKey<Item> ORES_IN_GROUND_ANCIENT_STONE = ItemTags.create(Reference.common("ores_in_ground/ancient_stone"));
+    public static final TagKey<Item> ORES_IN_GROUND_END_STONE = ItemTags.create(Reference.common("ores_in_ground/end_stone"));
+
     public static final TagKey<Block> OTHER_PROTECTION = BlockTags.create(Reference.atm("blocks/blocklist"));
 
     public static final TagKey<Item> ATM_CHESTPLATES = ItemTags.create(Reference.atm("chestplates"));
     public static final TagKey<Item> ATM_HELMETS = ItemTags.create(Reference.atm("helmets"));
     public static final TagKey<Item> ATM_LEGGINGS = ItemTags.create(Reference.atm("leggings"));
     public static final TagKey<Item> ATM_BOOTS = ItemTags.create(Reference.atm("boots"));
-    
+
     public static final TagKey<Block> NEEDS_ALLTHEMODIUM_TOOL = BlockTags.create(Reference.common("needs_allthemodium_tool"));
     public static final TagKey<Block> INCORRECT_FOR_ALLTHEMODIUM_TOOL = BlockTags.create(Reference.common("incorrect_for_allthemodium_tool"));
     public static final TagKey<Block> INCORRECT_FOR_VIBRANIUM_TOOL = BlockTags.create(Reference.common("incorrect_for_vibranium_tool"));
@@ -49,17 +52,9 @@ public class TagRegistry {
     public static final TagKey<Item> CHESTPLATES = ItemTags.create(Reference.common("armor/chestplates"));
     public static final TagKey<Item> LEGGINGS = ItemTags.create(Reference.common("armor/leggings"));
     public static final TagKey<Item> BOOTS = ItemTags.create(Reference.common("armor/boots"));
-    
+
 
     public static final TagKey<Item> PIGLIN_LOVED = ItemTags.create(Reference.location("minecraft:items/piglin_loved"));
-    public static final TagKey<Item> RAW_MATERIALS = ItemTags.create(Reference.common("raw_materials"));
-
-    public static final TagKey<Item> SAPLINGS = ItemTags.create(Reference.location("saplings"));
-    public static final TagKey<Item> DUSTS = ItemTags.create(Reference.common("dusts"));
-    public static final TagKey<Item> INGOTS = ItemTags.create(Reference.common("ingots"));
-    public static final TagKey<Item> ORES = ItemTags.create(Reference.common("ores"));
-    public static final TagKey<Block> BLOCK_ORES = BlockTags.create(Reference.common("ores"));
-
 
     public static final TagKey<Block> OTHER_TILE_WHITELIST = BlockTags.create(Reference.location("allthemodium:other_te_whitelist"));
     public static final TagKey<Block> ANCIENT_DIRT = BlockTags.create(Reference.location("allthemodium:ancient_dirt"));
@@ -113,11 +108,12 @@ public class TagRegistry {
     public static final TagKey<Item> UNOBTAINIUM_VIBRANIUM_BLOCK = ItemTags.create(Reference.block("unobtainium_vibranium_alloy"));
     public static final TagKey<Item> UNOBTAINIUM_ALLTHEMODIUM_BLOCK = ItemTags.create(Reference.block("unobtainium_allthemodium_alloy"));
 
-
+    public static final TagKey<Item> PLATES = ItemTags.create(Reference.common("plates"));
     public static final TagKey<Item> ALLTHEMODIUM_PLATE = ItemTags.create(Reference.plate("allthemodium"));
     public static final TagKey<Item> VIBRANIUM_PLATE = ItemTags.create(Reference.plate("vibranium"));
     public static final TagKey<Item> UNOBTAINIUM_PLATE = ItemTags.create(Reference.plate("unobtainium"));
 
+    public static final TagKey<Item> GEARS = ItemTags.create(Reference.common("gears"));
     public static final TagKey<Item> ALLTHEMODIUM_GEAR = ItemTags.create(Reference.gear("allthemodium"));
     public static final TagKey<Item> VIBRANIUM_GEAR = ItemTags.create(Reference.gear("vibranium"));
     public static final TagKey<Item> UNOBTAINIUM_GEAR = ItemTags.create(Reference.gear("unobtainium"));
@@ -129,6 +125,9 @@ public class TagRegistry {
     public static final TagKey<Item> ALLTHEMODIUM_DUST = ItemTags.create(Reference.dust("allthemodium"));
     public static final TagKey<Item> VIBRANIUM_DUST = ItemTags.create(Reference.dust("vibranium"));
     public static final TagKey<Item> UNOBTAINIUM_DUST = ItemTags.create(Reference.dust("unobtainium"));
+    public static final TagKey<Item> VIBRANIUM_ALLTHEMODIUM_DUST = ItemTags.create(Reference.dust("vibranium_allthemodium_alloy"));
+    public static final TagKey<Item> UNOBTAINIUM_VIBRANIUM_DUST = ItemTags.create(Reference.dust("unobtainium_vibranium_alloy"));
+    public static final TagKey<Item> UNOBTAINIUM_ALLTHEMODIUM_DUST = ItemTags.create(Reference.dust("unobtainium_allthemodium_alloy"));
 
     public static final TagKey<Item> ALLTHEMODIUM_NUGGET = ItemTags.create(Reference.nugget("allthemodium"));
     public static final TagKey<Item> VIBRANIUM_NUGGET = ItemTags.create(Reference.nugget("vibranium"));
@@ -139,14 +138,12 @@ public class TagRegistry {
     public static final TagKey<Fluid> VIBRANIUM = FluidTags.create(Reference.common("molten_vibranium"));
     public static final TagKey<Fluid> UNOBTAINIUM = FluidTags.create(Reference.common("molten_unobtainium"));
 
-    public static final TagKey<Item> RAW_ALLTHEMODIUM_FORGE = ItemTags.create(Reference.raw_ores("allthemodium"));
-    public static final TagKey<Item> RAW_VIBRANIUM_FORGE = ItemTags.create(Reference.raw_ores("vibranium"));
-    public static final TagKey<Item> RAW_UNOBTAINIUM_FORGE = ItemTags.create(Reference.raw_ores("unobtainium"));
-
-
     public static final TagKey<Item> RAW_ALLTHEMODIUM = ItemTags.create(Reference.material("allthemodium"));
     public static final TagKey<Item> RAW_VIBRANIUM = ItemTags.create(Reference.material("vibranium"));
     public static final TagKey<Item> RAW_UNOBTAINIUM = ItemTags.create(Reference.material("unobtainium"));
+
+    public static final TagKey<Item> FOODS = ItemTags.create(Reference.common("foods"));
+    public static final TagKey<Item> ATM_FOODS = ItemTags.create(Reference.common("foods/allthemodium"));
 
     public static final TagKey<Item> DIRTYDUST = ItemTags.create(Reference.common("dirty_dusts"));
     public static final TagKey<Item> CRYSTAL = ItemTags.create(Reference.common("crystals"));
