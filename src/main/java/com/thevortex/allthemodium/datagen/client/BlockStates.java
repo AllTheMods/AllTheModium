@@ -3,12 +3,16 @@ package com.thevortex.allthemodium.datagen.client;
 import com.thevortex.allthemodium.blocks.ATMBrushableBlock;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.ModRegistry;
+import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.neoforged.neoforge.client.model.generators.BlockModelBuilder;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -44,6 +48,10 @@ public class BlockStates extends BlockStateProvider {
         simpleBlockWithItem(ModRegistry.ANCIENT_LEAVES.get(), cubeAll(ModRegistry.ANCIENT_LEAVES.get()));
         simpleBlockWithItem(ModRegistry.DEMONIC_LEAVES.get(), cubeAll(ModRegistry.DEMONIC_LEAVES.get()));
         simpleBlockWithItem(ModRegistry.SOUL_LEAVES.get(), cubeAll(ModRegistry.SOUL_LEAVES.get()));
+
+        crossBlock(ModRegistry.ANCIENT_SAPLING.get());
+        crossBlock(ModRegistry.SOUL_SAPLING.get());
+        crossBlock(ModRegistry.DEMONIC_SAPLING.get());
 
         logBlock((RotatedPillarBlock)ModRegistry.ANCIENT_LOG_0.get());
         logBlock((RotatedPillarBlock)ModRegistry.ANCIENT_LOG_1.get());
@@ -142,4 +150,7 @@ public class BlockStates extends BlockStateProvider {
         simpleBlockItem(block, builder);
     }
 
+    private void crossBlock(Block block) {
+        this.simpleBlock(block, this.models().cross(BuiltInRegistries.BLOCK.getKey(block).getPath(), this.blockTexture(block)).renderType("cutout"));
+    }
 }
