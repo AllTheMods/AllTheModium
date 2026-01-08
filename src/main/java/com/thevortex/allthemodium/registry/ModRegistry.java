@@ -57,8 +57,6 @@ import java.util.function.Supplier;
 @EventBusSubscriber(modid = Reference.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class ModRegistry
 {
-
-
     public static final DeferredRegister<Block> SHAPED_BLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
     public static final DeferredRegister<Block> STAIRBLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
@@ -363,7 +361,6 @@ public class ModRegistry
     private static RotatedPillarBlock log(DyeColor color1, DyeColor color2) {
         return new RotatedPillarBlock(BlockBehaviour.Properties.of().strength(2.0F).sound(SoundType.WOOD));
     }
-
 
     public static final DeferredHolder<Item, Item> ATM_SWORD = registerItem("allthemodium_sword", () -> new SwordItem(ATMTier.ALLTHEMODIUM, (new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).attributes(SwordItem.createAttributes(ATMTier.ALLTHEMODIUM, 5, -1.4F))));
     public static final DeferredHolder<Item, Item> VIB_SWORD = registerItem("vibranium_sword", () -> new SwordItem(ATMTier.VIBRANIUM, (new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).attributes(SwordItem.createAttributes(ATMTier.VIBRANIUM, 10, -0.4F))));
