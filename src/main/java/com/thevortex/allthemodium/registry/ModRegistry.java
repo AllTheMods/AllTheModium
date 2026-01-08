@@ -129,7 +129,7 @@ public class ModRegistry
             , Direction.DOWN
             , ACaveVines.SHAPE
             , false
-            , 0.1D));
+            , 0.1D), false);
 
     public static final DeferredHolder<Block, Block> ANCIENT_CAVEVINES_PLANT = registerBlock(PILLARBLOCKS, "ancient_cavevines_plant", () -> new AncientCaveVinesPlant(BlockBehaviour.Properties.of()
             .noCollission()
@@ -139,7 +139,7 @@ public class ModRegistry
             .sound(SoundType.CAVE_VINES)
             , Direction.DOWN
             , ACaveVines.SHAPE
-            , false));
+            , false), false);
 
     public static final DeferredHolder<Item, BlockItem> ANCIENT_SOULBERRY = ITEMS.register("ancient_soulberries", () -> new SoulBerries(ANCIENT_CAVEVINES.get(), (new Item.Properties()).food(ModFoods.SOUL_BERRIES)));
 
