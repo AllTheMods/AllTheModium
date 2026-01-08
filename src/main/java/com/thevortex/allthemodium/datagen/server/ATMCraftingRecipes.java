@@ -75,7 +75,13 @@ public class ATMCraftingRecipes extends RecipeProvider {
                 .pattern("nnn")
                 .pattern("nnn")
                 .define('n', ModRegistry.PIGLICH_HEART.get())
-                .unlockedBy("has_piglich_heartt", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(ModRegistry.PIGLICH_HEART.get()).build()))
+                .unlockedBy(getHasName(ModRegistry.PIGLICH_HEART.get()), has(ModRegistry.PIGLICH_HEART.get()))
+                .save(consumer);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModRegistry.PIGLICH_HEART.get(), 9)
+                .group(Reference.MOD_ID)
+                .requires(ModRegistry.PIGLICH_HEART_BLOCK.get())
+                .unlockedBy(getHasName(ModRegistry.PIGLICH_HEART.get()), has(ModRegistry.PIGLICH_HEART.get()))
                 .save(consumer);
 
         shaped(ModRegistry.ALLTHEMODIUM_APPLE.get())
