@@ -2,6 +2,9 @@
   "values": [
     "allthemodium:allthemodium_dust",
     "allthemodium:vibranium_dust",
-    "allthemodium:unobtainium_dust"
+    "allthemodium:unobtainium_dust",
+    "allthemodium:vibranium_allthemodium_alloy_dust",
+    "allthemodium:unobtainium_allthemodium_alloy_dust",
+    "allthemodium:unobtainium_vibranium_alloy_dust"
   ]
 }

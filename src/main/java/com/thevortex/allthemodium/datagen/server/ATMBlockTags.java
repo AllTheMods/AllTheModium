@@ -129,16 +129,16 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.CAMPFIRE);
         tag(TagRegistry.OTHER_TILE_WHITELIST).add(Blocks.SOUL_CAMPFIRE);
 
-        tag(TagRegistry.PAXEL_TARGETS).addTag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE);
-        tag(TagRegistry.PAXEL_TARGETS).addTag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE);
-        tag(TagRegistry.PAXEL_TARGETS).addTag(net.minecraft.tags.BlockTags.MINEABLE_WITH_SHOVEL);
-        tag(TagRegistry.PAXEL_TARGETS).addTag(net.minecraft.tags.BlockTags.MINEABLE_WITH_HOE);
+        tag(TagRegistry.PAXEL_TARGETS).addTag(BlockTags.MINEABLE_WITH_PICKAXE);
+        tag(TagRegistry.PAXEL_TARGETS).addTag(BlockTags.MINEABLE_WITH_AXE);
+        tag(TagRegistry.PAXEL_TARGETS).addTag(BlockTags.MINEABLE_WITH_SHOVEL);
+        tag(TagRegistry.PAXEL_TARGETS).addTag(BlockTags.MINEABLE_WITH_HOE);
 
-        tag(net.minecraft.tags.BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_DIRT.get());
-        tag(net.minecraft.tags.BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_GRASS.get());
-        tag(net.minecraft.tags.BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_LOG_0.get());
-        tag(net.minecraft.tags.BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_LOG_1.get());
-        tag(net.minecraft.tags.BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_LOG_2.get());
+        tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_DIRT.get());
+        tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_GRASS.get());
+        tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_LOG_0.get());
+        tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_LOG_1.get());
+        tag(BlockTags.SOUL_FIRE_BASE_BLOCKS).add(ModRegistry.ANCIENT_LOG_2.get());
         tag(TagRegistry.ANCIENT_WOODEN_PLANKS).add(ModRegistry.ANCIENT_PLANKS.get());
         tag(TagRegistry.DEMONIC_WOODEN_PLANKS).add(ModRegistry.DEMONIC_PLANKS.get());
         tag(TagRegistry.SOUL_WOODEN_PLANKS).add(ModRegistry.SOUL_PLANKS.get());
@@ -151,139 +151,132 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(TagRegistry.ANCIENT_CRACKED_STONE_BRICKS).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
         tag(TagRegistry.ANCIENT_CHISELED_STONE_BRICKS).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
 
-        tag(net.minecraft.tags.BlockTags.LOGS).add(ModRegistry.DEMONIC_LOG.get());
-        tag(net.minecraft.tags.BlockTags.PLANKS).add(ModRegistry.DEMONIC_PLANKS.get());
-        tag(net.minecraft.tags.BlockTags.LOGS).add(ModRegistry.SOUL_LOG.get());
-        tag(net.minecraft.tags.BlockTags.LOGS).add(ModRegistry.SOUL_LOG_0.get());
-        tag(net.minecraft.tags.BlockTags.LOGS).add(ModRegistry.SOUL_LOG_1.get());
-        tag(net.minecraft.tags.BlockTags.LOGS).add(ModRegistry.SOUL_LOG_2.get());
-        tag(net.minecraft.tags.BlockTags.PLANKS).add(ModRegistry.SOUL_PLANKS.get());
-        tag(net.minecraft.tags.BlockTags.LOGS).add(ModRegistry.ANCIENT_LOG_0.get());
-        tag(net.minecraft.tags.BlockTags.LOGS).add(ModRegistry.ANCIENT_LOG_1.get());
-        tag(net.minecraft.tags.BlockTags.LOGS).add(ModRegistry.ANCIENT_LOG_2.get());
-        tag(net.minecraft.tags.BlockTags.PLANKS).add(ModRegistry.ANCIENT_PLANKS.get());
+        tag(BlockTags.PLANKS)
+                .add(ModRegistry.DEMONIC_PLANKS.get())
+                .add(ModRegistry.SOUL_PLANKS.get())
+                .add(ModRegistry.ANCIENT_PLANKS.get());
+        tag(BlockTags.LOGS)
+                .add(ModRegistry.DEMONIC_LOG.get())
+                .add(ModRegistry.SOUL_LOG.get())
+                .add(ModRegistry.SOUL_LOG_0.get())
+                .add(ModRegistry.SOUL_LOG_1.get())
+                .add(ModRegistry.SOUL_LOG_2.get())
+                .add(ModRegistry.ANCIENT_LOG_0.get())
+                .add(ModRegistry.ANCIENT_LOG_1.get())
+                .add(ModRegistry.ANCIENT_LOG_2.get());
 
-        tag(net.minecraft.tags.BlockTags.CLIMBABLE).add(ModRegistry.ANCIENT_CAVEVINES.get());
-        tag(net.minecraft.tags.BlockTags.CLIMBABLE).add(ModRegistry.ANCIENT_CAVEVINES_PLANT.get());
+        tag(BlockTags.CLIMBABLE).add(ModRegistry.ANCIENT_CAVEVINES.get());
+        tag(BlockTags.CLIMBABLE).add(ModRegistry.ANCIENT_CAVEVINES_PLANT.get());
         
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_STONE.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_SHOVEL).add(ModRegistry.ANCIENT_DIRT.get(), ModRegistry.ANCIENT_GRASS.get(), ModRegistry.ANCIENT_PODZOL.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_MOSSY_STONE.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_POLISHED_STONE.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_SMOOTH_STONE.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_STONE_BRICKS.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_STONE.get());
+        tag(BlockTags.MINEABLE_WITH_SHOVEL).add(ModRegistry.ANCIENT_DIRT.get(), ModRegistry.ANCIENT_GRASS.get(), ModRegistry.ANCIENT_PODZOL.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_MOSSY_STONE.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_POLISHED_STONE.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_SMOOTH_STONE.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_STONE_BRICKS.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
 
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_PLANKS.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_0.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_1.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_2.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_STRIPPED.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_PLANKS.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_0.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_1.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_2.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_STRIPPED.get());
 
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.DEMONIC_PLANKS.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.DEMONIC_LOG.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.DEMONIC_LOG_STRIPPED.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.DEMONIC_PLANKS.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.DEMONIC_LOG.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.DEMONIC_LOG_STRIPPED.get());
 
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_PLANKS.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG_0.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG_1.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG_2.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG_STRIPPED.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_PLANKS.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG_0.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG_1.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG_2.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.SOUL_LOG_STRIPPED.get());
 
-        tag(net.minecraft.tags.BlockTags.NYLIUM).add(ModRegistry.ANCIENT_STONE.get());
-        tag(net.minecraft.tags.BlockTags.INFINIBURN_NETHER).add(ModRegistry.ANCIENT_STONE.get());
-        tag(net.minecraft.tags.BlockTags.INFINIBURN_NETHER).add(ModRegistry.ANCIENT_GRASS.get());
-        tag(net.minecraft.tags.BlockTags.INFINIBURN_NETHER).add(ModRegistry.ANCIENT_DIRT.get());
-        tag(net.minecraft.tags.BlockTags.DIRT).add(ModRegistry.ANCIENT_GRASS.get());
-        tag(net.minecraft.tags.BlockTags.DIRT).add(ModRegistry.ANCIENT_DIRT.get());
-        tag(net.minecraft.tags.BlockTags.DIRT).add(ModRegistry.ANCIENT_PODZOL.get());
+        tag(BlockTags.NYLIUM).add(ModRegistry.ANCIENT_STONE.get());
+        tag(BlockTags.INFINIBURN_NETHER)
+                .add(ModRegistry.ANCIENT_STONE.get())
+                .add(ModRegistry.ANCIENT_GRASS.get())
+                .add(ModRegistry.ANCIENT_DIRT.get());
 
-        tag(net.minecraft.tags.BlockTags.WOODEN_FENCES).add(ModRegistry.ANCIENT_WOOD_FENCE.get());
-        tag(net.minecraft.tags.BlockTags.FENCES).add(ModRegistry.ANCIENT_WOOD_FENCE.get());
-        tag(net.minecraft.tags.BlockTags.FENCE_GATES).add(ModRegistry.ANCIENT_WOOD_FENCE_GATE.get());
-        tag(net.minecraft.tags.BlockTags.WOODEN_FENCES).add(ModRegistry.DEMONIC_WOOD_FENCE.get());
-        tag(net.minecraft.tags.BlockTags.FENCES).add(ModRegistry.DEMONIC_WOOD_FENCE.get());
-        tag(net.minecraft.tags.BlockTags.FENCE_GATES).add(ModRegistry.DEMONIC_WOOD_FENCE_GATE.get());
-        tag(net.minecraft.tags.BlockTags.WOODEN_FENCES).add(ModRegistry.SOUL_WOOD_FENCE.get());
-        tag(net.minecraft.tags.BlockTags.FENCES).add(ModRegistry.SOUL_WOOD_FENCE.get());
-        tag(net.minecraft.tags.BlockTags.FENCE_GATES).add(ModRegistry.SOUL_WOOD_FENCE_GATE.get());
+        tag(BlockTags.DIRT)
+                .add(ModRegistry.ANCIENT_GRASS.get())
+                .add(ModRegistry.ANCIENT_DIRT.get())
+                .add(ModRegistry.ANCIENT_PODZOL.get());
 
-        tag(net.minecraft.tags.BlockTags.WALLS).add(ModRegistry.ANCIENT_WOOD_FENCE.get());
-        tag(net.minecraft.tags.BlockTags.WALLS).add(ModRegistry.DEMONIC_WOOD_FENCE.get());
-        tag(net.minecraft.tags.BlockTags.WALLS).add(ModRegistry.SOUL_WOOD_FENCE.get());
-        tag(net.minecraft.tags.BlockTags.WALLS).add(ModRegistry.ANCIENT_STONE_WALL.get());
-        tag(net.minecraft.tags.BlockTags.WALLS).add(ModRegistry.ANCIENT_POLISHED_STONE_WALL.get());
-        tag(net.minecraft.tags.BlockTags.WALLS).add(ModRegistry.ANCIENT_MOSSY_STONE_WALL.get());
-        tag(net.minecraft.tags.BlockTags.WALLS).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICK_WALL.get());
-        tag(net.minecraft.tags.BlockTags.WALLS).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICK_WALL.get());
-        tag(net.minecraft.tags.BlockTags.WALLS).add(ModRegistry.ANCIENT_STONE_BRICK_WALL.get());
+        tag(BlockTags.WOODEN_FENCES)
+                .add(ModRegistry.ANCIENT_WOOD_FENCE.get())
+                .add(ModRegistry.DEMONIC_WOOD_FENCE.get())
+                .add(ModRegistry.SOUL_WOOD_FENCE.get());
+        tag(BlockTags.FENCE_GATES)
+                .add(ModRegistry.ANCIENT_WOOD_FENCE_GATE.get())
+                .add(ModRegistry.DEMONIC_WOOD_FENCE_GATE.get())
+                .add(ModRegistry.SOUL_WOOD_FENCE_GATE.get());
 
-        tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.ANCIENT_WOODEN_SLABS.get());
-        tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.DEMONIC_WOODEN_SLABS.get());
-        tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.SOUL_WOODEN_SLABS.get());
-        tag(net.minecraft.tags.BlockTags.WOODEN_SLABS).add(ModRegistry.ANCIENT_WOODEN_SLABS.get());
-        tag(net.minecraft.tags.BlockTags.WOODEN_SLABS).add(ModRegistry.DEMONIC_WOODEN_SLABS.get());
-        tag(net.minecraft.tags.BlockTags.WOODEN_SLABS).add(ModRegistry.SOUL_WOODEN_SLABS.get());
-        tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.ANCIENT_STONE_SLABS.get());
-        tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.ANCIENT_POLISHED_STONE_SLABS.get());
-        tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.ANCIENT_MOSSY_STONE_SLABS.get());
-        tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.ANCIENT_CRACKED_STONE_SLABS.get());
-        tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.ANCIENT_CHISELED_STONE_SLABS.get());
-        tag(net.minecraft.tags.BlockTags.SLABS).add(ModRegistry.ANCIENT_STONE_BRICK_SLABS.get());
+        tag(BlockTags.WALLS)
+                .add(ModRegistry.ANCIENT_STONE_WALL.get())
+                .add(ModRegistry.ANCIENT_POLISHED_STONE_WALL.get())
+                .add(ModRegistry.ANCIENT_MOSSY_STONE_WALL.get())
+                .add(ModRegistry.ANCIENT_CRACKED_STONE_BRICK_WALL.get())
+                .add(ModRegistry.ANCIENT_CHISELED_STONE_BRICK_WALL.get())
+                .add(ModRegistry.ANCIENT_STONE_BRICK_WALL.get());
 
+        tag(BlockTags.WOODEN_SLABS)
+                .add(ModRegistry.ANCIENT_WOODEN_SLABS.get())
+                .add(ModRegistry.DEMONIC_WOODEN_SLABS.get())
+                .add(ModRegistry.SOUL_WOODEN_SLABS.get());
+        tag(BlockTags.SLABS)
+                .add(ModRegistry.ANCIENT_STONE_SLABS.get())
+                .add(ModRegistry.ANCIENT_POLISHED_STONE_SLABS.get())
+                .add(ModRegistry.ANCIENT_MOSSY_STONE_SLABS.get())
+                .add(ModRegistry.ANCIENT_CRACKED_STONE_SLABS.get())
+                .add(ModRegistry.ANCIENT_CHISELED_STONE_SLABS.get())
+                .add(ModRegistry.ANCIENT_STONE_BRICK_SLABS.get());
 
-        tag(net.minecraft.tags.BlockTags.WOODEN_FENCES).add(ModRegistry.ANCIENT_STONE_WALL.get());
-        tag(net.minecraft.tags.BlockTags.WOODEN_FENCES).add(ModRegistry.ANCIENT_POLISHED_STONE_WALL.get());
-        tag(net.minecraft.tags.BlockTags.WOODEN_FENCES).add(ModRegistry.ANCIENT_MOSSY_STONE_WALL.get());
-        tag(net.minecraft.tags.BlockTags.WOODEN_FENCES).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICK_WALL.get());
-        tag(net.minecraft.tags.BlockTags.WOODEN_FENCES).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICK_WALL.get());
-        tag(net.minecraft.tags.BlockTags.WOODEN_FENCES).add(ModRegistry.ANCIENT_STONE_BRICK_WALL.get());
+        tag(BlockTags.WOODEN_STAIRS)
+                .add(ModRegistry.ANCIENT_WOODEN_STAIRS.get())
+                .add(ModRegistry.DEMONIC_WOODEN_STAIRS.get())
+                .add(ModRegistry.SOUL_WOODEN_STAIRS.get());
+        tag(BlockTags.STAIRS)
+                .add(ModRegistry.ANCIENT_STONE_STAIRS.get())
+                .add(ModRegistry.ANCIENT_POLISHED_STONE_STAIRS.get())
+                .add(ModRegistry.ANCIENT_MOSSY_STONE_STAIRS.get())
+                .add(ModRegistry.ANCIENT_CRACKED_STONE_STAIRS.get())
+                .add(ModRegistry.ANCIENT_CHISELED_STONE_STAIRS.get())
+                .add(ModRegistry.ANCIENT_STONE_BRICK_STAIRS.get());
 
-        tag(net.minecraft.tags.BlockTags.STAIRS).add(ModRegistry.ANCIENT_WOODEN_STAIRS.get());
-        tag(net.minecraft.tags.BlockTags.WOODEN_STAIRS).add(ModRegistry.ANCIENT_WOODEN_STAIRS.get());
-        tag(net.minecraft.tags.BlockTags.STAIRS).add(ModRegistry.DEMONIC_WOODEN_STAIRS.get());
-        tag(net.minecraft.tags.BlockTags.WOODEN_STAIRS).add(ModRegistry.DEMONIC_WOODEN_STAIRS.get());
-        tag(net.minecraft.tags.BlockTags.STAIRS).add(ModRegistry.SOUL_WOODEN_STAIRS.get());
-        tag(net.minecraft.tags.BlockTags.WOODEN_STAIRS).add(ModRegistry.SOUL_WOODEN_STAIRS.get());
-        tag(net.minecraft.tags.BlockTags.STAIRS).add(ModRegistry.ANCIENT_STONE_STAIRS.get());
-        tag(net.minecraft.tags.BlockTags.STAIRS).add(ModRegistry.ANCIENT_POLISHED_STONE_STAIRS.get());
-        tag(net.minecraft.tags.BlockTags.STAIRS).add(ModRegistry.ANCIENT_MOSSY_STONE_STAIRS.get());
-        tag(net.minecraft.tags.BlockTags.STAIRS).add(ModRegistry.ANCIENT_CRACKED_STONE_STAIRS.get());
-        tag(net.minecraft.tags.BlockTags.STAIRS).add(ModRegistry.ANCIENT_CHISELED_STONE_STAIRS.get());
-        tag(net.minecraft.tags.BlockTags.STAIRS).add(ModRegistry.ANCIENT_STONE_BRICK_STAIRS.get());
-
-        tag(net.minecraft.tags.BlockTags.LEAVES).add(ModRegistry.ANCIENT_LEAVES.get());
-        tag(net.minecraft.tags.BlockTags.LEAVES).add(ModRegistry.SOUL_LEAVES.get());
-        tag(net.minecraft.tags.BlockTags.LEAVES).add(ModRegistry.DEMONIC_LEAVES.get());
+        tag(BlockTags.LEAVES)
+                .add(ModRegistry.ANCIENT_LEAVES.get())
+                .add(ModRegistry.SOUL_LEAVES.get())
+                .add(ModRegistry.DEMONIC_LEAVES.get());
 
         tag(TagRegistry.ALLTHEMODIUM_BLOCK).add(ModRegistry.ALLTHEMODIUM_BLOCK.get());
+        tag(TagRegistry.VIBRANIUM_BLOCK).add(ModRegistry.VIBRANIUM_BLOCK.get());
+        tag(TagRegistry.UNOBTAINIUM_BLOCK).add(ModRegistry.UNOBTAINIUM_BLOCK.get());
+
         tag(TagRegistry.ALLTHEMODIUM_ORE).add(ModRegistry.ALLTHEMODIUM_ORE.get());
         tag(TagRegistry.ALLTHEMODIUM_ORE).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
-
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.RAW_ALLTHEMODIUM_BLOCK.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ALLTHEMODIUM_BLOCK.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ALLTHEMODIUM_ORE.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
-        tag(TagRegistry.VIBRANIUM_BLOCK).add(ModRegistry.VIBRANIUM_BLOCK.get());
         tag(TagRegistry.VIBRANIUM_ORE).add(ModRegistry.VIBRANIUM_ORE.get());
         tag(TagRegistry.VIBRANIUM_ORE).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.VIBRANIUM_BLOCK.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.RAW_VIBRANIUM_BLOCK.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.VIBRANIUM_ORE.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
-        tag(TagRegistry.UNOBTAINIUM_BLOCK).add(ModRegistry.UNOBTAINIUM_BLOCK.get());
         tag(TagRegistry.UNOBTAINIUM_ORE).add(ModRegistry.UNOBTAINIUM_ORE.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.UNOBTAINIUM_BLOCK.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.RAW_UNOBTAINIUM_BLOCK.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.UNOBTAINIUM_ORE.get());
 
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.UV_ALLOY.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.UA_ALLOY.get());
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.VA_ALLOY.get());
-
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.TELEPORT_PAD.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModRegistry.RAW_ALLTHEMODIUM_BLOCK.get())
+                .add(ModRegistry.ALLTHEMODIUM_BLOCK.get())
+                .add(ModRegistry.ALLTHEMODIUM_ORE.get())
+                .add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get())
+                .add(ModRegistry.VIBRANIUM_BLOCK.get())
+                .add(ModRegistry.RAW_VIBRANIUM_BLOCK.get())
+                .add(ModRegistry.VIBRANIUM_ORE.get())
+                .add(ModRegistry.OTHER_VIBRANIUM_ORE.get())
+                .add(ModRegistry.UNOBTAINIUM_BLOCK.get())
+                .add(ModRegistry.RAW_UNOBTAINIUM_BLOCK.get())
+                .add(ModRegistry.UNOBTAINIUM_ORE.get())
+                .add(ModRegistry.UV_ALLOY.get())
+                .add(ModRegistry.UA_ALLOY.get())
+                .add(ModRegistry.VA_ALLOY.get())
+                .add(ModRegistry.TELEPORT_PAD.get());
 
 
         ModRegistry.BLOCKS.getEntries().stream()
@@ -327,7 +320,7 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(TagRegistry.OTHER_PROTECTION).add(Blocks.AMETHYST_CLUSTER);
         tag(TagRegistry.OTHER_PROTECTION).add(Blocks.GOLD_BLOCK);
 
-        tag(TagRegistry.OTHER_PROTECTION).addTag(TagRegistry.BLOCK_ORES);
+        tag(TagRegistry.OTHER_PROTECTION).addTag(Tags.Blocks.ORES);
         tag(TagRegistry.OTHER_PROTECTION).add(Blocks.SPAWNER);
         tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(ModRegistry.ALLTHEMODIUM_ORE.get());
         tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(ModRegistry.ALLTHEMODIUM_SLATE_ORE.get());
@@ -336,7 +329,7 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(ModRegistry.UNOBTAINIUM_ORE.get());
         tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(ModRegistry.TELEPORT_PAD.get());
 
-        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).addOptional(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,"allthemodium_source_jar" ));
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).addOptional(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,"allthemodium_source_jar"));
     }
 
 }
