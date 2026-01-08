@@ -4,7 +4,7 @@
   "cookingtime": 200,
   "experience": 0.15,
   "ingredient": {
-    "item": "allthemodium:raw_unobtainium"
+    "tag": "c:raw_materials/unobtainium"
   },
   "result": {
     "count": 1,

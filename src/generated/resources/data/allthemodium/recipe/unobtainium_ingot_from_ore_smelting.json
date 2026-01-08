@@ -4,7 +4,7 @@
   "cookingtime": 200,
   "experience": 0.15,
   "ingredient": {
-    "tag": "c:dusts/unobtainium"
+    "tag": "c:ores/unobtainium"
   },
   "result": {
     "count": 1,
