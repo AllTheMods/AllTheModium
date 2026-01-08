@@ -1,10 +1,10 @@
 {
   "type": "minecraft:blasting",
   "category": "misc",
-  "cookingtime": 200,
+  "cookingtime": 100,
   "experience": 0.15,
   "ingredient": {
-    "item": "allthemodium:raw_allthemodium"
+    "tag": "c:raw_materials/allthemodium"
   },
   "result": {
     "count": 1,

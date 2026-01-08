@@ -6,10 +6,7 @@ import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.packs.VanillaBlockLoot;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LeavesBlock;
-import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.neoforged.neoforge.common.ItemAbilities;
@@ -56,6 +53,8 @@ public class ATMLootTables extends VanillaBlockLoot
             this.dropSelf(block);
         } else if (block instanceof LeavesBlock) {
             this.add(block, this.createLeavesDrops(block, BuiltInRegistries.BLOCK.get(BuiltInRegistries.BLOCK.getKey(block).withPath(p -> p.replace("_leaves", "_sapling"))), NORMAL_LEAVES_SAPLING_CHANCES));
+        } else if (block instanceof DoorBlock) {
+            this.add(block, this.createDoorTable(block));
         } else {
             this.dropSelf(block);
         }

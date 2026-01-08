@@ -4,10 +4,10 @@
   "cookingtime": 100,
   "experience": 0.15,
   "ingredient": {
-    "tag": "c:raw_materials/vibranium"
+    "tag": "c:ores/allthemodium"
   },
   "result": {
     "count": 1,
-    "id": "allthemodium:vibranium_ingot"
+    "id": "allthemodium:allthemodium_ingot"
   }
 }

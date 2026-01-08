@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "allthemodium",
+  "ingredients": [
+    {
+      "item": "allthemodium:piglich_heart_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "allthemodium:piglich_heart"
+  }
+}

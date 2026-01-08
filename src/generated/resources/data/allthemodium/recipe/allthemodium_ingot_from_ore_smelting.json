@@ -4,10 +4,10 @@
   "cookingtime": 200,
   "experience": 0.15,
   "ingredient": {
-    "tag": "c:dusts/unobtainium"
+    "tag": "c:ores/allthemodium"
   },
   "result": {
     "count": 1,
-    "id": "allthemodium:unobtainium_ingot"
+    "id": "allthemodium:allthemodium_ingot"
   }
 }
