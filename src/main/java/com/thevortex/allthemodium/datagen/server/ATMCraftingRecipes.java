@@ -18,6 +18,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.StonecutterRecipe;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.concurrent.CompletableFuture;
@@ -53,6 +54,7 @@ public class ATMCraftingRecipes extends RecipeProvider
         buildShapelessRecipes(consumer);
         buildSmeltingRecipes(consumer);
         buildBlastingRecipes(consumer);
+        buildCuttingRecipes(consumer);
     }
 
     protected void buildShapedRecipes(RecipeOutput consumer) {
@@ -416,6 +418,13 @@ public class ATMCraftingRecipes extends RecipeProvider
                 .save(consumer, recipeDir("ancient_mossy_stone", "vinecrafting"));
 
         ShapelessRecipeBuilder
+                .shapeless(RecipeCategory.MISC, ModRegistry.ANCIENT_MOSSY_STONE.get(), 1)
+                .requires(ModRegistry.ANCIENT_STONE.get())
+                .requires(Items.MOSS_BLOCK)
+                .unlockedBy(hasCondition, RecipeProvider.has(ModRegistry.ANCIENT_STONE.get()))
+                .save(consumer, recipeDir("ancient_mossy_stone", "mosscrafting"));
+
+        ShapelessRecipeBuilder
                 .shapeless(RecipeCategory.MISC, ModRegistry.ANCIENT_POLISHED_STONE.get(), 1)
                 .requires(ModRegistry.ANCIENT_SMOOTH_STONE.get())
                 .requires(Items.HONEYCOMB)
@@ -535,7 +544,6 @@ public class ATMCraftingRecipes extends RecipeProvider
 
     }
 
-
     protected void buildSmeltingRecipes(RecipeOutput consumer) {
 
         final String hasCondition = "has_item";
@@ -590,5 +598,77 @@ public class ATMCraftingRecipes extends RecipeProvider
                 .unlockedBy(hasCondition, has(TagRegistry.UNOBTAINIUM_ORE_ITEM))
                 .save(consumer, recipeDir("unobtainium_ingot", "ore_smelting"));
 
+    }
+
+    protected void buildCuttingRecipes(RecipeOutput consumer) {
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_STONE.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_STONE_SLABS.get(), 2)
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_STONE.get()), has(ModRegistry.ANCIENT_STONE.get()))
+                .save(consumer, recipeDir("ancient_stone_slab", "stone_cutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_STONE.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_STONE_STAIRS.get())
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_STONE.get()), has(ModRegistry.ANCIENT_STONE.get()))
+                .save(consumer, recipeDir("ancient_stone_stairs", "stone_cutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_STONE.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_STONE_WALL.get())
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_STONE.get()), has(ModRegistry.ANCIENT_STONE.get()))
+                .save(consumer, recipeDir("ancient_stone_wall", "stone_cutting"));
+
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_SMOOTH_STONE.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_SMOOTH_STONE_SLABS.get(), 2)
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_SMOOTH_STONE.get()), has(ModRegistry.ANCIENT_SMOOTH_STONE.get()))
+                .save(consumer, recipeDir("ancient_smooth_stone_slab", "stone_cutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_SMOOTH_STONE.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_SMOOTH_STONE_STAIRS.get())
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_SMOOTH_STONE.get()), has(ModRegistry.ANCIENT_SMOOTH_STONE.get()))
+                .save(consumer, recipeDir("ancient_smooth_stone_stairs", "stone_cutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_SMOOTH_STONE.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_SMOOTH_STONE_WALL.get())
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_SMOOTH_STONE.get()), has(ModRegistry.ANCIENT_SMOOTH_STONE.get()))
+                .save(consumer, recipeDir("ancient_smooth_stone_wall", "stone_cutting"));
+
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_POLISHED_STONE.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_POLISHED_STONE_SLABS.get(), 2)
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_POLISHED_STONE.get()), has(ModRegistry.ANCIENT_POLISHED_STONE.get()))
+                .save(consumer, recipeDir("ancient_polished_stone_slab", "stone_cutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_POLISHED_STONE.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_POLISHED_STONE_STAIRS.get())
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_POLISHED_STONE.get()), has(ModRegistry.ANCIENT_POLISHED_STONE.get()))
+                .save(consumer, recipeDir("ancient_polished_stone_stairs", "stone_cutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_POLISHED_STONE.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_POLISHED_STONE_WALL.get())
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_POLISHED_STONE.get()), has(ModRegistry.ANCIENT_POLISHED_STONE.get()))
+                .save(consumer, recipeDir("ancient_polished_stone_wall", "stone_cutting"));
+
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_CRACKED_STONE_SLABS.get(), 2)
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get()), has(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get()))
+                .save(consumer, recipeDir("ancient_cracked_stone_slab", "stone_cutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_CRACKED_STONE_STAIRS.get())
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get()), has(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get()))
+                .save(consumer, recipeDir("ancient_cracked_stone_stairs", "stone_cutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_CRACKED_STONE_BRICK_WALL.get())
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get()), has(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get()))
+                .save(consumer, recipeDir("ancient_cracked_stone_wall", "stone_cutting"));
+
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_CHISELED_STONE_SLABS.get(), 2)
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get()), has(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get()))
+                .save(consumer, recipeDir("ancient_chiseled_stone_slab", "stone_cutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_CHISELED_STONE_STAIRS.get())
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get()), has(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get()))
+                .save(consumer, recipeDir("ancient_chiseled_stone_stairs", "stone_cutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_CHISELED_STONE_BRICK_WALL.get())
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get()), has(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get()))
+                .save(consumer, recipeDir("ancient_chiseled_stone_wall", "stone_cutting"));
+
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_STONE_BRICKS.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_STONE_BRICK_SLABS.get(), 2)
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_STONE_BRICKS.get()), has(ModRegistry.ANCIENT_STONE_BRICKS.get()))
+                .save(consumer, recipeDir("ancient_stone_bricks_slab", "stone_cutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_STONE_BRICKS.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_STONE_BRICK_STAIRS.get())
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_STONE_BRICKS.get()), has(ModRegistry.ANCIENT_STONE_BRICKS.get()))
+                .save(consumer, recipeDir("ancient_stone_bricks_stairs", "stone_cutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_STONE_BRICKS.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_STONE_BRICK_WALL.get())
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_STONE_BRICKS.get()), has(ModRegistry.ANCIENT_STONE_BRICKS.get()))
+                .save(consumer, recipeDir("ancient_stone_bricks_wall", "stone_cutting"));
+
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_MOSSY_STONE.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_MOSSY_STONE_SLABS.get(), 2)
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_MOSSY_STONE.get()), has(ModRegistry.ANCIENT_MOSSY_STONE.get()))
+                .save(consumer, recipeDir("ancient_mossy_stone_slab", "stone_cutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_MOSSY_STONE.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_MOSSY_STONE_STAIRS.get())
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_MOSSY_STONE.get()), has(ModRegistry.ANCIENT_MOSSY_STONE.get()))
+                .save(consumer, recipeDir("ancient_mossy_stone_stairs", "stone_cutting"));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(ModRegistry.ANCIENT_MOSSY_STONE.get()), RecipeCategory.MISC, ModRegistry.ANCIENT_MOSSY_STONE_WALL.get())
+                .unlockedBy(getHasName(ModRegistry.ANCIENT_MOSSY_STONE.get()), has(ModRegistry.ANCIENT_MOSSY_STONE.get()))
+                .save(consumer, recipeDir("ancient_mossy_stone_wall", "stone_cutting"));
     }
 }
