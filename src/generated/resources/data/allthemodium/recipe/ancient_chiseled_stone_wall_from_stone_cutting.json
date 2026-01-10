@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "allthemodium:ancient_chiseled_stone_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "allthemodium:ancient_chiseled_stone_brick_wall"
+  }
+}
