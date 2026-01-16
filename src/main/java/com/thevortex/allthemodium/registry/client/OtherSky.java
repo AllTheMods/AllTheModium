@@ -28,7 +28,7 @@ public class OtherSky extends DimensionSpecialEffects {
 
         @Override
         public boolean isFoggyAt(int p_108874_, int p_108875_) {
-            return true;
+            return false;
         }
 
         @Override
