@@ -2,11 +2,12 @@ package com.thevortex.allthemodium.events;
 
 import com.thevortex.allthemodium.entity.PiglichModel;
 import com.thevortex.allthemodium.entity.PiglichRenderer;
-import com.thevortex.allthemodium.entity.ThrownATMTridentRenderer;
+import com.thevortex.allthemodium.entity.ThrownTridentRenderer;
 import com.thevortex.allthemodium.entity.alloy_trident;
 import com.thevortex.allthemodium.items.toolitems.armor.models.allthemodium_helmet;
 import com.thevortex.allthemodium.items.toolitems.tools.Unobow;
 import com.thevortex.allthemodium.reference.Reference;
+import com.thevortex.allthemodium.reference.RenderHelpers;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -14,6 +15,7 @@ import net.minecraft.client.renderer.blockentity.BrushableBlockRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ChargedProjectiles;
 import net.neoforged.api.distmarker.Dist;
@@ -30,7 +32,7 @@ public class ClientEvents {
                 event.registerEntityRenderer(ModRegistry.PIGLICH.get(), PiglichRenderer::new);
         event.registerBlockEntityRenderer(ModRegistry.BRUSHABLE_BLOCK.get(), BrushableBlockRenderer::new);
         
-        event.registerEntityRenderer(ModRegistry.ALLOY_TRIDENT_ENTITY.get(), ThrownATMTridentRenderer::new);
+        event.registerEntityRenderer(ModRegistry.ALLOY_TRIDENT_ENTITY.get(), ThrownTridentRenderer::new);
 
     }
 
@@ -101,7 +103,6 @@ public class ClientEvents {
     @SubscribeEvent
     public static void registerMesh(EntityRenderersEvent.AddLayers event) {
         event.getEntityModels().bakeLayer(PiglichModel.LAYER_LOCATION);
-        event.getEntityModels().bakeLayer(alloy_trident.LAYER_LOCATION);
         event.getEntityModels().bakeLayer(allthemodium_helmet.LAYER_LOCATION);
     }
     @SubscribeEvent
@@ -109,7 +110,9 @@ public class ClientEvents {
     {
         event.registerLayerDefinition(PiglichModel.LAYER_LOCATION, () -> PiglichModel.createBodyLayer());
         event.registerLayerDefinition(allthemodium_helmet.LAYER_LOCATION, allthemodium_helmet::createBodyLayer);
-        event.registerLayerDefinition(alloy_trident.LAYER_LOCATION, () -> alloy_trident.createBodyLayer());
+        event.registerLayerDefinition(RenderHelpers.layerId("alloy_trident"), alloy_trident::createBodyLayer);
     }
+
+
 
 }

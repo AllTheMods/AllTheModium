@@ -303,5 +303,6 @@
   "dimension.allthemodium.mining": "Mining Dimension",
   "dimension.allthemodium.the_other": "The Other",
   "dimension.allthemodium.the_beyond": "The Beyond",
-  "tooltip.allthemodium.teleport_pad": "Sneak + Right Click with both hands empty to teleport"
+  "tooltip.allthemodium.teleport_pad": "Sneak + Right Click with both hands empty to teleport",
+  "entity.allthemodium.alloy_trident": "Allthemodium Alloy Trident"
 }

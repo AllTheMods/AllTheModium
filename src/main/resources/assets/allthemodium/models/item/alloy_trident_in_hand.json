@@ -1,18 +1,18 @@
 {
-    "parent": "builtin/entity",
+    "parent": "entity/trident",
     "gui_light": "front",
     "textures": {
         "particle": "allthemodium:item/alloy_trident"
     },
     "display": {
         "thirdperson_righthand": {
-            "rotation": [ 0, 60, 0 ],
-            "translation": [ 11, 17, -2 ],
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 0, 0 ],
             "scale": [ 1, 1, 1 ]
         },
         "thirdperson_lefthand": {
-            "rotation": [ 0, 60, 0 ],
-            "translation": [ 3, 17, 12 ],
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 0, 0 ],
             "scale": [ 1, 1, 1 ]
         },
         "firstperson_righthand": {

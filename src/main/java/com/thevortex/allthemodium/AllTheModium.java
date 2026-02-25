@@ -10,10 +10,15 @@ import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.*;
 import com.thevortex.allthemodium.registry.mek_reg.ATMSlurries;
 import com.thevortex.allthemodium.registry.mek_reg.MekProcReg;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
@@ -83,6 +88,9 @@ public class AllTheModium
         NeoForge.EVENT_BUS.register(BlockBreak.class);
 		NeoForge.EVENT_BUS.register(ArmorEvents.class);
 		modEventBus.addListener(this::onModsLoaded);
+		if(FMLEnvironment.dist == Dist.CLIENT) {
+			modEventBus.addListener(AllTheModium::clientSetup);
+		}
 		setupLogFilter();
 	}
 
@@ -95,7 +103,19 @@ public class AllTheModium
 			LOGGER.error("Registration failed with unexpected class: {}", rootLogger.getClass());
 		}
 	}
+	public static void clientSetup(final FMLClientSetupEvent event) {
+		event.enqueueWork(() -> {
+			Item ATMTrident = ModRegistry.ALLOY_TRIDENT.get();
+			ItemProperties.register(ATMTrident, ResourceLocation.withDefaultNamespace("throwing"), (itemStack, clientWorld, livingEntity, i) -> {
+				if (livingEntity == null) {
+					return 0.0F;
 
+				} else {
+					return (livingEntity.isUsingItem() && livingEntity.getUseItem().is(ATMTrident)) ? 1.0F : 0.0F;
+				}
+			});
+		});
+	}
 	public void onModsLoaded(FMLLoadCompleteEvent event) {
 		if (FMLEnvironment.dist.isClient() && ModList.get().isLoaded("jade")) {
 			event.enqueueWork(ATMJadePlugin::registerPickaxes);

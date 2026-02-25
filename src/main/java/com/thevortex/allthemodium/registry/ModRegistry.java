@@ -4,8 +4,8 @@ import com.google.common.collect.ImmutableSet;
 import com.thevortex.allthemodium.blocks.*;
 import com.thevortex.allthemodium.blocks.entity.ATMBrushableBlockEntity;
 import com.thevortex.allthemodium.entity.PiglichEntity;
-import com.thevortex.allthemodium.entity.ThrownATMTrident;
 import com.thevortex.allthemodium.init.ModFoods;
+import com.thevortex.allthemodium.entity.ThrownTrident;
 import com.thevortex.allthemodium.items.*;
 import com.thevortex.allthemodium.items.toolitems.armor.*;
 import com.thevortex.allthemodium.items.toolitems.tools.*;
@@ -394,7 +394,7 @@ public class ModRegistry
     public static final DeferredHolder<Item, Item> VIB_SHIELD = registerItem("vibranium_shield", () -> new Vib_Shield((new Item.Properties()).fireResistant().stacksTo(1).rarity(Rarity.EPIC)));
 
     public static final DeferredHolder<Item, Item> ALLOY_TRIDENT = registerItem("alloy_trident", () -> new ATMTrident((new Item.Properties()).fireResistant().rarity(Rarity.EPIC).attributes(ATMTrident.createAttributes()).component(DataComponents.UNBREAKABLE, new Unbreakable(true)).component(DataComponents.TOOL, ATMTrident.createToolProperties())));
-    public static final DeferredHolder<EntityType<?>, EntityType<ThrownATMTrident>> ALLOY_TRIDENT_ENTITY = ENTITIES.register("alloy_trident", () -> EntityType.Builder.<ThrownATMTrident>of(ThrownATMTrident::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(10).build("alloy_trident"));
+    public static final DeferredHolder<EntityType<?>, EntityType<ThrownTrident>> ALLOY_TRIDENT_ENTITY = ENTITIES.register("alloy_trident", () -> EntityType.Builder.<ThrownTrident>of(ThrownTrident::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(10).build("alloy_trident"));
 
     public static final DeferredHolder<Item, Item> ALLOY_SWORD = registerItem("alloy_sword", () -> new SwordItem(ATMTier.ALLOY, new Item.Properties().rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).attributes(SwordItem.createAttributes(ATMTier.ALLOY, 3, 2.9F))));
     public static final DeferredHolder<Item, Item> ALLOY_AXE = registerItem("alloy_axe", () -> new AxeItem(ATMTier.ALLOY, new Item.Properties().rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).attributes(AxeItem.createAttributes(ATMTier.ALLOY, 4, 2.4F))));
