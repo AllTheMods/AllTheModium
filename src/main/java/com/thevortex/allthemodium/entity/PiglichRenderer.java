@@ -16,6 +16,7 @@ public class PiglichRenderer extends GeoEntityRenderer<PiglichEntity> {
     public PiglichRenderer(EntityRendererProvider.Context context) {
         super(context,new PiglichModel());
         this.shadowRadius = 0.3f;
+        this.addRenderLayer(new PiglichGlowLayer(this));
     }
 
     @Override

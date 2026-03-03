@@ -9,11 +9,10 @@ import software.bernie.geckolib.model.GeoModel;
 
 public class PiglichModel extends GeoModel<PiglichEntity> {
 
-
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "piglich"),"main");
 
     public PiglichModel() {
-     }
+    }
 
     public static LayerDefinition createBodyLayer() {
         MeshDefinition meshdefinition = new MeshDefinition();
@@ -60,6 +59,7 @@ public class PiglichModel extends GeoModel<PiglichEntity> {
 
         return LayerDefinition.create(meshdefinition, 128, 64);
     }
+
 
 
 

@@ -61,7 +61,7 @@ public class ClientEvents {
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_CAVEVINES.get(), RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_CAVEVINES_PLANT.get(), RenderType.cutoutMipped());
 
-        ItemProperties.register(ModRegistry.ATM_BOW.get(), ResourceLocation.withDefaultNamespace("pull"), (itemStack, clientWorld, livingEntity, i) -> {
+      /*  ItemProperties.register(ModRegistry.ATM_BOW.get(), ResourceLocation.withDefaultNamespace("pull"), (itemStack, clientWorld, livingEntity, i) -> {
             if (livingEntity == null) {
                 return 0.0F;
         
@@ -91,6 +91,8 @@ public class ClientEvents {
             ChargedProjectiles chargedprojectiles = itemStack.get(DataComponents.CHARGED_PROJECTILES);
             return chargedprojectiles != null && Unobow.isCharged(itemStack) && chargedprojectiles.contains(Items.FIREWORK_ROCKET) ? 1.0F : 0.0F;
         });
+
+       */
         ItemProperties.register(ModRegistry.ALLOY_TRIDENT.get(), ResourceLocation.withDefaultNamespace("throwing"), (itemStack, clientWorld, livingEntity, i) -> {
             if (livingEntity == null) {
                 return 0.0F;
