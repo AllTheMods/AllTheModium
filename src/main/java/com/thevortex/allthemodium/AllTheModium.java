@@ -11,7 +11,7 @@ import com.thevortex.allthemodium.registry.*;
 import com.thevortex.allthemodium.registry.mek_reg.ATMSlurries;
 import com.thevortex.allthemodium.registry.mek_reg.MekProcReg;
 import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -69,9 +69,9 @@ public class AllTheModium
 
 		if(ModList.get().isLoaded("mekanism")) {
 
-			ATMSlurries.SLURRIES.register(modEventBus);
-			MekProcReg.ITEMS.register(modEventBus);
-			MekProcReg.CREATIVE_TABS.register(modEventBus);
+			//ATMSlurries.SLURRIES.register(modEventBus);
+			//MekProcReg.ITEMS.register(modEventBus);
+			//MekProcReg.CREATIVE_TABS.register(modEventBus);
 		}
 		if (ModList.get().isLoaded("ars_nouveau")) {
 			ArsCompat.ARS_BLOCKS.register(modEventBus);
@@ -88,7 +88,7 @@ public class AllTheModium
         NeoForge.EVENT_BUS.register(BlockBreak.class);
 		NeoForge.EVENT_BUS.register(ArmorEvents.class);
 		modEventBus.addListener(this::onModsLoaded);
-		if(FMLEnvironment.dist == Dist.CLIENT) {
+		if(FMLEnvironment.getDist() == Dist.CLIENT) {
 			modEventBus.addListener(AllTheModium::clientSetup);
 		}
 		setupLogFilter();
@@ -106,7 +106,7 @@ public class AllTheModium
 	public static void clientSetup(final FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
 			Item ATMTrident = ModRegistry.ALLOY_TRIDENT.get();
-			ItemProperties.register(ATMTrident, ResourceLocation.withDefaultNamespace("throwing"), (itemStack, clientWorld, livingEntity, i) -> {
+			ItemProperties.register(ATMTrident, Identifier.withDefaultNamespace("throwing"), (itemStack, clientWorld, livingEntity, i) -> {
 				if (livingEntity == null) {
 					return 0.0F;
 
