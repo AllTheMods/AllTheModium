@@ -248,11 +248,11 @@ public class ATMItemTags extends ItemTagsProvider {
         tag(ItemTags.MINING_LOOT_ENCHANTABLE).add(ModRegistry.ALLOY_DIGGER.get());
         
         tag(ItemTags.EQUIPPABLE_ENCHANTABLE).add(ModRegistry.VIB_SHIELD.get());
-        //tag(ItemTags.CROSSBOW_ENCHANTABLE).add(ModRegistry.UNO_BOW.get());
-       // tag(ItemTags.BOW_ENCHANTABLE).add(ModRegistry.ATM_BOW.get());
+        tag(ItemTags.CROSSBOW_ENCHANTABLE).add(ModRegistry.UNO_BOW.get());
+        tag(ItemTags.BOW_ENCHANTABLE).add(ModRegistry.ATM_BOW.get());
 
-        //tag(Tags.Items.TOOLS_BOW).add(ModRegistry.ATM_BOW.get());
-       // tag(Tags.Items.TOOLS_CROSSBOW).add(ModRegistry.UNO_BOW.get());
+        tag(Tags.Items.TOOLS_BOW).add(ModRegistry.ATM_BOW.get());
+        tag(Tags.Items.TOOLS_CROSSBOW).add(ModRegistry.UNO_BOW.get());
 
         tag(Tags.Items.TOOLS_SHIELD).add(ModRegistry.VIB_SHIELD.get());
 

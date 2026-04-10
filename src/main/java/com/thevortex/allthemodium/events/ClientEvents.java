@@ -61,12 +61,11 @@ public class ClientEvents {
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_CAVEVINES.get(), RenderType.cutoutMipped());
         ItemBlockRenderTypes.setRenderLayer(ModRegistry.ANCIENT_CAVEVINES_PLANT.get(), RenderType.cutoutMipped());
 
-      /*  ItemProperties.register(ModRegistry.ATM_BOW.get(), ResourceLocation.withDefaultNamespace("pull"), (itemStack, clientWorld, livingEntity, i) -> {
+        ItemProperties.register(ModRegistry.ATM_BOW.get(), ResourceLocation.withDefaultNamespace("pull"), (itemStack, clientWorld, livingEntity, i) -> {
             if (livingEntity == null) {
                 return 0.0F;
-        
             } else {
-                  return (livingEntity.getUseItem() != itemStack) ? 0.0F :(float)(itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks())/20.0F;  
+                return (livingEntity.getUseItem() != itemStack) ? 0.0F : (float)(itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks()) / 20.0F;
             }
         });
         ItemProperties.register(ModRegistry.ATM_BOW.get(), ResourceLocation.withDefaultNamespace("pulling"), (itemStack, clientWorld, livingEntity, i) -> {
@@ -76,9 +75,13 @@ public class ClientEvents {
         ItemProperties.register(ModRegistry.UNO_BOW.get(), ResourceLocation.withDefaultNamespace("pull"), (itemStack, clientWorld, livingEntity, i) -> {
             if (livingEntity == null) {
                 return 0.0F;
-        
             } else {
-                  return Unobow.isCharged(itemStack) ? 0.0F : (float)((itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks())/Unobow.getChargeDuration(itemStack, livingEntity))/20.0F;  
+                if (Unobow.isCharged(itemStack)) {
+                    return 0.0F;
+                }
+                int used = itemStack.getUseDuration(livingEntity) - livingEntity.getUseItemRemainingTicks();
+                int charge = Unobow.getSafeChargeDuration(itemStack, livingEntity);
+                return Math.max(0.0F, Math.min(1.0F, (float) used / (float) charge));
             }
         });
         ItemProperties.register(ModRegistry.UNO_BOW.get(), ResourceLocation.withDefaultNamespace("pulling"), (itemStack, clientWorld, livingEntity, i) -> {
@@ -91,8 +94,6 @@ public class ClientEvents {
             ChargedProjectiles chargedprojectiles = itemStack.get(DataComponents.CHARGED_PROJECTILES);
             return chargedprojectiles != null && Unobow.isCharged(itemStack) && chargedprojectiles.contains(Items.FIREWORK_ROCKET) ? 1.0F : 0.0F;
         });
-
-       */
         ItemProperties.register(ModRegistry.ALLOY_TRIDENT.get(), ResourceLocation.withDefaultNamespace("throwing"), (itemStack, clientWorld, livingEntity, i) -> {
             if (livingEntity == null) {
                 return 0.0F;
