@@ -1,9 +1,0 @@
-{
-  "craftable": false,
-  "tier": 5,
-  "sortOrder": 2,
-  "fluid": "allthemodium:molten_allthemodium",
-  "fluidPerUnit": 144,
-  "textColor": "#ffef0e",
-  "temperature": 1500
-}

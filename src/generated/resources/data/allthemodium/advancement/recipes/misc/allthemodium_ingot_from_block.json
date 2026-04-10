@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_allthemodium_block": {
       "conditions": {
         "items": [
           {
-            "items": "allthemodium:allthemodium_block"
+            "items": "#c:storage_blocks/allthemodium"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_allthemodium_block"
     ]
   ],
   "rewards": {

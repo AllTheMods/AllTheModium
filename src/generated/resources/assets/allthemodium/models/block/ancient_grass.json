@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "allthemodium:block/ancient_dirt",
+    "side": "allthemodium:block/ancient_grass_side",
+    "top": "allthemodium:block/ancient_grass_top"
+  }
+}

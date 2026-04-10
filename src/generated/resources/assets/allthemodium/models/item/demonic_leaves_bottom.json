@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "allthemodium:block/demonic_leaves_bottom"
+  }
+}

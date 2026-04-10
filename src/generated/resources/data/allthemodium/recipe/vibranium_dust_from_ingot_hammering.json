@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "allthemodium",
+  "ingredients": [
+    "#c:ingots/vibranium",
+    "#alltheores:ore_hammers"
+  ],
+  "result": {
+    "id": "allthemodium:vibranium_dust"
+  }
+}

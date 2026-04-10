@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "allthemodium",
+  "ingredients": [
+    "#allthemodium:ancient_stone_bricks",
+    "#alltheores:ore_hammers"
+  ],
+  "result": {
+    "id": "allthemodium:cracked_ancient_stone_bricks"
+  }
+}

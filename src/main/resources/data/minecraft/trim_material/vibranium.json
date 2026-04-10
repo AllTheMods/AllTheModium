@@ -1,9 +1,0 @@
-{
-  "asset_name": "vibranium",
-  "description": {
-    "color": "#26de88",
-    "translate": "trim_material.allthemodium.vibranium"
-  },
-  "ingredient": "allthemodium:vibranium_ingot",
-  "item_model_index": 1.0
-}

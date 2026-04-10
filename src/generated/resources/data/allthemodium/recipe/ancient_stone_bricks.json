@@ -3,14 +3,11 @@
   "category": "misc",
   "group": "allthemodium",
   "key": {
-    "a": {
-      "tag": "allthemodium:ancient_stone"
-    }
+    "a": "#allthemodium:ancient_stone"
   },
   "pattern": [
-    "   ",
-    "aa ",
-    "aa "
+    "aa",
+    "aa"
   ],
   "result": {
     "count": 4,

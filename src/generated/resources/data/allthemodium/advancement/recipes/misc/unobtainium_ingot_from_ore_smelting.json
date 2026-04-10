@@ -1,27 +1,27 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
-      "conditions": {
-        "items": [
-          {
-            "items": "#c:ores/unobtainium"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "allthemodium:unobtainium_ingot_from_ore_smelting"
       },
       "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_unobtainium_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:ores/unobtanium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_unobtainium_ore"
     ]
   ],
   "rewards": {

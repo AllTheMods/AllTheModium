@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "allthemodium:vibranium_block",
+  "base": "allthemodium:allthemodium_mace",
+  "result": {
+    "id": "allthemodium:vibranium_mace"
+  },
+  "template": "allthemodium:vibranium_upgrade_smithing_template"
+}

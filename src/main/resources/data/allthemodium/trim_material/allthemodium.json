@@ -1,9 +1,10 @@
 {
   "asset_name": "allthemodium",
+  "override_armor_assets": {
+    "allthemodium:allthemodium": "allthemodium_darker"
+  },
   "description": {
     "color": "#ffef0e",
     "translate": "trim_material.allthemodium.allthemodium"
-  },
-  "ingredient": "allthemodium:allthemodium_ingot",
-  "item_model_index": 1.0
+  }
 }

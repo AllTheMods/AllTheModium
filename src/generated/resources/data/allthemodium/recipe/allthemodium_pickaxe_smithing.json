@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "allthemodium:allthemodium_ingot",
+  "base": "minecraft:netherite_pickaxe",
+  "result": {
+    "id": "allthemodium:allthemodium_pickaxe"
+  },
+  "template": "allthemodium:allthemodium_upgrade_smithing_template"
+}

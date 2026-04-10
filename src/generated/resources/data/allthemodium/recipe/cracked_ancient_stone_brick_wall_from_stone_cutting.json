@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "allthemodium:cracked_ancient_stone_bricks",
+  "result": {
+    "id": "allthemodium:cracked_ancient_stone_brick_wall"
+  }
+}

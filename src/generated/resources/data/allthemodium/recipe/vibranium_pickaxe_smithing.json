@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "allthemodium:vibranium_ingot",
+  "base": "allthemodium:allthemodium_pickaxe",
+  "result": {
+    "id": "allthemodium:vibranium_pickaxe"
+  },
+  "template": "allthemodium:vibranium_upgrade_smithing_template"
+}

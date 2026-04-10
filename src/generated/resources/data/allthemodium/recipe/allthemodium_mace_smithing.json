@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "allthemodium:allthemodium_block",
+  "base": "minecraft:mace",
+  "result": {
+    "id": "allthemodium:allthemodium_mace"
+  },
+  "template": "allthemodium:allthemodium_upgrade_smithing_template"
+}

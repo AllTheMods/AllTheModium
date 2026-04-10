@@ -3,8 +3,8 @@
     "allthemodium:allthemodium_ingot",
     "allthemodium:vibranium_ingot",
     "allthemodium:unobtainium_ingot",
+    "allthemodium:vibranium_allthemodium_alloy_ingot",
     "allthemodium:unobtainium_allthemodium_alloy_ingot",
-    "allthemodium:unobtainium_vibranium_alloy_ingot",
-    "allthemodium:vibranium_allthemodium_alloy_ingot"
+    "allthemodium:unobtainium_vibranium_alloy_ingot"
   ]
 }

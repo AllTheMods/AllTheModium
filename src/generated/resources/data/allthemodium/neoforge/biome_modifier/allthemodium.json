@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "minecraft:deep_dark",
+  "features": "allthemodium:allthemodium",
+  "step": "underground_ores"
+}

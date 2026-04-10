@@ -1,9 +1,0 @@
-{
-  "asset_name": "unobtainium",
-  "description": {
-    "color": "#d152e3",
-    "translate": "trim_material.allthemodium.unobtainium"
-  },
-  "ingredient": "allthemodium:unobtainium_ingot",
-  "item_model_index": 1.0
-}

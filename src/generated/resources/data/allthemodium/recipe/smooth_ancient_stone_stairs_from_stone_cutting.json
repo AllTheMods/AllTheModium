@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "allthemodium:smooth_ancient_stone",
+  "result": {
+    "id": "allthemodium:smooth_ancient_stone_stairs"
+  }
+}

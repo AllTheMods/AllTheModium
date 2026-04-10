@@ -1,10 +1,9 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
+  "group": "allthemodium",
   "ingredients": [
-    {
-      "tag": "c:ingots/allthemodium"
-    }
+    "#c:ingots/allthemodium"
   ],
   "result": {
     "count": 9,

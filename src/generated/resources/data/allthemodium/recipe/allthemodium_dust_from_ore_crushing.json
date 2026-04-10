@@ -1,13 +1,10 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
+  "group": "allthemodium",
   "ingredients": [
-    {
-      "item": "allthemodium:raw_allthemodium"
-    },
-    {
-      "tag": "alltheores:ore_hammers"
-    }
+    "#c:raw_materials/allthemodium",
+    "#alltheores:ore_hammers"
   ],
   "result": {
     "count": 2,

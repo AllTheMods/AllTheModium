@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stripped_soul_log": {
+      "conditions": {
+        "items": [
+          {
+            "items": "allthemodium:stripped_soul_log"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "allthemodium:soul_planks_3_from_shapelesscrafting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_stripped_soul_log"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "allthemodium:soul_planks_3_from_shapelesscrafting"
+    ]
+  }
+}

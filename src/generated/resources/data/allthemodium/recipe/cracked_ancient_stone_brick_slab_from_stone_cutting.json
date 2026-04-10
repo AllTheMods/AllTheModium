@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "allthemodium:cracked_ancient_stone_bricks",
+  "result": {
+    "count": 2,
+    "id": "allthemodium:cracked_ancient_stone_brick_slab"
+  }
+}

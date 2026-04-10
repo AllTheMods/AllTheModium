@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "allthemodium",
+  "key": {
+    "a": "#allthemodium:cracked_ancient_stone_bricks"
+  },
+  "pattern": [
+    "aaa"
+  ],
+  "result": {
+    "count": 6,
+    "id": "allthemodium:cracked_ancient_stone_brick_slab"
+  }
+}

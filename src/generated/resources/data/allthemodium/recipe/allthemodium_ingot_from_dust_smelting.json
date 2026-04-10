@@ -3,11 +3,8 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.15,
-  "ingredient": {
-    "tag": "c:dusts/allthemodium"
-  },
+  "ingredient": "#c:dusts/allthemodium",
   "result": {
-    "count": 1,
     "id": "allthemodium:allthemodium_ingot"
   }
 }

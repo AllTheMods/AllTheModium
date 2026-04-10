@@ -1,57 +1,40 @@
-# eclipse
-bin
-*.launch
-.settings
-.metadata
-.classpath
-.project
+### Gradle ###
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/**/build/
 
-# visualstudio
-/.vs/ProjectSettings.json
-/.vs/slnx.sqlite
-
-# idea
-out
-*.ipr
+### IntelliJ IDEA ###
+.idea/
 *.iws
 *.iml
-.idea
+*.ipr
+out/
+!**/src/**/out/
 
-# gradle
-build
-.gradle
+.run/
 
-# other
-eclipse
-runs
+### Eclipse ###
+.apt_generated
+.classpath
+.eclipse/
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/**/bin/
 
-# Files from Forge MDK
-forge*changelog.txt
-dim_backup/dimension type/the_beyond.json
-dim_backup/dimension/the_beyond.json
-libs/Mantle-1.15.2-1.5.DEV.GITBORK.jar
-libs/TConstruct-1.15.2-3.0.1.DEV.GITBORK.jar
-logs/debug.log
-logs/latest.log
-TCon/materials/allthemodium_from_block.json
-TCon/materials/allthemodium_from_ingot.json
-TCon/materials/allthemodium_from_nugget.json
-TCon/melting/allthemodium_from_block.json
-TCon/melting/allthemodium_from_dust.json
-TCon/melting/allthemodium_from_ingot.json
-TCon/melting/allthemodium_from_nugget.json
-TCon/melting/allthemodium_from_ore.json
-TCon/silent_assets/unobtainium.json
-TCon/silent_assets/vibranium.json
-TCon/silent_data/unobtainium.json
-TCon/silent_data/vibranium.json
+### VS Code ###
+.vscode/
 
-# datagen
-src/generated/resources/.cache
-.vscode/settings.json
-libs/alltheores-2.3.0-alpha_mc_1.21.jar
-libs/geckolib-neoforge-1.21-4.5.5.jar
-run/*
-runs/*
-/.vscode
-libs/geckolib-neoforge-1.21.1-4.7.3.jar
+### Mac OS ###
+.DS_Store
+
+### Minecraft Modding ###
+run/
+!**/src/**/run/
+**/src/generated/**/.cache/
+repo/
+!**/src/**/repo/

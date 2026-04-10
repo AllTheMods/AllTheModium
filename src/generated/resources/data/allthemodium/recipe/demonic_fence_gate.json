@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "allthemodium",
+  "key": {
+    "a": "#allthemodium:demonic_planks",
+    "s": "minecraft:stick"
+  },
+  "pattern": [
+    "sas",
+    "sas"
+  ],
+  "result": {
+    "id": "allthemodium:demonic_fence_gate"
+  }
+}

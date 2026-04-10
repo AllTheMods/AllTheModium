@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "allthemodium:mossy_ancient_stone",
+  "result": {
+    "id": "allthemodium:mossy_ancient_stone_wall"
+  }
+}

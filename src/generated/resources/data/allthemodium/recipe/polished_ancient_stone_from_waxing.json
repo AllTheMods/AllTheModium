@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "allthemodium",
+  "ingredients": [
+    "#allthemodium:smooth_ancient_stone",
+    "minecraft:honeycomb"
+  ],
+  "result": {
+    "id": "allthemodium:polished_ancient_stone"
+  }
+}

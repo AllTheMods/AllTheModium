@@ -1,10 +1,9 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
+  "group": "allthemodium",
   "ingredients": [
-    {
-      "tag": "c:storage_blocks/unobtainium"
-    }
+    "#c:storage_blocks/unobtainium"
   ],
   "result": {
     "count": 9,

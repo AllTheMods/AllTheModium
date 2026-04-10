@@ -3,17 +3,15 @@
   "category": "misc",
   "group": "allthemodium",
   "key": {
-    "a": {
-      "tag": "c:ingots/unobtainium"
-    }
+    "a": "#c:ingots/unobtainium",
+    "n": "#c:nuggets/iron"
   },
   "pattern": [
-    "aaa",
-    "a a",
-    "aaa"
+    " a ",
+    "ana",
+    " a "
   ],
   "result": {
-    "count": 1,
     "id": "allthemodium:unobtainium_gear"
   }
 }

@@ -1,6 +1,0 @@
-{
-    "parent": "item/crossbow",
-    "textures": {
-        "layer0": "allthemodium:item/unobtainium_crossbow_pulling_2"
-    }
-}

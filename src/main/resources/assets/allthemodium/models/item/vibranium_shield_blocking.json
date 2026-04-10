@@ -1,6 +1,5 @@
 {
 	"credit": "Model created by Zorak Design - Contact me on discord for work: CesarZorak#0808",
-	"parent": "item/handshield",
 	"ambientocclusion": false,
 	"texture_size": [32, 32],
 	"textures": {

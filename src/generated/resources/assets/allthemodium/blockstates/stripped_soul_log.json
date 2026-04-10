@@ -1,7 +1,7 @@
 {
   "variants": {
     "axis=x": {
-      "model": "allthemodium:block/stripped_soul_log_horizontal",
+      "model": "allthemodium:block/stripped_soul_log",
       "x": 90,
       "y": 90
     },
@@ -9,7 +9,7 @@
       "model": "allthemodium:block/stripped_soul_log"
     },
     "axis=z": {
-      "model": "allthemodium:block/stripped_soul_log_horizontal",
+      "model": "allthemodium:block/stripped_soul_log",
       "x": 90
     }
   }

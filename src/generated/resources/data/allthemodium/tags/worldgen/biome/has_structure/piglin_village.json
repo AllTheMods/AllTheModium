@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "allthemodium:crimson_forest",
+      "required": false
+    },
+    {
+      "id": "allthemodium:the_other",
+      "required": false
+    }
+  ]
+}

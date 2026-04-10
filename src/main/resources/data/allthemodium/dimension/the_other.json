@@ -1,96 +1,96 @@
 {
-  "type": "allthemodium:the_other",
   "generator": {
-    "type": "minecraft:noise",
-    "settings": "allthemodium:the_other",
     "biome_source": {
-      "type": "minecraft:multi_noise",
       "biomes": [
         {
           "biome": "allthemodium:soul_sand_valley",
           "parameters": {
-            "temperature": -0.1,
-            "humidity": 0.0,
             "continentalness": -0.3,
-            "erosion": 0.1,
-            "weirdness": 0.3,
             "depth": 0.2,
-            "offset": 0
+            "erosion": 0.1,
+            "humidity": 0.0,
+            "offset": 0,
+            "temperature": -0.1,
+            "weirdness": 0.3
           }
         },
         {
           "biome": "allthemodium:the_other",
           "parameters": {
-            "temperature": 0.4,
-            "humidity": 0.0,
             "continentalness": 0.3,
-            "erosion": 0.5,
-            "weirdness": 0.2,
             "depth": 0,
-            "offset": 0
+            "erosion": 0.5,
+            "humidity": 0.0,
+            "offset": 0,
+            "temperature": 0.4,
+            "weirdness": 0.2
           }
         },
         {
           "biome": "allthemodium:desert",
           "parameters": {
-            "temperature": 0.6,
-            "humidity": 0.0,
             "continentalness": 0.1,
-            "erosion": 0.9,
-            "weirdness": 0.0,
             "depth": 0.0,
-            "offset": 0.0
+            "erosion": 0.9,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 0.6,
+            "weirdness": 0.0
           }
         },
         {
           "biome": "allthemodium:basalt_deltas",
           "parameters": {
-            "temperature": 1.0,
-            "humidity": 0.0,
             "continentalness": 0.0,
-            "erosion": 0.1,
-            "weirdness": 0.0,
             "depth": 0.5,
-            "offset": 0.0
+            "erosion": 0.1,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 1.0,
+            "weirdness": 0.0
           }
         },
         {
           "biome": "allthemodium:warped_forest",
           "parameters": {
-            "temperature": 0.5,
-            "humidity": 0.0,
             "continentalness": -0.7,
-            "erosion": 0.3,
-            "weirdness": 0.0,
             "depth": 0.0,
-            "offset": 0.0
+            "erosion": 0.3,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 0.5,
+            "weirdness": 0.0
           }
         },
         {
           "biome": "allthemodium:desert_hills",
           "parameters": {
-            "temperature": 0.8,
-            "humidity": 0.0,
             "continentalness": 0.23,
-            "erosion": 0.6,
-            "weirdness": 0.0,
             "depth": 0.0,
-            "offset": 0.0
+            "erosion": 0.6,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 0.8,
+            "weirdness": 0.0
           }
         },
         {
           "biome": "allthemodium:crimson_forest",
           "parameters": {
-            "temperature": 0.3,
-            "humidity": 0.0,
             "continentalness": 0.3,
-            "erosion": 0.4,
-            "weirdness": 0.0,
             "depth": 0.0,
-            "offset": 0.0
+            "erosion": 0.4,
+            "humidity": 0.0,
+            "offset": 0.0,
+            "temperature": 0.3,
+            "weirdness": 0.0
           }
         }
-      ]
-    }
-  }
+      ],
+      "type": "minecraft:multi_noise"
+    },
+    "settings": "allthemodium:the_other",
+    "type": "minecraft:noise"
+  },
+  "type": "allthemodium:the_other"
 }

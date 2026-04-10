@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "allthemodium:unobtainium_block",
+  "base": "allthemodium:vibranium_mace",
+  "result": {
+    "id": "allthemodium:unobtainium_mace"
+  },
+  "template": "allthemodium:unobtainium_upgrade_smithing_template"
+}

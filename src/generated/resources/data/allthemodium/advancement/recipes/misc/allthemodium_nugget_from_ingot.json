@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_allthemodium_ingot": {
       "conditions": {
         "items": [
           {
-            "items": "allthemodium:allthemodium_ingot"
+            "items": "#c:ingots/allthemodium"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_allthemodium_ingot"
     ]
   ],
   "rewards": {

@@ -1,10 +1,14 @@
 {
   "values": [
-    "allthemodium:ancient_stone_slabs",
-    "allthemodium:ancient_smooth_stone_slabs",
-    "allthemodium:ancient_chiseled_stone_brick_slabs",
-    "allthemodium:ancient_cracked_stone_brick_slabs",
-    "allthemodium:ancient_mossy_stone_slabs",
-    "allthemodium:ancient_polished_stone_slabs"
+    "allthemodium:ancient_slab",
+    "allthemodium:soul_slab",
+    "allthemodium:demonic_slab",
+    "allthemodium:ancient_stone_slab",
+    "allthemodium:smooth_ancient_stone_slab",
+    "allthemodium:mossy_ancient_stone_slab",
+    "allthemodium:ancient_stone_brick_slab",
+    "allthemodium:chiseled_ancient_stone_brick_slab",
+    "allthemodium:cracked_ancient_stone_brick_slab",
+    "allthemodium:polished_ancient_stone_slab"
   ]
 }

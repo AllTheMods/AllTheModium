@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "allthemodium:vibranium"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "allthemodium:vibranium"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "allthemodium:vibranium"
+      }
+    ]
+  }
+}

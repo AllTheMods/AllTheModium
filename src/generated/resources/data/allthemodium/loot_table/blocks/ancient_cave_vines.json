@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "allthemodium:ancient_cave_vines",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "berries": "true"
+              }
+            }
+          ],
+          "name": "allthemodium:soul_berries"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "allthemodium:blocks/ancient_cave_vines"
+}

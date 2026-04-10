@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "allthemodium:block/ancient_mossy_stone",
-    "side": "allthemodium:block/ancient_mossy_stone",
-    "top": "allthemodium:block/ancient_mossy_stone"
-  }
-}

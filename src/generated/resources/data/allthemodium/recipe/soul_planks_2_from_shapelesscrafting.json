@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "allthemodium:soul_log_2"
-    }
+    "allthemodium:soul_log_2"
   ],
   "result": {
     "count": 4,

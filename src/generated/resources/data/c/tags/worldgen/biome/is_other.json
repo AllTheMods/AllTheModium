@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "id": "allthemodium:the_other",
+      "required": false
+    },
+    {
+      "id": "allthemodium:basalt_deltas",
+      "required": false
+    },
+    {
+      "id": "allthemodium:crimson_forest",
+      "required": false
+    },
+    {
+      "id": "allthemodium:warped_forest",
+      "required": false
+    },
+    {
+      "id": "allthemodium:soul_sand_valley",
+      "required": false
+    },
+    {
+      "id": "allthemodium:desert",
+      "required": false
+    },
+    {
+      "id": "allthemodium:desert_hills",
+      "required": false
+    }
+  ]
+}

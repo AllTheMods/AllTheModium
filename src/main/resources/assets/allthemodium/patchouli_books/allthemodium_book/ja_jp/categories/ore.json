@@ -1,6 +1,0 @@
-{
-	"name": "鉱石",
-	"description": "Allthemodium固有の鉱石の発見方法を示します。$(br2)Allthemodium、ヴィブラニウム、アンオブタニウムは非常に珍しい鉱石であり、見つけるのが難しい場合があります。",
-	"icon": "allthemodium:allthemodium_ore",
-	"sortnum": 2
-}

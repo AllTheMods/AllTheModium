@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "allthemodium:block/chiseled_ancient_stone_bricks"
+  }
+}

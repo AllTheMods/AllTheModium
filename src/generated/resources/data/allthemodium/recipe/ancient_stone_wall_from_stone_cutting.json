@@ -1,10 +1,7 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "allthemodium:ancient_stone"
-  },
+  "ingredient": "allthemodium:ancient_stone",
   "result": {
-    "count": 1,
     "id": "allthemodium:ancient_stone_wall"
   }
 }

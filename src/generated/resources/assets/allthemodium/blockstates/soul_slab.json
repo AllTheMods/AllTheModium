@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "allthemodium:block/soul_slab"
+    },
+    "type=double": {
+      "model": "allthemodium:block/soul_planks"
+    },
+    "type=top": {
+      "model": "allthemodium:block/soul_slab_top"
+    }
+  }
+}

@@ -1,11 +1,11 @@
 {
-  "type": "allthemodium:the_beyond",
   "generator": {
-    "type": "minecraft:noise",
-    "settings": "allthemodium:the_beyond",
     "biome_source": {
-      "type": "minecraft:fixed",
-      "biome": "allthemodium:the_beyond"
-    }
-  }
+      "biome": "allthemodium:the_beyond",
+      "type": "minecraft:fixed"
+    },
+    "settings": "allthemodium:the_beyond",
+    "type": "minecraft:noise"
+  },
+  "type": "allthemodium:the_beyond"
 }

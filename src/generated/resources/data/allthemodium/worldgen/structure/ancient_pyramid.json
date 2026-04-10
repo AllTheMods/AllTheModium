@@ -1,0 +1,27 @@
+{
+  "type": "allthemodium:ancient_pyramid",
+  "biomes": "#allthemodium:has_structure/ancient_pyramid",
+  "max_distance_from_center": 80,
+  "project_start_to_heightmap": "WORLD_SURFACE_WG",
+  "size": 7,
+  "spawn_overrides": {
+    "monster": {
+      "bounding_box": "piece",
+      "spawns": [
+        {
+          "type": "allthemodium:piglich",
+          "maxCount": 1,
+          "minCount": 1,
+          "weight": 4500
+        }
+      ]
+    }
+  },
+  "start_height": {
+    "absolute": 0
+  },
+  "start_pool": "allthemodium:pyramid/start_pool",
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_thin",
+  "use_expansion_hack": false
+}

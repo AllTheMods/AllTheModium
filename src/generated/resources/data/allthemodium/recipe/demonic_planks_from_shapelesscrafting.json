@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "allthemodium:demonic_log"
-    }
+    "allthemodium:demonic_log"
   ],
   "result": {
     "count": 4,

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "allthemodium:block/demonic_planks",
-    "side": "allthemodium:block/demonic_planks",
-    "top": "allthemodium:block/demonic_planks"
-  }
-}

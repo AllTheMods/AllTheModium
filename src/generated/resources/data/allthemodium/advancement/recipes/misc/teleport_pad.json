@@ -11,16 +11,6 @@
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_ender_pearl": {
-      "conditions": {
-        "items": [
-          {
-            "items": "minecraft:ender_pearl"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "allthemodium:teleport_pad"
@@ -31,8 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_allthemodium_nugget",
-      "has_ender_pearl"
+      "has_allthemodium_nugget"
     ]
   ],
   "rewards": {

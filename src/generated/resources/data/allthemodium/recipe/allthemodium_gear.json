@@ -3,17 +3,15 @@
   "category": "misc",
   "group": "allthemodium",
   "key": {
-    "a": {
-      "tag": "c:ingots/allthemodium"
-    }
+    "a": "#c:ingots/allthemodium",
+    "n": "#c:nuggets/iron"
   },
   "pattern": [
-    "aaa",
-    "a a",
-    "aaa"
+    " a ",
+    "ana",
+    " a "
   ],
   "result": {
-    "count": 1,
     "id": "allthemodium:allthemodium_gear"
   }
 }

@@ -1,7 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_TagKey[minecraft:item / c:ingots/vibranium]_ingot": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "allthemodium:vibranium_plate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_vibranium_ingot": {
       "conditions": {
         "items": [
           {
@@ -10,18 +16,12 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "allthemodium:vibranium_plate"
-      },
-      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_TagKey[minecraft:item / c:ingots/vibranium]_ingot"
+      "has_vibranium_ingot"
     ]
   ],
   "rewards": {

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_raw_allthemodium": {
       "conditions": {
         "items": [
           {
-            "items": "allthemodium:raw_allthemodium"
+            "items": "#c:raw_materials/allthemodium"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_raw_allthemodium"
     ]
   ],
   "rewards": {

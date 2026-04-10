@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "allthemodium:vibranium_ingot",
+  "base": "allthemodium:allthemodium_sword",
+  "result": {
+    "id": "allthemodium:vibranium_sword"
+  },
+  "template": "allthemodium:vibranium_upgrade_smithing_template"
+}

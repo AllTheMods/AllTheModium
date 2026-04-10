@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "allthemodium:smooth_ancient_stone",
+  "result": {
+    "count": 2,
+    "id": "allthemodium:smooth_ancient_stone_slab"
+  }
+}

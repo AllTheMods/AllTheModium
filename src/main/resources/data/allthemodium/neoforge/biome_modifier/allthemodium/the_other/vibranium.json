@@ -1,6 +1,0 @@
-{
-  "type": "neoforge:add_features",
-  "biomes": "#allthemodium:mining_features/other_features",
-  "features": "allthemodium:other_vibranium_ore",
-  "step": "underground_ores"
-}

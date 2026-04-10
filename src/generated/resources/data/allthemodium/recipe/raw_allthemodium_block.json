@@ -1,38 +1,16 @@
 {
-  "type": "minecraft:crafting_shapeless",
+  "type": "minecraft:crafting_shaped",
   "category": "misc",
   "group": "allthemodium",
-  "ingredients": [
-    {
-      "tag": "c:raw_materials/allthemodium"
-    },
-    {
-      "tag": "c:raw_materials/allthemodium"
-    },
-    {
-      "tag": "c:raw_materials/allthemodium"
-    },
-    {
-      "tag": "c:raw_materials/allthemodium"
-    },
-    {
-      "tag": "c:raw_materials/allthemodium"
-    },
-    {
-      "tag": "c:raw_materials/allthemodium"
-    },
-    {
-      "tag": "c:raw_materials/allthemodium"
-    },
-    {
-      "tag": "c:raw_materials/allthemodium"
-    },
-    {
-      "tag": "c:raw_materials/allthemodium"
-    }
+  "key": {
+    "a": "#c:raw_materials/allthemodium"
+  },
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
   ],
   "result": {
-    "count": 1,
     "id": "allthemodium:raw_allthemodium_block"
   }
 }

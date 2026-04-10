@@ -3,17 +3,14 @@
   "category": "misc",
   "group": "allthemodium",
   "key": {
-    "a": {
-      "tag": "c:ingots/vibranium"
-    }
+    "a": "#c:ingots/vibranium",
+    "h": "#alltheores:ore_hammers"
   },
   "pattern": [
-    "aa ",
-    "aa ",
-    "   "
+    "ha ",
+    "a  "
   ],
   "result": {
-    "count": 1,
     "id": "allthemodium:vibranium_plate"
   }
 }

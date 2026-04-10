@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/bow",
+  "textures": {
+    "layer0": "allthemodium:item/allthemodium_bow"
+  }
+}

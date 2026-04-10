@@ -3,12 +3,9 @@
   "category": "misc",
   "group": "allthemodium",
   "key": {
-    "a": {
-      "tag": "allthemodium:ancient_stone_bricks"
-    }
+    "a": "#allthemodium:ancient_stone_bricks"
   },
   "pattern": [
-    "   ",
     "aaa",
     "aaa"
   ],

@@ -7,8 +7,8 @@
     "allthemodium:raw_allthemodium_block",
     "allthemodium:raw_vibranium_block",
     "allthemodium:raw_unobtainium_block",
-    "allthemodium:vibranium_allthemodium_alloy_block",
-    "allthemodium:unobtainium_allthemodium_alloy_block",
-    "allthemodium:unobtainium_vibranium_alloy_block"
+    "allthemodium:vibranium_allthemodium_block",
+    "allthemodium:unobtainium_allthemodium_block",
+    "allthemodium:unobtainium_vibranium_block"
   ]
 }
