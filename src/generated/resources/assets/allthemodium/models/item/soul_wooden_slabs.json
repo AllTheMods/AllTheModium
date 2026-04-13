@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "allthemodium:block/soul_planks",
-    "side": "allthemodium:block/soul_planks",
-    "top": "allthemodium:block/soul_planks"
-  }
-}

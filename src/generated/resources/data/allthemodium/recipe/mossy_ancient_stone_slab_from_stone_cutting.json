@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "allthemodium:mossy_ancient_stone",
+  "result": {
+    "count": 2,
+    "id": "allthemodium:mossy_ancient_stone_slab"
+  }
+}

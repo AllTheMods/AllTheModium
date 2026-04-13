@@ -3,17 +3,14 @@
   "category": "misc",
   "group": "allthemodium",
   "key": {
-    "a": {
-      "tag": "c:ingots/allthemodium"
-    }
+    "a": "#c:ingots/allthemodium",
+    "h": "#alltheores:ore_hammers"
   },
   "pattern": [
-    "aa ",
-    "aa ",
-    "   "
+    "ha ",
+    "a  "
   ],
   "result": {
-    "count": 1,
     "id": "allthemodium:allthemodium_plate"
   }
 }

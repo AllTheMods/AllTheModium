@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "allthemodium:block/demonic_slab"
+    },
+    "type=double": {
+      "model": "allthemodium:block/demonic_planks"
+    },
+    "type=top": {
+      "model": "allthemodium:block/demonic_slab_top"
+    }
+  }
+}

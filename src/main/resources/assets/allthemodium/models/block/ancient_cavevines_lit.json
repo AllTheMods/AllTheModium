@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "allthemodium:block/ancient_cavevines_lit"
-  }
-}

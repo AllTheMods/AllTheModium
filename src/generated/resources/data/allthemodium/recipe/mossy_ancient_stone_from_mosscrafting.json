@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "allthemodium",
+  "ingredients": [
+    "#allthemodium:ancient_stone",
+    "minecraft:moss_block"
+  ],
+  "result": {
+    "id": "allthemodium:mossy_ancient_stone"
+  }
+}

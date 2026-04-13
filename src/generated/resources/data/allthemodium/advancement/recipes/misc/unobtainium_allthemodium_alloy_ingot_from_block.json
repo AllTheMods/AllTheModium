@@ -1,27 +1,27 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
-      "conditions": {
-        "items": [
-          {
-            "items": "allthemodium:unobtainium_allthemodium_alloy_block"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
-    },
     "has_the_recipe": {
       "conditions": {
         "recipe": "allthemodium:unobtainium_allthemodium_alloy_ingot_from_block"
       },
       "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_unobtainium_allthemodium_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:storage_blocks/unobtainium_allthemodium_alloy"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_unobtainium_allthemodium_block"
     ]
   ],
   "rewards": {

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "allthemodium:block/ancient_slab"
+    },
+    "type=double": {
+      "model": "allthemodium:block/ancient_planks"
+    },
+    "type=top": {
+      "model": "allthemodium:block/ancient_slab_top"
+    }
+  }
+}

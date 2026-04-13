@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_allthemodium_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "allthemodium:allthemodium_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "allthemodium:allthemodium_leggings_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_allthemodium_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "allthemodium:allthemodium_leggings_smithing"
+    ]
+  }
+}

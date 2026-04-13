@@ -1,6 +1,0 @@
-{
-  "type": "neoforge:add_features",
-  "biomes": "#allthemodium:mining_features/mining_biomes",
-  "features": "allthemodium:ore_lapis",
-  "step": "underground_ores"
-}

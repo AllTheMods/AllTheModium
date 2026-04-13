@@ -3,14 +3,12 @@
   "category": "misc",
   "group": "allthemodium",
   "key": {
-    "a": {
-      "tag": "allthemodium:soul_planks"
-    }
+    "a": "#allthemodium:soul_planks"
   },
   "pattern": [
-    "aa ",
-    "aa ",
-    "aa "
+    "aa",
+    "aa",
+    "aa"
   ],
   "result": {
     "count": 3,

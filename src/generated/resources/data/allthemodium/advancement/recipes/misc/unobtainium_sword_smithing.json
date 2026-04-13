@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "allthemodium:unobtainium_sword_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_unobtainium_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "allthemodium:unobtainium_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_unobtainium_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "allthemodium:unobtainium_sword_smithing"
+    ]
+  }
+}

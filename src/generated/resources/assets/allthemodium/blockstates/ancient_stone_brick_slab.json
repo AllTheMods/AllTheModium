@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "allthemodium:block/ancient_stone_brick_slab"
+    },
+    "type=double": {
+      "model": "allthemodium:block/ancient_stone_bricks"
+    },
+    "type=top": {
+      "model": "allthemodium:block/ancient_stone_brick_slab_top"
+    }
+  }
+}

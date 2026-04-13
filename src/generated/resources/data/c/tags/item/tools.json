@@ -1,7 +1,31 @@
 {
   "values": [
+    "allthemodium:allthemodium_pickaxe",
+    "allthemodium:vibranium_pickaxe",
+    "allthemodium:unobtainium_pickaxe",
+    "allthemodium:allthemodium_axe",
+    "allthemodium:vibranium_axe",
+    "allthemodium:unobtainium_axe",
+    "allthemodium:alloy_axe",
+    "allthemodium:allthemodium_shovel",
+    "allthemodium:vibranium_shovel",
+    "allthemodium:unobtainium_shovel",
+    "allthemodium:alloy_shovel",
+    "allthemodium:allthemodium_hoe",
+    "allthemodium:vibranium_hoe",
+    "allthemodium:unobtainium_hoe",
+    "allthemodium:alloy_paxel",
+    "allthemodium:allthemodium_sword",
+    "allthemodium:vibranium_sword",
+    "allthemodium:unobtainium_sword",
+    "allthemodium:alloy_sword",
     "allthemodium:allthemodium_mace",
     "allthemodium:vibranium_mace",
-    "allthemodium:unobtainium_mace"
+    "allthemodium:unobtainium_mace",
+    "allthemodium:alloy_mace",
+    "allthemodium:allthemodium_bow",
+    "allthemodium:vibranium_shield",
+    "allthemodium:unobtainium_crossbow",
+    "allthemodium:alloy_trident"
   ]
 }

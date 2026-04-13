@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "allthemodium",
   "key": {
-    "a": {
-      "item": "minecraft:ender_pearl"
-    },
-    "n": {
-      "tag": "c:nuggets/allthemodium"
-    }
+    "a": "minecraft:ender_pearl",
+    "n": "#c:nuggets/allthemodium"
   },
   "pattern": [
     " n ",
@@ -16,7 +12,6 @@
     " n "
   ],
   "result": {
-    "count": 1,
     "id": "allthemodium:teleport_pad"
   }
 }

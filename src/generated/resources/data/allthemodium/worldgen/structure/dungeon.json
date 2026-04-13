@@ -1,0 +1,15 @@
+{
+  "type": "allthemodium:other_dungeon",
+  "biomes": "#allthemodium:has_structure/dungeon",
+  "max_distance_from_center": 80,
+  "project_start_to_heightmap": "WORLD_SURFACE_WG",
+  "size": 15,
+  "spawn_overrides": {},
+  "start_height": {
+    "absolute": 0
+  },
+  "start_pool": "allthemodium:dungeon/start_pool",
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_box",
+  "use_expansion_hack": false
+}

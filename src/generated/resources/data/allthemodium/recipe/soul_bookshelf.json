@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "allthemodium",
   "key": {
-    "a": {
-      "tag": "allthemodium:soul_planks"
-    },
-    "b": {
-      "item": "minecraft:book"
-    }
+    "a": "#allthemodium:soul_planks",
+    "b": "minecraft:book"
   },
   "pattern": [
     "aaa",
@@ -16,7 +12,6 @@
     "aaa"
   ],
   "result": {
-    "count": 1,
     "id": "allthemodium:soul_bookshelf"
   }
 }

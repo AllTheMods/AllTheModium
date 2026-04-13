@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "allthemodium:block/ancient_stone_wall_wall_post"
+        "model": "allthemodium:block/ancient_stone_wall_post"
       },
       "when": {
         "up": "true"
@@ -10,7 +10,16 @@
     },
     {
       "apply": {
-        "model": "allthemodium:block/ancient_stone_wall_wall_side",
+        "model": "allthemodium:block/ancient_stone_wall_side",
+        "uvlock": true
+      },
+      "when": {
+        "north": "low"
+      }
+    },
+    {
+      "apply": {
+        "model": "allthemodium:block/ancient_stone_wall_side",
         "uvlock": true,
         "y": 90
       },
@@ -20,35 +29,7 @@
     },
     {
       "apply": {
-        "model": "allthemodium:block/ancient_stone_wall_wall_side_tall",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "allthemodium:block/ancient_stone_wall_wall_side",
-        "uvlock": true
-      },
-      "when": {
-        "north": "low"
-      }
-    },
-    {
-      "apply": {
-        "model": "allthemodium:block/ancient_stone_wall_wall_side_tall",
-        "uvlock": true
-      },
-      "when": {
-        "north": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "allthemodium:block/ancient_stone_wall_wall_side",
+        "model": "allthemodium:block/ancient_stone_wall_side",
         "uvlock": true,
         "y": 180
       },
@@ -58,17 +39,7 @@
     },
     {
       "apply": {
-        "model": "allthemodium:block/ancient_stone_wall_wall_side_tall",
-        "uvlock": true,
-        "y": 180
-      },
-      "when": {
-        "south": "tall"
-      }
-    },
-    {
-      "apply": {
-        "model": "allthemodium:block/ancient_stone_wall_wall_side",
+        "model": "allthemodium:block/ancient_stone_wall_side",
         "uvlock": true,
         "y": 270
       },
@@ -78,7 +49,36 @@
     },
     {
       "apply": {
-        "model": "allthemodium:block/ancient_stone_wall_wall_side_tall",
+        "model": "allthemodium:block/ancient_stone_wall_side_tall",
+        "uvlock": true
+      },
+      "when": {
+        "north": "tall"
+      }
+    },
+    {
+      "apply": {
+        "model": "allthemodium:block/ancient_stone_wall_side_tall",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "tall"
+      }
+    },
+    {
+      "apply": {
+        "model": "allthemodium:block/ancient_stone_wall_side_tall",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "tall"
+      }
+    },
+    {
+      "apply": {
+        "model": "allthemodium:block/ancient_stone_wall_side_tall",
         "uvlock": true,
         "y": 270
       },

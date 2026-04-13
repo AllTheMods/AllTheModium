@@ -1,10 +1,9 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
+  "group": "allthemodium",
   "ingredients": [
-    {
-      "tag": "c:storage_blocks/raw_vibranium"
-    }
+    "#c:storage_blocks/raw_vibranium"
   ],
   "result": {
     "count": 9,

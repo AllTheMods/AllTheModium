@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "allthemodium:allthemodium_ingot",
+  "base": "minecraft:netherite_chestplate",
+  "result": {
+    "id": "allthemodium:allthemodium_chestplate"
+  },
+  "template": "allthemodium:allthemodium_upgrade_smithing_template"
+}

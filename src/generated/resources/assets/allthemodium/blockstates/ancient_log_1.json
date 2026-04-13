@@ -1,7 +1,7 @@
 {
   "variants": {
     "axis=x": {
-      "model": "allthemodium:block/ancient_log_1_horizontal",
+      "model": "allthemodium:block/ancient_log_1",
       "x": 90,
       "y": 90
     },
@@ -9,7 +9,7 @@
       "model": "allthemodium:block/ancient_log_1"
     },
     "axis=z": {
-      "model": "allthemodium:block/ancient_log_1_horizontal",
+      "model": "allthemodium:block/ancient_log_1",
       "x": 90
     }
   }

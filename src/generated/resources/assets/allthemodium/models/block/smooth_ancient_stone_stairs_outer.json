@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "allthemodium:block/smooth_ancient_stone",
+    "side": "allthemodium:block/smooth_ancient_stone",
+    "top": "allthemodium:block/smooth_ancient_stone"
+  }
+}

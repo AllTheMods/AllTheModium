@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "allthemodium:unobtainium"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "allthemodium:unobtainium"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "allthemodium:unobtainium"
+      }
+    ]
+  }
+}

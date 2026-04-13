@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "allthemodium:vibranium_mace_smithing"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_vibranium_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "allthemodium:vibranium_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_vibranium_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "allthemodium:vibranium_mace_smithing"
+    ]
+  }
+}

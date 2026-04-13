@@ -1,11 +1,9 @@
 {
-  "type": "allthemodium:mining",
   "generator": {
-    "type": "allthemodium:flat",
     "settings": {
       "biome": "allthemodium:mining",
-      "lakes": false,
       "features": true,
+      "lakes": false,
       "layers": [
         {
           "block": "minecraft:bedrock",
@@ -37,6 +35,8 @@
         }
       ],
       "structure_overrides": []
-    }
-  }
+    },
+    "type": "minecraft:flat"
+  },
+  "type": "allthemodium:mining"
 }

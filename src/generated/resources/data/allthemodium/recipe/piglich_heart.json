@@ -3,9 +3,7 @@
   "category": "misc",
   "group": "allthemodium",
   "ingredients": [
-    {
-      "item": "allthemodium:piglich_heart_block"
-    }
+    "allthemodium:piglich_heart_block"
   ],
   "result": {
     "count": 9,

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "allthemodium:block/ancient_chiseled_stone_bricks",
-    "side": "allthemodium:block/ancient_chiseled_stone_bricks",
-    "top": "allthemodium:block/ancient_chiseled_stone_bricks"
-  }
-}

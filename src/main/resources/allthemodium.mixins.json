@@ -1,20 +1,17 @@
 {
-    "required": true,
-    "package": "com.thevortex.allthemodium.mixins",
-    "compatibilityLevel": "JAVA_21",
-    "minVersion": "0.8",
-    "refmap": "allthemodium.refmap.json",
-    "mixins": [
-    ],
-    "client": [
-      "MixinLocalPlayer",
-      "HarvestToolProviderMixin"
-    ],
-    "injectors": {
-      "defaultRequire": 1
-    },
-    "mixinextras": {
-      "minVersion": "0.5.0"
-    }
+  "required": true,
+  "package": "net.allthemods.allthemodium.core.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "mixins": [
+    "AxeItemAccessor",
+    "CrossbowItemAccessor",
+    "FlatLevelSourceMixin",
+    "LiquidBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
   }
-  
+}

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
   "ingredients": [
-    {
-      "item": "allthemodium:ancient_log_1"
-    }
+    "allthemodium:ancient_log_1"
   ],
   "result": {
     "count": 4,

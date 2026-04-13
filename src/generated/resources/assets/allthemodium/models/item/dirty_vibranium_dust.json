@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "allthemodium:item/dirty_vibranium_dust"
-  }
-}

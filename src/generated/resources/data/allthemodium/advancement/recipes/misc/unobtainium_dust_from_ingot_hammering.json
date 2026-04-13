@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "allthemodium:unobtainium_dust_from_ingot_hammering"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_unobtainium_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:ingots/unobtainium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_unobtainium_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "allthemodium:unobtainium_dust_from_ingot_hammering"
+    ]
+  }
+}

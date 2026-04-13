@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "allthemodium:allthemodium_ingot",
+  "base": "minecraft:netherite_leggings",
+  "result": {
+    "id": "allthemodium:allthemodium_leggings"
+  },
+  "template": "allthemodium:allthemodium_upgrade_smithing_template"
+}

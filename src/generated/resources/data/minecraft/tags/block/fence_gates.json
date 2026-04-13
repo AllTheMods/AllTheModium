@@ -1,7 +1,7 @@
 {
   "values": [
-    "allthemodium:ancient_wooden_fence_gate",
-    "allthemodium:demonic_wooden_fence_gate",
-    "allthemodium:soul_wooden_fence_gate"
+    "allthemodium:ancient_fence_gate",
+    "allthemodium:soul_fence_gate",
+    "allthemodium:demonic_fence_gate"
   ]
 }

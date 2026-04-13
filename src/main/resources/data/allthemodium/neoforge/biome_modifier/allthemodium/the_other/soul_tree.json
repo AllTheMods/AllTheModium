@@ -1,6 +1,0 @@
-{
-  "type": "neoforge:add_features",
-  "biomes": "allthemodium:warped_forest",
-  "features": "allthemodium:soul_tree",
-  "step": "vegetal_decoration"
-}

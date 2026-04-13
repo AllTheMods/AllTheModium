@@ -3,11 +3,8 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.15,
-  "ingredient": {
-    "tag": "c:raw_materials/allthemodium"
-  },
+  "ingredient": "#c:raw_materials/allthemodium",
   "result": {
-    "count": 1,
     "id": "allthemodium:allthemodium_ingot"
   }
 }

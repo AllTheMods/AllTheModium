@@ -1,6 +1,0 @@
-{
-  "type": "neoforge:add_features",
-  "biomes": "allthemodium:crimson_forest",
-  "features": "allthemodium:demonic_tree",
-  "step": "vegetal_decoration"
-}

@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "allthemodium:polished_ancient_stone",
+  "result": {
+    "id": "allthemodium:polished_ancient_stone_stairs"
+  }
+}

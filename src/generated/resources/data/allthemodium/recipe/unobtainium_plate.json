@@ -3,17 +3,14 @@
   "category": "misc",
   "group": "allthemodium",
   "key": {
-    "a": {
-      "tag": "c:ingots/unobtainium"
-    }
+    "a": "#c:ingots/unobtainium",
+    "h": "#alltheores:ore_hammers"
   },
   "pattern": [
-    "aa ",
-    "aa ",
-    "   "
+    "ha ",
+    "a  "
   ],
   "result": {
-    "count": 1,
     "id": "allthemodium:unobtainium_plate"
   }
 }

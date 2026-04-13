@@ -1,9 +1,0 @@
-{
-  "asset_name": "allthemodium",
-  "description": {
-    "color": "#ffef0e",
-    "translate": "trim_material.allthemodium.allthemodium"
-  },
-  "ingredient": "allthemodium:allthemodium_ingot",
-  "item_model_index": 1.0
-}

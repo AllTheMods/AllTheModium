@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_TagKey[minecraft:item / c:nuggets/allthemodium]_nugget": {
+    "has_allthemodium_nugget": {
       "conditions": {
         "items": [
           {
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_TagKey[minecraft:item / c:nuggets/allthemodium]_nugget"
+      "has_allthemodium_nugget"
     ]
   ],
   "rewards": {

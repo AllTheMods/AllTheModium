@@ -3,17 +3,15 @@
   "category": "misc",
   "group": "allthemodium",
   "key": {
-    "a": {
-      "tag": "c:ingots/vibranium"
-    }
+    "a": "#c:ingots/vibranium",
+    "n": "#c:nuggets/iron"
   },
   "pattern": [
-    "aaa",
-    "a a",
-    "aaa"
+    " a ",
+    "ana",
+    " a "
   ],
   "result": {
-    "count": 1,
     "id": "allthemodium:vibranium_gear"
   }
 }

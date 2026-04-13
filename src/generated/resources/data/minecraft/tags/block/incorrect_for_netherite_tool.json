@@ -1,8 +1,8 @@
 {
   "values": [
-    "#c:needs_allthemodium_tool",
-    "#c:needs_vibranium_tool",
-    "#c:needs_unobtainium_tool",
-    "#c:needs_allthemodiumalloy_tool"
+    "#allthemodium:incorrect_for_allthemodium_tool",
+    "#allthemodium:incorrect_for_vibranium_tool",
+    "#allthemodium:incorrect_for_unobtainium_tool",
+    "#allthemodium:incorrect_for_alloy_tool"
   ]
 }

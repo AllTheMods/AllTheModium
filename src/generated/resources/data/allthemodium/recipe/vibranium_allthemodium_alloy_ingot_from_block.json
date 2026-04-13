@@ -1,10 +1,9 @@
 {
   "type": "minecraft:crafting_shapeless",
   "category": "misc",
+  "group": "allthemodium",
   "ingredients": [
-    {
-      "tag": "c:storage_blocks/vibranium_allthemodium_alloy"
-    }
+    "#c:storage_blocks/vibranium_allthemodium_alloy"
   ],
   "result": {
     "count": 9,

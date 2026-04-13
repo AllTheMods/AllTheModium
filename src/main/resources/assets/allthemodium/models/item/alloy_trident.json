@@ -1,10 +1,8 @@
 {
 	"credit": "Model created by Zorak Design - Contact me on discord for work: CesarZorak#0808",
-	"parent": "entity/trident",
 	"texture_size": [32, 32],
 	"textures": {
-		"layer0": "allthemodium:item/alloy_trident",
-		"0": "allthemodium:item/alloy_trident"
+		"0": "allthemodium:entity/alloy_trident"
 	},
 	"elements": [
 		{
@@ -216,49 +214,5 @@
 			}
 		}
 	],
-	"display": {
-		"thirdperson_righthand": {
-			"rotation": [ 0, 0, 0 ],
-			"translation": [ 0, 0, 0 ],
-			"scale": [ 1, 1, 1 ]
-		},
-		"thirdperson_lefthand": {
-			"rotation": [ 0, 0, 0 ],
-			"translation": [ 0, 0, 0 ],
-			"scale": [ 1, 1, 1 ]
-		},
-		"firstperson_righthand": {
-			"rotation": [ 0, -90, 0 ],
-			"translation": [ 0, -5, 0],
-			"scale": [ 1, 1, 1 ]
-		},
-		"firstperson_lefthand": {
-			"rotation": [ 0, 90, 0 ],
-			"translation": [ 0, -5, 0],
-			"scale": [ 1, 1, 1 ]
-		},
-		"gui": {
-			"rotation": [ 0, 0, 0 ],
-			"translation": [ 0, 0, 0 ],
-			"scale": [ 0.65, 0.65, 0.65 ]
-		},
-		"fixed": {
-			"rotation": [ 0, 180, 0 ],
-			"translation": [ -2, 4, -5],
-			"scale":[ 0.5, 0.5, 0.5]
-		},
-		"ground": {
-			"rotation": [ 0, 0, 0 ],
-			"translation": [ 4, 4, 2],
-			"scale":[ 1.0, 1.0, 1.0]
-		}
-	},
-	"overrides": [
-		{
-			"predicate": {
-				"throwing": 1
-			},
-			"model": "allthemodium:item/alloy_trident_throwing"
-		}
-	]
+	"display": {}
 }

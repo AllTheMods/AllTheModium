@@ -3,12 +3,8 @@
   "category": "misc",
   "group": "allthemodium",
   "key": {
-    "a": {
-      "item": "minecraft:carrot"
-    },
-    "n": {
-      "tag": "c:nuggets/allthemodium"
-    }
+    "a": "minecraft:carrot",
+    "n": "#c:nuggets/allthemodium"
   },
   "pattern": [
     "nnn",
@@ -16,7 +12,6 @@
     "nnn"
   ],
   "result": {
-    "count": 1,
     "id": "allthemodium:allthemodium_carrot"
   }
 }

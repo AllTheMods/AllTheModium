@@ -3,14 +3,12 @@
   "category": "misc",
   "group": "allthemodium",
   "key": {
-    "a": {
-      "tag": "allthemodium:ancient_planks"
-    }
+    "a": "#allthemodium:ancient_planks"
   },
   "pattern": [
-    "aa ",
-    "aa ",
-    "aa "
+    "aa",
+    "aa",
+    "aa"
   ],
   "result": {
     "count": 3,

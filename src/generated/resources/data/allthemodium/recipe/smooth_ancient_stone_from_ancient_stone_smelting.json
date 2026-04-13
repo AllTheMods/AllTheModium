@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.15,
+  "ingredient": "#allthemodium:ancient_stone",
+  "result": {
+    "id": "allthemodium:smooth_ancient_stone"
+  }
+}

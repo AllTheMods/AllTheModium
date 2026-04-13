@@ -25,21 +25,11 @@ base {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
-
-repositories {
-    maven {
-        url "https://www.cursemaven.com"
-        content {
-            includeGroup "curse.maven"
-        }
-    }
-}
-
 neoForge {
     version = project.neo_version
 
     // accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
-
+    
     runs {
         client {
             client()
@@ -62,7 +52,6 @@ neoForge {
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
         }
 
-        // applies to all the run configs above
         configureEach {
             systemProperty 'forge.logging.markers', 'REGISTRIES'
             logLevel = org.slf4j.event.Level.DEBUG
@@ -79,76 +68,64 @@ neoForge {
 configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
-dependencies {
-    // Specify the version of Minecraft to use.
-    // Any artifact can be supplied so long as it has a "userdev" classifier artifact and is a compatible patcher artifact.
-    // The "userdev" classifier will be requested and setup by ForgeGradle.
-    // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
-    // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
-    // implementation "net.neoforged:neoforge:${neo_version}"
 
-
-    // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
-    // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
-    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
-    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
-    // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
-    implementation fileTree('libs') { include '*.jar'}
-
-    // Example mod dependency using a mod jar from ./libs with a flat dir repository
-    // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
-    // The group id is ignored when searching -- in this case, it is "blank"
-    // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
-    
-    //implementation "curse.maven:${mekanism}"
-    //implementation "curse.maven:${ato}"
-    //implementation "curse.maven:${tweaks}"
-
-    //implementation "curse.maven:${ars_nouveau}"
-    //implementation "curse.maven:${geckolib}"
-    //implementation "curse.maven:${curios}"
-    //runtimeOnly "curse.maven:jei-238222:5846880"
-    //runtimeOnly "curse.maven:${patchouli}"
-    //implementation "curse.maven:${jade}"
-    //runtimeOnly "curse.maven:ender-io-64578:7204349"
-    //implementation "curse.maven:${jei}"
-    // For more info:
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+repositories {
+    mavenLocal() // ATO
+    maven { // JEI
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven { // Jade
+        name = "Modrinth Maven"
+        url = "https://api.modrinth.com/maven"
+    }
+    maven { // GeckoLib
+        name = 'GeckoLib'
+        url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
+    }
 }
 
-// This block of code expands all declared replace properties in the specified resource targets.
-// A missing property will result in an error. Properties are expanded using ${} Groovy notation.
-// When "copyIdeResources" is enabled, this will also run before the game launches in IDE environments.
-// See https://docs.gradle.org/current/dsl/org.gradle.language.jvm.tasks.ProcessResources.html
+dependencies {
+
+    compileOnly "mezz.jei:jei-26.1.1-neoforge-api:${jei_version}"
+    runtimeOnly "mezz.jei:jei-26.1.1-neoforge:${jei_version}"
+
+    implementation "maven.modrinth:jade:${jade_version}"
+    implementation "com.geckolib:geckolib-neoforge-26.1:${geckolib_version}"
+    
+    implementation "net.allthemods.alltheores:alltheores:4.0.0" // must be pushed to maven local!
+}
+
 tasks.withType(ProcessResources).configureEach {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
     var replaceProperties = [
             minecraft_version      : minecraft_version,
             minecraft_version_range: minecraft_version_range,
             neo_version            : neo_version,
-            neo_version_range      : neo_version_range,
-            loader_version_range   : loader_version_range,
             mod_id                 : mod_id,
             mod_name               : mod_name,
             mod_license            : mod_license,
             mod_version            : mod_version,
-            mod_authors            : mod_authors,
-            mod_description        : mod_description
     ]
     inputs.properties replaceProperties
-
-    filesMatching(['META-INF/neoforge.mods.toml']) {
-        expand replaceProperties
-    }
-
-    duplicatesStrategy = 'exclude'
+    expand replaceProperties
+    from "src/main/templates"
+    into "build/generated/sources/modMetadata"
 }
 
-// Example for how to get properties into the manifest for reading at runtime.
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
+
 publishing {
     publications {
         register('mavenJava', MavenPublication) {
             from components.java
+            groupId = 'net.allthemods.allthemodium'
+            artifactId = 'allthemodium'
+            version = mod_version
         }
     }
     repositories {
@@ -159,26 +136,9 @@ publishing {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    options.encoding = 'UTF-8'
 }
-jar {
-    manifest {
-        attributes([
-            "Specification-Title"     : mod_id,
-            "Specification-Vendor"    : group,
-            "Specification-Version"   : "1", // We are version 1 of ourselves
-            "Implementation-Title"    : project.name,
-            "Implementation-Version"  : project.jar.archiveVersion,
-            "MixinConfigs": "${mod_id}.mixins.json"
-        ])
-    }
 
-    // The settings below make sure that your build is reproducible
-    // More information at https://docs.gradle.org/current/userguide/working_with_files.html#sec:reproducible_archives
-    preserveFileTimestamps = false
-    reproducibleFileOrder = true
-}
-// IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
 idea {
     module {
         downloadSources = true

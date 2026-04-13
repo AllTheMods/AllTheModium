@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": "allthemodium:allthemodium_ingot",
+    "C": "allthemodium:ancient_stone",
+    "S": "allthemodium:vibranium_upgrade_smithing_template"
+  },
+  "pattern": [
+    "#S#",
+    "#C#",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "id": "allthemodium:vibranium_upgrade_smithing_template"
+  }
+}

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_raw_unobtainium": {
       "conditions": {
         "items": [
           {
-            "items": "allthemodium:raw_unobtainium"
+            "items": "#c:raw_materials/unobtainium"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_item"
+      "has_raw_unobtainium"
     ]
   ],
   "rewards": {

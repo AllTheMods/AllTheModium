@@ -1,0 +1,20 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:single",
+      "resource": "allthemodium:trims/color_palettes/allthemodium"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "allthemodium:trims/color_palettes/allthemodium_darker"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "allthemodium:trims/color_palettes/vibranium"
+    },
+    {
+      "type": "minecraft:single",
+      "resource": "allthemodium:trims/color_palettes/unobtainium"
+    }
+  ]
+}

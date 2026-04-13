@@ -1,6 +1,0 @@
-{
-    "type": "neoforge:add_features",
-    "biomes": "allthemodium:basalt_deltas",
-    "features": "allthemodium:soul_delta",
-    "step": "vegetal_decoration"
-  }

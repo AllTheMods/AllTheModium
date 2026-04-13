@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "allthemodium:item/demonic_sapling"
+    "layer0": "allthemodium:block/demonic_sapling"
   }
 }

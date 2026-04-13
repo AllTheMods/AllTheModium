@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_piglich_heart": {
+    "has_piglich_heart_block": {
       "conditions": {
         "items": [
           {
-            "items": "allthemodium:piglich_heart"
+            "items": "allthemodium:piglich_heart_block"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_piglich_heart"
+      "has_piglich_heart_block"
     ]
   ],
   "rewards": {

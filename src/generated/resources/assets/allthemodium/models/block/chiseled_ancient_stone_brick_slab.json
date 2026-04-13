@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "allthemodium:block/chiseled_ancient_stone_bricks",
+    "side": "allthemodium:block/chiseled_ancient_stone_bricks",
+    "top": "allthemodium:block/chiseled_ancient_stone_bricks"
+  }
+}

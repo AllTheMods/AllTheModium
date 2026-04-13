@@ -1,6 +1,0 @@
-{
-  "type": "neoforge:add_features",
-  "biomes": "#allthemodium:mining_features/mining_biomes",
-  "features": "allthemodium:allthemodium_mining",
-  "step": "underground_ores"
-}
