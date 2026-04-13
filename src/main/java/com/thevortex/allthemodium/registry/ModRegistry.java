@@ -387,9 +387,9 @@ public class ModRegistry
     public static final DeferredHolder<Item, Item> VIB_MACE = registerItem("vibranium_mace", () -> new ATMMace(ATMTier.VIBRANIUM, (new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.VIBRANIUM)).attributes(ATMMace.createAttributes(ATMTier.VIBRANIUM))));
     public static final DeferredHolder<Item, Item> UNO_MACE = registerItem("unobtainium_mace", () -> new ATMMace(ATMTier.UNOBTAINIUM, (new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.UNOBTAINIUM)).attributes(ATMMace.createAttributes(ATMTier.UNOBTAINIUM))));
 
-    //public static final DeferredHolder<Item, Item> ATM_BOW = registerItem("allthemodium_bow", () -> new ATMBow((new Item.Properties()).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredHolder<Item, Item> ATM_BOW = registerItem("allthemodium_bow", () -> new ATMBow((new Item.Properties()).fireResistant().rarity(Rarity.EPIC)));
 
-    //public static final DeferredHolder<Item, Item> UNO_BOW = registerItem("unobtainium_crossbow", () -> new Unobow((new Item.Properties()).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredHolder<Item, Item> UNO_BOW = registerItem("unobtainium_crossbow", () -> new Unobow((new Item.Properties()).fireResistant().rarity(Rarity.EPIC)));
 
     public static final DeferredHolder<Item, Item> VIB_SHIELD = registerItem("vibranium_shield", () -> new Vib_Shield((new Item.Properties()).fireResistant().stacksTo(1).rarity(Rarity.EPIC)));
 
