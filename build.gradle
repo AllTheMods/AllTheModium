@@ -83,12 +83,13 @@ repositories {
         name = 'GeckoLib'
         url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
     }
+
 }
 
 dependencies {
 
-    compileOnly "mezz.jei:jei-26.1.1-neoforge-api:${jei_version}"
-    runtimeOnly "mezz.jei:jei-26.1.1-neoforge:${jei_version}"
+    compileOnly "mezz.jei:jei-26.1.2-neoforge-api:${jei_version}"
+    runtimeOnly "mezz.jei:jei-26.1.2-neoforge:${jei_version}"
 
     implementation "maven.modrinth:jade:${jade_version}"
     implementation "com.geckolib:geckolib-neoforge-26.1:${geckolib_version}"
