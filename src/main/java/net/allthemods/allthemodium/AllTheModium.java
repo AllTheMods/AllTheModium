@@ -27,9 +27,5 @@ public class AllTheModium {
         ATMStructureTypes.register(bus);
         ATMPois.register(bus);
         ATMCreativeTabs.register(bus);
-        
-        NeoForge.EVENT_BUS.addListener(PlayerEvent.PlayerLoggedInEvent.class, (event) -> {
-            ServerLifecycleHooks.getCurrentServer().getPlayerList().op(event.getEntity().nameAndId());
-        });
     }
 }
