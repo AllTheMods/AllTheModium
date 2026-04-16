@@ -303,5 +303,6 @@
   "dimension.allthemodium.mining": "採掘ディメンション",
   "dimension.allthemodium.the_other": "アザー",
   "dimension.allthemodium.the_beyond": "ザ・ビヨンド",
-  "tooltip.allthemodium.teleport_pad": "両手に何も持たずにスニーク + 右クリックでテレポート"
+  "tooltip.allthemodium.teleport_pad": "両手に何も持たずにスニーク + 右クリックでテレポート",
+  "entity.allthemodium.alloy_trident": "Allthemodium合金のトライデント"
 }
