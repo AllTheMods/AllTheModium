@@ -48,7 +48,7 @@
   "allthemodium.loc": "Encontrado nos biomas de Profundezas Sombrias, em paredes e tetos de cavernas(uniformemente)",
   "vibranium.loc": "Nether: Florestas Distorcidas e Florestas Carmesim, de Y 100 à 123.",
   "vibranium.other.loc": "Outro: Todos os biomas, de Y 0 à 20.",
-  "unobtainium.loc": "Apenas biomas de zona elevada do Fim",
+  "unobtainium.loc": "Apenas biomas de zona elevada do End",
   "allthemodium.mine": "SÓ PODE SER MINERADO MANUALMENTE PELO JOGADOR",
   "entity.allthemodium.piglich": "Piglich",
   "biome.allthemodium.mining": "Dimensão de Mineração ATM",
@@ -303,5 +303,6 @@
   "dimension.allthemodium.mining": "Dimensão da Mineração",
   "dimension.allthemodium.the_other": "O Outro",
   "dimension.allthemodium.the_beyond": "O Além",
-  "tooltip.allthemodium.teleport_pad": "Agache-se e clique com o botão direito do mouse com as duas mãos vazias para se teletransportar"
+  "tooltip.allthemodium.teleport_pad": "Agache-se e clique com o botão direito do mouse com as duas mãos vazias para se teletransportar",
+  "entity.allthemodium.alloy_trident": "Tridente de Liga de Allthemodium"
 }
