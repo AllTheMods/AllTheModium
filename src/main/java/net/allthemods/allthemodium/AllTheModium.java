@@ -3,9 +3,6 @@ package net.allthemods.allthemodium;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.server.ServerLifecycleHooks;
 
 import net.allthemods.allthemodium.api.ATM;
 import net.allthemods.allthemodium.core.registry.ATMBlocks;

@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_features",
   "biomes": "allthemodium:mining",
-  "features": "alltheores:ore_cinnabar_placed",
+  "features": "allthemodium:mining/ore_cinnabar",
   "step": "underground_ores"
 }
