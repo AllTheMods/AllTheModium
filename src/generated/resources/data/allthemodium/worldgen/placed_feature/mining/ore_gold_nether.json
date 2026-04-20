@@ -1,0 +1,28 @@
+{
+  "feature": "allthemodium:mining/ore_nether_gold",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 10
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:biased_to_bottom",
+        "inner": 24,
+        "max_inclusive": {
+          "absolute": 64
+        },
+        "min_inclusive": {
+          "absolute": 1
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

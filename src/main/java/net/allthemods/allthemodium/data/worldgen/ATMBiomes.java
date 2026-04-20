@@ -53,6 +53,43 @@ public class ATMBiomes {
                 ATMBiomes.builder(false, 1.0F, 0.0F)
                         .specialEffects(ATMBiomes.effects(0x3F76E4, 0x2BBB0F, 0x55C93F))
                         .generationSettings(new BiomeGenerationSettings.Builder(features, carvers)
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_COAL_LOWER))
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_COAL_UPPER))
+                                
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_COPPER))
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_COPPER_LARGE))
+                                
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_IRON_SMALL))
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_IRON_MIDDLE))
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_IRON_UPPER))
+                                
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GOLD))
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GOLD_EXTRA))
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GOLD_LOWER))
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GOLD_DELTAS))
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GOLD_NETHER))
+                                
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_REDSTONE))
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_REDSTONE_LOWER))
+                                
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_LAPIS))
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_LAPIS_BURIED))
+                                
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_DIAMOND))
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_DIAMOND_BURIED))
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_DIAMOND_MEDIUM))
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_DIAMOND_LARGE))
+                                
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_EMERALD))
+                                
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_QUARTZ_DELTAS))
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_QUARTZ_NETHER))
+                                
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_DEBRIS_SMALL))
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_ANCIENT_DEBRIS_LARGE))
+                                
+                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GLOWSTONE))
+                                
                                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ALLTHEMODIUM_MINING))
                                 .build()
                         )

@@ -87,8 +87,8 @@ public class ATMBlockTagsProvider extends BlockTagsProvider {
         
         this.tag(BlockTags.BEACON_BASE_BLOCKS)
                 .add(
-                        ATMBlocks.ALLTHEMODIUM_BLOCK.get(), 
-                        ATMBlocks.VIBRANIUM_BLOCK.get(), 
+                        ATMBlocks.ALLTHEMODIUM_BLOCK.get(),
+                        ATMBlocks.VIBRANIUM_BLOCK.get(),
                         ATMBlocks.UNOBTAINIUM_BLOCK.get()
                 );
         

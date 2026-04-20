@@ -10,6 +10,7 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.util.valueproviders.WeightedListInt;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RedStoneOreBlock;
@@ -33,13 +34,17 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStatePr
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
 import net.allthemods.allthemodium.api.ATM;
 import net.allthemods.allthemodium.common.blocks.AncientCaveVines;
 import net.allthemods.allthemodium.core.registry.ATMBlocks;
 import net.allthemods.allthemodium.core.registry.ATMFluids;
+import net.allthemods.alltheores.common.material.Material;
+import net.allthemods.alltheores.common.parts.BlockPartType;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalInt;
 
@@ -50,16 +55,26 @@ public class ATMConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> OTHER_VIBRANIUM = ATMConfiguredFeatures.create("other_vibranium");
     public static final ResourceKey<ConfiguredFeature<?, ?>> UNOBTAINIUM = ATMConfiguredFeatures.create("unobtainium");
     
-    public static final ResourceKey<ConfiguredFeature<?, ?>> COAL = ATMConfiguredFeatures.create("coal");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> COPPER_LARGE = ATMConfiguredFeatures.create("copper_large");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DIAMOND_LARGE = ATMConfiguredFeatures.create("diamond_large");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> EMERALD = ATMConfiguredFeatures.create("emerald");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GOLD = ATMConfiguredFeatures.create("gold");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> IRON = ATMConfiguredFeatures.create("iron");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LAPIS = ATMConfiguredFeatures.create("lapis");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> NETHERITE = ATMConfiguredFeatures.create("netherite");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> QUARTZ = ATMConfiguredFeatures.create("quartz");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> REDSTONE = ATMConfiguredFeatures.create("redstone");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_COAL = ATMConfiguredFeatures.create("mining/ore_coal");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_COPPER_SMALL = ATMConfiguredFeatures.create("mining/ore_copper_small");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_COPPER_LARGE = ATMConfiguredFeatures.create("mining/ore_copper_large");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_IRON = ATMConfiguredFeatures.create("mining/ore_iron");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_IRON_SMALL = ATMConfiguredFeatures.create("mining/ore_iron_small");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GOLD = ATMConfiguredFeatures.create("mining/ore_gold");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GOLD_BURIED = ATMConfiguredFeatures.create("mining/ore_gold_buried");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_NETHER_GOLD = ATMConfiguredFeatures.create("mining/ore_nether_gold");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_REDSTONE = ATMConfiguredFeatures.create("mining/ore_redstone");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_LAPIS = ATMConfiguredFeatures.create("mining/ore_lapis");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_LAPIS_BURIED = ATMConfiguredFeatures.create("mining/ore_lapis_buried");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIAMOND_SMALL = ATMConfiguredFeatures.create("mining/ore_diamond_small");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIAMOND_BURIED = ATMConfiguredFeatures.create("mining/ore_diamond_buried");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIAMOND_MEDIUM = ATMConfiguredFeatures.create("mining/ore_diamond_medium");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_DIAMOND_LARGE = ATMConfiguredFeatures.create("mining/ore_diamond_large");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_EMERALD = ATMConfiguredFeatures.create("mining/ore_emerald");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_QUARTZ = ATMConfiguredFeatures.create("mining/ore_quartz");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> GLOWSTONE = ATMConfiguredFeatures.create("mining/glowstone");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ANCIENT_DEBRIS_SMALL = ATMConfiguredFeatures.create("mining/ore_ancient_debris_small");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ANCIENT_DEBRIS_LARGE = ATMConfiguredFeatures.create("mining/ore_ancient_debris_large");
     
     public static final ResourceKey<ConfiguredFeature<?, ?>> ANCIENT_TREE = ATMConfiguredFeatures.create("ancient_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CAVE_VINE = ATMConfiguredFeatures.create("cave_vine");
@@ -81,45 +96,123 @@ public class ATMConfiguredFeatures {
         ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.OTHER_VIBRANIUM, Feature.ORE, new OreConfiguration(List.of(
                 OreConfiguration.target(new BlockMatchTest(ATMBlocks.ANCIENT_STONE.get()), ATMBlocks.OTHER_VIBRANIUM_ORE.get().defaultBlockState())
         ), 5));
-        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.COAL, Feature.ORE, new OreConfiguration(List.of(
-                OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), Blocks.COAL_ORE.defaultBlockState()),
-                OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), Blocks.DEEPSLATE_COAL_ORE.defaultBlockState())
-        ), 17));
-        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.COPPER_LARGE, Feature.ORE, new OreConfiguration(List.of(
-                OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), Blocks.COPPER_ORE.defaultBlockState()),
-                OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), Blocks.DEEPSLATE_COPPER_ORE.defaultBlockState())
-        ), 20));
-        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.DIAMOND_LARGE, Feature.ORE, new OreConfiguration(List.of(
-                OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), Blocks.DIAMOND_ORE.defaultBlockState()),
-                OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), Blocks.DEEPSLATE_DIAMOND_ORE.defaultBlockState())
-        ), 12, 0.7F));
-        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.EMERALD, Feature.ORE, new OreConfiguration(List.of(
-                OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), Blocks.EMERALD_ORE.defaultBlockState()),
-                OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), Blocks.DEEPSLATE_EMERALD_ORE.defaultBlockState())
-        ), 3));
-        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.GOLD, Feature.ORE, new OreConfiguration(List.of(
-                OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), Blocks.GOLD_ORE.defaultBlockState()),
-                OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), Blocks.DEEPSLATE_GOLD_ORE.defaultBlockState()),
-                OreConfiguration.target(new TagMatchTest(BlockTags.BASE_STONE_NETHER), Blocks.NETHER_GOLD_ORE.defaultBlockState())
-        ), 18));
-        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.IRON, Feature.ORE, new OreConfiguration(List.of(
-                OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), Blocks.IRON_ORE.defaultBlockState()),
-                OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), Blocks.DEEPSLATE_IRON_ORE.defaultBlockState())
-        ), 9));
-        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.LAPIS, Feature.ORE, new OreConfiguration(List.of(
-                OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), Blocks.LAPIS_ORE.defaultBlockState()),
-                OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), Blocks.DEEPSLATE_LAPIS_ORE.defaultBlockState())
-        ), 7));
-        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.NETHERITE, Feature.ORE, new OreConfiguration(List.of(
-                OreConfiguration.target(new BlockMatchTest(Blocks.NETHERRACK), Blocks.ANCIENT_DEBRIS.defaultBlockState())
-        ), 5));
-        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.QUARTZ, Feature.ORE, new OreConfiguration(List.of(
+        
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.GLOWSTONE, Feature.ORE, new OreConfiguration(List.of(
+                OreConfiguration.target(new BlockMatchTest(Blocks.NETHERRACK), Blocks.GLOWSTONE.defaultBlockState())
+        ), 8));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_COAL, Feature.ORE, ATMConfiguredFeatures.stoneOre(
+                Blocks.COAL_ORE,
+                Blocks.DEEPSLATE_COAL_ORE,
+                17
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_COPPER_SMALL, Feature.ORE, ATMConfiguredFeatures.stoneOre(
+                Blocks.COPPER_ORE,
+                Blocks.DEEPSLATE_COPPER_ORE,
+                10
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_COPPER_LARGE, Feature.ORE, ATMConfiguredFeatures.stoneOre(
+                Blocks.COPPER_ORE,
+                Blocks.DEEPSLATE_COPPER_ORE,
+                20
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_IRON, Feature.ORE, ATMConfiguredFeatures.stoneOre(
+                Blocks.IRON_ORE,
+                Blocks.DEEPSLATE_IRON_ORE,
+                9
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_IRON_SMALL, Feature.ORE, ATMConfiguredFeatures.stoneOre(
+                Blocks.IRON_ORE,
+                Blocks.DEEPSLATE_IRON_ORE,
+                4
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_GOLD, Feature.ORE, ATMConfiguredFeatures.stoneOre(
+                Blocks.GOLD_ORE,
+                Blocks.DEEPSLATE_GOLD_ORE,
+                9
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_GOLD_BURIED, Feature.ORE, ATMConfiguredFeatures.stoneOre(
+                Blocks.GOLD_ORE,
+                Blocks.DEEPSLATE_GOLD_ORE,
+                9,
+                0.5F
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_NETHER_GOLD, Feature.ORE, new OreConfiguration(List.of(
+                OreConfiguration.target(new BlockMatchTest(Blocks.NETHERRACK), Blocks.NETHER_GOLD_ORE.defaultBlockState())
+        ), 10));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_REDSTONE, Feature.ORE, ATMConfiguredFeatures.stoneOre(
+                Blocks.REDSTONE_ORE.defaultBlockState().setValue(RedStoneOreBlock.LIT, false),
+                Blocks.DEEPSLATE_REDSTONE_ORE.defaultBlockState().setValue(RedStoneOreBlock.LIT, false),
+                8
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_LAPIS, Feature.ORE, ATMConfiguredFeatures.stoneOre(
+                Blocks.LAPIS_ORE,
+                Blocks.DEEPSLATE_LAPIS_ORE,
+                7
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_LAPIS_BURIED, Feature.ORE, ATMConfiguredFeatures.stoneOre(
+                Blocks.LAPIS_ORE,
+                Blocks.DEEPSLATE_LAPIS_ORE,
+                7,
+                1.0F
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_DIAMOND_SMALL, Feature.ORE, ATMConfiguredFeatures.stoneOre(
+                Blocks.DIAMOND_ORE,
+                Blocks.DEEPSLATE_DIAMOND_ORE,
+                4,
+                0.5F
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_DIAMOND_BURIED, Feature.ORE, ATMConfiguredFeatures.stoneOre(
+                Blocks.DIAMOND_ORE,
+                Blocks.DEEPSLATE_DIAMOND_ORE,
+                8,
+                1.0F
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_DIAMOND_MEDIUM, Feature.ORE, ATMConfiguredFeatures.stoneOre(
+                Blocks.DIAMOND_ORE,
+                Blocks.DEEPSLATE_DIAMOND_ORE,
+                8,
+                0.5F
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_DIAMOND_LARGE, Feature.ORE, ATMConfiguredFeatures.stoneOre(
+                Blocks.DIAMOND_ORE,
+                Blocks.DEEPSLATE_DIAMOND_ORE,
+                12,
+                0.7F
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_EMERALD, Feature.ORE, ATMConfiguredFeatures.stoneOre(
+                Blocks.EMERALD_ORE,
+                Blocks.DEEPSLATE_EMERALD_ORE,
+                3
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_QUARTZ, Feature.ORE, new OreConfiguration(List.of(
                 OreConfiguration.target(new BlockMatchTest(Blocks.NETHERRACK), Blocks.NETHER_QUARTZ_ORE.defaultBlockState())
         ), 14));
-        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.REDSTONE, Feature.ORE, new OreConfiguration(List.of(
-                OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), Blocks.REDSTONE_ORE.defaultBlockState().setValue(RedStoneOreBlock.LIT, false)),
-                OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), Blocks.DEEPSLATE_REDSTONE_ORE.defaultBlockState().setValue(RedStoneOreBlock.LIT, false))
-        ), 8));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_ANCIENT_DEBRIS_SMALL, Feature.SCATTERED_ORE, new OreConfiguration(List.of(
+                OreConfiguration.target(new TagMatchTest(BlockTags.BASE_STONE_NETHER), Blocks.ANCIENT_DEBRIS.defaultBlockState())
+        ), 2, 1.0F));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ORE_ANCIENT_DEBRIS_LARGE, Feature.SCATTERED_ORE, new OreConfiguration(List.of(
+                OreConfiguration.target(new TagMatchTest(BlockTags.BASE_STONE_NETHER), Blocks.ANCIENT_DEBRIS.defaultBlockState())
+        ), 3, 1.0F));
+        
+        Material.forAll(material -> {
+            Material.WorldGen worldGen = material.getWorldGen();
+            if (worldGen == null) return;
+            
+            List<OreConfiguration.TargetBlockState> targets = new ArrayList<>();
+            ATMConfiguredFeatures.addTarget(material, BlockPartType.STONE_ORE, new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), targets);
+            ATMConfiguredFeatures.addTarget(material, BlockPartType.DEEPSLATE_ORE, new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), targets);
+            ATMConfiguredFeatures.addTarget(material, BlockPartType.NETHER_ORE, new BlockMatchTest(Blocks.NETHERRACK), targets);
+            ATMConfiguredFeatures.addTarget(material, BlockPartType.END_ORE, new BlockMatchTest(Blocks.END_STONE), targets);
+            
+            if (targets.isEmpty()) return;
+            
+            ATMConfiguredFeatures.register(
+                    ctx,
+                    ATMConfiguredFeatures.mining(material),
+                    Feature.ORE,
+                    new OreConfiguration(targets, worldGen.veinSize())
+            );
+        });
         
         ATMConfiguredFeatures.register(
                 ctx,
@@ -211,6 +304,37 @@ public class ATMConfiguredFeatures {
         ).ignoreVines().build();
     }
     
+    private static OreConfiguration stoneOre(Block stoneOre, Block deepslateOre, int size) {
+        return ATMConfiguredFeatures.stoneOre(stoneOre, deepslateOre, size, 0.0F);
+    }
+    
+    private static OreConfiguration stoneOre(Block stoneOre, Block deepslateOre, int size, float discardChance) {
+        return ATMConfiguredFeatures.stoneOre(stoneOre.defaultBlockState(), deepslateOre.defaultBlockState(), size, discardChance);
+    }
+    
+    private static OreConfiguration stoneOre(BlockState stoneOre, BlockState deepslateOre, int size) {
+        return ATMConfiguredFeatures.stoneOre(stoneOre, deepslateOre, size, 0.0F);
+    }
+    
+    private static OreConfiguration stoneOre(BlockState stoneOre, BlockState deepslateOre, int size, float discardChance) {
+        return new OreConfiguration(List.of(
+                OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), stoneOre),
+                OreConfiguration.target(new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES), deepslateOre)
+        ), size, discardChance);
+    }
+    
+    private static void addTarget(
+            Material material,
+            BlockPartType type,
+            RuleTest target,
+            List<OreConfiguration.TargetBlockState> targets
+    ) {
+        material.apply(type, part -> {
+            if (part.isVanilla()) return;
+            targets.add(OreConfiguration.target(target, part.getHolder().get().defaultBlockState()));
+        });
+    }
+    
     private static <FC extends FeatureConfiguration> void register(
             BootstrapContext<ConfiguredFeature<?, ?>> ctx,
             ResourceKey<ConfiguredFeature<?, ?>> key,
@@ -222,5 +346,9 @@ public class ATMConfiguredFeatures {
     
     private static ResourceKey<ConfiguredFeature<?, ?>> create(String path) {
         return ATM.key(Registries.CONFIGURED_FEATURE, path);
+    }
+    
+    public static ResourceKey<ConfiguredFeature<?, ?>> mining(Material material) {
+        return ATMConfiguredFeatures.create("mining/ore_" + material.getGroup());
     }
 }

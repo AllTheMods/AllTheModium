@@ -60,7 +60,7 @@ public class ATMBiomeModifier {
                     ATMBiomeModifier.create("mining/" + material.getGroup()),
                     new BiomeModifiers.AddFeaturesBiomeModifier(
                             HolderSet.direct(biomes.getOrThrow(ATMBiomes.MINING)),
-                            HolderSet.direct(placed.getOrThrow(material.getPlacedOreFeatureKey())),
+                            HolderSet.direct(placed.getOrThrow(ATMPlacedFeatures.mining(material))),
                             GenerationStep.Decoration.UNDERGROUND_ORES
                     )
             );
