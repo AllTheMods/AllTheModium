@@ -17,7 +17,7 @@ import net.neoforged.neoforge.event.entity.EntityInvulnerabilityCheckEvent;
 import net.neoforged.neoforge.event.entity.living.LivingFallEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.level.block.BreakBlockEvent;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Camera;
@@ -188,7 +188,7 @@ public final class ATMEventListener {
         }
         
         @SubscribeEvent
-        private static void onBlockBreak(final BlockEvent.BreakEvent event) {
+        private static void onBlockBreak(final BreakBlockEvent event) {
             final Player player = event.getPlayer();
             final LevelAccessor level = event.getLevel();
             final BlockState state = event.getState();
