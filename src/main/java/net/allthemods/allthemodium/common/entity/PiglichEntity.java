@@ -186,6 +186,8 @@ public class PiglichEntity extends Piglin implements GeoEntity {
             if (support == null) continue;
             
             BlockPos pos = this.findSupportSpawnPos(level, support, entityType, origin);
+            if (pos == null) continue;
+            
             if (!this.canSpawnSupport(level, support, entityType, pos)) continue;
             
             support.setTarget(target);

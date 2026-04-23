@@ -7,6 +7,7 @@ import net.minecraft.data.PackOutput;
 import net.allthemods.allthemodium.api.ATM;
 import net.allthemods.allthemodium.client.lang.ATMLanguage;
 import net.allthemods.allthemodium.core.registry.ATMBlocks;
+import net.allthemods.allthemodium.core.registry.ATMEntities;
 import net.allthemods.allthemodium.core.registry.ATMFluids;
 import net.allthemods.allthemodium.core.registry.ATMItems;
 import net.allthemods.allthemodium.data.worldgen.ATMDimensions;
@@ -22,6 +23,9 @@ public class ATMLanguageProvider extends LanguageProvider {
         this.addBlocks();
         this.addItems();
         this.addTrimMaterials();
+        
+        this.addEntityType(ATMEntities.PIGLICH, "Piglich");
+        this.addEntityType(ATMEntities.ALLOY_TRIDENT_ENTITY, "Allthemodium Alloy Trident");
         
         this.addDimension(ATMDimensions.MINING, "Mining Dimension");
         this.addDimension(ATMDimensions.THE_BEYOND, "The Beyond");
