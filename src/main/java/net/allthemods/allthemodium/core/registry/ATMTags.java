@@ -20,7 +20,7 @@ public class ATMTags {
         
         public static final TagKey<Block> ORES_ALLTHEMODIUM = Blocks.neo("ores/allthemodium");
         public static final TagKey<Block> ORES_VIBRANIUM = Blocks.neo("ores/vibranium");
-        public static final TagKey<Block> ORES_UNOBTANIUM = Blocks.neo("ores/unobtanium");
+        public static final TagKey<Block> ORES_UNOBTANIUM = Blocks.neo("ores/unobtainium");
         
         public static final TagKey<Block> STORAGE_BLOCKS_RAW_ALLTHEMODIUM = Blocks.neo("storage_blocks/raw_allthemodium");
         public static final TagKey<Block> STORAGE_BLOCKS_RAW_VIBRANIUM = Blocks.neo("storage_blocks/raw_vibranium");
@@ -76,7 +76,7 @@ public class ATMTags {
         
         public static final TagKey<Item> ORES_ALLTHEMODIUM = Items.neo("ores/allthemodium");
         public static final TagKey<Item> ORES_VIBRANIUM = Items.neo("ores/vibranium");
-        public static final TagKey<Item> ORES_UNOBTAINIUM = Items.neo("ores/unobtanium");
+        public static final TagKey<Item> ORES_UNOBTAINIUM = Items.neo("ores/unobtainium");
         public static final TagKey<Item> ORES_IN_GROUND_ANCIENT_STONE = Items.neo("ores_in_ground/ancient_stone");
         public static final TagKey<Item> ORES_IN_GROUND_END_STONE = Items.neo("ores_in_ground/end_stone");
         
