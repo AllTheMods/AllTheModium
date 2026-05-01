@@ -26,7 +26,8 @@ public class ATMBiomeTagsProvider extends BiomeTagsProvider {
                 .addOptional(ATMBiomes.WARPED_FOREST)
                 .addOptional(ATMBiomes.SOUL_SAND_VALLEY)
                 .addOptional(ATMBiomes.DESERT)
-                .addOptional(ATMBiomes.DESERT_HILLS);
+                .addOptional(ATMBiomes.DESERT_HILLS)
+                .addOptional(ATMBiomes.WRETCHED_CAVES);
         
         this.tag(ATMTags.Biomes.HAS_DUNGEON)
                 .addOptional(ATMBiomes.WARPED_FOREST);

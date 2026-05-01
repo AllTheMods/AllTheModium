@@ -7,6 +7,8 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.Carvers;
+import net.minecraft.data.worldgen.features.CaveFeatures;
+import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -18,12 +20,10 @@ import net.minecraft.world.attribute.BackgroundMusic;
 import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.BiomeGenerationSettings;
-import net.minecraft.world.level.biome.BiomeSpecialEffects;
-import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 import net.allthemods.allthemodium.api.ATM;
@@ -43,6 +43,7 @@ public class ATMBiomes {
     public static final ResourceKey<Biome> SOUL_SAND_VALLEY = ATMBiomes.create("soul_sand_valley");
     public static final ResourceKey<Biome> DESERT = ATMBiomes.create("desert");
     public static final ResourceKey<Biome> DESERT_HILLS = ATMBiomes.create("desert_hills");
+    public static final ResourceKey<Biome> WRETCHED_CAVES = ATMBiomes.create("wretched_caves");
     
     public static void bootstrap(final BootstrapContext<Biome> ctx) {
         HolderGetter<PlacedFeature> features = ctx.lookup(Registries.PLACED_FEATURE);
@@ -127,6 +128,26 @@ public class ATMBiomes {
                                 .addSpawn(MobCategory.MONSTER, 140, ATMBiomes.spawn(EntityType.WITHER_SKELETON, 1, 4))
                                 .addSpawn(MobCategory.MONSTER, 100, ATMBiomes.spawn(EntityType.BLAZE, 2, 5))
                                 .addSpawn(MobCategory.MONSTER, 10, ATMBiomes.spawn(EntityType.ENDERMAN, 4, 8))
+                                .build()
+                        )
+                        .build()
+        );
+        ctx.register(
+                ATMBiomes.WRETCHED_CAVES,
+                ATMBiomes.builder(false, 0.9F, 0.0F)
+                        .specialEffects(ATMBiomes.effects(0x330303, 0x1B4745, 0x1B4745))
+                        .generationSettings(ATMBiomes.other(features, carvers)
+                                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(ATMPlacedFeatures.SOUL_DELTA))
+                                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(ATMPlacedFeatures.CAVE_VINES))
+                                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(ATMPlacedFeatures.DEMONIC_TREE))
+
+                                .build()
+                        )
+                        .putAttributes(ATMBiomes.netherAttributes(0x685F70, 0x330303, SoundEvents.MUSIC_BIOME_BASALT_DELTAS, SoundEvents.AMBIENT_BASALT_DELTAS_LOOP, SoundEvents.AMBIENT_BASALT_DELTAS_MOOD, SoundEvents.AMBIENT_BASALT_DELTAS_ADDITIONS, ParticleTypes.FIREFLY, 0.118093334F))
+                        .mobSpawnSettings(ATMBiomes.spawns()
+                                .addSpawn(MobCategory.MONSTER, 140, ATMBiomes.spawn(EntityType.WITHER_SKELETON, 1, 4))
+                                .addSpawn(MobCategory.MONSTER, 40, ATMBiomes.spawn(EntityType.GHAST, 1, 1))
+                                .addSpawn(MobCategory.MONSTER, 100, ATMBiomes.spawn(EntityType.PIGLIN, 2, 5))
                                 .build()
                         )
                         .build()

@@ -3,7 +3,7 @@
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.15,
-  "ingredient": "#c:ores/unobtanium",
+  "ingredient": "#c:ores/unobtainium",
   "result": {
     "id": "allthemodium:unobtainium_ingot"
   }

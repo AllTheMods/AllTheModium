@@ -27,6 +27,10 @@
     {
       "id": "allthemodium:desert_hills",
       "required": false
+    },
+    {
+      "id": "allthemodium:wretched_caves",
+      "required": false
     }
   ]
 }

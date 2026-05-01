@@ -1,0 +1,94 @@
+{
+  "attributes": {
+    "minecraft:audio/ambient_sounds": {
+      "additions": {
+        "sound": "minecraft:ambient.basalt_deltas.additions",
+        "tick_chance": 0.0111
+      },
+      "loop": "minecraft:ambient.basalt_deltas.loop",
+      "mood": {
+        "block_search_extent": 8,
+        "offset": 2.0,
+        "sound": "minecraft:ambient.basalt_deltas.mood",
+        "tick_delay": 6000
+      }
+    },
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 24000,
+        "min_delay": 12000,
+        "sound": "minecraft:music.nether.basalt_deltas"
+      }
+    },
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:firefly"
+        },
+        "probability": 0.118093334
+      }
+    ],
+    "minecraft:visual/fog_color": "#685f70",
+    "minecraft:visual/sky_color": "#330303",
+    "minecraft:visual/water_fog_color": "#330303"
+  },
+  "carvers": [],
+  "downfall": 0.0,
+  "effects": {
+    "foliage_color": "#1b4745",
+    "grass_color": "#1b4745",
+    "water_color": "#330303"
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "allthemodium:allthemodium",
+      "allthemodium:vibranium_other"
+    ],
+    [],
+    [],
+    [
+      "allthemodium:cave_vines",
+      "allthemodium:soul_delta",
+      "allthemodium:cave_vines",
+      "allthemodium:demonic_tree"
+    ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "minecraft:wither_skeleton",
+        "maxCount": 4,
+        "minCount": 1,
+        "weight": 140
+      },
+      {
+        "type": "minecraft:ghast",
+        "maxCount": 1,
+        "minCount": 1,
+        "weight": 40
+      },
+      {
+        "type": "minecraft:piglin",
+        "maxCount": 5,
+        "minCount": 2,
+        "weight": 100
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.9
+}
