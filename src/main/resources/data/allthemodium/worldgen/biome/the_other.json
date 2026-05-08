@@ -4,7 +4,7 @@
 	"has_precipitation": false,
 	"temperature_modifier": "none",
 	"category": "none",
-	"scale": 0.9,
+	"scale": 0.5,
 	"effects": {
 		"mood_sound": {
 			"sound": "minecraft:ambient.cave",

@@ -1,7 +1,15 @@
 {
   "values": [
+    "allthemodium:allthemodium_sword",
+    "allthemodium:allthemodium_axe",
     "allthemodium:allthemodium_mace",
+    "allthemodium:vibranium_sword",
+    "allthemodium:vibranium_axe",
     "allthemodium:vibranium_mace",
-    "allthemodium:unobtainium_mace"
+    "allthemodium:unobtainium_sword",
+    "allthemodium:unobtainium_axe",
+    "allthemodium:unobtainium_mace",
+    "allthemodium:alloy_sword",
+    "allthemodium:alloy_axe"
   ]
 }

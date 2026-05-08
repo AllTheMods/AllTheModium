@@ -1,9 +1,8 @@
 package com.thevortex.allthemodium.fluid;
 
-import com.thevortex.allthemodium.registry.BlockRegistry;
 import com.thevortex.allthemodium.registry.FluidRegistry;
 import com.thevortex.allthemodium.registry.FluidTypeRegistry;
-import com.thevortex.allthemodium.registry.ItemRegistry;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
@@ -41,7 +40,7 @@ public class FluidUNOB extends FlowingFluid {
 
         @Override
         public Item getBucket() {
-            return ItemRegistry.MOLTEN_UNOB_BUCKET.get();
+            return ModRegistry.MOLTEN_UNOB_BUCKET.get();
         }
 
         @Override
@@ -80,7 +79,7 @@ public class FluidUNOB extends FlowingFluid {
 
         @Override
         protected BlockState createLegacyBlock(FluidState p_76136_) {
-            return BlockRegistry.MOLTEN_UNOB_BLOCK.get().defaultBlockState().setValue(LiquidBlock.LEVEL, Integer.valueOf(getLegacyLevel(p_76136_)));
+            return ModRegistry.MOLTEN_UNOB_BLOCK.get().defaultBlockState().setValue(LiquidBlock.LEVEL, Integer.valueOf(getLegacyLevel(p_76136_)));
         }
 
         @Override

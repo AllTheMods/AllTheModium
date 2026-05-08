@@ -3,6 +3,7 @@ package com.thevortex.allthemodium.worldgen.structures;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
@@ -141,6 +142,6 @@ public class APStructure extends Structure {
 
     @Override
     public StructureType<APStructure> type() {
-        return ATMStructures.ANCIENT_PYRAMID.get();
+        return ModRegistry.ANCIENT_PYRAMID.get();
     }
 }

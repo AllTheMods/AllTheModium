@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "allthemodium:block/ancient_podzol_bottom",
+    "side": "allthemodium:block/ancient_podzol_side",
+    "top": "allthemodium:block/ancient_podzol_top"
+  }
+}

@@ -2,11 +2,7 @@ package com.thevortex.allthemodium.compat.ars_nouveau;
 
 import com.hollingsworth.arsnouveau.ArsNouveau;
 import com.hollingsworth.arsnouveau.common.items.data.BlockFillContents;
-import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.client.renderer.item.ItemProperties;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
 

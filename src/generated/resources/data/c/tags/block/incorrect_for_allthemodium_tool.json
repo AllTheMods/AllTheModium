@@ -1,8 +1,7 @@
 {
   "values": [
-    "allthemodium:unobtainium_ore",
-    "allthemodium:ancient_cracked_stone_bricks",
-    "allthemodium:ancient_stone_bricks",
-    "allthemodium:ancient_chiseled_stone_bricks"
+    "#c:needs_vibranium_tool",
+    "#c:needs_unobtainium_tool",
+    "#c:needs_allthemodiumalloy_tool"
   ]
 }

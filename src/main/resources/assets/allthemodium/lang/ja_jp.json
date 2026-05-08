@@ -110,6 +110,7 @@
   "block.allthemodium.soul_trap_door": "魂のトラップドア",
   "block.allthemodium.ancient_dirt": "古代の土",
   "block.allthemodium.ancient_grass": "古代の草ブロック",
+  "block.allthemodium.ancient_podzol": "古代のポドゾル",
   "block.allthemodium.ancient_stone": "古代の石",
   "block.allthemodium.ancient_smooth_stone": "滑らかな古代の石",
   "block.allthemodium.ancient_polished_stone": "磨かれた古代の石",
@@ -155,6 +156,7 @@
   "block.allthemodium.raw_unobtainium_block": "アンオブタニウムの原石ブロック",
   "block.allthemodium.ancient_cavevines": "古代のツタ",
   "block.allthemodium.ancient_cavevines_plant": "古代のツタ",
+  "block.allthemodium.ancient_fern": "古代のシダ",
   "item.allthemodium.ancient_soulberries": "古代のソウルベリー",
   "item.allthemodium.allthemodium_pickaxe": "Allthemodiumのツルハシ",
   "item.allthemodium.vibranium_pickaxe": "ヴィブラニウムのツルハシ",
@@ -294,11 +296,13 @@
   "block.iceandfire.vibranium_pile": "堆積したヴィブラニウム",
   "block.allthemodium.allthemodium_source_jar": "アンオブタニウムのソース瓶",
   "config.jade.plugin_allthemodium.teleport_pad": "テレポートパッド",
-  "jade.allthemodium.teleport_pad.tip": "手に何も持たずにShift + 右クリック",
+  "jade.allthemodium.teleport_pad.tip": "手に何も持たずにスニーク + 右クリック",
   "jade.allthemodium.teleport_pad.no_drop": "採掘してもドロップしません！",
-  "jade.allthemodium.teleport_pad.transports_to": "テレポート先：",
+  "jade.allthemodium.teleport_pad.transports_to": "テレポート先",
   "dimension.allthemodium.unknown": "不明なディメンション",
   "dimension.allthemodium.mining": "採掘ディメンション",
   "dimension.allthemodium.the_other": "アザー",
-  "dimension.allthemodium.the_beyond": "ザ・ビヨンド"
+  "dimension.allthemodium.the_beyond": "ザ・ビヨンド",
+  "tooltip.allthemodium.teleport_pad": "両手に何も持たずにスニーク + 右クリックでテレポート",
+  "entity.allthemodium.alloy_trident": "Allthemodium合金のトライデント"
 }

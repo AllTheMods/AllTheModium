@@ -1,10 +1,7 @@
 package com.thevortex.allthemodium.items.toolitems.armor;
 
 
-import com.thevortex.allthemodium.AllTheModium;
-import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.registry.TagRegistry;
-
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;

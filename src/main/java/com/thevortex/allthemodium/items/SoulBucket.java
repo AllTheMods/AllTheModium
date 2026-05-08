@@ -1,15 +1,11 @@
 package com.thevortex.allthemodium.items;
 
-import java.util.function.Supplier;
-
-import javax.annotation.Nullable;
-
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.material.Fluid;
+
+import java.util.function.Supplier;
 
 public class SoulBucket extends BucketItem {
 	

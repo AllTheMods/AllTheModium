@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "allthemodium:ancient_mossy_stone"
+  },
+  "result": {
+    "count": 1,
+    "id": "allthemodium:ancient_mossy_stone_stairs"
+  }
+}

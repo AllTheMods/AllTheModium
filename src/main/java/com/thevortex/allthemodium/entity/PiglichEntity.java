@@ -1,11 +1,11 @@
 package com.thevortex.allthemodium.entity;
 
-import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.damagesource.DamageSource;
@@ -15,43 +15,45 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.monster.*;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Skeleton;
+import net.minecraft.world.entity.monster.WitherSkeleton;
 import net.minecraft.world.entity.monster.piglin.Piglin;
-import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.LargeFireball;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.NaturalSpawner;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.phys.Vec3;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.Animation.LoopType;
 import software.bernie.geckolib.animation.AnimationController;
 import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.animation.RawAnimation;
-import software.bernie.geckolib.animation.Animation.LoopType;
-import software.bernie.geckolib.animation.RawAnimation.Stage;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
-
 import javax.annotation.Nullable;
-
+import java.util.EnumSet;
 
 public class PiglichEntity extends Piglin implements GeoEntity {
-    private final List<Stage> animationStages = new ArrayList<>();
+    public static final EntityDataAccessor<Boolean> DATA_SUMMON_TRIGGER = SynchedEntityData.defineId(PiglichEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_ATTACK_TRIGGER = SynchedEntityData.defineId(PiglichEntity.class, EntityDataSerializers.BOOLEAN);
+
+    private static final RawAnimation SUMMON_ANIM = RawAnimation.begin().then("summon.piglich.nik", LoopType.PLAY_ONCE);
+    private static final RawAnimation ATTACK_ANIM = RawAnimation.begin().then("meleeattack.piglich.nik", LoopType.PLAY_ONCE);
+    private static final RawAnimation WALK_ANIM = RawAnimation.begin().then("walk.piglich.nik", LoopType.LOOP);
+    private static final RawAnimation IDLE_ANIM = RawAnimation.begin().then("idle.piglich.nik", LoopType.LOOP);
+
+    private int summonTriggerTicks;
+    private int attackTriggerTicks;
+
     private final SimpleContainer inventory = new SimpleContainer(8);
-    private static final RawAnimation ANIMATION = RawAnimation.begin().then("walk.piglich.nik", LoopType.DEFAULT).then("summon.piglich.nik", LoopType.DEFAULT).then("meleeattack.piglich.nik", LoopType.DEFAULT);
     private final AnimatableInstanceCache animationCache = GeckoLibUtil.createInstanceCache(this);
     private final Level level;
 
-    private boolean isSummoning = false;
     public PiglichEntity(EntityType<? extends Piglin> type, Level world) {
             super(type, world);
             this.level = world;
@@ -106,12 +108,105 @@ public class PiglichEntity extends Piglin implements GeoEntity {
             return Monster.createMonsterAttributes().add(Attributes.MOVEMENT_SPEED,0.21F).add(Attributes.ATTACK_DAMAGE,12).add(Attributes.ARMOR,24).add(Attributes.ARMOR_TOUGHNESS,24).add(Attributes.MAX_HEALTH,9999);
     }
 
+    @Override
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_SUMMON_TRIGGER, false);
+        builder.define(DATA_ATTACK_TRIGGER, false);
+    }
 
+    @Override
+    public void tick() {
+        super.tick();
+
+        if (!this.level().isClientSide) {
+            if (this.summonTriggerTicks > 0 && --this.summonTriggerTicks == 0) {
+                this.entityData.set(DATA_SUMMON_TRIGGER, false);
+            }
+            if (this.attackTriggerTicks > 0 && --this.attackTriggerTicks == 0) {
+                this.entityData.set(DATA_ATTACK_TRIGGER, false);
+            }
+        } else {
+            // Constant smoke trail around Piglich (always active on client).
+            this.level().addParticle(
+                net.minecraft.core.particles.ParticleTypes.LARGE_SMOKE,
+                this.getX() + (this.random.nextDouble() - 0.5D) * 0.5D,
+                this.getY() + 0.8D + this.random.nextDouble() * 0.6D,
+                this.getZ() + (this.random.nextDouble() - 0.5D) * 0.5D,
+                0.0D, 0.015D, 0.0D
+            );
+
+            // Client-side particle effects when summoning/shooting fireballs.
+            if (this.entityData.get(DATA_SUMMON_TRIGGER)) {
+                for (int i = 0; i < 2; i++) {
+                    double xOffset = (this.random.nextDouble() - 0.5D) * 0.8D;
+                    double yOffset = this.random.nextDouble() * 1.5D + 0.5D;
+                    double zOffset = (this.random.nextDouble() - 0.5D) * 0.8D;
+
+                    this.level().addParticle(
+                        net.minecraft.core.particles.ParticleTypes.FLAME,
+                        this.getX() + xOffset,
+                        this.getY() + yOffset,
+                        this.getZ() + zOffset,
+                        0.0D, 0.05D, 0.0D
+                    );
+
+                    this.level().addParticle(
+                        net.minecraft.core.particles.ParticleTypes.LARGE_SMOKE,
+                        this.getX() + xOffset,
+                        this.getY() + yOffset,
+                        this.getZ() + zOffset,
+                        0.0D, 0.02D, 0.0D
+                    );
+                }
+
+                if (this.random.nextInt(3) == 0) {
+                    this.level().addParticle(
+                        net.minecraft.core.particles.ParticleTypes.SOUL_FIRE_FLAME,
+                        this.getX() + (this.random.nextDouble() - 0.5D) * 0.8D,
+                        this.getY() + this.random.nextDouble() * 1.5D + 0.5D,
+                        this.getZ() + (this.random.nextDouble() - 0.5D) * 0.8D,
+                        0.0D, 0.03D, 0.0D
+                    );
+                }
+            }
+        }
+    }
+
+    private void pulseSummonTrigger(int ticks) {
+        this.summonTriggerTicks = Math.max(this.summonTriggerTicks, ticks);
+        this.entityData.set(DATA_SUMMON_TRIGGER, true);
+    }
+
+    private void pulseAttackTrigger(int ticks) {
+        this.attackTriggerTicks = Math.max(this.attackTriggerTicks, ticks);
+        this.entityData.set(DATA_ATTACK_TRIGGER, true);
+    }
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar data) {
-        data.add(new AnimationController<>(this, "controller", 0, state -> {
-            state.getController().setAnimation(ANIMATION);
+        data.add(new AnimationController<>(this, "controller", 2, state -> {
+            boolean summonTrigger = this.entityData.get(DATA_SUMMON_TRIGGER);
+            boolean attackTrigger = this.entityData.get(DATA_ATTACK_TRIGGER);
+
+            // Prioritize summon while ranged volley trigger is active.
+            if (summonTrigger) {
+                state.getController().setAnimation(SUMMON_ANIM);
+                return PlayState.CONTINUE;
+            }
+
+            // Then melee attack animation if active.
+            if (attackTrigger) {
+                state.getController().setAnimation(ATTACK_ANIM);
+                return PlayState.CONTINUE;
+            }
+
+            if (state.isMoving()) {
+                state.getController().setAnimation(WALK_ANIM);
+                return PlayState.CONTINUE;
+            }
+
+            state.getController().setAnimation(IDLE_ANIM);
             return PlayState.CONTINUE;
         }));
     }
@@ -169,7 +264,9 @@ public class PiglichEntity extends Piglin implements GeoEntity {
 
                     if (this.attackTime <= 0) {
                         this.attackTime = 20;
-                        this.piglich.doHurtTarget(livingentity);
+                        if (this.piglich.doHurtTarget(livingentity)) {
+                            this.piglich.pulseAttackTrigger(40);
+                        }
                     }
 
                     this.piglich.getMoveControl().setWantedPosition(livingentity.getX(), livingentity.getY(), livingentity.getZ(), 1.0D);
@@ -191,20 +288,30 @@ public class PiglichEntity extends Piglin implements GeoEntity {
                         }
 
                         if (this.attackStep > 1) {
-                            double d4 = Math.sqrt(Math.sqrt(d0)) * 0.5D;
+                            double inaccuracy = Math.sqrt(Math.sqrt(d0)) * 0.5D;
                             if (!this.piglich.isSilent()) {
                                 this.piglich.level.levelEvent((Player)null, 1018, this.piglich.blockPosition(), 0);
                             }
 
-                            /*for(int i = 0; i < 3; ++i) {
-                                Vec3 vec3 = this.piglich.getViewVector(1.0F);
-                                this.piglich.isSummoning = true;
-                                LargeFireball largefireball = new LargeFireball(this.piglich.level, this.piglich, new Vec3(d2, d3, d4), (int)this.piglich.getHealth());
-                                largefireball.setPos(this.piglich.getX() + vec3.x * 4.0D, this.piglich.getY(0.5D) + 0.5D, largefireball.getZ() + vec3.z * 4.0D);
-                                this.piglich.level.addFreshEntity(largefireball);
+                            // Fire a small volley toward the current target.
+                            for (int i = 0; i < 3; ++i) {
+                                Vec3 shotDir = new Vec3(
+                                        d1 + this.piglich.random.triangle(0.0D, inaccuracy),
+                                        d2,
+                                        d3 + this.piglich.random.triangle(0.0D, inaccuracy)
+                                );
+                                SmallFireball fireball = new SmallFireball(this.piglich.level, this.piglich, shotDir);
+                                Vec3 view = this.piglich.getViewVector(1.0F);
+                                fireball.setPos(
+                                        this.piglich.getX() + view.x * 2.0D,
+                                        this.piglich.getY(0.5D) + 0.5D,
+                                        this.piglich.getZ() + view.z * 2.0D
+                                );
+                                this.piglich.level.addFreshEntity(fireball);
                             }
-                            */
-                            
+
+                            // Ranged volley should play summon animation.
+                            this.piglich.pulseSummonTrigger(40);
                         }
                     }
 
@@ -284,7 +391,7 @@ public class PiglichEntity extends Piglin implements GeoEntity {
                         }
                     }
                 }
-                this.isSummoning = true;
+                this.pulseSummonTrigger(40);
                 return true;
         }
     }

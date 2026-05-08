@@ -1,38 +1,29 @@
 package com.thevortex.allthemodium.blocks;
 
-import java.util.Random;
-import java.util.function.Supplier;
-
-import com.thevortex.allthemodium.registry.BlockRegistry;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FireBlock;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.SoulFireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FlowingFluid;
-import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.LavaFluid;
-import net.minecraft.world.ticks.ScheduledTick;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.common.NeoForgeEventHandler;
 import net.neoforged.neoforge.event.EventHooks;
-
-import com.thevortex.allthemodium.registry.ModRegistry;
 import org.jetbrains.annotations.NotNull;
-import org.lwjgl.system.CallbackI;
+
+import java.util.function.Supplier;
 
 public class SoulLava extends LiquidBlock {
 
@@ -115,7 +106,7 @@ public class SoulLava extends LiquidBlock {
 	public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, RandomSource rand) {
 		this.tickcount++;
 
-		if(stateIn.is(BlockRegistry.SOULLAVA_BLOCK.get()) && this.tickcount >= 40) {
+		if(stateIn.is(ModRegistry.SOULLAVA_BLOCK.get()) && this.tickcount >= 40) {
 			spawnParticles(worldIn, pos);
 			this.tickcount = 0;
 		}

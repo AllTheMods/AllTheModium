@@ -13,7 +13,7 @@ import net.neoforged.neoforge.client.event.RegisterDimensionSpecialEffectsEvent;
 public class SkyRegistry {
         @SubscribeEvent
         public static void register(RegisterDimensionSpecialEffectsEvent event) {
-            //event.register(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "the_other"), new OtherSky(Float.NaN, true, DimensionSpecialEffects.SkyType.END, false, false));
+            event.register(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "the_other"), new OtherSky(Float.NaN, true, DimensionSpecialEffects.SkyType.END, false, false));
             event.register(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "mining"), new OtherSky(Float.NaN, true, DimensionSpecialEffects.SkyType.NORMAL, true, true));
 
         }

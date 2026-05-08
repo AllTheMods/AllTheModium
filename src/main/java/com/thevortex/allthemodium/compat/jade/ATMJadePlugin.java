@@ -1,23 +1,17 @@
 package com.thevortex.allthemodium.compat.jade;
 
+import com.thevortex.allthemodium.blocks.TeleportPad;
+import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.reference.TweakProxy;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
-
-import com.thevortex.allthemodium.blocks.TeleportPad;
-import com.thevortex.allthemodium.reference.Reference;
-
 import org.jetbrains.annotations.Nullable;
-
-import snownee.jade.api.BlockAccessor;
-import snownee.jade.api.IBlockComponentProvider;
-import snownee.jade.api.ITooltip;
-import snownee.jade.api.IWailaClientRegistration;
-import snownee.jade.api.IWailaPlugin;
-import snownee.jade.api.WailaPlugin;
+import snownee.jade.addon.harvest.HarvestToolProvider;
+import snownee.jade.api.*;
 import snownee.jade.api.config.IPluginConfig;
 
 @WailaPlugin
@@ -62,5 +56,14 @@ public class ATMJadePlugin implements IWailaPlugin {
         return Component.translatable(String.format("jade.%s.teleport_pad.transports_to", Reference.MOD_ID)).withStyle(ChatFormatting.GRAY)
                 .append(Component.literal(": ")).withStyle(ChatFormatting.GRAY)
                 .append(target);
+    }
+
+    public static void registerPickaxes(){
+        var handler = HarvestToolProvider.TOOL_HANDLERS.get(ResourceLocation.fromNamespaceAndPath("jade","pickaxe"));
+        var tools = handler.getTools();
+        tools.add(ModRegistry.ATM_PICKAXE.get().getDefaultInstance());
+        tools.add(ModRegistry.VIB_PICKAXE.get().getDefaultInstance());
+        tools.add(ModRegistry.UNO_PICKAXE.get().getDefaultInstance());
+        tools.add(ModRegistry.ALLOY_PICKAXE.get().getDefaultInstance());
     }
 }

@@ -1,8 +1,9 @@
 package com.thevortex.allthemodium.fluid;
 
 import com.thevortex.allthemodium.blocks.SoulLava;
-import com.thevortex.allthemodium.registry.*;
-
+import com.thevortex.allthemodium.registry.FluidRegistry;
+import com.thevortex.allthemodium.registry.FluidTypeRegistry;
+import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
@@ -39,7 +40,7 @@ public class FluidSoulLava extends FlowingFluid {
 
         @Override
         public Item getBucket() {
-            return ItemRegistry.SOUL_LAVA_BUCKET.get();
+            return ModRegistry.SOUL_LAVA_BUCKET.get();
         }
 
         @Override
@@ -78,7 +79,7 @@ public class FluidSoulLava extends FlowingFluid {
 
         @Override
         protected BlockState createLegacyBlock(FluidState p_76136_) {
-            return BlockRegistry.SOULLAVA_BLOCK.get().defaultBlockState().setValue(SoulLava.LEVEL, Integer.valueOf(getLegacyLevel(p_76136_)));
+            return ModRegistry.SOULLAVA_BLOCK.get().defaultBlockState().setValue(SoulLava.LEVEL, Integer.valueOf(getLegacyLevel(p_76136_)));
         }
 
         @Override

@@ -1,7 +1,7 @@
 {
   "type": "minecraft:blasting",
   "category": "blocks",
-  "cookingtime": 200,
+  "cookingtime": 100,
   "experience": 0.15,
   "ingredient": {
     "item": "allthemodium:ancient_stone"

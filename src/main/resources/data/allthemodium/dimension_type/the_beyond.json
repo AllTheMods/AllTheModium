@@ -13,7 +13,7 @@
   "infiniburn": "#minecraft:infiniburn_nether",
   "min_y": -64,
   "height": 384,
-  "effects": "minecraft:overworld",
+  "effects": "allthemodium:mining",
   "monster_spawn_light_level": 15,
   "monster_spawn_block_light_limit": 15
 }

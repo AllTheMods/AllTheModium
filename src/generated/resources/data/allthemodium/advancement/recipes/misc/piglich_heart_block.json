@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_piglich_heartt": {
+    "has_piglich_heart": {
       "conditions": {
         "items": [
           {
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_piglich_heartt"
+      "has_piglich_heart"
     ]
   ],
   "rewards": {

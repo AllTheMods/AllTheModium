@@ -1,14 +1,16 @@
 package com.thevortex.allthemodium.datagen.client;
 
-import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
-import net.minecraft.client.model.Model;
+import com.thevortex.allthemodium.registry.ModRegistry;
+import com.thevortex.allthemodium.registry.mek_reg.MekProcReg;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.block.TrapDoorBlock;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+
+import java.util.Set;
+import java.util.stream.Stream;
 
 public class ItemModels extends ItemModelProvider {
 
@@ -23,8 +25,9 @@ public class ItemModels extends ItemModelProvider {
     @Override
     protected void registerModels() {
         ResourceLocation generated = ResourceLocation.withDefaultNamespace("item/generated");
-        ResourceLocation handheld = ResourceLocation.withDefaultNamespace("item/handheld");
-        ModRegistry.ITEMS.getEntries().stream()
+        ResourceLocation mace = ResourceLocation.withDefaultNamespace("item/handheld_mace");
+        var manualModels = Set.of("alloy_paxel","alloy_trident","allthemodium_bow","unobtainium_crossbow","vibranium_shield");
+        Stream.concat(MekProcReg.ITEMS.getEntries().stream(),ModRegistry.ITEMS.getEntries().stream())
             .filter(item -> !(item.get() instanceof BlockItem))
             .filter(item -> !(item.get() instanceof SwordItem))
             .filter(item -> !(item.get() instanceof PickaxeItem))
@@ -33,10 +36,14 @@ public class ItemModels extends ItemModelProvider {
             .filter(item -> !(item.get() instanceof HoeItem))
             .forEach(item -> {
                 String name = item.getId().getPath();
-                if(!name.contains("bucket")){
-                withExistingParent(name, generated)
-                    .texture("layer0", res(name));
-
+                if(!name.contains("bucket") && !manualModels.contains(name)) {
+                if (item.get() instanceof MaceItem) {
+                    withExistingParent(name, mace)
+                        .texture("layer0", res(name));
+                } else {
+                    withExistingParent(name, generated)
+                        .texture("layer0", res(name));
+                }
             }});
 
         basicItem(ModRegistry.ATM_SMITHING.get());
@@ -44,9 +51,9 @@ public class ItemModels extends ItemModelProvider {
         basicItem(ModRegistry.UNO_SMITHING.get());
         
         // Saplings
-        basicItem(ModRegistry.ANCIENT_SAPLING_Item.get());
-        basicItem(ModRegistry.DEMONIC_SAPLING_Item.get());
-        basicItem(ModRegistry.SOUL_SAPLING_Item.get());
+        basicItem(ModRegistry.ANCIENT_SAPLING.get().asItem());
+        basicItem(ModRegistry.DEMONIC_SAPLING.get().asItem());
+        basicItem(ModRegistry.SOUL_SAPLING.get().asItem());
 
         cubeAll("ancient_dirt", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/ancient_dirt"));
         cubeAll("piglich_heart_block", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/piglich_heart_block"));

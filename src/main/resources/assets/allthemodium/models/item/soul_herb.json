@@ -1,3 +1,6 @@
 {
-  "parent": "allthemodium:block/soul_herb"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "allthemodium:block/soul_herb"
+  }
 }

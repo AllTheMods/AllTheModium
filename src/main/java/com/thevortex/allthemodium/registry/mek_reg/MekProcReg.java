@@ -5,7 +5,6 @@ import com.thevortex.allthemodium.items.Crystal;
 import com.thevortex.allthemodium.items.DirtyDust;
 import com.thevortex.allthemodium.items.Shard;
 import com.thevortex.allthemodium.reference.Reference;
-
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
