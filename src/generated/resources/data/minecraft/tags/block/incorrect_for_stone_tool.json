@@ -3,6 +3,11 @@
     "#allthemodium:incorrect_for_allthemodium_tool",
     "#allthemodium:incorrect_for_vibranium_tool",
     "#allthemodium:incorrect_for_unobtainium_tool",
-    "#allthemodium:incorrect_for_alloy_tool"
+    "#allthemodium:incorrect_for_alloy_tool",
+    "allthemodium:allthemodium_ore",
+    "allthemodium:deepslate_allthemodium_ore",
+    "allthemodium:vibranium_ore",
+    "allthemodium:other_vibranium_ore",
+    "allthemodium:unobtainium_ore"
   ]
 }

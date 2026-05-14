@@ -43,7 +43,7 @@ public class ATMBiomes {
     public static final ResourceKey<Biome> SOUL_SAND_VALLEY = ATMBiomes.create("soul_sand_valley");
     public static final ResourceKey<Biome> DESERT = ATMBiomes.create("desert");
     public static final ResourceKey<Biome> DESERT_HILLS = ATMBiomes.create("desert_hills");
-    public static final ResourceKey<Biome> WRETCHED_CAVES = ATMBiomes.create("wretched_caves");
+   // public static final ResourceKey<Biome> WRETCHED_CAVES = ATMBiomes.create("wretched_caves");
     
     public static void bootstrap(final BootstrapContext<Biome> ctx) {
         HolderGetter<PlacedFeature> features = ctx.lookup(Registries.PLACED_FEATURE);
@@ -132,14 +132,14 @@ public class ATMBiomes {
                         )
                         .build()
         );
-        ctx.register(
+       /* ctx.register(
                 ATMBiomes.WRETCHED_CAVES,
                 ATMBiomes.builder(false, 0.9F, 0.0F)
                         .specialEffects(ATMBiomes.effects(0x330303, 0x1B4745, 0x1B4745))
                         .generationSettings(ATMBiomes.other(features, carvers)
-                                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(ATMPlacedFeatures.SOUL_DELTA))
-                                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(ATMPlacedFeatures.CAVE_VINES))
                                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(ATMPlacedFeatures.DEMONIC_TREE))
+                                .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(ATMPlacedFeatures.ORE_GLOWSTONE))
+
 
                                 .build()
                         )
@@ -152,6 +152,8 @@ public class ATMBiomes {
                         )
                         .build()
         );
+
+        */
         ctx.register(
                 ATMBiomes.BASALT_DELTAS,
                 ATMBiomes.builder(false, 0.9F, 0.0F)
