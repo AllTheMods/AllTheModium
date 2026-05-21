@@ -537,5 +537,10 @@ public class ATMItemTags extends ItemTagsProvider {
         tag(TagRegistry.DIRTYDUST).addOptional(MekProcReg.VIB_DIRTY.getId());
         tag(TagRegistry.DIRTYDUST).addOptional(MekProcReg.ONOB_DIRTY.getId());
 
+        tag(Tags.Items.TOOLS_BRUSH)
+                .add(ModRegistry.ATM_BRUSH.get())
+                .add(ModRegistry.VIB_BRUSH.get())
+                .add(ModRegistry.UNO_BRUSH.get());
+
     }
 }

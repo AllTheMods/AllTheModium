@@ -382,10 +382,13 @@ public class ModRegistry
     public static final DeferredHolder<Item, Item> VIB_HOE = registerItem("vibranium_hoe", () -> new HoeItem(ATMTier.VIBRANIUM, (new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).attributes(HoeItem.createAttributes(ATMTier.VIBRANIUM, -2, 0.0F))));
     public static final DeferredHolder<Item, Item> UNO_HOE = registerItem("unobtainium_hoe", () -> new HoeItem(ATMTier.UNOBTAINIUM, (new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).attributes(HoeItem.createAttributes(ATMTier.UNOBTAINIUM, -1, 0.0F))));
 
-
     public static final DeferredHolder<Item, Item> ATM_MACE = registerItem("allthemodium_mace", () -> new ATMMace(ATMTier.ALLTHEMODIUM, (new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.ALLTHEMODIUM)).attributes(ATMMace.createAttributes(ATMTier.ALLTHEMODIUM))));
     public static final DeferredHolder<Item, Item> VIB_MACE = registerItem("vibranium_mace", () -> new ATMMace(ATMTier.VIBRANIUM, (new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.VIBRANIUM)).attributes(ATMMace.createAttributes(ATMTier.VIBRANIUM))));
     public static final DeferredHolder<Item, Item> UNO_MACE = registerItem("unobtainium_mace", () -> new ATMMace(ATMTier.UNOBTAINIUM, (new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)).component(DataComponents.TOOL, ATMMace.createToolProperties(ATMTier.UNOBTAINIUM)).attributes(ATMMace.createAttributes(ATMTier.UNOBTAINIUM))));
+
+    public static final DeferredHolder<Item, Item> ATM_BRUSH = registerItem("allthemodium_brush", () -> new Brush((new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)), 2));
+    public static final DeferredHolder<Item, Item> VIB_BRUSH = registerItem("vibranium_brush", () -> new Brush((new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)), 5));
+    public static final DeferredHolder<Item, Item> UNO_BRUSH = registerItem("unobtainium_brush", () -> new Brush((new Item.Properties()).rarity(Rarity.EPIC).fireResistant().component(DataComponents.UNBREAKABLE, new Unbreakable(true)), 10));
 
     //public static final DeferredHolder<Item, Item> ATM_BOW = registerItem("allthemodium_bow", () -> new ATMBow((new Item.Properties()).fireResistant().rarity(Rarity.EPIC)));
 
