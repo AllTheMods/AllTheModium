@@ -49,6 +49,10 @@ public class ItemModels extends ItemModelProvider {
         basicItem(ModRegistry.ATM_SMITHING.get());
         basicItem(ModRegistry.VIB_SMITHING.get());
         basicItem(ModRegistry.UNO_SMITHING.get());
+
+        basicItem(ModRegistry.ATM_BRUSH.get());
+        basicItem(ModRegistry.VIB_BRUSH.get());
+        basicItem(ModRegistry.UNO_BRUSH.get());
         
         // Saplings
         basicItem(ModRegistry.ANCIENT_SAPLING.get().asItem());
