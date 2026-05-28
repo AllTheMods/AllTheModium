@@ -91,7 +91,7 @@ public class TeleportPad extends Block
 
     @Override
     public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
-        if ((player instanceof ServerPlayer) && (player.isCrouching())) {
+        if ((player instanceof ServerPlayer) && (player.isShiftKeyDown())) {
 
             transferPlayer((ServerPlayer) player, pos);
             level.addAlwaysVisibleParticle(ParticleTypes.SOUL_FIRE_FLAME, pos.getX(), pos.getY() + 1, pos.getZ(), 0, 1, 0);
