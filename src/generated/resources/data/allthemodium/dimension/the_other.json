@@ -1,6 +1,9 @@
 {
+  "type": "allthemodium:the_other",
   "generator": {
+    "type": "minecraft:noise",
     "biome_source": {
+      "type": "minecraft:multi_noise",
       "biomes": [
         {
           "biome": "allthemodium:soul_sand_valley",
@@ -9,7 +12,7 @@
             "depth": 0.2,
             "erosion": 0.1,
             "humidity": 0.0,
-            "offset": 0,
+            "offset": 0.0,
             "temperature": -0.1,
             "weirdness": 0.3
           }
@@ -18,10 +21,10 @@
           "biome": "allthemodium:the_other",
           "parameters": {
             "continentalness": 0.3,
-            "depth": 0,
+            "depth": 0.0,
             "erosion": 0.5,
             "humidity": 0.0,
-            "offset": 0,
+            "offset": 0.0,
             "temperature": 0.4,
             "weirdness": 0.2
           }
@@ -86,11 +89,8 @@
             "weirdness": 0.0
           }
         }
-      ],
-      "type": "minecraft:multi_noise"
+      ]
     },
-    "settings": "allthemodium:the_other",
-    "type": "minecraft:noise"
-  },
-  "type": "allthemodium:the_other"
+    "settings": "allthemodium:the_other"
+  }
 }

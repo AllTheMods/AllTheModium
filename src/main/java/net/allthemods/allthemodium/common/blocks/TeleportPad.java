@@ -29,7 +29,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
@@ -44,7 +43,6 @@ import net.allthemods.allthemodium.data.worldgen.ATMDimensions;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -143,6 +141,9 @@ public class TeleportPad extends Block implements SimpleWaterloggedBlock {
         return InteractionResult.FAIL;
     }
     
+    private static final int ISLAND_SEARCH_CHUNK_RADIUS = 8;
+    private static final int ISLAND_COLUMN_STEP = 4;
+
     private static BlockPos findSafeSpot(ServerLevel level, BlockPos origin) {
         final PoiManager manager = level.getPoiManager();
         manager.ensureLoadedAndValid(level, origin, 64);
@@ -150,31 +151,39 @@ public class TeleportPad extends Block implements SimpleWaterloggedBlock {
                 .flatMap(pos -> manager.getInChunk(record -> record.is(ATMPois.TELEPORT_PAD), pos, PoiManager.Occupancy.ANY))
                 .map(PoiRecord::getPos)
                 .min(Comparator.<BlockPos>comparingDouble(pos -> pos.distSqr(origin)).thenComparingInt(Vec3i::getY))
-                .orElseGet(() -> {
-                    Set<BlockPos> stable = new HashSet<>();
-                    Set<BlockPos> fallback = new HashSet<>();
-                    level.getChunk(origin).findBlocks(
-                            state -> (state.isAir() || state.is(BlockTags.REPLACEABLE)),
-                            (_, pos) -> {
-                                final DimensionType type = level.dimensionType();
-                                if (type.hasCeiling()) return (pos.getY() - 16) <= type.logicalHeight();
-                                return true;
-                            },
-                            (pos, _) -> {
-                                final BlockPos candidate = pos.immutable();
-                                final BlockState below = level.getBlockState(pos.below());
-                                if (below.isAir() || below.is(BlockTags.REPLACEABLE)) fallback.add(candidate);
-                                else if (level.dimensionType().hasCeiling()) stable.add(candidate);
-                                else stable.add(level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, candidate));
-                            }
-                    );
-                    return stable.stream()
-                            .min(Comparator.<BlockPos>comparingDouble(pos -> pos.distSqr(origin)).thenComparingInt(Vec3i::getY))
-                            .orElseGet(() -> fallback.stream()
-                                    .min(Comparator.<BlockPos>comparingDouble(pos -> pos.distSqr(origin)).thenComparingInt(Vec3i::getY))
-                                    .orElse(origin)
-                            );
-                });
+                .orElseGet(() -> TeleportPad.findIslandSurface(level, origin));
+    }
+
+    private static BlockPos findIslandSurface(ServerLevel level, BlockPos origin) {
+        final int minY = level.getMinY();
+        final ChunkPos center = ChunkPos.containing(origin);
+        for (int radius = 0; radius <= TeleportPad.ISLAND_SEARCH_CHUNK_RADIUS; radius++) {
+            BlockPos best = null;
+            double bestDist = Double.MAX_VALUE;
+            for (ChunkPos chunkPos : ChunkPos.rangeClosed(center, radius).toList()) {
+                if (Math.max(Math.abs(chunkPos.x() - center.x()), Math.abs(chunkPos.z() - center.z())) != radius) continue;
+                level.getChunk(chunkPos.x(), chunkPos.z());
+                for (int dx = 0; dx < 16; dx += TeleportPad.ISLAND_COLUMN_STEP) {
+                    for (int dz = 0; dz < 16; dz += TeleportPad.ISLAND_COLUMN_STEP) {
+                        final int x = chunkPos.getMinBlockX() + dx;
+                        final int z = chunkPos.getMinBlockZ() + dz;
+                        final int top = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z);
+                        if (top <= minY) continue;
+                        final BlockPos surface = new BlockPos(x, top, z);
+                        final BlockState ground = level.getBlockState(surface.below());
+                        if (ground.isAir() || ground.is(BlockTags.REPLACEABLE)) continue;
+                        if (!level.getBlockState(surface).isAir() || !level.getBlockState(surface.above()).isAir()) continue;
+                        final double dist = surface.distSqr(origin);
+                        if (dist < bestDist) {
+                            bestDist = dist;
+                            best = surface;
+                        }
+                    }
+                }
+            }
+            if (best != null) return best;
+        }
+        return origin;
     }
     
     public static List<Component> display() {
