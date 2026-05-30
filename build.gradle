@@ -71,6 +71,12 @@ configurations {
 
 repositories {
     mavenLocal() // ATO
+    maven {
+        url "https://www.cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
     maven { // JEI
         name = "Jared's maven"
         url = "https://maven.blamejared.com/"
@@ -94,7 +100,7 @@ dependencies {
     implementation "maven.modrinth:jade:${jade_version}"
     implementation "com.geckolib:geckolib-neoforge-26.1:${geckolib_version}"
     
-    implementation "net.allthemods.alltheores:alltheores:4.0.0" // must be pushed to maven local!
+    implementation "curse.maven:ato-405593:7928265"
 }
 
 tasks.withType(ProcessResources).configureEach {
