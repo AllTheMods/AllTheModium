@@ -18,8 +18,11 @@ public class ATMStructureSets {
     public static final ResourceKey<StructureSet> PIGLIN_VILLAGE = ATMStructureSets.create("piglin_village");
     
     public static void bootstrap(final BootstrapContext<StructureSet> ctx) {
+        // Structure spawning disabled for the floating-islands the_other rework.
+        // Re-enable by uncommenting the registrations below and regenerating data.
+        /*
         HolderGetter<Structure> structures = ctx.lookup(Registries.STRUCTURE);
-        
+
         ctx.register(ATMStructureSets.ANCIENT_PYRAMID, new StructureSet(
                 structures.getOrThrow(ATMStructures.ANCIENT_PYRAMID),
                 new RandomSpreadStructurePlacement(50, 45, RandomSpreadType.LINEAR, 185645172)
@@ -32,6 +35,7 @@ public class ATMStructureSets {
                 structures.getOrThrow(ATMStructures.PIGLIN_VILLAGE),
                 new RandomSpreadStructurePlacement(15, 10, RandomSpreadType.LINEAR, 1236549879)
         ));
+        */
     }
     
     private static ResourceKey<StructureSet> create(String path) {
