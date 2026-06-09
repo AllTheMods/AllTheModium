@@ -233,7 +233,7 @@ public class ATMItemTagsProvider extends ItemTagsProvider {
                         ATMItems.ALLTHEMODIUM_SWORD.get(), ATMItems.ALLTHEMODIUM_PICKAXE.get(), ATMItems.ALLTHEMODIUM_AXE.get(), ATMItems.ALLTHEMODIUM_SHOVEL.get(), ATMItems.ALLTHEMODIUM_HOE.get(), ATMItems.ALLTHEMODIUM_MACE.get(), ATMItems.ALLTHEMODIUM_BOW.get(),
                         ATMItems.VIBRANIUM_SWORD.get(), ATMItems.VIBRANIUM_PICKAXE.get(), ATMItems.VIBRANIUM_AXE.get(), ATMItems.VIBRANIUM_SHOVEL.get(), ATMItems.VIBRANIUM_HOE.get(), ATMItems.VIBRANIUM_MACE.get(), ATMItems.VIBRANIUM_SHIELD.get(),
                         ATMItems.UNOBTAINIUM_SWORD.get(), ATMItems.UNOBTAINIUM_PICKAXE.get(), ATMItems.UNOBTAINIUM_AXE.get(), ATMItems.UNOBTAINIUM_SHOVEL.get(), ATMItems.UNOBTAINIUM_HOE.get(), ATMItems.UNOBTAINIUM_MACE.get(), ATMItems.UNOBTAINIUM_CROSSBOW.get(),
-                        ATMItems.ALLOY_SWORD.get(), ATMItems.ALLOY_AXE.get(), ATMItems.ALLOY_SHOVEL.get(), ATMItems.ALLOY_PAXEL.get(), ATMItems.ALLOY_MACE.get(), ATMItems.ALLOY_TRIDENT.get()
+                        ATMItems.ALLOY_SWORD.get(), ATMItems.ALLOY_PICKAXE.get(), ATMItems.ALLOY_AXE.get(), ATMItems.ALLOY_SHOVEL.get(), ATMItems.ALLOY_PAXEL.get(), ATMItems.ALLOY_MACE.get(), ATMItems.ALLOY_TRIDENT.get()
                 );
         this.tag(ItemTags.VANISHING_ENCHANTABLE)
                 .add(ATMItems.ALLTHEMODIUM_HELMET.get(), ATMItems.ALLTHEMODIUM_CHESTPLATE.get(), ATMItems.ALLTHEMODIUM_LEGGINGS.get(), ATMItems.ALLTHEMODIUM_BOOTS.get(),
@@ -242,7 +242,7 @@ public class ATMItemTagsProvider extends ItemTagsProvider {
                         ATMItems.ALLTHEMODIUM_SWORD.get(), ATMItems.ALLTHEMODIUM_PICKAXE.get(), ATMItems.ALLTHEMODIUM_AXE.get(), ATMItems.ALLTHEMODIUM_SHOVEL.get(), ATMItems.ALLTHEMODIUM_HOE.get(), ATMItems.ALLTHEMODIUM_MACE.get(), ATMItems.ALLTHEMODIUM_BOW.get(),
                         ATMItems.VIBRANIUM_SWORD.get(), ATMItems.VIBRANIUM_PICKAXE.get(), ATMItems.VIBRANIUM_AXE.get(), ATMItems.VIBRANIUM_SHOVEL.get(), ATMItems.VIBRANIUM_HOE.get(), ATMItems.VIBRANIUM_MACE.get(), ATMItems.VIBRANIUM_SHIELD.get(),
                         ATMItems.UNOBTAINIUM_SWORD.get(), ATMItems.UNOBTAINIUM_PICKAXE.get(), ATMItems.UNOBTAINIUM_AXE.get(), ATMItems.UNOBTAINIUM_SHOVEL.get(), ATMItems.UNOBTAINIUM_HOE.get(), ATMItems.UNOBTAINIUM_MACE.get(), ATMItems.UNOBTAINIUM_CROSSBOW.get(),
-                        ATMItems.ALLOY_SWORD.get(), ATMItems.ALLOY_AXE.get(), ATMItems.ALLOY_SHOVEL.get(), ATMItems.ALLOY_PAXEL.get(), ATMItems.ALLOY_MACE.get(), ATMItems.ALLOY_TRIDENT.get()
+                        ATMItems.ALLOY_SWORD.get(), ATMItems.ALLOY_PICKAXE.get(), ATMItems.ALLOY_AXE.get(), ATMItems.ALLOY_SHOVEL.get(), ATMItems.ALLOY_PAXEL.get(), ATMItems.ALLOY_MACE.get(), ATMItems.ALLOY_TRIDENT.get()
                 );
         
         this.tag(ItemTags.SWORDS).add(ATMItems.ALLTHEMODIUM_SWORD.get(), ATMItems.VIBRANIUM_SWORD.get(), ATMItems.UNOBTAINIUM_SWORD.get(), ATMItems.ALLOY_SWORD.get()).add(ATMItems.ALLOY_PAXEL.get());
@@ -250,7 +250,7 @@ public class ATMItemTagsProvider extends ItemTagsProvider {
                 .add(ATMItems.ALLTHEMODIUM_AXE.get(), ATMItems.VIBRANIUM_AXE.get(), ATMItems.UNOBTAINIUM_AXE.get(), ATMItems.ALLOY_AXE.get())
                 .add(ATMItems.ALLOY_PAXEL.get());
         this.tag(ItemTags.PICKAXES)
-                .add(ATMItems.ALLTHEMODIUM_PICKAXE.get(), ATMItems.VIBRANIUM_PICKAXE.get(), ATMItems.UNOBTAINIUM_PICKAXE.get())
+                .add(ATMItems.ALLTHEMODIUM_PICKAXE.get(), ATMItems.VIBRANIUM_PICKAXE.get(), ATMItems.UNOBTAINIUM_PICKAXE.get(), ATMItems.ALLOY_PICKAXE.get())
                 .add(ATMItems.ALLOY_PAXEL.get());
         this.tag(ItemTags.SHOVELS)
                 .add(ATMItems.ALLTHEMODIUM_SHOVEL.get(), ATMItems.VIBRANIUM_SHOVEL.get(), ATMItems.UNOBTAINIUM_SHOVEL.get(), ATMItems.ALLOY_SHOVEL.get())
@@ -279,7 +279,7 @@ public class ATMItemTagsProvider extends ItemTagsProvider {
                 .add(ATMItems.ALLOY_PAXEL.get());
         this.tag(ItemTags.MINING_ENCHANTABLE)
                 .add(
-                        ATMItems.ALLTHEMODIUM_PICKAXE.get(), ATMItems.VIBRANIUM_PICKAXE.get(), ATMItems.UNOBTAINIUM_PICKAXE.get(),
+                        ATMItems.ALLTHEMODIUM_PICKAXE.get(), ATMItems.VIBRANIUM_PICKAXE.get(), ATMItems.UNOBTAINIUM_PICKAXE.get(), ATMItems.ALLOY_PICKAXE.get(),
                         ATMItems.ALLTHEMODIUM_AXE.get(), ATMItems.VIBRANIUM_AXE.get(), ATMItems.UNOBTAINIUM_AXE.get(), ATMItems.ALLOY_AXE.get(),
                         ATMItems.ALLTHEMODIUM_SHOVEL.get(), ATMItems.VIBRANIUM_SHOVEL.get(), ATMItems.UNOBTAINIUM_SHOVEL.get(), ATMItems.ALLOY_SHOVEL.get(),
                         ATMItems.ALLTHEMODIUM_HOE.get(), ATMItems.VIBRANIUM_HOE.get(), ATMItems.UNOBTAINIUM_HOE.get(),
@@ -287,7 +287,7 @@ public class ATMItemTagsProvider extends ItemTagsProvider {
                 );
         this.tag(ItemTags.MINING_LOOT_ENCHANTABLE)
                 .add(
-                        ATMItems.ALLTHEMODIUM_PICKAXE.get(), ATMItems.VIBRANIUM_PICKAXE.get(), ATMItems.UNOBTAINIUM_PICKAXE.get(),
+                        ATMItems.ALLTHEMODIUM_PICKAXE.get(), ATMItems.VIBRANIUM_PICKAXE.get(), ATMItems.UNOBTAINIUM_PICKAXE.get(), ATMItems.ALLOY_PICKAXE.get(),
                         ATMItems.ALLTHEMODIUM_AXE.get(), ATMItems.VIBRANIUM_AXE.get(), ATMItems.UNOBTAINIUM_AXE.get(), ATMItems.ALLOY_AXE.get(),
                         ATMItems.ALLTHEMODIUM_SHOVEL.get(), ATMItems.VIBRANIUM_SHOVEL.get(), ATMItems.UNOBTAINIUM_SHOVEL.get(), ATMItems.ALLOY_SHOVEL.get(),
                         ATMItems.ALLTHEMODIUM_HOE.get(), ATMItems.VIBRANIUM_HOE.get(), ATMItems.UNOBTAINIUM_HOE.get(),
@@ -299,7 +299,7 @@ public class ATMItemTagsProvider extends ItemTagsProvider {
         
         this.tag(Tags.Items.TOOLS)
                 .add(
-                        ATMItems.ALLTHEMODIUM_PICKAXE.get(), ATMItems.VIBRANIUM_PICKAXE.get(), ATMItems.UNOBTAINIUM_PICKAXE.get(),
+                        ATMItems.ALLTHEMODIUM_PICKAXE.get(), ATMItems.VIBRANIUM_PICKAXE.get(), ATMItems.UNOBTAINIUM_PICKAXE.get(), ATMItems.ALLOY_PICKAXE.get(),
                         ATMItems.ALLTHEMODIUM_AXE.get(), ATMItems.VIBRANIUM_AXE.get(), ATMItems.UNOBTAINIUM_AXE.get(), ATMItems.ALLOY_AXE.get(),
                         ATMItems.ALLTHEMODIUM_SHOVEL.get(), ATMItems.VIBRANIUM_SHOVEL.get(), ATMItems.UNOBTAINIUM_SHOVEL.get(), ATMItems.ALLOY_SHOVEL.get(),
                         ATMItems.ALLTHEMODIUM_HOE.get(), ATMItems.VIBRANIUM_HOE.get(), ATMItems.UNOBTAINIUM_HOE.get(),
@@ -320,7 +320,7 @@ public class ATMItemTagsProvider extends ItemTagsProvider {
         this.tag(Tags.Items.RANGED_WEAPON_TOOLS).add(ATMItems.ALLTHEMODIUM_BOW.get(), ATMItems.UNOBTAINIUM_CROSSBOW.get());
         this.tag(Tags.Items.MINING_TOOL_TOOLS)
                 .add(
-                        ATMItems.ALLTHEMODIUM_PICKAXE.get(), ATMItems.VIBRANIUM_PICKAXE.get(), ATMItems.UNOBTAINIUM_PICKAXE.get(),
+                        ATMItems.ALLTHEMODIUM_PICKAXE.get(), ATMItems.VIBRANIUM_PICKAXE.get(), ATMItems.UNOBTAINIUM_PICKAXE.get(), ATMItems.ALLOY_PICKAXE.get(),
                         ATMItems.ALLTHEMODIUM_AXE.get(), ATMItems.VIBRANIUM_AXE.get(), ATMItems.UNOBTAINIUM_AXE.get(), ATMItems.ALLOY_AXE.get(),
                         ATMItems.ALLTHEMODIUM_SHOVEL.get(), ATMItems.VIBRANIUM_SHOVEL.get(), ATMItems.UNOBTAINIUM_SHOVEL.get(), ATMItems.ALLOY_SHOVEL.get(),
                         ATMItems.ALLTHEMODIUM_HOE.get(), ATMItems.VIBRANIUM_HOE.get(), ATMItems.UNOBTAINIUM_HOE.get(),
@@ -333,11 +333,11 @@ public class ATMItemTagsProvider extends ItemTagsProvider {
                 ATMItems.ALLTHEMODIUM_SWORD.get(), ATMItems.ALLTHEMODIUM_PICKAXE.get(), ATMItems.ALLTHEMODIUM_AXE.get(), ATMItems.ALLTHEMODIUM_SHOVEL.get(), ATMItems.ALLTHEMODIUM_HOE.get(), ATMItems.ALLTHEMODIUM_MACE.get(), ATMItems.ALLTHEMODIUM_BOW.get(),
                 ATMItems.VIBRANIUM_SWORD.get(), ATMItems.VIBRANIUM_PICKAXE.get(), ATMItems.VIBRANIUM_AXE.get(), ATMItems.VIBRANIUM_SHOVEL.get(), ATMItems.VIBRANIUM_HOE.get(), ATMItems.VIBRANIUM_MACE.get(), ATMItems.VIBRANIUM_SHIELD.get(),
                 ATMItems.UNOBTAINIUM_SWORD.get(), ATMItems.UNOBTAINIUM_PICKAXE.get(), ATMItems.UNOBTAINIUM_AXE.get(), ATMItems.UNOBTAINIUM_SHOVEL.get(), ATMItems.UNOBTAINIUM_HOE.get(), ATMItems.UNOBTAINIUM_MACE.get(), ATMItems.UNOBTAINIUM_CROSSBOW.get(),
-                ATMItems.ALLOY_SWORD.get(), ATMItems.ALLOY_AXE.get(), ATMItems.ALLOY_SHOVEL.get(), ATMItems.ALLOY_PAXEL.get(), ATMItems.ALLOY_MACE.get(), ATMItems.ALLOY_TRIDENT.get()
+                ATMItems.ALLOY_SWORD.get(), ATMItems.ALLOY_PICKAXE.get(), ATMItems.ALLOY_AXE.get(), ATMItems.ALLOY_SHOVEL.get(), ATMItems.ALLOY_PAXEL.get(), ATMItems.ALLOY_MACE.get(), ATMItems.ALLOY_TRIDENT.get()
         );
         
         this.tag(ItemTags.CLUSTER_MAX_HARVESTABLES)
-                .add(ATMItems.ALLTHEMODIUM_PICKAXE.get(), ATMItems.VIBRANIUM_PICKAXE.get(), ATMItems.UNOBTAINIUM_PICKAXE.get())
+                .add(ATMItems.ALLTHEMODIUM_PICKAXE.get(), ATMItems.VIBRANIUM_PICKAXE.get(), ATMItems.UNOBTAINIUM_PICKAXE.get(), ATMItems.ALLOY_PICKAXE.get())
                 .add(ATMItems.ALLOY_PAXEL.get());
         
         this.tag(ItemTags.TRIM_MATERIALS).add(ATMItems.ALLTHEMODIUM_INGOT.get(), ATMItems.VIBRANIUM_INGOT.get(), ATMItems.UNOBTAINIUM_INGOT.get());
