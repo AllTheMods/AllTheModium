@@ -14,6 +14,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Util;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.ai.village.poi.PoiManager;
@@ -30,6 +31,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -67,7 +69,7 @@ public class TeleportPad extends Block implements SimpleWaterloggedBlock {
     
     public TeleportPad(Properties properties) {
         super(properties.strength(3.0F));
-        this.registerDefaultState(this.defaultBlockState().setValue(TeleportPad.SPAWNED, false));
+        this.registerDefaultState(this.defaultBlockState().setValue(TeleportPad.WATERLOGGED, false).setValue(TeleportPad.SPAWNED, false));
     }
     
     private static int getDestinationMode() {
@@ -80,7 +82,13 @@ public class TeleportPad extends Block implements SimpleWaterloggedBlock {
     
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(TeleportPad.WATERLOGGED, context.getLevel().getFluidState(context.getClickedPos()).is(Fluids.WATER));
+        FluidState state = context.getLevel().getFluidState(context.getClickedPos());
+        return this.defaultBlockState().setValue(TeleportPad.WATERLOGGED, state.is(FluidTags.WATER) && state.isFull());
+    }
+    
+    @Override
+    protected FluidState getFluidState(BlockState state) {
+        return state.getValue(TeleportPad.WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
     
     @Override

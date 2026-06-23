@@ -227,6 +227,7 @@ public class ATMLanguageProvider extends LanguageProvider {
         this.addItem(ATMItems.UNOBTAINIUM_MACE, "Unobtainium Mace");
         
         this.addItem(ATMItems.ALLOY_SWORD, "Allthemodium Alloy Sword");
+        this.addItem(ATMItems.ALLOY_PICKAXE, "Allthemodium Alloy Pickaxe");
         this.addItem(ATMItems.ALLOY_AXE, "Allthemodium Alloy Axe");
         this.addItem(ATMItems.ALLOY_SHOVEL, "Allthemodium Alloy Shovel");
         this.addItem(ATMItems.ALLOY_PAXEL, "Allthemodium Alloy Paxel");

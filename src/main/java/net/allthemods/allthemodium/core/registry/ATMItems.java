@@ -146,12 +146,13 @@ public class ATMItems {
             .fireResistant()
     ));
     
-    public static final DeferredHolder<Item, Item> ALLOY_SWORD = ATMItems.register("alloy_sword", p -> new Item(p.sword(ATMToolMaterials.UNOBTAINIUM, 20.0F, 1.5F).component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
-    public static final DeferredHolder<Item, Item> ALLOY_AXE = ATMItems.register("alloy_axe", p -> new AxeItem(ATMToolMaterials.UNOBTAINIUM, 18.0F, -2.6F, p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
-    public static final DeferredHolder<Item, Item> ALLOY_SHOVEL = ATMItems.register("alloy_shovel", p -> new ShovelItem(ATMToolMaterials.UNOBTAINIUM, 8.0F, -0.4F, p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredHolder<Item, Item> ALLOY_SWORD = ATMItems.register("alloy_sword", p -> new Item(p.sword(ATMToolMaterials.ALLOY, 20.0F, 1.5F).component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredHolder<Item, Item> ALLOY_PICKAXE = ATMItems.register("alloy_pickaxe", p -> new Item(p.pickaxe(ATMToolMaterials.ALLOY, 8.0F, -0.4F).component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredHolder<Item, Item> ALLOY_AXE = ATMItems.register("alloy_axe", p -> new AxeItem(ATMToolMaterials.ALLOY, 18.0F, -2.6F, p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
+    public static final DeferredHolder<Item, Item> ALLOY_SHOVEL = ATMItems.register("alloy_shovel", p -> new ShovelItem(ATMToolMaterials.ALLOY, 8.0F, -0.4F, p.component(DataComponents.UNBREAKABLE, Unit.INSTANCE).fireResistant().rarity(Rarity.EPIC)));
     public static final DeferredHolder<Item, Item> ALLOY_PAXEL = ATMItems.register("alloy_paxel", p -> new PaxelItem(p
             .rarity(Rarity.EPIC)
-            .tool(ATMToolMaterials.UNOBTAINIUM, ATMTags.Blocks.MINEABLE_WITH_PAXEL, 12.0F, -0.6F, 2.0F)
+            .tool(ATMToolMaterials.ALLOY, ATMTags.Blocks.MINEABLE_WITH_PAXEL, 12.0F, -0.6F, 2.0F)
             .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)
             .fireResistant()
     
