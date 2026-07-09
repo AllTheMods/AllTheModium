@@ -15,6 +15,7 @@ import net.minecraft.world.level.levelgen.NoiseSettings;
 import net.minecraft.world.level.levelgen.Noises;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.minecraft.world.level.levelgen.placement.CaveSurface;
+import net.minecraft.world.level.levelgen.synth.BlendedNoise;
 import net.minecraft.world.level.levelgen.synth.NormalNoise;
 
 import net.allthemods.allthemodium.api.ATM;
@@ -28,6 +29,9 @@ public class ATMNoiseSettings {
 
     private static final int ISLAND_MIN_Y = 0;
     private static final int ISLAND_HEIGHT = 256;
+    private static final double ISLAND_XZ_FACTOR = 40.0;
+    private static final double ISLAND_Y_FACTOR = 80.0;
+    private static final double ISLAND_GAP_BIAS = -0.1;
 
     public static void bootstrap(final BootstrapContext<NoiseGeneratorSettings> ctx) {
         HolderGetter<DensityFunction> functions = ctx.lookup(Registries.DENSITY_FUNCTION);
@@ -54,7 +58,7 @@ public class ATMNoiseSettings {
         DensityFunction temperature = DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.25, noises.getOrThrow(Noises.TEMPERATURE));
         DensityFunction vegetation = DensityFunctions.shiftedNoise2d(shiftX, shiftZ, 0.25, noises.getOrThrow(Noises.VEGETATION));
 
-        DensityFunction island = islandDensity(ref(functions, "end/base_3d_noise"));
+        DensityFunction island = islandDensity();
 
         return new NoiseRouter(
                 DensityFunctions.zero(),
@@ -75,9 +79,11 @@ public class ATMNoiseSettings {
         );
     }
 
-    private static DensityFunction islandDensity(DensityFunction base3dNoise) {
-        DensityFunction slid = slide(base3dNoise, ISLAND_MIN_Y, ISLAND_HEIGHT, 72, -184, -23.4375, 4, 32, -0.234375);
-        DensityFunction blended = DensityFunctions.blendDensity(slid);
+    private static DensityFunction islandDensity() {
+        DensityFunction base = BlendedNoise.createUnseeded(0.25, 0.25, ISLAND_XZ_FACTOR, ISLAND_Y_FACTOR, 4.0);
+        DensityFunction slid = slide(base, ISLAND_MIN_Y, ISLAND_HEIGHT, 72, -184, -23.4375, 4, 32, -0.234375);
+        DensityFunction biased = DensityFunctions.add(slid, DensityFunctions.constant(ISLAND_GAP_BIAS));
+        DensityFunction blended = DensityFunctions.blendDensity(biased);
         return DensityFunctions.mul(DensityFunctions.interpolated(blended), DensityFunctions.constant(0.64)).squeeze();
     }
 
