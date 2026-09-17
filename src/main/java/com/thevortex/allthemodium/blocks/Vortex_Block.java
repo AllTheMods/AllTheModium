@@ -1,6 +1,6 @@
 package com.thevortex.allthemodium.blocks;
 
-import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.PropertyMap;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
@@ -10,25 +10,21 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SkullBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.item.component.ResolvableProfile;
 import net.minecraft.world.level.block.entity.SkullBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
+
+import java.util.Optional;
 
 public class Vortex_Block extends SkullBlock {
 
-	public static final BooleanProperty POWERED = BooleanProperty.create("powered");
-	public static final GameProfile OWNER_PROFILE = new GameProfile(null, "theVortex");
+	// Name-only and unresolved: SkullBlockEntity/ResolvableProfile resolve the real UUID and skin
+	// textures asynchronously by username (same path vanilla uses for a player head placed by name),
+	// since authlib's GameProfile no longer allows a null id.
+	public static final ResolvableProfile OWNER_PROFILE = new ResolvableProfile(Optional.of("theVortex"), Optional.empty(), new PropertyMap());
 
 	public Vortex_Block() {
 		super(Types.PLAYER, Properties.of().sound(SoundType.STONE).strength(7.0f));
-		this.registerDefaultState(this.stateDefinition.any().setValue(ROTATION, 0).setValue(POWERED, Boolean.FALSE));
-	}
-
-	@Override
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		super.createBlockStateDefinition(builder);
-		builder.add(POWERED);
 	}
 
 	@Override
@@ -39,19 +35,13 @@ public class Vortex_Block extends SkullBlock {
 		}
 	}
 
+	// AbstractSkullBlock already toggles POWERED on redstone changes; just layer the soundbit on top.
 	@Override
-	public void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
-		if (level.isClientSide) {
-			return;
+	protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
+		if (!level.isClientSide && level.hasNeighborSignal(pos) && !state.getValue(POWERED)) {
+			level.playSound(null, pos, ModRegistry.SONOFA.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
 		}
-
-		boolean powered = level.hasNeighborSignal(pos);
-		if (powered != state.getValue(POWERED)) {
-			if (powered) {
-				level.playSound(null, pos, ModRegistry.SONOFA.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-			}
-			level.setBlock(pos, state.setValue(POWERED, powered), 2);
-		}
+		super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
 	}
 
 }

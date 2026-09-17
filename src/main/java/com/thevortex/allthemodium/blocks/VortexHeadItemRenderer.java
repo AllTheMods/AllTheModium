@@ -1,6 +1,5 @@
 package com.thevortex.allthemodium.blocks;
 
-import com.mojang.authlib.GameProfile;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.SkullModel;
@@ -15,8 +14,8 @@ import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.ResolvableProfile;
 import net.minecraft.world.level.block.SkullBlock;
-import net.minecraft.world.level.block.entity.SkullBlockEntity;
 
 /**
  * Vortex_Block always represents the same fixed player, so its item icon/hand/ground render ignores any
@@ -25,7 +24,7 @@ import net.minecraft.world.level.block.entity.SkullBlockEntity;
 public class VortexHeadItemRenderer extends BlockEntityWithoutLevelRenderer {
 
 	private static VortexHeadItemRenderer instance;
-	private static volatile GameProfile resolvedProfile = Vortex_Block.OWNER_PROFILE;
+	private static volatile ResolvableProfile resolvedProfile = Vortex_Block.OWNER_PROFILE;
 
 	private final EntityModelSet entityModelSet;
 	private SkullModelBase playerHeadModel;
@@ -52,8 +51,8 @@ public class VortexHeadItemRenderer extends BlockEntityWithoutLevelRenderer {
 
 	@Override
 	public void renderByItem(ItemStack stack, ItemDisplayContext displayContext, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay) {
-		if (!resolvedProfile.getProperties().containsKey("textures")) {
-			SkullBlockEntity.updateGameprofile(resolvedProfile, profile -> resolvedProfile = profile);
+		if (!resolvedProfile.isResolved()) {
+			resolvedProfile.resolve().thenAccept(profile -> resolvedProfile = profile);
 		}
 
 		RenderType renderType = SkullBlockRenderer.getRenderType(SkullBlock.Types.PLAYER, resolvedProfile);
