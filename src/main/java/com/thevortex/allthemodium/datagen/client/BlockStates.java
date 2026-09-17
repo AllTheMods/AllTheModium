@@ -38,17 +38,13 @@ public class BlockStates extends BlockStateProvider {
 
         entries.forEach(this::simpleBlockAndItem);
 
-        ResourceLocation vortexSideTexture = new ResourceLocation(Reference.MOD_ID, "block/vortex_block_side");
-        BlockModelBuilder vortexModel = models().cube("vortex_block",
-            new ResourceLocation(Reference.MOD_ID, "block/vortex_block_bottom"),
-            new ResourceLocation(Reference.MOD_ID, "block/vortex_block_top"),
-            new ResourceLocation(Reference.MOD_ID, "block/vortex_block_front"),
-            vortexSideTexture,
-            vortexSideTexture,
-            vortexSideTexture)
-            .texture("particle", vortexSideTexture);
-        horizontalBlock(ModRegistry.VORTEX_BLOCK.get(), vortexModel);
-        simpleBlockItem(ModRegistry.VORTEX_BLOCK.get(), vortexModel);
+        // Vortex_Block renders entirely via SkullBlockRenderer (like vanilla player heads), so its block
+        // model only needs a particle texture for break particles, and the item uses the vanilla
+        // builtin/entity skull renderer instead of a baked item model.
+        BlockModelBuilder vortexModel = models().getBuilder("vortex_block")
+            .texture("particle", new ResourceLocation(Reference.MOD_ID, "block/vortex_block_side"));
+        simpleBlock(ModRegistry.VORTEX_BLOCK.get(), vortexModel);
+        itemModels().withExistingParent("vortex_block", new ResourceLocation("minecraft", "item/template_skull"));
 
         logBlock((RotatedPillarBlock)ModRegistry.ANCIENT_LOG_0.get());
         logBlock((RotatedPillarBlock)ModRegistry.ANCIENT_LOG_1.get());

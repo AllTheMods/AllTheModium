@@ -1,12 +1,5 @@
 {
-  "parent": "minecraft:block/cube",
   "textures": {
-    "down": "allthemodium:block/vortex_block_bottom",
-    "east": "allthemodium:block/vortex_block_side",
-    "north": "allthemodium:block/vortex_block_front",
-    "particle": "allthemodium:block/vortex_block_side",
-    "south": "allthemodium:block/vortex_block_side",
-    "up": "allthemodium:block/vortex_block_top",
-    "west": "allthemodium:block/vortex_block_side"
+    "particle": "allthemodium:block/vortex_block_side"
   }
 }

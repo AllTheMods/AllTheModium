@@ -357,7 +357,7 @@ public class ModRegistry {
 	public static final RegistryObject<Item> ALLTHEMODIUM_BLOCK_ITEM = ITEMS.register("allthemodium_block", () -> new BlockItem(ALLTHEMODIUM_BLOCK.get(), new Item.Properties()));
 	public static final RegistryObject<Item> VIBRANIUM_BLOCK_ITEM = ITEMS.register("vibranium_block", () -> new BlockItem(VIBRANIUM_BLOCK.get(), new Item.Properties()));
 	public static final RegistryObject<Item> UNOBTAINIUM_BLOCK_ITEM = ITEMS.register("unobtainium_block", () -> new BlockItem(UNOBTAINIUM_BLOCK.get(), new Item.Properties()));
-	public static final RegistryObject<Item> VORTEX_BLOCK_ITEM = ITEMS.register("vortex_block", () -> new BlockItem(VORTEX_BLOCK.get(), new Item.Properties()));
+	public static final RegistryObject<Item> VORTEX_BLOCK_ITEM = ITEMS.register("vortex_block", () -> new VortexBlockItem(VORTEX_BLOCK.get(), new Item.Properties()));
 
 	public static final RegistryObject<Item> RAW_ALLTHEMODIUM = ITEMS.register("raw_allthemodium", () -> new RawOre(new Item.Properties()));
 	public static final RegistryObject<Item> RAW_VIBRANIUM = ITEMS.register("raw_vibranium", () -> new RawOre(new Item.Properties()));

@@ -114,6 +114,7 @@ public class AllTheModium
 
 	public void setup(final FMLCommonSetupEvent event) {
 		event.enqueueWork(() -> {
+			allowVortexBlockAsSkull();
 			//AxeItem.STRIPPABLES = (new ImmutableMap.Builder<Block, Block>()).put(ModRegistry.SOUL_LOG.get(),ModRegistry.SOUL_LOG_STRIPPED.get()).put(ModRegistry.SOUL_LOG_0.get(),ModRegistry.SOUL_LOG_STRIPPED.get()).put(ModRegistry.SOUL_LOG_1.get(),ModRegistry.SOUL_LOG_STRIPPED.get()).put(ModRegistry.SOUL_LOG_2.get(),ModRegistry.SOUL_LOG_STRIPPED.get()).put(ModRegistry.DEMONIC_LOG.get(),ModRegistry.DEMONIC_LOG_STRIPPED.get()).put(ModRegistry.ANCIENT_LOG_0.get(),ModRegistry.ANCIENT_LOG_STRIPPED.get()).put(ModRegistry.ANCIENT_LOG_1.get(),ModRegistry.ANCIENT_LOG_STRIPPED.get()).put(ModRegistry.ANCIENT_LOG_2.get(),ModRegistry.ANCIENT_LOG_STRIPPED.get()).put(Blocks.OAK_WOOD, Blocks.STRIPPED_OAK_WOOD).put(Blocks.OAK_LOG, Blocks.STRIPPED_OAK_LOG).put(Blocks.DARK_OAK_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD).put(Blocks.DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG).put(Blocks.ACACIA_WOOD, Blocks.STRIPPED_ACACIA_WOOD).put(Blocks.ACACIA_LOG, Blocks.STRIPPED_ACACIA_LOG).put(Blocks.BIRCH_WOOD, Blocks.STRIPPED_BIRCH_WOOD).put(Blocks.BIRCH_LOG, Blocks.STRIPPED_BIRCH_LOG).put(Blocks.JUNGLE_WOOD, Blocks.STRIPPED_JUNGLE_WOOD).put(Blocks.JUNGLE_LOG, Blocks.STRIPPED_JUNGLE_LOG).put(Blocks.SPRUCE_WOOD, Blocks.STRIPPED_SPRUCE_WOOD).put(Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG).put(Blocks.WARPED_STEM, Blocks.STRIPPED_WARPED_STEM).put(Blocks.WARPED_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE).put(Blocks.CRIMSON_STEM, Blocks.STRIPPED_CRIMSON_STEM).put(Blocks.CRIMSON_HYPHAE, Blocks.STRIPPED_CRIMSON_HYPHAE).build();
 			//ATMConfiguredStructures.registerConfiguredStructures();
 
@@ -126,6 +127,24 @@ public class AllTheModium
 		event.enqueueWork(() -> {
 
 		});
+	}
+
+	// Vortex_Block reuses vanilla's BlockEntityType.SKULL (and its SkullBlockRenderer) so it can show a
+	// player skin, but that type hardcodes which Blocks it considers valid, and BlockEntityRenderDispatcher
+	// silently refuses to render a block entity whose block isn't in that set. Reflectively add our block
+	// to it so the renderer actually draws it.
+	private void allowVortexBlockAsSkull() {
+		try {
+			java.lang.reflect.Field validBlocksField = ObfuscationReflectionHelper.findField(
+				net.minecraft.world.level.block.entity.BlockEntityType.class, "validBlocks");
+			@SuppressWarnings("unchecked")
+			Set<Block> validBlocks = (Set<Block>) validBlocksField.get(net.minecraft.world.level.block.entity.BlockEntityType.SKULL);
+			Set<Block> updated = new java.util.HashSet<>(validBlocks);
+			updated.add(ModRegistry.VORTEX_BLOCK.get());
+			validBlocksField.set(net.minecraft.world.level.block.entity.BlockEntityType.SKULL, updated);
+		} catch (Exception e) {
+			LOGGER.error("Failed to register vortex_block as a valid block for BlockEntityType.SKULL", e);
+		}
 	}
 
 
