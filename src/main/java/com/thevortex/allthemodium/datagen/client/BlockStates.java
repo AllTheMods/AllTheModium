@@ -1,6 +1,7 @@
 package com.thevortex.allthemodium.datagen.client;
 
 import com.thevortex.allthemodium.blocks.Ancient_Grass;
+import com.thevortex.allthemodium.blocks.Vortex_Block;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.data.DataGenerator;
@@ -32,9 +33,22 @@ public class BlockStates extends BlockStateProvider {
             .stream().map(RegistryObject::get)
             .filter(block -> !(block instanceof GrassBlock))
             .filter(block -> !(block instanceof LiquidBlock))
+            .filter(block -> !(block instanceof Vortex_Block))
             .collect(Collectors.toList());
 
         entries.forEach(this::simpleBlockAndItem);
+
+        ResourceLocation vortexSideTexture = new ResourceLocation(Reference.MOD_ID, "block/vortex_block_side");
+        BlockModelBuilder vortexModel = models().cube("vortex_block",
+            new ResourceLocation(Reference.MOD_ID, "block/vortex_block_bottom"),
+            new ResourceLocation(Reference.MOD_ID, "block/vortex_block_top"),
+            new ResourceLocation(Reference.MOD_ID, "block/vortex_block_front"),
+            vortexSideTexture,
+            vortexSideTexture,
+            vortexSideTexture)
+            .texture("particle", vortexSideTexture);
+        horizontalBlock(ModRegistry.VORTEX_BLOCK.get(), vortexModel);
+        simpleBlockItem(ModRegistry.VORTEX_BLOCK.get(), vortexModel);
 
         logBlock((RotatedPillarBlock)ModRegistry.ANCIENT_LOG_0.get());
         logBlock((RotatedPillarBlock)ModRegistry.ANCIENT_LOG_1.get());

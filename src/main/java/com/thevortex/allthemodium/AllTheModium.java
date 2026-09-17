@@ -92,6 +92,7 @@ public class AllTheModium
 		ATMStructures.STRUCTURES.register(modEventBus);
 		ModRegistry.FEATURES.register(modEventBus);
 		ModRegistry.CREATIVE_TABS.register(modEventBus);
+		ModRegistry.SOUNDS.register(modEventBus);
 		modEventBus.register(ModRegistry.class);
 		modEventBus.addListener(this::setup);
 
