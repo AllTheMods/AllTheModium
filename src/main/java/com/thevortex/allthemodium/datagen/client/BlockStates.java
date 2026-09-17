@@ -1,6 +1,7 @@
 package com.thevortex.allthemodium.datagen.client;
 
 import com.thevortex.allthemodium.blocks.ATMBrushableBlock;
+import com.thevortex.allthemodium.blocks.Vortex_Block;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.Direction;
@@ -37,6 +38,7 @@ public class BlockStates extends BlockStateProvider {
             .filter(block -> !(block instanceof LeavesBlock))
             .filter(block -> !(block instanceof ATMBrushableBlock))
             .filter(block -> !(block.builtInRegistryHolder().unwrapKey().get().location().getPath().contains("planks")))
+            .filter(block -> !(block instanceof Vortex_Block))
             .collect(Collectors.toList());
 
         entries.forEach(this::simpleBlockAndItem);
@@ -52,6 +54,18 @@ public class BlockStates extends BlockStateProvider {
         crossBlock(ModRegistry.ANCIENT_SAPLING.get());
         crossBlock(ModRegistry.SOUL_SAPLING.get());
         crossBlock(ModRegistry.DEMONIC_SAPLING.get());
+
+        ResourceLocation vortexSideTexture = ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/vortex_block_side");
+        BlockModelBuilder vortexModel = models().cube("vortex_block",
+            ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/vortex_block_bottom"),
+            ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/vortex_block_top"),
+            ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/vortex_block_front"),
+            vortexSideTexture,
+            vortexSideTexture,
+            vortexSideTexture)
+            .texture("particle", vortexSideTexture);
+        horizontalBlock(ModRegistry.VORTEX_BLOCK.get(), vortexModel);
+        simpleBlockItem(ModRegistry.VORTEX_BLOCK.get(), vortexModel);
 
         logBlock((RotatedPillarBlock)ModRegistry.ANCIENT_LOG_0.get());
         logBlock((RotatedPillarBlock)ModRegistry.ANCIENT_LOG_1.get());

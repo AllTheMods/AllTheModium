@@ -22,6 +22,7 @@ import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -73,7 +74,9 @@ public class ModRegistry
     public static final DeferredRegister<WorldCarver<?>> CARVERS = DeferredRegister.create(Registries.CARVER, Reference.MOD_ID);
     public static final DeferredRegister<StructureType<?>> STRUCTURES = DeferredRegister.create(Registries.STRUCTURE_TYPE, Reference.MOD_ID);
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Reference.MOD_ID);
+    public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(Registries.SOUND_EVENT, Reference.MOD_ID);
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> SONOFA = SOUNDS.register("sonofa", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "sonofa")));
 
     // BIOMES
     public static final DeferredHolder<Biome, Biome> MINING = BIOMES.register("mining", ATMBiomes::mining);
@@ -262,6 +265,7 @@ public class ModRegistry
     public static final DeferredHolder<Block, Block> ALLTHEMODIUM_BLOCK = registerBlock("allthemodium_block", ATM_Block::new);
     public static final DeferredHolder<Block, Block> VIBRANIUM_BLOCK = registerBlock("vibranium_block", VIB_Block::new);
     public static final DeferredHolder<Block, Block> UNOBTAINIUM_BLOCK = registerBlock("unobtainium_block", UNOB_Block::new);
+    public static final DeferredHolder<Block, Block> VORTEX_BLOCK = registerBlock("vortex_block", Vortex_Block::new);
 
     public static final DeferredHolder<Block, Block> RAW_ALLTHEMODIUM_BLOCK = registerBlock("raw_allthemodium_block", () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 3.0F).sound(SoundType.METAL)));
     public static final DeferredHolder<Block, Block> RAW_VIBRANIUM_BLOCK = registerBlock("raw_vibranium_block", () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 3.0F).sound(SoundType.METAL)));
