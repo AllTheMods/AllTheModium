@@ -265,7 +265,8 @@ public class ModRegistry
     public static final DeferredHolder<Block, Block> ALLTHEMODIUM_BLOCK = registerBlock("allthemodium_block", ATM_Block::new);
     public static final DeferredHolder<Block, Block> VIBRANIUM_BLOCK = registerBlock("vibranium_block", VIB_Block::new);
     public static final DeferredHolder<Block, Block> UNOBTAINIUM_BLOCK = registerBlock("unobtainium_block", UNOB_Block::new);
-    public static final DeferredHolder<Block, Block> VORTEX_BLOCK = registerBlock("vortex_block", Vortex_Block::new);
+    public static final DeferredHolder<Block, Block> VORTEX_BLOCK = registerBlock("vortex_block", Vortex_Block::new, false);
+    public static final DeferredHolder<Item, Item> VORTEX_BLOCK_ITEM = registerItem("vortex_block", () -> new VortexBlockItem(VORTEX_BLOCK.get(), new Item.Properties()));
 
     public static final DeferredHolder<Block, Block> RAW_ALLTHEMODIUM_BLOCK = registerBlock("raw_allthemodium_block", () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 3.0F).sound(SoundType.METAL)));
     public static final DeferredHolder<Block, Block> RAW_VIBRANIUM_BLOCK = registerBlock("raw_vibranium_block", () -> new Block(BlockBehaviour.Properties.of().strength(3.0F, 3.0F).sound(SoundType.METAL)));
