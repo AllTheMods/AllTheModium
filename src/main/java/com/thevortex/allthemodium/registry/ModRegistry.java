@@ -22,6 +22,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EntityType;
@@ -88,6 +89,10 @@ public class ModRegistry {
 
 	public static final DeferredRegister<Feature<?>> FEATURES =
 			DeferredRegister.create(ForgeRegistries.FEATURES, Reference.MOD_ID);
+
+	public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Reference.MOD_ID);
+
+	public static final RegistryObject<SoundEvent> SONOFA = SOUNDS.register("sonofa", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Reference.MOD_ID, "sonofa")));
 
 	private static ArrayList<Item> SPAWN_EGGS = new ArrayList<Item>();
 
@@ -332,6 +337,7 @@ public class ModRegistry {
 	public static final RegistryObject<Block> ALLTHEMODIUM_BLOCK = BLOCKS.register("allthemodium_block", Allthemodium_Block::new);
 	public static final RegistryObject<Block> VIBRANIUM_BLOCK = BLOCKS.register("vibranium_block", Vibranium_Block::new);
 	public static final RegistryObject<Block> UNOBTAINIUM_BLOCK = BLOCKS.register("unobtainium_block", Unobtainium_Block::new);
+	public static final RegistryObject<Block> VORTEX_BLOCK = BLOCKS.register("vortex_block", Vortex_Block::new);
 
 	public static final RegistryObject<Block> RAW_ALLTHEMODIUM_BLOCK = BLOCKS.register("raw_allthemodium_block", Raw_ATM::new);
 	public static final RegistryObject<Block> RAW_VIBRANIUM_BLOCK = BLOCKS.register("raw_vibranium_block", Raw_VIB::new);
@@ -351,6 +357,7 @@ public class ModRegistry {
 	public static final RegistryObject<Item> ALLTHEMODIUM_BLOCK_ITEM = ITEMS.register("allthemodium_block", () -> new BlockItem(ALLTHEMODIUM_BLOCK.get(), new Item.Properties()));
 	public static final RegistryObject<Item> VIBRANIUM_BLOCK_ITEM = ITEMS.register("vibranium_block", () -> new BlockItem(VIBRANIUM_BLOCK.get(), new Item.Properties()));
 	public static final RegistryObject<Item> UNOBTAINIUM_BLOCK_ITEM = ITEMS.register("unobtainium_block", () -> new BlockItem(UNOBTAINIUM_BLOCK.get(), new Item.Properties()));
+	public static final RegistryObject<Item> VORTEX_BLOCK_ITEM = ITEMS.register("vortex_block", () -> new VortexBlockItem(VORTEX_BLOCK.get(), new Item.Properties()));
 
 	public static final RegistryObject<Item> RAW_ALLTHEMODIUM = ITEMS.register("raw_allthemodium", () -> new RawOre(new Item.Properties()));
 	public static final RegistryObject<Item> RAW_VIBRANIUM = ITEMS.register("raw_vibranium", () -> new RawOre(new Item.Properties()));

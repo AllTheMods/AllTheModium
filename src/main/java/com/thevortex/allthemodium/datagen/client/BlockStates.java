@@ -1,6 +1,7 @@
 package com.thevortex.allthemodium.datagen.client;
 
 import com.thevortex.allthemodium.blocks.Ancient_Grass;
+import com.thevortex.allthemodium.blocks.Vortex_Block;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import com.thevortex.allthemodium.reference.Reference;
 import net.minecraft.data.DataGenerator;
@@ -32,9 +33,18 @@ public class BlockStates extends BlockStateProvider {
             .stream().map(RegistryObject::get)
             .filter(block -> !(block instanceof GrassBlock))
             .filter(block -> !(block instanceof LiquidBlock))
+            .filter(block -> !(block instanceof Vortex_Block))
             .collect(Collectors.toList());
 
         entries.forEach(this::simpleBlockAndItem);
+
+        // Vortex_Block renders entirely via SkullBlockRenderer (like vanilla player heads), so its block
+        // model only needs a particle texture for break particles, and the item uses the vanilla
+        // builtin/entity skull renderer instead of a baked item model.
+        BlockModelBuilder vortexModel = models().getBuilder("vortex_block")
+            .texture("particle", new ResourceLocation(Reference.MOD_ID, "block/vortex_block_side"));
+        simpleBlock(ModRegistry.VORTEX_BLOCK.get(), vortexModel);
+        itemModels().withExistingParent("vortex_block", new ResourceLocation("minecraft", "item/template_skull"));
 
         logBlock((RotatedPillarBlock)ModRegistry.ANCIENT_LOG_0.get());
         logBlock((RotatedPillarBlock)ModRegistry.ANCIENT_LOG_1.get());
