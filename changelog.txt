@@ -1,0 +1,238 @@
+1.21.1-3.1.0
+
+- Fixed the tags still pointing at the bow, crossbow and shield that are disabled
+- Armor, bows, tridents, maces and shields stack to 1 again instead of 64 (Drullkus)
+- Teleport pad now reads the shift key instead of the crouch pose, so it responds while crawling or riding
+- Added allthemodium, vibranium and unobtainium brushes
+
+
+1.21.1-3.0.1
+
+- disables ATM Bow, Unobtainium X-Bow. and Vibranium Shield
+
+
+1.21.1-3.0.0
+
+- biome changes: mining dim, beyond
+- skybox fixes for mining dim and the other
+- fixes for sapling predicate to control tree placement during worldgen
+
+
+1.21.1-2.9.9
+
+- adds new stonecutting recipes for other stone/dirt/grass variants- LobsterJonn
+- various tag and recipe fixes- LobsterJonn
+
+
+1.21.1-2.9.8
+
+- updates pt_br Language translations - PrincessStellar
+- updates ja_jp language translations - Abbage230
+- internal technical changes - LobsterJonn
+- fix for ATM Tree leaf blocks in the other dimension - LobsterJonn
+- adds content for AllTheMons compat - LobsterJonn
+- adjustments to biome scales for more consistency - thevortex
+
+
+1.21.1-2.9.7
+
+- adds dedicated chunk generation to mining dimension, removing cached vanilla flat chunk generator as this causes issues with mods not using datapack system to add features
+
+
+1.21.1-2.9.6
+
+- adds new tags for various modded pickaxes relating to allthemodium+ ores to prevent chesse mining with low tier tools
+
+
+1.21.1-2.9.5
+
+- adjusts world height in the other dimension to allow for larger structures to spawn on the surface
+
+
+1.21.1-2.9.4
+
+- adds new functionality to teleport pad allowing per-pack overrides of dimension travel destinations and origins
+
+
+1.21.1-2.9.3
+
+- reworks teleport pad logic, prevents reappearing in incorrect locations in origin worlds(thanks Satherov!)
+
+
+1.21.1-2.9.2
+
+- changes pyramid layout and changes up some empty chests to have loot tables attached
+
+
+1.21.1-2.9.1
+
+- fixes for L2Weaponry compat
+
+
+1.21.1-2.9.0
+
+- minor compat changes, mekanism tagged items now are optional tags
+
+
+1.21.1-2.8.10
+
+- lang file fix for molten forms of ATM metals
+
+
+1.21.1-2.8.9
+
+- moves mek compat to its own creative tab
+
+
+1.21.1-2.8.8
+
+- renames Allthemodium Source Jar to Unobtainium Source Jar
+- changes Source Jar mineable/pickaxe tag to optional to address attempting to load without Ars
+
+
+1.21.1-2.8.7
+
+- Ancient Stone now requires Allthemodium+ Tier pick to mine
+- Ancient Stone Bricks, Ancient Chiseled Bricks, and Ancient Cracked Stone Bricks require Alloy Tier pick/paxel to mine
+
+
+1.21.1-2.8.6
+
+- Fixes Mace Enchantability
+
+
+1.21.1-2.8.5
+
+- adjusts dungeon and pyramid structure spread to occur less often
+
+
+1.21.1-2.8.4
+
+- fixes crash when ars nouveau is not installed
+
+
+1.21.1-2.8.3
+
+- fixes soul lava localization entry
+
+
+1.21.1-2.8.1
+
+- fixes rarity on Source Jar to Epic
+
+
+1.21.1-2.8.0
+
+- adds Allthemodium Source Jar for compat with Ars Nouveau. contains 100K source and enables larger source requirements in recipes to function until fix is in upstream
+
+
+1.21.1-2.7.9
+
+- more recipe corrections for mek processing changes
+
+
+1.21.1-2.7.8
+
+- tag/recipe fixes
+- soul lava causes 20s burn
+
+
+1.21.1-2.7.7
+
+- update for ATO compat
+
+
+1.21.1-2.7.6
+
+- alters block properties of ancient stone to not conduct redstone power(chests below these blocks are now accessible
+
+
+1.21.1-2.7.5
+
+- fix armor to only give buffs while worn rather than while just sitting in your inventory
+
+
+1.21.1-2.7.4
+
+- re-instates ATM armor special abilities
+- change dungeon library to have a trial chamber battle for the unobtainium smithing template, removes from chest loot
+
+
+1.21.1-2.7.3
+
+- removes some legacy worldgen entries which caused crash issues in some edge cases
+
+
+1.21.1-2.7.2
+
+- increases spacing out of atm dungeon structure spawns
+
+
+1.21.1-2.7.1
+
+- adds some missing block tags
+
+
+1.21.1-2.7.0
+
+- adjusts alloy tier tools stats, corrects paxel functionality
+
+
+1.21.1-2.6.9
+
+- fixes unobtainium crossbow and allthemodium bow animations
+
+
+1.21.1-2.6.8
+
+- fixes crashes when crafting alloy tools
+
+
+1.21.1-2.6.7
+
+- fixes piglich loot table entries, resolved issues with varying sized hitboxes also
+
+
+1.21.1-2.6.6
+
+- even more tag fixes regarding enchanting
+
+
+1.21.1-2.6.5
+
+- adds missing armor tags, adds piglich heart drop
+
+
+1.21.1-2.6.4
+
+- fix missing entity attributes for piglich
+
+
+1.21.1-2.6.3
+
+- fixes some broken mek processing line recipes
+
+
+1.21.1-2.6.2
+
+- adds unbreaking attributes to all tools
+
+
+1.21.1-2.6.1
+
+- mekanism fixes and misc fixes
+
+
+1.21.1-2.6.03
+
+- fix book recipe, thanks wtd!
+
+
+1.21.1-2.6.02
+
+- missed some datagen
+
+
+1.21.1-2.6.01
+
+- initial port, still many bugs, nothing corrupting tho
