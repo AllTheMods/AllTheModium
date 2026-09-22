@@ -9,6 +9,7 @@ import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BrushableBlockRenderer;
+import net.minecraft.client.renderer.blockentity.SkullBlockRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,6 +24,7 @@ public class ClientEvents {
               // event.registerEntityRenderer(ModRegistry.ATM_SHULKER.get(), UNOBShulkerRenderer::new);
               // event.registerEntityRenderer(ModRegistry.ATM_SHULKER.get(), UNOBShulkerRenderer::new);
         event.registerBlockEntityRenderer(ModRegistry.BRUSHABLE_BLOCK.get(), BrushableBlockRenderer::new);
+        event.registerBlockEntityRenderer(ModRegistry.VORTEX_SKULL.get(), SkullBlockRenderer::new);
     }
 
     @SubscribeEvent

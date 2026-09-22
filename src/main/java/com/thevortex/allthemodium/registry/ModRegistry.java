@@ -9,6 +9,7 @@ import com.thevortex.allthemodium.blocks.Unobtainium_Ore;
 import com.thevortex.allthemodium.blocks.Vibranium_Block;
 import com.thevortex.allthemodium.blocks.Vibranium_Ore;
 import com.thevortex.allthemodium.blocks.entity.ATMBrushableBlockEntity;
+import com.thevortex.allthemodium.blocks.entity.VortexSkullBlockEntity;
 import com.thevortex.allthemodium.entity.PiglichEntity;
 import com.thevortex.allthemodium.init.ModFoods;
 import com.thevortex.allthemodium.items.*;
@@ -370,6 +371,12 @@ public class ModRegistry {
 			BlockEntityType.Builder.of(ATMBrushableBlockEntity::new,
 					BlockRegistry.SUS_CLAY.get(),
 					BlockRegistry.SUS_SOUL_SAND.get()
+			).build(null)
+	);
+
+	public static final RegistryObject<BlockEntityType<VortexSkullBlockEntity>> VORTEX_SKULL = ENTITY.register("vortex_skull", () ->
+			BlockEntityType.Builder.of(VortexSkullBlockEntity::new,
+					VORTEX_BLOCK.get()
 			).build(null)
 	);
 
