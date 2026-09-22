@@ -64,8 +64,12 @@ public class TeleportPad extends Block {
 		switch (player.level().dimension().location().toString()) {
 
 			case(OVERWORLD):
-				teleport(LevelRegistry.Mining, player, pos, player.server.getTickCount());
-				break;
+				switch(config) {
+					case 2:
+						break;
+					default:
+						teleport(LevelRegistry.Mining, player, pos, player.server.getTickCount());
+				}
 			case(MINING):
 				teleport(AllTheModium.OverWorld, player, pos, player.server.getTickCount());
 				break;

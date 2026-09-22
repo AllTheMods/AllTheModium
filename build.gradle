@@ -96,6 +96,8 @@ minecraft {
 
             property 'forge.enabledGameTestNamespaces', mod_id
 
+            args '--nogui'
+
             mods {
                 "${mod_id}" {
                     source sourceSets.main

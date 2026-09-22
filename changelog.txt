@@ -1,0 +1,146 @@
+1.20.1-2.5.8
+
+- Added the Vortex block, a player head that plays a sound clip when given a redstone signal (strider820)
+
+
+1.20.1-2.5.7
+
+- fix teleport pad behaviour in packmode 2 to be consistent with other versions
+
+
+1.20.1-2.5.6
+
+- changes pyramid layout and changes up some empty chests to have loot tables attached
+
+
+1.20.1-2.5.5
+
+- removes apotheosis datapack, this will be ported back to the ATM9 repo, change made to resolve conflicts with apotheosis configs in gravitas pack
+
+
+1.20.1-2.5.4
+
+- updates compat to current tinkers construct release
+
+
+1.20.1-2.5.3
+
+- tag fixes, lang fixes, and base tcon support
+
+
+1.20.1-2.5.2
+
+- rewrite of teleport pad logic, adds new packmode specific options for Gravitas
+
+
+1.20.1-2.5.1
+
+- adds missing text entries for smithing templates for display in smithing table
+
+
+1.20.1-2.5.0
+
+- adds:
+- ru_ru
+- ja_jp
+- lang support
+
+
+1.20.1-2.4.4
+
+- updates patchouli book compat, fixes tooltips
+
+
+1.20.1-2.4.3
+
+- correction to mods.toml to reflect proper dependencies
+- fixes vibranium and unobtainium armor trim acceptance
+- fixes vibranium and unobtainium weapon damage to properly reflect tier
+- fixes loot table distributions
+- slight increase to ATM ore veins in the overworld
+
+
+1.20.1-2.4.2
+
+- re-adds mek processing line
+
+
+1.20.1-2.4.1
+
+- halts random ticks for leaves from the other dimension
+
+
+1.20.1-2.4.0
+
+- fixes:
+- unobtainium + vibranium armor pieces have same bonus as allthemodium
+- hardens structures
+- reduces size of piglin villages to not sprawl or be as closely placed
+
+
+1.20.1-2.3.2
+
+- adjusts size of piglin villages, and adjusts weights of various components. adjusted spacing of villages also
+
+
+1.20.1-2.3.1
+
+- fix: adds piglich heart block recipe
+
+
+1.20.1-2.3.0
+
+- adds piglich heart block
+
+
+1.20.1-2.2.9
+
+- fixes recipes for unobtainium armor set
+
+
+1.20.1-2.2.8
+
+- adjusts allthemodium rarity in the mining dim
+
+
+1.20.1-2.2.7
+
+- fixes unbreaking on vib leggings and helm, and unob leggings and helm
+
+
+1.20.1-2.2.6
+
+- reduces size of piglin villages in the other, adds ancient cities to basalt delta biomes in the other
+
+
+1.20.1-2.2.5
+
+- updates pt_br translations, thanks Alucard13!
+
+
+1.20.1-2.2.4
+
+- re-adds missing smithing template recipes
+
+
+1.20.1-2.2.3
+
+- fixes models in jei for sus clay and soul sand. adds lang file entries
+
+
+1.20.1-2.2.2
+
+- adds unobtainium upgrade , moves allthemodium sus clay to ancient city
+
+
+1.20.1-2.2.1
+
+- fixes some missing tags for armor trims for vib and unob sets.
+- fixes armor sets not being indestructible
+- recipes for upgrade templates
+
+
+1.20.1-2.2.0
+
+- 1.20 initial port, slight worldgen feature tweaks in the other, should be more ores
+- built vs neoforge 47.1.25 but compatible with forge 47.1.3
