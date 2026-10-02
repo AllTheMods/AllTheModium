@@ -405,9 +405,9 @@ public class ATMRecipeProvider extends RecipeProvider {
                 .pattern("f")
                 .pattern("i")
                 .pattern("s")
-                .define('f', Items.FEATHER)
+                .define('f', Tags.Items.FEATHERS)
                 .define('i', ingot)
-                .define('s', Items.STICK)
+                .define('s', Tags.Items.RODS_WOODEN)
                 .unlockedBy("has_" + unlockName, this.has(ingot))
                 .save(this.output);
     }
@@ -597,7 +597,7 @@ public class ATMRecipeProvider extends RecipeProvider {
                         .pattern("asa")
                         .pattern("asa")
                         .define('a', input)
-                        .define('s', Items.STICK)
+                        .define('s', Tags.Items.RODS_WOODEN)
                         .unlockedBy("has_" + unlockName, this.has(input)),
                 output
         );
@@ -610,7 +610,7 @@ public class ATMRecipeProvider extends RecipeProvider {
                         .pattern("sas")
                         .pattern("sas")
                         .define('a', input)
-                        .define('s', Items.STICK)
+                        .define('s', Tags.Items.RODS_WOODEN)
                         .unlockedBy("has_" + unlockName, this.has(input)),
                 output
         );
@@ -680,7 +680,7 @@ public class ATMRecipeProvider extends RecipeProvider {
                         .pattern(" n ")
                         .pattern("nan")
                         .pattern(" n ")
-                        .define('a', Items.ENDER_PEARL)
+                        .define('a', Tags.Items.ENDER_PEARLS)
                         .define('n', ATMTags.Items.NUGGETS_ALLTHEMODIUM)
                         .unlockedBy("has_allthemodium_nugget", this.has(ATMTags.Items.NUGGETS_ALLTHEMODIUM)),
                 ATMBlocks.TELEPORT_PAD.get().asItem(),

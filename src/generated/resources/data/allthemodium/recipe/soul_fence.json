@@ -4,7 +4,7 @@
   "group": "allthemodium",
   "key": {
     "a": "#allthemodium:soul_planks",
-    "s": "minecraft:stick"
+    "s": "#c:rods/wooden"
   },
   "pattern": [
     "asa",

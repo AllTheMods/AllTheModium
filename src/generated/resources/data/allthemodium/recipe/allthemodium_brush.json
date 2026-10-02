@@ -3,9 +3,9 @@
   "category": "misc",
   "group": "allthemodium",
   "key": {
-    "f": "minecraft:feather",
+    "f": "#c:feathers",
     "i": "#c:ingots/allthemodium",
-    "s": "minecraft:stick"
+    "s": "#c:rods/wooden"
   },
   "pattern": [
     "f",

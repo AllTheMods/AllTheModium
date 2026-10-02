@@ -3,7 +3,7 @@
   "category": "misc",
   "group": "allthemodium",
   "key": {
-    "a": "minecraft:ender_pearl",
+    "a": "#c:ender_pearls",
     "n": "#c:nuggets/allthemodium"
   },
   "pattern": [
