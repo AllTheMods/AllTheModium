@@ -1,42 +1,20 @@
 package com.thevortex.allthemodium.events;
 
 
-import com.thevortex.allthemodium.AllTheModium;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.TagRegistry;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.util.FakePlayer;
 import net.neoforged.neoforge.event.level.BlockEvent;
 
-import java.sql.Ref;
-
-@EventBusSubscriber(bus=EventBusSubscriber.Bus.GAME, modid = Reference.MOD_ID)
+@EventBusSubscriber(modid = Reference.MOD_ID)
 public class BlockBreak {
-
-
-	@SubscribeEvent
-	public static void on(BlockEvent.EntityPlaceEvent context){
-		if (context.getLevel() == Level.END) {
-			BlockPos pos = context.getPos();
-			int x = pos.getX();
-			int z = pos.getZ();
-			if (Math.abs(x) < 1000 || Math.abs(z) < 1000) {
-
-				context.setCanceled(true);
-			}
-
-		}
-
-	}
 
 	@SubscribeEvent
 	public static void onBlockToolMofication(BlockEvent.BlockToolModificationEvent event) {
