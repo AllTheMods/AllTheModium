@@ -1,6 +1,7 @@
 {
   "ambient_light": 0.0,
   "attributes": {
+    "minecraft:gameplay/fast_lava": true,
     "minecraft:gameplay/piglins_zombify": false,
     "minecraft:gameplay/respawn_anchor_works": true,
     "minecraft:visual/ambient_light_color": "#0a0a0a",

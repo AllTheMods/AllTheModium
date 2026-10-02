@@ -1,5 +1,6 @@
 package net.allthemods.allthemodium.data.provider;
 
+import net.allthemods.allthemodium.data.worldgen.ATMBiomes;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
 import net.minecraft.data.PackOutput;
@@ -30,6 +31,16 @@ public class ATMLanguageProvider extends LanguageProvider {
         this.addDimension(ATMDimensions.MINING, "Mining Dimension");
         this.addDimension(ATMDimensions.THE_BEYOND, "The Beyond");
         this.addDimension(ATMDimensions.THE_OTHER, "The Other");
+
+        this.addBiome(ATMBiomes.BASALT_DELTAS, "Ancient Basalt Deltas");
+        this.addBiome(ATMBiomes.MINING, "ATM Mining Dim");
+        this.addBiome(ATMBiomes.THE_BEYOND, "The Beyond");
+        this.addBiome(ATMBiomes.THE_OTHER, "The Other");
+        this.addBiome(ATMBiomes.CRIMSON_FOREST, "Ancient Crimson Forest");
+        this.addBiome(ATMBiomes.WARPED_FOREST, "Ancient Warped Forest");
+        this.addBiome(ATMBiomes.DESERT, "The Other Desert");
+        this.addBiome(ATMBiomes.DESERT_HILLS, "The Other Desert Hills");
+        this.addBiome(ATMBiomes.SOUL_SAND_VALLEY, "The Other Soul Sand Valley");
     }
     
     private void addBlocks() {

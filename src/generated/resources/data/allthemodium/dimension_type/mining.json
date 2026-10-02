@@ -1,11 +1,6 @@
 {
   "ambient_light": 1.0,
   "attributes": {
-    "minecraft:gameplay/bed_rule": {
-      "can_set_spawn": "never",
-      "can_sleep": "never",
-      "explodes": true
-    },
     "minecraft:visual/ambient_light_color": "#0a0a0a",
     "minecraft:visual/fog_color": "#c0d8ff",
     "minecraft:visual/sky_color": "#6ed1ff",

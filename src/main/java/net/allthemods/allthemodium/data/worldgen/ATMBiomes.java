@@ -35,7 +35,6 @@ public class ATMBiomes {
     
     public static final ResourceKey<Biome> MINING = ATMBiomes.create("mining");
     public static final ResourceKey<Biome> THE_BEYOND = ATMBiomes.create("the_beyond");
-    
     public static final ResourceKey<Biome> THE_OTHER = ATMBiomes.create("the_other");
     public static final ResourceKey<Biome> BASALT_DELTAS = ATMBiomes.create("basalt_deltas");
     public static final ResourceKey<Biome> CRIMSON_FOREST = ATMBiomes.create("crimson_forest");
