@@ -31,11 +31,12 @@ public class ATMJadePlugin implements IWailaPlugin {
     }
 
     private static void registerPickaxes(ToolTypeRegistry registry) {
-        registry.type(JadeIds.JADE("pickaxe"))
+        registry.modifyType(JadeIds.JADE("pickaxe"), type -> type
                 .addTier(ToolTier.item(ATMItems.ALLTHEMODIUM_PICKAXE.get()))
                 .addTier(ToolTier.item(ATMItems.VIBRANIUM_PICKAXE.get()))
                 .addTier(ToolTier.item(ATMItems.UNOBTAINIUM_PICKAXE.get()))
-                .addTier(ToolTier.item(ATMItems.ALLOY_PICKAXE.get()));
+                .addTier(ToolTier.item(ATMItems.ALLOY_PICKAXE.get()))
+        );
     }
     
     enum TeleportPadComponentProvider implements IBlockComponentProvider {
