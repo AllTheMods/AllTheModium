@@ -260,6 +260,7 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(TagRegistry.VIBRANIUM_ORE).add(ModRegistry.VIBRANIUM_ORE.get());
         tag(TagRegistry.VIBRANIUM_ORE).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
         tag(TagRegistry.UNOBTAINIUM_ORE).add(ModRegistry.UNOBTAINIUM_ORE.get());
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.VORTEX_BLOCK.get());
 
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModRegistry.RAW_ALLTHEMODIUM_BLOCK.get())

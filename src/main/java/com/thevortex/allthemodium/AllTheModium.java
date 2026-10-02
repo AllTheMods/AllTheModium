@@ -13,18 +13,26 @@ import com.thevortex.allthemodium.registry.mek_reg.MekProcReg;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.fml.util.ObfuscationReflectionHelper;
 import net.neoforged.neoforge.common.NeoForge;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.launch.MixinBootstrap;
+
+import java.lang.reflect.Field;
+import java.util.HashSet;
+import java.util.Set;
 
 import static com.thevortex.allthemodium.reference.Reference.MOD_ID;
 
@@ -66,6 +74,8 @@ public class AllTheModium
 		ModRegistry.POI_TYPES.register(modEventBus);
 		ModRegistry.CREATIVE_TABS.register(modEventBus);
 		ChunkGenRegistry.CHUNKGENERATORS.register(modEventBus);
+		ModRegistry.SOUNDS.register(modEventBus);
+		modEventBus.addListener(this::setup);
 
 		if(ModList.get().isLoaded("mekanism")) {
 
@@ -119,6 +129,29 @@ public class AllTheModium
 	public void onModsLoaded(FMLLoadCompleteEvent event) {
 		if (FMLEnvironment.dist.isClient() && ModList.get().isLoaded("jade")) {
 			event.enqueueWork(ATMJadePlugin::registerPickaxes);
+		}
+	}
+
+	public void setup(final FMLCommonSetupEvent event) {
+		event.enqueueWork(() -> {
+			allowVortexBlockAsSkull();
+		});
+	}
+
+	// Vortex_Block reuses vanilla's BlockEntityType.SKULL (and its SkullBlockRenderer) so it can show a
+	// player skin, but that type hardcodes which Blocks it considers valid, and BlockEntityRenderDispatcher
+	// silently refuses to render a block entity whose block isn't in that set. Reflectively add our block
+	// to it so the renderer actually draws it.
+	private void allowVortexBlockAsSkull() {
+		try {
+			Field validBlocksField = ObfuscationReflectionHelper.findField(BlockEntityType.class, "validBlocks");
+			@SuppressWarnings("unchecked")
+			Set<Block> validBlocks = (Set<Block>) validBlocksField.get(BlockEntityType.SKULL);
+			Set<Block> updated = new HashSet<>(validBlocks);
+			updated.add(ModRegistry.VORTEX_BLOCK.get());
+			validBlocksField.set(BlockEntityType.SKULL, updated);
+		} catch (Exception e) {
+			LOGGER.error("Failed to register vortex_block as a valid block for BlockEntityType.SKULL", e);
 		}
 	}
 

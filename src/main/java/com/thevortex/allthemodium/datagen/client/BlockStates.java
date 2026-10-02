@@ -1,6 +1,7 @@
 package com.thevortex.allthemodium.datagen.client;
 
 import com.thevortex.allthemodium.blocks.ATMBrushableBlock;
+import com.thevortex.allthemodium.blocks.Vortex_Block;
 import com.thevortex.allthemodium.reference.Reference;
 import com.thevortex.allthemodium.registry.ModRegistry;
 import net.minecraft.core.Direction;
@@ -37,6 +38,7 @@ public class BlockStates extends BlockStateProvider {
             .filter(block -> !(block instanceof LeavesBlock))
             .filter(block -> !(block instanceof ATMBrushableBlock))
             .filter(block -> !(block.builtInRegistryHolder().unwrapKey().get().location().getPath().contains("planks")))
+            .filter(block -> !(block instanceof Vortex_Block))
             .collect(Collectors.toList());
 
         entries.forEach(this::simpleBlockAndItem);
@@ -52,6 +54,14 @@ public class BlockStates extends BlockStateProvider {
         crossBlock(ModRegistry.ANCIENT_SAPLING.get());
         crossBlock(ModRegistry.SOUL_SAPLING.get());
         crossBlock(ModRegistry.DEMONIC_SAPLING.get());
+
+        // Vortex_Block renders entirely via SkullBlockRenderer (like vanilla player heads), so its block
+        // model only needs a particle texture for break particles, and the item uses the vanilla
+        // builtin/entity skull renderer instead of a baked item model.
+        BlockModelBuilder vortexModel = models().getBuilder("vortex_block")
+            .texture("particle", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "block/vortex_block_side"));
+        simpleBlock(ModRegistry.VORTEX_BLOCK.get(), vortexModel);
+        itemModels().withExistingParent("vortex_block", ResourceLocation.withDefaultNamespace("item/template_skull"));
 
         logBlock((RotatedPillarBlock)ModRegistry.ANCIENT_LOG_0.get());
         logBlock((RotatedPillarBlock)ModRegistry.ANCIENT_LOG_1.get());
