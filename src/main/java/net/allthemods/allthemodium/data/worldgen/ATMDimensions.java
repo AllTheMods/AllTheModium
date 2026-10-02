@@ -55,7 +55,6 @@ public class ATMDimensions {
                         DimensionType.Skybox.OVERWORLD,
                         CardinalLighting.Type.DEFAULT,
                         EnvironmentAttributeMap.builder()
-                                .set(EnvironmentAttributes.BED_RULE, BedRule.EXPLODES)
                                 .set(EnvironmentAttributes.FOG_COLOR, 0xC0D8FF)
                                 .set(EnvironmentAttributes.SKY_COLOR, 0x6ED1FF)
                                 .set(EnvironmentAttributes.WATER_FOG_COLOR, 0x050533)
@@ -118,6 +117,7 @@ public class ATMDimensions {
                         DimensionType.Skybox.END,
                         CardinalLighting.Type.DEFAULT,
                         EnvironmentAttributeMap.builder()
+                                .set(EnvironmentAttributes.FAST_LAVA, true)
                                 .set(EnvironmentAttributes.RESPAWN_ANCHOR_WORKS, true)
                                 .set(EnvironmentAttributes.PIGLINS_ZOMBIFY, false)
                                 .set(EnvironmentAttributes.FOG_COLOR, 0x330303)
