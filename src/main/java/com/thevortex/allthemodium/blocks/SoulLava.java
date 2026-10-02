@@ -117,6 +117,11 @@ public class SoulLava extends LiquidBlock {
 		double d0 = 0.5625D;
 		RandomSource random = world.random;
 
+		BlockPos above = worldIn.above();
+		if(world.getBlockState(above).isSolidRender(world, above)) {
+			return;
+		}
+
 		if(world.getFluidState(worldIn).isSource() && (random.nextBoolean() == true)) {
 			for (Direction direction : Direction.values()) {
 				BlockPos blockpos = worldIn.offset(direction.getNormal());
