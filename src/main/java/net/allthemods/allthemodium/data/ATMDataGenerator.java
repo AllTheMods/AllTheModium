@@ -9,6 +9,7 @@ import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 
 import net.allthemods.allthemodium.api.ATM;
+import net.allthemods.allthemodium.data.provider.ATMDataMapProvider;
 import net.allthemods.allthemodium.data.provider.ATMEnchantments;
 import net.allthemods.allthemodium.data.provider.ATMEquipmentAssetProvider;
 import net.allthemods.allthemodium.data.provider.ATMLanguageProvider;
@@ -53,6 +54,7 @@ public class ATMDataGenerator {
         event.createProvider(ATMBiomeTagsProvider::new);
         event.createProvider(ATMBlockTagsProvider::new);
         event.createProvider(ATMItemTagsProvider::new);
+        event.createProvider(ATMDataMapProvider::new);
         event.createProvider(ATMRecipeProvider.Runner::new);
         event.createProvider(ATMSpriteSourceProvider::new);
         event.createDatapackRegistryObjects(ATMDataGenerator.BUILDER);

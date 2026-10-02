@@ -1,0 +1,25 @@
+{
+  "values": {
+    "allthemodium:ancient_log_0": {
+      "stripped_block": "allthemodium:stripped_ancient_log"
+    },
+    "allthemodium:ancient_log_1": {
+      "stripped_block": "allthemodium:stripped_ancient_log"
+    },
+    "allthemodium:ancient_log_2": {
+      "stripped_block": "allthemodium:stripped_ancient_log"
+    },
+    "allthemodium:demonic_log": {
+      "stripped_block": "allthemodium:stripped_demonic_log"
+    },
+    "allthemodium:soul_log_0": {
+      "stripped_block": "allthemodium:stripped_soul_log"
+    },
+    "allthemodium:soul_log_1": {
+      "stripped_block": "allthemodium:stripped_soul_log"
+    },
+    "allthemodium:soul_log_2": {
+      "stripped_block": "allthemodium:stripped_soul_log"
+    }
+  }
+}
