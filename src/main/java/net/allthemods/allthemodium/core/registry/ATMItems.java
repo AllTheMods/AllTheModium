@@ -22,6 +22,7 @@ import net.minecraft.world.item.equipment.ArmorType;
 import net.allthemods.allthemodium.api.ATM;
 import net.allthemods.allthemodium.common.items.ModiumBootsItem;
 import net.allthemods.allthemodium.common.items.ModiumBowItem;
+import net.allthemods.allthemodium.common.items.ModiumBrushItem;
 import net.allthemods.allthemodium.common.items.ModiumChestplateItem;
 import net.allthemods.allthemodium.common.items.ModiumCrossBowItem;
 import net.allthemods.allthemodium.common.items.ModiumHelmetItem;
@@ -169,6 +170,10 @@ public class ATMItems {
             .fireResistant()
     ));
     
+    public static final DeferredHolder<Item, ModiumBrushItem> ALLTHEMODIUM_BRUSH = ATMItems.register("allthemodium_brush", p -> new ModiumBrushItem(ATMItems.brush(p), 2));
+    public static final DeferredHolder<Item, ModiumBrushItem> VIBRANIUM_BRUSH = ATMItems.register("vibranium_brush", p -> new ModiumBrushItem(ATMItems.brush(p), 5));
+    public static final DeferredHolder<Item, ModiumBrushItem> UNOBTAINIUM_BRUSH = ATMItems.register("unobtainium_brush", p -> new ModiumBrushItem(ATMItems.brush(p), 10));
+
     public static final DeferredHolder<Item, ModiumBowItem> ALLTHEMODIUM_BOW = ATMItems.register("allthemodium_bow", ModiumBowItem::new);
     public static final DeferredHolder<Item, ModiumShieldItem> VIBRANIUM_SHIELD = ATMItems.register("vibranium_shield", ModiumShieldItem::new);
     public static final DeferredHolder<Item, ModiumCrossBowItem> UNOBTAINIUM_CROSSBOW = ATMItems.register("unobtainium_crossbow", ModiumCrossBowItem::new);
@@ -178,6 +183,14 @@ public class ATMItems {
     public static final DeferredHolder<Item, ModiumSmithingTemplateItem> VIBRANIUM_SMITHING_TEMPLATE = ATMItems.register("vibranium_upgrade_smithing_template", ModiumSmithingTemplateItem::createVibraniumUpgradeTemplate);
     public static final DeferredHolder<Item, ModiumSmithingTemplateItem> UNOBTAINIUM_SMITHING_TEMPLATE = ATMItems.register("unobtainium_upgrade_smithing_template", ModiumSmithingTemplateItem::createUnobtainiumUpgradeTemplate);
     
+    private static Item.Properties brush(Item.Properties properties) {
+        return properties
+                .rarity(Rarity.EPIC)
+                .durability(Short.MAX_VALUE)
+                .component(DataComponents.UNBREAKABLE, Unit.INSTANCE)
+                .fireResistant();
+    }
+
     private static <T extends Item> DeferredHolder<Item, T> register(String name, Function<Item.Properties, T> factory) {
         return ATMItems.ITEMS.register(name, p -> factory.apply(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, p))));
     }

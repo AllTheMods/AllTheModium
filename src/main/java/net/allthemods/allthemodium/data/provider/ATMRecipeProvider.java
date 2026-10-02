@@ -392,10 +392,26 @@ public class ATMRecipeProvider extends RecipeProvider {
     
     private void addSpecialRecipes() {
         this.teleportPad();
+        this.brush(ATMTags.Items.INGOTS_ALLTHEMODIUM, ATMItems.ALLTHEMODIUM_BRUSH.get(), "allthemodium_ingot");
+        this.brush(ATMTags.Items.INGOTS_VIBRANIUM, ATMItems.VIBRANIUM_BRUSH.get(), "vibranium_ingot");
+        this.brush(ATMTags.Items.INGOTS_UNOBTAINIUM, ATMItems.UNOBTAINIUM_BRUSH.get(), "unobtainium_ingot");
         this.compressSimple(ATMItems.PIGLICH_HEART.get(), ATMBlocks.PIGLICH_HEART_BLOCK.get().asItem(), "piglich_heart_block", "piglich_heart");
         this.decompressSimple(ATMBlocks.PIGLICH_HEART_BLOCK.get().asItem(), ATMItems.PIGLICH_HEART.get(), "piglich_heart", "piglich_heart_block");
     }
     
+    private void brush(TagKey<Item> ingot, Item output, String unlockName) {
+        ShapedRecipeBuilder.shaped(this.items, RecipeCategory.MISC, output)
+                .group(ATMRecipeProvider.GROUP)
+                .pattern("f")
+                .pattern("i")
+                .pattern("s")
+                .define('f', Items.FEATHER)
+                .define('i', ingot)
+                .define('s', Items.STICK)
+                .unlockedBy("has_" + unlockName, this.has(ingot))
+                .save(this.output);
+    }
+
     private void food(Item input, Item output) {
         ShapedRecipeBuilder.shaped(this.items, RecipeCategory.MISC, output)
                 .group(ATMRecipeProvider.GROUP)

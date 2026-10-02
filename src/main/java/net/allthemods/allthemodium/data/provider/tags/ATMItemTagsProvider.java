@@ -307,8 +307,10 @@ public class ATMItemTagsProvider extends ItemTagsProvider {
                 )
                 .add(ATMItems.ALLTHEMODIUM_SWORD.get(), ATMItems.VIBRANIUM_SWORD.get(), ATMItems.UNOBTAINIUM_SWORD.get(), ATMItems.ALLOY_SWORD.get())
                 .add(ATMItems.ALLTHEMODIUM_MACE.get(), ATMItems.VIBRANIUM_MACE.get(), ATMItems.UNOBTAINIUM_MACE.get(), ATMItems.ALLOY_MACE.get())
-                .add(ATMItems.ALLTHEMODIUM_BOW.get(), ATMItems.VIBRANIUM_SHIELD.get(), ATMItems.UNOBTAINIUM_CROSSBOW.get(), ATMItems.ALLOY_TRIDENT.get());
+                .add(ATMItems.ALLTHEMODIUM_BOW.get(), ATMItems.VIBRANIUM_SHIELD.get(), ATMItems.UNOBTAINIUM_CROSSBOW.get(), ATMItems.ALLOY_TRIDENT.get())
+                .add(ATMItems.ALLTHEMODIUM_BRUSH.get(), ATMItems.VIBRANIUM_BRUSH.get(), ATMItems.UNOBTAINIUM_BRUSH.get());
         this.tag(Tags.Items.TOOLS_MACE).add(ATMItems.ALLTHEMODIUM_MACE.get(), ATMItems.VIBRANIUM_MACE.get(), ATMItems.UNOBTAINIUM_MACE.get(), ATMItems.ALLOY_MACE.get());
+        this.tag(Tags.Items.TOOLS_BRUSH).add(ATMItems.ALLTHEMODIUM_BRUSH.get(), ATMItems.VIBRANIUM_BRUSH.get(), ATMItems.UNOBTAINIUM_BRUSH.get());
         this.tag(Tags.Items.TOOLS_BOW).add(ATMItems.ALLTHEMODIUM_BOW.get());
         this.tag(Tags.Items.TOOLS_CROSSBOW).add(ATMItems.UNOBTAINIUM_CROSSBOW.get());
         this.tag(Tags.Items.TOOLS_SHIELD).add(ATMItems.VIBRANIUM_SHIELD.get());

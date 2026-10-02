@@ -27,6 +27,9 @@
     "allthemodium:allthemodium_bow",
     "allthemodium:vibranium_shield",
     "allthemodium:unobtainium_crossbow",
-    "allthemodium:alloy_trident"
+    "allthemodium:alloy_trident",
+    "allthemodium:allthemodium_brush",
+    "allthemodium:vibranium_brush",
+    "allthemodium:unobtainium_brush"
   ]
 }

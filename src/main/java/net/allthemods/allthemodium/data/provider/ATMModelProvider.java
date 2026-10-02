@@ -21,6 +21,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BowItem;
+import net.minecraft.world.item.BrushItem;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.HoeItem;
@@ -212,7 +213,7 @@ public final class ATMModelProvider extends ModelProvider {
                                 )
                         )
                 );
-            } else if (item instanceof AxeItem || item instanceof HoeItem || item instanceof ShovelItem || path.endsWith("_sword") || path.endsWith("_pickaxe") || path.endsWith("_paxel")) {
+            } else if (item instanceof BrushItem || item instanceof AxeItem || item instanceof HoeItem || item instanceof ShovelItem || path.endsWith("_sword") || path.endsWith("_pickaxe") || path.endsWith("_paxel")) {
                 itemModels.generateFlatItem(item, ModelTemplates.FLAT_HANDHELD_ITEM);
             } else if (item instanceof MaceItem || path.endsWith("_mace")) {
                 itemModels.generateFlatItem(item, ModelTemplates.FLAT_HANDHELD_MACE_ITEM);
