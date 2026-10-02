@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "allthemodium",
+  "key": {
+    "f": {
+      "item": "minecraft:feather"
+    },
+    "i": {
+      "tag": "c:ingots/unobtainium"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "f",
+    "i",
+    "s"
+  ],
+  "result": {
+    "count": 1,
+    "id": "allthemodium:unobtainium_brush"
+  }
+}

@@ -118,6 +118,33 @@ public class ATMCraftingRecipes extends RecipeProvider
                 .unlockedBy("has_allthemodium_nugget", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ALLTHEMODIUM_NUGGET).build()))
                 .unlockedBy("has_ender_pearl", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(Items.ENDER_PEARL).build()))
                 .save(consumer);
+        shaped(ModRegistry.ATM_BRUSH.get())
+                .pattern("f")
+                .pattern("i")
+                .pattern("s")
+                .define('f', Items.FEATHER)
+                .define('i', TagRegistry.ALLTHEMODIUM_INGOT)
+                .define('s', Items.STICK)
+                .unlockedBy("has_allthemodium_ingot", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.ALLTHEMODIUM_INGOT).build()))
+                .save(consumer);
+        shaped(ModRegistry.VIB_BRUSH.get())
+                .pattern("f")
+                .pattern("i")
+                .pattern("s")
+                .define('f', Items.FEATHER)
+                .define('i', TagRegistry.VIBRANIUM_INGOT)
+                .define('s', Items.STICK)
+                .unlockedBy("has_vibranium_ingot", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.VIBRANIUM_INGOT).build()))
+                .save(consumer);
+        shaped(ModRegistry.UNO_BRUSH.get())
+                .pattern("f")
+                .pattern("i")
+                .pattern("s")
+                .define('f', Items.FEATHER)
+                .define('i', TagRegistry.UNOBTAINIUM_INGOT)
+                .define('s', Items.STICK)
+                .unlockedBy("has_unobtainium_ingot", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(TagRegistry.UNOBTAINIUM_INGOT).build()))
+                .save(consumer);
 /*
         shaped(ModRegistry.ALLTHEMODIUM_PICKAXE.get())
             .pattern("ara")
