@@ -1,8 +1,6 @@
 {
   "values": [
-    "allthemodium:unobtainium_ore",
-    "allthemodium:raw_unobtainium_block",
-    "allthemodium:unobtainium_block",
-    "#allthemodium:incorrect_for_vibranium_tool"
+    "#c:needs_vibranium_tool",
+    "#c:needs_unobtainium_tool"
   ]
 }

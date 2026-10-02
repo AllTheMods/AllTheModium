@@ -1,7 +1,5 @@
 {
   "values": [
-    "allthemodium:unobtainium_allthemodium_block",
-    "allthemodium:unobtainium_vibranium_block",
-    "allthemodium:vibranium_allthemodium_block"
+    "#c:needs_unobtainium_tool"
   ]
 }

@@ -34,6 +34,10 @@ public class ATMTags {
         public static final TagKey<Block> STORAGE_BLOCKS_UNOBTAINIUM_ALLTHEMODIUM_ALLOY = Blocks.neo("storage_blocks/unobtainium_allthemodium_alloy");
         public static final TagKey<Block> STORAGE_BLOCKS_UNOBTAINIUM_VIBRANIUM_ALLOY = Blocks.neo("storage_blocks/unobtainium_vibranium_alloy");
         
+        public static final TagKey<Block> NEEDS_ALLTHEMODIUM_TOOL = Blocks.neo("needs_allthemodium_tool");
+        public static final TagKey<Block> NEEDS_VIBRANIUM_TOOL = Blocks.neo("needs_vibranium_tool");
+        public static final TagKey<Block> NEEDS_UNOBTAINIUM_TOOL = Blocks.neo("needs_unobtainium_tool");
+
         public static final TagKey<Block> INCORRECT_FOR_ALLTHEMODIUM_TOOL = Blocks.create("incorrect_for_allthemodium_tool");
         public static final TagKey<Block> INCORRECT_FOR_VIBRANIUM_TOOL = Blocks.create("incorrect_for_vibranium_tool");
         public static final TagKey<Block> INCORRECT_FOR_UNOBTAINIUM_TOOL = Blocks.create("incorrect_for_unobtainium_tool");

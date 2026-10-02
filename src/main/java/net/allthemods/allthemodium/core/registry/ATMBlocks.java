@@ -40,6 +40,9 @@ import net.allthemods.allthemodium.common.blocks.OtherBlock;
 import net.allthemods.allthemodium.common.blocks.OtherBookshelfBlock;
 import net.allthemods.allthemodium.common.blocks.OtherLeaveBlock;
 import net.allthemods.allthemodium.common.blocks.OtherSaplingBlock;
+import net.allthemods.allthemodium.common.blocks.OtherSlabBlock;
+import net.allthemods.allthemodium.common.blocks.OtherStairBlock;
+import net.allthemods.allthemodium.common.blocks.OtherWallBlock;
 import net.allthemods.allthemodium.common.blocks.TeleportPad;
 import net.allthemods.allthemodium.common.blocks.entity.ModiumBrushableBlockEntity;
 import net.allthemods.allthemodium.data.worldgen.ATMConfiguredFeatures;
@@ -97,37 +100,37 @@ public class ATMBlocks {
     public static final DeferredHolder<Block, FenceGateBlock> ANCIENT_FENCE_GATE = ATMBlocks.register("ancient_fence_gate", p -> new FenceGateBlock(ATMBlockSets.ANCIENT_WOOD, p.strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
     public static final DeferredHolder<Block, DoorBlock> ANCIENT_DOOR = ATMBlocks.register("ancient_door", p -> new DoorBlock(ATMBlockSets.ANCIENT, p.strength(2.0F).sound(SoundType.WOOD)));
     public static final DeferredHolder<Block, OtherBookshelfBlock> ANCIENT_BOOKSHELF = ATMBlocks.register("ancient_bookshelf", p -> new OtherBookshelfBlock(p.strength(0.8F).randomTicks().sound(SoundType.WOOD)));
-    public static final DeferredHolder<Block, StairBlock> ANCIENT_STAIRS = ATMBlocks.register("ancient_stairs", p -> new StairBlock(ATMBlocks.ANCIENT_PLANKS.get().defaultBlockState(), p), () -> ATMBlocks.ANCIENT_PLANKS.get().properties());
-    public static final DeferredHolder<Block, SlabBlock> ANCIENT_SLAB = ATMBlocks.register("ancient_slab", SlabBlock::new, () -> ATMBlocks.ANCIENT_PLANKS.get().properties());
+    public static final DeferredHolder<Block, StairBlock> ANCIENT_STAIRS = ATMBlocks.register("ancient_stairs", p -> new StairBlock(ATMBlocks.ANCIENT_PLANKS.get().defaultBlockState(), p), () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.ANCIENT_PLANKS.get()));
+    public static final DeferredHolder<Block, SlabBlock> ANCIENT_SLAB = ATMBlocks.register("ancient_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.ANCIENT_PLANKS.get()));
     
     public static final DeferredHolder<Block, Block> ANCIENT_STONE = ATMBlocks.register("ancient_stone", p -> new Block(p.sound(SoundType.STONE).isRedstoneConductor((state, level, pos) -> false).strength(1.5f)));
-    public static final DeferredHolder<Block, Block> SMOOTH_ANCIENT_STONE = ATMBlocks.register("smooth_ancient_stone", p -> new Block(p.sound(SoundType.STONE).isRedstoneConductor((state, level, pos) -> false).strength(2.25f)));
+    public static final DeferredHolder<Block, Block> SMOOTH_ANCIENT_STONE = ATMBlocks.register("smooth_ancient_stone", p -> new Block(p.requiresCorrectToolForDrops().sound(SoundType.STONE).isRedstoneConductor((state, level, pos) -> false).strength(2.25f)));
     public static final DeferredHolder<Block, Block> MOSSY_ANCIENT_STONE = ATMBlocks.register("mossy_ancient_stone", p -> new Block(p.sound(SoundType.MOSS_CARPET).isRedstoneConductor((state, level, pos) -> false).strength(1.5f)));
     public static final DeferredHolder<Block, OtherBlock> ANCIENT_STONE_BRICKS = ATMBlocks.register("ancient_stone_bricks", OtherBlock::new);
     public static final DeferredHolder<Block, OtherBlock> CHISELED_ANCIENT_STONE_BRICKS = ATMBlocks.register("chiseled_ancient_stone_bricks", OtherBlock::new);
     public static final DeferredHolder<Block, OtherBlock> CRACKED_ANCIENT_STONE_BRICKS = ATMBlocks.register("cracked_ancient_stone_bricks", OtherBlock::new);
     public static final DeferredHolder<Block, OtherBlock> POLISHED_ANCIENT_STONE = ATMBlocks.register("polished_ancient_stone", OtherBlock::new);
-    public static final DeferredHolder<Block, WallBlock> ANCIENT_STONE_WALL = ATMBlocks.register("ancient_stone_wall", WallBlock::new, () -> ATMBlocks.ANCIENT_STONE.get().properties());
-    public static final DeferredHolder<Block, WallBlock> SMOOTH_ANCIENT_STONE_WALL = ATMBlocks.register("smooth_ancient_stone_wall", WallBlock::new, () -> ATMBlocks.SMOOTH_ANCIENT_STONE.get().properties());
-    public static final DeferredHolder<Block, WallBlock> MOSSY_ANCIENT_STONE_WALL = ATMBlocks.register("mossy_ancient_stone_wall", WallBlock::new, () -> ATMBlocks.MOSSY_ANCIENT_STONE.get().properties());
-    public static final DeferredHolder<Block, WallBlock> ANCIENT_STONE_BRICK_WALL = ATMBlocks.register("ancient_stone_brick_wall", WallBlock::new, () -> ATMBlocks.ANCIENT_STONE_BRICKS.get().properties());
-    public static final DeferredHolder<Block, WallBlock> CHISELED_ANCIENT_STONE_BRICK_WALL = ATMBlocks.register("chiseled_ancient_stone_brick_wall", WallBlock::new, () -> ATMBlocks.CHISELED_ANCIENT_STONE_BRICKS.get().properties());
-    public static final DeferredHolder<Block, WallBlock> CRACKED_ANCIENT_STONE_BRICK_WALL = ATMBlocks.register("cracked_ancient_stone_brick_wall", WallBlock::new, () -> ATMBlocks.CRACKED_ANCIENT_STONE_BRICKS.get().properties());
-    public static final DeferredHolder<Block, WallBlock> POLISHED_ANCIENT_STONE_WALL = ATMBlocks.register("polished_ancient_stone_wall", WallBlock::new, () -> ATMBlocks.POLISHED_ANCIENT_STONE.get().properties());
-    public static final DeferredHolder<Block, StairBlock> ANCIENT_STONE_STAIRS = ATMBlocks.register("ancient_stone_stairs", p -> new StairBlock(ATMBlocks.ANCIENT_STONE.get().defaultBlockState(), p), () -> ATMBlocks.ANCIENT_STONE.get().properties());
-    public static final DeferredHolder<Block, StairBlock> SMOOTH_ANCIENT_STONE_STAIRS = ATMBlocks.register("smooth_ancient_stone_stairs", p -> new StairBlock(ATMBlocks.SMOOTH_ANCIENT_STONE.get().defaultBlockState(), p), () -> ATMBlocks.SMOOTH_ANCIENT_STONE.get().properties());
-    public static final DeferredHolder<Block, StairBlock> MOSSY_ANCIENT_STONE_STAIRS = ATMBlocks.register("mossy_ancient_stone_stairs", p -> new StairBlock(ATMBlocks.MOSSY_ANCIENT_STONE.get().defaultBlockState(), p), () -> ATMBlocks.MOSSY_ANCIENT_STONE.get().properties());
-    public static final DeferredHolder<Block, StairBlock> ANCIENT_STONE_BRICK_STAIRS = ATMBlocks.register("ancient_stone_brick_stairs", p -> new StairBlock(ATMBlocks.ANCIENT_STONE_BRICKS.get().defaultBlockState(), p), () -> ATMBlocks.ANCIENT_STONE_BRICKS.get().properties());
-    public static final DeferredHolder<Block, StairBlock> CHISELED_ANCIENT_STONE_BRICK_STAIRS = ATMBlocks.register("chiseled_ancient_stone_brick_stairs", p -> new StairBlock(ATMBlocks.CHISELED_ANCIENT_STONE_BRICKS.get().defaultBlockState(), p), () -> ATMBlocks.CHISELED_ANCIENT_STONE_BRICKS.get().properties());
-    public static final DeferredHolder<Block, StairBlock> CRACKED_ANCIENT_STONE_BRICK_STAIRS = ATMBlocks.register("cracked_ancient_stone_brick_stairs", p -> new StairBlock(ATMBlocks.CRACKED_ANCIENT_STONE_BRICKS.get().defaultBlockState(), p), () -> ATMBlocks.CRACKED_ANCIENT_STONE_BRICKS.get().properties());
-    public static final DeferredHolder<Block, StairBlock> POLISHED_ANCIENT_STONE_STAIRS = ATMBlocks.register("polished_ancient_stone_stairs", p -> new StairBlock(ATMBlocks.POLISHED_ANCIENT_STONE.get().defaultBlockState(), p), () -> ATMBlocks.POLISHED_ANCIENT_STONE.get().properties());
-    public static final DeferredHolder<Block, SlabBlock> ANCIENT_STONE_SLAB = ATMBlocks.register("ancient_stone_slab", SlabBlock::new, () -> ATMBlocks.ANCIENT_STONE.get().properties());
-    public static final DeferredHolder<Block, SlabBlock> SMOOTH_ANCIENT_STONE_SLAB = ATMBlocks.register("smooth_ancient_stone_slab", SlabBlock::new, () -> ATMBlocks.SMOOTH_ANCIENT_STONE.get().properties());
-    public static final DeferredHolder<Block, SlabBlock> MOSSY_ANCIENT_STONE_SLAB = ATMBlocks.register("mossy_ancient_stone_slab", SlabBlock::new, () -> ATMBlocks.MOSSY_ANCIENT_STONE.get().properties());
-    public static final DeferredHolder<Block, SlabBlock> ANCIENT_STONE_BRICK_SLAB = ATMBlocks.register("ancient_stone_brick_slab", SlabBlock::new, () -> ATMBlocks.ANCIENT_STONE_BRICKS.get().properties());
-    public static final DeferredHolder<Block, SlabBlock> CHISELED_ANCIENT_STONE_BRICK_SLAB = ATMBlocks.register("chiseled_ancient_stone_brick_slab", SlabBlock::new, () -> ATMBlocks.CHISELED_ANCIENT_STONE_BRICKS.get().properties());
-    public static final DeferredHolder<Block, SlabBlock> CRACKED_ANCIENT_STONE_BRICK_SLAB = ATMBlocks.register("cracked_ancient_stone_brick_slab", SlabBlock::new, () -> ATMBlocks.CRACKED_ANCIENT_STONE_BRICKS.get().properties());
-    public static final DeferredHolder<Block, SlabBlock> POLISHED_ANCIENT_STONE_SLAB = ATMBlocks.register("polished_ancient_stone_slab", SlabBlock::new, () -> ATMBlocks.POLISHED_ANCIENT_STONE.get().properties());
+    public static final DeferredHolder<Block, WallBlock> ANCIENT_STONE_WALL = ATMBlocks.register("ancient_stone_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.ANCIENT_STONE.get()));
+    public static final DeferredHolder<Block, WallBlock> SMOOTH_ANCIENT_STONE_WALL = ATMBlocks.register("smooth_ancient_stone_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.SMOOTH_ANCIENT_STONE.get()));
+    public static final DeferredHolder<Block, WallBlock> MOSSY_ANCIENT_STONE_WALL = ATMBlocks.register("mossy_ancient_stone_wall", WallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.MOSSY_ANCIENT_STONE.get()));
+    public static final DeferredHolder<Block, WallBlock> ANCIENT_STONE_BRICK_WALL = ATMBlocks.register("ancient_stone_brick_wall", OtherWallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.ANCIENT_STONE_BRICKS.get()));
+    public static final DeferredHolder<Block, WallBlock> CHISELED_ANCIENT_STONE_BRICK_WALL = ATMBlocks.register("chiseled_ancient_stone_brick_wall", OtherWallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.CHISELED_ANCIENT_STONE_BRICKS.get()));
+    public static final DeferredHolder<Block, WallBlock> CRACKED_ANCIENT_STONE_BRICK_WALL = ATMBlocks.register("cracked_ancient_stone_brick_wall", OtherWallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.CRACKED_ANCIENT_STONE_BRICKS.get()));
+    public static final DeferredHolder<Block, WallBlock> POLISHED_ANCIENT_STONE_WALL = ATMBlocks.register("polished_ancient_stone_wall", OtherWallBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.POLISHED_ANCIENT_STONE.get()));
+    public static final DeferredHolder<Block, StairBlock> ANCIENT_STONE_STAIRS = ATMBlocks.register("ancient_stone_stairs", p -> new StairBlock(ATMBlocks.ANCIENT_STONE.get().defaultBlockState(), p), () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.ANCIENT_STONE.get()));
+    public static final DeferredHolder<Block, StairBlock> SMOOTH_ANCIENT_STONE_STAIRS = ATMBlocks.register("smooth_ancient_stone_stairs", p -> new StairBlock(ATMBlocks.SMOOTH_ANCIENT_STONE.get().defaultBlockState(), p), () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.SMOOTH_ANCIENT_STONE.get()));
+    public static final DeferredHolder<Block, StairBlock> MOSSY_ANCIENT_STONE_STAIRS = ATMBlocks.register("mossy_ancient_stone_stairs", p -> new StairBlock(ATMBlocks.MOSSY_ANCIENT_STONE.get().defaultBlockState(), p), () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.MOSSY_ANCIENT_STONE.get()));
+    public static final DeferredHolder<Block, StairBlock> ANCIENT_STONE_BRICK_STAIRS = ATMBlocks.register("ancient_stone_brick_stairs", p -> new OtherStairBlock(ATMBlocks.ANCIENT_STONE_BRICKS.get().defaultBlockState(), p), () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.ANCIENT_STONE_BRICKS.get()));
+    public static final DeferredHolder<Block, StairBlock> CHISELED_ANCIENT_STONE_BRICK_STAIRS = ATMBlocks.register("chiseled_ancient_stone_brick_stairs", p -> new OtherStairBlock(ATMBlocks.CHISELED_ANCIENT_STONE_BRICKS.get().defaultBlockState(), p), () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.CHISELED_ANCIENT_STONE_BRICKS.get()));
+    public static final DeferredHolder<Block, StairBlock> CRACKED_ANCIENT_STONE_BRICK_STAIRS = ATMBlocks.register("cracked_ancient_stone_brick_stairs", p -> new OtherStairBlock(ATMBlocks.CRACKED_ANCIENT_STONE_BRICKS.get().defaultBlockState(), p), () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.CRACKED_ANCIENT_STONE_BRICKS.get()));
+    public static final DeferredHolder<Block, StairBlock> POLISHED_ANCIENT_STONE_STAIRS = ATMBlocks.register("polished_ancient_stone_stairs", p -> new OtherStairBlock(ATMBlocks.POLISHED_ANCIENT_STONE.get().defaultBlockState(), p), () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.POLISHED_ANCIENT_STONE.get()));
+    public static final DeferredHolder<Block, SlabBlock> ANCIENT_STONE_SLAB = ATMBlocks.register("ancient_stone_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.ANCIENT_STONE.get()));
+    public static final DeferredHolder<Block, SlabBlock> SMOOTH_ANCIENT_STONE_SLAB = ATMBlocks.register("smooth_ancient_stone_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.SMOOTH_ANCIENT_STONE.get()));
+    public static final DeferredHolder<Block, SlabBlock> MOSSY_ANCIENT_STONE_SLAB = ATMBlocks.register("mossy_ancient_stone_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.MOSSY_ANCIENT_STONE.get()));
+    public static final DeferredHolder<Block, SlabBlock> ANCIENT_STONE_BRICK_SLAB = ATMBlocks.register("ancient_stone_brick_slab", OtherSlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.ANCIENT_STONE_BRICKS.get()));
+    public static final DeferredHolder<Block, SlabBlock> CHISELED_ANCIENT_STONE_BRICK_SLAB = ATMBlocks.register("chiseled_ancient_stone_brick_slab", OtherSlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.CHISELED_ANCIENT_STONE_BRICKS.get()));
+    public static final DeferredHolder<Block, SlabBlock> CRACKED_ANCIENT_STONE_BRICK_SLAB = ATMBlocks.register("cracked_ancient_stone_brick_slab", OtherSlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.CRACKED_ANCIENT_STONE_BRICKS.get()));
+    public static final DeferredHolder<Block, SlabBlock> POLISHED_ANCIENT_STONE_SLAB = ATMBlocks.register("polished_ancient_stone_slab", OtherSlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.POLISHED_ANCIENT_STONE.get()));
     
     public static final DeferredHolder<Block, OtherSaplingBlock> SOUL_SAPLING = ATMBlocks.register("soul_sapling", p -> new OtherSaplingBlock(
             new TreeGrower("soul_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(ATMConfiguredFeatures.SOUL_TREE), Optional.empty(), Optional.empty(), Optional.empty()),
@@ -146,8 +149,8 @@ public class ATMBlocks {
     public static final DeferredHolder<Block, FenceGateBlock> SOUL_FENCE_GATE = ATMBlocks.register("soul_fence_gate", p -> new FenceGateBlock(ATMBlockSets.SOUL_WOOD, p.strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
     public static final DeferredHolder<Block, DoorBlock> SOUL_DOOR = ATMBlocks.register("soul_door", p -> new DoorBlock(ATMBlockSets.SOUL, p.strength(2.0F).sound(SoundType.WOOD)));
     public static final DeferredHolder<Block, OtherBookshelfBlock> SOUL_BOOKSHELF = ATMBlocks.register("soul_bookshelf", p -> new OtherBookshelfBlock(p.strength(0.8F).randomTicks().sound(SoundType.WOOD)));
-    public static final DeferredHolder<Block, StairBlock> SOUL_STAIRS = ATMBlocks.register("soul_stairs", p -> new StairBlock(ATMBlocks.SOUL_PLANKS.get().defaultBlockState(), p), () -> ATMBlocks.SOUL_PLANKS.get().properties());
-    public static final DeferredHolder<Block, SlabBlock> SOUL_SLAB = ATMBlocks.register("soul_slab", SlabBlock::new, () -> ATMBlocks.SOUL_PLANKS.get().properties());
+    public static final DeferredHolder<Block, StairBlock> SOUL_STAIRS = ATMBlocks.register("soul_stairs", p -> new StairBlock(ATMBlocks.SOUL_PLANKS.get().defaultBlockState(), p), () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.SOUL_PLANKS.get()));
+    public static final DeferredHolder<Block, SlabBlock> SOUL_SLAB = ATMBlocks.register("soul_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.SOUL_PLANKS.get()));
     
     public static final DeferredHolder<Block, OtherSaplingBlock> DEMONIC_SAPLING = ATMBlocks.register("demonic_sapling", p -> new OtherSaplingBlock(
             new TreeGrower("demonic_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(ATMConfiguredFeatures.DEMONIC_TREE), Optional.empty(), Optional.empty(), Optional.empty()),
@@ -164,8 +167,8 @@ public class ATMBlocks {
     public static final DeferredHolder<Block, FenceGateBlock> DEMONIC_FENCE_GATE = ATMBlocks.register("demonic_fence_gate", p -> new FenceGateBlock(ATMBlockSets.DEMONIC_WOOD, p.strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
     public static final DeferredHolder<Block, DoorBlock> DEMONIC_DOOR = ATMBlocks.register("demonic_door", p -> new DoorBlock(ATMBlockSets.DEMONIC, p.strength(2.0F).sound(SoundType.WOOD)));
     public static final DeferredHolder<Block, OtherBookshelfBlock> DEMONIC_BOOKSHELF = ATMBlocks.register("demonic_bookshelf", p -> new OtherBookshelfBlock(p.strength(0.8F).randomTicks().sound(SoundType.WOOD)));
-    public static final DeferredHolder<Block, StairBlock> DEMONIC_STAIRS = ATMBlocks.register("demonic_stairs", p -> new StairBlock(ATMBlocks.DEMONIC_PLANKS.get().defaultBlockState(), p), () -> ATMBlocks.DEMONIC_PLANKS.get().properties());
-    public static final DeferredHolder<Block, SlabBlock> DEMONIC_SLAB = ATMBlocks.register("demonic_slab", SlabBlock::new, () -> ATMBlocks.DEMONIC_PLANKS.get().properties());
+    public static final DeferredHolder<Block, StairBlock> DEMONIC_STAIRS = ATMBlocks.register("demonic_stairs", p -> new StairBlock(ATMBlocks.DEMONIC_PLANKS.get().defaultBlockState(), p), () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.DEMONIC_PLANKS.get()));
+    public static final DeferredHolder<Block, SlabBlock> DEMONIC_SLAB = ATMBlocks.register("demonic_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.DEMONIC_PLANKS.get()));
     
     public static final DeferredHolder<Block, ModiumBrushableBlock> SUS_CLAY = ATMBlocks.register("suspicious_clay", p -> new ModiumBrushableBlock(Blocks.CLAY, SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED,
             p.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY))
