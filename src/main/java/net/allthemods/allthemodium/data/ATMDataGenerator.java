@@ -22,9 +22,7 @@ import net.allthemods.allthemodium.data.provider.tags.ATMItemTagsProvider;
 import net.allthemods.allthemodium.data.worldgen.ATMBiomeModifier;
 import net.allthemods.allthemodium.data.worldgen.ATMBiomes;
 import net.allthemods.allthemodium.data.worldgen.ATMConfiguredFeatures;
-import net.allthemods.allthemodium.data.worldgen.ATMDimension;
 import net.allthemods.allthemodium.data.worldgen.ATMDimensions;
-import net.allthemods.allthemodium.data.worldgen.ATMNoiseSettings;
 import net.allthemods.allthemodium.data.worldgen.ATMPlacedFeatures;
 import net.allthemods.allthemodium.data.worldgen.ATMStructureSets;
 import net.allthemods.allthemodium.data.worldgen.ATMStructures;
@@ -42,8 +40,6 @@ public class ATMDataGenerator {
             .add(Registries.TEMPLATE_POOL, ATMTemplatePools::bootstrap)
             .add(Registries.STRUCTURE, ATMStructures::bootstrap)
             .add(Registries.STRUCTURE_SET, ATMStructureSets::bootstrap)
-            .add(Registries.NOISE_SETTINGS, ATMNoiseSettings::bootstrap)
-            .add(Registries.LEVEL_STEM, ATMDimension::bootstrap)
             .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ATMBiomeModifier::bootstrap);
     
     @SubscribeEvent
