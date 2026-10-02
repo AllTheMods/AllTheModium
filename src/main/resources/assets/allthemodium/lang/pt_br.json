@@ -1,4 +1,13 @@
 {
+  "biome.allthemodium.basalt_deltas": "Deltas de Basalto Ancestral",
+  "biome.allthemodium.crimson_forest": "Floresta Carmesim Ancestral",
+  "biome.allthemodium.desert": "O Outro: Deserto",
+  "biome.allthemodium.desert_hills": "O Outro: Colinas Desérticas",
+  "biome.allthemodium.mining": "Dimensão de Mineração ATM",
+  "biome.allthemodium.soul_sand_valley": "O Outro: Vale das Almas",
+  "biome.allthemodium.the_beyond": "O Além",
+  "biome.allthemodium.the_other": "O Outro",
+  "biome.allthemodium.warped_forest": "Floresta Distorcida Ancestral",
   "block.allthemodium.allthemodium_block": "Bloco de Allthemodium",
   "block.allthemodium.allthemodium_ore": "Minério de Allthemodium",
   "block.allthemodium.ancient_bookshelf": "Estante Ancestral",

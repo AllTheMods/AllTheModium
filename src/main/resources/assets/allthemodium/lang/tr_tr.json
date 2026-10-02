@@ -1,4 +1,13 @@
 {
+  "biome.allthemodium.basalt_deltas": "Antik Bazalt Deltası",
+  "biome.allthemodium.crimson_forest": "Antik Kızıl Orman",
+  "biome.allthemodium.desert": "Other: Çöl",
+  "biome.allthemodium.desert_hills": "Other: Çöl Tepeleri",
+  "biome.allthemodium.mining": "ATM Madencilik Boyutu",
+  "biome.allthemodium.soul_sand_valley": "Other: Ruh Kumu Vadisi",
+  "biome.allthemodium.the_beyond": "Ötesi",
+  "biome.allthemodium.the_other": "Other",
+  "biome.allthemodium.warped_forest": "Antik Çarpık Orman",
   "block.allthemodium.allthemodium_block": "Allthemodium Bloğu",
   "block.allthemodium.allthemodium_ore": "Allthemodium Cevheri",
   "block.allthemodium.ancient_bookshelf": "Antik Kitaplık",
