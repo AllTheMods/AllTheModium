@@ -1,6 +1,8 @@
 {
   "values": [
     "allthemodium:vibranium_ore",
-    "allthemodium:other_vibranium_ore"
+    "allthemodium:other_vibranium_ore",
+    "allthemodium:raw_vibranium_block",
+    "allthemodium:vibranium_block"
   ]
 }

@@ -6,6 +6,7 @@ import net.minecraft.resources.Identifier;
 import net.allthemods.allthemodium.api.ATM;
 import net.allthemods.allthemodium.client.lang.ATMLanguage;
 import net.allthemods.allthemodium.common.blocks.TeleportPad;
+import net.allthemods.allthemodium.core.registry.ATMItems;
 
 import org.jspecify.annotations.NonNull;
 
@@ -14,8 +15,11 @@ import snownee.jade.api.IBlockComponentProvider;
 import snownee.jade.api.ITooltip;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaPlugin;
+import snownee.jade.api.JadeIds;
 import snownee.jade.api.WailaPlugin;
 import snownee.jade.api.config.IPluginConfig;
+import snownee.jade.api.harvest.ToolTier;
+import snownee.jade.api.harvest.ToolTypeRegistry;
 
 @WailaPlugin
 public class ATMJadePlugin implements IWailaPlugin {
@@ -23,6 +27,15 @@ public class ATMJadePlugin implements IWailaPlugin {
     @Override
     public void registerClient(IWailaClientRegistration registration) {
         registration.registerBlockComponent(TeleportPadComponentProvider.INSTANCE, TeleportPad.class);
+        registration.addHarvestPlugin(ATMJadePlugin::registerPickaxes);
+    }
+
+    private static void registerPickaxes(ToolTypeRegistry registry) {
+        registry.type(JadeIds.JADE("pickaxe"))
+                .addTier(ToolTier.item(ATMItems.ALLTHEMODIUM_PICKAXE.get()))
+                .addTier(ToolTier.item(ATMItems.VIBRANIUM_PICKAXE.get()))
+                .addTier(ToolTier.item(ATMItems.UNOBTAINIUM_PICKAXE.get()))
+                .addTier(ToolTier.item(ATMItems.ALLOY_PICKAXE.get()));
     }
     
     enum TeleportPadComponentProvider implements IBlockComponentProvider {

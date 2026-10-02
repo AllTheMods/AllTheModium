@@ -42,7 +42,9 @@ public class ATMBlockTagsProvider extends BlockTagsProvider {
         this.tag(ATMTags.Blocks.NEEDS_ALLTHEMODIUM_TOOL)
                 .add(
                         ATMBlocks.VIBRANIUM_ORE.get(),
-                        ATMBlocks.OTHER_VIBRANIUM_ORE.get()
+                        ATMBlocks.OTHER_VIBRANIUM_ORE.get(),
+                        ATMBlocks.RAW_VIBRANIUM_BLOCK.get(),
+                        ATMBlocks.VIBRANIUM_BLOCK.get()
                 );
 
         this.tag(ATMTags.Blocks.NEEDS_VIBRANIUM_TOOL)
@@ -92,6 +94,7 @@ public class ATMBlockTagsProvider extends BlockTagsProvider {
         List.of(
                 BlockTags.INCORRECT_FOR_WOODEN_TOOL,
                 BlockTags.INCORRECT_FOR_STONE_TOOL,
+                BlockTags.INCORRECT_FOR_COPPER_TOOL,
                 BlockTags.INCORRECT_FOR_IRON_TOOL,
                 BlockTags.INCORRECT_FOR_GOLD_TOOL,
                 BlockTags.INCORRECT_FOR_DIAMOND_TOOL,

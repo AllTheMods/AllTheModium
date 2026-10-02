@@ -100,7 +100,7 @@ dependencies {
     implementation "maven.modrinth:jade:${jade_version}"
     implementation "com.geckolib:geckolib-neoforge-26.1:${geckolib_version}"
     
-    implementation "curse.maven:ato-405593:7928265"
+    implementation "curse.maven:ato-405593:8023670"
 }
 
 tasks.withType(ProcessResources).configureEach {
