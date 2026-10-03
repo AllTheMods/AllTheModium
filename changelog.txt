@@ -1,0 +1,35 @@
+26.1.2-4.1.0
+
+BREAKING: The Other has been realigned to its 1.21.1 configuration and will generate differently. Existing
+worlds keep the chunks they have already explored, so expect a visible seam where old terrain meets new.
+
+Added
+- Teleport pads can be waterlogged
+
+Brought over from 1.21.1
+- Allthemodium, vibranium and unobtainium brushes
+- Alloy pickaxe
+- Ancient, demonic and soul logs can be stripped with an axe again
+
+The Other
+- Build height raised from 384 back to 512, infiniburn restored to nether, and permanent night restored
+- Travel is 1:1 with the overworld again instead of 12:1
+- Lava flows at nether speed again
+- Desert, desert hills and soul sand valley generated no ore or vegetation at all - they now carry
+  allthemodium ore, vibranium ore and cave vines like the rest of the dimension
+- Basalt deltas are sterile again, as they were on 1.21.1
+- Coal, copper, iron, gold, redstone, lapis, diamond and emerald now generate in the deepslate layer
+
+Fixed
+- Armour trims (#228)
+- Vibranium ore and the whole ancient stone family had no mining tier gate, and copper tools bypassed every
+  gate in the mod
+- Twelve decorative ancient stone walls, stairs and slabs were unbreakable in survival
+- Jade shows the correct harvest tool for ATM blocks again
+- Beds no longer explode in the Mining Dimension
+- Biome names are translated again (#227)
+
+Translations
+- German rewritten in full (Satherov, #232)
+- Updated zh_cn (#221)
+- Every other language was still keyed to pre-rewrite block ids, leaving roughly half of each file dead

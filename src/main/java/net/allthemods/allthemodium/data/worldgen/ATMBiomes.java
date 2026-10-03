@@ -52,44 +52,8 @@ public class ATMBiomes {
                 ATMBiomes.MINING,
                 ATMBiomes.builder(false, 1.0F, 0.0F)
                         .specialEffects(ATMBiomes.effects(0x3F76E4, 0x2BBB0F, 0x55C93F))
-                        .generationSettings(new BiomeGenerationSettings.Builder(features, carvers)
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_COAL_LOWER))
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_COAL_UPPER))
-                                
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_COPPER))
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_COPPER_LARGE))
-                                
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_IRON_SMALL))
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_IRON_MIDDLE))
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_IRON_UPPER))
-                                
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GOLD))
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GOLD_EXTRA))
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GOLD_LOWER))
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GOLD_DELTAS))
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GOLD_NETHER))
-                                
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_REDSTONE))
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_REDSTONE_LOWER))
-                                
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_LAPIS))
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_LAPIS_BURIED))
-                                
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_DIAMOND))
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_DIAMOND_BURIED))
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_DIAMOND_MEDIUM))
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_DIAMOND_LARGE))
-                                
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_EMERALD))
-                                
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_QUARTZ_DELTAS))
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_QUARTZ_NETHER))
-                                
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_DEBRIS_SMALL))
-                                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_ANCIENT_DEBRIS_LARGE))
-                                
+                        .generationSettings(ATMBiomes.miningOres(new BiomeGenerationSettings.Builder(features, carvers), features)
                                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GLOWSTONE))
-                                
                                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ALLTHEMODIUM_MINING))
                                 .build()
                         )
@@ -157,7 +121,8 @@ public class ATMBiomes {
                 ATMBiomes.BASALT_DELTAS,
                 ATMBiomes.builder(false, 0.9F, 0.0F)
                         .specialEffects(ATMBiomes.effects(0x330303, 0x1B4745, 0x1B4745))
-                        .generationSettings(ATMBiomes.other(features, carvers)
+                        // The deltas are the one sterile biome of The Other: soul deltas and nothing else
+                        .generationSettings(new BiomeGenerationSettings.Builder(features, carvers)
                                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(ATMPlacedFeatures.SOUL_DELTA))
                                 .build()
                         )
@@ -194,7 +159,7 @@ public class ATMBiomes {
                 ATMBiomes.DESERT,
                 ATMBiomes.builder(false, 2.0F, 0.0F)
                         .specialEffects(ATMBiomes.effects(0x330303, 0x1B4745, 0x1B4745))
-                        .generationSettings(ATMBiomes.emptyGeneration(features, carvers))
+                        .generationSettings(ATMBiomes.other(features, carvers).build())
                         .putAttributes(ATMBiomes.netherAttributes(0x330303, 0x330303, SoundEvents.MUSIC_BIOME_BASALT_DELTAS, SoundEvents.AMBIENT_BASALT_DELTAS_LOOP, SoundEvents.AMBIENT_BASALT_DELTAS_MOOD, SoundEvents.AMBIENT_BASALT_DELTAS_ADDITIONS, ParticleTypes.WHITE_ASH, 0.118093334F))
                         .mobSpawnSettings(ATMBiomes.desertSpawns(false).build())
                         .build()
@@ -203,7 +168,7 @@ public class ATMBiomes {
                 ATMBiomes.DESERT_HILLS,
                 ATMBiomes.builder(false, 2.0F, 0.0F)
                         .specialEffects(ATMBiomes.effects(0x330303, 0x1B4745, 0x1B4745))
-                        .generationSettings(ATMBiomes.emptyGeneration(features, carvers))
+                        .generationSettings(ATMBiomes.other(features, carvers).build())
                         .putAttributes(ATMBiomes.netherAttributes(0x330303, 0x330303, SoundEvents.MUSIC_BIOME_BASALT_DELTAS, SoundEvents.AMBIENT_BASALT_DELTAS_LOOP, SoundEvents.AMBIENT_BASALT_DELTAS_MOOD, SoundEvents.AMBIENT_BASALT_DELTAS_ADDITIONS, ParticleTypes.WHITE_ASH, 0.118093334F))
                         .mobSpawnSettings(ATMBiomes.desertSpawns(true).build())
                         .build()
@@ -212,7 +177,7 @@ public class ATMBiomes {
                 ATMBiomes.SOUL_SAND_VALLEY,
                 ATMBiomes.builder(false, 1.0F, 0.0F)
                         .specialEffects(ATMBiomes.effects(0x330303, 0x1B4745, 0x1B4745))
-                        .generationSettings(ATMBiomes.emptyGeneration(features, carvers))
+                        .generationSettings(ATMBiomes.other(features, carvers).build())
                         .putAttributes(ATMBiomes.netherAttributes(0x1B4745, 0x330303, SoundEvents.MUSIC_BIOME_SOUL_SAND_VALLEY, SoundEvents.AMBIENT_SOUL_SAND_VALLEY_LOOP, SoundEvents.AMBIENT_SOUL_SAND_VALLEY_MOOD, SoundEvents.AMBIENT_SOUL_SAND_VALLEY_ADDITIONS, ParticleTypes.ASH, 0.00625F))
                         .mobSpawnSettings(ATMBiomes.spawns()
                                 .addSpawn(MobCategory.MONSTER, 30, ATMBiomes.spawn(EntityType.SKELETON, 5, 15))
@@ -304,7 +269,49 @@ public class ATMBiomes {
     private static BiomeGenerationSettings emptyGeneration(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
         return new BiomeGenerationSettings.Builder(placedFeatures, carvers).build();
     }
-    
+
+    /**
+     * The vanilla ore set, ranged against the Mining Dimension's layer stack: y 65-247 spans its deepslate and
+     * stone bands, y 1-64 its netherrack band.
+     */
+    private static BiomeGenerationSettings.PlainBuilder miningOres(BiomeGenerationSettings.PlainBuilder builder, HolderGetter<PlacedFeature> features) {
+        return builder
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_COAL_LOWER))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_COAL_UPPER))
+
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_COPPER))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_COPPER_LARGE))
+
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_IRON_SMALL))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_IRON_MIDDLE))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_IRON_UPPER))
+
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GOLD))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GOLD_EXTRA))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GOLD_LOWER))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GOLD_DELTAS))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_GOLD_NETHER))
+
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_REDSTONE))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_REDSTONE_LOWER))
+
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_LAPIS))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_LAPIS_BURIED))
+
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_DIAMOND))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_DIAMOND_BURIED))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_DIAMOND_MEDIUM))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_DIAMOND_LARGE))
+
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_EMERALD))
+
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_QUARTZ_DELTAS))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_QUARTZ_NETHER))
+
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_DEBRIS_SMALL))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ORE_ANCIENT_DEBRIS_LARGE));
+    }
+
     private static BiomeGenerationSettings theOther(HolderGetter<PlacedFeature> features, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
         return ATMBiomes.other(features, carvers)
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(ATMPlacedFeatures.ANCIENT_TREE))
@@ -315,6 +322,14 @@ public class ATMBiomes {
     
     private static BiomeGenerationSettings.PlainBuilder other(HolderGetter<PlacedFeature> features, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
         return new BiomeGenerationSettings.Builder(features, carvers)
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.OTHER_ORE_COAL))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.OTHER_ORE_COPPER))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.OTHER_ORE_IRON))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.OTHER_ORE_GOLD))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.OTHER_ORE_REDSTONE))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.OTHER_ORE_LAPIS))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.OTHER_ORE_DIAMOND))
+                .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.OTHER_ORE_EMERALD))
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.ALLTHEMODIUM))
                 .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, features.getOrThrow(ATMPlacedFeatures.VIBRANIUM_OTHER))
                 .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, features.getOrThrow(ATMPlacedFeatures.CAVE_VINES));

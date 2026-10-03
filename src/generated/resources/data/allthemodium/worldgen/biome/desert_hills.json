@@ -39,7 +39,31 @@
     "grass_color": "#1b4745",
     "water_color": "#330303"
   },
-  "features": [],
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "allthemodium:other/ore_coal",
+      "allthemodium:other/ore_copper",
+      "allthemodium:other/ore_iron",
+      "allthemodium:other/ore_gold",
+      "allthemodium:other/ore_redstone",
+      "allthemodium:other/ore_lapis",
+      "allthemodium:other/ore_diamond",
+      "allthemodium:other/ore_emerald",
+      "allthemodium:allthemodium",
+      "allthemodium:vibranium_other"
+    ],
+    [],
+    [],
+    [
+      "allthemodium:cave_vines"
+    ]
+  ],
   "has_precipitation": false,
   "spawn_costs": {},
   "spawners": {

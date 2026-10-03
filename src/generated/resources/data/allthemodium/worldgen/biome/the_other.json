@@ -38,6 +38,14 @@
     [],
     [],
     [
+      "allthemodium:other/ore_coal",
+      "allthemodium:other/ore_copper",
+      "allthemodium:other/ore_iron",
+      "allthemodium:other/ore_gold",
+      "allthemodium:other/ore_redstone",
+      "allthemodium:other/ore_lapis",
+      "allthemodium:other/ore_diamond",
+      "allthemodium:other/ore_emerald",
       "allthemodium:allthemodium",
       "allthemodium:vibranium_other"
     ],

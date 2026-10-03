@@ -45,6 +45,12 @@ public class ATMPlacedFeatures {
     private static final int MINING_NETHER_MIN_Y = 1;
     private static final int MINING_NETHER_MAX_Y = 64;
     private static final int MINING_NETHER_INNER = 24;
+
+    // The Other's surface rules lay deepslate at y 0 and below, fading out by y 8; ancient stone above that is in
+    // no ore-replaceable tag, so this band is the only ground a vanilla ore feature can take hold in.
+    private static final int OTHER_MIN_Y = -63;
+    private static final int OTHER_MAX_Y = 8;
+    private static final int OTHER_INNER = 48;
     
     public static final ResourceKey<PlacedFeature> ALLTHEMODIUM = ATMPlacedFeatures.create("allthemodium");
     public static final ResourceKey<PlacedFeature> ALLTHEMODIUM_MINING = ATMPlacedFeatures.create("allthemodium_mining");
@@ -58,6 +64,15 @@ public class ATMPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SOUL_DELTA = ATMPlacedFeatures.create("soul_delta");
     public static final ResourceKey<PlacedFeature> SOUL_TREE = ATMPlacedFeatures.create("soul_tree");
     
+    public static final ResourceKey<PlacedFeature> OTHER_ORE_COAL = ATMPlacedFeatures.create("other/ore_coal");
+    public static final ResourceKey<PlacedFeature> OTHER_ORE_COPPER = ATMPlacedFeatures.create("other/ore_copper");
+    public static final ResourceKey<PlacedFeature> OTHER_ORE_IRON = ATMPlacedFeatures.create("other/ore_iron");
+    public static final ResourceKey<PlacedFeature> OTHER_ORE_GOLD = ATMPlacedFeatures.create("other/ore_gold");
+    public static final ResourceKey<PlacedFeature> OTHER_ORE_REDSTONE = ATMPlacedFeatures.create("other/ore_redstone");
+    public static final ResourceKey<PlacedFeature> OTHER_ORE_LAPIS = ATMPlacedFeatures.create("other/ore_lapis");
+    public static final ResourceKey<PlacedFeature> OTHER_ORE_DIAMOND = ATMPlacedFeatures.create("other/ore_diamond");
+    public static final ResourceKey<PlacedFeature> OTHER_ORE_EMERALD = ATMPlacedFeatures.create("other/ore_emerald");
+
     public static final ResourceKey<PlacedFeature> ORE_COAL_LOWER = ATMPlacedFeatures.create("mining/ore_coal_lower");
     public static final ResourceKey<PlacedFeature> ORE_COAL_UPPER = ATMPlacedFeatures.create("mining/ore_coal_upper");
     public static final ResourceKey<PlacedFeature> ORE_COPPER = ATMPlacedFeatures.create("mining/ore_copper");
@@ -87,8 +102,17 @@ public class ATMPlacedFeatures {
     
     public static void bootstrap(final BootstrapContext<PlacedFeature> ctx) {
         var configured = ctx.lookup(Registries.CONFIGURED_FEATURE);
-        
-        
+
+        ATMPlacedFeatures.register(ctx, ATMPlacedFeatures.OTHER_ORE_COAL, configured.getOrThrow(ATMConfiguredFeatures.ORE_COAL), ATMPlacedFeatures.ore(20, ATMPlacedFeatures.otherRange()));
+        ATMPlacedFeatures.register(ctx, ATMPlacedFeatures.OTHER_ORE_COPPER, configured.getOrThrow(ATMConfiguredFeatures.ORE_COPPER_LARGE), ATMPlacedFeatures.ore(16, ATMPlacedFeatures.otherRange()));
+        ATMPlacedFeatures.register(ctx, ATMPlacedFeatures.OTHER_ORE_IRON, configured.getOrThrow(ATMConfiguredFeatures.ORE_IRON), ATMPlacedFeatures.ore(20, ATMPlacedFeatures.otherRange()));
+        ATMPlacedFeatures.register(ctx, ATMPlacedFeatures.OTHER_ORE_GOLD, configured.getOrThrow(ATMConfiguredFeatures.ORE_GOLD), ATMPlacedFeatures.ore(10, ATMPlacedFeatures.otherRange()));
+        ATMPlacedFeatures.register(ctx, ATMPlacedFeatures.OTHER_ORE_REDSTONE, configured.getOrThrow(ATMConfiguredFeatures.ORE_REDSTONE), ATMPlacedFeatures.ore(12, ATMPlacedFeatures.otherRange()));
+        ATMPlacedFeatures.register(ctx, ATMPlacedFeatures.OTHER_ORE_LAPIS, configured.getOrThrow(ATMConfiguredFeatures.ORE_LAPIS), ATMPlacedFeatures.ore(6, ATMPlacedFeatures.otherRange()));
+        ATMPlacedFeatures.register(ctx, ATMPlacedFeatures.OTHER_ORE_DIAMOND, configured.getOrThrow(ATMConfiguredFeatures.ORE_DIAMOND_MEDIUM), ATMPlacedFeatures.ore(7, ATMPlacedFeatures.otherRange()));
+        ATMPlacedFeatures.register(ctx, ATMPlacedFeatures.OTHER_ORE_EMERALD, configured.getOrThrow(ATMConfiguredFeatures.ORE_EMERALD), ATMPlacedFeatures.ore(4, ATMPlacedFeatures.otherRange()));
+
+
         ATMPlacedFeatures.register(
                 ctx,
                 ATMPlacedFeatures.ALLTHEMODIUM,
@@ -478,6 +502,14 @@ public class ATMPlacedFeatures {
         ));
     }
     
+    private static PlacementModifier otherRange() {
+        return HeightRangePlacement.of(BiasedToBottomHeight.of(
+                VerticalAnchor.absolute(ATMPlacedFeatures.OTHER_MIN_Y),
+                VerticalAnchor.absolute(ATMPlacedFeatures.OTHER_MAX_Y),
+                ATMPlacedFeatures.OTHER_INNER
+        ));
+    }
+
     private static PlacementModifier netherRange() {
         return HeightRangePlacement.of(BiasedToBottomHeight.of(
                 VerticalAnchor.absolute(ATMPlacedFeatures.MINING_NETHER_MIN_Y),
