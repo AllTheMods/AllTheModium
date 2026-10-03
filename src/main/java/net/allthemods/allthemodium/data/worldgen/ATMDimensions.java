@@ -104,14 +104,14 @@ public class ATMDimensions {
                         true,
                         false,
                         false,
-                        12.0D, //This was 500 before, but this would obliterate the teleport pad logic by loading 500x500 chunks
+                        1.0D,
                         -64,
-                        384,
-                        384,
-                        BlockTags.INFINIBURN_OVERWORLD,
+                        512,
+                        512,
+                        BlockTags.INFINIBURN_NETHER,
                         0.0F,
                         new DimensionType.MonsterSettings(
-                                ConstantInt.of(15),
+                                ConstantInt.of(0),
                                 15
                         ),
                         DimensionType.Skybox.END,
@@ -120,12 +120,13 @@ public class ATMDimensions {
                                 .set(EnvironmentAttributes.FAST_LAVA, true)
                                 .set(EnvironmentAttributes.RESPAWN_ANCHOR_WORKS, true)
                                 .set(EnvironmentAttributes.PIGLINS_ZOMBIFY, false)
+                                .set(EnvironmentAttributes.SKY_LIGHT_LEVEL, 4.0F)
                                 .set(EnvironmentAttributes.FOG_COLOR, 0x330303)
                                 .set(EnvironmentAttributes.SKY_COLOR, 0x330303)
                                 .set(EnvironmentAttributes.WATER_FOG_COLOR, 0x330303)
                                 .set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, 0x0A0A0A)
                                 .build(),
-                        timelines.getOrThrow(TimelineTags.IN_OVERWORLD),
+                        timelines.getOrThrow(TimelineTags.IN_NETHER),
                         Optional.empty()
                 )
         );
