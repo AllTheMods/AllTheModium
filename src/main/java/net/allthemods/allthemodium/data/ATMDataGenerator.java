@@ -1,6 +1,7 @@
 package net.allthemods.allthemodium.data;
 
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -13,6 +14,7 @@ import net.allthemods.allthemodium.data.provider.ATMDataMapProvider;
 import net.allthemods.allthemodium.data.provider.ATMEnchantments;
 import net.allthemods.allthemodium.data.provider.ATMEquipmentAssetProvider;
 import net.allthemods.allthemodium.data.provider.ATMLanguageProvider;
+import net.allthemods.allthemodium.data.provider.ATMMaterialsProvider;
 import net.allthemods.allthemodium.data.provider.ATMModelProvider;
 import net.allthemods.allthemodium.data.provider.ATMRecipeProvider;
 import net.allthemods.allthemodium.data.provider.ATMSpriteSourceProvider;
@@ -58,5 +60,7 @@ public class ATMDataGenerator {
         event.createProvider(ATMRecipeProvider.Runner::new);
         event.createProvider(ATMSpriteSourceProvider::new);
         event.createDatapackRegistryObjects(ATMDataGenerator.BUILDER);
+
+        if (ModList.get().isLoaded("silentgear")) ATMMaterialsProvider.register(event);
     }
 }

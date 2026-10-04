@@ -101,6 +101,10 @@ dependencies {
     implementation "com.geckolib:geckolib-neoforge-26.1:${geckolib_version}"
     
     implementation "curse.maven:ato-405593:8023670"
+
+    implementation "curse.maven:silent-gear-297039:8735808"
+    implementation "curse.maven:silent-lib-242998:7936002"
+    implementation "curse.maven:silents-gems-220311:8103909"
 }
 
 tasks.withType(ProcessResources).configureEach {
@@ -112,6 +116,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             minecraft_version      : minecraft_version,
             minecraft_version_range: minecraft_version_range,
             neo_version            : neo_version,
+            neo_version_range      : neo_version_range,
             mod_id                 : mod_id,
             mod_name               : mod_name,
             mod_license            : mod_license,

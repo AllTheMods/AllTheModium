@@ -1,0 +1,166 @@
+{
+  "type": "silentgear:simple",
+  "parent": "silentgear:empty",
+  "crafting": {
+    "can_salvage": true,
+    "categories": [
+      "metal",
+      "endgame"
+    ],
+    "gear_type_blacklist": [],
+    "ingredient": "allthemodium:silent_vibranium_plate",
+    "part_substitutes": {}
+  },
+  "display": {
+    "color": "#FF26DE88",
+    "equippable": {
+      "always_use_tint": true,
+      "asset_id": "silentgear:generic_shiny",
+      "compound_asset_id": "silentgear:generic_shiny",
+      "equip_sound": "minecraft:item.armor.equip_generic"
+    },
+    "main_texture_type": "HIGH_CONTRAST",
+    "name": {
+      "translate": "material.silentgear.vibranium"
+    },
+    "name_prefix": ""
+  },
+  "properties": {
+    "silentgear:main": {
+      "armor": 70.0,
+      "armor/boots": 15.0,
+      "armor/chestplate": 20.0,
+      "armor/helmet": 15.0,
+      "armor/leggings": 20.0,
+      "armor_durability": 90.0,
+      "armor_toughness": 70.0,
+      "attack_damage": 27.0,
+      "attack_speed": 12.2,
+      "durability": 7500.0,
+      "enchantment_value": 105.0,
+      "harvest_speed": 9.0,
+      "harvest_tier": {
+        "incorrect_blocks_for_tool": "allthemodium:incorrect_for_vibranium_tool",
+        "level_hint": "6",
+        "name": "vibranium"
+      },
+      "magic_armor": 400.0,
+      "ranged_damage": 0.0,
+      "rarity": 90.0,
+      "traits": [
+        {
+          "conditions": [
+            {
+              "type": "silentgear:gear_type",
+              "gear_type": "silentgear:armor"
+            }
+          ],
+          "level": 1,
+          "trait": "silentgear:brilliant"
+        },
+        {
+          "conditions": [
+            {
+              "type": "silentgear:gear_type",
+              "gear_type": "silentgear:helmet"
+            }
+          ],
+          "level": 1,
+          "trait": "silentgear:aquatic"
+        },
+        {
+          "conditions": [
+            {
+              "type": "silentgear:gear_type",
+              "gear_type": "silentgear:chestplate"
+            }
+          ],
+          "level": 1,
+          "trait": "silentgear:flame_ward"
+        },
+        {
+          "conditions": [],
+          "level": 5,
+          "trait": "silentgear:malleable"
+        },
+        {
+          "conditions": [],
+          "level": 5,
+          "trait": "silentgear:crushing"
+        },
+        {
+          "conditions": [
+            {
+              "type": "silentgear:gear_type",
+              "gear_type": "silentgear:leggings"
+            }
+          ],
+          "level": 1,
+          "trait": "silentgear:cure_wither"
+        }
+      ]
+    },
+    "silentgear:rod": {
+      "durability": {
+        "operation": "MULTIPLY_TOTAL",
+        "value": 2.5
+      },
+      "enchantment_value": {
+        "operation": "ADD",
+        "value": 23.0
+      },
+      "rarity": 99.0,
+      "traits": [
+        {
+          "conditions": [
+            {
+              "type": "silentgear:material_ratio",
+              "ratio": 0.5
+            }
+          ],
+          "level": 6,
+          "trait": "silentgear:hard"
+        }
+      ]
+    },
+    "silentgear:tip": {
+      "armor_durability": {
+        "operation": "ADD",
+        "value": 10.0
+      },
+      "durability": {
+        "operation": "ADD",
+        "value": 16.0
+      },
+      "harvest_speed": {
+        "operation": "ADD",
+        "value": 6.0
+      },
+      "harvest_tier": {
+        "incorrect_blocks_for_tool": "allthemodium:incorrect_for_vibranium_tool",
+        "level_hint": "6",
+        "name": "vibranium"
+      },
+      "magic_damage": {
+        "operation": "ADD",
+        "value": 2.0
+      },
+      "rarity": {
+        "operation": "ADD",
+        "value": 60.0
+      },
+      "traits": [
+        {
+          "conditions": [],
+          "level": 5,
+          "trait": "silentgear:malleable"
+        },
+        {
+          "conditions": [],
+          "level": 5,
+          "trait": "silentgear:hard"
+        }
+      ]
+    }
+  }
+}

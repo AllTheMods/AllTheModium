@@ -180,6 +180,12 @@ public class ATMLanguageProvider extends LanguageProvider {
         this.addItem(ATMItems.ALLTHEMODIUM_INGOT, "Allthemodium Ingot");
         this.addItem(ATMItems.VIBRANIUM_INGOT, "Vibranium Ingot");
         this.addItem(ATMItems.UNOBTAINIUM_INGOT, "Unobtainium Ingot");
+        this.addItem(ATMItems.SILENT_ALLTHEMODIUM_PLATE, "Silent Allthemodium Plate");
+        this.addItem(ATMItems.SILENT_VIBRANIUM_PLATE, "Silent Vibranium Plate");
+        this.addItem(ATMItems.SILENT_UNOBTAINIUM_PLATE, "Silent Unobtainium Plate");
+        this.add("material.silentgear.allthemodium", "Allthemodium");
+        this.add("material.silentgear.vibranium", "Vibranium");
+        this.add("material.silentgear.unobtainium", "Unobtainium");
         
         this.addItem(ATMItems.ALLTHEMODIUM_PLATE, "Allthemodium Plate");
         this.addItem(ATMItems.VIBRANIUM_PLATE, "Vibranium Plate");

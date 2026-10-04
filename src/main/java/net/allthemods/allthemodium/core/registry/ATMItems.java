@@ -64,7 +64,11 @@ public class ATMItems {
     public static final DeferredHolder<Item, Item> ALLTHEMODIUM_PLATE = ATMItems.register("allthemodium_plate", Item::new);
     public static final DeferredHolder<Item, Item> VIBRANIUM_PLATE = ATMItems.register("vibranium_plate", Item::new);
     public static final DeferredHolder<Item, Item> UNOBTAINIUM_PLATE = ATMItems.register("unobtainium_plate", Item::new);
-    
+
+    public static final DeferredHolder<Item, Item> SILENT_ALLTHEMODIUM_PLATE = ATMItems.register("silent_allthemodium_plate", p -> new Item(p.fireResistant()));
+    public static final DeferredHolder<Item, Item> SILENT_VIBRANIUM_PLATE = ATMItems.register("silent_vibranium_plate", p -> new Item(p.fireResistant()));
+    public static final DeferredHolder<Item, Item> SILENT_UNOBTAINIUM_PLATE = ATMItems.register("silent_unobtainium_plate", p -> new Item(p.fireResistant()));
+
     public static final DeferredHolder<Item, Item> ALLTHEMODIUM_GEAR = ATMItems.register("allthemodium_gear", Item::new);
     public static final DeferredHolder<Item, Item> VIBRANIUM_GEAR = ATMItems.register("vibranium_gear", Item::new);
     public static final DeferredHolder<Item, Item> UNOBTAINIUM_GEAR = ATMItems.register("unobtainium_gear", Item::new);

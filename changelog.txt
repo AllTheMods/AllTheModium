@@ -1,3 +1,9 @@
+26.1.2-4.1.1
+
+- Added SGear materials
+- Lower NeoForge version requirements
+
+
 26.1.2-4.1.0
 
 BREAKING: The Other has been realigned to its 1.21.1 configuration and will generate differently. Existing

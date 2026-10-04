@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "minecraft:netherite_ingot",
+  "base": "allthemodium:allthemodium_plate",
+  "result": {
+    "id": "allthemodium:silent_allthemodium_plate"
+  },
+  "template": "allthemodium:allthemodium_upgrade_smithing_template"
+}

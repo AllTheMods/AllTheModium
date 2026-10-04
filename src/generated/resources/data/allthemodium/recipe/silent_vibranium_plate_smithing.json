@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "allthemodium:allthemodium_ingot",
+  "base": "allthemodium:vibranium_plate",
+  "result": {
+    "id": "allthemodium:silent_vibranium_plate"
+  },
+  "template": "allthemodium:vibranium_upgrade_smithing_template"
+}
