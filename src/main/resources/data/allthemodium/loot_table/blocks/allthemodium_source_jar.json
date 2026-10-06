@@ -25,5 +25,11 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "allthemodium:blocks/allthemodium_source_jar"
+  "random_sequence": "allthemodium:blocks/allthemodium_source_jar",
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ars_nouveau"
+    }
+  ]
 }

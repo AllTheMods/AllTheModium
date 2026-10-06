@@ -63,6 +63,10 @@ config="${mod_id}.mixins.json"
 #[[accessTransformers]]
 file="META-INF/accesstransformer.cfg"
 
+[[mixins]]
+config="${mod_id}.lootr.mixins.json"
+requiredMods=["lootr"]
+
 # The coremods config file path is not configurable and is always loaded from META-INF/coremods.json
 
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
@@ -90,6 +94,20 @@ file="META-INF/accesstransformer.cfg"
     type="required"
     # This version range declares a minimum of the current minecraft version up to but not including the next major version
     versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="geckolib"
+    type="required"
+    versionRange="[4.7.5.1,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="lootr"
+    type="optional"
+    versionRange="[1.21.1-1.11.38.124,)"
     ordering="NONE"
     side="BOTH"
 

@@ -14,6 +14,10 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BrushableBlockRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -23,6 +27,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.event.AddPackFindersEvent;
 
 @EventBusSubscriber(modid = Reference.MOD_ID, value = Dist.CLIENT, bus = EventBusSubscriber.Bus.MOD)
 public class ClientEvents {
@@ -34,6 +39,14 @@ public class ClientEvents {
         
         event.registerEntityRenderer(ModRegistry.ALLOY_TRIDENT_ENTITY.get(), ThrownTridentRenderer::new);
 
+    }
+
+    @SubscribeEvent
+    public static void addPackFinders(AddPackFindersEvent event) {
+        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+            event.addPackFinders(Reference.atm("resourcepacks/sussyblind"), PackType.CLIENT_RESOURCES,
+                    Component.literal("Sussyblind"), PackSource.BUILT_IN, false, Pack.Position.TOP);
+        }
     }
 
     @SubscribeEvent

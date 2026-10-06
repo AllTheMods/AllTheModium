@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "dusted=0": {
+      "model": "allthemodium:block/lootr_suspicious_clay"
+    },
+    "dusted=1": {
+      "model": "allthemodium:block/lootr_suspicious_clay"
+    },
+    "dusted=2": {
+      "model": "allthemodium:block/lootr_suspicious_clay"
+    },
+    "dusted=3": {
+      "model": "allthemodium:block/lootr_suspicious_clay"
+    }
+  }
+}

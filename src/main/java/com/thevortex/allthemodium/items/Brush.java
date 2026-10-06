@@ -1,27 +1,26 @@
 package com.thevortex.allthemodium.items;
 
-import com.thevortex.allthemodium.AllTheModium;
-import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.HumanoidArm;
+import com.thevortex.allthemodium.compat.lootr.LootrCompat;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BrushItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BrushableBlock;
-import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BrushableBlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.neoforged.fml.ModList;
 
+/**
+ * A brush that adds {@code modifier} to a block's brushing progress on every brush stroke, on top of the stroke itself.
+ * The stroke is vanilla's {@link BrushItem#onUseTick}, so blocks that other mods make brushable through it — Lootr's
+ * among them — can be brushed too.
+ */
 public class Brush extends BrushItem
 {
+    private static final boolean LOOTR_LOADED = ModList.get().isLoaded("lootr");
+
     private final int modifier;
 
     public Brush(Properties properties, int modifier) {
@@ -29,45 +28,18 @@ public class Brush extends BrushItem
         this.modifier = modifier;
     }
 
+    @Override
     public void onUseTick(Level level, LivingEntity livingEntity, ItemStack stack, int remainingUseDuration) {
-        if (remainingUseDuration >= 0 && livingEntity instanceof Player player) {
-            HitResult hitresult = this.calculateHitResult(player);
-            if (hitresult instanceof BlockHitResult blockhitresult) {
-                if (hitresult.getType() == HitResult.Type.BLOCK) {
-                    int i = this.getUseDuration(stack, livingEntity) - remainingUseDuration + 1;
-                    boolean flag = i % 10 == 5;
-                    if (flag) {
-                        BlockPos blockpos = blockhitresult.getBlockPos();
-                        BlockState blockstate = level.getBlockState(blockpos);
-                        HumanoidArm humanoidarm = livingEntity.getUsedItemHand() == InteractionHand.MAIN_HAND ? player.getMainArm() : player.getMainArm().getOpposite();
-                        if (blockstate.shouldSpawnTerrainParticles() && blockstate.getRenderShape() != RenderShape.INVISIBLE) {
-                            this.spawnDustParticles(level, blockhitresult, blockstate, livingEntity.getViewVector(0.0F), humanoidarm);
-                        }
-
-                        SoundEvent soundevent;
-                        if (blockstate.getBlock() instanceof BrushableBlock brushableblock) {
-                            soundevent = brushableblock.getBrushSound();
-                        } else {
-                            soundevent = SoundEvents.BRUSH_GENERIC;
-                        }
-
-                        level.playSound(player, blockpos, soundevent, SoundSource.BLOCKS);
-                        if (!level.isClientSide()) {
-                            BlockEntity blockEntity = level.getBlockEntity(blockpos);
-                            if (blockEntity instanceof BrushableBlockEntity brushableblockentity) {
-                                brushableblockentity.brushCount += this.modifier;
-                                brushableblockentity.brush(level.getGameTime(), player, blockhitresult.getDirection());
-                            }
-                        }
-                    }
-
-                    return;
-                }
+        if (!level.isClientSide() && remainingUseDuration >= 0 && livingEntity instanceof Player player
+                && (this.getUseDuration(stack, livingEntity) - remainingUseDuration + 1) % 10 == 5
+                && this.calculateHitResult(player) instanceof BlockHitResult hit && hit.getType() == HitResult.Type.BLOCK) {
+            BlockEntity blockEntity = level.getBlockEntity(hit.getBlockPos());
+            if (blockEntity instanceof BrushableBlockEntity brushable) {
+                brushable.brushCount += this.modifier;
+            } else if (LOOTR_LOADED) {
+                LootrCompat.addBrushBonus(blockEntity, this.modifier, level.getGameTime());
             }
-
-            livingEntity.releaseUsingItem();
-        } else {
-            livingEntity.releaseUsingItem();
         }
+        super.onUseTick(level, livingEntity, stack, remainingUseDuration);
     }
 }

@@ -1,0 +1,6 @@
+{
+    "pack": {
+        "description": "Makes suspicious blocks easier to spot. The glints glow with LabPBR shaders.",
+        "pack_format": 34
+    }
+}

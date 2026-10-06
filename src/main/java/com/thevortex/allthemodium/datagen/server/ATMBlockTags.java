@@ -52,6 +52,7 @@ public class ATMBlockTags extends BlockTagsProvider {
 
         tag(TagRegistry.NEEDS_UNOBTAINIUM_TOOL)
             .add(ModRegistry.ANCIENT_STONE_BRICKS.get())
+            .add(ModRegistry.ANCIENT_STONE_BRICK_WALL.get())
             .add(ModRegistry.ANCIENT_CHISELED_STONE_BRICK_WALL.get())
             .add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get())
             .add(ModRegistry.ANCIENT_CHISELED_STONE_SLABS.get())
@@ -176,6 +177,14 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_STONE_BRICKS.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_CRACKED_STONE_BRICKS.get());
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModRegistry.ANCIENT_CHISELED_STONE_BRICKS.get());
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModRegistry.ANCIENT_STONE_WALL.get())
+                .add(ModRegistry.ANCIENT_SMOOTH_STONE_WALL.get())
+                .add(ModRegistry.ANCIENT_MOSSY_STONE_WALL.get())
+                .add(ModRegistry.ANCIENT_POLISHED_STONE_WALL.get())
+                .add(ModRegistry.ANCIENT_STONE_BRICK_WALL.get())
+                .add(ModRegistry.ANCIENT_CHISELED_STONE_BRICK_WALL.get())
+                .add(ModRegistry.ANCIENT_CRACKED_STONE_BRICK_WALL.get());
 
         tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_PLANKS.get());
         tag(BlockTags.MINEABLE_WITH_AXE).add(ModRegistry.ANCIENT_LOG_0.get());
@@ -303,6 +312,9 @@ public class ATMBlockTags extends BlockTagsProvider {
                 .forEach(blockRegistryObject -> {
                     tag(TagRegistry.OTHER_PROTECTION).add(blockRegistryObject.get());
                 });
+        tag(TagRegistry.OTHER_PROTECTION)
+                .addOptional(Reference.atm("lootr_suspicious_clay"))
+                .addOptional(Reference.atm("lootr_suspicious_soul_sand"));
         tag(TagRegistry.OTHER_PROTECTION).add(Blocks.SAND);
         tag(TagRegistry.OTHER_PROTECTION).add(Blocks.SANDSTONE);
         tag(TagRegistry.OTHER_PROTECTION).add(Blocks.CRIMSON_NYLIUM);

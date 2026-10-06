@@ -1,3 +1,12 @@
+1.21.1-3.2.0
+
+- Added Sussyblind, an optional built-in resource pack that makes suspicious sand, gravel, clay and soul sand easier to spot.
+- Lootr compatibility: suspicious clay and suspicious soul sand now give every player their own loot
+- Allthemodium, vibranium and unobtainium brushes now work on Lootr's suspicious blocks
+- Fixed four ancient stone walls being unbreakable (polished, brick, chiseled brick and cracked brick)
+- German translation rewritten (Satherov)
+
+
 1.21.1-3.1.1
 
 - Allthemodium, vibranium and unobtainium brushes can now be crafted

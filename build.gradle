@@ -60,6 +60,7 @@ neoForge {
     server {
         //systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
         programArgument '--nogui'
+        gameDirectory = project.file('run/server')
         server()
     }
 
@@ -126,6 +127,8 @@ dependencies {
     runtimeOnly "curse.maven:${patchouli}"
     implementation "curse.maven:${jade}"
     runtimeOnly "curse.maven:ender-io-64578:7204349"
+    compileOnly "curse.maven:lootr-361276:8968561"
+    runtimeOnly "curse.maven:lootr-361276:8968561"
     //implementation "curse.maven:${jei}"
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html

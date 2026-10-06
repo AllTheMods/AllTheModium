@@ -1,0 +1,22 @@
+{
+  "parent": "block/block",
+  "loader": "lootr:brushable",
+  "textures": {
+    "particle": "allthemodium:block/suspicious_soul_sand_0"
+  },
+  "opened": {
+    "parent": "allthemodium:block/lootr_suspicious_soul_sand_open"
+  },
+  "stage_0": {
+    "parent": "allthemodium:block/suspicious_soul_sand_0"
+  },
+  "stage_1": {
+    "parent": "allthemodium:block/suspicious_soul_sand_1"
+  },
+  "stage_2": {
+    "parent": "allthemodium:block/suspicious_soul_sand_2"
+  },
+  "stage_3": {
+    "parent": "allthemodium:block/suspicious_soul_sand_3"
+  }
+}

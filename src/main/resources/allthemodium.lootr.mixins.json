@@ -1,0 +1,13 @@
+{
+    "required": false,
+    "package": "com.thevortex.allthemodium.compat.lootr.mixin",
+    "compatibilityLevel": "JAVA_21",
+    "minVersion": "0.8",
+    "mixins": [
+      "LootrBrushableBlockEntityAccessor",
+      "LootrBrushableBlockEntityMixin"
+    ],
+    "injectors": {
+      "defaultRequire": 1
+    }
+  }

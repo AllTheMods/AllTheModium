@@ -6,7 +6,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.util.FakePlayer;
 
@@ -19,25 +18,32 @@ public class AncientStone extends Block
 
 	@Override
 	public boolean canEntityDestroy(BlockState state, BlockGetter world, BlockPos pos, Entity player) {
-		if((player instanceof FakePlayer)) { return false; }
-
-	return super.canEntityDestroy(state,world,pos,player) && (distanceTo(pos,player.blockPosition()) < 16.0F);
-	}
-
-	private double distanceTo(BlockPos block,BlockPos player) {
-		return Math.sqrt(Math.pow(block.getX() - player.getX(), 2) + Math.pow(block.getY() - player.getY(), 2) + Math.pow(block.getZ() - player.getZ(), 2));
+		return super.canEntityDestroy(state,world,pos,player) && canBreak(pos, player);
 	}
 
 	@Override
     protected float getDestroyProgress(final BlockState state, final Player player, final BlockGetter getter,
                                        final BlockPos blockPos) {
-        BlockEntity blockEntity = getter.getBlockEntity(blockPos);
-        if (canEntityDestroy(state,getter,blockPos, player)) {
-            int i = player.hasCorrectToolForDrops(state, player.level(), blockPos) ? 250 : 1500;
-            return player.getDigSpeed(state, blockPos) / 2.0F / i;
-        }
-        return 0.0F;
+        return canEntityDestroy(state, getter, blockPos, player) ? destroyProgress(state, player, blockPos) : 0.0F;
     }
+
+	/** Ancient stone refuses fake players, and anyone breaking it from 16 or more blocks away. */
+	static boolean canBreak(BlockPos pos, Entity entity) {
+		return !(entity instanceof FakePlayer) && distanceTo(pos, entity.blockPosition()) < 16.0F;
+	}
+
+	/**
+	 * Break progress per tick for a block whose hardness is -1, which vanilla treats as unbreakable: the dig speed
+	 * divided by 500 with the correct tool, or by 3000 without.
+	 */
+	static float destroyProgress(BlockState state, Player player, BlockPos pos) {
+		int i = player.hasCorrectToolForDrops(state, player.level(), pos) ? 250 : 1500;
+		return player.getDigSpeed(state, pos) / 2.0F / i;
+	}
+
+	private static double distanceTo(BlockPos block,BlockPos player) {
+		return Math.sqrt(Math.pow(block.getX() - player.getX(), 2) + Math.pow(block.getY() - player.getY(), 2) + Math.pow(block.getZ() - player.getZ(), 2));
+	}
 }
 
 

@@ -196,8 +196,13 @@ public class ModRegistry
     public static final DeferredHolder<Block, Block> MOLTEN_VIB_BLOCK = registerBlock("molten_vibranium_block", () -> new LiquidBlock(FluidRegistry.VIBRANIUM.value(), Block.Properties.of().noCollission().strength(100f).mapColor(DyeColor.GREEN).noLootTable()), false);
     public static final DeferredHolder<Block, Block> MOLTEN_UNOB_BLOCK = registerBlock("molten_unobtainium_block", () -> new LiquidBlock(FluidRegistry.UNOBTAINIUM.value(), Block.Properties.of().noCollission().strength(100f).mapColor(DyeColor.PURPLE).noLootTable()), false);
 
-    public static final DeferredHolder<Block, Block> SUS_CLAY = registerBlock("suspicious_clay", () -> new ATMBrushableBlock(Blocks.CLAY, BlockBehaviour.Properties.of().mapColor(MapColor.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
-    public static final DeferredHolder<Block, Block> SUS_SOUL_SAND = registerBlock("suspicious_soul_sand", () -> new ATMBrushableBlock(Blocks.SOUL_SAND, BlockBehaviour.Properties.of().mapColor(MapColor.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
+    public static final DeferredHolder<Block, Block> SUS_CLAY = registerBlock("suspicious_clay", () -> new ATMBrushableBlock(Blocks.CLAY, suspiciousBlockProperties(), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
+    public static final DeferredHolder<Block, Block> SUS_SOUL_SAND = registerBlock("suspicious_soul_sand", () -> new ATMBrushableBlock(Blocks.SOUL_SAND, suspiciousBlockProperties(), SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED));
+
+    /** Shared by the suspicious blocks and their Lootr variants, so both behave identically. */
+    public static BlockBehaviour.Properties suspiciousBlockProperties() {
+        return BlockBehaviour.Properties.of().mapColor(MapColor.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY);
+    }
 
     public static final DeferredHolder<Item, Item> SOUL_LAVA_BUCKET = registerItem("soul_lava_bucket", () -> new BucketItem(FluidRegistry.SOULLAVA.value(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
     public static final DeferredHolder<Item, Item> MOLTEN_ATM_BUCKET = registerItem("molten_allthemodium_bucket", () -> new BucketItem(FluidRegistry.ALLTHEMODIUM.value(), new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
@@ -219,10 +224,10 @@ public class ModRegistry
 
     public static final DeferredHolder<Block, Block> ANCIENT_STONE_WALL = registerBlock(WALLBLOCKS, "ancient_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(ANCIENT_STONE.get())));
     public static final DeferredHolder<Block, Block> ANCIENT_SMOOTH_STONE_WALL = registerBlock(WALLBLOCKS, "ancient_smooth_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(ANCIENT_SMOOTH_STONE.get())));
-    public static final DeferredHolder<Block, Block> ANCIENT_POLISHED_STONE_WALL = registerBlock(WALLBLOCKS, "ancient_polished_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(ANCIENT_POLISHED_STONE.get())));
-    public static final DeferredHolder<Block, Block> ANCIENT_STONE_BRICK_WALL = registerBlock(WALLBLOCKS, "ancient_stone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(ANCIENT_STONE_BRICKS.get())));
-    public static final DeferredHolder<Block, Block> ANCIENT_CHISELED_STONE_BRICK_WALL = registerBlock(WALLBLOCKS, "ancient_chiseled_stone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(ANCIENT_CHISELED_STONE_BRICKS.get())));
-    public static final DeferredHolder<Block, Block> ANCIENT_CRACKED_STONE_BRICK_WALL = registerBlock(WALLBLOCKS, "ancient_cracked_stone_brick_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(ANCIENT_CRACKED_STONE_BRICKS.get())));
+    public static final DeferredHolder<Block, Block> ANCIENT_POLISHED_STONE_WALL = registerBlock(WALLBLOCKS, "ancient_polished_stone_wall", () -> new AncientStoneWall(BlockBehaviour.Properties.ofFullCopy(ANCIENT_POLISHED_STONE.get())));
+    public static final DeferredHolder<Block, Block> ANCIENT_STONE_BRICK_WALL = registerBlock(WALLBLOCKS, "ancient_stone_brick_wall", () -> new AncientStoneWall(BlockBehaviour.Properties.ofFullCopy(ANCIENT_STONE_BRICKS.get())));
+    public static final DeferredHolder<Block, Block> ANCIENT_CHISELED_STONE_BRICK_WALL = registerBlock(WALLBLOCKS, "ancient_chiseled_stone_brick_wall", () -> new AncientStoneWall(BlockBehaviour.Properties.ofFullCopy(ANCIENT_CHISELED_STONE_BRICKS.get())));
+    public static final DeferredHolder<Block, Block> ANCIENT_CRACKED_STONE_BRICK_WALL = registerBlock(WALLBLOCKS, "ancient_cracked_stone_brick_wall", () -> new AncientStoneWall(BlockBehaviour.Properties.ofFullCopy(ANCIENT_CRACKED_STONE_BRICKS.get())));
     public static final DeferredHolder<Block, Block> ANCIENT_MOSSY_STONE_WALL = registerBlock(WALLBLOCKS, "ancient_mossy_stone_wall", () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(ANCIENT_MOSSY_STONE.get())));
 
     public static final DeferredHolder<Block, Block> ANCIENT_BOOKSHELF = registerBlock(PILLARBLOCKS, "ancient_bookshelf", () -> new AncientBookShelf(BlockBehaviour.Properties.of().strength(0.8F).randomTicks().sound(SoundType.WOOD)));

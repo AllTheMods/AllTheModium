@@ -71,7 +71,9 @@
   "material.silentgear.unobtainium": "Unobtainium",
   "tetra.material.unobtainium": "Unobtainium",
   "block.allthemodium.suspicious_clay": "Şüpheli Kil",
+  "block.allthemodium.lootr_suspicious_clay": "Şüpheli Kil",
   "block.allthemodium.suspicious_soul_sand": "Şüpheli Ruh Kumu",
+  "block.allthemodium.lootr_suspicious_soul_sand": "Şüpheli Ruh Kumu",
   "block.allthemodium.ancient_bookshelf": "Antik Kitaplık",
   "block.allthemodium.ancient_leaves": "Antik Yapraklar",
   "block.allthemodium.ancient_leaves_bottom": "Antik Yapraklar",
@@ -290,6 +292,6 @@
   "fluid.allthemodium.vapor_unobtainium": "Unobtainium Buharı",
   "block.iceandfire.allthemodium_pile": "Allthemodium Parça Yığını",
   "block.iceandfire.unobtainium_pile": "Unobtainium Parça Yığını",
-  "block.iceandfire.vibranium_pile": "Vibranium Parça Yığını"
+  "block.iceandfire.vibranium_pile": "Vibranium Parça Yığını",
   "block.allthemodium.allthemodium_source_jar": "Allthemodium Kaynak Kavanozu"
 }

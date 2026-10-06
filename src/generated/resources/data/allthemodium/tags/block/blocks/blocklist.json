@@ -103,6 +103,14 @@
     "allthemodium:ancient_bookshelf",
     "allthemodium:demonic_bookshelf",
     "allthemodium:soul_bookshelf",
+    {
+      "id": "allthemodium:lootr_suspicious_clay",
+      "required": false
+    },
+    {
+      "id": "allthemodium:lootr_suspicious_soul_sand",
+      "required": false
+    },
     "minecraft:sand",
     "minecraft:sandstone",
     "minecraft:crimson_nylium",

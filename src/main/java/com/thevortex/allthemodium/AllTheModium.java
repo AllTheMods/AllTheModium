@@ -4,6 +4,7 @@ package com.thevortex.allthemodium;
 import com.thevortex.allthemodium.compat.ars_nouveau.ArsClientHandler;
 import com.thevortex.allthemodium.compat.ars_nouveau.ArsCompat;
 import com.thevortex.allthemodium.compat.jade.ATMJadePlugin;
+import com.thevortex.allthemodium.compat.lootr.LootrCompat;
 import com.thevortex.allthemodium.events.ArmorEvents;
 import com.thevortex.allthemodium.events.BlockBreak;
 import com.thevortex.allthemodium.reference.Reference;
@@ -49,6 +50,7 @@ public class AllTheModium
 		ModRegistry.SLABBLOCKS.register(modEventBus);
 		ModRegistry.WALLBLOCKS.register(modEventBus);
 		ModRegistry.PILLARBLOCKS.register(modEventBus);
+		if (ModList.get().isLoaded("lootr")) LootrCompat.register(modEventBus);
 
 		ModRegistry.ITEMS.register(modEventBus);
 
