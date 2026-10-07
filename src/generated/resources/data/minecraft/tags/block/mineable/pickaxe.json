@@ -28,10 +28,6 @@
     "allthemodium:unobtainium_vibranium_alloy_block",
     "allthemodium:unobtainium_allthemodium_alloy_block",
     "allthemodium:vibranium_allthemodium_alloy_block",
-    "allthemodium:teleport_pad",
-    {
-      "id": "allthemodium:allthemodium_source_jar",
-      "required": false
-    }
+    "allthemodium:teleport_pad"
   ]
 }

@@ -120,7 +120,6 @@ dependencies {
     implementation "curse.maven:${ato}"
     implementation "curse.maven:${tweaks}"
 
-    implementation "curse.maven:${ars_nouveau}"
     implementation "curse.maven:${geckolib}"
     implementation "curse.maven:${curios}"
     runtimeOnly "curse.maven:jei-238222:5846880"

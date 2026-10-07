@@ -1,8 +1,6 @@
 package com.thevortex.allthemodium;
 
 
-import com.thevortex.allthemodium.compat.ars_nouveau.ArsClientHandler;
-import com.thevortex.allthemodium.compat.ars_nouveau.ArsCompat;
 import com.thevortex.allthemodium.compat.jade.ATMJadePlugin;
 import com.thevortex.allthemodium.compat.lootr.LootrCompat;
 import com.thevortex.allthemodium.events.ArmorEvents;
@@ -74,13 +72,6 @@ public class AllTheModium
 			ATMSlurries.SLURRIES.register(modEventBus);
 			MekProcReg.ITEMS.register(modEventBus);
 			MekProcReg.CREATIVE_TABS.register(modEventBus);
-		}
-		if (ModList.get().isLoaded("ars_nouveau")) {
-			ArsCompat.ARS_BLOCKS.register(modEventBus);
-			ArsCompat.ARS_ITEMS.register(modEventBus);
-			ArsCompat.ARS_BLOCK_ENTITIES.register(modEventBus);
-			modEventBus.addListener(ArsCompat::registerCapabilities);
-			modEventBus.addListener(ArsClientHandler::init);
 		}
 
 		//MinecraftForge.EVENT_BUS.addListener(EventPriority.NORMAL, APStructure::setupStructureSpawns);

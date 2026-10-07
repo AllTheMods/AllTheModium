@@ -340,8 +340,6 @@ public class ATMBlockTags extends BlockTagsProvider {
         tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(ModRegistry.OTHER_VIBRANIUM_ORE.get());
         tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(ModRegistry.UNOBTAINIUM_ORE.get());
         tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(ModRegistry.TELEPORT_PAD.get());
-
-        tag(BlockTags.MINEABLE_WITH_PICKAXE).addOptional(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID,"allthemodium_source_jar"));
     }
 
 }
