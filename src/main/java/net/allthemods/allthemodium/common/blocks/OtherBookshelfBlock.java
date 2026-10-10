@@ -13,6 +13,6 @@ public class OtherBookshelfBlock extends Block {
     
     @Override
     public float getEnchantPowerBonus(BlockState state, BlockGetter level, BlockPos pos) {
-        return 4.0F;
+        return 2.0F;
     }
 }

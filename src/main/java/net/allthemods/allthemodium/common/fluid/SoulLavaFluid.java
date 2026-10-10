@@ -4,6 +4,7 @@ import net.neoforged.neoforge.fluids.FluidType;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -21,6 +22,8 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.LavaFluid;
 
 import net.allthemods.allthemodium.core.registry.ATMFluids;
+
+import org.jspecify.annotations.Nullable;
 
 public abstract class SoulLavaFluid extends LavaFluid {
     
@@ -49,6 +52,11 @@ public abstract class SoulLavaFluid extends LavaFluid {
         return ATMFluids.SOUL_LAVA_BLOCK.get().defaultBlockState().setValue(LiquidBlock.LEVEL, FlowingFluid.getLegacyLevel(fluidState));
     }
     
+    @Override
+    public @Nullable ParticleOptions getDripParticle() {
+        return ParticleTypes.SOUL_FIRE_FLAME;
+    }
+
     @Override
     public boolean canBeReplacedWith(FluidState state, BlockGetter level, BlockPos pos, Fluid other, Direction direction) {
         return false;

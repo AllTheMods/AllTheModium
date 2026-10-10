@@ -3,6 +3,7 @@ package net.allthemods.allthemodium.common.entity;
 import net.neoforged.neoforge.event.EventHooks;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -31,8 +32,11 @@ import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.entity.monster.skeleton.Skeleton;
 import net.minecraft.world.entity.monster.skeleton.WitherSkeleton;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.hurtingprojectile.SmallFireball;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.NaturalSpawner;
+import net.minecraft.world.level.block.LevelEvent;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.ServerLevelAccessor;
 
 import com.geckolib.animatable.GeoEntity;
@@ -56,7 +60,15 @@ public class PiglichEntity extends Piglin implements GeoEntity {
     private static final int SUPPORT_SUMMON_COOLDOWN = 200;
     private static final int SUPPORT_SPAWN_ATTEMPTS = 12;
     private static final int SUPPORT_SPAWN_VERTICAL_RANGE = 3;
+    private static final int SUMMON_GLOW_TICKS = 46;
+    private static final double FIREBALL_MIN_DISTANCE_SQR = 4.0D;
+    private static final int FIREBALL_WINDUP = 60;
+    private static final int FIREBALL_VOLLEY_INTERVAL = 6;
+    private static final int FIREBALL_COOLDOWN = 100;
+    private static final int FIREBALL_VOLLEYS = 3;
+    private static final int FIREBALLS_PER_VOLLEY = 3;
     private static final EntityDataAccessor<Boolean> DATA_RUNNING = SynchedEntityData.defineId(PiglichEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_SUMMONING = SynchedEntityData.defineId(PiglichEntity.class, EntityDataSerializers.BOOLEAN);
     
     private static final RawAnimation IDLE = RawAnimation.begin().thenLoop("idle.piglich.nik");
     private static final RawAnimation WALK = RawAnimation.begin().thenLoop("walk.piglich.nik");
@@ -73,6 +85,7 @@ public class PiglichEntity extends Piglin implements GeoEntity {
     );
     
     private final AnimatableInstanceCache animationCache = GeckoLibUtil.createInstanceCache(this);
+    private int summonGlowTicks;
     
     public PiglichEntity(EntityType<? extends Piglin> type, Level world) {
         super(type, world);
@@ -95,6 +108,7 @@ public class PiglichEntity extends Piglin implements GeoEntity {
         this.goalSelector.addGoal(1, new PiglichAttackGoal(this, PiglichEntity.ATTACK_SPEED_MODIFIER));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, PiglichEntity.ATTACK_SPEED_MODIFIER, 48.0F));
         this.goalSelector.addGoal(2, new PiglichSupportGoal(this));
+        this.goalSelector.addGoal(2, new PiglichFireballGoal(this));
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
         this.goalSelector.addGoal(5, new RandomStrollGoal(this, 1.0D));
@@ -114,14 +128,47 @@ public class PiglichEntity extends Piglin implements GeoEntity {
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(PiglichEntity.DATA_RUNNING, false);
+        builder.define(PiglichEntity.DATA_SUMMONING, false);
     }
     
     @Override
     protected void customServerAiStep(ServerLevel level) {
         super.customServerAiStep(level);
         this.updateAttackingSpeed();
+        if (this.summonGlowTicks > 0 && --this.summonGlowTicks == 0) this.entityData.set(PiglichEntity.DATA_SUMMONING, false);
     }
-    
+
+    @Override
+    public void tick() {
+        super.tick();
+        if (this.level().isClientSide()) this.addParticles(this.level());
+    }
+
+    private void addParticles(Level level) {
+        level.addParticle(ParticleTypes.LARGE_SMOKE,
+                this.getX() + (this.random.nextDouble() - 0.5D) * 0.5D,
+                this.getY() + 0.8D + this.random.nextDouble() * 0.6D,
+                this.getZ() + (this.random.nextDouble() - 0.5D) * 0.5D,
+                0.0D, 0.015D, 0.0D);
+        if (!this.isSummoning()) return;
+
+        for (int i = 0; i < 2; ++i) {
+            double x = this.getX() + (this.random.nextDouble() - 0.5D) * 0.8D;
+            double y = this.getY() + this.random.nextDouble() * 1.5D + 0.5D;
+            double z = this.getZ() + (this.random.nextDouble() - 0.5D) * 0.8D;
+            level.addParticle(ParticleTypes.FLAME, x, y, z, 0.0D, 0.05D, 0.0D);
+            level.addParticle(ParticleTypes.LARGE_SMOKE, x, y, z, 0.0D, 0.02D, 0.0D);
+        }
+
+        if (this.random.nextInt(3) == 0) {
+            level.addParticle(ParticleTypes.SOUL_FIRE_FLAME,
+                    this.getX() + (this.random.nextDouble() - 0.5D) * 0.8D,
+                    this.getY() + this.random.nextDouble() * 1.5D + 0.5D,
+                    this.getZ() + (this.random.nextDouble() - 0.5D) * 0.8D,
+                    0.0D, 0.03D, 0.0D);
+        }
+    }
+
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MOVEMENT_SPEED, 0.08F)
@@ -138,6 +185,10 @@ public class PiglichEntity extends Piglin implements GeoEntity {
     
     private void setRunning(boolean running) {
         this.entityData.set(PiglichEntity.DATA_RUNNING, running);
+    }
+    
+    public boolean isSummoning() {
+        return this.entityData.get(PiglichEntity.DATA_SUMMONING);
     }
     
     private void updateAttackingSpeed() {
@@ -195,7 +246,7 @@ public class PiglichEntity extends Piglin implements GeoEntity {
             if (support.isSpawnCancelled()) return false;
             
             level.addFreshEntityWithPassengers(support);
-            this.triggerAnim("actions", "summon");
+            this.playSummonEffects();
             return true;
         }
         
@@ -230,6 +281,28 @@ public class PiglichEntity extends Piglin implements GeoEntity {
                 && !level.containsAnyLiquid(support.getBoundingBox());
     }
     
+    private void playSummonEffects() {
+        this.triggerAnim("actions", "summon");
+        this.summonGlowTicks = PiglichEntity.SUMMON_GLOW_TICKS;
+        this.entityData.set(PiglichEntity.DATA_SUMMONING, true);
+    }
+
+    private void shootFireballs(ServerLevel level, LivingEntity target, double distanceSqr) {
+        if (!this.isSilent()) level.levelEvent(null, LevelEvent.SOUND_BLAZE_FIREBALL, this.blockPosition(), 0);
+
+        double xd = target.getX() - this.getX();
+        double yd = target.getY(0.5D) - this.getY(0.5D);
+        double zd = target.getZ() - this.getZ();
+        double inaccuracy = Math.sqrt(Math.sqrt(distanceSqr)) * 0.5D;
+        Vec3 view = this.getViewVector(1.0F);
+        for (int i = 0; i < PiglichEntity.FIREBALLS_PER_VOLLEY; ++i) {
+            Vec3 direction = new Vec3(this.getRandom().triangle(xd, inaccuracy), yd, this.getRandom().triangle(zd, inaccuracy));
+            SmallFireball fireball = new SmallFireball(level, this, direction.normalize());
+            fireball.setPos(this.getX() + view.x * 2.0D, this.getY(0.5D) + 0.5D, this.getZ() + view.z * 2.0D);
+            level.addFreshEntity(fireball);
+        }
+    }
+
     private int randomSupportOffset() {
         int offset = Mth.nextInt(this.getRandom(), 3, 10);
         return this.getRandom().nextBoolean() ? offset : -offset;
@@ -311,6 +384,62 @@ public class PiglichEntity extends Piglin implements GeoEntity {
         @Override
         public void stop() {
             this.target = null;
+        }
+    }
+
+    private static class PiglichFireballGoal extends Goal {
+
+        private final PiglichEntity piglich;
+        private int attackStep;
+        private int attackTime;
+
+        public PiglichFireballGoal(PiglichEntity piglich) {
+            this.piglich = piglich;
+        }
+
+        @Override
+        public boolean canUse() {
+            LivingEntity target = this.piglich.getTarget();
+            return target != null && target.isAlive() && this.piglich.canAttack(target) && this.piglich.distanceToSqr(target) >= PiglichEntity.FIREBALL_MIN_DISTANCE_SQR;
+        }
+
+        @Override
+        public void start() {
+            this.attackStep = 0;
+        }
+
+        @Override
+        public boolean requiresUpdateEveryTick() {
+            return true;
+        }
+
+        @Override
+        public void tick() {
+            --this.attackTime;
+            LivingEntity target = this.piglich.getTarget();
+            if (target == null || !(this.piglich.level() instanceof ServerLevel level)) return;
+
+            double distanceSqr = this.piglich.distanceToSqr(target);
+            double range = this.piglich.getAttributeValue(Attributes.FOLLOW_RANGE);
+            if (distanceSqr > range * range || !this.piglich.getSensing().hasLineOfSight(target)) return;
+
+            this.piglich.getLookControl().setLookAt(target, 10.0F, 10.0F);
+            if (this.attackTime > 0) return;
+
+            ++this.attackStep;
+            if (this.attackStep == 1) {
+                this.attackTime = PiglichEntity.FIREBALL_WINDUP;
+            } else if (this.attackStep <= PiglichEntity.FIREBALL_VOLLEYS + 1) {
+                this.attackTime = PiglichEntity.FIREBALL_VOLLEY_INTERVAL;
+            } else {
+                this.attackTime = PiglichEntity.FIREBALL_COOLDOWN;
+                this.attackStep = 0;
+            }
+
+            if (this.attackStep > 1) {
+                if (this.attackStep == 2) this.piglich.playSummonEffects();
+                this.piglich.shootFireballs(level, target, distanceSqr);
+            }
         }
     }
 }

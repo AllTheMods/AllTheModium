@@ -9,8 +9,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.DoublePlantBlock;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -62,8 +60,10 @@ public class ATMBlockLoot extends BlockLootSubProvider {
         
         this.dropSelf(ATMBlocks.ANCIENT_DIRT);
         this.add(ATMBlocks.ANCIENT_GRASS.get(), block -> this.createSingleItemTableWithSilkTouch(block, ATMBlocks.ANCIENT_DIRT.get()));
+        this.add(ATMBlocks.ANCIENT_PODZOL.get(), block -> this.createSingleItemTableWithSilkTouch(block, ATMBlocks.ANCIENT_DIRT.get()));
         this.dropSelf(ATMBlocks.ANCIENT_SAPLING);
-        this.dropTallFlower(ATMBlocks.ANCIENT_HERB);
+        this.dropSelf(ATMBlocks.ANCIENT_HERB);
+        this.dropWhenSilkTouch(ATMBlocks.ANCIENT_FERN.get());
         this.dropSelf(ATMBlocks.ANCIENT_LOG_0);
         this.dropSelf(ATMBlocks.ANCIENT_LOG_1);
         this.dropSelf(ATMBlocks.ANCIENT_LOG_2);
@@ -109,7 +109,7 @@ public class ATMBlockLoot extends BlockLootSubProvider {
         this.dropSlab(ATMBlocks.POLISHED_ANCIENT_STONE_SLAB);
         
         this.dropSelf(ATMBlocks.SOUL_SAPLING);
-        this.dropTallFlower(ATMBlocks.SOUL_HERB);
+        this.dropSelf(ATMBlocks.SOUL_HERB);
         this.dropSelf(ATMBlocks.SOUL_LOG_0);
         this.dropSelf(ATMBlocks.SOUL_LOG_1);
         this.dropSelf(ATMBlocks.SOUL_LOG_2);
@@ -126,7 +126,7 @@ public class ATMBlockLoot extends BlockLootSubProvider {
         this.dropSlab(ATMBlocks.SOUL_SLAB);
         
         this.dropSelf(ATMBlocks.DEMONIC_SAPLING);
-        this.dropTallFlower(ATMBlocks.DEMONIC_HERB);
+        this.dropSelf(ATMBlocks.DEMONIC_HERB);
         this.dropSelf(ATMBlocks.DEMONIC_LOG);
         this.dropSelf(ATMBlocks.STRIPPED_DEMONIC_LOG);
         this.dropLeaves(ATMBlocks.DEMONIC_LEAVES, ATMBlocks.DEMONIC_SAPLING);
@@ -160,10 +160,6 @@ public class ATMBlockLoot extends BlockLootSubProvider {
     
     private void dropDoor(DeferredHolder<Block, ? extends Block> block) {
         this.add(block.get(), this::createDoorTable);
-    }
-    
-    private void dropTallFlower(DeferredHolder<Block, ? extends Block> block) {
-        this.add(block.get(), tallFlower -> this.createSinglePropConditionTable(tallFlower, DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
     }
     
     private void dropLeaves(DeferredHolder<Block, ? extends Block> leaves, DeferredHolder<Block, ? extends Block> sapling) {

@@ -6,6 +6,7 @@ import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -115,6 +116,7 @@ public class ATMBlockTagsProvider extends BlockTagsProvider {
                 .add(
                         ATMBlocks.ANCIENT_DIRT.get(),
                         ATMBlocks.ANCIENT_GRASS.get(),
+                        ATMBlocks.ANCIENT_PODZOL.get(),
                         Blocks.WARPED_NYLIUM,
                         Blocks.CRIMSON_NYLIUM
                 );
@@ -266,11 +268,12 @@ public class ATMBlockTagsProvider extends BlockTagsProvider {
                 .add(
                         ATMBlocks.ANCIENT_DIRT.get(),
                         ATMBlocks.ANCIENT_GRASS.get(),
+                        ATMBlocks.ANCIENT_PODZOL.get(),
                         ATMBlocks.SUS_CLAY.get(),
                         ATMBlocks.SUS_SOUL_SAND.get()
                 );
         
-        this.tag(BlockTags.DIRT).add(ATMBlocks.ANCIENT_DIRT.get(), ATMBlocks.ANCIENT_GRASS.get());
+        this.tag(BlockTags.DIRT).add(ATMBlocks.ANCIENT_DIRT.get(), ATMBlocks.ANCIENT_GRASS.get(), ATMBlocks.ANCIENT_PODZOL.get());
         this.tag(BlockTags.NYLIUM).add(ATMBlocks.ANCIENT_STONE.get());
         this.tag(BlockTags.INFINIBURN_NETHER).add(ATMBlocks.ANCIENT_STONE.get(), ATMBlocks.ANCIENT_GRASS.get(), ATMBlocks.ANCIENT_DIRT.get());
         
@@ -409,13 +412,21 @@ public class ATMBlockTagsProvider extends BlockTagsProvider {
                 )
                 .addTag(Tags.Blocks.ORES);
         
+        this.tag(ATMTags.Blocks.LOOTR_CONVERT_CLAYS).add(ATMBlocks.SUS_CLAY.get());
+        this.tag(ATMTags.Blocks.LOOTR_CONVERT_SOUL_SANDS).add(ATMBlocks.SUS_SOUL_SAND.get());
+        for (Identifier lootrBlock : List.of(ATM.id("lootr_suspicious_clay"), ATM.id("lootr_suspicious_soul_sand"))) {
+            this.getOrCreateRawBuilder(ATMTags.Blocks.OTHER_PROTECTION).addOptionalElement(lootrBlock);
+            this.getOrCreateRawBuilder(BlockTags.MINEABLE_WITH_SHOVEL).addOptionalElement(lootrBlock);
+        }
+        
         this.tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED)
                 .add(
                         ATMBlocks.ALLTHEMODIUM_ORE.get(),
                         ATMBlocks.DEEPSLATE_ALLTHEMODIUM_ORE.get(),
                         ATMBlocks.VIBRANIUM_ORE.get(),
                         ATMBlocks.OTHER_VIBRANIUM_ORE.get(),
-                        ATMBlocks.UNOBTAINIUM_ORE.get()
+                        ATMBlocks.UNOBTAINIUM_ORE.get(),
+                        ATMBlocks.TELEPORT_PAD.get()
                 );
     }
     

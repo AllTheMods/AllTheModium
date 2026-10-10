@@ -1,7 +1,10 @@
 package net.allthemods.allthemodium.compat.jade;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 
 import net.allthemods.allthemodium.api.ATM;
 import net.allthemods.allthemodium.client.lang.ATMLanguage;
@@ -21,6 +24,8 @@ import snownee.jade.api.config.IPluginConfig;
 import snownee.jade.api.harvest.ToolTier;
 import snownee.jade.api.harvest.ToolTypeRegistry;
 
+import java.util.List;
+
 @WailaPlugin
 public class ATMJadePlugin implements IWailaPlugin {
     
@@ -31,12 +36,17 @@ public class ATMJadePlugin implements IWailaPlugin {
     }
 
     private static void registerPickaxes(ToolTypeRegistry registry) {
-        registry.modifyType(JadeIds.JADE("pickaxe"), type -> type
-                .addTier(ToolTier.item(ATMItems.ALLTHEMODIUM_PICKAXE.get()))
-                .addTier(ToolTier.item(ATMItems.VIBRANIUM_PICKAXE.get()))
-                .addTier(ToolTier.item(ATMItems.UNOBTAINIUM_PICKAXE.get()))
-                .addTier(ToolTier.item(ATMItems.ALLOY_PICKAXE.get()))
-        );
+        Identifier pickaxe = JadeIds.JADE("pickaxe");
+        Identifier previous = BuiltInRegistries.ITEM.getKey(Items.NETHERITE_PICKAXE);
+        for (Item item : List.of(
+                ATMItems.ALLTHEMODIUM_PICKAXE.get(),
+                ATMItems.VIBRANIUM_PICKAXE.get(),
+                ATMItems.UNOBTAINIUM_PICKAXE.get(),
+                ATMItems.ALLOY_PICKAXE.get()
+        )) {
+            registry.insertTierAfter(pickaxe, previous, ToolTier.item(item));
+            previous = BuiltInRegistries.ITEM.getKey(item);
+        }
     }
     
     enum TeleportPadComponentProvider implements IBlockComponentProvider {

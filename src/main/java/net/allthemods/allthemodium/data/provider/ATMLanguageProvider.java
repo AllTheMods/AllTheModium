@@ -67,9 +67,11 @@ public class ATMLanguageProvider extends LanguageProvider {
         this.addBlock(ATMBlocks.ANCIENT_CAVE_VINES, "Ancient Vines");
         this.addBlock(ATMBlocks.ANCIENT_DIRT, "Ancient Dirt");
         this.addBlock(ATMBlocks.ANCIENT_GRASS, "Ancient Grass");
+        this.addBlock(ATMBlocks.ANCIENT_PODZOL, "Ancient Podzol");
         
         this.addBlock(ATMBlocks.ANCIENT_SAPLING, "Ancient Sapling");
         this.addBlock(ATMBlocks.ANCIENT_HERB, "Ancient Herbs");
+        this.addBlock(ATMBlocks.ANCIENT_FERN, "Ancient Fern");
         this.addBlock(ATMBlocks.ANCIENT_LOG_0, "Ancient Log");
         this.addBlock(ATMBlocks.ANCIENT_LOG_1, "Ancient Log");
         this.addBlock(ATMBlocks.ANCIENT_LOG_2, "Ancient Log");
@@ -148,6 +150,8 @@ public class ATMLanguageProvider extends LanguageProvider {
         
         this.addBlock(ATMBlocks.SUS_CLAY, "Suspicious Clay");
         this.addBlock(ATMBlocks.SUS_SOUL_SAND, "Suspicious Soul Sand");
+        this.add("block.allthemodium.lootr_suspicious_clay", "Suspicious Clay");
+        this.add("block.allthemodium.lootr_suspicious_soul_sand", "Suspicious Soul Sand");
         
         this.addBlock(ATMBlocks.TELEPORT_PAD, "Teleport Pad");
         

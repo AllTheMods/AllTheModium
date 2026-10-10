@@ -10,18 +10,23 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileDeflection;
 import net.minecraft.world.entity.projectile.arrow.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 import net.allthemods.allthemodium.core.registry.ATMEntities;
@@ -30,15 +35,26 @@ import net.allthemods.allthemodium.core.registry.ATMItems;
 import org.jspecify.annotations.Nullable;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class ThrownModiumTrident extends AbstractArrow {
     
     private static final EntityDataAccessor<Byte> ID_LOYALTY = SynchedEntityData.defineId(ThrownModiumTrident.class, EntityDataSerializers.BYTE);
     private static final EntityDataAccessor<Boolean> ID_FOIL = SynchedEntityData.defineId(ThrownModiumTrident.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> ID_RETURNING = SynchedEntityData.defineId(ThrownModiumTrident.class, EntityDataSerializers.BOOLEAN);
     private static final float WATER_INERTIA = 0.99F;
     private static final boolean DEFAULT_DEALT_DAMAGE = false;
+    private static final double CHAIN_SEARCH_RADIUS = 20.0;
+    private static final float CHAIN_SPEED = 2.5F;
+    private static final int CHAIN_CHECK_INTERVAL = 5;
+    private static final int CHAIN_RETURN_LOYALTY = 3;
+    private static final float THROWN_DAMAGE = 75.0F;
     private boolean dealtDamage = false;
+    private boolean hitSinceLaunch = false;
+    private int lastHitEntityId = -1;
+    private int chainCheckTick;
     public int clientSideReturnTridentTickCount;
     
     public ThrownModiumTrident(EntityType<ThrownModiumTrident> type, Level level) {
@@ -62,6 +78,7 @@ public class ThrownModiumTrident extends AbstractArrow {
         super.defineSynchedData(builder);
         builder.define(ThrownModiumTrident.ID_LOYALTY, (byte) 0);
         builder.define(ThrownModiumTrident.ID_FOIL, false);
+        builder.define(ThrownModiumTrident.ID_RETURNING, false);
     }
     
     @Override
@@ -69,8 +86,15 @@ public class ThrownModiumTrident extends AbstractArrow {
         if (this.inGroundTime > 2) this.dealtDamage = true;
         
         Entity currentOwner = this.getOwner();
+        boolean chaining = currentOwner instanceof Player && !this.isReturning();
+        if (chaining && this.dealtDamage && this.level() instanceof ServerLevel level && ++this.chainCheckTick >= ThrownModiumTrident.CHAIN_CHECK_INTERVAL) {
+            this.chainCheckTick = 0;
+            if (!this.hitSinceLaunch || !this.chainToNearestMonster(level)) this.entityData.set(ThrownModiumTrident.ID_RETURNING, true);
+        }
+        
         int loyalty = this.entityData.get(ThrownModiumTrident.ID_LOYALTY);
-        if (loyalty > 0 && (this.dealtDamage || this.isNoPhysics()) && currentOwner != null) {
+        if (this.isReturning()) loyalty = Math.max(loyalty, ThrownModiumTrident.CHAIN_RETURN_LOYALTY);
+        if (loyalty > 0 && !chaining && (this.dealtDamage || this.isNoPhysics()) && currentOwner != null) {
             
             if (!this.isAcceptableReturnOwner()) {
                 if (this.level() instanceof ServerLevel level && this.pickup == AbstractArrow.Pickup.ALLOWED) this.spawnAtLocation(level, this.getPickupItem(), 0.1F);
@@ -96,6 +120,34 @@ public class ThrownModiumTrident extends AbstractArrow {
         super.tick();
     }
     
+    private boolean chainToNearestMonster(ServerLevel level) {
+        Vec3 origin = this.getBoundingBox().getCenter();
+        Optional<Monster> target = level.getEntitiesOfClass(Monster.class, this.getBoundingBox().inflate(ThrownModiumTrident.CHAIN_SEARCH_RADIUS),
+                        monster -> monster.getId() != this.lastHitEntityId && !monster.isDeadOrDying() && this.canSee(level, origin, monster))
+                .stream()
+                .min(Comparator.comparingDouble(monster -> monster.distanceToSqr(origin)));
+        if (target.isEmpty()) return false;
+
+        if (this.isInGround()) this.setPos(origin);
+        Vec3 aim = target.get().getBoundingBox().getCenter();
+        double flightTicks = aim.distanceTo(this.position()) / ThrownModiumTrident.CHAIN_SPEED;
+        Vec3 direction = aim.add(0.0, this.getGravity() * flightTicks * flightTicks / 2.0, 0.0).subtract(this.position());
+        this.dealtDamage = false;
+        this.hitSinceLaunch = false;
+        this.setInGround(false);
+        this.setNoPhysics(false);
+        this.shoot(direction.x, direction.y, direction.z, ThrownModiumTrident.CHAIN_SPEED, 0.0F);
+        return true;
+    }
+    
+    private boolean canSee(ServerLevel level, Vec3 origin, Entity target) {
+        return level.clip(new ClipContext(origin, target.getEyePosition(), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this)).getType() == HitResult.Type.MISS;
+    }
+    
+    private boolean isReturning() {
+        return this.entityData.get(ThrownModiumTrident.ID_RETURNING);
+    }
+    
     private boolean isAcceptableReturnOwner() {
         Entity owner = this.getOwner();
         return owner != null && owner.isAlive() && (!(owner instanceof ServerPlayer) || !owner.isSpectator());
@@ -119,12 +171,18 @@ public class ThrownModiumTrident extends AbstractArrow {
     @Override
     protected void onHitEntity(EntityHitResult hitResult) {
         Entity entity = hitResult.getEntity();
-        float damage = 8.0F;
+        float damage = ThrownModiumTrident.THROWN_DAMAGE;
         Entity owner = this.getOwner();
         DamageSource source = this.damageSources().trident(this, owner == null ? this : owner);
-        if (this.level() instanceof ServerLevel level) damage = EnchantmentHelper.modifyDamage(level, this.getWeaponItem(), entity, source, damage);
+        if (this.level() instanceof ServerLevel level) {
+            damage = EnchantmentHelper.modifyDamage(level, this.getWeaponItem(), entity, source, damage);
+            LightningBolt bolt = EntityType.LIGHTNING_BOLT.spawn(level, entity.blockPosition(), EntitySpawnReason.TRIGGERED);
+            if (bolt != null && owner instanceof ServerPlayer player) bolt.setCause(player);
+        }
         
         this.dealtDamage = true;
+        this.hitSinceLaunch = true;
+        this.lastHitEntityId = entity.getId();
         if (entity.hurtOrSimulate(source, damage)) {
             if (entity.is(EntityType.ENDERMAN)) return;
             

@@ -16,6 +16,7 @@ import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.client.renderer.item.SelectItemModel;
 import net.minecraft.client.resources.model.sprite.Material;
+import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
@@ -48,11 +49,17 @@ import net.allthemods.allthemodium.core.registry.ATMTrimMaterials;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public final class ATMModelProvider extends ModelProvider {
     
     public ATMModelProvider(PackOutput output) {
         super(output, ATM.MOD_ID);
+    }
+    
+    @Override
+    protected Stream<? extends Holder<Block>> getKnownBlocks() {
+        return Stream.concat(ATMBlocks.BLOCKS.getEntries().stream(), ATMFluids.BLOCKS.getEntries().stream());
     }
     
     @Override
@@ -109,6 +116,8 @@ public final class ATMModelProvider extends ModelProvider {
                 TexturedModel.CUBE_TOP_BOTTOM.updateTexture(mapping -> mapping.put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(ATMBlocks.ANCIENT_DIRT.get())))
         );
         
+        blockModels.createTrivialBlock(ATMBlocks.ANCIENT_PODZOL.get(), TexturedModel.CUBE_TOP_BOTTOM);
+        
         for (var block : List.of(ATMBlocks.ANCIENT_LEAVES.get(), ATMBlocks.SOUL_LEAVES.get(), ATMBlocks.DEMONIC_LEAVES.get())) {
             blockModels.createTrivialBlock(block, TexturedModel.LEAVES);
         }
@@ -137,6 +146,7 @@ public final class ATMModelProvider extends ModelProvider {
         for (var block : List.of(
                 ATMBlocks.ANCIENT_SAPLING.get(),
                 ATMBlocks.ANCIENT_HERB.get(),
+                ATMBlocks.ANCIENT_FERN.get(),
                 ATMBlocks.ANCIENT_LEAVES_BOTTOM.get(),
                 ATMBlocks.SOUL_SAPLING.get(),
                 ATMBlocks.SOUL_HERB.get(),
@@ -153,7 +163,8 @@ public final class ATMModelProvider extends ModelProvider {
         
         blockModels.createNonTemplateModelBlock(ATMBlocks.TELEPORT_PAD.get());
         
-        ATMFluids.BLOCKS.getEntries().stream().map(DeferredHolder::get).forEach(blockModels::createNonTemplateModelBlock);
+        TexturedModel.Provider fluid = TexturedModel.createDefault(block -> TextureMapping.particle(TextureMapping.getBlockTexture(block, "_still")), ModelTemplates.PARTICLE_ONLY);
+        ATMFluids.BLOCKS.getEntries().stream().map(DeferredHolder::get).forEach(block -> blockModels.createTrivialBlock(block, fluid));
     }
     
     private void createBookshelf(BlockModelGenerators blockModels, Block block) {

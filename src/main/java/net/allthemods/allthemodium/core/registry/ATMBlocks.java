@@ -20,7 +20,6 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SlabBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.StairBlock;
-import net.minecraft.world.level.block.TallFlowerBlock;
 import net.minecraft.world.level.block.TrapDoorBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -33,11 +32,13 @@ import net.minecraft.world.level.material.PushReaction;
 import net.allthemods.allthemodium.api.ATM;
 import net.allthemods.allthemodium.common.blocks.AncientCaveVinesBodyBlock;
 import net.allthemods.allthemodium.common.blocks.AncientCaveVinesHeadBlock;
+import net.allthemods.allthemodium.common.blocks.AncientFernBlock;
 import net.allthemods.allthemodium.common.blocks.AncientGrassBlock;
 import net.allthemods.allthemodium.common.blocks.ModiumBrushableBlock;
 import net.allthemods.allthemodium.common.blocks.ModiumOreBlock;
 import net.allthemods.allthemodium.common.blocks.OtherBlock;
 import net.allthemods.allthemodium.common.blocks.OtherBookshelfBlock;
+import net.allthemods.allthemodium.common.blocks.OtherHerbBlock;
 import net.allthemods.allthemodium.common.blocks.OtherLeaveBlock;
 import net.allthemods.allthemodium.common.blocks.OtherSaplingBlock;
 import net.allthemods.allthemodium.common.blocks.OtherSlabBlock;
@@ -82,18 +83,20 @@ public class ATMBlocks {
     
     public static final DeferredHolder<Block, Block> ANCIENT_DIRT = ATMBlocks.register("ancient_dirt", p -> new Block(p.sound(SoundType.WET_GRASS).strength(0.6F)));
     public static final DeferredHolder<Block, AncientGrassBlock> ANCIENT_GRASS = ATMBlocks.register("ancient_grass", p -> new AncientGrassBlock(p.randomTicks().sound(SoundType.MOSS).strength(0.6F)));
+    public static final DeferredHolder<Block, Block> ANCIENT_PODZOL = ATMBlocks.register("ancient_podzol", Block::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.PODZOL));
     
     public static final DeferredHolder<Block, OtherSaplingBlock> ANCIENT_SAPLING = ATMBlocks.register("ancient_sapling", p -> new OtherSaplingBlock(
             new TreeGrower("ancient_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(ATMConfiguredFeatures.ANCIENT_TREE), Optional.empty(), Optional.empty(), Optional.empty()),
             p.mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY))
     );
-    public static final DeferredHolder<Block, TallFlowerBlock> ANCIENT_HERB = ATMBlocks.register("ancient_herb", p -> new TallFlowerBlock(p.sound(SoundType.WET_GRASS).instabreak().noCollision()));
+    public static final DeferredHolder<Block, OtherHerbBlock> ANCIENT_HERB = ATMBlocks.register("ancient_herb", p -> new OtherHerbBlock(p.sound(SoundType.WET_GRASS).instabreak().noCollision()));
+    public static final DeferredHolder<Block, AncientFernBlock> ANCIENT_FERN = ATMBlocks.register("ancient_fern", AncientFernBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.FERN));
     public static final DeferredHolder<Block, RotatedPillarBlock> ANCIENT_LOG_0 = ATMBlocks.register("ancient_log_0", p -> new RotatedPillarBlock(p.sound(SoundType.WOOD).strength(2.0F)));
     public static final DeferredHolder<Block, RotatedPillarBlock> ANCIENT_LOG_1 = ATMBlocks.register("ancient_log_1", p -> new RotatedPillarBlock(p.sound(SoundType.WOOD).strength(2.0F)));
     public static final DeferredHolder<Block, RotatedPillarBlock> ANCIENT_LOG_2 = ATMBlocks.register("ancient_log_2", p -> new RotatedPillarBlock(p.sound(SoundType.WOOD).strength(2.0F)));
     public static final DeferredHolder<Block, RotatedPillarBlock> STRIPPED_ANCIENT_LOG = ATMBlocks.register("stripped_ancient_log", p -> new RotatedPillarBlock(p.sound(SoundType.WOOD).strength(2.0F)));
-    public static final DeferredHolder<Block, OtherLeaveBlock.Ancient> ANCIENT_LEAVES = ATMBlocks.register("ancient_leaves", p -> new OtherLeaveBlock.Ancient(p.strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion().mapColor(DyeColor.PURPLE)));
-    public static final DeferredHolder<Block, OtherLeaveBlock.Ancient> ANCIENT_LEAVES_BOTTOM = ATMBlocks.register("ancient_leaves_bottom", p -> new OtherLeaveBlock.Ancient(p.strength(0.2F).sound(SoundType.AZALEA_LEAVES).noOcclusion().mapColor(DyeColor.PURPLE)));
+    public static final DeferredHolder<Block, OtherLeaveBlock.Ancient> ANCIENT_LEAVES = ATMBlocks.register("ancient_leaves", p -> new OtherLeaveBlock.Ancient(p.strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noCollision().noOcclusion().mapColor(DyeColor.PURPLE)));
+    public static final DeferredHolder<Block, OtherLeaveBlock.Bottom> ANCIENT_LEAVES_BOTTOM = ATMBlocks.register("ancient_leaves_bottom", p -> new OtherLeaveBlock.Bottom(p.strength(0.2F).sound(SoundType.AZALEA_LEAVES).noCollision().noOcclusion().mapColor(DyeColor.PURPLE)));
     public static final DeferredHolder<Block, Block> ANCIENT_PLANKS = ATMBlocks.register("ancient_planks", p -> new Block(p.strength(0.8F).randomTicks().sound(SoundType.WOOD)));
     public static final DeferredHolder<Block, TrapDoorBlock> ANCIENT_TRAPDOOR = ATMBlocks.register("ancient_trapdoor", p -> new TrapDoorBlock(ATMBlockSets.ANCIENT, p.strength(0.2F).randomTicks().sound(SoundType.WOOD).noOcclusion()));
     public static final DeferredHolder<Block, FenceBlock> ANCIENT_FENCE = ATMBlocks.register("ancient_fence", p -> new FenceBlock(p.strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
@@ -136,13 +139,13 @@ public class ATMBlocks {
             new TreeGrower("soul_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(ATMConfiguredFeatures.SOUL_TREE), Optional.empty(), Optional.empty(), Optional.empty()),
             p.mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY))
     );
-    public static final DeferredHolder<Block, TallFlowerBlock> SOUL_HERB = ATMBlocks.register("soul_herb", p -> new TallFlowerBlock(p.sound(SoundType.WET_GRASS).instabreak().noCollision()));
+    public static final DeferredHolder<Block, OtherHerbBlock> SOUL_HERB = ATMBlocks.register("soul_herb", p -> new OtherHerbBlock(p.sound(SoundType.WET_GRASS).instabreak().noCollision()));
     public static final DeferredHolder<Block, RotatedPillarBlock> SOUL_LOG_0 = ATMBlocks.register("soul_log_0", p -> new RotatedPillarBlock(p.sound(SoundType.WOOD).strength(2.0F).mapColor(DyeColor.LIGHT_BLUE)));
     public static final DeferredHolder<Block, RotatedPillarBlock> SOUL_LOG_1 = ATMBlocks.register("soul_log_1", p -> new RotatedPillarBlock(p.sound(SoundType.WOOD).strength(2.0F).mapColor(DyeColor.LIGHT_BLUE)));
     public static final DeferredHolder<Block, RotatedPillarBlock> SOUL_LOG_2 = ATMBlocks.register("soul_log_2", p -> new RotatedPillarBlock(p.sound(SoundType.WOOD).strength(2.0F).mapColor(DyeColor.LIGHT_BLUE)));
     public static final DeferredHolder<Block, RotatedPillarBlock> STRIPPED_SOUL_LOG = ATMBlocks.register("stripped_soul_log", p -> new RotatedPillarBlock(p.sound(SoundType.WOOD).strength(2.0F).mapColor(DyeColor.LIGHT_BLUE)));
-    public static final DeferredHolder<Block, OtherLeaveBlock.Soul> SOUL_LEAVES = ATMBlocks.register("soul_leaves", p -> new OtherLeaveBlock.Soul(p.strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion()));
-    public static final DeferredHolder<Block, OtherLeaveBlock.Soul> SOUL_LEAVES_BOTTOM = ATMBlocks.register("soul_leaves_bottom", p -> new OtherLeaveBlock.Soul(p.strength(0.2F).sound(SoundType.AZALEA_LEAVES).noCollision().noOcclusion()));
+    public static final DeferredHolder<Block, OtherLeaveBlock.Soul> SOUL_LEAVES = ATMBlocks.register("soul_leaves", p -> new OtherLeaveBlock.Soul(p.strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noCollision().noOcclusion()));
+    public static final DeferredHolder<Block, OtherLeaveBlock.Bottom> SOUL_LEAVES_BOTTOM = ATMBlocks.register("soul_leaves_bottom", p -> new OtherLeaveBlock.Bottom(p.strength(0.2F).sound(SoundType.AZALEA_LEAVES).noCollision().noOcclusion()));
     public static final DeferredHolder<Block, Block> SOUL_PLANKS = ATMBlocks.register("soul_planks", p -> new Block(p.strength(0.8F).randomTicks().sound(SoundType.WOOD)));
     public static final DeferredHolder<Block, TrapDoorBlock> SOUL_TRAPDOOR = ATMBlocks.register("soul_trapdoor", p -> new TrapDoorBlock(ATMBlockSets.SOUL, p.strength(0.2F).randomTicks().sound(SoundType.WOOD).noOcclusion()));
     public static final DeferredHolder<Block, FenceBlock> SOUL_FENCE = ATMBlocks.register("soul_fence", p -> new FenceBlock(p.strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
@@ -156,11 +159,11 @@ public class ATMBlocks {
             new TreeGrower("demonic_tree", 0.9F, Optional.empty(), Optional.empty(), Optional.of(ATMConfiguredFeatures.DEMONIC_TREE), Optional.empty(), Optional.empty(), Optional.empty()),
             p.mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY))
     );
-    public static final DeferredHolder<Block, TallFlowerBlock> DEMONIC_HERB = ATMBlocks.register("demonic_herb", p -> new TallFlowerBlock(p.sound(SoundType.WET_GRASS).instabreak().noCollision()));
+    public static final DeferredHolder<Block, OtherHerbBlock> DEMONIC_HERB = ATMBlocks.register("demonic_herb", p -> new OtherHerbBlock(p.sound(SoundType.WET_GRASS).instabreak().noCollision()));
     public static final DeferredHolder<Block, RotatedPillarBlock> DEMONIC_LOG = ATMBlocks.register("demonic_log", p -> new RotatedPillarBlock(p.sound(SoundType.WOOD).strength(2.0F).mapColor(DyeColor.RED)));
     public static final DeferredHolder<Block, RotatedPillarBlock> STRIPPED_DEMONIC_LOG = ATMBlocks.register("stripped_demonic_log", p -> new RotatedPillarBlock(p.sound(SoundType.WOOD).strength(2.0F).mapColor(DyeColor.RED)));
-    public static final DeferredHolder<Block, OtherLeaveBlock.Demonic> DEMONIC_LEAVES = ATMBlocks.register("demonic_leaves", p -> new OtherLeaveBlock.Demonic(p.strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noOcclusion()));
-    public static final DeferredHolder<Block, OtherLeaveBlock.Demonic> DEMONIC_LEAVES_BOTTOM = ATMBlocks.register("demonic_leaves_bottom", p -> new OtherLeaveBlock.Demonic(p.strength(0.2F).sound(SoundType.AZALEA_LEAVES).noCollision().noOcclusion()));
+    public static final DeferredHolder<Block, OtherLeaveBlock.Demonic> DEMONIC_LEAVES = ATMBlocks.register("demonic_leaves", p -> new OtherLeaveBlock.Demonic(p.strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES).noCollision().noOcclusion()));
+    public static final DeferredHolder<Block, OtherLeaveBlock.Bottom> DEMONIC_LEAVES_BOTTOM = ATMBlocks.register("demonic_leaves_bottom", p -> new OtherLeaveBlock.Bottom(p.strength(0.2F).sound(SoundType.AZALEA_LEAVES).noCollision().noOcclusion()));
     public static final DeferredHolder<Block, Block> DEMONIC_PLANKS = ATMBlocks.register("demonic_planks", p -> new Block(p.strength(0.8F).randomTicks().sound(SoundType.WOOD)));
     public static final DeferredHolder<Block, TrapDoorBlock> DEMONIC_TRAPDOOR = ATMBlocks.register("demonic_trapdoor", p -> new TrapDoorBlock(ATMBlockSets.DEMONIC, p.strength(0.2F).randomTicks().sound(SoundType.WOOD).noOcclusion()));
     public static final DeferredHolder<Block, FenceBlock> DEMONIC_FENCE = ATMBlocks.register("demonic_fence", p -> new FenceBlock(p.strength(0.8F).dynamicShape().sound(SoundType.WOOD)));
@@ -170,15 +173,15 @@ public class ATMBlocks {
     public static final DeferredHolder<Block, StairBlock> DEMONIC_STAIRS = ATMBlocks.register("demonic_stairs", p -> new StairBlock(ATMBlocks.DEMONIC_PLANKS.get().defaultBlockState(), p), () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.DEMONIC_PLANKS.get()));
     public static final DeferredHolder<Block, SlabBlock> DEMONIC_SLAB = ATMBlocks.register("demonic_slab", SlabBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(ATMBlocks.DEMONIC_PLANKS.get()));
     
-    public static final DeferredHolder<Block, ModiumBrushableBlock> SUS_CLAY = ATMBlocks.register("suspicious_clay", p -> new ModiumBrushableBlock(Blocks.CLAY, SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED,
-            p.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY))
-    );
-    public static final DeferredHolder<Block, ModiumBrushableBlock> SUS_SOUL_SAND = ATMBlocks.register("suspicious_soul_sand", p -> new ModiumBrushableBlock(Blocks.SOUL_SAND, SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED,
-            p.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY))
-    );
+    public static final DeferredHolder<Block, ModiumBrushableBlock> SUS_CLAY = ATMBlocks.register("suspicious_clay", p -> new ModiumBrushableBlock(Blocks.CLAY, SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED, ATMBlocks.suspicious(p)));
+    public static final DeferredHolder<Block, ModiumBrushableBlock> SUS_SOUL_SAND = ATMBlocks.register("suspicious_soul_sand", p -> new ModiumBrushableBlock(Blocks.SOUL_SAND, SoundEvents.BRUSH_SAND, SoundEvents.BRUSH_SAND_COMPLETED, ATMBlocks.suspicious(p)));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ModiumBrushableBlockEntity>> BRUSHABLE_BLOCK = ATMBlocks.BLOCK_ENTITIES.register("brushable_block", () -> new BlockEntityType<>(ModiumBrushableBlockEntity::new, ATMBlocks.SUS_CLAY.get(), ATMBlocks.SUS_SOUL_SAND.get()));
     
     public static final DeferredHolder<Block, TeleportPad> TELEPORT_PAD = ATMBlocks.register("teleport_pad", TeleportPad::new);
+    
+    public static BlockBehaviour.Properties suspicious(BlockBehaviour.Properties properties) {
+        return properties.mapColor(MapColor.SAND).instrument(NoteBlockInstrument.SNARE).strength(0.25F).sound(SoundType.SUSPICIOUS_SAND).pushReaction(PushReaction.DESTROY);
+    }
     
     private static <T extends Block> DeferredHolder<Block, T> register(String name, Function<BlockBehaviour.Properties, T> factory) {
         return ATMBlocks.register(name, factory, BlockBehaviour.Properties::of);

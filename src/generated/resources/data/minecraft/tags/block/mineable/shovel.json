@@ -2,7 +2,16 @@
   "values": [
     "allthemodium:ancient_dirt",
     "allthemodium:ancient_grass",
+    "allthemodium:ancient_podzol",
     "allthemodium:suspicious_clay",
-    "allthemodium:suspicious_soul_sand"
+    "allthemodium:suspicious_soul_sand",
+    {
+      "id": "allthemodium:lootr_suspicious_clay",
+      "required": false
+    },
+    {
+      "id": "allthemodium:lootr_suspicious_soul_sand",
+      "required": false
+    }
   ]
 }

@@ -6,7 +6,7 @@
     "AxeItemAccessor",
     "BrushableBlockEntityAccessor",
     "CrossbowItemAccessor",
-    "LiquidBlockMixin"
+    "LivingEntityInvoker"
   ],
   "injectors": {
     "defaultRequire": 1

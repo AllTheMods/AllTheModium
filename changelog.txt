@@ -1,3 +1,15 @@
+26.1.2-4.2.0
+
+- Silent plates have an enchantment glint and a tooltip
+- Sussyblind, an optional built-in resource pack that makes suspicious blocks easier to spot
+- Lootr support
+- The Piglich glows while it summons reinforcements
+- Fixed Jade showing the allthemodium pickaxe as the harvest tool for almost every block
+- Added Piglich spawn egg texture
+- Fixed #210
+- Fixed stuff that broke or was missed in the port.
+
+
 26.1.2-4.1.1
 
 - Added SGear materials

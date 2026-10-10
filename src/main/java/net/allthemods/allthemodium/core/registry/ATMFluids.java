@@ -17,6 +17,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -28,6 +29,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.PushReaction;
 
 import net.allthemods.allthemodium.api.ATM;
+import net.allthemods.allthemodium.common.fluid.ATMFluidType;
 import net.allthemods.allthemodium.common.fluid.AllTheModiumFluid;
 import net.allthemods.allthemodium.common.fluid.SoulLavaFluid;
 import net.allthemods.allthemodium.common.fluid.UnobtaniumFluid;
@@ -48,6 +50,8 @@ public class ATMFluids {
     public static final DeferredHolder<Block, LiquidBlock> SOUL_LAVA_BLOCK = ATMFluids.registerBlock("soul_lava", p -> new LiquidBlock(ATMFluids.SOUL_LAVA_FLOWING.get(), p
             .mapColor(DyeColor.BLUE)
             .noCollision()
+            .speedFactor(0.01F)
+            .jumpFactor(0.1F)
             .replaceable()
             .randomTicks()
             .strength(100.0F)
@@ -69,13 +73,14 @@ public class ATMFluids {
             return false;
         }
     });
-    public static final DeferredHolder<FluidType, FluidType> SOUL_LAVA_TYPE = ATMFluids.FLUID_TYPES.register("soul_lava", () -> new FluidType(FluidType.Properties.create()
+    public static final DeferredHolder<FluidType, FluidType> SOUL_LAVA_TYPE = ATMFluids.FLUID_TYPES.register("soul_lava", () -> new ATMFluidType(FluidType.Properties.create()
             .descriptionId(ATMFluids.SOUL_LAVA_BLOCK.get().getDescriptionId())
             .lightLevel(15)
             .density(3000)
             .viscosity(6000)
             .temperature(6000)
             .motionScale(0.007D)
+            .fallDistanceModifier(0.0F)
             .canExtinguish(false)
             .supportsBoating(true)
             .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA)
@@ -99,17 +104,17 @@ public class ATMFluids {
             .liquid()
             .sound(SoundType.EMPTY)
     ));
-    public static final DeferredHolder<FluidType, FluidType> MOLTEN_ALLTHEMODIUM_TYPE = ATMFluids.FLUID_TYPES.register("molten_allthemodium", () -> new FluidType(FluidType.Properties.create()
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_ALLTHEMODIUM_TYPE = ATMFluids.FLUID_TYPES.register("molten_allthemodium", () -> new ATMFluidType(FluidType.Properties.create()
             .descriptionId(ATMFluids.MOLTEN_ALLTHEMODIUM_BLOCK.get().getDescriptionId())
             .lightLevel(15)
             .density(3000)
             .viscosity(6000)
             .temperature(3000)
-            .motionScale(0.0023333333333333335D)
+            .fallDistanceModifier(0.0F)
             .canExtinguish(false)
             .supportsBoating(true)
-            .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA)
-            .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
+            .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+            .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
             .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
             .canHydrate(false)
     ));
@@ -129,17 +134,17 @@ public class ATMFluids {
             .liquid()
             .sound(SoundType.EMPTY)
     ));
-    public static final DeferredHolder<FluidType, FluidType> MOLTEN_VIBRANIUM_TYPE = ATMFluids.FLUID_TYPES.register("molten_vibranium", () -> new FluidType(FluidType.Properties.create()
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_VIBRANIUM_TYPE = ATMFluids.FLUID_TYPES.register("molten_vibranium", () -> new ATMFluidType(FluidType.Properties.create()
             .descriptionId(ATMFluids.MOLTEN_VIBRANIUM_BLOCK.get().getDescriptionId())
             .lightLevel(15)
             .density(3000)
             .viscosity(6000)
             .temperature(3000)
-            .motionScale(0.0023333333333333335D)
+            .fallDistanceModifier(0.0F)
             .canExtinguish(false)
             .supportsBoating(true)
-            .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA)
-            .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
+            .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+            .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
             .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
             .canHydrate(false)
     ));
@@ -159,17 +164,17 @@ public class ATMFluids {
             .liquid()
             .sound(SoundType.EMPTY)
     ));
-    public static final DeferredHolder<FluidType, FluidType> MOLTEN_UNOBTAINIUM_TYPE = ATMFluids.FLUID_TYPES.register("molten_unobtainium", () -> new FluidType(FluidType.Properties.create()
+    public static final DeferredHolder<FluidType, FluidType> MOLTEN_UNOBTAINIUM_TYPE = ATMFluids.FLUID_TYPES.register("molten_unobtainium", () -> new ATMFluidType(FluidType.Properties.create()
             .descriptionId(ATMFluids.MOLTEN_UNOBTAINIUM_BLOCK.get().getDescriptionId())
             .lightLevel(15)
             .density(3000)
             .viscosity(6000)
             .temperature(3000)
-            .motionScale(0.0023333333333333335D)
+            .fallDistanceModifier(0.0F)
             .canExtinguish(false)
             .supportsBoating(true)
-            .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA)
-            .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
+            .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+            .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
             .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
             .canHydrate(false)
     ));
@@ -179,7 +184,7 @@ public class ATMFluids {
     }
     
     private static <T extends Item> DeferredHolder<Item, T> registerItem(String name, Function<Item.Properties, T> factory) {
-        return ATMFluids.ITEMS.register(name, p -> factory.apply(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, p))));
+        return ATMFluids.ITEMS.register(name, p -> factory.apply(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, p)).craftRemainder(Items.BUCKET).stacksTo(1)));
     }
     
     public static void register(final IEventBus bus) {

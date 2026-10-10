@@ -2,6 +2,8 @@ package net.allthemods.allthemodium.common.fluid;
 
 import net.neoforged.neoforge.fluids.FluidType;
 
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -9,11 +11,12 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.LavaFluid;
 
 import net.allthemods.allthemodium.core.registry.ATMFluids;
 
-public abstract class AllTheModiumFluid extends LavaFluid {
+import org.jspecify.annotations.Nullable;
+
+public abstract class AllTheModiumFluid extends MoltenMetalFluid {
     
     @Override
     public FluidType getFluidType() {
@@ -38,6 +41,11 @@ public abstract class AllTheModiumFluid extends LavaFluid {
     @Override
     public BlockState createLegacyBlock(FluidState fluidState) {
         return ATMFluids.MOLTEN_ALLTHEMODIUM_BLOCK.get().defaultBlockState().setValue(LiquidBlock.LEVEL, FlowingFluid.getLegacyLevel(fluidState));
+    }
+    
+    @Override
+    protected @Nullable ParticleOptions getDripParticle() {
+        return ParticleTypes.DRIPPING_HONEY;
     }
     
     @Override

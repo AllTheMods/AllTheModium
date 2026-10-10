@@ -18,6 +18,9 @@ public class ATMTags {
         
         public static final TagKey<Block> OTHER_PROTECTION = Blocks.create("other_protection");
         
+        public static final TagKey<Block> LOOTR_CONVERT_CLAYS = Blocks.create("lootr/convert/clays");
+        public static final TagKey<Block> LOOTR_CONVERT_SOUL_SANDS = Blocks.create("lootr/convert/soul_sands");
+        
         public static final TagKey<Block> ORES_ALLTHEMODIUM = Blocks.neo("ores/allthemodium");
         public static final TagKey<Block> ORES_VIBRANIUM = Blocks.neo("ores/vibranium");
         public static final TagKey<Block> ORES_UNOBTANIUM = Blocks.neo("ores/unobtainium");

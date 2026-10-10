@@ -23,13 +23,16 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.BlockColumnConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.DeltaFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.NetherForestVegetationConfig;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.AcaciaFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.RuleBasedStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.FancyTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.ForkingTrunkPlacer;
@@ -81,7 +84,11 @@ public class ATMConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DEMONIC_TREE = ATMConfiguredFeatures.create("demonic_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SOUL_DELTAS = ATMConfiguredFeatures.create("soul_deltas");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SOUL_TREE = ATMConfiguredFeatures.create("soul_tree");
-    
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ANCIENT_GRASS_BONEMEAL = ATMConfiguredFeatures.create("ancient_grass_bonemeal");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CRIMSON_FOREST_BONEMEAL = ATMConfiguredFeatures.create("crimson_forest_bonemeal");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WARPED_FOREST_BONEMEAL = ATMConfiguredFeatures.create("warped_forest_bonemeal");
+
     public static void bootstrap(final BootstrapContext<ConfiguredFeature<?, ?>> ctx) {
         ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ALLTHEMODIUM, Feature.ORE, new OreConfiguration(List.of(
                 OreConfiguration.target(new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES), ATMBlocks.ALLTHEMODIUM_ORE.get().defaultBlockState()),
@@ -233,7 +240,7 @@ public class ATMConfiguredFeatures {
                         ),
                         new AcaciaFoliagePlacer(ConstantInt.of(2), ConstantInt.of(0)),
                         new TwoLayersFeatureSize(1, 0, 2)
-                ).ignoreVines().build()
+                ).ignoreVines().belowTrunkProvider(ATMConfiguredFeatures.belowTrunk(ATMBlocks.ANCIENT_DIRT.get())).build()
         );
         ATMConfiguredFeatures.register(
                 ctx,
@@ -246,7 +253,8 @@ public class ATMConfiguredFeatures {
                                 .add(ATMBlocks.SOUL_LOG_2.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y), 10)
                                 .build()
                         ),
-                        ATMBlocks.SOUL_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 7).setValue(LeavesBlock.PERSISTENT, false)
+                        ATMBlocks.SOUL_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 7).setValue(LeavesBlock.PERSISTENT, false),
+                        Blocks.WARPED_NYLIUM
                 )
         );
         ATMConfiguredFeatures.register(
@@ -255,7 +263,8 @@ public class ATMConfiguredFeatures {
                 Feature.TREE,
                 ATMConfiguredFeatures.fancyTree(
                         BlockStateProvider.simple(ATMBlocks.DEMONIC_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y)),
-                        ATMBlocks.DEMONIC_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 7).setValue(LeavesBlock.PERSISTENT, false)
+                        ATMBlocks.DEMONIC_LEAVES.get().defaultBlockState().setValue(LeavesBlock.DISTANCE, 7).setValue(LeavesBlock.PERSISTENT, false),
+                        Blocks.CRIMSON_NYLIUM
                 ));
         ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.CAVE_VINE, Feature.BLOCK_COLUMN, new BlockColumnConfiguration(
                 List.of(
@@ -292,16 +301,36 @@ public class ATMConfiguredFeatures {
                 UniformInt.of(3, 7),
                 UniformInt.of(0, 2)
         ));
+
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.ANCIENT_GRASS_BONEMEAL, Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
+                new WeightedStateProvider(WeightedList.<BlockState>builder()
+                        .add(Blocks.AIR.defaultBlockState(), 50)
+                        .add(ATMBlocks.ANCIENT_FERN.get().defaultBlockState(), 20)
+                        .add(ATMBlocks.ANCIENT_HERB.get().defaultBlockState(), 9)
+                        .add(ATMBlocks.SOUL_HERB.get().defaultBlockState(), 1)
+                        .build()
+                )
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.CRIMSON_FOREST_BONEMEAL, Feature.NETHER_FOREST_VEGETATION, new NetherForestVegetationConfig(
+                BlockStateProvider.simple(ATMBlocks.DEMONIC_HERB.get()), 2, 1
+        ));
+        ATMConfiguredFeatures.register(ctx, ATMConfiguredFeatures.WARPED_FOREST_BONEMEAL, Feature.NETHER_FOREST_VEGETATION, new NetherForestVegetationConfig(
+                BlockStateProvider.simple(ATMBlocks.SOUL_HERB.get()), 2, 1
+        ));
     }
     
-    private static TreeConfiguration fancyTree(BlockStateProvider provider, BlockState leaves) {
+    private static TreeConfiguration fancyTree(BlockStateProvider provider, BlockState leaves, Block belowTrunk) {
         return new TreeConfiguration.TreeConfigurationBuilder(
                 provider,
                 new FancyTrunkPlacer(3, 11, 0),
                 BlockStateProvider.simple(leaves),
                 new FancyFoliagePlacer(ConstantInt.of(2), ConstantInt.of(4), 4),
                 new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))
-        ).ignoreVines().build();
+        ).ignoreVines().belowTrunkProvider(ATMConfiguredFeatures.belowTrunk(belowTrunk)).build();
+    }
+    
+    private static BlockStateProvider belowTrunk(Block block) {
+        return RuleBasedStateProvider.ifTrueThenProvide(TreeConfiguration.CAN_PLACE_BELOW_OVERWORLD_TRUNKS, block);
     }
     
     private static OreConfiguration stoneOre(Block stoneOre, Block deepslateOre, int size) {

@@ -16,7 +16,7 @@ sourceSets.main.resources {
     srcDir('src/generated/resources')
 
     exclude("**/*.bbmodel")
-    exclude("src/generated/**/.cache")
+    exclude(".cache/**")
 }
 
 base {
@@ -29,7 +29,11 @@ neoForge {
     version = project.neo_version
 
     // accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
-    
+
+    interfaceInjectionData {
+        from(file('interfaces.json'))
+    }
+
     runs {
         client {
             client()
@@ -105,6 +109,9 @@ dependencies {
     implementation "curse.maven:silent-gear-297039:8735808"
     implementation "curse.maven:silent-lib-242998:7936002"
     implementation "curse.maven:silents-gems-220311:8103909"
+
+    compileOnly "curse.maven:lootr-361276:8977039"
+    runtimeOnly "curse.maven:lootr-361276:8977039"
 }
 
 tasks.withType(ProcessResources).configureEach {

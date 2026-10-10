@@ -16,7 +16,7 @@ public class ATMPois {
     public static final DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(Registries.POINT_OF_INTEREST_TYPE, ATM.MOD_ID);
     
     public static final DeferredHolder<PoiType, PoiType> TELEPORT_PAD = ATMPois.POI_TYPES.register("teleport_pad", () -> new PoiType(
-            ImmutableSet.copyOf(ATMBlocks.TELEPORT_PAD.get().getStateDefinition().getPossibleStates()), 1, 32
+            ImmutableSet.copyOf(ATMBlocks.TELEPORT_PAD.get().getStateDefinition().getPossibleStates()), 1, 1
     ));
     
     public static void register(final IEventBus bus) {

@@ -4,6 +4,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -16,10 +17,12 @@ import net.minecraft.world.item.MaceItem;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.component.Weapon;
 import net.minecraft.world.item.equipment.ArmorType;
 
 import net.allthemods.allthemodium.api.ATM;
+import net.allthemods.allthemodium.client.lang.ATMLanguage;
 import net.allthemods.allthemodium.common.items.ModiumBootsItem;
 import net.allthemods.allthemodium.common.items.ModiumBowItem;
 import net.allthemods.allthemodium.common.items.ModiumBrushItem;
@@ -32,6 +35,7 @@ import net.allthemods.allthemodium.common.items.ModiumSmithingTemplateItem;
 import net.allthemods.allthemodium.common.items.ModiumTrident;
 import net.allthemods.allthemodium.common.items.PaxelItem;
 
+import java.util.List;
 import java.util.function.Function;
 
 public class ATMItems {
@@ -65,9 +69,9 @@ public class ATMItems {
     public static final DeferredHolder<Item, Item> VIBRANIUM_PLATE = ATMItems.register("vibranium_plate", Item::new);
     public static final DeferredHolder<Item, Item> UNOBTAINIUM_PLATE = ATMItems.register("unobtainium_plate", Item::new);
 
-    public static final DeferredHolder<Item, Item> SILENT_ALLTHEMODIUM_PLATE = ATMItems.register("silent_allthemodium_plate", p -> new Item(p.fireResistant()));
-    public static final DeferredHolder<Item, Item> SILENT_VIBRANIUM_PLATE = ATMItems.register("silent_vibranium_plate", p -> new Item(p.fireResistant()));
-    public static final DeferredHolder<Item, Item> SILENT_UNOBTAINIUM_PLATE = ATMItems.register("silent_unobtainium_plate", p -> new Item(p.fireResistant()));
+    public static final DeferredHolder<Item, Item> SILENT_ALLTHEMODIUM_PLATE = ATMItems.register("silent_allthemodium_plate", p -> new Item(ATMItems.silentPlate(p)));
+    public static final DeferredHolder<Item, Item> SILENT_VIBRANIUM_PLATE = ATMItems.register("silent_vibranium_plate", p -> new Item(ATMItems.silentPlate(p)));
+    public static final DeferredHolder<Item, Item> SILENT_UNOBTAINIUM_PLATE = ATMItems.register("silent_unobtainium_plate", p -> new Item(ATMItems.silentPlate(p)));
 
     public static final DeferredHolder<Item, Item> ALLTHEMODIUM_GEAR = ATMItems.register("allthemodium_gear", Item::new);
     public static final DeferredHolder<Item, Item> VIBRANIUM_GEAR = ATMItems.register("vibranium_gear", Item::new);
@@ -195,6 +199,13 @@ public class ATMItems {
                 .fireResistant();
     }
 
+    private static Item.Properties silentPlate(Item.Properties properties) {
+        return properties
+                .component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
+                .component(DataComponents.LORE, new ItemLore(List.of(ATMLanguage.TOOLTIP_SILENT_PLATE.translate(ChatFormatting.GRAY, ChatFormatting.ITALIC))))
+                .fireResistant();
+    }
+    
     private static <T extends Item> DeferredHolder<Item, T> register(String name, Function<Item.Properties, T> factory) {
         return ATMItems.ITEMS.register(name, p -> factory.apply(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, p))));
     }

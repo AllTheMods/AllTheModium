@@ -19,8 +19,10 @@
     "allthemodium:ancient_cave_vines",
     "allthemodium:ancient_dirt",
     "allthemodium:ancient_grass",
+    "allthemodium:ancient_podzol",
     "allthemodium:ancient_sapling",
     "allthemodium:ancient_herb",
+    "allthemodium:ancient_fern",
     "allthemodium:ancient_log_0",
     "allthemodium:ancient_log_1",
     "allthemodium:ancient_log_2",
@@ -114,6 +116,14 @@
     "minecraft:amethyst_cluster",
     "minecraft:gold_block",
     "minecraft:spawner",
-    "#c:ores"
+    "#c:ores",
+    {
+      "id": "allthemodium:lootr_suspicious_clay",
+      "required": false
+    },
+    {
+      "id": "allthemodium:lootr_suspicious_soul_sand",
+      "required": false
+    }
   ]
 }

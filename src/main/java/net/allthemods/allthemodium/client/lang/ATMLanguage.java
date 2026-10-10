@@ -13,23 +13,25 @@ ATMLanguage implements ATMTranslatable {
                                                                     
     // Allthemodium                                                 
     ALLTHEMODIUM_UPGRADE                           ("upgrade",      "allthemodium_upgrade",                                              "Allthemodium Upgrade"),
-    ALLTHEMODIUM_UPGRADE_APPLIES_TO                ("item",         "smithing_template.allthemodium_upgrade.applies_to",                 "Applies to"),
-    ALLTHEMODIUM_UPGRADE_INGREDIENTS               ("item",         "smithing_template.allthemodium_upgrade.ingredients",                "Ingredients"),
-    ALLTHEMODIUM_UPGRADE_BASE_SLOT_DESCRIPTION     ("item",         "smithing_template.allthemodium_upgrade.base_slot_description",      "Base Item"),
-    ALLTHEMODIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION("item",         "smithing_template.allthemodium_upgrade.additions_slot_description", "Addition"),
+    ALLTHEMODIUM_UPGRADE_APPLIES_TO                ("item",         "smithing_template.allthemodium_upgrade.applies_to",                 "Netherite Equipment"),
+    ALLTHEMODIUM_UPGRADE_INGREDIENTS               ("item",         "smithing_template.allthemodium_upgrade.ingredients",                "Allthemodium Ingot"),
+    ALLTHEMODIUM_UPGRADE_BASE_SLOT_DESCRIPTION     ("item",         "smithing_template.allthemodium_upgrade.base_slot_description",      "Add Netherite Armor, Weapon, or Tool"),
+    ALLTHEMODIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION("item",         "smithing_template.allthemodium_upgrade.additions_slot_description", "Add Allthemodium Ingot"),
                                                                     
     // Vibranium                                                    
     VIBRANIUM_UPGRADE                              ("upgrade",      "vibranium_upgrade",                                                 "Vibranium Upgrade"),
-    VIBRANIUM_UPGRADE_APPLIES_TO                   ("item",         "smithing_template.vibranium_upgrade.applies_to",                    "Applies to"),
-    VIBRANIUM_UPGRADE_INGREDIENTS                  ("item",         "smithing_template.vibranium_upgrade.ingredients",                   "Ingredients"),
-    VIBRANIUM_UPGRADE_BASE_SLOT_DESCRIPTION        ("item",         "smithing_template.vibranium_upgrade.base_slot_description",         "Base Item"),
-    VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION   ("item",         "smithing_template.vibranium_upgrade.additions_slot_description",    "Addition"),
+    VIBRANIUM_UPGRADE_APPLIES_TO                   ("item",         "smithing_template.vibranium_upgrade.applies_to",                    "Allthemodium Equipment"),
+    VIBRANIUM_UPGRADE_INGREDIENTS                  ("item",         "smithing_template.vibranium_upgrade.ingredients",                   "Vibranium Ingot"),
+    VIBRANIUM_UPGRADE_BASE_SLOT_DESCRIPTION        ("item",         "smithing_template.vibranium_upgrade.base_slot_description",         "Add Allthemodium Armor, Weapon, or Tool"),
+    VIBRANIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION   ("item",         "smithing_template.vibranium_upgrade.additions_slot_description",    "Add Vibranium Ingot"),
                                                                     
     UNOBTAINIUM_UPGRADE                            ("upgrade",      "unobtainium_upgrade",                                               "Unobtainium Upgrade"),
-    UNOBTAINIUM_UPGRADE_APPLIES_TO                 ("item",         "smithing_template.unobtainium_upgrade.applies_to",                  "Applies to"),
-    UNOBTAINIUM_UPGRADE_INGREDIENTS                ("item",         "smithing_template.unobtainium_upgrade.ingredients",                 "Ingredients"),
-    UNOBTAINIUM_UPGRADE_BASE_SLOT_DESCRIPTION      ("item",         "smithing_template.unobtainium_upgrade.base_slot_description",       "Base Item"),
-    UNOBTAINIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION ("item",         "smithing_template.unobtainium_upgrade.additions_slot_description",  "Addition"),
+    UNOBTAINIUM_UPGRADE_APPLIES_TO                 ("item",         "smithing_template.unobtainium_upgrade.applies_to",                  "Vibranium Equipment"),
+    UNOBTAINIUM_UPGRADE_INGREDIENTS                ("item",         "smithing_template.unobtainium_upgrade.ingredients",                 "Unobtainium Ingot"),
+    UNOBTAINIUM_UPGRADE_BASE_SLOT_DESCRIPTION      ("item",         "smithing_template.unobtainium_upgrade.base_slot_description",       "Add Vibranium Armor, Weapon, or Tool"),
+    UNOBTAINIUM_UPGRADE_ADDITIONS_SLOT_DESCRIPTION ("item",         "smithing_template.unobtainium_upgrade.additions_slot_description",  "Add Unobtainium Ingot"),
+    
+    TOOLTIP_SILENT_PLATE                           ("item",         "silent_plate.tooltip",                                              "It's less... talkative now"),
     
     MESSAGE_NO_DESTINATION                         ("message",      "no_destination",                                                    "No Destination!"),
     MESSAGE_TRANSFER_FAILED                        ("message",      "transfer_failed",                                                   "Transfer Failed! Try moving the Teleport Pad to a different location"),
