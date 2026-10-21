@@ -18,6 +18,7 @@ import net.allthemods.allthemodium.data.provider.ATMMaterialsProvider;
 import net.allthemods.allthemodium.data.provider.ATMModelProvider;
 import net.allthemods.allthemodium.data.provider.ATMRecipeProvider;
 import net.allthemods.allthemodium.data.provider.ATMSpriteSourceProvider;
+import net.allthemods.allthemodium.data.provider.ATMStructureProvider;
 import net.allthemods.allthemodium.data.provider.loot.ATMLootProvider;
 import net.allthemods.allthemodium.data.provider.tags.ATMBiomeTagsProvider;
 import net.allthemods.allthemodium.data.provider.tags.ATMBlockTagsProvider;
@@ -31,8 +32,13 @@ import net.allthemods.allthemodium.data.worldgen.ATMStructureSets;
 import net.allthemods.allthemodium.data.worldgen.ATMStructures;
 import net.allthemods.allthemodium.data.worldgen.ATMTemplatePools;
 
+import java.nio.file.Path;
+import java.util.List;
+
 @EventBusSubscriber(modid = ATM.MOD_ID)
 public class ATMDataGenerator {
+    
+    private static final String STRUCTURE_INPUT = "allthemodium.datagen.structures";
     
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
             .add(Registries.ENCHANTMENT, ATMEnchantments::bootstrap)
@@ -44,6 +50,12 @@ public class ATMDataGenerator {
             .add(Registries.STRUCTURE, ATMStructures::bootstrap)
             .add(Registries.STRUCTURE_SET, ATMStructureSets::bootstrap)
             .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ATMBiomeModifier::bootstrap);
+    
+    private static Path structureInput() {
+        String input = System.getProperty(ATMDataGenerator.STRUCTURE_INPUT);
+        if (input == null) throw new IllegalStateException("Missing system property " + ATMDataGenerator.STRUCTURE_INPUT);
+        return Path.of(input);
+    }
     
     @SubscribeEvent
     public static void gatherClientData(final GatherDataEvent.Client event) {
@@ -59,6 +71,7 @@ public class ATMDataGenerator {
         event.createProvider(ATMDataMapProvider::new);
         event.createProvider(ATMRecipeProvider.Runner::new);
         event.createProvider(ATMSpriteSourceProvider::new);
+        event.createProvider(output -> new ATMStructureProvider(output, List.of(ATMDataGenerator.structureInput())));
         event.createDatapackRegistryObjects(ATMDataGenerator.BUILDER);
 
         if (ModList.get().isLoaded("silentgear")) ATMMaterialsProvider.register(event);
