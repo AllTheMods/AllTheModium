@@ -4,6 +4,7 @@ import com.thevortex.allthemodium.datagen.client.BlockStates;
 import com.thevortex.allthemodium.datagen.client.ItemModels;
 import com.thevortex.allthemodium.datagen.server.ATMBlockTags;
 import com.thevortex.allthemodium.datagen.server.ATMCraftingRecipes;
+import com.thevortex.allthemodium.datagen.server.ATMEntityTypeTags;
 import com.thevortex.allthemodium.datagen.server.ATMItemTags;
 import com.thevortex.allthemodium.datagen.server.ATMLootTables;
 import com.thevortex.allthemodium.reference.Reference;
@@ -37,6 +38,7 @@ public final class ATMDataGenerators {
             ATMBlockTags blockTags1 = new ATMBlockTags(packOutput,event.getLookupProvider(), fileHelper);
             generator.addProvider(true, blockTags1);
             generator.addProvider(true,new ATMItemTags(packOutput,event.getLookupProvider(), blockTags1.contentsGetter(), fileHelper));
+            generator.addProvider(true,new ATMEntityTypeTags(packOutput,event.getLookupProvider(), fileHelper));
             generator.addProvider(true,new ATMCraftingRecipes(packOutput,event.getLookupProvider()));
             generator.addProvider(true,new LootTableProvider(packOutput, Collections.emptySet(),
                     List.of(new LootTableProvider.SubProviderEntry(ATMLootTables::new, LootContextParamSets.BLOCK)), event.getLookupProvider()));
