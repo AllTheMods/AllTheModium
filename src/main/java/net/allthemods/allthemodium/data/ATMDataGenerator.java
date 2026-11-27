@@ -22,6 +22,7 @@ import net.allthemods.allthemodium.data.provider.ATMStructureProvider;
 import net.allthemods.allthemodium.data.provider.loot.ATMLootProvider;
 import net.allthemods.allthemodium.data.provider.tags.ATMBiomeTagsProvider;
 import net.allthemods.allthemodium.data.provider.tags.ATMBlockTagsProvider;
+import net.allthemods.allthemodium.data.provider.tags.ATMEntityTypeTagsProvider;
 import net.allthemods.allthemodium.data.provider.tags.ATMItemTagsProvider;
 import net.allthemods.allthemodium.data.worldgen.ATMBiomeModifier;
 import net.allthemods.allthemodium.data.worldgen.ATMBiomes;
@@ -68,6 +69,7 @@ public class ATMDataGenerator {
         event.createProvider(ATMBiomeTagsProvider::new);
         event.createProvider(ATMBlockTagsProvider::new);
         event.createProvider(ATMItemTagsProvider::new);
+        event.createProvider(ATMEntityTypeTagsProvider::new);
         event.createProvider(ATMDataMapProvider::new);
         event.createProvider(ATMRecipeProvider.Runner::new);
         event.createProvider(ATMSpriteSourceProvider::new);
